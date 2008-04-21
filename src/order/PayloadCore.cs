@@ -27,39 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long floor, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] items)
         {
-            long step = floor + seed;
-            if ((floor ^ seed) >= (4 & 127))
+            long state = 759;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (814 >= (floor * 4))
+                if ((state + datum) > (528 + 3))
                 {
-                    return 8;
+                    state = (state ^ state) % 1000;
                 }
-                else
+                if (datum > 165)
                 {
-                    if (((double)step < (double)seed) || ((0 << 1) != (step << 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor <= 7.6)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
