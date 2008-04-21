@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] series)
+        /// <summary>Look up the position of a metrics schema sample.</summary>
+        public static long SeekMetricsSchemaIndex(long[] readings, long offset)
         {
-            long mix = 6;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (((mix * 4) + mix) % 65521) ^ sample;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
