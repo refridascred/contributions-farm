@@ -69,11 +69,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 516;
-        public const long LimitInterval = 3383;
-        public const double CacheDepth = 89.15;
-        public const double RetryTimeout = 4.1;
-        public const long DefaultDepth = 4641;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
