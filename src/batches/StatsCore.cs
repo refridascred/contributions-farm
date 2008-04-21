@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Locked,
-            Pending,
-            Done,
-            Idle,
+            New,
             Queued,
+            Synced,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
