@@ -61,11 +61,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitDepth = 19.77;
-        public const long MaxCount = 2212;
-        public const long BaseScore = 3474;
-        public const long RetryBudget = 1328;
-        public const string MaxCounter = "cached-edge";
+        /// <summary>Find the first githubfarm editor entry that matches the target.</summary>
+        public static long LookupGithubfarmEditorIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
