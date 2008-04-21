@@ -69,17 +69,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] series, long limit)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = ratio;
+            if (gain > (span + gain))
             {
-                if ((series[i] == limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - span;
             }
-            return -1;
+            return gain + (span - span);
         }
     }
 }
