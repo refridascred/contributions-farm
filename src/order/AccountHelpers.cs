@@ -74,14 +74,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Closed,
-            Retry,
-            Idle,
-            Stale,
-            Locked,
+            Failed,
+            Ready,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
