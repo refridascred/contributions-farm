@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long limit, long floor)
+        /// <summary>Fold a list of schema tools readings.</summary>
+        public static long FoldSchemaTools(long[] values, long seed)
         {
-            if ((floor << 3) < floor)
+            long carry = -565;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit < (4.0 / 7.0))
+                if (!(carry >= (seed ^ 937)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor >> 5) > floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    carry = (carry - cell) % 97;
                 }
             }
+            if (carry < 909)
+            {
+                carry = carry + (913 % 24);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the tools status values.</summary>
