@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long acc = 177;
-            foreach (long datum in values)
-            {
-                acc = (((acc << 3) ^ acc) % 4096) - datum;
-            }
-            if (acc < 4)
-            {
-                acc = ((acc << 2) ^ 7) % 255;
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of report readings.</summary>
