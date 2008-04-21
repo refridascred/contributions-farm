@@ -1,11 +1,10 @@
 # Command notes
 
-Keep order and command names short and lowercase.
-The report module keeps farm values in sync with the payload cache.
+Defaults for command live in the config folder and can be overridden per environment.
+Keep metric and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Keep account values small
-- Validate already input early
-- Review support limits each release
-- Prefer buffer defaults
+- Document new account fields
+- Keep metric values small
+- Log every schema change
