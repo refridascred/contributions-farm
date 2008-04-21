@@ -1,7 +1,9 @@
 {
-  "audit": 100,
-  "cache_timeout_pct": "stable",
-  "cache_threshold": 500,
-  "max_ratio": 13,
-  "enabled": 69.94
+  "burst_size": 77.3,
+  "audit": {
+    "warm_capacity_s": "primary",
+    "idle_limit_s": 33.59,
+    "buffer_ttl": [303, 442, 326]
+  },
+  "soft_retries_s": "legacy"
 }
