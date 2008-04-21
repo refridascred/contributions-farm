@@ -43,10 +43,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 39.94;
-        public const string RetrySize = "fallback-1";
-        public const long BaseProfile = 308;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long ScoreCommand(long[] readings)
