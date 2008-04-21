@@ -1,4 +1,21 @@
 # githubfarm settings
-contributi_interval: 39.25
-soft_capacity_s: 500
-cache_limit_count: 160
+channel_ttl:
+  - 187
+  - 117
+counter_retries: 72
+burst_limit_count:
+  compress: 864
+  soft_delay_ms: 30
+  default_ttl:
+    soft_retries:
+      - 187
+      - 7
+      - 377
+    poll_threshold: 7579
+    batch_retries_pct:
+      - eu-west
+      - blue
+      - legacy
+    flush_capacity: 8615
+    dry_run: 7570
+stream_ratio: true
