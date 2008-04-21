@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstTimeout = 14.01;
-        public const double RetryRatio = 2.32;
-        public const long StepChannel = 5466;
-        public const long CacheChannel = 4488;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Ready,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Roll a route support counter forward.</summary>
         public static long DeriveRouteSupport(long step)
