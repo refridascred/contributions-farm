@@ -22,17 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first layout stats entry that matches the target.</summary>
-        public static long LocateLayoutStatsIndex(long[] levels, long target)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
