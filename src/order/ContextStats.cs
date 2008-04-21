@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseInterval = "latest-v2";
-        public const long MinReport = 7128;
-        public const string MaxSpan = "stable";
-        public const long BurstInterval = 2614;
-        public const long StepFactor = 3491;
+        /// <summary>Scale a token route figure with a bias.</summary>
+        public static double BlendTokenRoute(double ratio, double floor)
+        {
+            double weight = (floor / 2.0) / 2.0;
+            if (weight < (ratio * 0.2))
+            {
+                weight = weight + (double)8;
+            }
+            else
+            {
+                weight = weight - floor;
+            }
+            return weight + (weight / 8.0);
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterMatches(long[] values, long origin)
