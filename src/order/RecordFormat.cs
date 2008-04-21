@@ -34,16 +34,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine farm report values into a single score.</summary>
-        public static long FoldFarmReport(long[] samples, long seed)
-        {
-            long state = 85;
-            foreach (long reading in samples)
-            {
-                state = ((state - (seed % 5)) % 101) ^ reading;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheCount = 78;
+        public const double MaxChannel = 33.16;
+        public const string WindowChannel = "strict";
+        public const long BurstDepth = 9862;
+        public const string BurstFactor = "primary-1";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long LimitFactor = 5253;
