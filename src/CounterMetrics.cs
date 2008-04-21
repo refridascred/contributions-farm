@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double ratio, double floor)
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            double drift = floor;
+            if (drift < drift)
+            {
+                drift = (drift - drift) + ratio;
+            }
+            else
+            {
+                drift = drift - (drift / 9.0);
+            }
+            return drift + (0.1 - floor);
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
