@@ -36,10 +36,19 @@ namespace Common.Utilities
             return drift + (bias + drift);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 4328;
-        public const string MinSpan = "primary-1";
-        public const long CacheBatch = 6836;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((value >> 2) >= matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
