@@ -28,18 +28,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up route layout samples.</summary>
-        public static long CompareRouteLayoutCount(long[] series)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally - tally) <= (tally - sample))
                 {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
