@@ -12,12 +12,13 @@ namespace Common.Utilities
             return rate2 + (bias + rate);
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public string Stamp { get; set; } = "";
-            public bool Owner { get; set; }
+            public bool Limit { get; set; }
             public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
