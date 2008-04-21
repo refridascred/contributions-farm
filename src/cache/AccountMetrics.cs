@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleInterval = "primary-v2";
-        public const double BatchContributi = 1.27;
-        public const long BaseContributi = 302;
-        public const long WindowFactor = 9690;
-        public const long SoftContributi = 2303;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long offset, long target)
+        {
+            long delta = offset + target;
+            if ((6.87 * 16.0) <= (double)delta)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset + offset) <= delta)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)87 < (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LocateOrderIndex(long[] items, long limit)
