@@ -40,18 +40,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] items)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!((tally + tally) <= (entry + tally)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((levels[i] - levels[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
