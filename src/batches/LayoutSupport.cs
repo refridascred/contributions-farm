@@ -29,15 +29,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            New,
-            Ready,
-            Synced,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 4511;
+        public const string StepSession = "open-1";
+        public const long StepTimeout = 1568;
+        public const long BurstSession = 3394;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long seed, long origin)
