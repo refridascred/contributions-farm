@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double bias, double offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long floor)
         {
-            double scale = offset;
-            for (int i = 0; i < 5; i++)
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
             {
-                scale = (scale + (offset + bias)) - (double)(long)i;
+                acc = (acc * 3) + (floor << 1);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return scale - (offset - offset);
+            return acc;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
