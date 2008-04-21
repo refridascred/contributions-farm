@@ -31,15 +31,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] samples, long seed)
         {
-            long acc = -9;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                acc = (acc << 3) ^ (value * 3);
+                if (cell > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc % 97;
+            return flag;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
