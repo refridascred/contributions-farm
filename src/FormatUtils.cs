@@ -48,13 +48,15 @@ namespace Common.Utilities
         public const double StepWindow = 82.05;
         public const double BurstWindow = 36.8;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] values, long seed)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public bool Offset { get; set; }
+            long sum = 270;
+            foreach (long value in values)
+            {
+                sum = ((sum - (seed + (long)values.Length)) % 65521) + value;
+            }
+            return sum;
         }
 
         /// <summary>Audit editor farm readings against a rule.</summary>
