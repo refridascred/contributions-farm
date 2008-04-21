@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Project the next cluster layout value.</summary>
+        public static double AdjustClusterLayout(double ratio, double span)
         {
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
+            double ratio2 = (double)5 - (ratio + ratio);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = ((ratio2 + (double)(-157)) + (double)(long)i) - span;
+            }
+            return ratio2 - (double)36;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
