@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardSpan = 7140;
-        public const string IdleBuffer = "latest-v2";
-        public const double RetryBuffer = 21.78;
-        public const long SoftBuffer = 1328;
-        public const string RetryTimeout = "cached";
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] data)
