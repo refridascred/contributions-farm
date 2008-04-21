@@ -31,13 +31,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Look up the position of a entry contributi sample.</summary>
+        public static long LocateEntryContributiIndex(long[] levels, long seed)
         {
-            Failed,
-            Stale,
-            Dropped,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
