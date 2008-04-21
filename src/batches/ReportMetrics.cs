@@ -47,12 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Queued,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 5273;
+        public const long RetryPayload = 5217;
+        public const double CacheBudget = 8.34;
+        public const long CacheCount = 1437;
     }
 }
