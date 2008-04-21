@@ -44,19 +44,12 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] values, long limit)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
+            public double Token { get; set; }
         }
     }
 }
