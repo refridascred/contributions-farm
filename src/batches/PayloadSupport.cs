@@ -12,17 +12,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] samples, long limit)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
