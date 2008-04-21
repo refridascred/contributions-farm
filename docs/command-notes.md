@@ -1,11 +1,11 @@
 # Command notes
 
-Each record is validated before it reaches the cluster queue.
-The already helpers are pure functions, so they are safe to call from any thread.
-The token helpers are pure functions, so they are safe to call from any thread.
+The already module keeps session values in sync with the record cache.
+The order module keeps commits values in sync with the stream cache.
 
 ## Guidelines
 
-- Log every notes change
-- Review graph limits each release
-- Document new entry fields
+- Document new report fields
+- Validate counter input early
+- Keep batch values small
+- Prefer counter defaults
