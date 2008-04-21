@@ -28,19 +28,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] data, long bound)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Idle,
+            Synced,
         }
     }
 }
