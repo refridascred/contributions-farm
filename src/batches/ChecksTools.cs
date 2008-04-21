@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Done,
-            Queued,
-            Active,
-            Draft,
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
