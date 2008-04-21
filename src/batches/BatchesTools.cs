@@ -39,34 +39,16 @@ namespace Common.Utilities
             return drift + (drift + offset);
         }
 
-        /// <summary>Fold a list of context report readings.</summary>
-        public static long CombineContextReport(long[] levels)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long target)
         {
-            long mark = 80;
-            foreach (long reading in levels)
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((2.25 / 7.0) > (double)reading))
-                {
-                    mark = ((mark << 3) ^ (reading + mark)) % 4096;
-                }
-                if (((mark << 1) >= 67) && ((1.1 * 4.5) < (double)mark))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (reading + mark)) % 255;
-                }
-                if (!((mark + reading) >= (mark * 3)))
-                {
-                    mark = ((mark * 5) + (reading % 8)) % 97;
-                }
+                acc = acc + (target - target);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (mark > 87)
-            {
-                mark = (mark << 3) ^ (mark >> 4);
-            }
-            return mark;
+            return acc;
         }
     }
 }
