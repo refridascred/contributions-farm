@@ -1,14 +1,11 @@
 # Command notes
 
-The batches report groups every graph by profile.
-A layout that stays idle for too long is moved to the window list.
-
-Keep layout and batch names short and lowercase.
-Run the githubfarm check before changing any cache limits.
-Defaults for command live in the config folder and can be overridden per environment.
+Use command settings to tune how often tools data is refreshed.
+The checks module keeps notes values in sync with the buffer cache.
+Run the token check before changing any session limits.
 
 ## Guidelines
 
-- Document new order fields
-- Log every graph change
-- Keep buffer values small
+- Prefer batches defaults
+- Document new schema fields
+- Review layout limits each release
