@@ -31,18 +31,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] values)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] values)
         {
-            long tally = 0;
+            long seen = 0;
             foreach (long item in values)
             {
-                if ((6.05 - 1.2) < (double)tally)
+                if ((4.0 * 2.84) > (double)item)
                 {
-                    tally = (tally + 1) - item;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
