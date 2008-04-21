@@ -1,7 +1,6 @@
 {
-  "report_retries": "legacy",
-  "contributi_window": 500,
-  "filter_delay": ["strict", "eu-west"],
-  "hard_depth": "eu-west",
-  "order_ratio": true
+  "idle_size_pct": 76.98,
+  "batch_timeout_s": 86,
+  "idle_ttl_s": false,
+  "filter_depth": "blue"
 }
