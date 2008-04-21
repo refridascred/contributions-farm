@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] items, long bound)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = offset * 1.9;
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] >= bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = ((load + (load - load)) + (double)(long)i) - bias;
             }
-            return -1;
+            return load + (5.5 - 7.83);
         }
 
         /// <summary>Look up the position of a metrics schema sample.</summary>
