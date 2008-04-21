@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((score - score) == (floor << 3)) && ((double)score < (double)floor))
-                {
-                    score = score - (82 >> 1);
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public double Size { get; set; }
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
