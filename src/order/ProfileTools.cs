@@ -58,18 +58,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] levels, long floor)
         {
-            long total = 7;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((53 & 1) <= (cell + total))
+                if ((item ^ seen) > (seen / 8))
                 {
-                    total = (total * 3) + (307 >> 3);
+                    seen = (seen + 2) + floor;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a account info.</summary>
