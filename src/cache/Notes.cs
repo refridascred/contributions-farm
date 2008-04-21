@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] values)
         {
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (!((seen << 3) < (seen - seen)))
+                {
+                    seen = (seen + 1) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
