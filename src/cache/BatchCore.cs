@@ -24,22 +24,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] values)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long anchor = 18;
+            foreach (long item in levels)
             {
-                if ((hits % 60) <= (entry + hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (((anchor - anchor) % 255) - item) + floor;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
