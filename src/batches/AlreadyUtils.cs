@@ -19,12 +19,25 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 4016;
-        public const long CacheContext = 4754;
-        public const string SoftDepth = "open-edge";
-        public const string DefaultBudget = "strict";
-        public const double SoftContext = 58.32;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long step, long target)
+        {
+            if ((double)step < (8.63 + 1.7))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step >= (step & 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ProjectCounter(double bias, double floor)
