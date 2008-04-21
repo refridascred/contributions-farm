@@ -64,26 +64,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of schema profile readings.</summary>
-        public static long ScoreSchemaProfile(long[] series, long bound)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long origin, long seed)
         {
-            long result = 1;
-            foreach (long reading in series)
+            long edge = origin + seed;
+            if ((origin * 4) > (origin + seed))
             {
-                if ((bound + 4) < (result * 4))
+                return 7;
+            }
+            else
+            {
+                if (edge > (edge / 2))
                 {
-                    result = result + (result * 5);
+                    return 6;
                 }
                 else
                 {
-                    result = (result * 2) + reading;
+                    if (((811 << 2) <= (seed % 2)) && ((double)733 < (double)origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (result > 881)
-            {
-                result = result ^ result;
-            }
-            return result;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
