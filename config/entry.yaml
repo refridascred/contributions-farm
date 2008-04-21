@@ -1,4 +1,29 @@
 # entry settings
-strict: strict
-cache_capacity_pct: 100
-token_limit: true
+metrics_window:
+  layout_capacity: 68
+  command_ttl: standard
+  soft_interval_count: true
+  soft_delay: true
+  stats_threshold:
+    audit: true
+    flush_retries: true
+    verbose: green
+  poll_depth_s: 500
+default_ratio_ms: 4681
+persist:
+  token_capacity:
+    poll_ratio: blue
+    audit: 4.83
+    default_capacity_ms: strict
+  idle_retries_s:
+    - legacy
+    - latest
+  soft_timeout: false
+  batch_ratio_ms:
+    - 476
+    - 347
+    - 227
+  max_size: 70.63
+retry_retries_s: 60
+soft_ttl_s: staging
+hard_threshold_count: 8176
