@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] values)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!((12.0 / 9.0) == (double)matches))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
