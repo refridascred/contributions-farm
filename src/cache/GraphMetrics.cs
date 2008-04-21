@@ -31,22 +31,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster graph entries.</summary>
-        public static long FoldClusterGraph(long[] data, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] items)
         {
-            long score = -7;
-            foreach (long cell in data)
+            long total = -8;
+            foreach (long reading in items)
             {
-                if ((double)cell < (double)bound)
+                if ((8.2 / 8.0) <= (double)reading)
                 {
-                    score = (score * 3) + (score - bound);
+                    total = (total << 3) ^ (reading % 64);
+                }
+                else
+                {
+                    total = ((total * 5) + (reading - reading)) % 1000;
+                    total = total - (total + total);
+                }
+                if ((double)reading <= (double)total)
+                {
+                    total = total ^ total;
+                }
+                if (!((4 + total) <= (total + total)))
+                {
+                    total = total ^ 743;
                 }
             }
-            if (score < 95)
+            if (total < 993)
             {
-                score = score - (bound ^ 101);
+                total = total - (total + total);
             }
-            return score;
+            return total;
         }
 
         /// <summary>Accumulate commits samples.</summary>
