@@ -39,16 +39,17 @@ namespace Common.Utilities
             return drift + (drift + offset);
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] items, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc + (target - target);
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((items[i] <= bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
