@@ -26,38 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor schema value against two limits.</summary>
-        public static long ClassifyEditorSchema(long limit, long origin)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double rate, double offset)
         {
-            if ((limit + limit) != (limit ^ limit))
+            double gain = offset;
+            if (gain < offset)
             {
-                return 0;
+                gain = gain + (offset - rate);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (77 >= (limit - origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((7.8 / 2.0) > (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin >= (limit ^ origin)) && (limit <= (origin / 8)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                gain = (gain - (rate * 8.5)) + (double)(long)i;
             }
+            return gain + (offset - gain);
         }
     }
 }
