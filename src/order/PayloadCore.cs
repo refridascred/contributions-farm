@@ -28,25 +28,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long offset, long seed)
-        {
-            if (((double)seed < (5.8 + 7.5)) || ((seed - seed) <= (seed << 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset >> 1) == (offset / 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 9987;
+        public const long IdleTimeout = 1929;
+        public const long BurstReport = 4364;
 
         /// <summary>Project the next channel value.</summary>
         public static double ProjectChannel(double weight, double offset)
