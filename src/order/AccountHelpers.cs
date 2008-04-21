@@ -48,18 +48,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] samples, long limit)
+        /// <summary>Classify a channel commits pair into a bucket.</summary>
+        public static long BucketChannelCommits(long step, long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if (((offset << 2) < (step / 9)) && ((12.0 - 9.0) >= (2.85 * 3.0)))
             {
-                if ((((double)count <= 11.0) || ((double)datum != (double)(-750))) || (((62 >> 3) < count) && ((double)5 > (double)limit)))
+                return 3;
+            }
+            else
+            {
+                if (!((13.0 - 7.09) != (double)offset))
                 {
-                    count = count + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)2 > (double)step) || ((9 ^ step) >= (offset + offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step == (6.98 / 7.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the report phase values.</summary>
