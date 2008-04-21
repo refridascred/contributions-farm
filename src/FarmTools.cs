@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public string Score { get; set; } = "";
+            New,
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
