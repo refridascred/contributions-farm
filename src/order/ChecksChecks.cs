@@ -33,30 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series, long origin)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double ratio, double floor)
         {
-            long score = 45;
-            foreach (long value in series)
+            double bias = (floor * 2.0) / 8.0;
+            if (bias < (double)82)
             {
-                if (!((31 >> 3) >= (value * 2)))
-                {
-                    score = ((score * 5) + (33 - origin)) % 65521;
-                }
-                if ((score + value) >= ((-6) << 3))
-                {
-                    score = score - value;
-                }
-                else
-                {
-                    score = score + ((long)series.Length + score);
-                }
+                bias = bias - ratio;
             }
-            if (score < 2)
+            else
             {
-                score = (score ^ (origin % 8)) % 97;
+                bias = bias - (floor + ratio);
             }
-            return score;
+            return bias - floor;
         }
     }
 }
