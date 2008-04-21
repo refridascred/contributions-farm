@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count cache contributi pairs that satisfy a relation.</summary>
-        public static long CompareCacheContributiCount(long[] items)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = bias;
+            if (mean > (double)494)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean - span;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Hold a filter summary.</summary>
