@@ -30,18 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] items, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long mix = 674;
+            foreach (long reading in samples)
             {
-                if ((target - tally) > ((-8) / 8))
+                mix = ((mix + mix) % 101) - reading;
+                if (bound < (long)samples.Length)
                 {
-                    tally = (tally + 3) + value;
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
