@@ -68,32 +68,13 @@ namespace Common.Utilities
         public const string StepBudget = "strict-1";
         public const long MinQueue = 9001;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long offset, long target)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long span = offset + target;
-            if (((offset ^ offset) <= (span & 15)) || ((offset & 31) <= (span / 4)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset << 3) < (offset >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset - offset) != (target >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
