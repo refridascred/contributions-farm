@@ -14,23 +14,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of metrics report entries.</summary>
-        public static long FoldMetricsReport(long[] items)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] readings, long seed)
         {
-            long sum = 6;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.1 * 0.71) != (double)sample)
+                if (readings[i] < seed)
                 {
-                    sum = sum + (sum + sum);
-                    break;
-                }
-                if ((sample > (sample + sum)) || ((sample ^ sample) >= ((-810) % 3)))
-                {
-                    sum = (sum << 2) ^ (sum % 8);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
