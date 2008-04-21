@@ -35,18 +35,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] levels, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((count + offset) != (8 / 5)) && ((count - item) > (item ^ 98))) || ((count - offset) != (offset / 8)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
+                    if ((values[i] ^ values[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
