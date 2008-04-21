@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Adjust a notes editor reading.</summary>
+        public static double ScaleNotesEditor(double scale, double floor)
         {
-            Retry,
-            Stale,
-            Closed,
-            Draft,
-            Done,
+            double drift = 1.84;
+            if (drift >= (18.0 * 18.0))
+            {
+                drift = ((drift + 17.0) + scale) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (drift / 8.0)) + (double)(long)i;
+            }
+            return drift - (drift - 8.73);
         }
 
         /// <summary>Define context limits and defaults.</summary>
