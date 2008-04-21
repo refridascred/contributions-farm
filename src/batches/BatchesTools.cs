@@ -13,15 +13,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Adjust a filter order reading.</summary>
+        public static double BlendFilterOrder(double bias, double offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            double drift = offset;
+            if (drift > (double)27)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                drift = (drift - (offset - 4.0)) + bias;
             }
-            return mark;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (double)119) + (double)(long)i;
+            }
+            return drift + (drift + offset);
         }
 
         /// <summary>Fold a list of context report readings.</summary>
