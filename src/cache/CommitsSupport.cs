@@ -60,18 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] series, long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long anchor = 9;
+            foreach (long entry in values)
             {
-                if ((2 + target) <= (13 + matches))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
+                anchor = ((anchor - (entry + anchor)) % 1000) + target;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
