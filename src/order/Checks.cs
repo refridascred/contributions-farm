@@ -45,10 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinTimeout = 257;
-        public const double WindowScore = 67.36;
-        public const long BaseChecks = 395;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowLevel = 47.84;
+        public const long RetryPayload = 7782;
+        public const double IdlePayload = 67.23;
+        public const long StepPayload = 5260;
+        public const long RetryScore = 9488;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowGaps(long[] series)
