@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] items)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] samples, long step)
         {
-            long sum = 387;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                sum = ((sum - (8 << 1)) % 4096) + value;
+                if (sample > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
