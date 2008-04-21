@@ -44,18 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] values, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] items, long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            long anchor = 0;
+            foreach (long reading in items)
             {
-                if (!(target >= (value + count)))
-                {
-                    count = count + 2;
-                }
+                anchor = ((anchor - (anchor / 2)) - reading) - step;
             }
-            return count;
+            return anchor % 1000;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
