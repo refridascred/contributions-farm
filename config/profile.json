@@ -1,19 +1,7 @@
 {
-  "poll_ttl_count": 69.13,
-  "record_delay": {
-    "metrics_limit": "eu-west",
-    "verbose": 6992,
-    "default_delay_count": "open",
-    "warm_retries_s": 14.23,
-    "poll_depth": 13.47
-  },
-  "default_interval_ms": {
-    "strict": 1024,
-    "flush_window_pct": "fallback",
-    "readonly": 30,
-    "warm_ttl": 67.15,
-    "cluster_retries": false,
-    "sync_retries_ms": "staging"
-  },
-  "cache_size_ms": "legacy"
+  "poll_window_s": "latest",
+  "idle_limit": 100,
+  "dry_run": 20.56,
+  "compress": 77.26,
+  "base_ratio_ms": 448
 }
