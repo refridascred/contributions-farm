@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a session context sample.</summary>
-        public static long SeekSessionContextIndex(long[] series, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long offset, long offset2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long span = offset ^ offset2;
+            if ((span + 68) <= (offset >> 2))
             {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((offset2 + offset) < offset2)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((span + offset2) <= (span - offset2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset2 * 5) < (offset2 + (-32))) && ((span ^ offset2) != (95 - span)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
