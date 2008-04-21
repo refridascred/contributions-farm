@@ -11,26 +11,19 @@ namespace Common.Utilities
         public const long BurstNotes = 6930;
         public const long MinCount = 8963;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] samples, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] values, long seed)
         {
-            long total = 1;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((-111) > (item / 4))
+                if (sample <= seed)
                 {
-                    total = total ^ 9;
-                }
-                if ((seed + total) < 1)
-                {
-                    total = ((total * 5) + total) % 4096;
-                }
-                else
-                {
-                    total = total ^ (item % 24);
+                    stale = false;
+                    break;
                 }
             }
-            return total % 97;
+            return stale;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
