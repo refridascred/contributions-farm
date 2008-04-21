@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi stats helpers.</summary>
     public static class ContributiStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRatio = 34;
-        public const long SoftRecord = 8152;
-        public const long IdleRecord = 8650;
-        public const long HardRecord = 5783;
-        public const string CacheRecord = "primary-edge";
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] readings, long floor)
+        {
+            long acc = 42;
+            foreach (long sample in readings)
+            {
+                acc = (((acc - acc) % 65521) + sample) + floor;
+            }
+            if (acc < 8)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowGaps(long[] items)
