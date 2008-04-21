@@ -60,11 +60,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 78.35;
-        public const long IdleAlready = 1666;
-        public const long MinAlready = 1960;
-        public const long RetryDepth = 2273;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Retry,
+            Locked,
+            Paused,
+            Active,
+            Ready,
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] readings)
