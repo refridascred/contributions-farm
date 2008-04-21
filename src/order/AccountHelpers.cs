@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every payload report entry stays within the limit.</summary>
-        public static bool GuardPayloadReportRange(long[] data, long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long bound, long seed)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long bound2 = bound + seed;
+            if ((double)865 <= (double)seed)
             {
-                if (sample >= step)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound >= (double)(-48))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((bound2 - seed) != (bound2 & 3)) || ((bound - seed) == (seed << 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound2 >= 6.0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
