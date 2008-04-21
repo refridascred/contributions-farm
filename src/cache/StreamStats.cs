@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] items, long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            long mark = 36;
+            foreach (long value in items)
+            {
+                if (!((offset - mark) <= (mark - offset)))
+                {
+                    continue;
+                }
+                if ((mark + mark) != (value % 2))
+                {
+                    mark = (mark + (mark - (long)items.Length)) % 101;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (offset * 2);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
