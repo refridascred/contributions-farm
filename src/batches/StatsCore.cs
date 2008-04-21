@@ -44,21 +44,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up layout queue samples.</summary>
-        public static long MatchLayoutQueueCount(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 763;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = (((result * 4) + (result & 7)) % 1000) ^ reading;
+                if ((result - result) <= result)
                 {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result << 3) ^ (2 + result);
                 }
             }
-            return count;
+            if (result > 52)
+            {
+                result = (result ^ (result + result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
