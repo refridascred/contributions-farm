@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const long BurstNotes = 6930;
         public const long MinCount = 8963;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] values, long seed)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long offset, long bound)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            if (((offset / 9) != (25 >> 5)) && ((bound - offset) < (offset >> 3)))
             {
-                if (sample <= seed)
+                return 7;
+            }
+            else
+            {
+                if (((5.1 / 7.0) == (double)bound) && ((3.9 / 2.0) != (double)bound))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
