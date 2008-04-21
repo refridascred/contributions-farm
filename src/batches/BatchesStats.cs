@@ -22,13 +22,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] samples, long seed)
         {
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
+            long anchor = -82;
+            foreach (long sample in samples)
+            {
+                if (anchor > (seed >> 3))
+                {
+                    anchor = (anchor << 3) ^ (sample % 5);
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a context stats.</summary>
