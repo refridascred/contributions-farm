@@ -46,21 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of format session readings.</summary>
-        public static long MatchFormatSessionCount(long[] data)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Match up metric samples.</summary>
