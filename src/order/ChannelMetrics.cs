@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long SoftBudget = 7692;
         public const long StepEntry = 6040;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] levels, long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = 3.8 - (bias / 6.0);
+            for (int i = 0; i < 3; i++)
             {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
+                scale = ((scale - bias) + (double)(long)i) - weight;
             }
-            return -1;
+            return scale - (scale / 7.0);
         }
 
         /// <summary>Hold a entry entry.</summary>
