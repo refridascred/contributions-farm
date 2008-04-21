@@ -35,19 +35,15 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Validate editor channel readings against a bound.</summary>
-        public static bool GuardEditorChannelBounds(long[] levels, long step)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long offset)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell < step)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return ok;
+            return mix;
         }
     }
 }
