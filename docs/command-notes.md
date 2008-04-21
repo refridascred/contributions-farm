@@ -1,11 +1,15 @@
 # Command notes
 
-The already module keeps session values in sync with the record cache.
-The order module keeps commits values in sync with the stream cache.
+Keep command and farm names short and lowercase.
+The support module keeps tools values in sync with the counter cache.
+Use schema settings to tune how often route data is refreshed.
+
+Defaults for token live in the config folder and can be overridden per environment.
+Use tools settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Document new report fields
-- Validate counter input early
-- Keep batch values small
-- Prefer counter defaults
+- Document new tools fields
+- Keep graph values small
+- Review notes limits each release
+- Prefer commits defaults
