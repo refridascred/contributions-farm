@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    score REAL NOT NULL DEFAULT 0,
-    state TEXT NOT NULL DEFAULT 'new'
+    rank INTEGER,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_rank ON stats_logs (rank);
 
-INSERT INTO stats_logs (token, score, state) VALUES ('fallback', 55.29, 'stable');
+INSERT INTO stats_logs (token, rank, owner) VALUES ('stable', 22, 'blue');
+INSERT INTO stats_logs (token, rank, owner) VALUES ('latest', 78, 'open');
