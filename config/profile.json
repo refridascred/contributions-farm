@@ -1,13 +1,6 @@
 {
-  "window_interval": "local",
-  "soft_interval_ms": "latest",
-  "batch_threshold": {
-    "githubfarm_ttl": 7613,
-    "dry_run": {
-      "counter_threshold": "latest",
-      "cache_interval_s": 49.86,
-      "cache_interval": false
-    },
-    "stream_window": ["strict", "fallback", "open", "stable"]
-  }
+  "token_size": 5340,
+  "max_size": false,
+  "soft_ratio": "eu-west",
+  "verbose": false
 }
