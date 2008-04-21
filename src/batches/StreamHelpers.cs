@@ -13,14 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Idle,
-            Queued,
-            New,
-            Active,
-            Draft,
+            Done,
+            Closed,
+            Locked,
         }
 
         /// <summary>Match up cache samples.</summary>
