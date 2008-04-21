@@ -1,13 +1,15 @@
 # Command notes
 
-Each profile is validated before it reaches the profile queue.
-The account module keeps account values in sync with the already cache.
+Run the account check before changing any support limits.
+A order that stays idle for too long is moved to the farm list.
+Keep cluster and token names short and lowercase.
 
-Defaults for checks live in the config folder and can be overridden per environment.
-The report module keeps context values in sync with the contributi cache.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate filter input early
-- Keep contributi values small
-- Document new githubfarm fields
+- Keep already values small
+- Validate already input early
+- Log every tools change
+- Prefer record defaults
