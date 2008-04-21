@@ -20,17 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a batches token reading by value.</summary>
-        public static long SeekBatchesTokenIndex(long[] readings, long bound)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Pending,
+            Done,
         }
 
         /// <summary>Validate layout farm readings against a bound.</summary>
