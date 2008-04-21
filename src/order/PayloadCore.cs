@@ -48,22 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series, long target)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double weight, double offset)
         {
-            long state = 420;
-            foreach (long sample in series)
+            double load = 2.3 + offset;
+            if (load >= load)
             {
-                if ((target << 2) > (target / 6))
-                {
-                    state = ((state + (state / 2)) % 97) ^ sample;
-                }
-                if (target >= state)
-                {
-                    break;
-                }
+                load = load + weight;
             }
-            return state;
+            return load + (offset * 1.0);
         }
     }
 }
