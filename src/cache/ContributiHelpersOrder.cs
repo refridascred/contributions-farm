@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] values, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheRatio = 9315;
+        public const long BasePayload = 4442;
+        public const long IdleScore = 3377;
+        public const string IdlePayload = "legacy";
+        public const double BurstLevel = 50.0;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
