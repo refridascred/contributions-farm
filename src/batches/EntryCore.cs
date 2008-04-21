@@ -73,12 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] series)
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item ^ item) > ((-5) + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
