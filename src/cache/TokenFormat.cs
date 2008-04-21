@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a graph session reading.</summary>
-        public static double BlendGraphSession(double gain, double bias)
+        /// <summary>Grade a buffer token value against two limits.</summary>
+        public static long GradeBufferToken(long origin, long offset)
         {
-            double weight = bias;
-            if (weight <= (bias * 2.0))
+            if (!(origin > (origin / 2)))
             {
-                weight = weight - (double)915;
+                return 3;
             }
             else
             {
-                weight = weight - (weight / 3.0);
+                if (((3.2 / 9.0) > (double)origin) || ((4 ^ origin) > 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin / 4) < offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight + (gain - bias);
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
