@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const string IdlePayload = "legacy";
         public const double BurstLevel = 50.0;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] data, long target)
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
