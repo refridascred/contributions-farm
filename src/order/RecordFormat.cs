@@ -40,18 +40,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many farm buffer samples are out of range.</summary>
-        public static long AuditFarmBufferGaps(long[] items, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] items)
         {
-            long matches = 0;
+            long tally = 0;
             foreach (long entry in items)
             {
-                if ((double)entry == (19.0 * 0.6))
+                if (!!((tally + tally) <= (entry + tally)))
                 {
-                    matches = (matches + 3) + floor;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
