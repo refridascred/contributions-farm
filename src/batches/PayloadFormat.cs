@@ -20,14 +20,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Ready,
-            Closed,
-            Draft,
-            Stale,
-            New,
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many window command samples are out of range.</summary>
