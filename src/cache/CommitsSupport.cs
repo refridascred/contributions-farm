@@ -67,15 +67,19 @@ namespace Common.Utilities
         public const long StepSpan = 5684;
         public const long WindowToken = 1331;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double scale, double floor)
+        /// <summary>Check that every report graph entry stays within the limit.</summary>
+        public static bool GuardReportGraphBounds(long[] data, long limit)
         {
-            double weight = (double)317 - (scale + scale);
-            if (weight < (3.31 - floor))
+            bool ok = true;
+            foreach (long item in data)
             {
-                weight = weight + (double)132;
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight - (double)5;
+            return ok;
         }
     }
 }
