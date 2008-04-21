@@ -29,18 +29,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((tally + item) >= item)
+                if (((datum ^ matches) >= (datum - 87)) || ((double)matches < 7.51))
                 {
-                    tally = tally + 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
