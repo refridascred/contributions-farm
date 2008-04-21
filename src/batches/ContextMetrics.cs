@@ -55,19 +55,21 @@ namespace Common.Utilities
             return weight2 - 9.0;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] readings, long origin)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            long state = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((((state * 3) + (state / 9)) % 255) - sample) - origin;
-                if ((state >> 2) < state)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return matches;
         }
     }
 }
