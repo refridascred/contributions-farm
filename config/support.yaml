@@ -1,23 +1,7 @@
 # support settings
-editor_window: true
-poll_capacity_s:
-  cluster_timeout:
-    batch_interval_ms: 49.18
-    metrics_capacity: true
-    max_ttl_count: fallback
-  report_retries:
-    cluster_threshold: 9834
-    sync_window_count: blue
-    persist: legacy
-    batch_retries_count: false
-  entry_delay:
-    soft_delay_s: legacy
-    burst_ratio_count: 1024
-    metrics_depth: eu-west
-  sync_window: 414
-  warm_ratio_ms: legacy
-  base_window: 17.6
-flush_ratio_ms: false
-cache_threshold: 160
-hard_ttl_count: 56
-hard_ratio: false
+stats_threshold: open
+persist: 3856
+soft_ttl_pct: open
+githubfarm_delay: latest
+base_capacity_ms: 24.62
+burst_capacity: green
