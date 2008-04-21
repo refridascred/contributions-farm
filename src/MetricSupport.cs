@@ -23,13 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] series)
         {
-            Stale,
-            Idle,
-            Synced,
-            New,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!(cell <= (cell * 2)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a format info.</summary>
