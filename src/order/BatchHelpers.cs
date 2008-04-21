@@ -29,31 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long limit, long bound)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            if ((2.0 - 0.8) <= (double)limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound >= (bound - 9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound <= (bound >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Failed,
+            Stale,
+            Dropped,
+            Draft,
         }
     }
 }
