@@ -16,14 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Idle,
-            Done,
-            Synced,
-            New,
-            Paused,
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a already summary.</summary>
