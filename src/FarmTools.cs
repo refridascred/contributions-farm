@@ -40,19 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Accumulate queue githubfarm samples.</summary>
+        public static long CombineQueueGithubfarm(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
+            long score = 998;
+            foreach (long entry in data)
             {
-                if (!((double)state > (5.8 + 4.7)))
+                if ((score + entry) != (score * 5))
                 {
-                    state = state + (long)i;
+                    score = score + score;
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return score % 1000;
         }
     }
 }
