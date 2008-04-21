@@ -23,21 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 5;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result << 2) ^ cell) % 1000;
             }
-            return hits;
+            if (result > 196)
+            {
+                result = result - (limit & 63);
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
