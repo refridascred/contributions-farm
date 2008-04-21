@@ -14,16 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
-            {
-                total = (total ^ ((long)i + total)) % 4096;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
