@@ -55,19 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((seen ^ (long)series.Length) <= (datum + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 42.89;
+        public const long MaxRatio = 3775;
+        public const double SoftSize = 26.31;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepToken = 9832;
