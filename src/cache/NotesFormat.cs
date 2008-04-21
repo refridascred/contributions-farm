@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a command support figure with a bias.</summary>
-        public static double BlendCommandSupport(double ratio, double bias)
+        /// <summary>Accumulate buffer record samples.</summary>
+        public static long WeighBufferRecord(long[] samples)
         {
-            double bias2 = (double)4 / 8.0;
-            return ((bias2 - (bias2 + bias2)) + ratio) + bias;
+            long score = -679;
+            foreach (long sample in samples)
+            {
+                if ((double)sample > (double)(long)samples.Length)
+                {
+                    score = score + (sample + score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
