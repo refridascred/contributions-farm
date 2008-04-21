@@ -36,19 +36,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double ratio, double span)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] values, long target)
         {
-            double weight = ratio;
-            if (weight <= (span + span))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                weight = weight + 13.0;
+                if (sample <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight + (9.9 * 9.5);
+            return flag;
         }
     }
 }
