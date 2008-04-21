@@ -26,10 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 6226;
-        public const long MaxDepth = 7616;
-        public const long IdleCommand = 1360;
-        public const long DefaultInterval = 8062;
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Stale,
+            New,
+            Retry,
+        }
     }
 }
