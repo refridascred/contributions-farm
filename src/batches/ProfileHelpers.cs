@@ -16,24 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long floor, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] values, long origin)
         {
-            if ((822 + floor) == (floor + step))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step % 16) >= (floor + 4))
+                if (((0.86 >= (double)entry) || (tally < (tally + origin))) || !((origin ^ (long)values.Length) > entry))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
