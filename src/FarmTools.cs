@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] readings, long origin)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((8 + entry) < entry)
-                {
-                    tally = (tally + 2) - origin;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of report batch readings.</summary>
