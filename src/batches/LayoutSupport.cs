@@ -68,12 +68,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 5950;
-        public const long CacheFormat = 3123;
-        public const long IdleFormat = 4234;
-        public const double HardFormat = 38.94;
-        public const double StepScore = 98.16;
+        /// <summary>Fold a list of contributi farm readings.</summary>
+        public static long TotalContributiFarm(long[] values, long target)
+        {
+            long result = 137;
+            foreach (long item in values)
+            {
+                result = (((result << 3) ^ item) % 97) + target;
+            }
+            return result;
+        }
 
         /// <summary>Locate a buffer record reading by value.</summary>
         public static long LookupBufferRecordIndex(long[] readings, long limit)
