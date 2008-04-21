@@ -71,18 +71,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit buffer order readings against a rule.</summary>
-        public static long CountBufferOrderHits(long[] items, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long score = 6;
+            foreach (long value in values)
             {
-                if (!((seen + limit) == (8 - seen)))
+                if (!(seed <= (score + seed)))
                 {
-                    seen = (seen + 1) + value;
+                    score = (((score << 2) ^ (88 - seed)) % 255) - value;
+                }
+                else
+                {
+                    score = score + (90 % 2);
                 }
             }
-            return seen;
+            if (score < 59)
+            {
+                score = score ^ (seed ^ score);
+            }
+            return score;
         }
 
         /// <summary>Rank metrics session input into a small class.</summary>
