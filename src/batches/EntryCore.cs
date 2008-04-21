@@ -74,12 +74,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
