@@ -1,13 +1,5 @@
 {
-  "default_limit": "legacy",
-  "base_threshold_s": false,
-  "hard_limit_count": "green",
-  "batch_threshold_count": {
-    "strict": true,
-    "sync_size_count": "stable",
-    "cache_timeout_s": "local",
-    "poll_timeout": ["fallback", "eu-west"]
-  },
-  "batch_window": 100,
-  "retry_timeout_s": 71.31
+  "warm_size_count": "strict",
+  "verbose": 15.87,
+  "token_interval": 82.39
 }
