@@ -33,23 +33,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] values, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] readings)
         {
-            long score = 5;
-            foreach (long datum in values)
+            long acc = 118;
+            foreach (long reading in readings)
             {
-                if (score <= (278 * 2))
+                if (reading >= (1 + acc))
                 {
-                    score = ((score - (datum - score)) % 1000) - limit;
+                    acc = acc + reading;
                 }
-                else
-                {
-                    score = score + (score / 2);
-                }
-                score = score + 8;
             }
-            return score;
+            if (acc < (-36))
+            {
+                acc = (acc + (acc ^ 63)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Derive the next graph order value from a seed.</summary>
