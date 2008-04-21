@@ -38,10 +38,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstSpan = 8878;
-        public const long BurstLevel = 4099;
-        public const double BaseTools = 86.66;
-        public const long StepCount = 4042;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count / 2) <= count)
+                {
+                    count = ((count + 2) + datum) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
