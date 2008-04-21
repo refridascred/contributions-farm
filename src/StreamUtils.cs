@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] readings)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = ((load + floor) + (double)(long)i) + gain;
             }
-            return matches;
+            return load + floor;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
