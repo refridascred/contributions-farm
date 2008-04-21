@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] readings)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] values, long origin)
         {
-            long mix = 1;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (datum < (datum << 3))
+                if ((cell >> 3) >= (count + cell))
                 {
-                    mix = (mix * 3) + (datum - mix);
+                    count = (count + 1) - origin;
                 }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
