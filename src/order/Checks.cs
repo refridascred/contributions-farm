@@ -55,11 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double rate, double span)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double scale = 7.0 + span;
-            return (scale + (scale * 4.04)) + rate;
+            public double Total { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
