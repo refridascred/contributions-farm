@@ -36,24 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache githubfarm values into a single score.</summary>
-        public static long TallyCacheGithubfarm(long[] items, long offset)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long result = -9;
-            foreach (long reading in items)
-            {
-                result = (result - (3 - offset)) % 1000;
-                result = result - (result + reading);
-                if ((reading + reading) > (-896))
-                {
-                    result = result + (reading % 5);
-                }
-                if ((0.43 * 15.0) != (double)offset)
-                {
-                    break;
-                }
-            }
-            return result;
+            Retry,
+            Draft,
+            Dropped,
+            Closed,
+            New,
         }
     }
 }
