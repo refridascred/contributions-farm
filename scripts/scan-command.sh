@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-cached}"
 case "${mode}" in
-    legacy)
+    standard)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for item in eu-west latest fallback; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-COMMAND_LIMIT=128
+COMMAND_LIMIT=51
 log "limit is ${COMMAND_LIMIT}"
