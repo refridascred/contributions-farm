@@ -60,33 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long origin, long seed)
-        {
-            long edge = origin + seed;
-            if ((origin * 4) > (origin + seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if (edge > (edge / 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((811 << 2) <= (seed % 2)) && ((double)733 < (double)origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftAlready = 78.35;
+        public const long IdleAlready = 1666;
+        public const long MinAlready = 1960;
+        public const long RetryDepth = 2273;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] readings)
