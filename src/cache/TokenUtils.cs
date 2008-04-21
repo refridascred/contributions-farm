@@ -12,10 +12,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 4485;
-        public const long CacheProfile = 1398;
-        public const string BatchProfile = "primary-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 9184;
+        public const long DefaultChecks = 6679;
+        public const long BurstWidth = 6393;
+        public const long BatchScore = 4652;
+        public const long CacheChecks = 6965;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterHits(long[] values)
