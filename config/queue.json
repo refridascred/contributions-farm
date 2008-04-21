@@ -1,7 +1,12 @@
 {
-  "warm_limit_ms": 36.96,
-  "min_retries_count": 74.8,
-  "default_size_s": 40.8,
-  "min_delay": 90,
-  "persist": 100
+  "soft_window_s": "stable",
+  "idle_window_ms": 6246,
+  "min_retries_ms": 98,
+  "dry_run": {
+    "batch_window_s": [114, 455, 207, 298],
+    "min_retries": 30,
+    "persist": "legacy",
+    "batch_threshold_pct": 60
+  },
+  "metrics_ratio": "cached"
 }
