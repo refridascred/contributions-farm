@@ -57,9 +57,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstInterval = 9885;
-        public const double LimitOrder = 95.7;
-        public const double BaseOrder = 14.5;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Pending,
+            Locked,
+            Done,
+        }
     }
 }
