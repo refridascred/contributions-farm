@@ -37,24 +37,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] items, long floor)
+        /// <summary>Derive the next graph order value from a seed.</summary>
+        public static long StepGraphOrder(long limit)
         {
-            long total = 7;
-            foreach (long cell in items)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                total = total + (cell + 32);
-                total = ((total * 4) + (81 + floor)) % 4096;
-                if ((double)cell < 0.6)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    total = total + cell;
+                    mix = (((mix << 3) ^ 5) % 101) + (long)i2;
                 }
-                else
-                {
-                    total = ((total * 4) + floor) % 65521;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
     }
 }
