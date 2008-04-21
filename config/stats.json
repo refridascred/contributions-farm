@@ -1,7 +1,7 @@
 {
-  "graph_threshold": 30,
-  "token_retries": true,
-  "soft_depth": 64,
-  "retry_ttl_ms": 1024,
-  "default_retries_ms": true
+  "burst_size": "blue",
+  "burst_threshold_ms": 716,
+  "min_depth": [346, 319, 135],
+  "farm_depth": 90.48,
+  "cache_capacity_pct": true
 }
