@@ -18,32 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long origin, long seed)
+        /// <summary>Look up the position of a token payload sample.</summary>
+        public static long FindTokenPayloadIndex(long[] series, long bound)
         {
-            long gap = origin - seed;
-            if ((double)origin == (double)gap)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin >= (2.2 - 8.65))
+                if ((series[i] > bound) && ((series[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((gap - seed) == (origin + gap)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a layout filter sample.</summary>
