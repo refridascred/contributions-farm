@@ -32,19 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] items, long origin)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
