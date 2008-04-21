@@ -17,21 +17,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] series)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                bool flag = !((9.9 / 9.0) == (double)limit);
+                if (flag)
                 {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
