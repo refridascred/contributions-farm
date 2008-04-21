@@ -12,17 +12,26 @@ namespace Common.Utilities
         public const long MaxScore = 654;
         public const string DefaultStats = "legacy-v2";
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] levels, long limit)
+        /// <summary>Digest a series of profile entry entries.</summary>
+        public static long FoldProfileEntry(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 147;
+            foreach (long value in items)
             {
-                if (levels[i] >= limit)
+                if (mix < (value + value))
                 {
-                    return (long)i;
+                    mix = (mix ^ (value << 3)) % 4096;
+                }
+                else
+                {
+                    mix = (mix * 5) + (value ^ mix);
                 }
             }
-            return -1;
+            if (mix > 334)
+            {
+                mix = (mix + (mix - 2)) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a queue stats.</summary>
