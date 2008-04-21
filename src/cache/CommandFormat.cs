@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] levels, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            long carry = -420;
+            foreach (long datum in levels)
             {
-                if ((carry & 1) >= 8)
+                if (((double)32 != (double)carry) && ((926 >> 2) == (carry - datum)))
                 {
-                    continue;
+                    carry = (carry ^ (carry % 16)) - offset;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
             return carry;
         }
