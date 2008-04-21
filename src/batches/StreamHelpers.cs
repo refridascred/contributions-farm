@@ -40,18 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] items, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            long state = 5;
-            foreach (long cell in items)
+            long mix = 9;
+            foreach (long item in series)
             {
-                if (!((8 % 2) < (cell >> 2)))
+                if ((6.6 / 2.0) <= (double)item)
                 {
-                    state = (((state << 3) ^ (cell * 4)) % 1000) + origin;
+                    mix = ((mix * 5) + (27 - mix)) % 97;
                 }
             }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Adjust a token reading.</summary>
