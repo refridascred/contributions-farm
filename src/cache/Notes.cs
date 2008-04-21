@@ -39,16 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel queue value from a seed.</summary>
-        public static long DeriveChannelQueue(long offset)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = anchor ^ (offset + offset);
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Locate a cache reading by value.</summary>
