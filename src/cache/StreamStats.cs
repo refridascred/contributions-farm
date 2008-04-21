@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate report editor readings against a bound.</summary>
-        public static bool GuardReportEditorRange(long[] levels, long offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Retry,
+            Pending,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
