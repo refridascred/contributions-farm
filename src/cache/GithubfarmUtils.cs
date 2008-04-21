@@ -47,12 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double gain, double span)
         {
-            Closed,
-            Dropped,
-            Idle,
+            double rate = span * 0.59;
+            if (rate > (gain + span))
+            {
+                rate = rate + (span + span);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (gain + rate)) + (double)(long)i;
+            }
+            return rate + (17.0 / 9.0);
         }
     }
 }
