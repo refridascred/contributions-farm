@@ -30,17 +30,14 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] levels, long floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Draft,
+            Dropped,
+            Ready,
+            Idle,
         }
     }
 }
