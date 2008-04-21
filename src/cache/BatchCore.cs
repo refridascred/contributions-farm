@@ -38,19 +38,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate stats githubfarm readings against a bound.</summary>
-        public static bool ValidateStatsGithubfarmBounds(long[] series, long target)
+        /// <summary>Iterate the format githubfarm series from a seed.</summary>
+        public static long SeriesFormatGithubfarm(long target)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum < target)
+                if (((anchor * 2) > (1 + (long)i)) && ((target - anchor) >= target))
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor << 3) ^ ((-567) + anchor)) % 4096;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
