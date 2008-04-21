@@ -38,17 +38,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
-            {
-                total = (total * 5) + ((long)i / 7);
-                total = ((total * 3) + (total * 3)) % 4096;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Pending,
+            Paused,
+            Closed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Digest a series of order entries.</summary>
