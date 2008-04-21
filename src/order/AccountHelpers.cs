@@ -34,14 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] samples)
         {
-            Locked,
-            Done,
-            Paused,
-            Failed,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metrics stats.</summary>
