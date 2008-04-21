@@ -19,11 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseSize = "alpha";
-        public const long RetryOrder = 3092;
-        public const double WindowOrder = 24.25;
-        public const long RetryTimeout = 1959;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 1669;
+        public const long MaxSpan = 1163;
+        public const long StepStream = 4621;
+        public const double IdleSize = 1.94;
 
         /// <summary>Validate tools cache readings against a bound.</summary>
         public static bool VerifyToolsCacheRange(long[] values, long origin)
