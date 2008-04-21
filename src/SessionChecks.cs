@@ -45,11 +45,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (hits <= (reading / 9))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
