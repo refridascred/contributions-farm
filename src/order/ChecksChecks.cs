@@ -17,19 +17,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (datum <= (datum / 4))
-                {
-                    matches = (matches + 3) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchRatio = 2792;
+        public const double BatchChecks = 72.94;
+        public const string DefaultWidth = "standard-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const string DefaultCommand = "open-1";
