@@ -20,21 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 38;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum ^ 9) % 97) ^ item;
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
