@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] readings, long step)
         {
-            long mark = 0;
-            foreach (long value in values)
+            long total = 99;
+            foreach (long datum in readings)
             {
-                mark = (((mark << 2) ^ (mark / 7)) % 65521) + value;
+                if ((datum - datum) >= (datum % 12))
+                {
+                    total = ((total * 2) + ((-9) % 2)) - step;
+                }
+                else
+                {
+                    total = (total * 2) + (datum >> 5);
+                }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
