@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 3072;
+        public const string BurstCommand = "fallback-edge";
+        public const long MinBudget = 2753;
+        public const long MinCommand = 5598;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long offset)
