@@ -11,24 +11,19 @@ namespace Common.Utilities
         public const string HardFarm = "latest-v2";
         public const double CacheLevel = 66.46;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long floor, long floor2)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] items, long step)
         {
-            if (floor2 > (floor2 << 2))
+            bool found = true;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((floor % 10) > 83))
+                if (value >= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
