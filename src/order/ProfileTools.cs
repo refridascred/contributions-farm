@@ -55,18 +55,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] levels, long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item ^ seen) > (seen / 8))
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
+            Active,
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a account info.</summary>
