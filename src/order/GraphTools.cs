@@ -14,12 +14,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 584;
-        public const long SoftAccount = 1523;
-        public const long LimitAccount = 8116;
-        public const string HardSpan = "open";
-        public const string WindowAccount = "primary";
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmToolsCount(long[] samples)
