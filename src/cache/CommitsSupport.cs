@@ -20,18 +20,25 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] levels)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long slot = floor - origin;
+            if ((slot >> 4) != (slot + 46))
             {
-                if ((item - hits) == (hits + hits))
+                return 8;
+            }
+            else
+            {
+                if (((slot << 2) > (-1)) && ((slot + slot) != (origin + slot)))
                 {
-                    hits = hits + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
