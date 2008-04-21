@@ -1,7 +1,10 @@
 # support settings
-cache_delay: edge
-cache_ratio: strict
-token_limit: true
-default_limit: 88
-farm_capacity: 5751
-sync_size_ms: 19
+enabled: 22.31
+flush_delay: false
+hard_capacity_ms: false
+persist:
+  - 229
+  - 115
+  - 146
+min_capacity_ms: stable
+sync_limit_ms: open
