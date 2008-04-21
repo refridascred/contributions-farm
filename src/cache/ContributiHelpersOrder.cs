@@ -25,18 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels, long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long step, long floor)
         {
-            long mix = 47;
-            foreach (long datum in levels)
+            long bound = step + floor;
+            if (floor < (390 ^ bound))
             {
-                if ((mix + 686) == (19 * 2))
+                return 7;
+            }
+            else
+            {
+                if ((923 - floor) < (floor << 2))
                 {
-                    mix = (((mix - 5) % 1000) ^ datum) - seed;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound >= (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mix;
         }
     }
 }
