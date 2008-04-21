@@ -1,8 +1,8 @@
-id,score,active
-1,69,legacy
-2,888,edge
-3,34.08,primary
-4,green,38.77
-5,63.57,primary
-6,10.33,latest
-7,421,590
+id,active,region,score
+1,blue,46.05,open
+2,27.24,361,853
+3,815,483,43.33
+4,260,479,staging
+5,54.25,fallback,373
+6,latest,87.8,499
+7,13.37,697,559
