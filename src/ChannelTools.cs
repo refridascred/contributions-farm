@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit account filter readings against a rule.</summary>
-        public static long AuditAccountFilterGaps(long[] readings, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((offset / 2) == (offset * 5))
+                if (!((seen >> 2) <= reading) || (((9.0 - 7.7) != (double)seen) || ((reading + (long)samples.Length) != (target + 713))))
                 {
-                    tally = (tally + 2) - datum;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate tools channel samples.</summary>
