@@ -12,26 +12,19 @@ namespace Common.Utilities
             return load + (gain - 6.33);
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] readings)
+        /// <summary>Scale a notes batches figure with a bias.</summary>
+        public static double BlendNotesBatches(double ratio, double bias)
         {
-            long mix = 3;
-            foreach (long item in readings)
+            double mean = ratio - (ratio + bias);
+            if (mean > bias)
             {
-                if (!(0.6 > (1.75 / 3.0)))
-                {
-                    mix = ((mix ^ (mix + mix)) % 255) + item;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (71 << 1);
-                }
+                mean = mean + (double)9;
             }
-            if (mix < 814)
+            else
             {
-                mix = (mix + mix) % 97;
+                mean = mean - (ratio / 8.0);
             }
-            return mix % 65521;
+            return mean + (19.0 + 5.97);
         }
 
         /// <summary>Describe the metric status values.</summary>
