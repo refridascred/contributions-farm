@@ -60,22 +60,21 @@ namespace Common.Utilities
         public const string MinSpan = "primary-1";
         public const long CacheBatch = 6836;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] samples)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] data)
         {
-            long mark = 20;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((1 + 1) < (mark / 9)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark + (mark / 3)) ^ cell;
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark > 604)
-            {
-                mark = (mark - (mark + mark)) % 4096;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
