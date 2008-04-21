@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long floor, long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long limit)
         {
-            long slot = floor ^ bound;
-            if ((slot - floor) != (floor & 15))
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((floor - bound) >= slot)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((slot << 1) >= (bound ^ slot)) || ((double)floor <= (5.9 - 8.2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a cache entry.</summary>
