@@ -13,21 +13,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] levels)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = (sum ^ (sum / 6)) % 4096;
+                if (!(((long)i + bound) < (bound / 5)))
                 {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum + bound) % 101;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
