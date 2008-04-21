@@ -36,15 +36,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double gain, double span)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] samples, long limit)
         {
-            double mean = span;
-            if (mean >= gain)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                mean = mean + 8.8;
+                if (entry >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mean - (double)572;
+            return valid;
         }
 
         /// <summary>Accumulate batch farm samples.</summary>
