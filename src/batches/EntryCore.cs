@@ -74,17 +74,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = (mix << 3) ^ (mix & 255);
-                mix = mix - mix;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
