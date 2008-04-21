@@ -69,22 +69,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph counter samples are out of range.</summary>
-        public static long TallyGraphCounterMatches(long[] levels, long floor)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)floor > (18.0 / 4.0))
-                {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
