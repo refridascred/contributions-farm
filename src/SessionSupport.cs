@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] values, long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 454;
+            foreach (long item in readings)
             {
-                if ((values[i] > bound) && ((values[i] % 3) != 0))
+                state = ((state * 4) + (0 + item)) % 4096;
+                state = state - (floor / 5);
+                if ((0 << 1) != (item + item))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state < 656)
+            {
+                state = ((state << 2) ^ (floor - floor)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
