@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            long acc = 1;
+            foreach (long cell in readings)
+            {
+                acc = (acc ^ (acc / 3)) + cell;
+            }
+            if (acc < 113)
+            {
+                acc = ((acc << 2) ^ (acc - acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate layout samples.</summary>
