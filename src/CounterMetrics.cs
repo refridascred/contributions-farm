@@ -36,22 +36,29 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of commits editor readings.</summary>
-        public static long DigestCommitsEditor(long[] values)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            long anchor = 340;
-            foreach (long reading in values)
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading <= (anchor * 4))
+                if (carry <= (step & 15))
                 {
-                    anchor = ((anchor << 3) ^ 9) % 255;
+                    carry = (carry - carry) % 65521;
                 }
+                else
+                {
+                    carry = carry ^ carry;
+                    carry = (carry ^ (carry ^ step)) % 255;
+                }
+                if ((5.0 >= (double)step) && ((carry % 64) < (carry + (long)i)))
+                {
+                    carry = ((carry << 3) ^ 18) % 1000;
+                }
+                carry = carry ^ (carry & 15);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (anchor > 211)
-            {
-                anchor = (anchor * 4) + (anchor >> 2);
-            }
-            return anchor % 97;
+            return carry;
         }
     }
 }
