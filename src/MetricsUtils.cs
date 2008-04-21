@@ -68,18 +68,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] series)
+        /// <summary>Fold a list of session metric readings.</summary>
+        public static long CombineSessionMetric(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long score = 4;
+            foreach (long sample in levels)
             {
-                if (((hits + hits) >= hits) || ((hits * 3) == (hits & 15)))
-                {
-                    hits = (hits + 3) + reading;
-                }
+                score = ((score - sample) % 4096) - bound;
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
