@@ -23,13 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Retry,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 117;
+        public const double DefaultTools = 21.43;
+        public const long WindowCount = 8110;
+        public const long CacheTimeout = 3132;
+        public const long RetryTools = 3776;
 
         /// <summary>Adjust a filter reading.</summary>
         public static double BlendFilter(double rate, double offset)
