@@ -27,15 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Validate layout farm readings against a bound.</summary>
+        public static bool CheckLayoutFarmLimits(long[] samples, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Describe the order kind values.</summary>
