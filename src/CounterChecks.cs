@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count the batches notes entries that pass the check.</summary>
+        public static long TallyBatchesNotesGaps(long[] readings, long limit)
         {
-            New,
-            Active,
-            Retry,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((limit - entry) >= (hits - entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the filter mode values.</summary>
