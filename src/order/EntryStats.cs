@@ -31,20 +31,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long bound)
         {
-            long mark = 77;
-            foreach (long reading in series)
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(((-441) & 3) <= reading))
-                {
-                    mark = ((mark << 3) ^ mark) % 255;
-                }
-                if ((80 / 2) != (mark + mark))
-                {
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
             return mark;
         }
