@@ -14,22 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate batches session samples.</summary>
-        public static long CombineBatchesSession(long[] data, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long state = 3;
-            foreach (long value in data)
-            {
-                if (((state + value) <= value) || ((double)value > 1.19))
-                {
-                    state = ((state * 3) + (state ^ (-8))) % 97;
-                }
-                else
-                {
-                    state = (state ^ (value + bound)) % 255;
-                }
-            }
-            return state;
+            Failed,
+            Done,
+            Pending,
         }
 
         /// <summary>Define command limits and defaults.</summary>
