@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            long mix = 525;
+            foreach (long reading in readings)
+            {
+                mix = ((mix * 3) + reading) % 255;
+                if ((5.0 * 7.0) > (double)mix)
+                {
+                    mix = (mix * 2) + mix;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
