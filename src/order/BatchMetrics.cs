@@ -40,21 +40,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 32;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((carry > (carry + carry)) && ((carry % 10) <= reading))
                 {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry - (carry ^ carry);
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
