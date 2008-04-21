@@ -52,12 +52,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 2740;
-        public const long MaxCount = 9919;
-        public const double LimitTimeout = 38.66;
-        public const long CacheBudget = 2413;
-        public const double LimitLevel = 94.9;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((reading > seed) && ((tally % 100) >= tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long GradeLayout(long limit, long floor)
