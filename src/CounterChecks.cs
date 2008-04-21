@@ -28,11 +28,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "latest-edge";
-        public const long BaseDepth = 3640;
-        public const long BaseScore = 6744;
-        public const double BaseBatch = 48.51;
+        /// <summary>Compare every pair of checks editor readings.</summary>
+        public static long MatchChecksEditorCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long FoldGithubfarm(long[] levels)
