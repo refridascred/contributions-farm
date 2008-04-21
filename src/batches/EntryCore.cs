@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long bound, long limit)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long gap = bound + limit;
-            if (((gap + limit) >= (gap + gap)) || (bound < (gap + limit)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (gap > (gap + gap))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound ^ gap) <= limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Locate a batches token reading by value.</summary>
