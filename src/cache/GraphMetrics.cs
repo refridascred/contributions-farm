@@ -50,13 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Pending,
-            Dropped,
-            Queued,
-            Active,
+            Done,
+            Draft,
+            New,
+            Stale,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
