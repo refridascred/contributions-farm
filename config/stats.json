@@ -1,15 +1,15 @@
 {
-  "sync_interval": false,
-  "verbose": {
-    "warm_size_count": "primary",
-    "readonly": 89.88,
-    "burst_ratio": 2763,
-    "poll_depth_s": {
-      "persist": "legacy",
-      "min_interval": "legacy",
-      "warm_ttl_s": 23.11
-    }
+  "flush_retries_ms": 2.62,
+  "metrics_ttl": true,
+  "soft_capacity": true,
+  "buffer_size": {
+    "audit": true,
+    "default_window_ms": false,
+    "readonly": 2077,
+    "compress": 92.93,
+    "persist": [490, 75, 11],
+    "warm_window_count": false
   },
-  "readonly": "blue",
-  "idle_ratio": 12
+  "sync_interval_count": "standard",
+  "warm_limit_pct": [86, 6]
 }
