@@ -36,12 +36,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstFactor = 1082;
-        public const double SoftTools = 58.58;
-        public const double WindowTools = 51.97;
-        public const long BaseTools = 1744;
-        public const double LimitTools = 91.17;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public double Stamp { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmBounds(long[] data, long offset)
