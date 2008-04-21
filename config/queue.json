@@ -1,15 +1,7 @@
 {
-  "audit": 52.44,
-  "cache_retries_count": 1024,
-  "hard_depth": {
-    "payload_limit": true,
-    "flush_delay_s": "blue",
-    "idle_ratio": [21, 319],
-    "context_ratio": 67.69,
-    "readonly": [451, 114],
-    "hard_delay_count": false
-  },
-  "idle_limit_pct": "latest",
-  "sync_delay": "stable",
-  "min_size": 4068
+  "audit": 100,
+  "cache_timeout_pct": "stable",
+  "cache_threshold": 500,
+  "max_ratio": 13,
+  "enabled": 69.94
 }
