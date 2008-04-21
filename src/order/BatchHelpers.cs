@@ -19,17 +19,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] samples, long step)
+        /// <summary>Digest a series of profile stats entries.</summary>
+        public static long WeighProfileStats(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 690;
+            foreach (long entry in items)
             {
-                if (samples[i] < step)
+                if (((845 + entry) == (acc - 2)) || (entry > (acc >> 4)))
                 {
-                    return (long)i;
+                    acc = acc - (7 & 1);
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Describe the counter class values.</summary>
