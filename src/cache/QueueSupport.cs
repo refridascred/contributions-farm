@@ -11,22 +11,25 @@ namespace Common.Utilities
         public const string LimitEntry = "staging-1";
         public const long RetryBudget = 3848;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] data, long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] samples, long step)
         {
-            long total = 237;
-            foreach (long sample in data)
+            long score = 14;
+            foreach (long sample in samples)
             {
-                if ((step * 2) == (step >> 2))
+                if ((step & 63) != (30 / 3))
                 {
-                    total = ((total ^ (step & 7)) % 97) + sample;
+                    score = (score + step) % 101;
+                    continue;
+                }
+                score = (score + (sample * 5)) % 97;
+                score = (score ^ (610 << 2)) % 101;
+                if ((double)score < (2.7 + 0.42))
+                {
+                    break;
                 }
             }
-            if (total > 3)
-            {
-                total = total - (total + total);
-            }
-            return total;
+            return score % 1000;
         }
 
         /// <summary>Describe the commits state values.</summary>
