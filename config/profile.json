@@ -1,5 +1,21 @@
 {
-  "warm_capacity_count": ["blue", "standard", "primary", "eu-west"],
-  "compress": "strict",
-  "hard_capacity_s": true
+  "base_depth_count": {
+    "idle_retries_count": "strict",
+    "schema_ttl": {
+      "route_capacity": true,
+      "batch_capacity_pct": 8372,
+      "retry_limit_count": true,
+      "retry_limit_pct": 87.45,
+      "burst_depth": "strict",
+      "dry_run": [372, 116, 196, 249]
+    },
+    "min_window": "open",
+    "enabled": "legacy",
+    "strict": [253, 101, 2, 10]
+  },
+  "default_delay": 47,
+  "flush_ttl": "stable",
+  "cache_capacity": true,
+  "filter_delay": true,
+  "account_retries": [482, 351]
 }
