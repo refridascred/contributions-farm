@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
-            public double Limit { get; set; }
-            public long Score { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the payload state values.</summary>
