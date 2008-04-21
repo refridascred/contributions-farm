@@ -60,11 +60,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 3321;
-        public const double IdleTimeout = 76.97;
-        public const double RetryLevel = 78.26;
-        public const string BaseCount = "strict-v2";
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] series)
