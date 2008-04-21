@@ -56,18 +56,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] levels)
+        /// <summary>Scale a profile editor figure with a bias.</summary>
+        public static double ScaleProfileEditor(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double drift = (weight + 18.0) - 2.7;
+            for (int i = 0; i < 3; i++)
             {
-                if ((20.0 / 5.0) >= (1.2 + 4.98))
-                {
-                    tally = (tally + 2) + datum;
-                }
+                drift = ((drift - 13.0) + (double)(long)i) + bias;
             }
-            return tally;
+            return drift - (double)166;
         }
     }
 }
