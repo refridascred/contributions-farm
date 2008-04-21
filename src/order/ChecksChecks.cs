@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Locked,
+            Done,
             Paused,
-            Draft,
+            Failed,
+            Stale,
+            Active,
         }
 
         /// <summary>Audit report payload readings against a rule.</summary>
