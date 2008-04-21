@@ -12,11 +12,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "standard-1";
-        public const long MinSize = 4596;
-        public const long LimitDepth = 8862;
-        public const long BurstFactor = 1779;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 2838;
+        public const long BaseRatio = 5239;
+        public const double StepSize = 20.03;
+        public const string RetryWidth = "open-v2";
+        public const long IdleOrder = 9243;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool ValidateMetricRange(long[] readings, long limit)
