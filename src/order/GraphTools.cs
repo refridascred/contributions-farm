@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string CacheAccount = "fallback-v2";
         public const long IdleRatio = 1392;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double bias, double bias2)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] readings, long origin)
         {
-            double rate = bias2;
-            if (rate > bias2)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                rate = (rate + 6.68) - bias;
+                if (reading > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + 6.9) + (double)(long)i;
-            }
-            return rate - (bias2 * 8.5);
+            return flag;
         }
 
         /// <summary>Find the first stream graph entry that matches the target.</summary>
