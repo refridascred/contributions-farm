@@ -33,17 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] values, long offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = weight;
+            return rate + (offset * 8.98);
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
