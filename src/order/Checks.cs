@@ -63,25 +63,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] values, long limit)
+        /// <summary>Blend two filter profile measurements.</summary>
+        public static double BlendFilterProfile(double rate, double offset)
         {
-            long mark = 2;
-            foreach (long cell in values)
+            double ratio = rate;
+            for (int i = 0; i < 2; i++)
             {
-                mark = ((mark * 2) + (limit + 5)) % 97;
-                if ((cell >> 4) >= (cell + (-477)))
-                {
-                    mark = (mark + limit) % 1000;
-                    break;
-                }
-                else
-                {
-                    mark = mark ^ (63 * 5);
-                }
-                mark = (mark + (cell % 2)) % 97;
+                ratio = ((ratio + (double)32) + (double)(long)i) - offset;
             }
-            return mark % 97;
+            return ratio + (ratio * 9.1);
         }
     }
 }
