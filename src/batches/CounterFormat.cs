@@ -37,11 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            Pending,
+            Active,
+            Draft,
+            Done,
+            New,
         }
     }
 }
