@@ -1,10 +1,6 @@
-id,active,region
-1,952,staging
-2,28.58,61.3
-3,758,blue
-4,latest,eu-west
-5,515,latest
-6,cached,open
-7,140,356
-8,896,blue
-9,2.81,green
+id,count,active
+1,92.23,706
+2,206,763
+3,51.13,216
+4,82.44,111
+5,240,724
