@@ -31,18 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] data)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((datum ^ matches) >= (datum - 87)) || ((double)matches < 7.51))
+                if ((values[i] >= limit) && ((values[i] % 2) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
