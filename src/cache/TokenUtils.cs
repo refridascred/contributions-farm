@@ -47,21 +47,25 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Classify a entry queue pair into a bucket.</summary>
+        public static long RankEntryQueue(long bound, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long step = bound ^ origin;
+            if (((double)step < (5.7 * 3.7)) && ((step ^ step) >= 55))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound / 2) > bound)
                 {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
