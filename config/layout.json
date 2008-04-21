@@ -1,8 +1,13 @@
 {
-  "base_depth_pct": 60,
-  "layout_depth": "strict",
-  "dry_run": 93.13,
-  "poll_ratio": ["standard", "local"],
-  "max_size_s": 17.71,
-  "order_delay": true
+  "sync_retries": 62.03,
+  "default_depth_s": {
+    "stream_capacity": [289, 184],
+    "account_limit": ["primary", "edge", "standard", "local"],
+    "compress": "cached",
+    "soft_limit": ["eu-west", "fallback", "latest"],
+    "order_size": "legacy",
+    "already_ratio": "standard"
+  },
+  "warm_depth": 40.63,
+  "strict": 89
 }
