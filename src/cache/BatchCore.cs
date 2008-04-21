@@ -28,11 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Validate stats githubfarm readings against a bound.</summary>
+        public static bool ValidateStatsGithubfarmBounds(long[] series, long target)
         {
-            public double Region { get; set; }
-            public long Total { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
