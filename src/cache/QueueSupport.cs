@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a already support figure with a bias.</summary>
-        public static double BlendAlreadySupport(double gain, double span)
-        {
-            double gain2 = (span - gain) + span;
-            if (gain2 >= gain2)
-            {
-                gain2 = gain2 + (double)39;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = gain2 - (double)(long)i;
-            }
-            return gain2 + (double)18;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleSpan = 5774;
+        public const long MaxWidth = 8051;
+        public const long SoftFormat = 6896;
+        public const long RetryFormat = 2418;
+        public const long SoftSize = 8331;
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LocateGraphIndex(long[] items, long step)
