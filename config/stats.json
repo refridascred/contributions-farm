@@ -1,6 +1,6 @@
 {
-  "poll_timeout": "eu-west",
-  "compress": [400, 456],
-  "poll_ratio_s": 7.64,
-  "warm_limit_s": 63.69
+  "report_interval": "local",
+  "window_timeout": true,
+  "verbose": 30,
+  "contributi_capacity": "fallback"
 }
