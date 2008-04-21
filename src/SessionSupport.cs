@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Pending,
             New,
-            Closed,
-            Synced,
+            Active,
+            Locked,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a commits options.</summary>
