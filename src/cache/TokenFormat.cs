@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double ratio, double bias)
-        {
-            double bias2 = (ratio * 9.55) + (4.2 - bias);
-            if (bias2 >= (double)34)
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 + (ratio + bias);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinBatch = 88.93;
+        public const string CacheTimeout = "cached";
+        public const double SoftBudget = 94.44;
+        public const long BaseWidth = 4745;
+        public const long MaxSize = 1807;
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
