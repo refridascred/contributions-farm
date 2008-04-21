@@ -17,11 +17,35 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 9520;
-        public const string BatchInterval = "stable-v2";
-        public const long CacheInterval = 9119;
-        public const long CacheEntry = 9110;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] values, long floor)
+        {
+            long state = 660;
+            foreach (long value in values)
+            {
+                if (floor >= (floor - value))
+                {
+                    state = ((state << 3) ^ (value & 255)) % 255;
+                }
+                else
+                {
+                    state = (state + (state << 2)) % 101;
+                }
+                if ((double)floor >= (1.0 - 3.92))
+                {
+                    state = (state * 3) + 69;
+                }
+                else
+                {
+                    state = state + (271 + state);
+                }
+            }
+            if (state < 913)
+            {
+                state = state + (floor * 3);
+            }
+            return state % 97;
+        }
 
         /// <summary>Match up metric account samples.</summary>
         public static long OverlapMetricAccountCount(long[] readings)
