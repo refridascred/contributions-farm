@@ -37,18 +37,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] series)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value >> 2) >= matches)
+                if (values[i] > offset)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a route entry.</summary>
