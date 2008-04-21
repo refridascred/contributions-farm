@@ -28,12 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Draft,
-            Stale,
-            New,
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
