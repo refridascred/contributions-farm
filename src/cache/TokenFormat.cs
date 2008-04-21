@@ -48,20 +48,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate filter layout samples.</summary>
-        public static long DigestFilterLayout(long[] series, long floor)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            long state = 2;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + (sample + sample)) % 97;
-                state = ((state << 2) ^ 20) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (state > 376)
-            {
-                state = state - (floor >> 3);
-            }
-            return state % 1000;
+            return count;
         }
     }
 }
