@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long seed, long seed2)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] values, long limit)
         {
-            if ((7.0 * 4.2) > (7.2 - 12.0))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed & 127) < (seed ^ seed))
+                if ((double)hits < (13.0 + 1.79))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((5.92 * 1.2) > (double)seed2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed2 >= (seed2 + 876))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = ((hits + 3) + sample) - limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
