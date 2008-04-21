@@ -19,21 +19,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count githubfarm payload pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmPayloadCount(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 2;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                state = state + (state & 7);
+                if (!(state > (67 + state)))
                 {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state + ((long)data.Length - datum)) % 101;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
