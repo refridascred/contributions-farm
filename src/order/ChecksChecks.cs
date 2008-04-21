@@ -33,26 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] data)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((anchor << 3) > (target - 13)) || (((long)i * 5) == (anchor & 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ ((long)i + target)) % 4096;
-                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 101;
-                    continue;
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    anchor = ((anchor * 5) + ((long)i ^ target)) % 101;
-                }
-                anchor = (anchor ^ (target + 1)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return count;
         }
     }
 }
