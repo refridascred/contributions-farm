@@ -16,18 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] levels)
+        /// <summary>Fold a list of report batch readings.</summary>
+        public static long CombineReportBatch(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long mix = 4;
+            foreach (long reading in levels)
             {
-                if (value <= (seen + 7))
+                if ((8.6 >= (double)mix) || ((reading - mix) > mix))
                 {
-                    seen = seen + 2;
+                    mix = mix - mix;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Accumulate graph samples.</summary>
