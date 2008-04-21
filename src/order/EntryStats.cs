@@ -34,19 +34,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double gain, double floor)
+        /// <summary>Audit stream layout readings against a rule.</summary>
+        public static long TallyStreamLayoutMatches(long[] levels, long origin)
         {
-            double scale = floor + (double)5;
-            if (scale > (double)278)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                scale = (scale + (double)60) + gain;
+                if (4.74 <= (double)origin)
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale + (scale / 6.0);
+            return seen;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
