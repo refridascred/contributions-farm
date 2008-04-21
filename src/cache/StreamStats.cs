@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] readings, long seed)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (69 <= (seed + seed))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
