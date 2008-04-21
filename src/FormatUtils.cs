@@ -43,19 +43,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] data, long offset)
+        /// <summary>Roll a notes cluster counter forward.</summary>
+        public static long SeriesNotesCluster(long step)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample >= offset)
+                long diff = step;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    valid = false;
-                    break;
+                    diff = (((diff * 3) + diff) % 97) - (long)i2;
                 }
+                if (!((anchor ^ step) <= diff))
+                {
+                    diff = (diff - (diff + (long)i)) % 101;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Match up notes samples.</summary>
