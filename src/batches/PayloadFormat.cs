@@ -43,19 +43,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] samples, long offset)
+        /// <summary>Look up the position of a channel payload sample.</summary>
+        public static long LookupChannelPayloadIndex(long[] series, long step)
         {
-            long mix = 18;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix << 2) ^ (sample % 60)) + offset;
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 456)
-            {
-                mix = (mix << 2) ^ (959 + mix);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
