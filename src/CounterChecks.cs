@@ -43,12 +43,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            Active,
-            Failed,
-            Retry,
+            long total = 4;
+            foreach (long reading in levels)
+            {
+                total = (total - (reading + reading)) % 97;
+                total = total - (total & 1);
+            }
+            return total % 1000;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
