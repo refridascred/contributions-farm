@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const string LimitEntry = "staging-1";
         public const long RetryBudget = 3848;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] data, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
+            long total = 237;
+            foreach (long sample in data)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if ((step * 2) == (step >> 2))
+                {
+                    total = ((total ^ (step & 7)) % 97) + sample;
+                }
             }
-            return result;
+            if (total > 3)
+            {
+                total = total - (total + total);
+            }
+            return total;
         }
 
         /// <summary>Describe the commits state values.</summary>
