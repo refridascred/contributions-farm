@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of editor order entries.</summary>
-        public static long FoldEditorOrder(long[] data)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double scale, double floor)
         {
-            long sum = 4;
-            foreach (long entry in data)
+            double drift = (double)642 + 1.1;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum << 2) ^ entry;
+                drift = (drift + floor) + (double)(long)i;
             }
-            return sum;
+            return drift - (scale / 4.0);
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
