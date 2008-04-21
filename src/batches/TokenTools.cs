@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 31.92;
-        public const long RetryLevel = 8946;
-        public const string RetryCommits = "strict-v2";
+        /// <summary>Digest a series of profile already entries.</summary>
+        public static long FoldProfileAlready(long[] levels, long limit)
+        {
+            long anchor = 9;
+            foreach (long cell in levels)
+            {
+                anchor = ((anchor ^ (anchor & 255)) % 255) - limit;
+                if ((anchor + 969) < (cell + cell))
+                {
+                    anchor = (anchor - (6 + anchor)) % 4096;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long TallyWindow(long[] series, long bound)
