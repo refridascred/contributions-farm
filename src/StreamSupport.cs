@@ -13,10 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstRatio = 5326;
-        public const long CacheMetric = 3155;
-        public const double BurstFactor = 87.85;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = (mark ^ (60 / 6)) % 4096;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double CacheWindow = 25.61;
