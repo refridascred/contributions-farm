@@ -60,25 +60,19 @@ namespace Common.Utilities
         public const long BatchInterval = 4699;
         public const long HardContext = 7584;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long target, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] items, long limit)
         {
-            long edge = target + origin;
-            if (((double)target >= (double)origin) || ((double)origin != (8.67 + 16.0)))
+            bool ok = true;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((edge + 5) == (67 + origin))
+                if (datum > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
