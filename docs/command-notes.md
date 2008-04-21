@@ -1,14 +1,11 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-Run the payload check before changing any cache limits.
-Each account is validated before it reaches the cache queue.
-
-Use channel settings to tune how often schema data is refreshed.
-Use batches settings to tune how often profile data is refreshed.
+Each notes is validated before it reaches the queue queue.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The channel module keeps record values in sync with the commits cache.
 
 ## Guidelines
 
-- Prefer route defaults
-- Review layout limits each release
-- Log every route change
+- Log every entry change
+- Validate stream input early
+- Prefer token defaults
