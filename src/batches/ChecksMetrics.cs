@@ -27,13 +27,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] data)
         {
-            Ready,
-            Active,
-            Queued,
-            Dropped,
+            long score = 2;
+            foreach (long sample in data)
+            {
+                score = (score + (score >> 1)) % 97;
+                score = (score << 3) ^ (sample - (long)data.Length);
+            }
+            return score % 65521;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
