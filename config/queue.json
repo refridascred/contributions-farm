@@ -1,21 +1,7 @@
 {
-  "stats_timeout": {
-    "readonly": false,
-    "cache_limit": 42.03,
-    "persist": 95.38,
-    "max_size_count": "open"
-  },
-  "strict": "local",
-  "idle_size_ms": {
-    "min_threshold_ms": "cached",
-    "idle_retries_pct": {
-      "strict": 86.96,
-      "persist": 1024,
-      "schema_threshold": 4,
-      "default_delay_s": true,
-      "payload_threshold": 81.27
-    },
-    "hard_delay_pct": [92, 281, 110],
-    "entry_capacity": 27.02
-  }
+  "warm_limit_ms": 36.96,
+  "min_retries_count": 74.8,
+  "default_size_s": 40.8,
+  "min_delay": 90,
+  "persist": 100
 }
