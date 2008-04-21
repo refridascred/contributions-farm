@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                score = score ^ (limit << 2);
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
