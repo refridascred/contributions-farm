@@ -53,19 +53,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] series, long offset)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long seed)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                state = state ^ (state + (long)i);
+                state = (state - ((-7) % 10)) % 4096;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Match up batch samples.</summary>
