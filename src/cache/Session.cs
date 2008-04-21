@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Validate support queue readings against a bound.</summary>
+        public static bool VerifySupportQueueLimits(long[] readings, long bound)
         {
-            long total = 2;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((entry - entry) != (total * 2))
+                if (sample <= bound)
                 {
-                    total = total + 4;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return ok;
         }
 
         /// <summary>Define account limits and defaults.</summary>
