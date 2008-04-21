@@ -15,13 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long offset)
         {
-            Dropped,
-            Stale,
-            Retry,
-            Queued,
+            long result = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
