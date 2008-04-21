@@ -1,5 +1,16 @@
 {
-  "sync_depth": "local",
-  "filter_threshold": "open",
-  "cache_limit_count": 31.53
+  "notes_delay": "green",
+  "verbose": {
+    "flush_limit_count": false,
+    "commits_delay": [99, 174, 115],
+    "flush_ratio_count": true,
+    "stats_delay": 33.25
+  },
+  "layout_limit": 100,
+  "filter_window": {
+    "account_limit": false,
+    "batch_ttl": "legacy",
+    "dry_run": 60
+  },
+  "sync_limit_s": "latest"
 }
