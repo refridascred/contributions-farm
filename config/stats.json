@@ -1,5 +1,5 @@
 {
-  "default_timeout_ms": "legacy",
-  "enabled": "cached",
-  "tools_capacity": [106, 187, 400, 195]
+  "soft_limit_s": 825,
+  "sync_limit": 27.4,
+  "min_retries": 43.36
 }
