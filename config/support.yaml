@@ -1,12 +1,7 @@
 # support settings
-warm_timeout_count: 41.83
-sync_ratio_ms:
-  cache_depth_pct: 1363
-  profile_size: 9666
-  max_capacity_pct: fallback
-base_retries_ms: stable
-persist:
-  sync_capacity: blue
-  metric_window: 17
-  audit: 80.47
-  sync_timeout_ms: standard
+poll_retries_pct: edge
+audit: 60
+window_ttl: 19
+already_capacity: legacy
+batches_timeout: eu-west
+warm_size_ms: true
