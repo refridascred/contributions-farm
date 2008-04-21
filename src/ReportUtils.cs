@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] data)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (1.67 < (double)count)
+                if (cell != step)
                 {
-                    count = (count + 2) - datum;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Accumulate entry samples.</summary>
