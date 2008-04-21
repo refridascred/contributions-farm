@@ -43,13 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Measure how many batches channel samples are out of range.</summary>
+        public static long CountBatchesChannelHits(long[] levels, long bound)
         {
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((bound % 10) >= 395)
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of command readings.</summary>
