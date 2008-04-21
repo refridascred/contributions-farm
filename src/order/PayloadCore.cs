@@ -13,21 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = (sum ^ (sum / 6)) % 4096;
-                if (!(((long)i + bound) < (bound / 5)))
-                {
-                    sum = (sum + bound) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleSize = "stable-1";
+        public const string DefaultLevel = "legacy";
+        public const long MinChannel = 9230;
+        public const long HardChannel = 1333;
+        public const long RetryBudget = 281;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long GradeEntry(long offset, long seed)
