@@ -51,14 +51,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] data)
         {
-            Dropped,
-            Closed,
-            New,
-            Synced,
-            Paused,
+            long anchor = 330;
+            foreach (long value in data)
+            {
+                anchor = anchor ^ (value + 744);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Match up command samples.</summary>
