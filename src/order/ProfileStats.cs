@@ -28,18 +28,15 @@ namespace Common.Utilities
         public const long DefaultBudget = 280;
         public const long HardRecord = 8016;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] values)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] series)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long mix = -869;
+            foreach (long cell in series)
             {
-                if ((4.0 * 2.84) > (double)item)
-                {
-                    seen = seen + 2;
-                }
+                mix = mix ^ (cell % 10);
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Adjust a command schema reading.</summary>
