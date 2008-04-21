@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Closed,
-            Pending,
+            Ready,
             New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
