@@ -1,8 +1,5 @@
 {
-  "format_ratio": "eu-west",
-  "burst_threshold": "stable",
-  "enabled": true,
-  "stats_limit": 500,
-  "cluster_limit": 250,
-  "hard_retries": "green"
+  "soft_timeout_ms": "stable",
+  "editor_size": "primary",
+  "hard_capacity_s": 74.94
 }
