@@ -1,8 +1,5 @@
 {
-  "window_timeout": 500,
-  "record_timeout": 250,
-  "verbose": 1024,
-  "persist": false,
-  "retry_ratio_count": "green",
-  "report_size": 13.79
+  "strict": ["blue", "eu-west", "stable", "edge"],
+  "readonly": true,
+  "idle_limit_ms": "eu-west"
 }
