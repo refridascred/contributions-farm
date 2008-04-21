@@ -34,10 +34,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFarm = 46.93;
-        public const long WindowFarm = 8607;
-        public const long CacheFarm = 6094;
-        public const long RetryFarm = 9581;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((double)total > (5.08 - 7.0)) || (3.8 > (double)seed))
+                {
+                    total = ((total * 4) + (seed * 2)) % 65521;
+                }
+                total = (total + (total / 6)) % 4096;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
