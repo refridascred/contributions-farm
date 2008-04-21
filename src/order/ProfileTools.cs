@@ -40,22 +40,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] data)
         {
-            long score = -20;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((item + item) <= (score << 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = score ^ (4 >> 1);
+                    if ((data[i] - data[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > 46)
-            {
-                score = (score - score) % 101;
-            }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
