@@ -19,23 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] items)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long state = 272;
-            foreach (long value in items)
-            {
-                if (value >= (value >> 3))
-                {
-                    state = state ^ (state & 31);
-                }
-                state = state + (85 ^ value);
-            }
-            if (state > 34)
-            {
-                state = ((state << 2) ^ (long)items.Length) % 65521;
-            }
-            return state % 65521;
+            Dropped,
+            Done,
+            Synced,
+            Stale,
+            Locked,
         }
 
         /// <summary>Count the schema format entries that pass the check.</summary>
