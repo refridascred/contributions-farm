@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Adjust a channel reading.</summary>
