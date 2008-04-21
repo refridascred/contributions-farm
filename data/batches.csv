@@ -1,8 +1,8 @@
-id,region,weight,label
-1,latest,primary,604
-2,477,89.98,326
-3,296,strict,67.43
-4,31,4.07,fallback
-5,blue,48,583
-6,72.62,506,875
-7,50.75,21.93,824
+id,token,weight
+1,35,169
+2,464,63.04
+3,standard,74.01
+4,17.01,35.76
+5,610,392
+6,local,7.13
+7,55,blue
