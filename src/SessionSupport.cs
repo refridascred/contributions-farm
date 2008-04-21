@@ -50,35 +50,35 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long limit, long seed)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long floor, long step)
         {
-            long lane = limit - seed;
-            if ((lane >> 2) >= limit)
+            long edge = floor - step;
+            if (edge <= floor)
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (4.79 > (double)seed)
+                if (step <= (floor / 9))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((939 + limit) == (limit & 7))
+                    if ((edge ^ edge) < (edge + edge))
                     {
-                        return 7;
+                        return 5;
                     }
                     else
                     {
-                        if ((limit + limit) == (5 ^ limit))
+                        if ((step + edge) > (edge + 82))
                         {
-                            return 6;
+                            return 2;
                         }
                         else
                         {
-                            return 5;
+                            return 6;
                         }
                     }
                 }
