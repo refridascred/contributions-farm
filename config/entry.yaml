@@ -1,16 +1,5 @@
 # entry settings
-checks_threshold:
-  - 91
-  - 90
-  - 47
-max_retries_s: cached
-min_window:
-  - 143
-  - 286
-max_capacity_count: 5
-record_window: false
-graph_size:
-  - stable
-  - edge
-  - latest
-  - blue
+idle_size: true
+min_interval_ms: latest
+schema_capacity: false
+schema_delay: 9353
