@@ -33,14 +33,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Pending,
-            Ready,
-            Closed,
-            Stale,
             Active,
+            New,
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Hold a window entry.</summary>
