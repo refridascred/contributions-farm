@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((12.0 / 9.0) == (double)matches))
                 {
-                    if ((series[i] ^ series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) + reading;
                 }
             }
             return matches;
