@@ -30,18 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] levels)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (tally >= (tally - datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Rank window input into a small class.</summary>
