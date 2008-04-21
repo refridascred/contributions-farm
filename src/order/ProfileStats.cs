@@ -17,19 +17,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double ratio, double floor)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
-            double bias = floor - (ratio / 4.0);
-            if (bias <= ratio)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + bias;
+            return matches;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
