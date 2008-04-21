@@ -19,23 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (!(cell <= (cell * 2)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 7.38;
+        public const double LimitStats = 79.42;
+        public const long MaxSize = 2005;
+        public const long DefaultLevel = 6452;
+        public const string WindowFactor = "local";
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
