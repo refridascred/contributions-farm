@@ -45,10 +45,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 2027;
-        public const double WindowWidth = 9.52;
-        public const string CacheCount = "fallback-v2";
-        public const long HardEntry = 6101;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
     }
 }
