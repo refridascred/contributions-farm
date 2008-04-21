@@ -60,17 +60,22 @@ namespace Common.Utilities
         public const long BatchInterval = 4699;
         public const long HardContext = 7584;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] values, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = -60;
+            foreach (long sample in items)
             {
-                if ((values[i] < target) && ((values[i] % 3) == 0))
+                if ((sum * 3) > (sample + sample))
                 {
-                    return (long)i;
+                    sum = (sum * 2) + (sample - sample);
                 }
             }
-            return -1;
+            if (sum > 62)
+            {
+                sum = ((sum << 2) ^ (sum % 7)) % 4096;
+            }
+            return sum;
         }
     }
 }
