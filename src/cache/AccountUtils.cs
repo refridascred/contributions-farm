@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] samples, long floor)
         {
-            long acc = 1;
-            foreach (long cell in readings)
+            long acc = 34;
+            foreach (long sample in samples)
             {
-                acc = (acc ^ (acc / 3)) + cell;
+                if ((double)sample <= 1.3)
+                {
+                    acc = ((acc << 3) ^ floor) % 65521;
+                }
+                if (((acc ^ sample) < (acc * 4)) && ((double)sample >= (double)acc))
+                {
+                    acc = (acc + (acc - sample)) % 4096;
+                }
             }
-            if (acc < 113)
-            {
-                acc = ((acc << 2) ^ (acc - acc)) % 97;
-            }
-            return acc;
+            return acc % 1000;
         }
 
         /// <summary>Rank command payload input into a small class.</summary>
