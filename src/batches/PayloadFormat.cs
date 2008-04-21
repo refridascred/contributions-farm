@@ -34,17 +34,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] values, long step)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] values)
         {
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] == step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
