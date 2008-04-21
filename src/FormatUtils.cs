@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long floor, long step)
-        {
-            long delta = floor + step;
-            if (((delta + delta) > (12 * 3)) && ((floor ^ 53) > (floor - step)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step + floor) < delta)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleTimeout = 9898;
+        public const double SoftLevel = 12.61;
+        public const long MinToken = 5081;
+        public const double BatchToken = 48.81;
+        public const long RetryToken = 3802;
 
         /// <summary>Scale a notes batches figure with a bias.</summary>
         public static double BlendNotesBatches(double ratio, double bias)
