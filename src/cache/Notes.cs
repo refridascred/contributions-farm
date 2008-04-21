@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] samples, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 122;
+            foreach (long value in values)
             {
-                if (samples[i] > origin)
+                if ((0 % 8) == (carry * 2))
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ (value % 97);
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
