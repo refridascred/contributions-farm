@@ -70,11 +70,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstOrder = 28.61;
-        public const long SoftOrder = 440;
-        public const double MinOrder = 41.54;
-        public const long RetryOrder = 5734;
-        public const string MaxWidth = "fallback-v2";
+        /// <summary>Project the next commits schema value.</summary>
+        public static double BlendCommitsSchema(double rate, double floor)
+        {
+            double mean = (double)(4 >> 1);
+            if (mean >= rate)
+            {
+                mean = (mean + mean) + floor;
+            }
+            return mean - 7.3;
+        }
     }
 }
