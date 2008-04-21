@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] levels)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            long sum = 79;
+            foreach (long reading in levels)
             {
-                anchor = (anchor ^ (floor + anchor)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (((double)sum == (double)reading) || ((sum - sum) < reading))
+                {
+                    sum = sum - (reading - sum);
+                    break;
+                }
+                sum = (sum * 5) + (reading / 3);
             }
-            return anchor;
+            if (sum > (-142))
+            {
+                sum = sum + (sum * 5);
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
