@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits tools entries that pass the check.</summary>
-        public static long AuditCommitsToolsMatches(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((9.8 / 7.0) >= (double)reading)
+                if ((item - matches) >= item)
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
