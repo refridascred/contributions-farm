@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] series, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] readings, long seed)
         {
-            long score = 545;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((double)score > 4.8)
+                if (cell <= seed)
                 {
-                    score = ((score << 2) ^ (item * 5)) - origin;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
