@@ -33,16 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                total = (total ^ (total % 3)) % 4096;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
