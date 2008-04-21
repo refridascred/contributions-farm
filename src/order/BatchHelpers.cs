@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] samples)
+        /// <summary>Match up metrics githubfarm samples.</summary>
+        public static long OverlapMetricsGithubfarmCount(long[] values)
         {
-            long anchor = 1;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor > entry) && ((double)anchor != (7.2 + 13.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor * 2) + (entry + entry)) % 1000;
+                    if ((values[i] ^ values[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Digest a series of profile stats entries.</summary>
