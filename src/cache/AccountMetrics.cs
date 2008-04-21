@@ -56,22 +56,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] series)
+        /// <summary>Validate filter metric readings against a bound.</summary>
+        public static bool CheckFilterMetricRange(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((double)item >= (double)5)
+                if (entry >= target)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a window header.</summary>
