@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Queued,
-            New,
-            Draft,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 1379;
+        public const string LimitRoute = "stable-1";
+        public const double BaseSize = 60.9;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
