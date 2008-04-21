@@ -86,13 +86,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
