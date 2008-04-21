@@ -26,12 +26,14 @@ namespace Common.Utilities
         public const long CacheTimeout = 3132;
         public const long RetryTools = 3776;
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
+            Ready,
+            Closed,
+            Draft,
+            Stale,
+            New,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
