@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double bias, double bias2)
-        {
-            double rate = bias;
-            if (rate <= (double)71)
-            {
-                rate = rate + (bias + 6.26);
-            }
-            return rate + bias2;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryInterval = 2035;
+        public const long LimitCount = 3870;
+        public const long MinWidth = 889;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TallyGraph(long[] samples)
