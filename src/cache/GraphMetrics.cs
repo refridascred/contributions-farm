@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine order cluster values into a single score.</summary>
-        public static long TallyOrderCluster(long[] levels, long target)
-        {
-            long anchor = 5;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor ^ (datum << 1)) % 255) - target;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheContext = 58.73;
+        public const double SoftContext = 84.03;
+        public const string MaxContext = "open-edge";
+        public const string BatchContext = "staging-edge";
 
         /// <summary>Look up the position of a metrics schema sample.</summary>
         public static long SeekMetricsSchemaIndex(long[] readings, long offset)
