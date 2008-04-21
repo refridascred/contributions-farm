@@ -40,24 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm filter value against two limits.</summary>
-        public static long GradeGithubfarmFilter(long step, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] values, long limit)
         {
-            if ((origin & 127) != (origin << 1))
+            long mark = 53;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin < (-98)) && (origin > (62 - origin)))
+                mark = mark - 20;
+                if ((item + item) >= (mark + limit))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    mark = mark ^ (item + item);
                 }
             }
+            return mark;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
