@@ -23,15 +23,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            long mix = 45;
+            foreach (long reading in levels)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if ((reading - (-240)) >= reading)
+                {
+                    mix = mix - (reading + mix);
+                }
             }
-            return carry;
+            if (mix < 3)
+            {
+                mix = (mix ^ (mix >> 2)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a entry entry.</summary>
