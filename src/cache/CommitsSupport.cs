@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] samples)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] series)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long carry = 77;
+            foreach (long datum in series)
             {
-                if ((value & 31) >= (value * 4))
+                carry = (carry * 2) + (datum % 10);
+                if ((carry + datum) == (carry - datum))
                 {
-                    hits = hits + 1;
+                    carry = carry ^ ((-98) - carry);
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
