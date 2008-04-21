@@ -49,19 +49,17 @@ namespace Common.Utilities
         public const double HardFormat = 38.94;
         public const double StepScore = 98.16;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] levels, long target)
+        /// <summary>Locate a buffer record reading by value.</summary>
+        public static long LookupBufferRecordIndex(long[] readings, long limit)
         {
-            long acc = 652;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc - (long)levels.Length) % 255;
-                if ((6.07 / 2.0) <= (double)cell)
+                if (readings[i] <= limit)
                 {
-                    acc = ((acc * 3) + (target + cell)) % 65521;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
     }
 }
