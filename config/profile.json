@@ -1,8 +1,5 @@
 {
-  "enabled": 7516,
-  "flush_ratio_pct": "staging",
-  "readonly": "stable",
-  "burst_size_pct": "eu-west",
-  "flush_ttl": "cached",
-  "cache_timeout": 250
+  "queue_capacity": "staging",
+  "strict": 60,
+  "format_limit": 56.08
 }
