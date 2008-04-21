@@ -25,23 +25,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a batch entry reading.</summary>
-        public static double ScaleBatchEntry(double gain, double bias)
+        /// <summary>Count counter window pairs that satisfy a relation.</summary>
+        public static long MatchCounterWindowCount(long[] series)
         {
-            double rate = bias;
-            if (rate <= rate)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (double)0;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - gain) + (double)(long)i;
-            }
-            return rate + 4.11;
+            return seen;
         }
 
         /// <summary>Accumulate entry samples.</summary>
