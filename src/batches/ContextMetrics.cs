@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] data, long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] levels, long target)
         {
-            long mix = 59;
-            foreach (long reading in data)
+            long carry = 715;
+            foreach (long entry in levels)
             {
-                if ((double)reading != (3.5 * 4.12))
+                carry = (carry - (entry + carry)) % 65521;
+                if ((7.0 - 8.0) == (double)target)
                 {
-                    mix = mix + mix;
-                }
-                if ((reading << 3) >= mix)
-                {
-                    break;
+                    carry = (carry - carry) % 97;
                 }
             }
-            if (mix > 110)
+            if (carry < 28)
             {
-                mix = mix + (limit % 2);
+                carry = ((carry << 3) ^ (target + carry)) % 65521;
             }
-            return mix % 1000;
+            return carry;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
