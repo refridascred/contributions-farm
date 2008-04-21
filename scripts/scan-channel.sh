@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback local; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=324
+CHANNEL_LIMIT=410
 log "limit is ${CHANNEL_LIMIT}"
