@@ -84,11 +84,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Measure how many graph counter samples are out of range.</summary>
+        public static long TallyGraphCounterMatches(long[] levels, long floor)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)floor > (18.0 / 4.0))
+                {
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
