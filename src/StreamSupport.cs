@@ -25,11 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 25.61;
-        public const long MinWindow = 9418;
-        public const long DefaultWindow = 776;
-        public const long LimitRatio = 1351;
-        public const long DefaultBudget = 1461;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] values)
+        {
+            long mark = 76;
+            foreach (long sample in values)
+            {
+                mark = (((mark << 2) ^ mark) % 65521) ^ sample;
+            }
+            if (mark > 9)
+            {
+                mark = (mark - mark) % 255;
+            }
+            return mark;
+        }
     }
 }
