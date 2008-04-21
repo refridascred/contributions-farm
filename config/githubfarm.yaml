@@ -1,4 +1,16 @@
 # githubfarm settings
-audit: true
-retry_ratio_pct: 449
-soft_ttl_count: legacy
+sync_capacity_s: 88
+flush_ratio_ms: 250
+burst_window: false
+warm_timeout:
+  idle_limit:
+    strict: fallback
+    retry_ratio: legacy
+    soft_interval_pct: 52
+    default_retries_pct: fallback
+  flush_delay_s:
+    - blue
+    - eu-west
+    - blue
+  idle_depth_count: 91.45
+  compress: 879
