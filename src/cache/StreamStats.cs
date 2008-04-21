@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] readings, long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long mix = 454;
+            foreach (long value in samples)
             {
-                if (((seed - matches) >= matches) && ((double)cell != (5.0 / 7.0)))
+                if ((limit % 12) == (625 % 5))
                 {
-                    matches = matches + 2;
+                    mix = mix + (mix ^ value);
                 }
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
