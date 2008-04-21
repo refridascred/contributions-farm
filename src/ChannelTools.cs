@@ -15,21 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up layout order samples.</summary>
-        public static long OverlapLayoutOrderCount(long[] series)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
