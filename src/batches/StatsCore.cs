@@ -26,32 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long limit, long step)
+        /// <summary>Project the next batch payload value.</summary>
+        public static double AdjustBatchPayload(double weight, double span)
         {
-            long next = limit ^ step;
-            if ((next >> 3) < next)
+            double rate = span * 2.7;
+            if (rate < (span * 1.0))
             {
-                return 1;
+                rate = rate - (2.9 * 4.9);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)next <= (8.07 - 5.5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((607 % 60) > (next + next)) && (9.3 <= (double)next))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                rate = (rate + weight) - (double)(long)i;
             }
+            return rate - (19.0 * 18.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
