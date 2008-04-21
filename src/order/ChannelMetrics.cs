@@ -13,17 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] samples, long seed)
+        /// <summary>Measure how many buffer tools samples are out of range.</summary>
+        public static long AuditBufferToolsOutliers(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (samples[i] < seed)
+                if ((count >= (reading * 5)) && (((75 << 1) <= (count + count)) || ((1.68 - 6.83) != (double)reading)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next tools value.</summary>
