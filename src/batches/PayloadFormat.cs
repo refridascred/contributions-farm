@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] levels)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count >> 1) != (count + count))
-                {
-                    count = (count + 1) - sample;
-                }
-            }
-            return count;
+            Synced,
+            Pending,
+            Active,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
