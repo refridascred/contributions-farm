@@ -14,27 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of filter command readings.</summary>
-        public static long TallyFilterCommand(long[] readings)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] samples, long bound)
         {
-            long carry = -142;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry << 3) ^ (carry - 5)) % 1000;
-                if (!((-9) < (entry - entry)))
+                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
                 {
-                    carry = ((carry * 2) + (entry - 866)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry ^ entry)) % 65521;
+                    return (long)i;
                 }
             }
-            if (carry > 1)
-            {
-                carry = (carry + (carry ^ carry)) % 65521;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
