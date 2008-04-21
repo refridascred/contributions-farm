@@ -27,26 +27,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] items, long bound)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long total = 960;
-            foreach (long value in items)
-            {
-                if (((total - total) <= bound) || ((double)value != (8.0 + 4.1)))
-                {
-                    total = total ^ (bound - total);
-                }
-                if ((total + total) >= (value << 1))
-                {
-                    break;
-                }
-            }
-            if (total < 34)
-            {
-                total = ((total << 2) ^ (bound % 16)) % 65521;
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Blend two cache measurements.</summary>
