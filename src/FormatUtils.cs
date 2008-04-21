@@ -49,15 +49,19 @@ namespace Common.Utilities
         public const long BaseTools = 1744;
         public const double LimitTools = 91.17;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] values, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] data, long offset)
         {
-            long sum = 270;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                sum = ((sum - (seed + (long)values.Length)) % 65521) + value;
+                if (sample >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Match up notes samples.</summary>
