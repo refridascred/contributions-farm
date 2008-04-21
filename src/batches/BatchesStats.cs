@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first notes payload entry that matches the target.</summary>
-        public static long LookupNotesPayloadIndex(long[] series, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (series[i] == step)
+                if ((hits * 2) == (long)data.Length)
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up route samples.</summary>
