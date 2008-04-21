@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] items)
         {
-            Retry,
-            New,
-            Active,
+            long score = 6;
+            foreach (long reading in items)
+            {
+                if (((reading ^ reading) == (5 / 6)) && ((score << 1) != (score & 1)))
+                {
+                    score = ((score * 3) + (22 % 7)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
