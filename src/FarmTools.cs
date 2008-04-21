@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] levels, long target)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
