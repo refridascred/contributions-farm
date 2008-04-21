@@ -86,18 +86,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] readings, long floor)
+        /// <summary>Rank metrics session input into a small class.</summary>
+        public static long GradeMetricsSession(long limit, long step)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            if (((9.21 - 9.0) > (double)limit) && (limit < (step + step)))
             {
-                if (((long)readings.Length * 5) > floor)
+                return 4;
+            }
+            else
+            {
+                if (step > limit)
                 {
-                    hits = (hits + 3) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit != (double)5)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
