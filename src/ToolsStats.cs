@@ -44,12 +44,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardDepth = 1451;
-        public const long StepContributi = 8369;
-        public const string IdleScore = "cached-v2";
-        public const long MaxSpan = 7343;
-        public const string CacheCount = "fallback-edge";
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultAlready = 9942;
