@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] samples, long bound)
         {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)tally > (17.0 + 2.5))
+                {
+                    tally = ((tally + 1) - item) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
