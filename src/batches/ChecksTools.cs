@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double bias, double span)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long floor)
         {
-            double gain = (double)(0 - 81);
-            if (gain < (double)2)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                gain = (gain - (bias * 7.3)) + span;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + bias) - (double)(long)i;
-            }
-            return gain + gain;
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
