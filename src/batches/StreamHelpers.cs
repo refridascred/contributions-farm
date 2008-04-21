@@ -66,12 +66,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a cluster contributi sample.</summary>
-        public static long LocateClusterContributiIndex(long[] levels, long seed)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] > seed)
+                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
