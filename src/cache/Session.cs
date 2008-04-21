@@ -31,21 +31,22 @@ namespace Common.Utilities
         public const string LimitContext = "local";
         public const long MinWidth = 4208;
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(924 < (count + count)) && (((double)cell > (double)25) && ((count * 3) != (275 << 2))))
                 {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
