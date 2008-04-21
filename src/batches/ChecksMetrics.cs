@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every already filter entry stays within the limit.</summary>
-        public static bool CheckAlreadyFilterRange(long[] samples, long seed)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
