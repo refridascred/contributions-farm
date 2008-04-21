@@ -60,19 +60,21 @@ namespace Common.Utilities
             return ratio - (double)6;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double ratio, double bias)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] series)
         {
-            double ratio2 = 3.7;
-            if (ratio2 > ratio)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio2 = ratio2 + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 - (16.0 / 7.0)) + (double)(long)i;
-            }
-            return ratio2 + (double)84;
+            return tally;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
