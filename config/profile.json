@@ -1,10 +1,6 @@
 {
-  "batch_ttl_ms": 81.35,
-  "batch_delay": ["primary", "eu-west"],
-  "cache_ttl_pct": {
-    "cluster_ratio": "stable",
-    "hard_timeout_ms": "blue",
-    "min_ratio_ms": 60,
-    "max_threshold_s": true
-  }
+  "enabled": 500,
+  "sync_delay_pct": "primary",
+  "verbose": 70,
+  "token_ttl": 23
 }
