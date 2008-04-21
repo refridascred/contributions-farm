@@ -33,23 +33,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double ratio, double bias)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] levels, long origin)
         {
-            double ratio2 = bias;
-            if (ratio2 > ratio)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = ratio2 + (double)9;
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (ratio2 / 9.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + (double)608) + (double)(long)i;
-            }
-            return ratio2 + ratio;
+            return -1;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
