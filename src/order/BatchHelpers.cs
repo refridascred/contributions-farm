@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "strict";
-        public const long HardWidth = 2662;
-        public const string IdleSpan = "cached-edge";
-        public const double HardPayload = 60.87;
-        public const long SoftPayload = 4848;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] levels, long floor)
+        {
+            long carry = 89;
+            foreach (long sample in levels)
+            {
+                if ((6.3 / 8.0) > (double)floor)
+                {
+                    carry = carry + (696 + sample);
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Fold a list of filter command readings.</summary>
         public static long TallyFilterCommand(long[] readings)
