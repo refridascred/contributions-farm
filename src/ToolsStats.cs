@@ -22,12 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 2661;
-        public const long BurstProfile = 5667;
-        public const long MaxCount = 2443;
-        public const long BatchFactor = 8929;
-        public const long CacheCount = 8179;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] values, long origin)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of profile format entries.</summary>
         public static long FoldProfileFormat(long[] readings, long bound)
