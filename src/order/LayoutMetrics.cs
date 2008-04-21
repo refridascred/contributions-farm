@@ -27,21 +27,23 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 9;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = result - limit;
+                if (datum <= (datum << 3))
                 {
-                    if ((values[i] + values[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 2) ^ (long)series.Length) % 101;
+                }
+                else
+                {
+                    result = (result * 4) + (result >> 4);
                 }
             }
-            return seen;
+            return result % 65521;
         }
 
         /// <summary>Digest a series of checks route entries.</summary>
