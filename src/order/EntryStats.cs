@@ -27,11 +27,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
+            long anchor = 0;
+            foreach (long cell in readings)
+            {
+                anchor = (anchor * 2) + (525 + cell);
+            }
+            if (anchor < (-76))
+            {
+                anchor = (anchor - (anchor >> 4)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Audit stream layout readings against a rule.</summary>
