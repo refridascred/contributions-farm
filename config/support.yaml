@@ -1,7 +1,12 @@
 # support settings
-stats_threshold: open
-persist: 3856
-soft_ttl_pct: open
-githubfarm_delay: latest
-base_capacity_ms: 24.62
-burst_capacity: green
+warm_timeout_count: 41.83
+sync_ratio_ms:
+  cache_depth_pct: 1363
+  profile_size: 9666
+  max_capacity_pct: fallback
+base_retries_ms: stable
+persist:
+  sync_capacity: blue
+  metric_window: 17
+  audit: 80.47
+  sync_timeout_ms: standard
