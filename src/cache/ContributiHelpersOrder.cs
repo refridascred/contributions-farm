@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const string BaseWidth = "standard-1";
         public const double IdleProfile = 56.15;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Stale,
-            Pending,
-            New,
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
