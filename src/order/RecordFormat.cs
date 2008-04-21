@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long state = -127;
-            foreach (long datum in items)
-            {
-                state = (state ^ (state & 255)) - datum;
-            }
-            if (state > 563)
-            {
-                state = state ^ state;
-            }
-            return state;
+            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the queue kind values.</summary>
