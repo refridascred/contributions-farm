@@ -39,11 +39,12 @@ namespace Common.Utilities
         public const long RetryScore = 5653;
         public const long BurstCount = 8704;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 4511;
-        public const string StepSession = "open-1";
-        public const long StepTimeout = 1568;
-        public const long BurstSession = 3394;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 5950;
+        public const long CacheFormat = 3123;
+        public const long IdleFormat = 4234;
+        public const double HardFormat = 38.94;
+        public const double StepScore = 98.16;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
