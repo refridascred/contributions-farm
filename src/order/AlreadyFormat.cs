@@ -23,21 +23,14 @@ namespace Common.Utilities
         public const string BurstBudget = "open-1";
         public const string IdleGraph = "strict-edge";
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Dropped,
+            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Describe the already kind values.</summary>
