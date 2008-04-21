@@ -22,14 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] items, long step)
         {
-            Synced,
-            Queued,
-            Active,
-            Locked,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the support kind values.</summary>
