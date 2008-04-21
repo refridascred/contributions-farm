@@ -41,13 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long floor)
         {
-            public long Offset { get; set; }
-            public double Score { get; set; }
-            public double Token { get; set; }
-            public bool Owner { get; set; }
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Accumulate graph samples.</summary>
