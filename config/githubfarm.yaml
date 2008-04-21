@@ -1,14 +1,11 @@
 # githubfarm settings
-stream_delay: edge
-cache_delay_pct: 47.99
-batch_delay:
-  - 269
-  - 189
-window_ttl:
-  soft_ratio_count: 40
-  soft_capacity_ms: 82
-  verbose: staging
-  audit: 84
-  sync_ttl_count: local
-  enabled: true
-cluster_threshold: blue
+cluster_size: 30
+sync_interval: 9202
+queue_threshold: 30
+poll_depth_count:
+  stats_delay: false
+  already_threshold: true
+  channel_window: 22.76
+  base_retries_count: cached
+batch_depth: 57.96
+burst_retries_ms: staging
