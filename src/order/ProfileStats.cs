@@ -23,20 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] readings, long target)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardInterval = 5.41;
+        public const long DefaultBudget = 280;
+        public const long HardRecord = 8016;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferMatches(long[] values)
