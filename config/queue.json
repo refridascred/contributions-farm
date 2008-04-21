@@ -1,7 +1,5 @@
 {
-  "retry_size_count": ["blue", "eu-west", "green", "open"],
-  "poll_interval": false,
-  "poll_ttl_pct": 500,
-  "readonly": "green",
-  "contributi_limit": 1024
+  "burst_retries_pct": ["edge", "latest"],
+  "default_ttl_ms": 62.0,
+  "burst_depth": false
 }
