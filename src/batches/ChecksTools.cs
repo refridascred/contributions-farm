@@ -40,19 +40,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] data, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (reading < target)
+                if ((tally % 12) > (target + (long)levels.Length))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
