@@ -28,12 +28,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 6556;
-        public const string IdleRatio = "alpha";
-        public const double IdleSpan = 45.58;
-        public const long StepBudget = 2703;
-        public const string MaxAccount = "strict";
+        /// <summary>Check that every schema tools entry stays within the limit.</summary>
+        public static bool VerifySchemaToolsRange(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
