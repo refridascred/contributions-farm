@@ -13,13 +13,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Locate a already counter reading by value.</summary>
+        public static long LocateAlreadyCounterIndex(long[] data, long seed)
         {
-            Locked,
-            Draft,
-            Ready,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the channel level values.</summary>
