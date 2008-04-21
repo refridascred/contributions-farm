@@ -42,15 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] data, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if ((((double)tally != (14.0 * 4.92)) || ((seed - seed) < (tally * 3))) || (((tally & 127) < seed) && ((double)seed < (2.5 + 0.4))))
+                {
+                    tally = (tally + 2) + cell;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
