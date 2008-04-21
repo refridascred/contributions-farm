@@ -64,22 +64,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] items, long origin)
         {
-            long sum = -60;
-            foreach (long sample in items)
+            long mark = 6;
+            foreach (long datum in items)
             {
-                if ((sum * 3) > (sample + sample))
+                if ((5 >> 4) < origin)
                 {
-                    sum = (sum * 2) + (sample - sample);
+                    mark = (mark * 5) + mark;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (datum - mark)) % 65521;
+                }
+                if ((6.0 * 3.54) <= (double)mark)
+                {
+                    mark = (mark << 2) ^ datum;
                 }
             }
-            if (sum > 62)
-            {
-                sum = ((sum << 2) ^ (sum % 7)) % 4096;
-            }
-            return sum;
+            return mark % 97;
         }
     }
 }
