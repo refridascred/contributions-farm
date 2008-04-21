@@ -1,38 +1,10 @@
 # githubfarm settings
-dry_run: 4717
-payload_limit: 1.17
-hard_capacity_ms: 55.61
-flush_capacity_s:
-  strict:
-    - blue
-    - standard
-    - cached
-  idle_ratio: 4514
-  dry_run: false
-  idle_limit:
-    - green
-    - edge
-    - staging
-  filter_retries: eu-west
-  persist:
-    - fallback
-    - staging
-    - blue
-audit:
-  poll_retries_s: false
-  batch_depth_ms:
-    farm_window: 36
-    soft_threshold: strict
-    command_timeout: 61
-  audit:
-    min_capacity_pct: blue
-    githubfarm_interval: 92.18
-    editor_limit: 69
-    soft_limit: 59
-    persist: false
-    sync_ratio_ms: 500
-  checks_depth:
-    - 79
-    - 13
-    - 180
-  verbose: true
+compress: 818
+verbose: 79.98
+flush_ratio:
+  - stable
+  - strict
+  - stable
+  - strict
+enabled: latest
+filter_interval: latest
