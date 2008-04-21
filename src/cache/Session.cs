@@ -17,17 +17,32 @@ namespace Common.Utilities
         public const long SoftBuffer = 6337;
         public const double MaxSpan = 48.51;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] series, long target)
+        /// <summary>Grade a account metrics value against two limits.</summary>
+        public static long ClassifyAccountMetrics(long offset, long offset2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long diff = offset - offset2;
+            if (((709 << 2) == (offset / 7)) && ((offset + offset) >= offset))
             {
-                if ((series[i] < target) && ((series[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if (offset2 > diff)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((5 << 3) >= diff)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
