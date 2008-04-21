@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Synced,
-            Pending,
-            Active,
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
