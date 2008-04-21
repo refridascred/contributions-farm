@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long target, long origin)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long step = target - origin;
-            if ((6.01 * 2.43) > (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((7 % 16) >= (origin + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target != (8.9 + 3.9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step > (5 + 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a window options.</summary>
