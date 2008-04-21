@@ -14,37 +14,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long bound, long floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long bound, long origin)
         {
-            long bound2 = bound + floor;
-            if (!((floor >> 4) > (39 << 3)))
+            if ((4 >> 3) == (origin >> 4))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if (16.0 > (double)floor)
+                if ((2.64 - 3.51) < (double)bound)
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if (bound > (bound2 % 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((bound + bound2) == (floor >> 3)) || ((0 >> 3) < (floor + bound)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
