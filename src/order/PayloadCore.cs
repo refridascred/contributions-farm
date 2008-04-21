@@ -28,10 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 9987;
-        public const long IdleTimeout = 1929;
-        public const long BurstReport = 4364;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double ProjectChannel(double weight, double offset)
