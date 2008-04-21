@@ -22,18 +22,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] samples, long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] levels, long limit)
         {
-            long anchor = -82;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (anchor > (seed >> 3))
+                if (levels[i] >= limit)
                 {
-                    anchor = (anchor << 3) ^ (sample % 5);
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Hold a context stats.</summary>
