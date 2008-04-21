@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every support cache entry stays within the limit.</summary>
-        public static bool VerifySupportCacheLimits(long[] readings, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (sample != step)
+                if ((33 > ((long)samples.Length + tally)) || ((tally + 79) < tally))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Adjust a filter order reading.</summary>
