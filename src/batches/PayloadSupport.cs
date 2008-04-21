@@ -27,19 +27,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 9228;
+        public const string MinSize = "standard-1";
+        public const string HardRatio = "open";
+        public const long CacheContributi = 7056;
+        public const long MinLevel = 7210;
     }
 }
