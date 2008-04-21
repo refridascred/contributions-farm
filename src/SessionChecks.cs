@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a graph counter reading by value.</summary>
-        public static long LocateGraphCounterIndex(long[] items, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if ((items[i] > step) && ((items[i] % 3) != 0))
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
