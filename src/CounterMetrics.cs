@@ -11,12 +11,27 @@ namespace Common.Utilities
         public const long BurstNotes = 6930;
         public const long MinCount = 8963;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 52.76;
-        public const long DefaultDepth = 3548;
-        public const long CacheTimeout = 350;
-        public const long RetrySize = 631;
-        public const long BaseChannel = 86;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] samples, long seed)
+        {
+            long total = 1;
+            foreach (long item in samples)
+            {
+                if ((-111) > (item / 4))
+                {
+                    total = total ^ 9;
+                }
+                if ((seed + total) < 1)
+                {
+                    total = ((total * 5) + total) % 4096;
+                }
+                else
+                {
+                    total = total ^ (item % 24);
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ProjectCache(double ratio, double floor)
