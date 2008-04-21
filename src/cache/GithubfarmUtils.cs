@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = anchor ^ (floor / 7);
-                anchor = (anchor - (423 % 7)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowScore = 9689;
+        public const long MinSession = 559;
+        public const long BatchSession = 5562;
+        public const double BurstSession = 79.61;
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
