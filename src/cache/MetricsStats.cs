@@ -41,12 +41,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
+            New,
+            Retry,
+            Done,
+            Draft,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
