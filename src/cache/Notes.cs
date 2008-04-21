@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Draft,
             Pending,
-            Ready,
             Retry,
+            Active,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
