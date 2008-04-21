@@ -31,15 +31,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] items, long step)
         {
-            long state = 563;
-            foreach (long entry in samples)
+            long carry = 230;
+            foreach (long cell in items)
             {
-                state = ((state * 3) + (6 ^ state)) ^ entry;
+                carry = ((carry << 3) ^ (step - cell)) % 65521;
             }
-            return state;
+            return carry;
         }
     }
 }
