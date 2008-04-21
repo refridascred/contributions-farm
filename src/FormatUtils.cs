@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleTimeout = 9898;
-        public const double SoftLevel = 12.61;
-        public const long MinToken = 5081;
-        public const double BatchToken = 48.81;
-        public const long RetryToken = 3802;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long step, long target)
+        {
+            long prev = step + target;
+            if ((step * 2) <= target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)prev == (3.1 * 9.53))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target >= (target - prev))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a notes batches figure with a bias.</summary>
         public static double BlendNotesBatches(double ratio, double bias)
