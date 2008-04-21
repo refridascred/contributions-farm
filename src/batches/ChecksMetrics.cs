@@ -76,12 +76,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Measure how many counter schema samples are out of range.</summary>
+        public static long CountCounterSchemaGaps(long[] levels)
         {
-            Idle,
-            Pending,
-            Stale,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (3.0 <= (double)hits)
+                {
+                    hits = (hits + 3) - item;
+                }
+            }
+            return hits;
         }
     }
 }
