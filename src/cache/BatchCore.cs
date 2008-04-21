@@ -46,18 +46,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (((matches * 4) != (entry + matches)) && ((9.4 + 1.3) >= (double)entry))
+                if ((entry < (entry + count)) && ((entry ^ count) >= (entry + count)))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
