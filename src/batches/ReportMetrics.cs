@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] values, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if (cell <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
