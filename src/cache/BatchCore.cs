@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a command contributi reading.</summary>
-        public static double ScaleCommandContributi(double scale, double bias)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            double load = bias + (scale * 3.8);
-            return load + scale;
+            Done,
+            Ready,
+            Retry,
+            Idle,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
