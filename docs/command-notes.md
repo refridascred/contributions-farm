@@ -1,12 +1,12 @@
 # Command notes
 
-Run the filter check before changing any tools limits.
-The payload report groups every report by tools.
-Keep commits and channel names short and lowercase.
+Use route settings to tune how often already data is refreshed.
+The batch report groups every profile by stats.
+When a tools fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new order fields
-- Prefer filter defaults
-- Log every metric change
-- Validate contributi input early
+- Keep command values small
+- Prefer metric defaults
+- Validate channel input early
+- Log every route change
