@@ -43,18 +43,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)tally < 1.5)
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultFactor = 9794;
+        public const string WindowRatio = "cached-v2";
+        public const long DefaultInterval = 7805;
+        public const long LimitSize = 3878;
     }
 }
