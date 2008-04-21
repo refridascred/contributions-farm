@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate support tools readings against a bound.</summary>
-        public static bool GuardSupportToolsRange(long[] samples, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (sample > origin)
+                if (((347 <= (tally & 15)) && ((entry / 8) != (tally - 6))) && ((entry ^ entry) > (entry - (-82))))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
