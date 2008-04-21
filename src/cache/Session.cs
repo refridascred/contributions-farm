@@ -32,23 +32,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of batches support readings.</summary>
-        public static long DigestBatchesSupport(long[] values, long floor)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double bias, double bias2)
         {
-            long total = 618;
-            foreach (long item in values)
+            double gain = (double)(53 % 64);
+            if (gain < (gain / 8.0))
             {
-                total = ((total - (total - floor)) % 97) + item;
-                if ((7 * 5) > (total ^ 947))
-                {
-                    break;
-                }
+                gain = gain + bias;
             }
-            if (total < 9)
-            {
-                total = total + (total / 3);
-            }
-            return total;
+            return gain + (bias2 + bias2);
         }
     }
 }
