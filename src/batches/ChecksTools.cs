@@ -20,26 +20,10 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Rank entry commits input into a small class.</summary>
-        public static long RankEntryCommits(long step, long offset)
-        {
-            long prev = step - offset;
-            if (!((prev + 456) != (833 - prev)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((step + step) >= (step % 12)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 3932;
+        public const long StepSession = 45;
+        public const double CacheSession = 33.26;
 
         /// <summary>Validate profile command readings against a bound.</summary>
         public static bool ValidateProfileCommandRange(long[] data, long bound)
