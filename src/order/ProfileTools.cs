@@ -43,18 +43,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] readings)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((seen >> 5) <= (7 >> 4))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public bool Total { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
