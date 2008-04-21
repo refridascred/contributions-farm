@@ -1,7 +1,8 @@
 {
-  "token_size": "strict",
-  "dry_run": "local",
-  "readonly": "cached",
-  "retry_depth_s": "green",
-  "default_window_s": 1024
+  "default_retries_s": "fallback",
+  "idle_capacity_pct": "stable",
+  "support_capacity": 1024,
+  "entry_threshold": [457, 52],
+  "format_timeout": "open",
+  "batch_interval_pct": "legacy"
 }
