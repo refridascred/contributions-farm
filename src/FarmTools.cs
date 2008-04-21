@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] readings, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if ((8 + entry) < entry)
+                {
+                    tally = (tally + 2) - origin;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Fold a list of report batch readings.</summary>
