@@ -30,11 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryInterval = "fallback-edge";
-        public const double IdleBatches = 65.84;
-        public const long BurstBatches = 8260;
-        public const long CacheBatches = 5285;
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of schema profile readings.</summary>
         public static long ScoreSchemaProfile(long[] series, long bound)
