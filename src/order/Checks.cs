@@ -11,22 +11,23 @@ namespace Common.Utilities
         public const long StepChannel = 5466;
         public const long CacheChannel = 4488;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] items, long bound)
+        /// <summary>Roll a route support counter forward.</summary>
+        public static long DeriveRouteSupport(long step)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long carry = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((hits <= (hits - hits)) || ((hits >> 2) > (hits * 4))))
+                if ((carry + step) > (step % 97))
                 {
-                    hits = ((hits + 3) + item) - bound;
+                    carry = carry - step;
                 }
-                else
+                if ((carry & 255) == ((long)i + carry))
                 {
-                    hits = hits - 1;
+                    break;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a token options.</summary>
