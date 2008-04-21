@@ -22,18 +22,18 @@ namespace Common.Utilities
         public const long MaxWidth = 5491;
         public const long BurstTimeout = 3450;
 
-        /// <summary>Measure how many session layout samples are out of range.</summary>
-        public static long MeasureSessionLayoutOutliers(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((double)matches < (4.88 + 5.0))
+                if ((double)item < (5.54 + 2.0))
                 {
-                    matches = (matches + 2) - sample;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
