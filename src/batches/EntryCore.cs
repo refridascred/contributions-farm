@@ -46,19 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double weight, double floor)
+        /// <summary>Compare every pair of format session readings.</summary>
+        public static long MatchFormatSessionCount(long[] data)
         {
-            double bias = (double)(-1);
-            if (bias >= (bias + bias))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = ((bias + (bias / 3.0)) + weight) - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + 20.0) + (double)(long)i;
-            }
-            return bias + 8.0;
+            return matches;
         }
 
         /// <summary>Match up metric samples.</summary>
