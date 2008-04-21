@@ -1,7 +1,4 @@
 # support settings
-audit: 22.72
-burst_capacity_ms: 6416
-cache_size_pct:
-  - strict
-  - latest
-  - blue
+warm_limit_pct: open
+min_delay: green
+cache_limit_s: 91
