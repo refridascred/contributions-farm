@@ -30,15 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a context route reading.</summary>
-        public static double ProjectContextRoute(double weight, double span)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double rate = weight;
-            if (rate < (rate / 9.0))
-            {
-                rate = rate - (7.77 / 6.0);
-            }
-            return rate - span;
+            Queued,
+            Draft,
+            Dropped,
+            Paused,
         }
     }
 }
