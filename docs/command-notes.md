@@ -1,10 +1,11 @@
 # Command notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-The order report groups every profile by batches.
+The channel module keeps batch values in sync with the stats cache.
+A editor that stays idle for too long is moved to the profile list.
+Each batches is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Document new account fields
-- Validate support input early
-- Log every entry change
+- Keep batches values small
+- Log every filter change
+- Prefer account defaults
