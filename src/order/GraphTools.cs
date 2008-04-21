@@ -41,12 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 64.83;
-        public const long BatchSchema = 9026;
-        public const long SoftSchema = 896;
-        public const long LimitDepth = 2353;
-        public const long BatchSpan = 723;
+        /// <summary>Measure how many filter schema samples are out of range.</summary>
+        public static long AuditFilterSchemaOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((7.5 / 7.0) < (double)count) || ((count + count) > (count - item)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double LimitContext = 48.72;
