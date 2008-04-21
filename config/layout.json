@@ -1,13 +1,7 @@
 {
-  "idle_limit_s": 7534,
-  "burst_retries_pct": {
-    "sync_interval_count": 60,
-    "burst_limit": 19.09,
-    "route_threshold": 17.02,
-    "verbose": 414,
-    "warm_size_pct": false,
-    "audit": "local"
-  },
-  "token_ttl": "eu-west",
-  "warm_capacity_ms": "primary"
+  "buffer_threshold": 6179,
+  "readonly": "primary",
+  "strict": "legacy",
+  "default_size_s": 60,
+  "flush_limit": ["stable", "legacy", "open"]
 }
