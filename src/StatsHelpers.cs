@@ -78,18 +78,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] levels, long target)
         {
-            long acc = 916;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((double)acc <= (3.6 / 4.0))
+                if (0 < target)
                 {
-                    acc = ((acc - (acc << 2)) % 65521) ^ cell;
+                    count = (count + 1) - sample;
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
