@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const long CacheFormat = 1147;
         public const long LimitSize = 7219;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Combine farm report values into a single score.</summary>
