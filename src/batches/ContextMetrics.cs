@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of payload layout readings.</summary>
-        public static long DigestPayloadLayout(long[] readings, long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] readings, long floor)
         {
-            long state = 655;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state * 2) + (23 ^ floor);
-                state = (state * 5) + (874 - cell);
+                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Project the next tools contributi value.</summary>
