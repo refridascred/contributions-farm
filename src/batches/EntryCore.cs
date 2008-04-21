@@ -20,12 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] values, long origin)
         {
-            Queued,
-            Pending,
-            Done,
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate layout farm readings against a bound.</summary>
