@@ -30,23 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate graph order samples.</summary>
-        public static long CombineGraphOrder(long[] levels, long step)
-        {
-            long anchor = 4;
-            foreach (long sample in levels)
-            {
-                if (((anchor ^ sample) <= (sample >> 4)) || ((anchor - anchor) <= anchor))
-                {
-                    anchor = ((anchor - (815 >> 2)) % 4096) + step;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (sample >> 4);
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseSpan = 25;
+        public const string BatchRatio = "open";
+        public const string IdleDepth = "legacy-v2";
+        public const long StepOrder = 5310;
+        public const long SoftOrder = 7194;
 
         /// <summary>Combine cluster token values into a single score.</summary>
         public static long ScoreClusterToken(long[] levels)
