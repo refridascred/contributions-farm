@@ -49,16 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] data, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                mix = (mix + origin) % 1000;
-                mix = ((mix * 2) + (long)i) % 97;
+                if (entry >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
     }
 }
