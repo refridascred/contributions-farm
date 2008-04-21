@@ -1,7 +1,7 @@
 # githubfarm settings
-hard_size: legacy
-githubfarm_limit: fallback
-min_timeout_count: false
-base_depth_pct: false
-readonly: edge
-strict: 1024
+notes_ratio: primary
+flush_window_s: staging
+default_depth_count: 4851
+metric_threshold: 96.78
+notes_interval: 6752
+metrics_threshold: 44
