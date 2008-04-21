@@ -16,23 +16,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] series, long limit)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long result = 9;
-            foreach (long datum in series)
-            {
-                result = result - limit;
-                if (datum <= (datum << 3))
-                {
-                    result = ((result << 2) ^ (long)series.Length) % 101;
-                }
-                else
-                {
-                    result = (result * 4) + (result >> 4);
-                }
-            }
-            return result % 65521;
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
