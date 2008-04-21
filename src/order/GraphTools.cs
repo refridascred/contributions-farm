@@ -61,18 +61,25 @@ namespace Common.Utilities
         public const long BatchInterval = 4699;
         public const long HardContext = 7584;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long target, long origin)
         {
-            long result = 931;
-            foreach (long cell in series)
+            long edge = target + origin;
+            if (((double)target >= (double)origin) || ((double)origin != (8.67 + 16.0)))
             {
-                if ((31 & 7) < (cell * 4))
+                return 2;
+            }
+            else
+            {
+                if ((edge + 5) == (67 + origin))
                 {
-                    result = (result << 2) ^ cell;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return result;
         }
     }
 }
