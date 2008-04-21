@@ -13,16 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry ^ seed) % 1000;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
