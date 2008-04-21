@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate queue tools readings against a bound.</summary>
-        public static bool ValidateQueueToolsLimits(long[] data, long limit)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
