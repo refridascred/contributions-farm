@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] samples, long floor)
+        /// <summary>Find the first layout stats entry that matches the target.</summary>
+        public static long LocateLayoutStatsIndex(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] <= floor)
+                if (levels[i] <= target)
                 {
                     return (long)i;
                 }
