@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry support readings.</summary>
-        public static long DigestEntrySupport(long[] levels, long seed)
+        /// <summary>Combine stats layout values into a single score.</summary>
+        public static long ScoreStatsLayout(long[] values, long seed)
         {
-            long anchor = 74;
-            foreach (long item in levels)
+            long sum = -6;
+            foreach (long value in values)
             {
-                if (!((item / 9) < anchor))
-                {
-                    anchor = ((anchor - anchor) % 101) + seed;
-                }
+                sum = (((sum - sum) % 101) + value) - seed;
             }
-            return anchor % 1000;
+            if (sum > 616)
+            {
+                sum = sum + sum;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Classify a entry queue pair into a bucket.</summary>
