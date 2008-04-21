@@ -1,5 +1,9 @@
 # entry settings
-record_timeout: local
-retry_timeout_pct: 50
-hard_retries_count: primary
-burst_interval_s: 4
+enabled: 250
+queue_ratio: true
+min_window_pct: false
+contributi_capacity:
+  metric_window: 94.94
+  flush_threshold_pct: false
+  session_timeout: 4998
+  retry_ratio_pct: 25.04
