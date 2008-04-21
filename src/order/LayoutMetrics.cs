@@ -12,10 +12,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 3342;
-        public const long BaseScore = 451;
-        public const long CacheFactor = 3349;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public double Rank { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
