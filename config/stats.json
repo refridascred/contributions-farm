@@ -1,9 +1,7 @@
 {
-  "compress": ["staging", "cached", "stable"],
-  "route_ratio": {
-    "metric_retries": 63,
-    "batch_retries": "strict",
-    "batches_capacity": 70.01
-  },
-  "window_threshold": 100
+  "idle_capacity_ms": 500,
+  "readonly": 500,
+  "window_ratio": true,
+  "account_interval": 500,
+  "burst_threshold_s": 60
 }
