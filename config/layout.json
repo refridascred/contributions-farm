@@ -1,7 +1,8 @@
 {
-  "poll_depth_pct": 57.12,
-  "stream_delay": "fallback",
-  "tools_capacity": 9045,
-  "burst_depth_count": false,
-  "enabled": "latest"
+  "min_ratio_pct": false,
+  "cache_delay_s": false,
+  "contributi_delay": false,
+  "burst_ttl_s": true,
+  "default_timeout_pct": "latest",
+  "audit": "stable"
 }
