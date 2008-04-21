@@ -1,5 +1,5 @@
 {
-  "metric_ratio": 21.74,
-  "flush_interval_count": ["fallback", "staging", "green"],
-  "sync_delay_s": 67.47
+  "batches_size": true,
+  "sync_limit": "stable",
+  "session_depth": "fallback"
 }
