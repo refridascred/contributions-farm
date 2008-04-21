@@ -20,9 +20,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 5968;
-        public const double BatchChecks = 59.45;
-        public const string IdleSpan = "legacy-v2";
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+        }
     }
 }
