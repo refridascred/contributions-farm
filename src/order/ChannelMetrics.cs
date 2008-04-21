@@ -20,13 +20,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long target)
         {
-            Closed,
-            New,
-            Stale,
-            Locked,
+            long mix = target;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = mix ^ target;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
