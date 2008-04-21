@@ -65,14 +65,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Combine command farm values into a single score.</summary>
+        public static long FoldCommandFarm(long[] series)
         {
-            Dropped,
-            Locked,
-            Active,
-            Queued,
-            Paused,
+            long state = 6;
+            foreach (long reading in series)
+            {
+                if ((7.73 * 1.0) <= (double)reading)
+                {
+                    state = (state << 2) ^ (state - state);
+                }
+            }
+            return state % 65521;
         }
     }
 }
