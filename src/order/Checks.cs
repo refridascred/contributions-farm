@@ -28,32 +28,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long limit, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long cur = limit + target;
-            if (target > cur)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)cur >= (15.0 / 2.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + limit) <= (target / 6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            Closed,
+            Idle,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
