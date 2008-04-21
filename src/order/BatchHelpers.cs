@@ -32,18 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema tools readings against a rule.</summary>
-        public static long CountSchemaToolsOutliers(long[] samples, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            if ((2.0 - 0.8) <= (double)limit)
             {
-                if (6.52 < (double)tally)
+                return 1;
+            }
+            else
+            {
+                if (bound >= (bound - 9))
                 {
-                    tally = ((tally + 3) + reading) + floor;
+                    return 8;
+                }
+                else
+                {
+                    if (bound <= (bound >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
