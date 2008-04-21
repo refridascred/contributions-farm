@@ -34,22 +34,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] series)
-        {
-            long sum = 5;
-            foreach (long value in series)
-            {
-                if ((4.7 + 5.0) != (double)value)
-                {
-                    sum = (sum << 3) ^ (value >> 1);
-                }
-                else
-                {
-                    sum = (sum - (sum % 60)) % 101;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFarm = 46.93;
+        public const long WindowFarm = 8607;
+        public const long CacheFarm = 6094;
+        public const long RetryFarm = 9581;
     }
 }
