@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] levels)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long anchor = 435;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = (anchor + (anchor << 2)) ^ (long)i;
-                }
-                anchor = (anchor << 2) ^ 31;
-                anchor = anchor - cell;
-            }
-            if (anchor < 9)
-            {
-                anchor = ((anchor << 2) ^ (2 >> 3)) % 97;
-            }
-            return anchor % 65521;
+            Paused,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the counter kind values.</summary>
