@@ -23,38 +23,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Rank stats cluster input into a small class.</summary>
-        public static long SortStatsCluster(long origin, long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            if (((double)offset > (double)761) && (origin > (offset * 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset) != (offset & 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)origin <= 7.91) || ((origin + origin) <= (origin / 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin + 522) >= (origin ^ origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Ready,
+            Closed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
