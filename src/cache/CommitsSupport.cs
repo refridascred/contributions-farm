@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] series)
+        /// <summary>Match up token already samples.</summary>
+        public static long MatchTokenAlreadyCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((1.5 / 8.0) < (double)seen))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) ^ value;
+                    if ((samples[i] + samples[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of order stream readings.</summary>
