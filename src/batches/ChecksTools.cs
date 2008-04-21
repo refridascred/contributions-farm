@@ -45,13 +45,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Weight { get; set; }
-            public double Limit { get; set; }
+            Draft,
+            Failed,
+            Stale,
+            Dropped,
         }
     }
 }
