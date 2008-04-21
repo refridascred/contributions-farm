@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a token githubfarm counter forward.</summary>
-        public static long IterateTokenGithubfarm(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = (carry ^ (long)i) + (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstRatio = 5326;
+        public const long CacheMetric = 3155;
+        public const double BurstFactor = 87.85;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
