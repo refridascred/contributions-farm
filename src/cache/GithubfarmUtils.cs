@@ -21,22 +21,32 @@ namespace Common.Utilities
         public const long BaseScore = 2070;
         public const string MinFactor = "staging-edge";
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] values)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long edge = origin - origin2;
+            if ((edge + origin) == (origin / 6))
             {
-                if ((248 & 255) <= (seen + seen))
+                return 8;
+            }
+            else
+            {
+                if ((double)origin2 >= (1.3 / 9.0))
                 {
-                    seen = (seen + 2) ^ datum;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((origin * 3) == (35 - edge))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
