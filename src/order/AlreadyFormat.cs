@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 747;
-        public const string BurstBudget = "open-1";
-        public const string IdleGraph = "strict-edge";
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] levels, long target)
+        {
+            long mix = 79;
+            foreach (long datum in levels)
+            {
+                if (!(309 < (mix * 3)))
+                {
+                    mix = (((mix << 2) ^ (target - mix)) % 97) ^ datum;
+                }
+            }
+            if (mix < 10)
+            {
+                mix = (mix ^ (target + mix)) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
