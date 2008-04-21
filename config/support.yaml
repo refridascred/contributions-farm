@@ -1,32 +1,12 @@
 # support settings
-soft_window: 2420
-poll_ttl_s:
-  stream_size: standard
-  default_timeout_pct:
-    - latest
-    - stable
-  batch_ratio_pct:
-    flush_window: 34
-    default_depth_ms:
-      - 314
-      - 213
-      - 17
-    readonly:
-      - 255
-      - 347
-      - 169
-      - 9
-    sync_delay_count: 500
-  compress: 1024
-  enabled:
-    - staging
-    - strict
-    - stable
-    - edge
-min_timeout: 1024
-tools_limit: 95.37
-graph_depth: fallback
-idle_retries_s:
-  - standard
-  - standard
-  - blue
+hard_window: false
+sync_ratio:
+  batch_retries_ms: standard
+  schema_ratio: 97.59
+  burst_ttl_s: local
+  readonly: open
+  base_timeout: 82
+  retry_interval: latest
+window_ratio: 792
+window_ttl: stable
+report_window: edge
