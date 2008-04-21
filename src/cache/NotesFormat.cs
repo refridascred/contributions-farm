@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long seed, long seed2)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] samples)
         {
-            long prev = seed + seed2;
-            if (((seed ^ prev) > (seed2 ^ prev)) && (seed2 <= (seed ^ 88)))
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (prev >= (seed2 - seed2))
+                if ((entry ^ entry) <= (entry / 9))
                 {
-                    return 3;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 5;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
