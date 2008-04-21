@@ -41,12 +41,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardTimeout = 5084;
-        public const long BatchDepth = 6187;
-        public const long BatchRatio = 2573;
-        public const double StepWindow = 82.05;
-        public const double BurstWindow = 36.8;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long floor, long seed)
+        {
+            long edge = floor + seed;
+            if ((double)edge < (10.0 + 9.11))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((885 + edge) != (seed / 9)) && ((double)edge > (double)seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long WeighEditor(long[] values, long seed)
