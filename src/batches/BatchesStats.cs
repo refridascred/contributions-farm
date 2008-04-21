@@ -39,14 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
+            Locked,
+            Synced,
             Stale,
-            Queued,
-            Pending,
-            Retry,
-            Closed,
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
