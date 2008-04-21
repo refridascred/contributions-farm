@@ -20,23 +20,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many channel farm samples are out of range.</summary>
-        public static long AuditChannelFarmMatches(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((offset - offset) < (matches * 3))
-                {
-                    matches = (matches + 2) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardCount = 970;
+        public const long CacheFormat = 1147;
+        public const long LimitSize = 7219;
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
