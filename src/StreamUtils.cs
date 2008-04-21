@@ -65,13 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] values)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!(count > (cell + cell)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the graph phase values.</summary>
