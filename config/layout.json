@@ -1,19 +1,5 @@
 {
-  "burst_limit_count": 28.42,
-  "graph_timeout": {
-    "soft_threshold_pct": false,
-    "verbose": "fallback",
-    "notes_retries": {
-      "batch_ratio": ["primary", "open"],
-      "order_retries": true,
-      "warm_ratio_ms": 250,
-      "sync_threshold": true,
-      "farm_interval": [184, 124],
-      "max_capacity": 51
-    },
-    "warm_timeout": 3075,
-    "default_size": 8000,
-    "retry_capacity_ms": [149, 447]
-  },
-  "min_timeout": "edge"
+  "burst_threshold_ms": "staging",
+  "counter_interval": "eu-west",
+  "hard_ratio_ms": 52.87
 }
