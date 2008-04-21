@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge strict; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-mode="${1:-edge}"
+mode="${1:-fallback}"
 case "${mode}" in
-    open)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=361
+log "limit is ${RECORD_LIMIT}"
+
+for item in local edge; do
+    log "checking ${item}"
+done
