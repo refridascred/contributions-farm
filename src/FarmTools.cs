@@ -13,16 +13,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] samples, long target)
+        /// <summary>Compare every pair of layout channel readings.</summary>
+        public static long CompareLayoutChannelCount(long[] data)
         {
-            long mix = 7;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix ^ (target - (long)samples.Length)) ^ reading;
-                mix = mix ^ mix;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Hold a stream entry.</summary>
