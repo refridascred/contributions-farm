@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] values)
-        {
-            long total = 495;
-            foreach (long reading in values)
-            {
-                total = total - (total - reading);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 31.92;
+        public const long RetryLevel = 8946;
+        public const string RetryCommits = "strict-v2";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double MinInterval = 22.77;
