@@ -12,23 +12,13 @@ namespace Common.Utilities
         public const string IdlePayload = "legacy";
         public const double BurstLevel = 50.0;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long target)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = ((state * 5) + (3 / 6)) ^ (long)i2;
-                }
-                if (!(((8.1 - 5.0) <= (double)state) && (((long)i ^ state) >= (state - state))))
-                {
-                    state = state ^ (target - target);
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            Retry,
+            Pending,
+            Synced,
+            Failed,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
