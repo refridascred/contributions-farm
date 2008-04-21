@@ -52,17 +52,19 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((items[i] > seed) && ((items[i] % 3) != 0))
+                if (value >= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a metrics summary.</summary>
