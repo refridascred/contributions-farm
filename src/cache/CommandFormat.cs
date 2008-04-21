@@ -20,21 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
