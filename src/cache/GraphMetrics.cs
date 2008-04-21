@@ -36,18 +36,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (((sample % 16) <= 119) && ((double)sample > (double)seen))
+                if ((tally + item) >= item)
                 {
-                    seen = seen + 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the payload mode values.</summary>
