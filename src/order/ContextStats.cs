@@ -20,14 +20,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] values)
         {
-            Failed,
-            Draft,
-            Paused,
-            Ready,
-            Idle,
+            long anchor = 55;
+            foreach (long value in values)
+            {
+                if (!((4.1 + 17.0) <= (double)anchor))
+                {
+                    anchor = ((anchor * 5) + anchor) % 97;
+                }
+                anchor = ((anchor * 4) + (anchor >> 4)) % 97;
+                anchor = (anchor + (995 + value)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Project the next account value.</summary>
