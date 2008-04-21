@@ -20,23 +20,10 @@ namespace Common.Utilities
             return scale - (scale / 8.0);
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((6.6 + 8.8) < (double)value)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowTimeout = 4.26;
+        public const long CacheGithubfarm = 4011;
+        public const string StepGithubfarm = "fallback";
 
         /// <summary>Project the next token value.</summary>
         public static double ProjectToken(double scale, double offset)
