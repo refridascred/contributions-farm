@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] levels, long target)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            New,
+            Active,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
