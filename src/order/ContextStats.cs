@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 4903;
+        public const long WindowBatch = 5274;
+        public const double DefaultBatch = 70.44;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long HardTimeout = 5721;
