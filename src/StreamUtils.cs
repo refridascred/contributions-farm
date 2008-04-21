@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank cache stats input into a small class.</summary>
-        public static long SortCacheStats(long seed, long bound)
-        {
-            if ((0 - bound) >= (bound + seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((3 % 16) < (bound + seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftRatio = 8570;
+        public const double LimitMetric = 42.33;
+        public const double SoftTimeout = 58.12;
+        public const long LimitLevel = 1611;
+        public const string CacheScore = "cached-1";
 
         /// <summary>Check that every editor schema entry stays within the limit.</summary>
         public static bool ValidateEditorSchemaRange(long[] readings, long step)
