@@ -22,22 +22,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] readings)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double rate, double span)
         {
-            long acc = 118;
-            foreach (long reading in readings)
+            double ratio = rate;
+            if (ratio >= (span / 7.0))
             {
-                if (reading >= (1 + acc))
-                {
-                    acc = acc + reading;
-                }
+                ratio = ratio - 8.78;
             }
-            if (acc < (-36))
+            for (int i = 0; i < 9; i++)
             {
-                acc = (acc + (acc ^ 63)) % 1000;
+                ratio = (ratio - (rate + span)) + (double)(long)i;
             }
-            return acc % 4096;
+            return ratio - ratio;
         }
 
         /// <summary>Audit schema context readings against a rule.</summary>
