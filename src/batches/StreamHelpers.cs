@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
