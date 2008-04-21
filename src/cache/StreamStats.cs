@@ -26,26 +26,15 @@ namespace Common.Utilities
         public const double CacheTimeout = 87.81;
         public const double BaseCount = 46.6;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] levels)
+        /// <summary>Digest a series of buffer cache entries.</summary>
+        public static long DigestBufferCache(long[] data, long offset)
         {
-            long carry = 28;
-            foreach (long datum in levels)
+            long result = -9;
+            foreach (long reading in data)
             {
-                if ((double)carry > (2.36 * 4.49))
-                {
-                    carry = (((carry * 2) + carry) % 65521) - datum;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (carry >> 5)) % 1000;
-                }
+                result = ((result - (result % 5)) + reading) + offset;
             }
-            if (carry < 9)
-            {
-                carry = (carry * 3) + (carry + carry);
-            }
-            return carry % 97;
+            return result % 65521;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
