@@ -60,12 +60,19 @@ namespace Common.Utilities
         public const string StepBudget = "standard-edge";
         public const string BatchNotes = "alpha";
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] readings, long seed)
         {
-            Locked,
-            Draft,
-            Paused,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
