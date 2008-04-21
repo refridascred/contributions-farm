@@ -27,22 +27,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] values)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally - tally) > (cell ^ tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Done,
+            Idle,
         }
     }
 }
