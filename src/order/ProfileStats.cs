@@ -31,19 +31,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] data, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] values)
         {
-            long result = 3;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long item in values)
             {
-                result = result ^ (entry + seed);
+                if ((6.05 - 1.2) < (double)tally)
+                {
+                    tally = (tally + 1) - item;
+                }
             }
-            if (result > 588)
-            {
-                result = (result + (3 ^ result)) % 97;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
