@@ -33,18 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats githubfarm entries that pass the check.</summary>
-        public static long TallyStatsGithubfarmOutliers(long[] samples, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((matches / 3) < (cell + floor))
+                if ((0.45 * 3.9) > (double)(long)levels.Length)
                 {
-                    matches = matches + 2;
+                    hits = ((hits + 3) + reading) - origin;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
