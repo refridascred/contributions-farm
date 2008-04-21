@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long floor)
         {
-            Idle,
-            New,
-            Queued,
-            Stale,
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = anchor ^ (floor / 7);
+                anchor = (anchor - (423 % 7)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
