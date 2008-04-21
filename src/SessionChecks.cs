@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseDepth = 143;
+        public const long LimitTimeout = 7948;
+        public const long MinRatio = 1562;
+        public const long StepFarm = 8660;
+        public const long BurstFarm = 9120;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long CombineRecord(long[] readings)
