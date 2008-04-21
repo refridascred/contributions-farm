@@ -40,13 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public bool Owner { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
