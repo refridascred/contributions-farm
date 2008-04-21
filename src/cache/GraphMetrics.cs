@@ -64,19 +64,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] samples, long limit)
+        /// <summary>Combine route account values into a single score.</summary>
+        public static long CombineRouteAccount(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long mix = 362;
+            foreach (long cell in levels)
             {
-                if (reading <= limit)
+                if ((mix % 97) < (275 + 13))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix * 3) + (cell - mix);
                 }
             }
-            return valid;
+            return mix;
         }
     }
 }
