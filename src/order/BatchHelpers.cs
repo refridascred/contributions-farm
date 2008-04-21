@@ -22,19 +22,26 @@ namespace Common.Utilities
         public const long MaxTimeout = 3765;
         public const string LimitWidth = "staging-edge";
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] readings, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long state = 365;
+            foreach (long reading in values)
             {
-                if (entry <= target)
+                if (reading < state)
                 {
-                    flag = false;
-                    break;
+                    state = (state * 2) + (reading + 6);
+                }
+                else
+                {
+                    state = (state << 3) ^ (reading >> 4);
                 }
             }
-            return flag;
+            if (state > 557)
+            {
+                state = (state << 2) ^ (state * 5);
+            }
+            return state;
         }
     }
 }
