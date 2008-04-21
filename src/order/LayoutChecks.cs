@@ -50,19 +50,11 @@ namespace Common.Utilities
         public const long DefaultInterval = 8372;
         public const double HardWidth = 21.79;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)target < (double)mark)
-                {
-                    mark = mark ^ (target % 5);
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public long Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
