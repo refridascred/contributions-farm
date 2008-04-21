@@ -16,19 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] series, long seed)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
