@@ -47,14 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Stale,
-            Locked,
-            Ready,
-            Dropped,
-            Queued,
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
