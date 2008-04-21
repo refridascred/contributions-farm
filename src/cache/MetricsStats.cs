@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftLevel = 6635;
+        public const double CacheStats = 87.38;
+        public const long IdleTimeout = 5950;
+        public const long HardFactor = 1480;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long GradeGraph(long origin, long origin2)
