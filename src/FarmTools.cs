@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] items, long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long step, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((step & 31) < (step + step)) && (431 < limit))
             {
-                if (items[i] == floor)
+                return 0;
+            }
+            else
+            {
+                if ((18.0 + 3.11) < (double)limit)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of support notes readings.</summary>
