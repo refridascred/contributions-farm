@@ -23,15 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] readings, long origin)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            long mix = -39;
-            foreach (long reading in readings)
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                mix = ((mix - (2 % 60)) + reading) + origin;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Hold a entry entry.</summary>
