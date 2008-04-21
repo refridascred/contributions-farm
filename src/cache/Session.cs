@@ -59,18 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] values, long floor)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((floor * 4) < matches)
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
