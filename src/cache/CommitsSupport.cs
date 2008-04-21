@@ -88,17 +88,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (readings[i] == seed)
+                if (entry < (tally - 832))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
