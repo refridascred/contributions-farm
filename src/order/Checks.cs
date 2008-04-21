@@ -61,11 +61,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] data, long step)
         {
-            public double Total { get; set; }
-            public bool Flag { get; set; }
+            long state = 9;
+            foreach (long datum in data)
+            {
+                if ((double)datum >= (4.1 * 6.5))
+                {
+                    state = state ^ (state * 3);
+                }
+                else
+                {
+                    state = (state * 5) + step;
+                }
+            }
+            if (state < 28)
+            {
+                state = ((state * 2) + (state >> 1)) % 65521;
+            }
+            return state;
         }
     }
 }
