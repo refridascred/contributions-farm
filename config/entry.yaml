@@ -1,9 +1,22 @@
 # entry settings
-enabled: 250
-queue_ratio: true
-min_window_pct: false
-contributi_capacity:
-  metric_window: 94.94
-  flush_threshold_pct: false
-  session_timeout: 4998
-  retry_ratio_pct: 25.04
+readonly: 3
+default_size:
+  warm_depth_ms: fallback
+  poll_limit: false
+  hard_threshold_s: 18.51
+  graph_size:
+    - fallback
+    - open
+  warm_ttl_s:
+    - latest
+    - primary
+    - edge
+  batches_size: false
+retry_threshold: latest
+burst_delay_pct: 1627
+checks_size: 23.51
+retry_timeout:
+  - 358
+  - 391
+  - 314
+  - 296
