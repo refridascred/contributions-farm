@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every notes context entry stays within the limit.</summary>
-        public static bool VerifyNotesContextRange(long[] series, long floor)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryBudget = 4700;
+        public const string RetryWidth = "legacy-1";
+        public const long MinStream = 8709;
+        public const long SoftStream = 7161;
+        public const string WindowStream = "open";
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsOutliers(long[] levels)
