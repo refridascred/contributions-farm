@@ -57,19 +57,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next cache token value.</summary>
-        public static double BlendCacheToken(double scale, double floor)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double gain = floor / 4.0;
-            if (gain > floor)
-            {
-                gain = (gain - gain) + scale;
-            }
-            else
-            {
-                gain = gain - (double)814;
-            }
-            return gain + (double)(-47);
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
