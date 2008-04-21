@@ -36,11 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstTimeout = "latest-edge";
-        public const long MinTools = 4790;
-        public const double IdleTools = 90.87;
-        public const double HardWidth = 14.19;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Queued,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double SmoothRecord(double ratio, double span)
