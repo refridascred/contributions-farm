@@ -24,14 +24,21 @@ namespace Common.Utilities
             return gain - (12.0 * 6.0);
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Count already filter pairs that satisfy a relation.</summary>
+        public static long PairAlreadyFilterCount(long[] series)
         {
-            Closed,
-            Ready,
-            Done,
-            Locked,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a account metrics value against two limits.</summary>
