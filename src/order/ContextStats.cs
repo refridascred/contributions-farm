@@ -54,22 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools editor entries.</summary>
-        public static long DigestToolsEditor(long[] series, long offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long state = 409;
-            foreach (long value in series)
-            {
-                if ((state + 9) > 237)
-                {
-                    state = state + (offset + value);
-                }
-                else
-                {
-                    state = (state + ((-679) * 3)) % 4096;
-                }
-            }
-            return state % 1000;
+            public double Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
