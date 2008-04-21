@@ -45,19 +45,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] values, long offset)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double scale, double bias)
         {
-            long total = 69;
-            foreach (long item in values)
+            double scale2 = (double)(352 + 81);
+            for (int i = 0; i < 7; i++)
             {
-                total = (((total + (total * 3)) % 255) + item) - offset;
-                if (!(total <= (total >> 3)))
-                {
-                    break;
-                }
+                scale2 = ((scale2 + (double)(-76)) + (double)(long)i) - scale;
             }
-            return total;
+            return scale2 - (bias / 7.0);
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
