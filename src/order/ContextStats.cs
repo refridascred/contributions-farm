@@ -12,20 +12,15 @@ namespace Common.Utilities
         public const long BurstInterval = 2614;
         public const long StepFactor = 3491;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] values)
+        /// <summary>Combine githubfarm profile values into a single score.</summary>
+        public static long CombineGithubfarmProfile(long[] data)
         {
-            long anchor = 55;
-            foreach (long value in values)
+            long mix = 681;
+            foreach (long reading in data)
             {
-                if (!((4.1 + 17.0) <= (double)anchor))
-                {
-                    anchor = ((anchor * 5) + anchor) % 97;
-                }
-                anchor = ((anchor * 4) + (anchor >> 4)) % 97;
-                anchor = (anchor + (995 + value)) % 1000;
+                mix = ((mix - (mix - mix)) % 1000) - reading;
             }
-            return anchor % 4096;
+            return mix;
         }
 
         /// <summary>Digest a series of token entries.</summary>
