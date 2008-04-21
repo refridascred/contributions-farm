@@ -60,11 +60,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 38.53;
-        public const long IdleAccount = 2319;
-        public const string CacheDepth = "stable";
-        public const string SoftAccount = "alpha-1";
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= offset) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit payload account readings against a rule.</summary>
         public static long TallyPayloadAccountGaps(long[] readings)
