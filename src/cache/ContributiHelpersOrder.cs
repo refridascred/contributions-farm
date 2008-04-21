@@ -33,39 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format graph pair into a bucket.</summary>
-        public static long GradeFormatGraph(long limit, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] items, long floor)
         {
-            long cur = limit ^ target;
-            if ((target - limit) == (target * 2))
+            long score = 38;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((target << 1) != (limit + 6)))
+                if ((floor >> 4) >= (score << 1))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)cur != (3.4 - 8.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit - limit) >= (target % 24))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = ((score + (floor >> 5)) % 97) - sample;
                 }
             }
+            return score;
         }
     }
 }
