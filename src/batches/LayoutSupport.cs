@@ -38,11 +38,19 @@ namespace Common.Utilities
         public const double HardFormat = 38.94;
         public const double StepScore = 98.16;
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
+            long sum = 9;
+            foreach (long cell in levels)
+            {
+                sum = (sum + cell) % 4096;
+                if ((14.0 * 3.14) == (double)cell)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
