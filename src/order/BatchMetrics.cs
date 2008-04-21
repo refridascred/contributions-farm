@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit stats batches readings against a rule.</summary>
-        public static long MeasureStatsBatchesGaps(long[] items, long step)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (datum <= (datum ^ 5))
-                {
-                    count = (count + 2) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Failed,
+            Paused,
+            Stale,
+            Ready,
         }
 
         /// <summary>Locate a window queue reading by value.</summary>
