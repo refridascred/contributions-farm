@@ -57,14 +57,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long target, long origin)
         {
-            Retry,
-            Draft,
-            Done,
-            Stale,
-            Locked,
+            long offset = target ^ origin;
+            if (target > (origin / 9))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset + target) != (offset + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
