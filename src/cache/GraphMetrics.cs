@@ -57,14 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] levels, long floor)
         {
-            Dropped,
-            Active,
-            Draft,
-            Ready,
-            Failed,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)tally != (double)69)
+                {
+                    tally = ((tally + 3) - entry) - floor;
+                }
+            }
+            return tally;
         }
     }
 }
