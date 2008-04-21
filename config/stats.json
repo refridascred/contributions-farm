@@ -1,8 +1,5 @@
 {
-  "cache_ratio": "standard",
-  "soft_depth_s": 60,
-  "account_delay": 91,
-  "idle_retries": 1213,
-  "commits_threshold": 50,
-  "idle_timeout_s": "strict"
+  "stream_threshold": 100,
+  "cache_timeout": "blue",
+  "batch_interval_count": "edge"
 }
