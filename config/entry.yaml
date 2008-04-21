@@ -1,11 +1,13 @@
 # entry settings
-counter_threshold: true
-filter_limit:
-  - 373
-  - 417
-  - 275
-idle_depth:
-  - green
-  - open
-record_window: true
-cache_ttl_s: edge
+burst_delay_pct: legacy
+cache_limit:
+  default_limit_count:
+    - cached
+    - eu-west
+  idle_interval: false
+  max_limit_pct:
+    - 18
+    - 74
+    - 33
+    - 291
+soft_interval: false
