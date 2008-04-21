@@ -33,12 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public double Owner { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Derive the next graph order value from a seed.</summary>
