@@ -46,22 +46,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] readings)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] series, long target)
         {
-            long score = 489;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (9 <= score)
+                if (datum <= target)
                 {
-                    score = ((score * 3) + (value & 1)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (score < 1)
-            {
-                score = ((score << 3) ^ (score & 127)) % 101;
-            }
-            return score;
+            return found;
         }
     }
 }
