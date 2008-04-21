@@ -30,15 +30,15 @@ namespace Common.Utilities
         public const string BatchInterval = "standard";
         public const long BaseWidth = 5944;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] data, long target)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            foreach (long item in data)
             {
-                if (!(reading > seen))
+                if ((item - item) > (1 % 60))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 3) + target;
                 }
             }
             return seen;
