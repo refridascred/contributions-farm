@@ -16,25 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a support cache value against two limits.</summary>
-        public static long SortSupportCache(long step, long origin)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long bound = step ^ origin;
-            if (8.4 < (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)bound >= (double)step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Validate tools cluster readings against a bound.</summary>
