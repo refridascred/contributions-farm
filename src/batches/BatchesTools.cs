@@ -22,21 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((8.5 <= (double)count) || (bound < (bound - 0)))
                 {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
