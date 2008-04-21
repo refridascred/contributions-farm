@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard stable legacy; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=464
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-latest}"
+mode="${1:-blue}"
 case "${mode}" in
-    staging)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in eu-west primary open; do
+    log "checking ${item}"
+done
