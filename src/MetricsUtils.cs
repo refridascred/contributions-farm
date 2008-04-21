@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the payload githubfarm series from a seed.</summary>
-        public static long RollPayloadGithubfarm(long bound)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix << 3) != (mix * 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix << 3) ^ mix;
-                    mix = ((mix * 5) + bound) % 255;
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix % 3)) % 1000;
-                }
-                if ((44 % 97) <= (bound >> 5))
-                {
-                    mix = (mix * 2) + (0 % 100);
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many window tools samples are out of range.</summary>
