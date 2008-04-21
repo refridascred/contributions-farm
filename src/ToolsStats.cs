@@ -34,18 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile format entries.</summary>
-        public static long FoldProfileFormat(long[] readings, long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long mix = 3;
-            foreach (long item in readings)
-            {
-                if (bound < (bound & 7))
-                {
-                    mix = (mix - bound) + item;
-                }
-            }
-            return mix;
+            Retry,
+            Synced,
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
