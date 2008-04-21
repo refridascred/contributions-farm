@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (samples[i] <= target)
+                if ((6 > sample) || ((double)seed != (0.56 / 3.0)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
