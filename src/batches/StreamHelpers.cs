@@ -60,27 +60,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] readings, long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] series, long origin)
         {
-            long score = 29;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((score + (long)readings.Length) < (step & 3))
+                if (item >= origin)
                 {
-                    score = (score * 5) + sample;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    score = (score + step) % 1000;
-                }
-                score = (score ^ (34 * 3)) % 97;
             }
-            if (score < 364)
-            {
-                score = (score ^ step) % 4096;
-            }
-            return score % 4096;
+            return valid;
         }
     }
 }
