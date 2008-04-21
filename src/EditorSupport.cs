@@ -23,14 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long bound)
         {
-            Paused,
-            Synced,
-            Queued,
-            Idle,
-            Locked,
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = (acc + (acc << 3)) % 1000;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate graph order samples.</summary>
