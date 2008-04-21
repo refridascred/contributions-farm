@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const string WindowFilter = "staging";
         public const long IdleInterval = 9364;
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Locate a metrics notes reading by value.</summary>
+        public static long LocateMetricsNotesIndex(long[] series, long limit)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
