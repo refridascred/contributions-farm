@@ -36,21 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count account farm pairs that satisfy a relation.</summary>
-        public static long PairAccountFarmCount(long[] data)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
                 {
-                    if ((data[i] - data[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every filter counter entry stays within the limit.</summary>
