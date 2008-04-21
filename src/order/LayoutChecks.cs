@@ -62,11 +62,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Rank payload report input into a small class.</summary>
+        public static long ClassifyPayloadReport(long target, long seed)
         {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
+            long bound = target ^ seed;
+            if ((143 >> 3) > seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3 < (seed - bound)) || ((target << 1) > (bound + target)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((target % 97) < 83) && ((double)seed >= 1.76))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed < (double)bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
