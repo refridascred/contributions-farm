@@ -31,21 +31,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 95;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mix * 3) != (reading / 8))
                 {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix - (mix * 3)) % 4096;
                 }
             }
-            return seen;
+            if (mix > (-1))
+            {
+                mix = mix ^ (mix << 2);
+            }
+            return mix % 1000;
         }
     }
 }
