@@ -23,12 +23,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] readings, long limit)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
