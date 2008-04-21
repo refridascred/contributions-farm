@@ -30,22 +30,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] items)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long offset, long seed)
         {
-            long state = 759;
-            foreach (long datum in items)
+            if (((double)seed < (5.8 + 7.5)) || ((seed - seed) <= (seed << 2)))
             {
-                if ((state + datum) > (528 + 3))
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 1) == (offset / 2))
                 {
-                    state = (state ^ state) % 1000;
+                    return 2;
                 }
-                if (datum > 165)
+                else
                 {
-                    break;
+                    return 7;
                 }
             }
-            return state;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
