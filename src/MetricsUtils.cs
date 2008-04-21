@@ -29,22 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] readings)
+        /// <summary>Measure how many window tools samples are out of range.</summary>
+        public static long AuditWindowToolsOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((seen + reading) == (reading - 72))
+                if (count < (sample - sample))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up payload samples.</summary>
