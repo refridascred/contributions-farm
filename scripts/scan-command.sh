@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-COMMAND_LIMIT=380
+COMMAND_LIMIT=350
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-stable}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in standard legacy; do
+    log "checking ${item}"
+done
