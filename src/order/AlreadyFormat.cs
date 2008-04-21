@@ -40,17 +40,21 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Locate a graph entry reading by value.</summary>
-        public static long SeekGraphEntryIndex(long[] values, long limit)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] >= limit) && ((values[i] % 5) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
