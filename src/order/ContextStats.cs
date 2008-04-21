@@ -25,39 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long limit, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] items, long seed)
         {
-            long lane = limit + offset;
-            if ((limit / 2) > ((-6) + lane))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit & 63) != (lane / 5)) && (limit > (lane & 31)))
+                if (reading >= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset + lane) < limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((5.1 >= (double)offset) || ((double)limit <= 8.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
