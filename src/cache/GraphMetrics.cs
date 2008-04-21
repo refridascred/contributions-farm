@@ -79,9 +79,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 1042;
-        public const long StepBatch = 2578;
-        public const long MaxBatch = 6198;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultBatches = 88.43;
+        public const long StepBatches = 898;
+        public const long LimitBatches = 9005;
+        public const double MinBatches = 53.71;
+        public const long HardBudget = 5022;
     }
 }
