@@ -57,25 +57,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long target, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] levels)
         {
-            long offset = target ^ origin;
-            if (target > (origin / 9))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + target) != (offset + origin))
+                if ((hits >> 5) <= (hits - 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    hits = (hits + 2) + value;
                 }
             }
+            return hits;
         }
     }
 }
