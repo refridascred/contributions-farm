@@ -1,8 +1,6 @@
 {
-  "max_ttl_ms": false,
-  "warm_size_s": 10.02,
-  "strict": false,
-  "entry_window": ["latest", "cached"],
-  "readonly": "edge",
-  "base_size": [265, 492, 286, 191]
+  "retry_ratio_count": ["standard", "stable", "cached"],
+  "metric_size": 77.12,
+  "compress": "green",
+  "burst_delay_ms": [8, 202, 301, 95]
 }
