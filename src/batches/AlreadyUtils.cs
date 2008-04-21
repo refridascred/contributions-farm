@@ -48,9 +48,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftSize = 7548;
-        public const long SoftDepth = 7950;
-        public const long SoftFormat = 7792;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitDepth = 19.77;
+        public const long MaxCount = 2212;
+        public const long BaseScore = 3474;
+        public const long RetryBudget = 1328;
+        public const string MaxCounter = "cached-edge";
     }
 }
