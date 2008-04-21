@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] readings, long origin)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = 75;
+            foreach (long datum in readings)
+            {
+                if ((origin * 3) == (datum + datum))
+                {
+                    mark = (mark ^ (4 / 9)) % 255;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
