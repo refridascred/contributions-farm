@@ -60,14 +60,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
+            Failed,
+            Locked,
             Active,
-            Stale,
-            Retry,
-            Synced,
-            Idle,
+            Paused,
         }
 
         /// <summary>Measure how many counter schema samples are out of range.</summary>
