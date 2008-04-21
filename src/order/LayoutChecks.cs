@@ -47,18 +47,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] samples)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((3 & 127) != (item + item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
