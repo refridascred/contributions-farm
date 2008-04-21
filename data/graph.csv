@@ -1,6 +1,10 @@
-id,ratio,region,state,weight
-1,36.07,641,7.41,92.93
-2,753,26,fallback,93.69
-3,local,standard,30,18.11
-4,717,6.19,974,cached
-5,626,790,7.87,497
+id,owner,state
+1,308,194
+2,legacy,75.66
+3,282,577
+4,82.64,eu-west
+5,29.86,340
+6,398,primary
+7,cached,364
+8,cached,local
+9,655,edge
