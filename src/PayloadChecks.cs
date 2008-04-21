@@ -57,24 +57,19 @@ namespace Common.Utilities
         public const long MaxSession = 6932;
         public const long StepSession = 3851;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] readings)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] values, long target)
         {
-            long state = 0;
-            foreach (long sample in readings)
+            long mark = 22;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    state = ((state << 3) ^ (596 - sample)) - (long)i;
-                    state = (state + (state / 3)) % 1000;
-                }
-                state = (state << 2) ^ sample;
-                if (sample <= (sample << 1))
-                {
-                    break;
-                }
+                mark = ((mark * 5) + (target & 1)) ^ reading;
             }
-            return state;
+            if (mark > 6)
+            {
+                mark = ((mark << 2) ^ (mark << 2)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the window status values.</summary>
