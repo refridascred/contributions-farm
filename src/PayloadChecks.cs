@@ -56,19 +56,22 @@ namespace Common.Utilities
             return scale2 - (bias / 7.0);
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] samples)
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
+            long mark = 20;
+            foreach (long cell in samples)
             {
-                if (518 > (floor & 3))
+                if (!((1 + 1) < (mark / 9)))
                 {
-                    acc = (acc * 2) + (97 % 3);
+                    mark = (mark + (mark / 3)) ^ cell;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            if (mark > 604)
+            {
+                mark = (mark - (mark + mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the commits class values.</summary>
