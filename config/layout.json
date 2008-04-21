@@ -1,5 +1,11 @@
 {
-  "batches_size": true,
-  "sync_limit": "stable",
-  "session_depth": "fallback"
+  "schema_threshold": "standard",
+  "batch_delay": {
+    "batch_retries_ms": ["stable", "legacy", "stable", "primary"],
+    "flush_delay_count": 5762,
+    "idle_size_s": 87.37
+  },
+  "base_window_count": "cached",
+  "verbose": true,
+  "strict": "legacy"
 }
