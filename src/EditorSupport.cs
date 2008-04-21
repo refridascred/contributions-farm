@@ -13,21 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 701;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item > (target + target))
                 {
-                    if ((levels[i] + levels[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result << 2) ^ 85) % 1000;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
