@@ -14,13 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheBudget = 4708;
+        public const string MaxChannel = "strict-v2";
+        public const long BaseChannel = 6934;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LocatePayloadIndex(long[] data, long offset)
