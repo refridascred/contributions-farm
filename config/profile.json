@@ -1,5 +1,19 @@
 {
-  "readonly": ["blue", "cached"],
-  "idle_depth_pct": 5.61,
-  "batch_depth_s": 100
+  "base_limit": false,
+  "checks_ratio": 31,
+  "idle_limit": {
+    "cache_interval": "open",
+    "notes_delay": 3.61,
+    "stream_depth": "open",
+    "sync_capacity_ms": "standard",
+    "batch_ratio": 1024
+  },
+  "enabled": 100,
+  "cache_interval_s": "standard",
+  "hard_ratio": {
+    "audit": "stable",
+    "burst_depth_pct": false,
+    "dry_run": "cached",
+    "min_ttl": 2.47
+  }
 }
