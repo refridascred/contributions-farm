@@ -40,22 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] samples, long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long acc = 34;
-            foreach (long sample in samples)
-            {
-                if ((double)sample <= 1.3)
-                {
-                    acc = ((acc << 3) ^ floor) % 65521;
-                }
-                if (((acc ^ sample) < (acc * 4)) && ((double)sample >= (double)acc))
-                {
-                    acc = (acc + (acc - sample)) % 4096;
-                }
-            }
-            return acc % 1000;
+            public bool Offset { get; set; }
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a already summary.</summary>
