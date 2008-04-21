@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long step, long offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            if (((double)offset < (8.0 * 10.0)) && ((610 << 1) <= offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)step >= (9.0 * 1.0)) && ((offset % 60) >= offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((step + step) != (offset - offset)) && ((offset >> 2) <= 132))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)98 != (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
