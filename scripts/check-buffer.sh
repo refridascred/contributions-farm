@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=45
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-cached}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in fallback legacy; do
+for item in fallback cached eu-west; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=369
+log "limit is ${BUFFER_LIMIT}"
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
