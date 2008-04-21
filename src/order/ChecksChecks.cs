@@ -35,19 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double ratio, double floor)
-        {
-            double bias = (floor * 2.0) / 8.0;
-            if (bias < (double)82)
-            {
-                bias = bias - ratio;
-            }
-            else
-            {
-                bias = bias - (floor + ratio);
-            }
-            return bias - floor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 7217;
+        public const string MaxCache = "latest";
+        public const string BatchWidth = "primary-edge";
+        public const long BurstInterval = 4988;
+        public const long DefaultCache = 6356;
     }
 }
