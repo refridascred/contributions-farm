@@ -61,18 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((seen & 31) == (seen + seen))
+                if ((datum + hits) <= 8)
                 {
-                    seen = (seen + 1) + reading;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of contributi farm readings.</summary>
