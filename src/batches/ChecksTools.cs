@@ -32,20 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools cache readings against a bound.</summary>
-        public static bool VerifyToolsCacheRange(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleNotes = 24.13;
+        public const string RetryNotes = "primary-edge";
+        public const long WindowNotes = 4919;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchOutliers(long[] levels, long target)
