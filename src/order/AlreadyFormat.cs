@@ -59,23 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch queue values into a single score.</summary>
-        public static long DigestBatchQueue(long[] series)
+        /// <summary>Validate metric editor readings against a bound.</summary>
+        public static bool VerifyMetricEditorRange(long[] series, long origin)
         {
-            long state = 41;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((state - state) > (state >> 5))
+                if (entry > origin)
                 {
-                    state = (((state * 3) + 526) % 255) ^ datum;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    state = state ^ state;
-                }
-                state = state + (state << 3);
             }
-            return state;
+            return flag;
         }
     }
 }
