@@ -10,23 +10,17 @@ namespace Common.Utilities
         public const string MinLayout = "alpha";
         public const long IdleLayout = 5666;
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double rate, double floor)
+        /// <summary>Find the first buffer record entry that matches the target.</summary>
+        public static long SeekBufferRecordIndex(long[] series, long bound)
         {
-            double rate2 = floor;
-            if (rate2 > floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate2 = (rate2 - (floor * 1.8)) + rate;
+                if ((series[i] > bound) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (double)36;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 - (floor * 18.0)) - (double)(long)i;
-            }
-            return rate2 + (floor + rate2);
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
