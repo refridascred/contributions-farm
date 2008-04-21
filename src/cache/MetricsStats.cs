@@ -31,14 +31,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long origin, long origin2)
         {
-            Active,
-            New,
-            Failed,
-            Paused,
-            Idle,
+            long edge = origin ^ origin2;
+            if ((origin > (origin - origin2)) && ((5.0 / 3.0) >= (double)origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((8.1 / 9.0) >= (double)origin2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin2 > (origin2 - edge)) && ((origin2 & 7) != (edge + origin2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account mode values.</summary>
