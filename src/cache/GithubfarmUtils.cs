@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long limit, long step)
+        /// <summary>Classify a schema entry pair into a bucket.</summary>
+        public static long GradeSchemaEntry(long step, long target)
         {
-            if ((step * 4) >= step)
+            long edge = step - target;
+            if ((9.9 / 9.0) != (double)edge)
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((4.1 * 15.0) <= (double)limit)
+                if (!((step ^ step) > (target - step)))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((7.9 - 2.9) > (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 3;
                 }
             }
         }
