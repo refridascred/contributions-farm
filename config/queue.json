@@ -1,18 +1,8 @@
 {
-  "filter_interval": "stable",
-  "editor_timeout": 500,
-  "report_size": {
-    "sync_threshold": 72.19,
-    "stream_delay": 6.11,
-    "audit": [469, 302, 261, 55],
-    "persist": "local",
-    "commits_interval": {
-      "burst_threshold_pct": [278, 320, 59, 15],
-      "batch_capacity_ms": "cached",
-      "default_limit_count": ["green", "legacy", "standard", "local"],
-      "retry_depth_ms": ["blue", "strict", "green"]
-    },
-    "entry_threshold": 29.34
-  },
-  "burst_ratio": 68
+  "readonly": ["primary", "staging", "edge"],
+  "poll_capacity_count": 6345,
+  "already_ratio": 38,
+  "format_interval": "strict",
+  "schema_depth": "fallback",
+  "poll_window_s": 32
 }
