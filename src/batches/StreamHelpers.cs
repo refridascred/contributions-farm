@@ -21,18 +21,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] readings)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((16.0 / 6.0) > (double)hits)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
