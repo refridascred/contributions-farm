@@ -1,13 +1,8 @@
 # entry settings
-default_interval: 100
-editor_depth: 68.74
-base_size:
-  - 171
-  - 10
-batch_limit_ms: 68
-poll_retries_ms: cached
-farm_window:
-  - blue
-  - green
-  - primary
-  - standard
+persist: fallback
+retry_depth_pct:
+  - 116
+  - 123
+order_size: 60.78
+enabled: 9290
+min_ratio: 8.3
