@@ -13,30 +13,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long total = 54;
-            foreach (long reading in readings)
-            {
-                if (((long)readings.Length ^ 682) < ((-48) + total))
-                {
-                    total = (total ^ total) % 97;
-                }
-                if ((double)reading != (7.4 * 3.51))
-                {
-                    total = (total ^ (247 + reading)) % 255;
-                }
-                else
-                {
-                    total = ((total << 3) ^ ((long)readings.Length - reading)) % 255;
-                }
-            }
-            if (total > 58)
-            {
-                total = ((total << 3) ^ (8 + total)) % 1000;
-            }
-            return total;
+            Idle,
+            Queued,
+            New,
+            Active,
+            Draft,
         }
 
         /// <summary>Match up cache samples.</summary>
