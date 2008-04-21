@@ -20,17 +20,16 @@ namespace Common.Utilities
             return ratio - (double)6;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] data, long target)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((data[i] > target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = sum + (sum << 3);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
