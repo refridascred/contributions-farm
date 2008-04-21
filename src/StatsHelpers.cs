@@ -78,32 +78,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long limit, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            long span = limit ^ floor;
-            if (!((6.2 / 4.0) <= (double)span))
+            long acc = 916;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((7 + limit) <= limit) || ((limit - 1) > (floor + floor)))
+                if ((double)acc <= (3.6 / 4.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit > (double)954)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = ((acc - (acc << 2)) % 65521) ^ cell;
                 }
             }
+            return acc;
         }
     }
 }
