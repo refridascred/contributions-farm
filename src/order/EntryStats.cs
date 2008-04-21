@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double weight, double bias)
-        {
-            double mean = bias;
-            if (mean <= (double)62)
-            {
-                mean = (mean - mean) - weight;
-            }
-            return mean - (double)861;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 18.78;
+        public const double BurstSpan = 46.27;
+        public const long LimitLevel = 59;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
