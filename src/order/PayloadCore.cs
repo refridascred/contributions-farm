@@ -13,13 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Match up farm payload samples.</summary>
+        public static long CompareFarmPayloadCount(long[] data)
         {
-            Idle,
-            Dropped,
-            Retry,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
