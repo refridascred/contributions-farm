@@ -48,39 +48,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long limit, long floor)
-        {
-            if ((limit + floor) == (floor / 9))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(limit >= (5 + floor)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((9.3 / 5.0) != (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((6 + floor) < (floor * 4)) && ((floor / 6) >= limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 2740;
+        public const long MaxCount = 9919;
+        public const double LimitTimeout = 38.66;
+        public const long CacheBudget = 2413;
+        public const double LimitLevel = 94.9;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long GradeLayout(long limit, long floor)
