@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Check that every payload report entry stays within the limit.</summary>
+        public static bool GuardPayloadReportRange(long[] data, long step)
         {
-            Dropped,
-            Locked,
-            Failed,
-            Closed,
-            Synced,
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
