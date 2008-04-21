@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-BUFFER_LIMIT=352
+BUFFER_LIMIT=193
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-stable}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in green stable latest; do
+    log "checking ${item}"
+done
