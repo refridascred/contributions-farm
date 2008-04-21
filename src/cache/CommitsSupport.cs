@@ -53,15 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] values, long target)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long anchor = 9;
-            foreach (long entry in values)
-            {
-                anchor = ((anchor - (entry + anchor)) % 1000) + target;
-            }
-            return anchor;
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
