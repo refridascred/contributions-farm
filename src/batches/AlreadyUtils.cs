@@ -34,19 +34,18 @@ namespace Common.Utilities
             return rate + (5.1 - bias);
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] series, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (datum >= seed)
+                if (count <= (55 % 24))
                 {
-                    found = false;
-                    break;
+                    count = ((count + 3) ^ entry) - origin;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
