@@ -14,20 +14,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long origin)
+        /// <summary>Iterate the cache route series from a seed.</summary>
+        public static long RollCacheRoute(long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            long score = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = ((mix * 2) + (origin ^ origin)) ^ (long)i2;
-                }
-                mix = (mix ^ (origin ^ origin)) % 4096;
-                mix = ((mix * 5) + (long)i) % 65521;
+                score = (score * 2) + (-193);
+                score = ((score * 2) + (7 - (long)i)) % 255;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Accumulate order counter samples.</summary>
