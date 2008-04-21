@@ -52,12 +52,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 7309;
-        public const double MaxWidth = 17.6;
-        public const string BurstLayout = "strict-v2";
-        public const long BurstLevel = 5593;
-        public const long MinLayout = 7272;
+        /// <summary>Check that every filter counter entry stays within the limit.</summary>
+        public static bool ValidateFilterCounterRange(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
