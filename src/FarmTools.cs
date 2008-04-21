@@ -40,13 +40,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
             Ready,
-            Queued,
-            Draft,
             Paused,
+            Failed,
+            Done,
+            Stale,
         }
     }
 }
