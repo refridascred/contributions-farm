@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] values, long target)
+        /// <summary>Locate a graph counter reading by value.</summary>
+        public static long LocateGraphCounterIndex(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] >= target) && ((values[i] % 3) == 0))
+                if ((items[i] > step) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
