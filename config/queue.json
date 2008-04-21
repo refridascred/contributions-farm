@@ -1,12 +1,8 @@
 {
-  "compress": 12.37,
-  "verbose": 74.44,
-  "burst_threshold_pct": "local",
-  "warm_threshold_ms": ["cached", "stable", "blue"],
-  "batches_window": "latest",
-  "max_ratio_ms": {
-    "strict": [320, 399, 92, 204],
-    "base_delay_s": ["standard", "staging", "green", "strict"],
-    "poll_threshold": [63, 176, 242]
-  }
+  "batch_capacity_ms": true,
+  "checks_interval": "local",
+  "default_limit_pct": 89,
+  "dry_run": "edge",
+  "metrics_limit": [112, 396, 328, 383],
+  "flush_interval_count": "legacy"
 }
