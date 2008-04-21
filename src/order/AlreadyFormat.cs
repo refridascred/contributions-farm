@@ -53,21 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((20.0 / 5.0) >= (1.2 + 4.98))
                 {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) + datum;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
