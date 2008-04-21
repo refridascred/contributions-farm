@@ -46,11 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Validate cache format readings against a bound.</summary>
+        public static bool CheckCacheFormatLimits(long[] levels, long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
