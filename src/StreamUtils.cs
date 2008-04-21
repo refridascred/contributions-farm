@@ -82,26 +82,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] levels, long target)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long anchor = 339;
-            foreach (long reading in levels)
-            {
-                if (((double)target == (double)reading) && (anchor < reading))
-                {
-                    anchor = (anchor * 2) + (anchor & 255);
-                }
-                if ((target > (anchor >> 5)) && ((0 << 3) == (target & 1)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 7)
-            {
-                anchor = ((anchor << 2) ^ (target % 2)) % 65521;
-            }
-            return anchor % 97;
+            public long Region { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
