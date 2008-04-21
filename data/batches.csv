@@ -1,11 +1,6 @@
-id,owner,token
-1,92.26,2.18
-2,81.3,543
-3,687,staging
-4,759,78.89
-5,69.75,188
-6,84.8,standard
-7,193,92.95
-8,97.98,27.66
-9,624,856
-10,local,983
+id,state,level
+1,51.51,358
+2,cached,open
+3,708,strict
+4,15,27.5
+5,legacy,green
