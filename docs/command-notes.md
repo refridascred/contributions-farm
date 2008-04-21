@@ -1,12 +1,10 @@
 # Command notes
 
-Keep support and checks names short and lowercase.
-Use schema settings to tune how often batch data is refreshed.
-When a graph fails, the token handler retries a few times before giving up.
+The farm helpers are pure functions, so they are safe to call from any thread.
+The order report groups every profile by batches.
 
 ## Guidelines
 
-- Log every report change
-- Validate farm input early
-- Review context limits each release
-- Document new layout fields
+- Document new account fields
+- Validate support input early
+- Log every entry change
