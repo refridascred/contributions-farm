@@ -66,19 +66,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] samples, long offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
