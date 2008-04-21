@@ -1,8 +1,8 @@
 {
-  "flush_capacity": "open",
-  "poll_interval_pct": 2226,
-  "burst_capacity": [377, 77, 195, 221],
-  "strict": [220, 242, 395, 12],
-  "poll_depth_s": "primary",
-  "cluster_size": 74.92
+  "max_ttl_ms": false,
+  "warm_size_s": 10.02,
+  "strict": false,
+  "entry_window": ["latest", "cached"],
+  "readonly": "edge",
+  "base_size": [265, 492, 286, 191]
 }
