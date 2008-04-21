@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] levels, long limit)
+        /// <summary>Digest a series of githubfarm report entries.</summary>
+        public static long FoldGithubfarmReport(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long total = 77;
+            foreach (long cell in values)
             {
-                if ((matches / 2) <= (limit + entry))
+                if (((7.77 / 8.0) < (double)total) && ((4 + total) == (cell - cell)))
                 {
-                    matches = matches + 2;
+                    break;
                 }
-                else
+                if ((cell << 3) <= (cell - 8))
                 {
-                    matches = matches - 1;
+                    total = ((total << 2) ^ (offset & 255)) % 4096;
                 }
             }
-            return matches;
+            return total % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
