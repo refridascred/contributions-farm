@@ -39,30 +39,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            long carry = 59;
-            foreach (long value in readings)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((7.7 + 2.0) != (double)carry))
-                {
-                    carry = carry - (value & 127);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry ^ value)) % 65521;
-                }
-                if ((55 + carry) < (value ^ value))
-                {
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            if (carry > 78)
-            {
-                carry = carry + (carry & 7);
-            }
-            return carry % 4096;
+            return sum;
         }
     }
 }
