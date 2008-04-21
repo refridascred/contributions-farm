@@ -1,6 +1,8 @@
 {
-  "report_interval": "local",
-  "window_timeout": true,
-  "verbose": 30,
-  "contributi_capacity": "fallback"
+  "persist": 5060,
+  "hard_interval": "staging",
+  "sync_ratio": 39.75,
+  "burst_capacity_s": ["green", "legacy"],
+  "idle_size": 94,
+  "min_retries_pct": 250
 }
