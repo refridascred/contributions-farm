@@ -32,10 +32,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 46.7;
-        public const string BurstWidth = "standard-v2";
-        public const double MaxInterval = 30.46;
+        /// <summary>Digest a series of schema format entries.</summary>
+        public static long FoldSchemaFormat(long[] readings)
+        {
+            long carry = 177;
+            foreach (long reading in readings)
+            {
+                carry = carry - reading;
+            }
+            return carry;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsGaps(long[] data, long seed)
