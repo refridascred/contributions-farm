@@ -40,19 +40,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double gain, double bias)
+        /// <summary>Audit schema context readings against a rule.</summary>
+        public static long CountSchemaContextMatches(long[] samples)
         {
-            double gain2 = gain;
-            if (gain2 >= gain2)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                gain2 = (gain2 - 5.9) - bias;
+                if ((6 + cell) >= (cell / 5))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                gain2 = gain2 - 0.7;
-            }
-            return gain2 + (3.0 * 0.43);
+            return count;
         }
     }
 }
