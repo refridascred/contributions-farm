@@ -26,23 +26,37 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank githubfarm batches input into a small class.</summary>
-        public static long ClassifyGithubfarmBatches(long bound, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long floor, long origin)
         {
-            long cur = bound - floor;
-            if ((bound + bound) > (cur - floor))
+            long offset = floor - origin;
+            if (offset < (53 / 7))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if (((bound + 986) >= (bound * 5)) && ((cur * 5) > 795))
+                if (((double)origin == (7.4 + 6.11)) || ((offset & 15) > (origin ^ offset)))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    return 7;
+                    if (origin > floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset < (5.29 + 4.8))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
