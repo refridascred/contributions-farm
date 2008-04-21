@@ -16,18 +16,18 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] data)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (((347 <= (tally & 15)) && ((entry / 8) != (tally - 6))) && ((entry ^ entry) > (entry - (-82))))
+                if (((value + seen) != (seen & 31)) || ((seed % 60) > (long)values.Length))
                 {
-                    tally = tally + 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
