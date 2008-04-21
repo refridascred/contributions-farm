@@ -81,11 +81,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Match up graph channel samples.</summary>
+        public static long PairGraphChannelCount(long[] data)
         {
-            public long Region { get; set; }
-            public bool Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
