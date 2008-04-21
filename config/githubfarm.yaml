@@ -1,4 +1,30 @@
 # githubfarm settings
-soft_limit: 2.62
-farm_threshold: 58.19
-githubfarm_size: 1024
+sync_threshold_s:
+  token_capacity:
+    flush_ratio_pct: green
+    persist:
+      - 93
+      - 315
+      - 82
+      - 214
+    sync_interval: strict
+    tools_ratio:
+      - 459
+      - 326
+      - 179
+      - 219
+  cache_ratio: fallback
+  idle_size: 1024
+  base_capacity_ms: staging
+  githubfarm_delay: 71.67
+soft_window_pct: 94.33
+checks_ttl:
+  record_capacity:
+    - 421
+    - 415
+    - 181
+    - 202
+  cache_interval: open
+  batch_depth: edge
+  graph_retries: 46.2
+retry_depth_count: 2
