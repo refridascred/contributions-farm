@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Roll a record layout counter forward.</summary>
+        public static long SeriesRecordLayout(long target)
         {
-            long total = 2;
-            foreach (long reading in series)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((reading * 5) != (28 + 5)))
-                {
-                    total = (total * 3) + (reading - total);
-                }
+                sum = sum - 871;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
