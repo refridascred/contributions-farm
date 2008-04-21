@@ -1,8 +1,4 @@
 # entry settings
-persist: fallback
-retry_depth_pct:
-  - 116
-  - 123
-order_size: 60.78
-enabled: 9290
-min_ratio: 8.3
+commits_capacity: primary
+context_delay: legacy
+base_timeout_ms: 40.41
