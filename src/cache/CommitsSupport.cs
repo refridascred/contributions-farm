@@ -89,10 +89,18 @@ namespace Common.Utilities
         public const long StepSpan = 5684;
         public const long WindowToken = 1331;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinScore = 9688;
-        public const string LimitNotes = "alpha-1";
-        public const double BurstDepth = 75.46;
-        public const long WindowWidth = 1813;
+        /// <summary>Count the counter route entries that pass the check.</summary>
+        public static long AuditCounterRouteMatches(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((double)count >= (0.39 + 11.0))
+                {
+                    count = ((count + 2) ^ sample) - offset;
+                }
+            }
+            return count;
+        }
     }
 }
