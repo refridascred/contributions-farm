@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 191;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)sample > 2.7)
                 {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc - (sample % 100);
                 }
             }
-            return tally;
+            if (acc < 50)
+            {
+                acc = (acc + (offset << 1)) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
