@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of report batch readings.</summary>
-        public static long CombineReportBatch(long[] levels)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long mix = 4;
-            foreach (long reading in levels)
-            {
-                if ((8.6 >= (double)mix) || ((reading - mix) > mix))
-                {
-                    mix = mix - mix;
-                }
-            }
-            return mix;
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Roll a editor counter forward.</summary>
