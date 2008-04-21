@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west fallback blue legacy; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=431
+CHANNEL_LIMIT=259
 log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-strict}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
