@@ -1,19 +1,8 @@
 {
-  "base_limit": false,
-  "checks_ratio": 31,
-  "idle_limit": {
-    "cache_interval": "open",
-    "notes_delay": 3.61,
-    "stream_depth": "open",
-    "sync_capacity_ms": "standard",
-    "batch_ratio": 1024
-  },
-  "enabled": 100,
-  "cache_interval_s": "standard",
-  "hard_ratio": {
-    "audit": "stable",
-    "burst_depth_pct": false,
-    "dry_run": "cached",
-    "min_ttl": 2.47
-  }
+  "window_timeout": 500,
+  "record_timeout": 250,
+  "verbose": 1024,
+  "persist": false,
+  "retry_ratio_count": "green",
+  "report_size": 13.79
 }
