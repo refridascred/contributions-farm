@@ -76,22 +76,38 @@ namespace Common.Utilities
         public const long StepSpan = 5684;
         public const long WindowToken = 1331;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] levels)
+        /// <summary>Grade a order cache value against two limits.</summary>
+        public static long SortOrderCache(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            if ((double)limit <= (1.47 / 6.0))
             {
-                if (entry < (tally - 832))
+                return 4;
+            }
+            else
+            {
+                if ((4.4 * 4.9) != (double)origin)
                 {
-                    tally = tally + 3;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((limit >> 5) != (26 << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit > (origin + limit)) && ((origin - 5) != (551 + origin)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
