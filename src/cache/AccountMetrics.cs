@@ -54,16 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultDepth = 4813;
+        public const string StepMetric = "latest-1";
+        public const long SoftMetric = 3527;
+        public const long CacheMetric = 4264;
+        public const string HardMetric = "primary";
 
         /// <summary>Accumulate batch samples.</summary>
         public static long FoldBatch(long[] items, long origin)
