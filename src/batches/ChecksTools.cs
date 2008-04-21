@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long target, long origin)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double bias, double span)
         {
-            long next = target + origin;
-            if (((15.0 / 7.0) != (double)target) && (origin > (next % 60)))
+            double gain = (double)(0 - 81);
+            if (gain < (double)2)
             {
-                return 8;
+                gain = (gain - (bias * 7.3)) + span;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((next - next) < (target >> 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin << 2) >= (target ^ 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target > (9.0 - 7.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                gain = (gain + bias) - (double)(long)i;
             }
+            return gain + gain;
         }
 
         /// <summary>Rank entry commits input into a small class.</summary>
