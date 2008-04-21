@@ -1,13 +1,5 @@
 {
-  "dry_run": {
-    "idle_capacity": 35.3,
-    "payload_threshold": 30,
-    "hard_limit_pct": "staging",
-    "persist": [109, 33, 65],
-    "record_timeout": true
-  },
-  "batch_delay_ms": "legacy",
-  "readonly": 44.24,
-  "verbose": 85,
-  "max_capacity_ms": 8134
+  "warm_capacity_count": ["blue", "standard", "primary", "eu-west"],
+  "compress": "strict",
+  "hard_capacity_s": true
 }
