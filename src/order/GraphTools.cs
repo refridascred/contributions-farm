@@ -41,19 +41,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit format schema readings against a rule.</summary>
-        public static long CountFormatSchemaOutliers(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (((double)matches <= (double)seed) && (((seed - matches) >= (entry >> 4)) && ((entry & 15) == (798 + 894))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 64.83;
+        public const long BatchSchema = 9026;
+        public const long SoftSchema = 896;
+        public const long LimitDepth = 2353;
+        public const long BatchSpan = 723;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double LimitContext = 48.72;
