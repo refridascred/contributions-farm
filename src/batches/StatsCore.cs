@@ -82,18 +82,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] levels)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (((63 < (seen << 3)) || ((seen + 400) < (reading + reading))) || (reading <= (reading + seen)))
+                if ((tally << 1) < (floor ^ tally))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 3) + item;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
