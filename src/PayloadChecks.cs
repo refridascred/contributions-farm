@@ -47,12 +47,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long offset, long target)
         {
-            public double Level { get; set; }
-            public double Region { get; set; }
-            public double Label { get; set; }
+            long lane = offset ^ target;
+            if (!((0 - target) != (offset + target)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((offset - 9) >= (9 & 7)) || ((offset + lane) > offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset ^ target) != (target % 100))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of format entries.</summary>
