@@ -48,25 +48,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a entry queue pair into a bucket.</summary>
-        public static long RankEntryQueue(long bound, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] values, long floor)
         {
-            long step = bound ^ origin;
-            if (((double)step < (5.7 * 3.7)) && ((step ^ step) >= 55))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound / 2) > bound)
+                if ((((entry * 5) <= floor) && (count > (entry + count))) || (((entry * 2) > ((-13) + entry)) && ((entry + entry) < ((-17) / 5))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
