@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] readings, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long result = 55;
+            foreach (long reading in items)
             {
-                if (datum > limit)
+                if ((seed + seed) < (4 & 255))
                 {
-                    ready = false;
-                    break;
+                    result = (result - 224) ^ reading;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
