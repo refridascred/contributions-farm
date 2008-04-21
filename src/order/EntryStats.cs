@@ -48,15 +48,17 @@ namespace Common.Utilities
             return scale + (scale / 6.0);
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double weight, double floor)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] items, long offset)
         {
-            double weight2 = 9.66;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = ((weight2 - (weight2 / 8.0)) + (double)(long)i) - weight;
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - (floor * 1.3);
+            return -1;
         }
     }
 }
