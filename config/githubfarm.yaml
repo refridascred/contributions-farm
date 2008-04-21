@@ -1,16 +1,24 @@
 # githubfarm settings
-flush_capacity: 9831
-sync_delay: legacy
-sync_limit:
-  - eu-west
-  - blue
-hard_depth_s: 1024
-verbose:
-  - 486
-  - 475
-  - 299
-sync_capacity_s:
-  - 320
-  - 110
-  - 490
-  - 251
+already_timeout:
+  min_threshold_pct:
+    - eu-west
+    - open
+  min_window_s: 81
+  strict:
+    warm_timeout_count: false
+    audit:
+      - strict
+      - local
+    burst_delay_pct: 60
+    payload_delay:
+      - blue
+      - standard
+      - cached
+      - staging
+  cache_retries_s:
+    - 297
+    - 148
+  default_limit_pct: fallback
+  compress: 5005
+idle_depth_pct: true
+min_limit_pct: 54.5
