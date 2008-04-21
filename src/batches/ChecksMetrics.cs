@@ -60,12 +60,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
+            Pending,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
