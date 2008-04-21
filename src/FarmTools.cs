@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long step, long limit)
+        /// <summary>Count route metrics pairs that satisfy a relation.</summary>
+        public static long OverlapRouteMetricsCount(long[] readings)
         {
-            if (((step & 31) < (step + step)) && (431 < limit))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((18.0 + 3.11) < (double)limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    if ((readings[i] ^ readings[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
