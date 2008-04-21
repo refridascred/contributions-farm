@@ -16,18 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] items, long offset)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((offset & 1) > (sample >> 1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Done,
+            Queued,
+            Synced,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a format info.</summary>
