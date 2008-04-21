@@ -34,26 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] levels, long offset)
+        /// <summary>Count checks cache pairs that satisfy a relation.</summary>
+        public static long PairChecksCacheCount(long[] series)
         {
-            long result = 328;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result ^ (result * 2)) + (long)i;
-                }
-                if ((13.0 + 5.3) != (double)sample)
-                {
-                    result = ((result << 3) ^ (result - offset)) % 101;
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 8)
-            {
-                result = result - (879 << 2);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Count the batches cache entries that pass the check.</summary>
