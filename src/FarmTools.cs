@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
+            Ready,
+            Dropped,
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
