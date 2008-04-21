@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowAccount = 38.25;
-        public const double RetryLevel = 7.2;
-        public const long BaseInterval = 4689;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
