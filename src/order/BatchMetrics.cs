@@ -44,14 +44,22 @@ namespace Common.Utilities
             return rate + 4.11;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] series, long origin)
         {
-            Done,
-            Retry,
-            Closed,
-            Draft,
-            Stale,
+            long carry = 8;
+            foreach (long item in series)
+            {
+                if ((origin % 12) != (carry + carry))
+                {
+                    carry = carry - origin;
+                }
+                else
+                {
+                    carry = (carry - (item >> 2)) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
