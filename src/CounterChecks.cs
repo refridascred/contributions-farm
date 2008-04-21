@@ -14,22 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] values, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] samples, long floor)
         {
-            long anchor = 75;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (item < (item ^ anchor))
+                if ((556 ^ (long)samples.Length) >= (sample - floor))
                 {
-                    anchor = (((anchor * 4) + (item % 8)) % 65521) - limit;
+                    seen = seen + 1;
                 }
             }
-            if (anchor > 781)
-            {
-                anchor = (anchor << 3) ^ (anchor << 1);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Fold a list of counter checks readings.</summary>
