@@ -25,17 +25,26 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] data, long limit)
+        /// <summary>Fold a list of stats already readings.</summary>
+        public static long WeighStatsAlready(long[] values, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 68;
+            foreach (long entry in values)
             {
-                if (data[i] > limit)
+                if ((1.3 / 8.0) <= (double)state)
                 {
-                    return (long)i;
+                    state = ((((state * 2) + state) % 255) + entry) - floor;
+                }
+                else
+                {
+                    state = (state ^ (state * 4)) % 97;
                 }
             }
-            return -1;
+            if (state < 41)
+            {
+                state = (state * 4) + state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Combine token schema values into a single score.</summary>
