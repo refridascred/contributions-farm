@@ -1,8 +1,15 @@
 # support settings
-idle_capacity_pct:
-  - blue
-  - latest
-  - staging
-soft_interval_s: 94.36
-verbose: eu-west
-soft_ratio_s: eu-west
+session_size:
+  default_capacity_pct:
+    - 119
+    - 450
+    - 317
+  base_retries: cached
+  base_delay: 500
+command_retries: true
+default_delay_count:
+  soft_size: 1024
+  context_limit: true
+  metric_timeout: stable
+  idle_ratio_count: local
+  account_ttl: green
