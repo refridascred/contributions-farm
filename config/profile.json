@@ -1,5 +1,13 @@
 {
-  "compress": true,
-  "base_interval_s": 90.0,
-  "persist": 1024
+  "default_limit": "legacy",
+  "base_threshold_s": false,
+  "hard_limit_count": "green",
+  "batch_threshold_count": {
+    "strict": true,
+    "sync_size_count": "stable",
+    "cache_timeout_s": "local",
+    "poll_timeout": ["fallback", "eu-west"]
+  },
+  "batch_window": 100,
+  "retry_timeout_s": 71.31
 }
