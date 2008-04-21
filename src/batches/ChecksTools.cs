@@ -32,10 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleNotes = 24.13;
-        public const string RetryNotes = "primary-edge";
-        public const long WindowNotes = 4919;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] series, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((floor - floor) <= (floor ^ seen))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchOutliers(long[] levels, long target)
