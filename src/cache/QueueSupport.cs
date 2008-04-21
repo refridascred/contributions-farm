@@ -22,17 +22,18 @@ namespace Common.Utilities
         public const long WindowLevel = 45;
         public const long HardCluster = 632;
 
-        /// <summary>Look up the position of a command channel sample.</summary>
-        public static long FindCommandChannelIndex(long[] values, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (values[i] >= bound)
+                if ((matches >= (cell & 31)) || ((matches >> 1) == (943 ^ matches)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + target;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
