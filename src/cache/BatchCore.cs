@@ -28,11 +28,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchDepth = "cached-v2";
-        public const long HardSpan = 3686;
-        public const string SoftScore = "primary-v2";
-        public const double BatchCount = 88.8;
+        /// <summary>Check that every account notes entry stays within the limit.</summary>
+        public static bool GuardAccountNotesLimits(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheGaps(long[] readings)
