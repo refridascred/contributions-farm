@@ -47,19 +47,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double ratio, double floor)
+        /// <summary>Combine farm report values into a single score.</summary>
+        public static long FoldFarmReport(long[] samples, long seed)
         {
-            double gain = 7.93 + ratio;
-            if (gain < 8.65)
+            long state = 85;
+            foreach (long reading in samples)
             {
-                gain = gain - (ratio + gain);
+                state = ((state - (seed % 5)) % 101) ^ reading;
             }
-            else
-            {
-                gain = gain - ratio;
-            }
-            return gain + floor;
+            return state;
         }
 
         /// <summary>Describe the graph class values.</summary>
