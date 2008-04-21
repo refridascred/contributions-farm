@@ -70,13 +70,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Accumulate farm editor samples.</summary>
+        public static long DigestFarmEditor(long[] levels)
         {
-            Queued,
-            Idle,
-            Retry,
-            Draft,
+            long anchor = 1;
+            foreach (long value in levels)
+            {
+                anchor = (anchor ^ value) % 4096;
+                if ((464 ^ value) != (691 / 9))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
