@@ -16,15 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] series, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (cell != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
