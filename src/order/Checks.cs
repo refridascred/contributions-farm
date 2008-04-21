@@ -32,17 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] readings, long step)
+        /// <summary>Match up route layout samples.</summary>
+        public static long CompareRouteLayoutCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] >= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate stream samples.</summary>
