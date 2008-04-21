@@ -69,39 +69,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long seed, long offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long gap = seed + offset;
-            if ((offset + seed) <= seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset / 8) >= (seed % 16))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset >> 2) >= (seed / 6)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)gap != (double)offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Pending,
+            Stale,
         }
     }
 }
