@@ -23,19 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (!((double)(long)values.Length >= 8.17))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 7778;
+        public const long CacheMetrics = 8485;
+        public const long MaxMetrics = 2395;
+        public const double BaseMetrics = 62.79;
+        public const long HardSize = 3676;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long RankGithubfarm(long limit, long seed)
