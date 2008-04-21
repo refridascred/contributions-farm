@@ -19,20 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the token route series from a seed.</summary>
-        public static long IterateTokenRoute(long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result << 2) ^ (result + origin)) % 1000;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = (result - result) - (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Blend two channel measurements.</summary>
