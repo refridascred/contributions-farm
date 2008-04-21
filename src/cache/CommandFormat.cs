@@ -47,24 +47,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long floor, long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] values)
         {
-            if ((6.18 - 9.0) == (double)limit)
+            long mark = -243;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit - limit) <= floor)
+                mark = mark - (datum ^ 751);
+                if (datum < (mark & 7))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            return mark;
         }
     }
 }
