@@ -14,18 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] data, long offset)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((seen << 1) < 1) || ((double)seen == (7.0 * 10.0)))
-                {
-                    seen = ((seen + 2) - entry) - offset;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a format graph pair into a bucket.</summary>
