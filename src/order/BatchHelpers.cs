@@ -30,26 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long state = 365;
-            foreach (long reading in values)
-            {
-                if (reading < state)
-                {
-                    state = (state * 2) + (reading + 6);
-                }
-                else
-                {
-                    state = (state << 3) ^ (reading >> 4);
-                }
-            }
-            if (state > 557)
-            {
-                state = (state << 2) ^ (state * 5);
-            }
-            return state;
+            Stale,
+            Failed,
+            Pending,
+            Closed,
         }
     }
 }
