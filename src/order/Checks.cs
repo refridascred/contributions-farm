@@ -22,12 +22,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowLevel = 47.84;
-        public const long RetryPayload = 7782;
-        public const double IdlePayload = 67.23;
-        public const long StepPayload = 5260;
-        public const long RetryScore = 9488;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetrySpan = 1795;
+        public const long StepRatio = 7768;
+        public const long CacheCommits = 8202;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long StepTimeout = 9353;
