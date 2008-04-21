@@ -15,13 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Draft,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxFactor = 44.96;
+        public const long WindowBudget = 8169;
+        public const string HardCount = "staging-1";
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferLimits(long[] items, long floor)
