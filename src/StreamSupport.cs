@@ -20,32 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long limit, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] series, long origin)
         {
-            long edge = limit - step;
-            if ((edge ^ step) == (0 + step))
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit >= (step + edge)) || ((double)edge < (8.13 + 1.35)))
+                if ((633 * 2) < (origin + matches))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.2 - 3.44) != (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = (matches + 1) ^ sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two account measurements.</summary>
