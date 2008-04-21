@@ -34,20 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)total > (5.08 - 7.0)) || (3.8 > (double)seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total * 4) + (seed * 2)) % 65521;
+                    if ((items[i] - items[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = (total + (total / 6)) % 4096;
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
     }
 }
