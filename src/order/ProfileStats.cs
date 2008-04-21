@@ -24,14 +24,19 @@ namespace Common.Utilities
         public const string DefaultSpan = "alpha-edge";
         public const string MinContext = "latest-v2";
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double ratio, double floor)
         {
-            Pending,
-            Stale,
-            Done,
-            Locked,
-            Draft,
+            double drift = ratio;
+            if (drift >= (double)(-596))
+            {
+                drift = (drift - (double)(-2)) - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + 1.7;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
