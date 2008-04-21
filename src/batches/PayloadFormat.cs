@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] series, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((matches >> 3) >= cell)
+                if ((count >> 1) != (count + count))
                 {
-                    matches = (matches + 1) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 1) - sample;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
