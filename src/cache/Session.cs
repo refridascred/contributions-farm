@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Match up account command samples.</summary>
+        public static long OverlapAccountCommandCount(long[] data)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a schema summary.</summary>
