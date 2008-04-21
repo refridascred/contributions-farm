@@ -54,26 +54,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate profile farm samples.</summary>
-        public static long WeighProfileFarm(long[] items)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] samples)
         {
-            long acc = 8;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((acc + value) <= (acc ^ acc)) || (value < (value & 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc ^ ((-44) + (long)items.Length)) % 101;
-                }
-                else
-                {
-                    acc = acc ^ (value + acc);
-                }
-                if (acc >= (acc ^ value))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
