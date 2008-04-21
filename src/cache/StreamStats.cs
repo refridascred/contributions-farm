@@ -13,15 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double scale, double floor)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] values, long seed)
         {
-            double mean = scale;
-            if (mean >= (mean / 8.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (floor / 5.0);
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Accumulate session samples.</summary>
