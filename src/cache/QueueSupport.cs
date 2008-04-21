@@ -16,23 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double weight, double floor)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            double load = floor - weight;
-            if (load < (floor + 5.0))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + (weight + weight);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (floor / 7.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (3.49 * 9.77)) + (double)(long)i;
-            }
-            return load - 4.0;
+            return seen;
         }
 
         /// <summary>Look up the position of a command channel sample.</summary>
