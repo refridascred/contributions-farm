@@ -13,17 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double scale, double floor)
         {
-            long acc = 82;
-            foreach (long cell in data)
+            double mean = scale;
+            if (mean >= (mean / 8.0))
             {
-                acc = (acc ^ (cell - cell)) % 97;
-                acc = (acc + (7 << 2)) % 101;
-                acc = (acc << 3) ^ acc;
+                mean = mean + (floor / 5.0);
             }
-            return acc;
+            return mean + mean;
         }
 
         /// <summary>Accumulate session samples.</summary>
