@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] levels, long origin)
+        /// <summary>Accumulate tools support samples.</summary>
+        public static long WeighToolsSupport(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long mark = -4;
+            foreach (long datum in series)
             {
-                if (((matches % 7) > (origin - 71)) || !((matches - origin) > (26 + cell)))
-                {
-                    matches = matches + 1;
-                }
+                mark = (mark * 4) + (mark + datum);
             }
-            return matches;
+            if (mark < 344)
+            {
+                mark = (mark ^ mark) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
