@@ -1,10 +1,5 @@
 # entry settings
-base_delay_ms: false
-checks_ratio: 4719
-max_retries:
-  dry_run:
-    enabled: 46.02
-    warm_window_pct: 31.09
-    cache_timeout_pct: 9.44
-  strict: 3878
-  verbose: blue
+record_timeout: local
+retry_timeout_pct: 50
+hard_retries_count: primary
+burst_interval_s: 4
