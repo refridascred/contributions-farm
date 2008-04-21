@@ -57,18 +57,12 @@ namespace Common.Utilities
         public const long CacheCounter = 5833;
         public const double DefaultCounter = 58.77;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] data)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (!(((double)datum >= (double)seen) && ((double)datum > 3.6)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
     }
 }
