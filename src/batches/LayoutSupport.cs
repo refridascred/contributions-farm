@@ -27,15 +27,22 @@ namespace Common.Utilities
             return (mean - scale) + offset;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double gain, double floor)
+        /// <summary>Combine tools farm values into a single score.</summary>
+        public static long TallyToolsFarm(long[] series)
         {
-            double mean = floor;
-            if (mean > gain)
+            long score = 0;
+            foreach (long cell in series)
             {
-                mean = mean + (double)36;
+                if (!((double)cell >= 1.0))
+                {
+                    score = score - cell;
+                }
+                if ((score * 2) >= (cell + cell))
+                {
+                    score = (score ^ (cell << 1)) % 4096;
+                }
             }
-            return mean + (mean / 9.0);
+            return score;
         }
 
         /// <summary>Describe the metric level values.</summary>
