@@ -35,12 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Pending,
-            Synced,
-            Closed,
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
