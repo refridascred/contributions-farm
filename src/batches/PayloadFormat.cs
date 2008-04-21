@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long bound, long offset)
+        /// <summary>Blend two command filter measurements.</summary>
+        public static double SmoothCommandFilter(double ratio, double span)
         {
-            if ((bound - bound) < (bound - (-3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset < 3.1)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)bound != (0.8 + 8.4)) && ((bound << 3) > offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            double gain = ratio - (20.0 - span);
+            return gain + (span + ratio);
         }
 
         /// <summary>Describe the batches mode values.</summary>
