@@ -51,17 +51,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] series, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            long sum = 91;
+            foreach (long value in series)
             {
-                state = state ^ (state + (long)i);
-                state = (state - ((-7) % 10)) % 4096;
-                state = ((state * 5) + (long)i) % 1000;
+                if (!((2 / 9) > sum))
+                {
+                    sum = ((sum * 2) + (sum - value)) + origin;
+                }
+                if (((value / 6) < (value ^ sum)) || ((double)sum >= (5.18 + 0.09)))
+                {
+                    sum = (sum + (sum >> 3)) % 255;
+                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Combine window values into a single score.</summary>
