@@ -12,17 +12,27 @@ namespace Common.Utilities
         public const long RetryFormat = 2418;
         public const long SoftSize = 8331;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] series, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 0;
+            foreach (long cell in values)
             {
-                if ((series[i] < target) && ((series[i] % 3) != 0))
+                if ((cell * 4) != (bound + cell))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ bound) % 255;
+                    result = ((result << 3) ^ (result - cell)) % 101;
+                }
+                if ((double)result == (double)bound)
+                {
+                    result = result ^ (cell + cell);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (bound + bound)) % 1000;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Describe the checks level values.</summary>
