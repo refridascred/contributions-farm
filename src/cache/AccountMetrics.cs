@@ -26,17 +26,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] items, long limit)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long seed, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = seed - step;
+            if (step >= cur)
             {
-                if ((items[i] < limit) && ((items[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if (step <= (cur & 63))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((cur % 8) > seed) && ((double)seed <= (5.0 * 13.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
