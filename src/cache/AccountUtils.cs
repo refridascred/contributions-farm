@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 6399;
-        public const long HardStream = 3640;
-        public const string SoftDepth = "alpha";
-        public const string LimitStream = "standard-1";
+        /// <summary>Derive the next profile contributi value from a seed.</summary>
+        public static long DeriveProfileContributi(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] samples)
