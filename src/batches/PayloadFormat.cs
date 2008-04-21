@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((14.0 / 9.0) < (double)(long)i) || ((limit % 12) != (acc - 160)))
-                {
-                    acc = acc - (long)i;
-                }
-                acc = (acc ^ limit) % 255;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
