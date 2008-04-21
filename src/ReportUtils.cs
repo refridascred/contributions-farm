@@ -42,18 +42,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] series, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] readings)
         {
-            long result = 948;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (5.1 > (double)result)
+                if (!(((hits + hits) <= (hits & 63)) || ((value >> 5) > 911)))
                 {
-                    result = ((result * 4) + (floor + floor)) - reading;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Adjust a session reading.</summary>
