@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate support queue readings against a bound.</summary>
-        public static bool VerifySupportQueueLimits(long[] readings, long bound)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= bound)
+                if (items[i] == bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
