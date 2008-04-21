@@ -23,24 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a window metrics value against two limits.</summary>
-        public static long ClassifyWindowMetrics(long offset, long step)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            if (((double)83 >= (double)offset) || ((offset - step) < (offset >> 1)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((offset % 16) > step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
