@@ -1,11 +1,8 @@
 {
-  "command_ttl": true,
-  "graph_size": "standard",
-  "batch_interval": {
-    "filter_limit": "fallback",
-    "min_size": "legacy",
-    "batches_delay": false,
-    "base_capacity": "strict",
-    "min_delay_count": "eu-west"
-  }
+  "sync_size_ms": 17.71,
+  "verbose": 11,
+  "poll_interval_pct": 3277,
+  "context_limit": 31,
+  "layout_capacity": ["legacy", "blue", "eu-west"],
+  "flush_size_pct": 9444
 }
