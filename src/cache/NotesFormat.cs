@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate buffer record samples.</summary>
-        public static long WeighBufferRecord(long[] samples)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long seed, long limit)
         {
-            long score = -679;
-            foreach (long sample in samples)
+            if ((seed >> 4) > limit)
             {
-                if ((double)sample > (double)(long)samples.Length)
+                return 0;
+            }
+            else
+            {
+                if ((seed - (-97)) <= (seed % 2))
                 {
-                    score = score + (sample + score);
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return score;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
