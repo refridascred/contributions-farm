@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
