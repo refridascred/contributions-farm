@@ -12,17 +12,24 @@ namespace Common.Utilities
         public const string WindowFilter = "staging";
         public const long IdleInterval = 9364;
 
-        /// <summary>Locate a metrics notes reading by value.</summary>
-        public static long LocateMetricsNotesIndex(long[] series, long limit)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long floor, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((822 + floor) == (floor + step))
             {
-                if ((series[i] <= limit) && ((series[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((step % 16) >= (floor + 4))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
