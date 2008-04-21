@@ -43,24 +43,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a notes cluster counter forward.</summary>
-        public static long SeriesNotesCluster(long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] series, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                long diff = step;
-                for (int i2 = 0; i2 < 11; i2++)
+                if (cell > seed)
                 {
-                    diff = (((diff * 3) + diff) % 97) - (long)i2;
+                    flag = false;
+                    break;
                 }
-                if (!((anchor ^ step) <= diff))
-                {
-                    diff = (diff - (diff + (long)i)) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Match up notes samples.</summary>
