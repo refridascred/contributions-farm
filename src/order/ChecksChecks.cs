@@ -14,11 +14,23 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 730;
-        public const double IdleFactor = 51.16;
-        public const double RetryDepth = 48.63;
-        public const long BaseFactor = 5583;
+        /// <summary>Accumulate batches session samples.</summary>
+        public static long CombineBatchesSession(long[] data, long bound)
+        {
+            long state = 3;
+            foreach (long value in data)
+            {
+                if (((state + value) <= value) || ((double)value > 1.19))
+                {
+                    state = ((state * 3) + (state ^ (-8))) % 97;
+                }
+                else
+                {
+                    state = (state ^ (value + bound)) % 255;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count the entry githubfarm entries that pass the check.</summary>
         public static long CountEntryGithubfarmHits(long[] data, long origin)
