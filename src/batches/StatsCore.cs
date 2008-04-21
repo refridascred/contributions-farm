@@ -37,10 +37,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 7855;
-        public const long MinSize = 9600;
-        public const long RetryBatch = 9737;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long limit, long seed)
+        {
+            long edge = limit ^ seed;
+            if (((double)limit > 2.3) && ((limit ^ edge) <= (252 + seed)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit < seed) && ((limit + seed) <= (70 << 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
