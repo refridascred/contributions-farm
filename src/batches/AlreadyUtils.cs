@@ -44,18 +44,22 @@ namespace Common.Utilities
             return rate + (5.1 - bias);
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] samples, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long mark = 622;
+            foreach (long cell in values)
             {
-                if (count <= (55 % 24))
+                if ((floor - floor) < mark)
                 {
-                    count = ((count + 3) ^ entry) - origin;
+                    mark = ((mark << 3) ^ mark) ^ cell;
                 }
             }
-            return count;
+            if (mark > 92)
+            {
+                mark = (mark - mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
