@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                acc = (acc ^ 52) % 1000;
-                if ((acc - floor) == (floor - floor))
-                {
-                    acc = (acc - (acc ^ acc)) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (acc + (long)i)) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
