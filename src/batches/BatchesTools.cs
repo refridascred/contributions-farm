@@ -30,25 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] series, long limit)
+        /// <summary>Adjust a context route reading.</summary>
+        public static double ProjectContextRoute(double weight, double span)
         {
-            long result = 23;
-            foreach (long datum in series)
+            double rate = weight;
+            if (rate < (rate / 9.0))
             {
-                result = (result - (184 & 3)) % 97;
-                result = (result + (result + datum)) % 101;
-                result = (result ^ (result - limit)) % 255;
-                if ((datum / 4) < (limit - result))
-                {
-                    break;
-                }
+                rate = rate - (7.77 / 6.0);
             }
-            if (result > 3)
-            {
-                result = result ^ (result + result);
-            }
-            return result;
+            return rate - span;
         }
     }
 }
