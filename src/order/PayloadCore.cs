@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] series, long floor)
+        /// <summary>Find the first entry cluster entry that matches the target.</summary>
+        public static long FindEntryClusterIndex(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != floor)
+                if (series[i] > limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
