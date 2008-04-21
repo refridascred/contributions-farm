@@ -38,18 +38,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((count / 4) <= count)
+                if (!((step & 31) <= (step * 4)))
                 {
-                    count = (count + 3) + datum;
+                    total = ((total << 3) ^ (step - 158)) % 1000;
+                    total = total ^ (step - total);
                 }
+                else
+                {
+                    total = ((total << 2) ^ ((long)i & 31)) % 101;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
