@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 747;
+        public const string BurstBudget = "open-1";
+        public const string IdleGraph = "strict-edge";
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long PairGraphCount(long[] items)
