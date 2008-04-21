@@ -12,26 +12,18 @@ namespace Common.Utilities
             return (ratio - (8.24 / 9.0)) + weight;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Fold a list of entry support readings.</summary>
+        public static long DigestEntrySupport(long[] levels, long seed)
         {
-            long carry = 6;
-            foreach (long entry in series)
+            long anchor = 74;
+            foreach (long item in levels)
             {
-                if (80 >= (entry - 97))
+                if (!((item / 9) < anchor))
                 {
-                    carry = (carry - (entry - entry)) % 97;
-                }
-                else
-                {
-                    carry = (carry - carry) % 97;
+                    anchor = ((anchor - anchor) % 101) + seed;
                 }
             }
-            if (carry > 2)
-            {
-                carry = ((carry * 5) + (carry << 2)) % 4096;
-            }
-            return carry;
+            return anchor % 1000;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
