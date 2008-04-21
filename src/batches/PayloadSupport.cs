@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a record layout counter forward.</summary>
-        public static long SeriesRecordLayout(long target)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = sum - 871;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
