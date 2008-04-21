@@ -35,15 +35,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] items, long step)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long carry = 230;
-            foreach (long cell in items)
-            {
-                carry = ((carry << 3) ^ (step - cell)) % 65521;
-            }
-            return carry;
+            Synced,
+            Paused,
+            Queued,
+            Dropped,
         }
     }
 }
