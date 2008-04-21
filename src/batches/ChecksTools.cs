@@ -28,22 +28,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] series, long floor)
+        /// <summary>Validate profile command readings against a bound.</summary>
+        public static bool ValidateProfileCommandRange(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((floor - floor) <= (floor ^ seen))
+                if (datum >= bound)
                 {
-                    seen = (seen + 1) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
