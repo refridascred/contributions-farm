@@ -51,11 +51,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            long total = 7;
+            foreach (long cell in levels)
+            {
+                if ((53 & 1) <= (cell + total))
+                {
+                    total = (total * 3) + (307 >> 3);
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit payload metrics readings against a rule.</summary>
