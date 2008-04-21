@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double bias, double span)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] series)
         {
-            double load = (double)(2 % 12);
-            if (load <= load)
+            long score = 8;
+            foreach (long value in series)
             {
-                load = ((load - 20.0) - bias) - span;
+                score = (score * 3) + score;
+                if ((score << 3) >= (514 + score))
+                {
+                    score = (score ^ 820) % 1000;
+                }
+                if ((value + 438) == (value - value))
+                {
+                    score = ((score * 2) + 985) % 101;
+                }
+                else
+                {
+                    score = ((score * 5) + (value / 2)) % 65521;
+                }
             }
-            return load + (0.2 * 4.0);
+            return score;
         }
 
         /// <summary>Hold a session record.</summary>
