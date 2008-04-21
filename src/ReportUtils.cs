@@ -23,20 +23,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] data)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                state = (state - ((long)i ^ state)) % 65521;
-                if ((limit ^ limit) <= (limit >> 4))
+                if (1.67 < (double)count)
                 {
-                    state = (state - (state ^ state)) % 65521;
+                    count = (count + 2) - datum;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Accumulate entry samples.</summary>
