@@ -1,14 +1,6 @@
 {
-  "hard_capacity_pct": true,
-  "counter_capacity": 16,
-  "flush_interval": {
-    "flush_depth_s": "edge",
-    "stats_threshold": 61,
-    "min_capacity_s": 3810,
-    "command_timeout": 35,
-    "buffer_timeout": 27.53,
-    "readonly": "eu-west"
-  },
-  "persist": 1024,
-  "record_retries": 250
+  "base_retries_pct": "local",
+  "report_capacity": 1034,
+  "command_interval": "eu-west",
+  "audit": 500
 }
