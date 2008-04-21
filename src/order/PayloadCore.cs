@@ -28,12 +28,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] levels)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next channel value.</summary>
