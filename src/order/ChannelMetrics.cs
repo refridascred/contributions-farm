@@ -10,23 +10,17 @@ namespace Common.Utilities
         public const long SoftBudget = 7692;
         public const long StepEntry = 6040;
 
-        /// <summary>Project the next tools batch value.</summary>
-        public static double ScaleToolsBatch(double gain, double floor)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] levels, long seed)
         {
-            double ratio = floor / 5.0;
-            if (ratio <= (gain + gain))
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio + (double)275;
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - (6.0 - ratio);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (double)7) - (double)(long)i;
-            }
-            return ratio + floor;
+            return -1;
         }
 
         /// <summary>Grade a window metrics value against two limits.</summary>
