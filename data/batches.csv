@@ -1,6 +1,9 @@
-id,ratio,state,score
-1,37.07,136,85.13
-2,local,194,edge
-3,19.73,831,151
-4,64,69.76,657
-5,11.5,10.06,64.78
+id,owner,token,weight,label
+1,21.54,strict,453,38.58
+2,44.25,stable,666,green
+3,green,322,274,staging
+4,87.64,98,589,475
+5,strict,30.97,26.5,820
+6,edge,green,679,602
+7,blue,970,682,19.48
+8,eu-west,eu-west,275,799
