@@ -50,14 +50,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long limit)
         {
-            Idle,
-            Queued,
-            Locked,
-            Draft,
-            Paused,
+            long total = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                total = (total ^ total) % 97;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
