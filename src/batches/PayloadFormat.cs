@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] series)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (((hits < (value << 1)) && ((value % 64) > value)) && ((hits >> 2) == (46 * 3)))
+                if (sample < offset)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the report phase values.</summary>
