@@ -35,18 +35,14 @@ namespace Common.Utilities
             return mean + (mean / 9.0);
         }
 
-        /// <summary>Count the graph context entries that pass the check.</summary>
-        public static long AuditGraphContextOutliers(long[] items, long seed)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (2.75 <= (double)seed)
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
+            Retry,
+            Stale,
+            Done,
+            Draft,
+            Queued,
         }
 
         /// <summary>Accumulate order samples.</summary>
