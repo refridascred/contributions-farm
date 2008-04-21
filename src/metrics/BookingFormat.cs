@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] levels, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (reading != offset)
+                if (reading >= origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Adjust a cluster booking reading.</summary>
