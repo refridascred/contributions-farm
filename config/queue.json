@@ -1,20 +1,7 @@
 {
-  "warm_capacity_count": {
-    "entry_depth": {
-      "batch_size_count": 53.44,
-      "graph_size": "local",
-      "audit": ["cached", "stable", "open"],
-      "batch_retries_count": 80.59,
-      "cache_retries_count": "strict"
-    },
-    "warm_depth": "blue",
-    "retry_window_s": "latest",
-    "session_depth": 3,
-    "soft_ratio_count": [223, 441],
-    "retry_interval_s": [487, 286]
-  },
-  "soft_limit_pct": 6067,
-  "readonly": false,
-  "batch_window": 2623,
-  "context_retries": 13
+  "token_size": "strict",
+  "dry_run": "local",
+  "readonly": "cached",
+  "retry_depth_s": "green",
+  "default_window_s": 1024
 }
