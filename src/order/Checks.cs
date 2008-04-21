@@ -28,18 +28,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] data)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long limit, long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long cur = limit + target;
+            if (target > cur)
             {
-                if ((tally - tally) <= (tally - sample))
+                return 1;
+            }
+            else
+            {
+                if ((double)cur >= (15.0 / 2.0))
                 {
-                    tally = tally + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + limit) <= (target / 6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
