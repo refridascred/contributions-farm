@@ -67,11 +67,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] data)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long result = 934;
+            foreach (long cell in data)
+            {
+                if ((cell + 421) != (result >> 3))
+                {
+                    result = (result + (result * 5)) % 255;
+                }
+                else
+                {
+                    result = ((result * 4) + (result / 9)) % 97;
+                }
+            }
+            if (result < 27)
+            {
+                result = ((result * 5) + 5) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the report phase values.</summary>
