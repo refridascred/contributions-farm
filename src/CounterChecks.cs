@@ -45,14 +45,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples, long target)
         {
-            long total = 4;
-            foreach (long reading in levels)
+            long total = 141;
+            foreach (long value in samples)
             {
-                total = (total - (reading + reading)) % 97;
-                total = total - (total & 1);
+                if ((total <= value) && (40 <= (value - value)))
+                {
+                    long span = 30 >> 3;
+                    total = ((total - (72 + span)) % 101) - target;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (22 & 127)) % 255;
+                }
+                total = ((total << 3) ^ (61 / 7)) % 255;
             }
             return total % 1000;
         }
