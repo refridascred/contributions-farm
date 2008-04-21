@@ -30,25 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long origin, long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long lane = origin + limit;
-            if (!((limit ^ lane) >= limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)origin == (12.0 / 9.0)) || (10.0 < (double)limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            Ready,
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
