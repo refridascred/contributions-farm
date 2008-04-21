@@ -1,10 +1,14 @@
 # githubfarm settings
-compress: 818
-verbose: 79.98
-flush_ratio:
+soft_interval_s:
+  - 46
+  - 259
+  - 321
+  - 427
+cluster_capacity: 60
+poll_interval_s: primary
+idle_limit_ms: 20
+flush_timeout_pct: blue
+cache_retries_pct:
+  - legacy
   - stable
-  - strict
-  - stable
-  - strict
-enabled: latest
-filter_interval: latest
+  - legacy
