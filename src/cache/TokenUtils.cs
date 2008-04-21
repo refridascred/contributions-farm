@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats layout values into a single score.</summary>
-        public static long ScoreStatsLayout(long[] values, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] levels, long step)
         {
-            long sum = -6;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                sum = (((sum - sum) % 101) + value) - seed;
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (sum > 616)
-            {
-                sum = sum + sum;
-            }
-            return sum % 1000;
+            return found;
         }
 
         /// <summary>Classify a entry queue pair into a bucket.</summary>
