@@ -12,13 +12,18 @@ namespace Common.Utilities
             return weight + (weight - ratio);
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] series)
         {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!((1.5 / 8.0) < (double)seen))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
