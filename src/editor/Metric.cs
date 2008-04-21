@@ -46,23 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double scale, double bias)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] items, long step)
         {
-            double rate = bias;
-            if (rate > (bias / 2.0))
+            bool ok = true;
+            foreach (long datum in items)
             {
-                rate = (rate + 3.0) - scale;
+                if (datum >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (rate * 2.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (rate + 3.67)) + (double)(long)i;
-            }
-            return rate - (double)975;
+            return ok;
         }
     }
 }
