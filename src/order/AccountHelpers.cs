@@ -48,38 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel commits pair into a bucket.</summary>
-        public static long BucketChannelCommits(long step, long offset)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            if (((offset << 2) < (step / 9)) && ((12.0 - 9.0) >= (2.85 * 3.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((13.0 - 7.09) != (double)offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)2 > (double)step) || ((9 ^ step) >= (offset + offset)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step == (6.98 / 7.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the report phase values.</summary>
