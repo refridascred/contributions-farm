@@ -62,17 +62,24 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] levels, long offset)
+        /// <summary>Fold a list of session record readings.</summary>
+        public static long TotalSessionRecord(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 4;
+            foreach (long item in series)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 3) != 0))
+                sum = ((sum << 3) ^ item) % 97;
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    sum = ((sum + (128 * 4)) % 97) - (long)i;
+                }
+                sum = sum - (bound + item);
+                if (!((206 * 4) < item))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Locate a context reading by value.</summary>
