@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 434;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((total - total) < (origin * 5))
                 {
-                    if ((samples[i] - samples[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    total = (((total * 5) + ((long)data.Length / 5)) % 101) - sample;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
