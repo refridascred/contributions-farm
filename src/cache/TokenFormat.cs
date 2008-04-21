@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinBatch = 88.93;
-        public const string CacheTimeout = "cached";
-        public const double SoftBudget = 94.44;
-        public const long BaseWidth = 4745;
-        public const long MaxSize = 1807;
+        /// <summary>Validate cluster commits readings against a bound.</summary>
+        public static bool CheckClusterCommitsRange(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long StepQueue(long bound)
