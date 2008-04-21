@@ -42,32 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long offset, long seed)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] series, long offset)
         {
-            long edge = offset ^ seed;
-            if ((offset >> 1) != (1 + edge))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-7) << 2) >= seed)
+                if (entry >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)edge > (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
