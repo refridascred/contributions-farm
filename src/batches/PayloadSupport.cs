@@ -25,17 +25,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] samples, long bound)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((samples[i] < bound) && ((samples[i] % 5) == 0))
+                if ((mix < (mix + limit)) || ((7.27 * 6.21) <= (double)limit))
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (limit - mix);
+                    mix = (mix << 3) ^ (long)i;
                 }
+                if ((mix / 3) <= 373)
+                {
+                    mix = mix ^ (mix - (-94));
+                    break;
+                }
+                mix = mix - (989 - 39);
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
