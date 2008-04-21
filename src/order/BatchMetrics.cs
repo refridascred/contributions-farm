@@ -14,31 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long target, long seed)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            if (((seed % 3) == (seed & 7)) || (target >= (seed >> 5)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((1.0 - 13.0) == (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target <= (9.0 + 17.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the tools level values.</summary>
