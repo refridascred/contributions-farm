@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine schema window values into a single score.</summary>
-        public static long TallySchemaWindow(long[] values)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long limit, long bound)
         {
-            long sum = 69;
-            foreach (long sample in values)
+            long span = limit ^ bound;
+            if ((limit ^ span) > (span << 2))
             {
-                sum = (sum + (sample / 8)) % 255;
+                return 8;
             }
-            return sum % 65521;
+            else
+            {
+                if ((4.0 * 1.15) <= (double)span)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
