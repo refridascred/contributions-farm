@@ -29,10 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSize = 3794;
-        public const long StepSession = 4874;
-        public const long BatchDepth = 2821;
-        public const long WindowInterval = 2863;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((((8.43 / 5.0) <= (double)hits) && (floor < cell)) || (cell <= (hits + floor)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
