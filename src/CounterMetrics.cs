@@ -20,12 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 3488;
-        public const double BurstAccount = 81.85;
-        public const long StepBudget = 431;
-        public const long StepAccount = 1001;
-        public const string HardAccount = "open-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 52.76;
+        public const long DefaultDepth = 3548;
+        public const long CacheTimeout = 350;
+        public const long RetrySize = 631;
+        public const long BaseChannel = 86;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ProjectCache(double ratio, double floor)
