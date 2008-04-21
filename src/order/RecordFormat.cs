@@ -49,19 +49,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long mark = 2;
-            foreach (long entry in items)
-            {
-                mark = ((mark * 2) + (mark / 3)) + entry;
-            }
-            if (mark < 42)
-            {
-                mark = (mark << 3) ^ (mark >> 2);
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
