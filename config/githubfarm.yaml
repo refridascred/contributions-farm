@@ -1,8 +1,4 @@
 # githubfarm settings
-stream_size: 7911
-idle_size_ms: true
-burst_ratio_s: true
-cache_ttl_s: 88
-idle_window_pct:
-  - blue
-  - fallback
+soft_limit: 2.62
+farm_threshold: 58.19
+githubfarm_size: 1024
