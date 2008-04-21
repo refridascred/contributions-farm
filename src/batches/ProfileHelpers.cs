@@ -56,17 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a checks record sample.</summary>
-        public static long FindChecksRecordIndex(long[] series, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (series[i] < limit)
+                if (!((value + 414) >= (bound + value)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
