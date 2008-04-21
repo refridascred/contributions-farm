@@ -32,15 +32,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a context farm counter forward.</summary>
-        public static long StepContextFarm(long step)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double gain, double span)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
+            double mean = span;
+            if (mean >= gain)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                mean = mean + 8.8;
             }
-            return anchor;
+            return mean - (double)572;
         }
 
         /// <summary>Accumulate batch farm samples.</summary>
