@@ -49,16 +49,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session metric readings.</summary>
-        public static long CombineSessionMetric(long[] levels, long bound)
-        {
-            long score = 4;
-            foreach (long sample in levels)
-            {
-                score = ((score - sample) % 4096) - bound;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryTimeout = 7529;
+        public const long BatchEntry = 1027;
+        public const string MaxEntry = "primary";
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long LookupToolsIndex(long[] data, long step)
