@@ -33,15 +33,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double scale, double span)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double scale2 = 2.77;
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = ((scale2 - (double)(long)i) - scale) + span;
-            }
-            return scale2 + 3.0;
+            Locked,
+            Paused,
+            Done,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
