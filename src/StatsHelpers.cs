@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] items, long offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] <= offset)
+                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
