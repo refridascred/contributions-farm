@@ -32,10 +32,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultFactor = 9794;
-        public const string WindowRatio = "cached-v2";
-        public const long DefaultInterval = 7805;
-        public const long LimitSize = 3878;
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
