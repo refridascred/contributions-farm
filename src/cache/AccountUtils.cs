@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long step)
+        /// <summary>Grade a filter editor value against two limits.</summary>
+        public static long SortFilterEditor(long origin, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            long delta = origin - offset;
+            if (!(offset < (origin ^ 1)))
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (delta < (5 ^ 57))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a graph stats.</summary>
