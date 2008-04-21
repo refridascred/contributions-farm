@@ -13,19 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of cache session entries.</summary>
-        public static long DigestCacheSession(long[] data)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] samples)
         {
-            long result = 0;
-            foreach (long entry in data)
+            long mix = 414;
+            foreach (long datum in samples)
             {
-                result = (result ^ (result & 1)) % 97;
-                if ((entry << 3) > (result * 4))
+                if ((datum - mix) >= datum)
                 {
-                    result = ((result * 2) + entry) % 1000;
+                    mix = ((mix * 4) + datum) % 65521;
                 }
             }
-            return result;
+            return mix % 4096;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
