@@ -24,19 +24,14 @@ namespace Common.Utilities
         public const long CacheBudget = 1863;
         public const long StepCommand = 6002;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] values, long seed)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Retry,
+            Ready,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the window kind values.</summary>
