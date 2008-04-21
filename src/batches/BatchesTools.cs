@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] values, long limit)
         {
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (seen > value)
+                {
+                    seen = (seen + 3) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of support entries.</summary>
