@@ -18,12 +18,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 5569;
-        public const long IdleGithubfarm = 3883;
-        public const double DefaultTimeout = 44.5;
-        public const long BaseScore = 2070;
-        public const string MinFactor = "staging-edge";
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Failed,
+            Queued,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long DigestSupport(long[] items)
