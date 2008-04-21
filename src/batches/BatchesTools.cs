@@ -13,14 +13,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepQueue = "stable-v2";
+        public const double SoftQueue = 36.42;
+        public const string IdleQueue = "primary";
+        public const long MaxWidth = 6764;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
