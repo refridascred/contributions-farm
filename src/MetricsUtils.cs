@@ -53,18 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] samples, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] series)
         {
-            long mark = 969;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((step > (-7)) || ((double)step == (double)mark))
+                if (((hits + hits) >= hits) || ((hits * 3) == (hits & 15)))
                 {
-                    mark = (mark + (step + mark)) + value;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Audit editor stats readings against a rule.</summary>
