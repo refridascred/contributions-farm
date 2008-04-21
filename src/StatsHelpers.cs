@@ -18,32 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format token input into a small class.</summary>
-        public static long ClassifyFormatToken(long step, long offset)
-        {
-            if (((step - step) > offset) || ((step - step) <= offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)step != (19.0 + 6.3)) || ((double)step == (double)731))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset - 49) >= (offset + 774))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 3624;
+        public const double DefaultLayout = 44.63;
+        public const long CacheRatio = 4675;
+        public const double HardLayout = 19.27;
+        public const long BurstWidth = 992;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long WeighTools(long[] levels, long step)
