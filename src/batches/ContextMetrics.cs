@@ -68,22 +68,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] values, long limit)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit - limit) != (datum / 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
