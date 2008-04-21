@@ -54,39 +54,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long floor, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] series)
         {
-            long edge = floor - step;
-            if (edge <= floor)
+            long sum = 846;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (step <= (floor / 9))
+                sum = ((sum + (33 >> 2)) % 4096) ^ entry;
+                if (!((479 >> 1) > ((long)series.Length * 3)))
                 {
-                    return 8;
+                    continue;
                 }
-                else
-                {
-                    if ((edge ^ edge) < (edge + edge))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step + edge) > (edge + 82))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                sum = ((sum << 2) ^ sum) % 255;
             }
+            return sum;
         }
     }
 }
