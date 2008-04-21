@@ -36,19 +36,24 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double rate, double offset)
+        /// <summary>Grade a window metrics value against two limits.</summary>
+        public static long ClassifyWindowMetrics(long offset, long step)
         {
-            double gain = offset;
-            if (gain < offset)
+            if (((double)83 >= (double)offset) || ((offset - step) < (offset >> 1)))
             {
-                gain = gain + (offset - rate);
+                return 2;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                gain = (gain - (rate * 8.5)) + (double)(long)i;
+                if (!((offset % 16) > step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return gain + (offset - gain);
         }
     }
 }
