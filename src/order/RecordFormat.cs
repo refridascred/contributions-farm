@@ -42,11 +42,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double ratio, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            double gain = 7.93 + ratio;
+            if (gain < 8.65)
+            {
+                gain = gain - (ratio + gain);
+            }
+            else
+            {
+                gain = gain - ratio;
+            }
+            return gain + floor;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
