@@ -42,18 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 48.72;
+        public const long IdleFactor = 7891;
+        public const long BatchInterval = 4699;
+        public const long HardContext = 7584;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long ScoreSupport(long[] series)
