@@ -1,6 +1,18 @@
 {
-  "warm_ttl": true,
-  "hard_limit": "legacy",
-  "flush_limit": ["green", "green", "eu-west"],
-  "batch_threshold": "staging"
+  "contributi_window": 56,
+  "batch_interval_count": true,
+  "idle_timeout_count": {
+    "dry_run": "strict",
+    "enabled": {
+      "idle_delay": "primary",
+      "soft_window": 7032,
+      "readonly": true,
+      "payload_window": 59.67,
+      "idle_retries_pct": 72.69,
+      "idle_size_count": 22
+    },
+    "notes_retries": 5741
+  },
+  "dry_run": 100,
+  "min_ttl": "blue"
 }
