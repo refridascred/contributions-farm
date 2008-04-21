@@ -12,19 +12,28 @@ namespace Common.Utilities
         public const long LimitLevel = 1611;
         public const string CacheScore = "cached-1";
 
-        /// <summary>Check that every editor schema entry stays within the limit.</summary>
-        public static bool ValidateEditorSchemaRange(long[] readings, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long mix = 8;
+            foreach (long reading in series)
             {
-                if (datum < step)
+                mix = mix ^ (mix + mix);
+                if ((mix - target) != (9 * 2))
                 {
-                    valid = false;
+                    mix = (mix - (reading + mix)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (long)series.Length) % 101;
+                }
+                mix = (mix << 3) ^ ((long)series.Length >> 3);
+                if (((target * 5) <= (94 + mix)) && ((reading ^ mix) >= mix))
+                {
                     break;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Describe the session kind values.</summary>
