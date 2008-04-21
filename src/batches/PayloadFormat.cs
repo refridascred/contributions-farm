@@ -31,19 +31,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] samples, long seed)
+        /// <summary>Find the first farm window entry that matches the target.</summary>
+        public static long SeekFarmWindowIndex(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > seed)
+                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
