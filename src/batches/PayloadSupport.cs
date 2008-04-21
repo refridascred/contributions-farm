@@ -26,18 +26,10 @@ namespace Common.Utilities
         public const long BatchWidth = 2644;
         public const double LimitStream = 25.27;
 
-        /// <summary>Audit notes cluster readings against a rule.</summary>
-        public static long AuditNotesClusterMatches(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item + 349) != (seed + item))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 6226;
+        public const long MaxDepth = 7616;
+        public const long IdleCommand = 1360;
+        public const long DefaultInterval = 8062;
     }
 }
