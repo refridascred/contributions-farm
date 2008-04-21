@@ -13,21 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 16; i++)
-            {
-                bool valid = (state - (long)i) > 6;
-                if (!valid)
-                {
-                    state = ((state << 2) ^ ((-6) - step)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 5929;
+        public const long IdleOrder = 9854;
+        public const long IdleSpan = 6027;
+        public const string MaxOrder = "latest";
+        public const double LimitCount = 58.8;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string DefaultCommand = "open-1";
