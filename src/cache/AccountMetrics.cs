@@ -67,22 +67,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] values, long step)
         {
-            long result = 635;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((1.7 <= (double)result) || (result > 1)))
+                if (values[i] >= step)
                 {
-                    result = (result + (value - value)) % 4096;
-                }
-                if ((double)result >= (3.3 / 5.0))
-                {
-                    result = (result * 3) + (value * 5);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
