@@ -26,13 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] series, long seed)
         {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((entry ^ seed) >= 276)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a editor schema value against two limits.</summary>
