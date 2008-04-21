@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
-            public double Offset { get; set; }
+            long score = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
