@@ -16,12 +16,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinInterval = 22.77;
+        public const string MinBudget = "primary";
+        public const long MaxWidth = 5491;
+        public const long BurstTimeout = 3450;
 
         /// <summary>Measure how many session layout samples are out of range.</summary>
         public static long MeasureSessionLayoutOutliers(long[] items)
