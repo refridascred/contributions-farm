@@ -47,21 +47,11 @@ namespace Common.Utilities
         public const string MinSpan = "primary-1";
         public const long CacheBatch = 6836;
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] data)
+        /// <summary>Scale a editor metric figure with a bias.</summary>
+        public static double ScaleEditorMetric(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double drift = floor + (double)70;
+            return (drift - (double)16) + scale;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
