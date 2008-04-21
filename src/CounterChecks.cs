@@ -28,11 +28,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 5562;
-        public const string MinDepth = "fallback-1";
-        public const double IdleDepth = 56.97;
-        public const double BaseQueue = 46.74;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] levels, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long seed, long limit)
