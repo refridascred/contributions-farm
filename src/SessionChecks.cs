@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate tools support samples.</summary>
-        public static long WeighToolsSupport(long[] series)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long mark = -4;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark * 4) + (mark + datum);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mark < 344)
-            {
-                mark = (mark ^ mark) % 97;
-            }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
