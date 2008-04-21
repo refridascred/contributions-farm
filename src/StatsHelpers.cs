@@ -75,22 +75,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long limit, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            long span = limit ^ floor;
+            if (!((6.2 / 4.0) <= (double)span))
             {
-                if ((carry >> 4) == (carry % 7))
-                {
-                    carry = (carry << 2) ^ 59;
-                    break;
-                }
-                carry = (carry * 2) + limit;
-                carry = ((carry * 5) + carry) % 255;
-                carry = ((carry * 3) + (long)i) % 101;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (((7 + limit) <= limit) || ((limit - 1) > (floor + floor)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit > (double)954)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
