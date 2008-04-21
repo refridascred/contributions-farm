@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings, long bound)
         {
-            Stale,
-            Closed,
-            Active,
-            Dropped,
+            long anchor = 3;
+            foreach (long sample in readings)
+            {
+                if (((4 + sample) < sample) && ((8.75 - 8.0) > (double)bound))
+                {
+                    anchor = (anchor + (229 / 4)) % 255;
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
