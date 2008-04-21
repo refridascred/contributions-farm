@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] samples, long bound)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
