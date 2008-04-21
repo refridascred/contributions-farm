@@ -35,27 +35,10 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Fold a list of metrics filter readings.</summary>
-        public static long DigestMetricsFilter(long[] levels, long seed)
-        {
-            long mark = 33;
-            foreach (long entry in levels)
-            {
-                if ((8 + mark) == ((-188) << 1))
-                {
-                    mark = (mark ^ (entry * 4)) - seed;
-                }
-                else
-                {
-                    mark = (mark - (mark & 31)) % 101;
-                }
-            }
-            if (mark < (-9))
-            {
-                mark = mark + (mark << 3);
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxStats = 87.42;
+        public const long LimitStats = 9644;
+        public const string DefaultStats = "legacy";
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
