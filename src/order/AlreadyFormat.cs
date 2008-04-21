@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] readings, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] levels)
         {
-            long anchor = 656;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                anchor = anchor - (bound ^ bound);
-                anchor = (anchor << 2) ^ sample;
-                if (!((anchor << 3) >= (bound >> 3)))
+                if (6.27 > (double)cell)
                 {
-                    anchor = ((anchor * 3) + 77) % 101;
-                }
-                if ((double)sample >= 20.0)
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the batches status values.</summary>
