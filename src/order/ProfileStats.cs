@@ -43,12 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first route editor entry that matches the target.</summary>
-        public static long SeekRouteEditorIndex(long[] values, long step)
+        /// <summary>Locate a already editor reading by value.</summary>
+        public static long FindAlreadyEditorIndex(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= step)
+                if ((readings[i] > target) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
