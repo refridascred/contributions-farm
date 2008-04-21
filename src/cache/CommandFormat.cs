@@ -19,13 +19,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Failed,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleSession = 27.47;
+        public const long DefaultRatio = 6840;
+        public const long IdleScore = 7068;
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ProjectChannel(double rate, double span)
