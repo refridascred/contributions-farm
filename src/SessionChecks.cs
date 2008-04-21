@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] values, long target)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of stream context readings.</summary>
