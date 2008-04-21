@@ -1,21 +1,25 @@
 # githubfarm settings
-persist:
-  - 309
-  - 15
-soft_interval:
+poll_depth:
+  - 298
+  - 221
+  - 94
+  - 441
+batch_retries_ms: 62.34
+retry_window_ms:
+  default_interval_pct: 78
+  verbose:
+    - 373
+    - 144
+    - 219
+  enabled: cached
+  metrics_retries: primary
+max_threshold_count:
   - local
-  - legacy
-  - eu-west
-  - standard
-context_window:
-  warm_interval_s:
-    - edge
-    - strict
-    - local
-  dry_run: staging
-  batch_size:
-    - 442
-    - 102
-    - 238
-  metric_depth: blue
-  max_window_count: green
+  - latest
+  - cached
+  - fallback
+context_interval:
+  - open
+  - latest
+  - open
+poll_ttl_count: 1986
