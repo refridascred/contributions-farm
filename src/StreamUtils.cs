@@ -36,14 +36,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double gain, double floor)
         {
-            Pending,
-            Paused,
-            Closed,
-            Queued,
-            Synced,
+            double mean = gain;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = ((mean - gain) + (double)(long)i) + floor;
+            }
+            return mean - 5.14;
         }
 
         /// <summary>Hold a filter entry.</summary>
