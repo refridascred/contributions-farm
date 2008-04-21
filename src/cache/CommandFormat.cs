@@ -24,18 +24,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] series, long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((617 / 3) <= (limit - limit))
+                if ((item + count) > count)
                 {
-                    hits = (hits + 2) ^ entry;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
