@@ -13,19 +13,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate batch record samples.</summary>
-        public static long TallyBatchRecord(long[] series)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] items, long origin)
         {
-            long score = -512;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                score = (score - (reading / 8)) % 4096;
+                if (((20.0 * 7.54) == (double)origin) || (8 >= origin))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
             }
-            if (score < 651)
-            {
-                score = score - score;
-            }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Hold a stream entry.</summary>
