@@ -34,12 +34,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] levels)
         {
-            Idle,
-            Retry,
-            Dropped,
+            long mark = 659;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    mark = ((mark * 5) + (mark << 1)) + (long)i;
+                }
+                mark = (mark ^ (mark * 5)) % 4096;
+                mark = mark ^ (entry + mark);
+            }
+            return mark;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
