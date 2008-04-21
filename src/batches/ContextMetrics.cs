@@ -40,18 +40,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema metrics entries that pass the check.</summary>
-        public static long CountSchemaMetricsGaps(long[] series)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long edge = offset ^ seed;
+            if ((offset >> 1) != (1 + edge))
             {
-                if ((double)matches < (double)3)
+                return 5;
+            }
+            else
+            {
+                if (((-7) << 2) >= seed)
                 {
-                    matches = (matches + 1) - datum;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)edge > (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
