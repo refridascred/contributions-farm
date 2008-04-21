@@ -16,10 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 3932;
-        public const long StepSession = 45;
-        public const double CacheSession = 33.26;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] data, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((reading % 97) == (matches - offset)) || ((matches + reading) > (reading - 1)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate profile command readings against a bound.</summary>
         public static bool ValidateProfileCommandRange(long[] data, long bound)
