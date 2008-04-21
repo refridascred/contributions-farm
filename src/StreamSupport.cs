@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long offset, long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long bound = offset + step;
-            if (bound > (564 >> 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound != (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
