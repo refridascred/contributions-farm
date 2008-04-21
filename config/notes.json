@@ -1,7 +1,6 @@
 {
-  "burst_delay": true,
-  "readonly": 8839,
-  "channel_timeout": [253, 20],
-  "stream_ratio": false,
-  "context_ratio": 9232
+  "base_ttl_ms": "primary",
+  "burst_delay_pct": 57,
+  "idle_delay": 100,
+  "min_window": [256, 120, 374]
 }
