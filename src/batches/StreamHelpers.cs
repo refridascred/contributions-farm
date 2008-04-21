@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double bias, double span)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double bias, double span)
         {
-            double mean = bias;
-            for (int i = 0; i < 3; i++)
+            double rate = (span / 7.0) / 6.0;
+            if (rate < (double)4)
             {
-                mean = ((mean - 7.18) + (double)(long)i) - span;
+                rate = rate + (bias / 9.0);
             }
-            return mean - 17.0;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (span * 8.0)) + (double)(long)i;
+            }
+            return rate - (bias + 1.62);
         }
 
         /// <summary>Roll a channel counter forward.</summary>
