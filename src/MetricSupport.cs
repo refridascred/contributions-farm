@@ -30,19 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] series)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] items, long seed)
         {
-            long state = 3;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum / 3) < 2)
+                if (items[i] > seed)
                 {
-                    continue;
+                    return (long)i;
                 }
-                state = ((state << 2) ^ 666) % 1000;
             }
-            return state;
+            return -1;
         }
     }
 }
