@@ -20,16 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long limit, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            long edge = limit - step;
+            if ((edge ^ step) == (0 + step))
             {
-                mark = (mark ^ (60 / 6)) % 4096;
-                mark = ((mark * 2) + (long)i) % 65521;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((limit >= (step + edge)) || ((double)edge < (8.13 + 1.35)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((5.2 - 3.44) != (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
