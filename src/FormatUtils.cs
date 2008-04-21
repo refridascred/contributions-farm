@@ -48,11 +48,20 @@ namespace Common.Utilities
             return mean + (19.0 + 5.97);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultInterval = 23.59;
-        public const long CacheSize = 797;
-        public const long RetryGithubfarm = 51;
-        public const long LimitWidth = 1811;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double bias, double floor)
+        {
+            double bias2 = floor;
+            if (bias2 >= (0.1 / 2.0))
+            {
+                bias2 = bias2 - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 + floor;
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
