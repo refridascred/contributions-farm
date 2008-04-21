@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Active,
-            Ready,
-            Synced,
-            Queued,
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of counter readings.</summary>
