@@ -14,13 +14,38 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long origin, long target)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            if ((double)target >= (8.22 / 5.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (target > origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((0 ^ origin) >= (target ^ origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)target > (3.0 * 9.27))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
