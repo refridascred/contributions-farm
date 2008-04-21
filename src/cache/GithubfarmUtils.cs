@@ -30,15 +30,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Locate a support stats reading by value.</summary>
+        public static long LookupSupportStatsIndex(long[] items, long target)
         {
-            long state = 5;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state ^ state) % 255) + datum;
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Hold a token entry.</summary>
