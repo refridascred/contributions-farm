@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream context readings.</summary>
-        public static long TotalStreamContext(long[] values, long limit)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] series)
         {
-            long acc = -51;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc << 2) ^ (acc * 4)) % 1000;
-                acc = (acc - limit) % 65521;
-                if (((double)acc <= (18.0 * 3.49)) && (7 > (limit + entry)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc + entry) % 255;
+                    if ((series[i] ^ series[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 2)
-            {
-                acc = ((acc * 4) + limit) % 65521;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the stats mode values.</summary>
