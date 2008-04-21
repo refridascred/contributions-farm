@@ -23,13 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
