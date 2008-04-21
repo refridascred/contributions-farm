@@ -30,19 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] samples, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] samples)
         {
-            long mix = 674;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                mix = ((mix + mix) % 101) - reading;
-                if (bound < (long)samples.Length)
+                if ((matches * 5) < (matches + matches))
                 {
-                    break;
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Blend two commits measurements.</summary>
