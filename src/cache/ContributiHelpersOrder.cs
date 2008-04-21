@@ -47,18 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] items, long floor)
+        /// <summary>Check that every filter metric entry stays within the limit.</summary>
+        public static bool ValidateFilterMetricRange(long[] items, long target)
         {
-            long score = 38;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((floor >> 4) >= (score << 1))
+                if (item > target)
                 {
-                    score = ((score + (floor >> 5)) % 97) - sample;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
     }
 }
