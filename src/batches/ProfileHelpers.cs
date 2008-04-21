@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstLevel = 7937;
-        public const double LimitFilter = 6.01;
-        public const double BaseFilter = 43.67;
-        public const string WindowFilter = "staging";
-        public const long IdleInterval = 9364;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)item >= (11.0 + 2.99))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long BucketCache(long floor, long step)
