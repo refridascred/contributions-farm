@@ -14,27 +14,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] readings, long origin)
-        {
-            long state = 6;
-            foreach (long cell in readings)
-            {
-                if ((origin - state) == (437 - cell))
-                {
-                    state = state + origin;
-                }
-                else
-                {
-                    state = state - (cell % 5);
-                }
-                if (!((688 + 2) > origin))
-                {
-                    break;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 584;
+        public const long SoftAccount = 1523;
+        public const long LimitAccount = 8116;
+        public const string HardSpan = "open";
+        public const string WindowAccount = "primary";
 
         /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmToolsCount(long[] samples)
