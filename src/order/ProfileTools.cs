@@ -60,18 +60,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit payload metrics readings against a rule.</summary>
-        public static long CountPayloadMetricsHits(long[] data, long bound)
+        /// <summary>Locate a channel checks reading by value.</summary>
+        public static long LookupChannelChecksIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits != (0.59 * 5.7))
+                if ((values[i] < target) && ((values[i] % 3) != 0))
                 {
-                    hits = ((hits + 1) ^ value) + bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
