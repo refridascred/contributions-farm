@@ -47,11 +47,21 @@ namespace Common.Utilities
         public const string MinSpan = "primary-1";
         public const long CacheBatch = 6836;
 
-        /// <summary>Scale a editor metric figure with a bias.</summary>
-        public static double ScaleEditorMetric(double scale, double floor)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
-            double drift = floor + (double)70;
-            return (drift - (double)16) + scale;
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
