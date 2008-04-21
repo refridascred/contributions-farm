@@ -1,7 +1,6 @@
 {
-  "default_delay_count": ["strict", "eu-west", "strict", "eu-west"],
-  "contributi_threshold": "eu-west",
-  "cache_retries_ms": "latest",
-  "hard_threshold_count": 49.52,
-  "persist": "edge"
+  "retry_ttl": [129, 302],
+  "soft_retries_pct": 28,
+  "idle_ratio_pct": "staging",
+  "min_ttl_s": [379, 278, 235]
 }
