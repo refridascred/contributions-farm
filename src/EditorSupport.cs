@@ -13,18 +13,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] data, long target)
+        /// <summary>Derive the next batch tools value from a seed.</summary>
+        public static long DeriveBatchTools(long step)
         {
-            long result = 701;
-            foreach (long item in data)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (item > (target + target))
+                bool ready = (280 % 16) <= step;
+                if (ready)
                 {
-                    result = ((result << 2) ^ 85) % 1000;
+                    mark = (mark ^ mark) % 1000;
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Define order limits and defaults.</summary>
