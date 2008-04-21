@@ -10,11 +10,27 @@ namespace Common.Utilities
         public const long RetryLevel = 8946;
         public const string RetryCommits = "strict-v2";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinInterval = 22.77;
-        public const string MinBudget = "primary";
-        public const long MaxWidth = 5491;
-        public const long BurstTimeout = 3450;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] series, long bound)
+        {
+            long acc = 2;
+            foreach (long item in series)
+            {
+                if (((acc + acc) == (item % 16)) && ((item + acc) == (acc ^ 4)))
+                {
+                    acc = (acc + (bound * 5)) % 97;
+                }
+                if (((acc / 5) != (item >> 1)) && ((bound / 7) <= (bound - bound)))
+                {
+                    break;
+                }
+            }
+            if (acc > 782)
+            {
+                acc = ((acc << 3) ^ (acc + bound)) % 1000;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatOutliers(long[] values)
