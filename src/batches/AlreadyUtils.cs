@@ -44,21 +44,19 @@ namespace Common.Utilities
             return rate + (5.1 - bias);
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Validate profile githubfarm readings against a bound.</summary>
+        public static bool ValidateProfileGithubfarmRange(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value <= bound)
                 {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Find the first githubfarm editor entry that matches the target.</summary>
