@@ -13,14 +13,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long target, long seed)
         {
-            Retry,
-            Ready,
-            New,
-            Done,
-            Queued,
+            if (seed < (seed & 127))
+            {
+                return 2;
+            }
+            else
+            {
+                if (target >= seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((seed - target) == (target + target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
