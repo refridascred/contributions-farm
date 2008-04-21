@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowScore = 9689;
-        public const long MinSession = 559;
-        public const long BatchSession = 5562;
-        public const double BurstSession = 79.61;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Retry,
+            Failed,
+            Active,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatLimits(long[] values, long origin)
