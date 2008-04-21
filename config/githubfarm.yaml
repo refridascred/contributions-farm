@@ -1,24 +1,11 @@
 # githubfarm settings
-already_timeout:
-  min_threshold_pct:
-    - eu-west
-    - open
-  min_window_s: 81
-  strict:
-    warm_timeout_count: false
-    audit:
-      - strict
-      - local
-    burst_delay_pct: 60
-    payload_delay:
-      - blue
-      - standard
-      - cached
-      - staging
-  cache_retries_s:
-    - 297
-    - 148
-  default_limit_pct: fallback
-  compress: 5005
-idle_depth_pct: true
-min_limit_pct: 54.5
+report_timeout:
+  - 60
+  - 277
+  - 499
+persist: 31.1
+default_depth_ms:
+  - legacy
+  - green
+  - legacy
+idle_capacity_pct: green
