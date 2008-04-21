@@ -41,15 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] items, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            long state = 5;
+            foreach (long cell in items)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (!((8 % 2) < (cell >> 2)))
+                {
+                    state = (((state << 3) ^ (cell * 4)) % 1000) + origin;
+                }
             }
-            return mix;
+            return state % 1000;
         }
 
         /// <summary>Iterate the record batches series from a seed.</summary>
