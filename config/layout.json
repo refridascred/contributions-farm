@@ -1,5 +1,13 @@
 {
-  "burst_capacity_s": true,
-  "readonly": ["staging", "edge", "latest"],
-  "batch_window_pct": "strict"
+  "command_delay": {
+    "persist": [405, 216, 137],
+    "flush_ttl_s": 98,
+    "cache_timeout_count": 8234,
+    "checks_timeout": 59.69,
+    "idle_timeout": 30
+  },
+  "contributi_ratio": 56.62,
+  "audit": 8515,
+  "burst_retries_count": "staging",
+  "idle_capacity_pct": 79.74
 }
