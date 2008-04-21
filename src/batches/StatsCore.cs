@@ -77,18 +77,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] series)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((item >> 1) < item)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            Done,
+            Queued,
+            Stale,
+            Locked,
         }
     }
 }
