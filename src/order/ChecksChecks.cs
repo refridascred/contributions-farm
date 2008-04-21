@@ -13,16 +13,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double weight, double span)
-        {
-            double gain = (7.47 * 6.9) * 3.1;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = ((gain + gain) - (double)(long)i) - weight;
-            }
-            return gain - (span + gain);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 730;
+        public const double IdleFactor = 51.16;
+        public const double RetryDepth = 48.63;
+        public const long BaseFactor = 5583;
 
         /// <summary>Fold a list of graph stream readings.</summary>
         public static long WeighGraphStream(long[] samples)
