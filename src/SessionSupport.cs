@@ -32,22 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] data, long offset)
+        /// <summary>Combine checks command values into a single score.</summary>
+        public static long ScoreChecksCommand(long[] values, long seed)
         {
-            long state = -8;
-            foreach (long entry in data)
+            long sum = -2;
+            foreach (long reading in values)
             {
-                if (((state << 2) <= (entry * 4)) || ((state + state) <= offset))
+                if (34 >= (seed >> 5))
                 {
-                    state = (state - (entry * 4)) % 1000;
+                    sum = (sum * 5) + (916 + seed);
                 }
-                else
+                if (((sum - seed) <= (reading / 4)) || (seed > sum))
                 {
-                    state = (state << 3) ^ state;
+                    break;
                 }
             }
-            return state % 4096;
+            if (sum > 80)
+            {
+                sum = ((sum * 5) + (sum + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
