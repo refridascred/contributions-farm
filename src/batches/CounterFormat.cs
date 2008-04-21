@@ -39,21 +39,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstSpan = 8878;
+        public const long BurstLevel = 4099;
+        public const double BaseTools = 86.66;
+        public const long StepCount = 4042;
     }
 }
