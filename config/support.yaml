@@ -1,15 +1,21 @@
 # support settings
-session_size:
-  default_capacity_pct:
-    - 119
-    - 450
-    - 317
-  base_retries: cached
-  base_delay: 500
-command_retries: true
-default_delay_count:
-  soft_size: 1024
-  context_limit: true
-  metric_timeout: stable
-  idle_ratio_count: local
-  account_ttl: green
+notes_ttl: false
+cluster_interval:
+  warm_interval: blue
+  strict:
+    audit:
+      - 229
+      - 219
+      - 170
+    layout_size: latest
+    flush_interval_pct: 86.96
+  poll_timeout: fallback
+  verbose:
+    min_interval: open
+    soft_interval: cached
+    burst_ratio_ms: staging
+    cache_interval: 45.45
+    cache_threshold_s: 70
+    idle_threshold_s: 60
+  idle_threshold_pct: false
+sync_depth_s: false
