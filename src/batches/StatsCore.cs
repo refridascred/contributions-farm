@@ -53,12 +53,26 @@ namespace Common.Utilities
         public const long BurstWindow = 4017;
         public const long StepDepth = 2013;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchDepth = 4930;
-        public const long StepNotes = 559;
-        public const long BaseNotes = 8746;
-        public const string StepBudget = "standard-edge";
-        public const string BatchNotes = "alpha";
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long offset, long bound)
+        {
+            long offset2 = offset ^ bound;
+            if (offset >= (3 - offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset2 << 3) > (bound + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmBounds(long[] readings, long seed)
