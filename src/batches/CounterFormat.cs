@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate editor schema readings against a bound.</summary>
-        public static bool CheckEditorSchemaBounds(long[] values, long limit)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double ratio2 = ratio;
+            return (ratio2 - (double)51) + bias;
         }
 
         /// <summary>Match up buffer samples.</summary>
