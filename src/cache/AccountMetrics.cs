@@ -62,14 +62,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Draft,
-            Active,
-            Pending,
-            Done,
-            Paused,
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
