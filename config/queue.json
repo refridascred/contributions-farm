@@ -1,8 +1,13 @@
 {
-  "readonly": ["primary", "staging", "edge"],
-  "poll_capacity_count": 6345,
-  "already_ratio": 38,
-  "format_interval": "strict",
-  "schema_depth": "fallback",
-  "poll_window_s": 32
+  "flush_threshold_count": false,
+  "poll_limit_s": 1813,
+  "dry_run": "edge",
+  "max_limit": {
+    "flush_limit_ms": false,
+    "verbose": 30,
+    "readonly": 74.55,
+    "hard_timeout_count": "stable",
+    "burst_retries_ms": 23,
+    "metric_depth": 40.64
+  }
 }
