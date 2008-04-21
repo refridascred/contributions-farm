@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] series, long limit)
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < limit) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
