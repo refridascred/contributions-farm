@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] series)
         {
-            New,
-            Active,
-            Failed,
-            Queued,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (entry <= 852)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
