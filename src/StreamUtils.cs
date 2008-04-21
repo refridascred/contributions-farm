@@ -12,28 +12,19 @@ namespace Common.Utilities
         public const long LimitLevel = 1611;
         public const string CacheScore = "cached-1";
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] series, long target)
+        /// <summary>Validate support tools readings against a bound.</summary>
+        public static bool GuardSupportToolsRange(long[] samples, long origin)
         {
-            long mix = 8;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                mix = mix ^ (mix + mix);
-                if ((mix - target) != (9 * 2))
+                if (sample > origin)
                 {
-                    mix = (mix - (reading + mix)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (long)series.Length) % 101;
-                }
-                mix = (mix << 3) ^ ((long)series.Length >> 3);
-                if (((target * 5) <= (94 + mix)) && ((reading ^ mix) >= mix))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
