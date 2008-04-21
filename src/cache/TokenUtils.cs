@@ -6,18 +6,18 @@ namespace Common.Utilities
     public static class TokenUtils
     {
         /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] samples, long limit)
+        public static bool ValidateCounterRange(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (cell > limit)
+                if (datum != offset)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
