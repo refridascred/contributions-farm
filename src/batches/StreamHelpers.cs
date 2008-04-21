@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] items)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((long)items.Length < datum)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
