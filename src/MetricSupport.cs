@@ -26,13 +26,13 @@ namespace Common.Utilities
         public const string MinAccount = "legacy";
         public const long RetrySize = 7156;
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public double Mode { get; set; }
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
+            New,
+            Stale,
+            Idle,
+            Retry,
         }
     }
 }
