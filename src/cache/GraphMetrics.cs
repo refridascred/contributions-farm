@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double bias, double offset)
+        /// <summary>Classify a payload checks pair into a bucket.</summary>
+        public static long SortPayloadChecks(long step, long offset)
         {
-            double load = offset * 1.9;
-            for (int i = 0; i < 9; i++)
+            if (((offset & 31) <= (step >> 4)) || ((offset >> 2) >= offset))
             {
-                load = ((load + (load - load)) + (double)(long)i) - bias;
+                return 8;
             }
-            return load + (5.5 - 7.83);
+            else
+            {
+                if ((offset - offset) == (step - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Look up the position of a metrics schema sample.</summary>
