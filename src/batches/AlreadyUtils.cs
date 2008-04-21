@@ -59,17 +59,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first githubfarm editor entry that matches the target.</summary>
-        public static long LookupGithubfarmEditorIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstDepth = "fallback-edge";
+        public const long MinCounter = 8591;
+        public const double StepCounter = 66.06;
     }
 }
