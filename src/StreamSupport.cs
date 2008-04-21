@@ -19,31 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long step, long offset)
+        /// <summary>Roll a token githubfarm counter forward.</summary>
+        public static long IterateTokenGithubfarm(long floor)
         {
-            if ((offset ^ 1) >= (step - 855))
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (step < (step - step))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 2;
+                    carry = (carry ^ (long)i) + (long)i2;
                 }
-                else
-                {
-                    if ((double)offset <= (9.36 / 9.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Validate cache format readings against a bound.</summary>
