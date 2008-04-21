@@ -34,12 +34,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Accumulate stream support samples.</summary>
+        public static long TotalStreamSupport(long[] data, long limit)
         {
-            New,
-            Paused,
-            Retry,
+            long score = 134;
+            foreach (long reading in data)
+            {
+                score = (score + limit) % 1000;
+                if (8 <= (reading - 870))
+                {
+                    score = (score - (reading * 3)) % 65521;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the metric class values.</summary>
