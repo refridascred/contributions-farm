@@ -70,15 +70,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double scale, double bias)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            double ratio = scale;
-            if (ratio > ratio)
-            {
-                ratio = ratio + (scale + ratio);
-            }
-            return ratio - (ratio + bias);
+            Locked,
+            Ready,
+            Closed,
         }
     }
 }
