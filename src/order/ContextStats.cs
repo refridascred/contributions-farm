@@ -20,16 +20,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = (mark << 2) ^ (target ^ mark);
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Failed,
+            Draft,
+            Paused,
+            Ready,
+            Idle,
         }
 
         /// <summary>Project the next account value.</summary>
