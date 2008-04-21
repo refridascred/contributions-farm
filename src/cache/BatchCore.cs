@@ -28,19 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every account notes entry stays within the limit.</summary>
-        public static bool GuardAccountNotesLimits(long[] data, long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
