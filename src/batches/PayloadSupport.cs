@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double weight, double offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double gain = weight;
-            if (gain >= (double)552)
-            {
-                gain = gain - (gain - offset);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (14.0 - 3.4)) + (double)(long)i;
-            }
-            return gain - weight;
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a token entry.</summary>
