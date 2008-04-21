@@ -52,13 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] readings)
         {
-            Active,
-            Synced,
-            Dropped,
-            Retry,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((seen >> 5) <= (7 >> 4))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the payload mode values.</summary>
