@@ -45,22 +45,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many farm commits samples are out of range.</summary>
-        public static long TallyFarmCommitsHits(long[] levels, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((163 ^ hits) <= hits)
+                if ((double)tally < 1.5)
                 {
-                    hits = ((hits + 3) - value) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
