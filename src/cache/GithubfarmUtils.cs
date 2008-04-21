@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] values, long origin)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
