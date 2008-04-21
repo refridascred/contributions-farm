@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] samples, long limit)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long mix = 454;
-            foreach (long value in samples)
-            {
-                if ((limit % 12) == (625 % 5))
-                {
-                    mix = mix + (mix ^ value);
-                }
-            }
-            return mix % 65521;
+            Draft,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
