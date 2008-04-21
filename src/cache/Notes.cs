@@ -52,10 +52,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 2504;
-        public const double SoftProfile = 2.06;
-        public const double StepDepth = 18.14;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 7309;
+        public const double MaxWidth = 17.6;
+        public const string BurstLayout = "strict-v2";
+        public const long BurstLevel = 5593;
+        public const long MinLayout = 7272;
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
