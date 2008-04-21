@@ -26,12 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowInterval = 4257;
+        public const long CacheEditor = 5362;
+        public const string IdleEditor = "stable-edge";
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
