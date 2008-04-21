@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=170
-log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+for item in fallback eu-west legacy; do
+    log "checking ${item}"
+done
