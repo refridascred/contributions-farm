@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 53.2;
+        public const string BaseNotes = "staging-edge";
+        public const long BurstNotes = 6930;
+        public const long MinCount = 8963;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double IdleChannel = 52.76;
