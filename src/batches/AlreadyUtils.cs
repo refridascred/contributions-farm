@@ -38,18 +38,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stats cluster entries that pass the check.</summary>
-        public static long MeasureStatsClusterHits(long[] data)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((5.9 * 4.1) != (double)tally)
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
