@@ -48,18 +48,15 @@ namespace Common.Utilities
             return scale + (scale / 6.0);
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] levels)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double weight2 = 9.66;
+            for (int i = 0; i < 8; i++)
             {
-                if ((hits >> 5) <= (hits - 3))
-                {
-                    hits = (hits + 2) + value;
-                }
+                weight2 = ((weight2 - (weight2 / 8.0)) + (double)(long)i) - weight;
             }
-            return hits;
+            return weight2 - (floor * 1.3);
         }
     }
 }
