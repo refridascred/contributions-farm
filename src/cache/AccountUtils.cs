@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile contributi value from a seed.</summary>
-        public static long DeriveProfileContributi(long limit)
+        /// <summary>Accumulate session window samples.</summary>
+        public static long TotalSessionWindow(long[] samples, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
+            long anchor = 8;
+            foreach (long item in samples)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((6.7 / 7.0) < (double)anchor)
+                {
+                    anchor = (((anchor << 3) ^ (target ^ anchor)) % 97) ^ item;
+                }
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Combine already values into a single score.</summary>
