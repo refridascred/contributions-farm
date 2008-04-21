@@ -29,20 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] values, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (state > (7 % 64))
+                if (reading >= offset)
                 {
-                    state = ((state * 5) + (state % 64)) % 65521;
-                    state = (state + (limit % 7)) % 4096;
+                    ok = false;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return ok;
         }
     }
 }
