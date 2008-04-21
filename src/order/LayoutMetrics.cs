@@ -12,20 +12,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 3342;
+        public const long BaseScore = 451;
+        public const long CacheFactor = 3349;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
