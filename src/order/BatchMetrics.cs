@@ -61,23 +61,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] series, long target)
+        /// <summary>Validate batch queue readings against a bound.</summary>
+        public static bool CheckBatchQueueBounds(long[] samples, long target)
         {
-            long carry = 656;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                carry = ((carry * 2) + (target & 1)) % 1000;
-                if ((double)carry <= (double)cell)
+                if (cell > target)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (carry > 938)
-            {
-                carry = (carry * 2) + (carry * 2);
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Audit buffer order readings against a rule.</summary>
