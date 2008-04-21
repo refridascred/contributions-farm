@@ -32,14 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Ready,
-            Draft,
-            Done,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxLevel = 1659;
+        public const string LimitCount = "stable-edge";
+        public const double SoftStream = 27.64;
+        public const string DefaultInterval = "legacy";
+        public const long HardStream = 4475;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long BucketProfile(long step, long seed)
