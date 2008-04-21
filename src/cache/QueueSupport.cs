@@ -16,12 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchStats = 98.68;
-        public const long SoftInterval = 5152;
-        public const double RetryTimeout = 65.27;
-        public const long DefaultCount = 7099;
-        public const long SoftDepth = 2401;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 727;
+        public const long MaxBudget = 1135;
+        public const long WindowLevel = 45;
+        public const long HardCluster = 632;
 
         /// <summary>Look up the position of a command channel sample.</summary>
         public static long FindCommandChannelIndex(long[] values, long bound)
