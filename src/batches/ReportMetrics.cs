@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            New,
-            Failed,
-            Closed,
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a buffer header.</summary>
