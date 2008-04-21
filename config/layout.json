@@ -1,8 +1,10 @@
 {
-  "default_threshold_count": 2869,
-  "enabled": [357, 344],
-  "poll_interval": 96.97,
-  "base_ttl": 74.18,
-  "order_delay": 87.33,
-  "schema_ttl": false
+  "metrics_window": 60,
+  "order_window": {
+    "warm_depth": false,
+    "commits_delay": ["standard", "stable"],
+    "flush_interval_pct": 60
+  },
+  "readonly": "eu-west",
+  "window_window": [196, 497, 382, 451]
 }
