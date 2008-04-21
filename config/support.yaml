@@ -1,4 +1,6 @@
 # support settings
-strict: false
-flush_depth_count: 3133
-compress: 24.67
+soft_depth_ms:
+  - 295
+  - 490
+filter_delay: 5718
+max_retries_s: standard
