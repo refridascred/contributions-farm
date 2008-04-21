@@ -12,17 +12,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a already cache sample.</summary>
-        public static long FindAlreadyCacheIndex(long[] items, long limit)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (items[i] < limit)
+                if ((sample >> 1) < (tally ^ tally))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
