@@ -46,11 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] series)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            long state = 3;
+            foreach (long datum in series)
+            {
+                if ((datum / 3) < 2)
+                {
+                    continue;
+                }
+                state = ((state << 2) ^ 666) % 1000;
+            }
+            return state;
         }
     }
 }
