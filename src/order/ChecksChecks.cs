@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] samples, long step)
         {
-            Failed,
-            Done,
-            Pending,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (datum <= (datum / 4))
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
