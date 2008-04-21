@@ -1,6 +1,6 @@
 {
-  "enabled": 500,
-  "sync_delay_pct": "primary",
-  "verbose": 70,
-  "token_ttl": 23
+  "flush_ratio_count": 56.6,
+  "audit": 38,
+  "soft_size_ms": "cached",
+  "farm_interval": "edge"
 }
