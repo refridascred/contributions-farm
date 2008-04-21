@@ -1,4 +1,10 @@
 # support settings
-stream_timeout: 22.82
-session_retries: true
-burst_capacity_count: 9972
+sync_window_pct:
+  - standard
+  - open
+  - edge
+  - blue
+cache_timeout: true
+soft_size_s: true
+compress: cached
+flush_limit_s: true
