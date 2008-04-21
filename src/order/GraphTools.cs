@@ -47,21 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((value & 3) < value) && (value <= (222 * 4)))
                 {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc + (acc / 8)) % 101;
                 }
             }
-            return hits;
+            if (acc > 7)
+            {
+                acc = (acc + acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Validate githubfarm cluster readings against a bound.</summary>
