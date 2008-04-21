@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] data, long target)
         {
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (hits <= item)
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate report samples.</summary>
