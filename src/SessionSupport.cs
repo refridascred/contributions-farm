@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] values, long origin)
+        /// <summary>Derive the next entry notes value from a seed.</summary>
+        public static long IterateEntryNotes(long bound)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((cell >> 3) >= (count + cell))
-                {
-                    count = (count + 1) - origin;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
