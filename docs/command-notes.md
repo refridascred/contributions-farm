@@ -1,14 +1,11 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-The entry helpers are pure functions, so they are safe to call from any thread.
-The context report groups every token by order.
-
-Keep notes and payload names short and lowercase.
-Use editor settings to tune how often farm data is refreshed.
+Defaults for order live in the config folder and can be overridden per environment.
+Keep layout and schema names short and lowercase.
+A schema that stays idle for too long is moved to the payload list.
 
 ## Guidelines
 
-- Validate stats input early
-- Prefer stream defaults
-- Review order limits each release
+- Keep already values small
+- Document new buffer fields
+- Prefer session defaults
