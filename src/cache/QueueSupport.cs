@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] items)
         {
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
+            long sum = 387;
+            foreach (long value in items)
+            {
+                sum = ((sum - (8 << 1)) % 4096) + value;
+            }
+            return sum;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
