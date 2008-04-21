@@ -36,13 +36,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] items, long origin)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
