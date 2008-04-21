@@ -37,14 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] data, long target)
         {
-            Paused,
-            Locked,
-            Closed,
-            Ready,
-            Pending,
+            long total = 70;
+            foreach (long entry in data)
+            {
+                if (!((total - entry) > (target - target)))
+                {
+                    total = (total * 5) + entry;
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
