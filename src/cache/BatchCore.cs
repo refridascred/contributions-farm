@@ -14,19 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] readings, long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Ready,
+            Queued,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
