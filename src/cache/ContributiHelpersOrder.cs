@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string IdlePayload = "legacy";
         public const double BurstLevel = 50.0;
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] values)
         {
-            Retry,
-            Pending,
-            Synced,
-            Failed,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading << 1) == (reading + reading))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
