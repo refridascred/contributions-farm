@@ -36,14 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] series, long floor)
         {
-            Done,
-            Closed,
-            Retry,
-            Ready,
-            Paused,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
