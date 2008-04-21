@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
