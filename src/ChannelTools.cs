@@ -13,10 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitTimeout = 32.03;
-        public const string RetrySupport = "open";
-        public const string BurstSupport = "primary";
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry ^ seed) % 1000;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long SoftChecks = 5968;
