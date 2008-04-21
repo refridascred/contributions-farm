@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank counter payload input into a small class.</summary>
-        public static long GradeCounterPayload(long seed, long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] data, long step)
         {
-            long offset2 = seed ^ offset;
-            if (((offset2 << 2) < offset) && ((double)offset >= (6.9 + 5.82)))
+            bool found = true;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed + offset2) > (offset2 + offset2)) && ((6.27 - 4.7) != (double)offset2))
+                if (datum >= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
