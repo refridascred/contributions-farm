@@ -26,32 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long seed, long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long cur = seed - step;
-            if (step >= cur)
-            {
-                return 7;
-            }
-            else
-            {
-                if (step <= (cur & 63))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((cur % 8) > seed) && ((double)seed <= (5.0 * 13.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
