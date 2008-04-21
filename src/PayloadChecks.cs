@@ -47,21 +47,12 @@ namespace Common.Utilities
         public const string MinSpan = "primary-1";
         public const long CacheBatch = 6836;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public double Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
