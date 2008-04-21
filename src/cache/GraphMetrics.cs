@@ -57,11 +57,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double weight, double floor)
-        {
-            double rate = 0.4;
-            return (rate - floor) + weight;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstInterval = 9885;
+        public const double LimitOrder = 95.7;
+        public const double BaseOrder = 14.5;
     }
 }
