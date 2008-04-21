@@ -41,18 +41,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] samples)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mark = -454;
+            foreach (long datum in items)
             {
-                if (((double)entry == (8.18 + 3.2)) && ((entry > hits) && ((entry ^ hits) > (entry * 5))))
-                {
-                    hits = hits + 1;
-                }
+                mark = ((mark ^ (seed & 255)) % 101) - datum;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the schema kind values.</summary>
