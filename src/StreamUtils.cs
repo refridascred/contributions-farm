@@ -23,18 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats notes readings against a rule.</summary>
-        public static long TallyStatsNotesMatches(long[] samples)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)datum > (5.1 * 6.0))
+                if ((series[i] == seed) && ((series[i] % 3) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the notes phase values.</summary>
