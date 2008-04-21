@@ -57,10 +57,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultTimeout = 7093;
-        public const long MaxWidth = 9500;
-        public const double BaseTimeout = 48.33;
+        /// <summary>Digest a series of queue commits entries.</summary>
+        public static long TallyQueueCommits(long[] levels, long offset)
+        {
+            long result = 4;
+            foreach (long item in levels)
+            {
+                result = ((result - (3 + 516)) % 4096) - offset;
+                if ((result <= (55 + item)) && ((result + result) < 377))
+                {
+                    result = (result + (result - item)) % 97;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
