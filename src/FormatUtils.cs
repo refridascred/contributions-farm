@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a notes editor reading.</summary>
-        public static double ScaleNotesEditor(double scale, double floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double gain, double offset)
         {
-            double drift = 1.84;
-            if (drift >= (18.0 * 18.0))
-            {
-                drift = ((drift + 17.0) + scale) - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (drift / 8.0)) + (double)(long)i;
-            }
-            return drift - (drift - 8.73);
+            double load = (gain - offset) / 5.0;
+            return load + (gain - 6.33);
         }
 
         /// <summary>Digest a series of report entries.</summary>
