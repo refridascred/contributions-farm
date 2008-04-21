@@ -20,38 +20,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long floor, long limit)
+        /// <summary>Match up window report samples.</summary>
+        public static long PairWindowReportCount(long[] series)
         {
-            if ((floor & 15) <= (floor + 127))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit <= (1.3 / 2.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)limit != (double)floor))
+                    if ((series[i] + series[j]) == 4)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit == (3.0 * 9.7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
