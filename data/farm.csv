@@ -1,7 +1,6 @@
-id,ratio,region,owner
-1,13.53,cached,878
-2,748,218,83.64
-3,162,537,edge
-4,552,429,39.93
-5,125,staging,strict
-6,latest,984,82.33
+id,weight,region,state,token
+1,green,83.84,85.29,87.61
+2,288,fallback,stable,264
+3,75.23,780,blue,696
+4,staging,primary,46.35,6.93
+5,staging,94,756,572
