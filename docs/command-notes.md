@@ -1,11 +1,11 @@
 # Command notes
 
-When a farm fails, the format handler retries a few times before giving up.
-A githubfarm that stays idle for too long is moved to the record list.
+Each command is validated before it reaches the token queue.
+Run the account check before changing any layout limits.
+Use tools settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Prefer command defaults
-- Document new report fields
-- Validate account input early
-- Log every session change
+- Document new commits fields
+- Validate filter input early
+- Keep stream values small
