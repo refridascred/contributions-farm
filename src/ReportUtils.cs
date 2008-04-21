@@ -55,18 +55,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine command farm values into a single score.</summary>
-        public static long FoldCommandFarm(long[] series)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] levels)
         {
-            long state = 6;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.73 * 1.0) <= (double)reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state << 2) ^ (state - state);
+                    if ((levels[i] ^ levels[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return hits;
         }
     }
 }
