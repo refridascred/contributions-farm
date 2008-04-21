@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] items, long bound)
         {
-            long state = 958;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state * 5) + item;
+                if ((items[i] >= bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Accumulate schema editor samples.</summary>
