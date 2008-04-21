@@ -31,18 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] readings, long bound)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (!((4 % 3) <= bound) && ((matches + entry) <= (24 % 10)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
