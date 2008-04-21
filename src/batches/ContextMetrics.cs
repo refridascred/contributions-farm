@@ -27,12 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            New,
-            Pending,
-            Stale,
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
