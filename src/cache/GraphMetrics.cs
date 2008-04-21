@@ -70,11 +70,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 8869;
-        public const double MaxOrder = 4.83;
-        public const string DefaultDepth = "stable-edge";
-        public const long DefaultOrder = 6377;
-        public const string HardOrder = "local-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 1042;
+        public const long StepBatch = 2578;
+        public const long MaxBatch = 6198;
     }
 }
