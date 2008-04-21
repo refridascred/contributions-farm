@@ -50,25 +50,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the record batches series from a seed.</summary>
-        public static long RollRecordBatches(long step)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!(((long)i ^ (long)i) <= (45 + 4)))
-                {
-                    sum = ((sum * 2) + (step ^ step)) % 1000;
-                    sum = ((sum * 2) + (52 - step)) % 101;
-                }
-                if ((94 + step) < sum)
-                {
-                    sum = ((sum * 3) + step) % 4096;
-                }
-                sum = (sum * 4) + sum;
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Idle,
+            Queued,
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
