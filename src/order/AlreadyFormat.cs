@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] data, long bound)
         {
-            Active,
-            Retry,
-            Queued,
-            Ready,
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next metric value.</summary>
