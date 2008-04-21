@@ -1,6 +1,11 @@
-id,count,ratio
-1,707,43.23
-2,41.37,93.54
-3,330,legacy
-4,293,117
-5,61.83,15.79
+id,owner,count,level,active
+1,eu-west,latest,eu-west,green
+2,open,2.46,eu-west,443
+3,green,391,5.11,70.93
+4,local,449,69,948
+5,standard,970,857,400
+6,7.04,414,46.42,22.26
+7,54.26,202,24.76,primary
+8,41.41,807,693,edge
+9,540,41,863,41.23
+10,local,cached,edge,open
