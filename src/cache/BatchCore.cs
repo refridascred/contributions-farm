@@ -16,19 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double ratio, double offset)
+        /// <summary>Match up entry command samples.</summary>
+        public static long OverlapEntryCommandCount(long[] items)
         {
-            double load = (double)0 / 9.0;
-            if (load <= (0.9 - ratio))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - (double)9) + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (ratio + 6.25);
-            }
-            return load - (double)55;
+            return seen;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
