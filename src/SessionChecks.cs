@@ -14,24 +14,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long floor, long seed)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            if ((5.69 / 7.0) < (double)seed)
+            long mark = 1;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed < 845)
+                if ((7.2 > (double)mark) || (mark < reading))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    mark = (mark ^ (reading / 6)) % 97;
                 }
             }
+            return mark;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
