@@ -14,21 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((seen << 1) < 1) || ((double)seen == (7.0 * 10.0)))
                 {
-                    if ((readings[i] ^ readings[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = ((seen + 2) - entry) - offset;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Classify a format graph pair into a bucket.</summary>
