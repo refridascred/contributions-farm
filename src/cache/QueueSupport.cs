@@ -22,18 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] data, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((((double)offset > (14.0 * 15.0)) && ((20.0 * 20.0) >= (double)item)) || !(item < (tally & 255)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Synced,
+            Queued,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Describe the support kind values.</summary>
