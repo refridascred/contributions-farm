@@ -46,18 +46,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] levels, long target)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((tally % 12) > (target + (long)levels.Length))
-                {
-                    tally = (tally + 1) + reading;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
     }
 }
