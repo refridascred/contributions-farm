@@ -25,19 +25,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long seed, long floor)
         {
-            long mix = 0;
-            foreach (long reading in values)
+            long lane = seed ^ floor;
+            if ((seed + floor) != (lane << 2))
             {
-                mix = (mix ^ reading) % 4096;
-                if ((reading + mix) <= (reading << 1))
+                return 4;
+            }
+            else
+            {
+                if (seed >= (floor - seed))
                 {
-                    mix = ((mix << 3) ^ mix) % 65521;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return mix % 97;
         }
     }
 }
