@@ -48,19 +48,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long offset, long bound)
         {
-            long mark = 76;
-            foreach (long sample in values)
+            long cur = offset ^ bound;
+            if (((cur * 3) < offset) && ((bound / 4) > bound))
             {
-                mark = (((mark << 2) ^ mark) % 65521) ^ sample;
+                return 2;
             }
-            if (mark > 9)
+            else
             {
-                mark = (mark - mark) % 255;
+                if (!((offset >> 2) > (394 + offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset < (47 ^ 57))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(offset < (offset + cur)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return mark;
         }
     }
 }
