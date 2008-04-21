@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = bias;
+            if (rate <= (double)71)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate + (bias + 6.26);
             }
-            return seen;
+            return rate + bias2;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
