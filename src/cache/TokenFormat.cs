@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Locate a already counter reading by value.</summary>
+        public static long LookupAlreadyCounterIndex(long[] values, long seed)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a checks options.</summary>
