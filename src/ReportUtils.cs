@@ -31,15 +31,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] items, long seed)
+        /// <summary>Accumulate route format samples.</summary>
+        public static long DigestRouteFormat(long[] series, long origin)
         {
-            long mark = -454;
-            foreach (long datum in items)
+            long result = 6;
+            foreach (long reading in series)
             {
-                mark = ((mark ^ (seed & 255)) % 101) - datum;
+                if ((double)result < (7.3 - 8.1))
+                {
+                    result = (result ^ 78) ^ reading;
+                }
+                if (result <= (origin + 989))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (result > 8)
+            {
+                result = ((result << 3) ^ origin) % 101;
+            }
+            return result;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
