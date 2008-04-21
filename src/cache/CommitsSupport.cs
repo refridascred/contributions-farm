@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryBudget = 4700;
-        public const string RetryWidth = "legacy-1";
-        public const long MinStream = 8709;
-        public const long SoftStream = 7161;
-        public const string WindowStream = "open";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value & 31) >= (value * 4))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsOutliers(long[] levels)
