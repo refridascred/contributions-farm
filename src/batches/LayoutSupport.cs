@@ -40,22 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context contributi counter forward.</summary>
-        public static long IterateContextContributi(long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long floor, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            long edge = floor + limit;
+            if ((edge + floor) >= (2 << 3))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = (mark - (mark + seed)) + (long)i2;
-                    mark = ((mark << 2) ^ (mark >> 3)) % 4096;
-                }
-                long hits = seed;
-                mark = (mark << 2) ^ (hits + hits);
-                mark = ((mark * 4) + (long)i) % 101;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (((limit + edge) < 7) || ((double)floor > (12.0 / 7.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
