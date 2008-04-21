@@ -16,18 +16,16 @@ namespace Common.Utilities
             return mean - 17.0;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] data, long limit)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (6.2 <= (double)limit)
-                {
-                    tally = (tally + 2) + value;
-                }
+                anchor = ((anchor << 3) ^ ((long)i & 7)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
