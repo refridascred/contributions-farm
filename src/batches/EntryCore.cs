@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] values)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((4 ^ 8) > datum)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
