@@ -1,19 +1,4 @@
 # githubfarm settings
-max_limit_s:
-  default_threshold_s: eu-west
-  account_ttl: 7495
-  idle_ttl_count: 72.46
-  persist:
-    - 403
-    - 444
-soft_threshold_ms:
-  min_capacity_pct:
-    - 88
-    - 382
-    - 58
-  readonly: 885
-  strict: 71
-  persist: 4627
-poll_ttl_pct: 7895
-audit: 250
-readonly: edge
+audit: true
+retry_ratio_pct: 449
+soft_ttl_count: legacy
