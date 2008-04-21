@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 3624;
-        public const double DefaultLayout = 44.63;
-        public const long CacheRatio = 4675;
-        public const double HardLayout = 19.27;
-        public const long BurstWidth = 992;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Locked,
+            Failed,
+            Dropped,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long WeighTools(long[] levels, long step)
