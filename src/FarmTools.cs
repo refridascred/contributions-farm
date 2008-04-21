@@ -28,12 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] levels, long bound)
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
+            long total = 94;
+            foreach (long datum in levels)
+            {
+                total = total - (-4);
+                if (((total & 255) >= (datum + datum)) || ((total + total) <= bound))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
