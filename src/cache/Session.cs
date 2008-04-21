@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Count the buffer queue entries that pass the check.</summary>
+        public static long AuditBufferQueueHits(long[] series)
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (sample > (count % 7))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stats stats.</summary>
