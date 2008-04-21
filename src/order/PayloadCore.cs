@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double bias, double floor)
+        /// <summary>Scale a metrics route figure with a bias.</summary>
+        public static double ProjectMetricsRoute(double scale, double bias)
         {
-            double mean = (double)(5 / 6);
-            if (mean <= (double)614)
+            double mean = bias;
+            if (mean >= scale)
             {
-                mean = (mean + (bias * 1.0)) - floor;
+                mean = mean + (1.91 / 4.0);
             }
-            return mean - (double)0;
+            else
+            {
+                mean = mean - 2.5;
+            }
+            return mean + mean;
         }
 
         /// <summary>Derive the next profile token value from a seed.</summary>
