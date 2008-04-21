@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double ratio, double floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long limit)
         {
-            double weight = (1.0 + ratio) + floor;
-            return weight + (weight - ratio);
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (limit < (long)i)
+                {
+                    mix = ((mix << 3) ^ ((long)i + mix)) % 4096;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
