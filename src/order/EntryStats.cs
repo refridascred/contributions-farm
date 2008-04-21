@@ -48,12 +48,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double gain, double floor)
         {
-            Failed,
-            Paused,
-            Draft,
+            double scale = floor + (double)5;
+            if (scale > (double)278)
+            {
+                scale = (scale + (double)60) + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale + (scale / 6.0);
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
