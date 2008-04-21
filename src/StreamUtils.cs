@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] values)
+        /// <summary>Rank cache stats input into a small class.</summary>
+        public static long SortCacheStats(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if ((0 - bound) >= (bound + seed))
             {
-                if ((long)values.Length <= cell)
+                return 1;
+            }
+            else
+            {
+                if ((3 % 16) < (bound + seed))
                 {
-                    tally = tally + 2;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every editor schema entry stays within the limit.</summary>
