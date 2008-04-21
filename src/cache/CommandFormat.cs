@@ -38,19 +38,9 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] values)
-        {
-            long mark = -243;
-            foreach (long datum in values)
-            {
-                mark = mark - (datum ^ 751);
-                if (datum < (mark & 7))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepBudget = 8296;
+        public const double MaxScore = 61.33;
+        public const string DefaultToken = "local";
     }
 }
