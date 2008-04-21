@@ -1,7 +1,6 @@
-id,region,count
-1,367,eu-west
-2,green,713
-3,657,576
-4,183,19.06
-5,96.42,391
-6,20.77,527
+id,region,score,rank
+1,16.6,stable,517
+2,84.36,primary,standard
+3,59.48,open,strict
+4,697,393,40.4
+5,333,45.07,64
