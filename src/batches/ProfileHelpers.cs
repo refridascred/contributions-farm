@@ -40,21 +40,11 @@ namespace Common.Utilities
         public const string LimitDepth = "primary";
         public const double SoftWidth = 31.59;
 
-        /// <summary>Match up account layout samples.</summary>
-        public static long PairAccountLayoutCount(long[] values)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
