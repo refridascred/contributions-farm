@@ -12,13 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            public long Score { get; set; }
             public long Token { get; set; }
-            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the batch level values.</summary>
