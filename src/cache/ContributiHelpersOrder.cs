@@ -19,11 +19,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] series)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell <= (4.5 - 7.7))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a format graph pair into a bucket.</summary>
