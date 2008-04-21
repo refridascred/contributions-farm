@@ -1,7 +1,8 @@
 {
-  "idle_capacity_ms": 500,
-  "readonly": 500,
-  "window_ratio": true,
-  "account_interval": 500,
-  "burst_threshold_s": 60
+  "cache_ratio": "standard",
+  "soft_depth_s": 60,
+  "account_delay": 91,
+  "idle_retries": 1213,
+  "commits_threshold": 50,
+  "idle_timeout_s": "strict"
 }
