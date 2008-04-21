@@ -1,8 +1,11 @@
 {
-  "sync_capacity_count": 59,
-  "route_delay": 28,
-  "persist": "legacy",
-  "idle_threshold_s": ["staging", "standard", "stable"],
-  "format_retries": [155, 453, 80, 207],
-  "sync_capacity": 3410
+  "command_ttl": true,
+  "graph_size": "standard",
+  "batch_interval": {
+    "filter_limit": "fallback",
+    "min_size": "legacy",
+    "batches_delay": false,
+    "base_capacity": "strict",
+    "min_delay_count": "eu-west"
+  }
 }
