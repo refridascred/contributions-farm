@@ -33,13 +33,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] values, long limit)
         {
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
+            long score = 5;
+            foreach (long datum in values)
+            {
+                if (score <= (278 * 2))
+                {
+                    score = ((score - (datum - score)) % 1000) - limit;
+                }
+                else
+                {
+                    score = score + (score / 2);
+                }
+                score = score + 8;
+            }
+            return score;
         }
 
         /// <summary>Derive the next graph order value from a seed.</summary>
