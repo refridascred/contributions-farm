@@ -12,23 +12,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] levels, long offset)
-        {
-            long carry = 4;
-            foreach (long entry in levels)
-            {
-                if (offset < (35 + 4))
-                {
-                    carry = (((carry * 5) + (offset - carry)) % 255) + entry;
-                }
-            }
-            if (carry < 2)
-            {
-                carry = ((carry * 5) + offset) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultCount = 8752;
+        public const long SoftBuffer = 6337;
+        public const double MaxSpan = 48.51;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LocateContextIndex(long[] series, long target)
