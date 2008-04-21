@@ -36,14 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Locked,
-            Stale,
-            Done,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstTimeout = "latest-edge";
+        public const long MinTools = 4790;
+        public const double IdleTools = 90.87;
+        public const double HardWidth = 14.19;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepBudget = 8296;
