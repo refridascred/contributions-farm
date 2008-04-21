@@ -1,16 +1,13 @@
 {
-  "base_interval_ms": 89.43,
-  "token_ratio": {
-    "route_depth": {
-      "readonly": 11.35,
-      "max_retries": "local",
-      "counter_threshold": 8486
+  "window_interval": "local",
+  "soft_interval_ms": "latest",
+  "batch_threshold": {
+    "githubfarm_ttl": 7613,
+    "dry_run": {
+      "counter_threshold": "latest",
+      "cache_interval_s": 49.86,
+      "cache_interval": false
     },
-    "entry_threshold": true,
-    "verbose": "staging",
-    "compress": [335, 235, 166, 8],
-    "command_ttl": 1058
-  },
-  "verbose": "edge",
-  "min_retries_ms": true
+    "stream_window": ["strict", "fallback", "open", "stable"]
+  }
 }
