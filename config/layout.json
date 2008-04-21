@@ -1,18 +1,6 @@
 {
-  "audit": "green",
-  "poll_timeout_s": 82.28,
-  "idle_delay": {
-    "readonly": [412, 19],
-    "profile_limit": 30,
-    "cache_interval_count": 22.4,
-    "strict": {
-      "retry_depth_s": ["standard", "standard"],
-      "batch_retries_ms": 250,
-      "payload_capacity": "staging",
-      "persist": false
-    },
-    "burst_capacity": 100,
-    "batches_retries": "open"
-  },
-  "sync_ttl_count": "edge"
+  "profile_ttl": "legacy",
+  "cache_depth_pct": true,
+  "enabled": 72.58,
+  "persist": ["edge", "stable", "green"]
 }
