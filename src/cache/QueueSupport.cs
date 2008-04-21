@@ -13,27 +13,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] values, long bound)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double weight, double floor)
         {
-            long result = 0;
-            foreach (long cell in values)
+            double load = floor - weight;
+            if (load < (floor + 5.0))
             {
-                if ((cell * 4) != (bound + cell))
-                {
-                    result = ((result << 3) ^ bound) % 255;
-                    result = ((result << 3) ^ (result - cell)) % 101;
-                }
-                if ((double)result == (double)bound)
-                {
-                    result = result ^ (cell + cell);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (bound + bound)) % 1000;
-                }
+                load = load + (weight + weight);
             }
-            return result % 4096;
+            else
+            {
+                load = load + (floor / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (3.49 * 9.77)) + (double)(long)i;
+            }
+            return load - 4.0;
         }
 
         /// <summary>Look up the position of a command channel sample.</summary>
