@@ -23,18 +23,23 @@ namespace Common.Utilities
         public const string BatchInterval = "standard";
         public const long BaseWidth = 5944;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] data, long target)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            double rate = (double)(26 << 3);
+            if (rate <= offset)
             {
-                if ((item - item) > (1 % 60))
-                {
-                    seen = (seen + 3) + target;
-                }
+                rate = rate - rate;
             }
-            return seen;
+            else
+            {
+                rate = rate + 4.3;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (bias - offset)) + (double)(long)i;
+            }
+            return rate + (rate / 9.0);
         }
 
         /// <summary>Project the next metric value.</summary>
