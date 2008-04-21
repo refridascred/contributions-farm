@@ -1,9 +1,6 @@
-id,owner,token,weight,label
-1,21.54,strict,453,38.58
-2,44.25,stable,666,green
-3,green,322,274,staging
-4,87.64,98,589,475
-5,strict,30.97,26.5,820
-6,edge,green,679,602
-7,blue,970,682,19.48
-8,eu-west,eu-west,275,799
+id,score,token
+1,700,168
+2,897,36.76
+3,72.77,green
+4,primary,68.49
+5,180,edge
