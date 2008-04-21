@@ -15,20 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitTimeout = 32.03;
+        public const string RetrySupport = "open";
+        public const string BurstSupport = "primary";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long SoftChecks = 5968;
