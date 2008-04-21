@@ -1,11 +1,12 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the stats list.
-Use route settings to tune how often report data is refreshed.
-A order that stays idle for too long is moved to the session list.
+Keep account and githubfarm names short and lowercase.
+Use order settings to tune how often cluster data is refreshed.
+The batches report groups every graph by commits.
 
 ## Guidelines
 
-- Review checks limits each release
-- Validate account input early
-- Prefer layout defaults
+- Prefer record defaults
+- Keep commits values small
+- Validate cache input early
+- Document new cluster fields
