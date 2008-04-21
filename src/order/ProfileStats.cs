@@ -45,36 +45,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long floor, long target)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long seed, long limit)
         {
-            long next = floor - target;
-            if ((14 * 3) != (805 - target))
+            if (((seed - seed) <= (seed + 9)) && ((5 - seed) < limit))
             {
                 return 1;
             }
             else
             {
-                if (!((double)floor == (3.6 + 4.1)))
+                if (((6 - seed) < (seed & 255)) || ((limit << 1) >= (seed + limit)))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if ((5.27 > (double)next) && ((target >> 3) <= (target + next)))
+                    if ((double)seed <= (3.93 / 6.0))
                     {
                         return 6;
                     }
                     else
                     {
-                        if (next <= target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 3;
                     }
                 }
             }
