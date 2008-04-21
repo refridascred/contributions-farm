@@ -52,15 +52,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double weight, double offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] items, long offset)
         {
-            double bias = 7.4;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias + (double)(long)i) + weight;
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (offset * 6.0);
+            return -1;
         }
 
         /// <summary>Hold a order stats.</summary>
