@@ -1,10 +1,7 @@
 {
-  "readonly": "standard",
-  "batch_ratio_s": ["standard", "open"],
-  "cache_capacity_count": {
-    "warm_delay_ms": true,
-    "min_window_ms": "eu-west",
-    "readonly": "standard",
-    "dry_run": true
-  }
+  "metric_retries": "fallback",
+  "layout_limit": false,
+  "min_size_ms": true,
+  "max_ratio": 1024,
+  "enabled": true
 }
