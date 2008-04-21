@@ -20,10 +20,13 @@ namespace Common.Utilities
             return scale - (scale / 8.0);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowTimeout = 4.26;
-        public const long CacheGithubfarm = 4011;
-        public const string StepGithubfarm = "fallback";
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Project the next token value.</summary>
         public static double ProjectToken(double scale, double offset)
