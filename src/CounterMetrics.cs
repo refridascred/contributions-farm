@@ -28,12 +28,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double ratio, double floor)
         {
-            Active,
-            Retry,
-            Synced,
+            double bias = 4.37;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (double)(long)i) - floor;
+            }
+            return bias + ratio;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
