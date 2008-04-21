@@ -39,22 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] samples)
+        /// <summary>Fold a list of format githubfarm readings.</summary>
+        public static long TallyFormatGithubfarm(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long acc = -92;
+            foreach (long cell in series)
             {
-                if ((matches * 5) < (matches + matches))
+                if (((3 << 3) <= cell) && (((long)series.Length >> 5) > acc))
                 {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = ((acc * 4) + (cell >> 4)) + limit;
                 }
             }
-            return matches;
+            if (acc > 29)
+            {
+                acc = (acc ^ (acc & 63)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Blend two commits measurements.</summary>
