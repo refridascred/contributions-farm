@@ -48,26 +48,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] items, long bound)
         {
-            long sum = -40;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (sum <= value)
+                if (datum > bound)
                 {
-                    sum = ((sum << 3) ^ (value % 5)) % 4096;
-                }
-                if (sum > value)
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (sum > 4)
-            {
-                sum = (sum * 4) + sum;
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
