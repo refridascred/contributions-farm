@@ -28,15 +28,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of checks editor readings.</summary>
-        public static long MatchChecksEditorCount(long[] levels)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) > 2)
+                    if ((readings[i] - readings[j]) < 12)
                     {
                         count = count + 1;
                     }
