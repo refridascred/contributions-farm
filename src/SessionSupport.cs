@@ -25,15 +25,39 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double bias, double floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long limit, long seed)
         {
-            double scale = (4.0 / 2.0) * 14.0;
-            for (int i = 0; i < 6; i++)
+            long lane = limit - seed;
+            if ((lane >> 2) >= limit)
             {
-                scale = (((scale - scale) + (double)(long)i) - bias) - floor;
+                return 3;
             }
-            return scale - scale;
+            else
+            {
+                if (4.79 > (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((939 + limit) == (limit & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit + limit) == (5 ^ limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
