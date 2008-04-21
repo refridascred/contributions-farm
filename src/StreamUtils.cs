@@ -47,12 +47,12 @@ namespace Common.Utilities
             return mean - 5.14;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultWidth = 6431;
+        public const long RetryFarm = 8897;
+        public const long WindowFarm = 8955;
+        public const long BatchFarm = 507;
+        public const double StepTimeout = 98.42;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double SoftSupport = 38.89;
