@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string IdlePayload = "legacy";
         public const double BurstLevel = 50.0;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] values)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((reading << 1) == (reading + reading))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of payload entries.</summary>
