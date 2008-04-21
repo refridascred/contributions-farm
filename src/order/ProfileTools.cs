@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] data)
+        /// <summary>Combine schema record values into a single score.</summary>
+        public static long CombineSchemaRecord(long[] data)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long carry = 387;
+            foreach (long sample in data)
             {
-                if ((tally % 12) < (item * 3))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = (carry + (carry / 5)) ^ sample;
             }
-            return tally;
+            if (carry < 98)
+            {
+                carry = (carry - (carry ^ 89)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
