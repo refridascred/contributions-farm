@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Synced,
-            Done,
-            Dropped,
-            Idle,
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
