@@ -38,17 +38,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a already editor reading by value.</summary>
-        public static long FindAlreadyEditorIndex(long[] readings, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long floor, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = floor - target;
+            if ((14 * 3) != (805 - target))
             {
-                if ((readings[i] > target) && ((readings[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if (!((double)floor == (3.6 + 4.1)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((5.27 > (double)next) && ((target >> 3) <= (target + next)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (next <= target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
