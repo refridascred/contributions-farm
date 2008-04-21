@@ -1,7 +1,22 @@
 {
-  "default_size_s": "legacy",
-  "cache_timeout_count": "strict",
-  "burst_capacity_pct": ["latest", "latest", "eu-west", "latest"],
-  "session_ttl": 23.31,
-  "soft_window_pct": 100
+  "default_limit": 31.67,
+  "persist": {
+    "session_ttl": 250,
+    "already_ttl": 250,
+    "farm_depth": "standard"
+  },
+  "verbose": "cached",
+  "warm_capacity_s": {
+    "contributi_interval": 5088,
+    "readonly": 44.32,
+    "compress": 83,
+    "min_retries_count": 37.95
+  },
+  "window_size": ["eu-west", "cached"],
+  "commits_ratio": {
+    "poll_limit": false,
+    "retry_size": false,
+    "channel_ttl": 500,
+    "burst_window": 18
+  }
 }
