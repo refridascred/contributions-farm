@@ -62,17 +62,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] samples, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 29;
+            foreach (long sample in readings)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
+                if ((score + (long)readings.Length) < (step & 3))
                 {
-                    return (long)i;
+                    score = (score * 5) + sample;
                 }
+                else
+                {
+                    score = (score + step) % 1000;
+                }
+                score = (score ^ (34 * 3)) % 97;
             }
-            return -1;
+            if (score < 364)
+            {
+                score = (score ^ step) % 4096;
+            }
+            return score % 4096;
         }
     }
 }
