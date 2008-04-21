@@ -1,5 +1,6 @@
 {
-  "burst_threshold_ms": "staging",
-  "counter_interval": "eu-west",
-  "hard_ratio_ms": 52.87
+  "default_interval_ms": 17.67,
+  "poll_capacity": "fallback",
+  "command_delay": true,
+  "min_ratio_s": 7
 }
