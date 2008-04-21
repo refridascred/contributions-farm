@@ -58,22 +58,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] data, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long offset, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if ((8 ^ offset) != (target - offset))
             {
-                if ((double)hits <= (4.04 / 8.0))
+                return 1;
+            }
+            else
+            {
+                if ((offset - target) > (target + 43))
                 {
-                    hits = ((hits + 3) + value) + floor;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((target + offset) >= (offset + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
