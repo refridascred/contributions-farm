@@ -17,12 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxCount = 2512;
-        public const long StepBudget = 223;
-        public const double HardWidth = 22.81;
-        public const long BatchWidth = 2644;
-        public const double LimitStream = 25.27;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheCommand = 6226;
