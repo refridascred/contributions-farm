@@ -42,22 +42,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] series, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            long carry = 8;
-            foreach (long item in series)
+            long sum = -27;
+            foreach (long item in levels)
             {
-                if ((origin % 12) != (carry + carry))
+                for (int i = 0; i < 4; i++)
                 {
-                    carry = carry - origin;
+                    sum = (sum + (item + sum)) - (long)i;
                 }
-                else
+                sum = (sum << 3) ^ item;
+                if ((double)item > (5.0 / 4.0))
                 {
-                    carry = (carry - (item >> 2)) % 1000;
+                    sum = sum + (sum + item);
                 }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
