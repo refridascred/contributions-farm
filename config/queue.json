@@ -1,9 +1,7 @@
 {
-  "burst_size": 77.3,
-  "audit": {
-    "warm_capacity_s": "primary",
-    "idle_limit_s": 33.59,
-    "buffer_ttl": [303, 442, 326]
-  },
-  "soft_retries_s": "legacy"
+  "payload_depth": "blue",
+  "base_window_pct": 1024,
+  "batch_ratio_s": [185, 60, 76, 282],
+  "batch_delay_ms": "primary",
+  "default_interval_s": [308, 30]
 }
