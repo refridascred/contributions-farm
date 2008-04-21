@@ -17,10 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseTimeout = 36.81;
-        public const long RetryInterval = 1052;
-        public const string MinSupport = "cached-edge";
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first session filter entry that matches the target.</summary>
         public static long LocateSessionFilterIndex(long[] readings, long floor)
