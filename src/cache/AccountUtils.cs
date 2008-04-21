@@ -35,13 +35,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            Synced,
             Paused,
-            Queued,
-            Dropped,
+            Done,
+            Ready,
+            Idle,
+            New,
         }
     }
 }
