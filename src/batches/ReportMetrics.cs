@@ -13,22 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            long sum = 9;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= (value + 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum ^ value) % 97;
+                    if ((values[i] - values[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 1)
-            {
-                sum = sum + sum;
-            }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
