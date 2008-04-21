@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long seed, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] items, long target)
         {
-            long step = seed - floor;
-            if (!((floor * 3) > (seed + step)))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)seed != (15.0 / 6.0)))
+                if (538 < (cell - target))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
