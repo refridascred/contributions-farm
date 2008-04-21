@@ -36,19 +36,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] values, long target)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= target)
+                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
