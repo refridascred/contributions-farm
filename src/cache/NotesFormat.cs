@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] series)
+        /// <summary>Scale a command support figure with a bias.</summary>
+        public static double BlendCommandSupport(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double bias2 = (double)4 / 8.0;
+            return ((bias2 - (bias2 + bias2)) + ratio) + bias;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
