@@ -13,19 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every batch counter entry stays within the limit.</summary>
-        public static bool VerifyBatchCounterBounds(long[] levels, long limit)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Dropped,
+            Retry,
+            Closed,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
