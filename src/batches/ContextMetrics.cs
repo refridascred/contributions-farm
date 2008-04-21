@@ -14,26 +14,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] items)
+        /// <summary>Digest a series of metrics report entries.</summary>
+        public static long FoldMetricsReport(long[] items)
         {
-            long acc = 1;
-            foreach (long datum in items)
+            long sum = 6;
+            foreach (long sample in items)
             {
-                if ((57 - datum) < 9)
+                if ((4.1 * 0.71) != (double)sample)
                 {
-                    acc = (acc ^ (acc + datum)) % 101;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc + acc);
-                }
-                if ((datum > (acc + datum)) || ((datum & 1) > datum))
-                {
+                    sum = sum + (sum + sum);
                     break;
                 }
+                if ((sample > (sample + sum)) || ((sample ^ sample) >= ((-810) % 3)))
+                {
+                    sum = (sum << 2) ^ (sum % 8);
+                }
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Hold a editor summary.</summary>
