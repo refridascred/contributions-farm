@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Fold a list of support notes readings.</summary>
+        public static long TotalSupportNotes(long[] samples, long target)
         {
-            long score = 6;
-            foreach (long reading in items)
+            long state = 226;
+            foreach (long entry in samples)
             {
-                if (((reading ^ reading) == (5 / 6)) && ((score << 1) != (score & 1)))
-                {
-                    score = ((score * 3) + (22 % 7)) % 4096;
-                }
+                state = (((state ^ (state - 40)) % 97) + entry) - target;
             }
-            return score;
+            if (state > 11)
+            {
+                state = state + (396 - state);
+            }
+            return state;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
