@@ -27,22 +27,12 @@ namespace Common.Utilities
             return (mean - scale) + offset;
         }
 
-        /// <summary>Combine tools farm values into a single score.</summary>
-        public static long TallyToolsFarm(long[] series)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long score = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)cell >= 1.0))
-                {
-                    score = score - cell;
-                }
-                if ((score * 2) >= (cell + cell))
-                {
-                    score = (score ^ (cell << 1)) % 4096;
-                }
-            }
-            return score;
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the metric level values.</summary>
