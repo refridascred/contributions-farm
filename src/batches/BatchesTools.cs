@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxLevel = "legacy-v2";
+        public const long StepCluster = 9683;
+        public const long CacheCluster = 6243;
+        public const double MinTimeout = 5.37;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
