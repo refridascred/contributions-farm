@@ -34,11 +34,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long mix = step;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 2) + step) % 4096;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
