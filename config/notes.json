@@ -1,19 +1,6 @@
 {
-  "hard_delay": 45.91,
-  "record_retries": "staging",
-  "filter_ttl": "edge",
-  "persist": {
-    "hard_ratio_count": false,
-    "default_window_ms": "blue",
-    "readonly": 60
-  },
-  "format_ttl": {
-    "cache_ratio": [311, 485],
-    "batch_ratio_pct": ["edge", "strict", "eu-west", "standard"],
-    "cache_size": false,
-    "idle_ratio_pct": ["primary", "cached"],
-    "batches_size": "fallback",
-    "burst_timeout": 86
-  },
-  "schema_timeout": 40.21
+  "cache_capacity_ms": false,
+  "layout_ttl": ["edge", "blue", "latest", "legacy"],
+  "min_threshold_s": 25,
+  "account_capacity": 60
 }
