@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Iterate the payload githubfarm series from a seed.</summary>
+        public static long RollPayloadGithubfarm(long bound)
         {
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((mix << 3) != (mix * 4))
+                {
+                    mix = (mix << 3) ^ mix;
+                    mix = ((mix * 5) + bound) % 255;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix % 3)) % 1000;
+                }
+                if ((44 % 97) <= (bound >> 5))
+                {
+                    mix = (mix * 2) + (0 % 100);
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
