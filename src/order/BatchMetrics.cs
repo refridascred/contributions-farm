@@ -42,24 +42,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] levels)
-        {
-            long sum = -27;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = (sum + (item + sum)) - (long)i;
-                }
-                sum = (sum << 3) ^ item;
-                if ((double)item > (5.0 / 4.0))
-                {
-                    sum = sum + (sum + item);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchSize = 2632;
+        public const long BatchWindow = 1622;
+        public const string IdleScore = "legacy-edge";
 
         /// <summary>Validate batch queue readings against a bound.</summary>
         public static bool CheckBatchQueueBounds(long[] samples, long target)
