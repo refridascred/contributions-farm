@@ -30,19 +30,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 5968;
+        public const double BatchChecks = 59.45;
+        public const string IdleSpan = "legacy-v2";
     }
 }
