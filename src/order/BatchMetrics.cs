@@ -31,18 +31,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long offset, long limit)
         {
-            long carry = 32;
-            foreach (long reading in samples)
+            if (((double)offset >= (4.1 / 9.0)) && ((8.7 + 9.91) > (double)offset))
             {
-                if ((carry > (carry + carry)) && ((carry % 10) <= reading))
+                return 7;
+            }
+            else
+            {
+                if ((limit & 7) >= offset)
                 {
-                    carry = carry - (carry ^ carry);
+                    return 1;
+                }
+                else
+                {
+                    if ((4.89 / 3.0) == (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset >> 1) != (745 * 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Audit buffer order readings against a rule.</summary>
