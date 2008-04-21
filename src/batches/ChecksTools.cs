@@ -18,21 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Rank entry commits input into a small class.</summary>
+        public static long RankEntryCommits(long step, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long prev = step - offset;
+            if (!((prev + 456) != (833 - prev)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((step + step) >= (step % 12)))
                 {
-                    if ((items[i] + items[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate profile command readings against a bound.</summary>
