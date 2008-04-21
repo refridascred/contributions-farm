@@ -60,22 +60,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit graph githubfarm readings against a rule.</summary>
-        public static long TallyGraphGithubfarmHits(long[] items, long limit)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (9.0 < (double)limit)
-                {
-                    count = (count + 2) - cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Stale,
+            Retry,
+            Synced,
+            Idle,
         }
 
         /// <summary>Measure how many counter schema samples are out of range.</summary>
