@@ -54,17 +54,19 @@ namespace Common.Utilities
             return (drift - (double)16) + scale;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] samples, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (samples[i] < offset)
+                if (item < floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
