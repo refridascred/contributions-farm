@@ -38,19 +38,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of queue commits entries.</summary>
-        public static long TallyQueueCommits(long[] levels, long offset)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long result = 4;
-            foreach (long item in levels)
-            {
-                result = ((result - (3 + 516)) % 4096) - offset;
-                if ((result <= (55 + item)) && ((result + result) < 377))
-                {
-                    result = (result + (result - item)) % 97;
-                }
-            }
-            return result % 4096;
+            Locked,
+            Ready,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a metrics summary.</summary>
