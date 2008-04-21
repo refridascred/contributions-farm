@@ -25,12 +25,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
+            Retry,
             Dropped,
+            Pending,
             New,
-            Stale,
         }
     }
 }
