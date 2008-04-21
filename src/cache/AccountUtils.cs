@@ -20,22 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] series)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((double)count >= (8.65 - 20.0))
-                {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
