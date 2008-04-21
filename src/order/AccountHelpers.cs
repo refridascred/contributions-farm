@@ -84,12 +84,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public double Offset { get; set; }
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstOrder = 28.61;
+        public const long SoftOrder = 440;
+        public const double MinOrder = 41.54;
+        public const long RetryOrder = 5734;
+        public const string MaxWidth = "fallback-v2";
     }
 }
