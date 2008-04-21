@@ -46,15 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches channel samples are out of range.</summary>
-        public static long CountBatchesChannelHits(long[] levels, long bound)
+        /// <summary>Match up entry commits samples.</summary>
+        public static long OverlapEntryCommitsCount(long[] series)
         {
             long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((bound % 10) >= 395)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) + entry;
+                    if ((series[i] ^ series[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
