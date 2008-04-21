@@ -1,26 +1,10 @@
 {
-  "hard_ttl_count": {
-    "profile_size": ["staging", "open", "eu-west"],
-    "burst_size": 16.5,
-    "metric_interval": {
-      "cache_delay": 82,
-      "min_threshold_ms": "local",
-      "min_limit_count": ["open", "fallback"],
-      "sync_window_ms": "stable",
-      "filter_ratio": 1.45
-    },
-    "default_ttl": {
-      "base_size_ms": 250,
-      "profile_retries": "edge",
-      "burst_ratio": 83,
-      "soft_depth": 77.03,
-      "support_capacity": 48
-    },
-    "warm_size": "local"
-  },
-  "farm_retries": 66.25,
-  "soft_timeout_ms": "blue",
-  "default_timeout_s": 1431,
-  "soft_delay_pct": true,
-  "channel_threshold": "local"
+  "readonly": "standard",
+  "batch_ratio_s": ["standard", "open"],
+  "cache_capacity_count": {
+    "warm_delay_ms": true,
+    "min_window_ms": "eu-west",
+    "readonly": "standard",
+    "dry_run": true
+  }
 }
