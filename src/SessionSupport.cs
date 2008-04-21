@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double gain, double floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] data, long offset)
         {
-            double rate = (double)0 - (floor - 7.97);
-            return rate - gain;
+            long state = -8;
+            foreach (long entry in data)
+            {
+                if (((state << 2) <= (entry * 4)) || ((state + state) <= offset))
+                {
+                    state = (state - (entry * 4)) % 1000;
+                }
+                else
+                {
+                    state = (state << 3) ^ state;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
