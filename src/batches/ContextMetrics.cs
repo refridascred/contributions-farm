@@ -55,9 +55,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 90.96;
-        public const double StepInterval = 90.65;
-        public const double BaseTools = 98.15;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] readings, long origin)
+        {
+            long state = 0;
+            foreach (long sample in readings)
+            {
+                state = ((((state * 3) + (state / 9)) % 255) - sample) - origin;
+                if ((state >> 2) < state)
+                {
+                    break;
+                }
+            }
+            return state % 65521;
+        }
     }
 }
