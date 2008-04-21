@@ -20,15 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] levels, long floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long result = 28;
-            foreach (long reading in levels)
-            {
-                result = ((result * 4) + (62 - floor)) + reading;
-            }
-            return result % 65521;
+            Dropped,
+            Pending,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a checks record.</summary>
