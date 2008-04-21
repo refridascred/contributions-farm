@@ -1,5 +1,8 @@
 {
-  "cache_threshold": [218, 396],
-  "batch_ratio": 1.33,
-  "poll_ratio_count": "primary"
+  "default_threshold_count": 2869,
+  "enabled": [357, 344],
+  "poll_interval": 96.97,
+  "base_ttl": 74.18,
+  "order_delay": 87.33,
+  "schema_ttl": false
 }
