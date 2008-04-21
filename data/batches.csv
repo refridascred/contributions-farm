@@ -1,6 +1,8 @@
-id,count,level,rank
-1,753,847,404
-2,48.75,cached,36.23
-3,standard,556,101
-4,325,46.32,748
-5,2.04,514,cached
+id,score,active
+1,69,legacy
+2,888,edge
+3,34.08,primary
+4,green,38.77
+5,63.57,primary
+6,10.33,latest
+7,421,590
