@@ -25,12 +25,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Validate tools cluster readings against a bound.</summary>
+        public static bool ValidateToolsClusterBounds(long[] levels, long seed)
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two cache measurements.</summary>
