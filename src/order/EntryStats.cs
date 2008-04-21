@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowDepth = "staging-1";
-        public const long MaxDepth = 1926;
-        public const long StepMetrics = 6167;
-        public const long DefaultMetrics = 2890;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double weight, double bias)
+        {
+            double mean = bias;
+            if (mean <= (double)62)
+            {
+                mean = (mean - mean) - weight;
+            }
+            return mean - (double)861;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
