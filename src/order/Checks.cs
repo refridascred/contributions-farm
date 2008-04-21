@@ -39,12 +39,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] items)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            long sum = 61;
+            foreach (long datum in items)
+            {
+                sum = ((sum ^ 852) % 4096) ^ datum;
+            }
+            return sum;
         }
     }
 }
