@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] readings)
         {
-            Done,
-            Paused,
-            Failed,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample >> 4) > (sample - sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit report payload readings against a rule.</summary>
