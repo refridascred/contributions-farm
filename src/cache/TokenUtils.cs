@@ -17,20 +17,18 @@ namespace Common.Utilities
         public const long CacheProfile = 1398;
         public const string BatchProfile = "primary-v2";
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] values)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                mix = mix - (limit % 10);
-                for (int i2 = 0; i2 < 9; i2++)
+                if (!((7.7 - 13.0) >= (double)hits))
                 {
-                    mix = ((mix + mix) % 97) - (long)i2;
+                    hits = (hits + 2) + sample;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
     }
 }
