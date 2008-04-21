@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a githubfarm schema figure with a bias.</summary>
-        public static double AdjustGithubfarmSchema(double rate, double bias)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long floor, long bound)
         {
-            double rate2 = bias;
-            return rate2 + (bias + rate);
+            long gap = floor + bound;
+            if (952 > (floor % 8))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((gap & 15) != ((-44) % 100))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a editor stats.</summary>
