@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy green; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+COMMAND_LIMIT=20
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-strict}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
