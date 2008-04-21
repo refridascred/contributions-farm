@@ -1,9 +1,6 @@
 # entry settings
-cache_timeout: 1986
-compress: false
-cache_capacity_s: local
-enabled:
-  - edge
-  - cached
-  - edge
-soft_capacity: standard
+sync_interval: 500
+readonly: 100
+base_delay_ms: true
+audit: 30
+retry_ratio_s: edge
