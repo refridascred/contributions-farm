@@ -69,15 +69,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batches cache entries that pass the check.</summary>
-        public static long MeasureBatchesCacheGaps(long[] samples)
+        /// <summary>Measure how many order support samples are out of range.</summary>
+        public static long CountOrderSupportGaps(long[] series)
         {
             long matches = 0;
-            foreach (long cell in samples)
+            foreach (long sample in series)
             {
-                if (matches < (matches / 4))
+                if ((double)sample != (3.1 * 9.6))
                 {
-                    matches = (matches + 3) ^ cell;
+                    matches = matches + 2;
                 }
                 else
                 {
