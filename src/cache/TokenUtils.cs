@@ -48,18 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] values, long floor)
+        /// <summary>Validate editor channel readings against a bound.</summary>
+        public static bool GuardEditorChannelBounds(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((((entry * 5) <= floor) && (count > (entry + count))) || (((entry * 2) > ((-13) + entry)) && ((entry + entry) < ((-17) / 5))))
+                if (cell < step)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
