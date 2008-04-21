@@ -22,18 +22,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] levels, long floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((8 >> 2) <= tally) && (976 > (tally ^ tally)))
-                {
-                    tally = ((tally + 3) + value) - floor;
-                }
-            }
-            return tally;
+            Retry,
+            Stale,
+            New,
+            Synced,
         }
 
         /// <summary>Audit schema context readings against a rule.</summary>
