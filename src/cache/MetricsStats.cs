@@ -43,9 +43,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 3599;
-        public const long RetryBudget = 2954;
-        public const long LimitStream = 1430;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
