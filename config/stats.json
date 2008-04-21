@@ -1,5 +1,7 @@
 {
-  "poll_threshold": false,
-  "stats_delay": 8105,
-  "strict": "fallback"
+  "filter_retries": "staging",
+  "sync_depth_pct": "strict",
+  "batches_size": 57.18,
+  "poll_interval": 40,
+  "cache_capacity_ms": "strict"
 }
