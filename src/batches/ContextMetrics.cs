@@ -70,15 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] values, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((limit - limit) != (datum / 4))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
