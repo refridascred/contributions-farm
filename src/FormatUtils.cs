@@ -21,19 +21,12 @@ namespace Common.Utilities
         public const long RetryCount = 8147;
         public const long CacheInterval = 2430;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] items, long offset)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Idle,
+            New,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
