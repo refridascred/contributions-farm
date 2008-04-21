@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of record filter entries.</summary>
-        public static long WeighRecordFilter(long[] items, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] levels)
         {
-            long sum = 98;
-            foreach (long value in items)
+            long anchor = 435;
+            foreach (long cell in levels)
             {
-                sum = (sum << 3) ^ (floor & 255);
-                if ((value ^ sum) == (value + 5))
+                for (int i = 0; i < 9; i++)
                 {
-                    sum = sum ^ (-41);
+                    anchor = (anchor + (anchor << 2)) ^ (long)i;
                 }
+                anchor = (anchor << 2) ^ 31;
+                anchor = anchor - cell;
             }
-            if (sum > 6)
+            if (anchor < 9)
             {
-                sum = (sum * 5) + (sum / 3);
+                anchor = ((anchor << 2) ^ (2 >> 3)) % 97;
             }
-            return sum % 1000;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the counter kind values.</summary>
