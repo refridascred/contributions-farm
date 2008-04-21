@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] values, long limit)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFarm = 7.56;
+        public const double BaseFarm = 78.15;
+        public const string HardFarm = "latest-v2";
+        public const double CacheLevel = 66.46;
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long FindAlreadyIndex(long[] readings, long target)
