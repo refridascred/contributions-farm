@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up metrics githubfarm samples.</summary>
-        public static long OverlapMetricsGithubfarmCount(long[] values)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 3;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (((total + 69) % 101) - datum) - step;
             }
-            return hits;
+            if (total < 42)
+            {
+                total = total + (total >> 2);
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a notes entry.</summary>
