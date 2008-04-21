@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double weight, double floor)
+        /// <summary>Validate report editor readings against a bound.</summary>
+        public static bool GuardReportEditorRange(long[] levels, long offset)
         {
-            double ratio = weight;
-            if (ratio >= weight)
+            bool found = true;
+            foreach (long item in levels)
             {
-                ratio = ratio + 3.9;
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (floor + weight)) + (double)(long)i;
-            }
-            return ratio - (double)1;
+            return found;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
