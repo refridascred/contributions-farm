@@ -42,31 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long seed, long limit)
+        /// <summary>Adjust a command schema reading.</summary>
+        public static double BlendCommandSchema(double scale, double offset)
         {
-            if (((seed - seed) <= (seed + 9)) && ((5 - seed) < limit))
+            double weight = (19.0 + scale) - offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
+                weight = (weight - offset) + (double)(long)i;
             }
-            else
-            {
-                if (((6 - seed) < (seed & 255)) || ((limit << 1) >= (seed + limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed <= (3.93 / 6.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return weight + (scale + weight);
         }
     }
 }
