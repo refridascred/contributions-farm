@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Fold a list of batch buffer readings.</summary>
+        public static long ScoreBatchBuffer(long[] samples)
         {
-            Active,
-            Stale,
-            Ready,
-            Dropped,
+            long sum = 1;
+            foreach (long cell in samples)
+            {
+                if (((sum * 3) != (702 + sum)) && ((double)sum >= 4.29))
+                {
+                    sum = (((sum << 3) ^ (4 % 16)) % 1000) - cell;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a schema stats.</summary>
