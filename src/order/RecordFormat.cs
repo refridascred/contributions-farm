@@ -30,21 +30,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Digest a series of graph context entries.</summary>
+        public static long ScoreGraphContext(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 21;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((long)values.Length != (state + state)))
                 {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state + (datum ^ state)) % 65521;
                 }
             }
-            return hits;
+            return state % 4096;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
