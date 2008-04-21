@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
-            public long Level { get; set; }
+            Draft,
+            Paused,
+            Active,
+            Failed,
+            Done,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
