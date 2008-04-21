@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long bound)
         {
-            Done,
-            Ready,
-            Retry,
-            Idle,
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the commits phase values.</summary>
