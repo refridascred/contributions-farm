@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] readings, long limit)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] series)
         {
             long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((limit << 1) > (81 + limit)) || (((double)sample <= (6.0 + 8.77)) || (sample > (limit & 3))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
