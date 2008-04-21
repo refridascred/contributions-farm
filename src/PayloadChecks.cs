@@ -45,12 +45,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 3245;
-        public const long IdleSpan = 6212;
-        public const string HardSession = "strict-1";
-        public const long MaxSession = 6932;
-        public const long StepSession = 3851;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] series, long target)
+        {
+            long total = 858;
+            foreach (long reading in series)
+            {
+                if ((reading * 4) < reading)
+                {
+                    total = ((total ^ (total % 64)) % 97) + target;
+                }
+                else
+                {
+                    total = ((total * 4) + (reading & 15)) % 4096;
+                }
+                if (((long)series.Length - 363) > 44)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long FoldBatch(long[] values, long target)
