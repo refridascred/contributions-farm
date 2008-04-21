@@ -25,22 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmToolsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 9813;
+        public const long BatchBudget = 846;
+        public const long LimitWidth = 6640;
+        public const long MaxToken = 2301;
+        public const long BaseCount = 7286;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double LimitContext = 48.72;
