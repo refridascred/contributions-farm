@@ -64,14 +64,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Synced,
+            Dropped,
+            Draft,
             Done,
-            Queued,
-            Stale,
-            Locked,
         }
     }
 }
