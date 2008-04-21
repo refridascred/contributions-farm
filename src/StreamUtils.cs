@@ -71,12 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 38.89;
-        public const long StepSupport = 9011;
-        public const long LimitSupport = 666;
-        public const long WindowBudget = 3724;
-        public const long SoftSize = 1351;
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long CombineCounter(long[] levels, long target)
