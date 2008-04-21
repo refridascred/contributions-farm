@@ -31,14 +31,17 @@ namespace Common.Utilities
         public const double BatchWidth = 78.09;
         public const long WindowTools = 6934;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] readings, long origin)
         {
-            New,
-            Dropped,
-            Done,
-            Closed,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
