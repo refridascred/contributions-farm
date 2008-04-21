@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 4759;
-        public const long MaxTimeout = 8153;
-        public const string MinToken = "standard-edge";
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Ready,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] levels)
