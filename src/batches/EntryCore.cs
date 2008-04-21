@@ -86,10 +86,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 1500;
-        public const long BurstDepth = 9834;
-        public const long BurstSize = 3478;
-        public const long StepBudget = 7442;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Synced,
+            Draft,
+            New,
+            Stale,
+        }
     }
 }
