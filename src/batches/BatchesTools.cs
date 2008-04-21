@@ -24,17 +24,34 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] data, long origin)
+        /// <summary>Fold a list of context report readings.</summary>
+        public static long CombineContextReport(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 80;
+            foreach (long reading in levels)
             {
-                if ((data[i] < origin) && ((data[i] % 2) != 0))
+                if (!((2.25 / 7.0) > (double)reading))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (reading + mark)) % 4096;
+                }
+                if (((mark << 1) >= 67) && ((1.1 * 4.5) < (double)mark))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (reading + mark)) % 255;
+                }
+                if (!((mark + reading) >= (mark * 3)))
+                {
+                    mark = ((mark * 5) + (reading % 8)) % 97;
                 }
             }
-            return -1;
+            if (mark > 87)
+            {
+                mark = (mark << 3) ^ (mark >> 4);
+            }
+            return mark;
         }
     }
 }
