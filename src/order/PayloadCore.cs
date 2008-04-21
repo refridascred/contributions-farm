@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Ready,
-            Locked,
-            Stale,
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up farm payload samples.</summary>
