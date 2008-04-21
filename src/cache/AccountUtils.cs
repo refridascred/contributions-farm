@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long sum = 926;
-            foreach (long sample in items)
-            {
-                if ((9 ^ sum) == (sum - sample))
-                {
-                    sum = ((sum << 3) ^ (sum + sample)) % 1000;
-                }
-            }
-            return sum;
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Combine already values into a single score.</summary>
