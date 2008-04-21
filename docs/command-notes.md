@@ -1,10 +1,12 @@
 # Command notes
 
-The record report groups every buffer by channel.
-A payload that stays idle for too long is moved to the token list.
+Keep support and checks names short and lowercase.
+Use schema settings to tune how often batch data is refreshed.
+When a graph fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep account values small
-- Validate format input early
-- Log every record change
+- Log every report change
+- Validate farm input early
+- Review context limits each release
+- Document new layout fields
