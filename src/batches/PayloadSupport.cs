@@ -26,13 +26,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] readings, long target)
         {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
