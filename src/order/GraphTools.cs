@@ -36,19 +36,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] items, long origin)
+        /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmToolsCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
