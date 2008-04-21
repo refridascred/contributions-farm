@@ -21,13 +21,13 @@ namespace Common.Utilities
         public const string DefaultSpan = "alpha-edge";
         public const string MinContext = "latest-v2";
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Paused,
-            Locked,
-            Pending,
-            Ready,
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a window info.</summary>
