@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Blend two already account measurements.</summary>
+        public static double AdjustAlreadyAccount(double rate, double bias)
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            double gain = (bias / 3.0) + (double)820;
+            if (gain < (double)82)
+            {
+                gain = gain - (bias - bias);
+            }
+            else
+            {
+                gain = gain + 0.14;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + rate) - (double)(long)i;
+            }
+            return gain - (12.0 * 6.0);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
