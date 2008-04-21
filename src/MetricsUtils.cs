@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank metric support input into a small class.</summary>
-        public static long RankMetricSupport(long bound, long offset)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long edge = bound - offset;
-            if ((9 * 3) < (bound + bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset << 3) >= (edge >> 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + 139) < (69 / 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset & 127) > (edge + (-202)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
