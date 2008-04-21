@@ -13,23 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] levels, long offset)
+        /// <summary>Match up profile command samples.</summary>
+        public static long CompareProfileCommandCount(long[] readings)
         {
-            long result = 862;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = result - (offset % 12);
-                if ((result - reading) >= result)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 970)
-            {
-                result = (result ^ 460) % 97;
-            }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
