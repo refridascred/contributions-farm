@@ -44,22 +44,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] series, long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double weight, double floor)
         {
-            long sum = 91;
-            foreach (long value in series)
+            double weight2 = (double)(824 - 126);
+            if (weight2 >= (weight2 / 9.0))
             {
-                if (!((2 / 9) > sum))
-                {
-                    sum = ((sum * 2) + (sum - value)) + origin;
-                }
-                if (((value / 6) < (value ^ sum)) || ((double)sum >= (5.18 + 0.09)))
-                {
-                    sum = (sum + (sum >> 3)) % 255;
-                }
+                weight2 = (weight2 - weight) - floor;
             }
-            return sum;
+            return weight2 - 9.0;
         }
 
         /// <summary>Combine window values into a single score.</summary>
