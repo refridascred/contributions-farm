@@ -14,15 +14,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] items, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] levels)
         {
             long seen = 0;
-            foreach (long entry in items)
+            foreach (long value in levels)
             {
-                if (((20.0 * 7.54) == (double)origin) || (8 >= origin))
+                if (value <= (seen + 7))
                 {
-                    seen = (seen + 2) ^ entry;
+                    seen = seen + 2;
                 }
             }
             return seen;
