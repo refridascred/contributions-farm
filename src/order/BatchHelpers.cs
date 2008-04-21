@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile stats entries.</summary>
-        public static long WeighProfileStats(long[] items)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long acc = 690;
-            foreach (long entry in items)
-            {
-                if (((845 + entry) == (acc - 2)) || (entry > (acc >> 4)))
-                {
-                    acc = acc - (7 & 1);
-                }
-            }
-            return acc % 1000;
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
