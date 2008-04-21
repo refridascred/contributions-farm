@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] readings, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (item != step)
+                if ((cell + 44) <= (6 + cell))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
