@@ -41,19 +41,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] series, long step)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] items, long step)
         {
-            bool found = true;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= step)
+                if ((items[i] == step) && ((items[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a metrics summary.</summary>
