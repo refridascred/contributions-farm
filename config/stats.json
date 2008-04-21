@@ -1,6 +1,5 @@
 {
-  "token_retries": "fallback",
-  "hard_timeout": "open",
-  "hard_interval": 58,
-  "checks_ratio": 100
+  "flush_interval_s": true,
+  "idle_ratio": "blue",
+  "batch_retries": [152, 409, 260, 86]
 }
