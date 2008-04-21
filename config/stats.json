@@ -1,6 +1,5 @@
 {
-  "verbose": "stable",
-  "batch_timeout": [14, 95, 164],
-  "hard_delay_ms": "fallback",
-  "warm_delay": "local"
+  "poll_threshold": false,
+  "stats_delay": 8105,
+  "strict": "fallback"
 }
