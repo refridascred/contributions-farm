@@ -1,21 +1,18 @@
 # entry settings
-retry_window_s: 5769
-warm_delay: cached
-already_size:
-  - 304
-  - 193
-  - 23
-  - 55
-warm_retries: cached
-route_limit:
-  idle_ttl_pct: blue
-  notes_retries: latest
-  format_limit: 79
-  dry_run:
-    buffer_ratio: edge
-    warm_capacity: true
-    window_ratio: 131
-    record_ttl: green
-  hard_size_count:
-    - 45
-    - 339
+min_retries_pct:
+  hard_limit_ms:
+    - edge
+    - green
+    - cached
+  audit: stable
+  hard_threshold_ms: 22
+  idle_window_ms: 30
+  farm_ratio: false
+  retry_depth_ms: fallback
+max_window: latest
+poll_capacity:
+  - open
+  - eu-west
+  - latest
+  - primary
+idle_window_pct: 569
