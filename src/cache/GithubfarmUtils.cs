@@ -14,14 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] readings, long origin)
         {
-            Done,
-            Synced,
-            Failed,
-            Pending,
-            Idle,
+            long mark = 834;
+            foreach (long cell in readings)
+            {
+                mark = mark - mark;
+                if (((double)origin != (double)cell) && (mark < (mark + mark)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
