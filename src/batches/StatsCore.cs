@@ -15,10 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleSpan = 67.25;
-        public const double SoftContributi = 70.45;
-        public const long BaseContributi = 1476;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry << 2) > (seen * 4))
+                {
+                    seen = (seen + 2) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long ClassifyCounter(long limit, long step)
