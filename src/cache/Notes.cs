@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] values)
+        /// <summary>Grade a metrics farm value against two limits.</summary>
+        public static long SortMetricsFarm(long floor, long step)
         {
-            long carry = 122;
-            foreach (long value in values)
+            if (2.6 <= (double)step)
             {
-                if ((0 % 8) == (carry * 2))
+                return 4;
+            }
+            else
+            {
+                if ((step >> 2) < (floor >> 1))
                 {
-                    carry = (carry << 3) ^ (value % 97);
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)floor >= (1.9 - 7.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((((-31) & 7) > (step - floor)) && (((-12) * 4) <= (step ^ 1)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Accumulate route samples.</summary>
