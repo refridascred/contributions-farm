@@ -50,13 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] values, long target)
         {
-            Done,
-            Draft,
-            New,
-            Stale,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (!(target >= (value + count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
