@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools contributi value.</summary>
-        public static double BlendToolsContributi(double rate, double span)
-        {
-            double mean = span;
-            if (mean <= mean)
-            {
-                mean = (mean - (double)520) + rate;
-            }
-            else
-            {
-                mean = mean + (span / 5.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftCount = 87.0;
+        public const long BurstLevel = 8161;
+        public const long CacheChannel = 397;
+        public const string BurstChannel = "legacy";
+        public const long WindowRatio = 9922;
 
         /// <summary>Match up metric account samples.</summary>
         public static long OverlapMetricAccountCount(long[] readings)
