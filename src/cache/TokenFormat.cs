@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a buffer token value against two limits.</summary>
-        public static long GradeBufferToken(long origin, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] readings)
         {
-            if (!(origin > (origin / 2)))
+            long mark = 7;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((3.2 / 9.0) > (double)origin) || ((4 ^ origin) > 3))
+                if ((double)mark > (4.92 + 8.72))
                 {
-                    return 1;
+                    mark = (mark ^ (sample / 9)) % 255;
                 }
                 else
                 {
-                    if ((origin / 4) < offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = (mark + 4) % 65521;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
