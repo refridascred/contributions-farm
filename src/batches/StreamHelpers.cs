@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] items)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((long)items.Length < datum)
+                {
+                    hits = hits + 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the layout status values.</summary>
