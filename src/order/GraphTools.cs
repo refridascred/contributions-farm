@@ -41,18 +41,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the farm channel entries that pass the check.</summary>
-        public static long CountFarmChannelOutliers(long[] readings, long step)
+        /// <summary>Find the first stream graph entry that matches the target.</summary>
+        public static long FindStreamGraphIndex(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (matches >= (step - reading))
+                if ((data[i] < floor) && ((data[i] % 5) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
