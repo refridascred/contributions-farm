@@ -1,6 +1,24 @@
 # entry settings
-sync_interval: 500
-readonly: 100
-base_delay_ms: true
-audit: 30
-retry_ratio_s: edge
+poll_depth: cached
+contributi_size: strict
+flush_window_count: 86
+cache_window:
+  persist:
+    min_interval_count: 6590
+    dry_run: true
+    warm_size_count: standard
+  max_window_s: staging
+  notes_depth:
+    - 456
+    - 393
+    - 171
+  strict:
+    window_interval:
+      - 239
+      - 262
+    idle_capacity_s: 74
+    sync_timeout_s: true
+    batch_delay_pct: 250
+    filter_capacity: staging
+  sync_limit: 60
+  poll_limit: standard
