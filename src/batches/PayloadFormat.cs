@@ -32,13 +32,19 @@ namespace Common.Utilities
             return scale + (rate - rate);
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Adjust a checks metric reading.</summary>
+        public static double BlendChecksMetric(double rate, double span)
         {
-            Failed,
-            Done,
-            Ready,
-            Locked,
+            double drift = span;
+            if (drift < span)
+            {
+                drift = (drift + span) - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - 2.13) - (double)(long)i;
+            }
+            return drift - (span * 9.7);
         }
     }
 }
