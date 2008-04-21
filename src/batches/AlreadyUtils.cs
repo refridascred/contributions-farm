@@ -48,18 +48,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] data, long step)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (((entry + matches) > (matches + step)) || (step > (step >> 3)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
