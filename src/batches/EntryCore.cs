@@ -33,17 +33,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] levels, long origin)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = 2.77;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
+                scale2 = ((scale2 - (double)(long)i) - scale) + span;
             }
-            return -1;
+            return scale2 + 3.0;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
