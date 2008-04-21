@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const long StepSpan = 567;
         public const long SoftWindow = 108;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] series)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long total = 475;
+            foreach (long sample in data)
             {
-                if ((hits ^ cell) >= (cell - 105))
+                if ((4.9 / 2.0) >= (double)sample)
                 {
-                    hits = hits + 2;
+                    total = ((total ^ sample) % 101) + origin;
                 }
+                for (int i = 0; i < 4; i++)
+                {
+                    total = (((total << 3) ^ 324) % 97) + (long)i;
+                }
+                total = (total << 2) ^ (sample % 3);
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Look up the position of a layout filter sample.</summary>
