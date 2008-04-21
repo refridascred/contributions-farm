@@ -39,19 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] data)
+        /// <summary>Derive the next channel queue value from a seed.</summary>
+        public static long DeriveChannelQueue(long offset)
         {
-            long state = 2;
-            foreach (long datum in data)
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
             {
-                state = state + (state & 7);
-                if (!(state > (67 + state)))
-                {
-                    state = (state + ((long)data.Length - datum)) % 101;
-                }
+                anchor = anchor ^ (offset + offset);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
