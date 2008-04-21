@@ -34,20 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long mark = 659;
-            foreach (long entry in levels)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mark = ((mark * 5) + (mark << 1)) + (long)i;
-                }
-                mark = (mark ^ (mark * 5)) % 4096;
-                mark = mark ^ (entry + mark);
-            }
-            return mark;
+            Active,
+            Queued,
+            Pending,
+            Synced,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
