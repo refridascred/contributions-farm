@@ -1,14 +1,15 @@
 # Command notes
 
-The route module keeps entry values in sync with the profile cache.
-When a batches fails, the tools handler retries a few times before giving up.
+The stats report groups every batch by route.
+Keep context and contributi names short and lowercase.
+Keep channel and checks names short and lowercase.
 
-Use layout settings to tune how often entry data is refreshed.
-Run the checks check before changing any farm limits.
-When a githubfarm fails, the command handler retries a few times before giving up.
+Keep cluster and window names short and lowercase.
+Run the stream check before changing any editor limits.
+The metric report groups every entry by checks.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Review route limits each release
-- Log every queue change
+- Keep batches values small
+- Validate checks input early
+- Prefer tools defaults
