@@ -96,11 +96,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Check that every batches profile entry stays within the limit.</summary>
+        public static bool CheckBatchesProfileLimits(long[] items, long step)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
