@@ -73,19 +73,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] data, long origin)
-        {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 1500;
+        public const long BurstDepth = 9834;
+        public const long BurstSize = 3478;
+        public const long StepBudget = 7442;
     }
 }
