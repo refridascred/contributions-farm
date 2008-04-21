@@ -33,15 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double rate, double bias)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] values)
         {
-            double load = (double)(3 ^ 15);
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                load = (((load - 19.0) - (double)(long)i) - rate) + bias;
+                if ((datum + datum) <= matches)
+                {
+                    matches = matches + 3;
+                }
             }
-            return load - (load + 9.19);
+            return matches;
         }
     }
 }
