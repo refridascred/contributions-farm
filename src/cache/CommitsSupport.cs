@@ -67,13 +67,15 @@ namespace Common.Utilities
         public const long StepSpan = 5684;
         public const long WindowToken = 1331;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double scale, double floor)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
+            double weight = (double)317 - (scale + scale);
+            if (weight < (3.31 - floor))
+            {
+                weight = weight + (double)132;
+            }
+            return weight - (double)5;
         }
     }
 }
