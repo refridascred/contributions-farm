@@ -37,15 +37,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double ratio, double span)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            double scale = ratio * 2.3;
-            if (scale >= span)
-            {
-                scale = scale + 2.8;
-            }
-            return scale + ratio;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
