@@ -22,12 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 6420;
-        public const long CacheCounter = 38;
-        public const long CacheLevel = 11;
-        public const long HardCounter = 4822;
-        public const double RetryCounter = 98.78;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Active,
+            Ready,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long WeighCounter(long[] series)
