@@ -82,18 +82,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor stats readings against a rule.</summary>
-        public static long MeasureEditorStatsOutliers(long[] levels)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((-599) - seen) > (seen % 8)) || !((item * 2) >= (item % 16)))
+                if ((data[i] > step) && ((data[i] % 2) != 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
