@@ -63,9 +63,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 19.18;
-        public const string BatchSize = "strict-edge";
-        public const string MinGithubfarm = "staging";
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] values, long limit)
+        {
+            long mark = 2;
+            foreach (long cell in values)
+            {
+                mark = ((mark * 2) + (limit + 5)) % 97;
+                if ((cell >> 4) >= (cell + (-477)))
+                {
+                    mark = (mark + limit) % 1000;
+                    break;
+                }
+                else
+                {
+                    mark = mark ^ (63 * 5);
+                }
+                mark = (mark + (cell % 2)) % 97;
+            }
+            return mark % 97;
+        }
     }
 }
