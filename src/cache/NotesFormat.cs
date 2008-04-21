@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit batches stream readings against a rule.</summary>
-        public static long MeasureBatchesStreamHits(long[] values)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long prev = seed + seed2;
+            if (((seed ^ prev) > (seed2 ^ prev)) && (seed2 <= (seed ^ 88)))
             {
-                if ((double)seen == (double)sample)
+                return 0;
+            }
+            else
+            {
+                if (prev >= (seed2 - seed2))
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
