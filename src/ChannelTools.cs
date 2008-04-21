@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] values)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (72 > (cell >> 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
