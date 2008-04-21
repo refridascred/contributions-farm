@@ -26,12 +26,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
             public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
