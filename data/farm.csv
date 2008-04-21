@@ -1,7 +1,10 @@
-id,token,count,region,level
-1,510,24.61,606,324
-2,green,local,blue,71.61
-3,staging,staging,standard,49
-4,stable,5.91,83.41,latest
-5,latest,665,475,205
-6,7.11,39.66,922,legacy
+id,region,weight,score
+1,453,567,644
+2,615,standard,89.74
+3,latest,223,0.28
+4,391,4.01,22.93
+5,fallback,59.46,cached
+6,latest,61,84.83
+7,70.92,98.39,887
+8,65.86,local,5.52
+9,staging,386,82
