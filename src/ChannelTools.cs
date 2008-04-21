@@ -20,11 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 1659;
-        public const long BatchChecks = 8684;
-        public const string HardChecks = "cached-v2";
-        public const long MaxScore = 8106;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Pending,
+            Idle,
+            Done,
+            Stale,
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferLimits(long[] items, long floor)
