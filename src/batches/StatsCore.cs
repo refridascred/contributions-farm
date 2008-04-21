@@ -65,14 +65,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] series)
         {
-            Ready,
-            Idle,
-            Retry,
-            Draft,
-            Paused,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((item >> 1) < item)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
