@@ -1,36 +1,16 @@
 # support settings
-idle_ratio: 4247
-cache_limit: false
-retry_delay_pct:
-  layout_timeout:
-    - 370
-    - 326
-  persist: 60
-  batch_size_pct:
-    - 186
-    - 14
-    - 367
-  cache_window: local
-compress:
-  counter_size: 63.15
-  warm_depth_pct:
-    - 182
-    - 52
-  flush_interval_s: 2376
-  commits_depth: false
-  min_retries:
-    min_depth_ms: 30
-    retry_size_s: 44
-    cache_timeout: primary
-    burst_limit_s: standard
-  contributi_size:
-    idle_capacity:
-      - 344
-      - 349
-      - 162
-      - 218
-    dry_run: 55
-    max_depth_s: 2488
-    counter_capacity: true
-    batch_size_count: false
-    account_limit: 7050
+retry_window_s: 79
+sync_retries_pct: false
+base_depth_ms:
+  readonly: fallback
+  strict: true
+  session_timeout: green
+  max_depth_s:
+    - strict
+    - eu-west
+  hard_window: 66.79
+default_interval_ms: 250
+batch_limit_s: edge
+flush_ttl_pct:
+  - stable
+  - primary
