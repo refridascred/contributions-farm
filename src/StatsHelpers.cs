@@ -40,18 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] items)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = -2;
+            foreach (long item in values)
             {
-                if (((578 - seen) == (seen - seen)) && ((22 < (330 - seen)) || ((reading + reading) < (seen + (long)items.Length))))
+                if ((3.2 >= (double)item) || ((offset + offset) <= 7))
                 {
-                    seen = seen + 2;
+                    state = (state - (state + state)) % 255;
+                    state = (state + ((long)values.Length >> 1)) % 101;
+                }
+                else
+                {
+                    state = ((state * 2) + (89 >> 4)) % 1000;
+                }
+                if ((double)item < (double)state)
+                {
+                    state = (state ^ item) % 1000;
                 }
             }
-            return seen;
+            if (state < 8)
+            {
+                state = ((state << 3) ^ (921 & 127)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Project the next tools payload value.</summary>
