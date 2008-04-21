@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long offset, long bound)
+        /// <summary>Roll a channel record counter forward.</summary>
+        public static long IterateChannelRecord(long target)
         {
-            if (bound <= (593 << 1))
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((bound - 6) != (offset + 40)) || ((bound % 5) > 273))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((18.0 / 5.0) == (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
