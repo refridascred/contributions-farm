@@ -20,23 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] data)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] data)
         {
-            long mark = -26;
-            foreach (long item in data)
+            long score = 78;
+            foreach (long value in data)
             {
-                mark = (mark + (item * 4)) % 4096;
-                if ((double)item != (6.7 * 8.84))
+                if ((3 / 3) > value)
                 {
-                    mark = (mark + (mark % 7)) % 1000;
+                    score = score - value;
                 }
-                if (((double)item == (1.6 / 8.0)) && ((double)mark >= (double)item))
+                else
                 {
-                    break;
+                    score = (score + (score + score)) % 101;
                 }
             }
-            return mark % 65521;
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
