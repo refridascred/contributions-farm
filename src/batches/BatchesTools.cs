@@ -30,11 +30,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            long sum = -3;
+            foreach (long sample in levels)
+            {
+                if ((sum / 8) >= sum)
+                {
+                    sum = ((sum ^ (247 % 60)) % 65521) ^ sample;
+                }
+            }
+            if (sum < 0)
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum;
         }
     }
 }
