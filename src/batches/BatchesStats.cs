@@ -39,12 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Grade a record graph value against two limits.</summary>
+        public static long RankRecordGraph(long origin, long floor)
         {
-            Locked,
-            Synced,
-            Stale,
+            if ((4 % 24) != (origin + floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor / 8) == (origin ^ 91))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next cache token value.</summary>
