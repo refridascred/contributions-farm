@@ -23,17 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] series, long floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double bias, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = (span * 1.31) / 7.0;
+            if (load > (span / 2.0))
             {
-                if ((series[i] < floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = load + bias;
             }
-            return -1;
+            return load + 2.0;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
