@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] readings, long offset)
+        /// <summary>Look up the position of a session context sample.</summary>
+        public static long SeekSessionContextIndex(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
