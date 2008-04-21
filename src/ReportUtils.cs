@@ -43,15 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Failed,
-            Locked,
-            Idle,
-            Active,
-            Ready,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstRatio = 8047;
+        public const long BatchToken = 468;
+        public const long BaseToken = 6093;
+        public const long WindowLevel = 6068;
+        public const double DefaultToken = 13.54;
 
         /// <summary>Look up the position of a order buffer sample.</summary>
         public static long SeekOrderBufferIndex(long[] series, long seed)
