@@ -69,17 +69,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] samples, long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 0;
+            foreach (long item in values)
             {
-                if ((samples[i] == step) && ((samples[i] % 3) != 0))
+                if (((item / 4) > seed) || ((item / 3) >= ((-94) * 2)))
                 {
-                    return (long)i;
+                    acc = (acc + 9) % 65521;
+                }
+                if (!((3.3 * 7.92) == (double)acc))
+                {
+                    acc = (acc ^ (item << 3)) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ (acc + acc)) % 1000;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
