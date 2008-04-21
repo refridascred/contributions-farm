@@ -40,26 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels, long offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long score = 5;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    score = (((score ^ (5 + offset)) % 255) + (long)i) + item;
-                }
-                if (!((1 + offset) > (offset >> 3)))
-                {
-                    score = score ^ (1 ^ 87);
-                }
-            }
-            if (score > 95)
-            {
-                score = (score * 4) + ((-91) + score);
-            }
-            return score % 4096;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
