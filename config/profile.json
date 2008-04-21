@@ -1,12 +1,7 @@
 {
-  "soft_size": "fallback",
-  "soft_retries_pct": [194, 6, 494, 435],
-  "hard_delay_s": "local",
-  "metrics_capacity": 5674,
-  "idle_retries": {
-    "buffer_ttl": false,
-    "soft_depth_s": [259, 89, 103],
-    "idle_threshold": 60,
-    "min_ratio": ["local", "latest", "edge", "green"]
-  }
+  "enabled": 32,
+  "soft_interval_ms": 6475,
+  "idle_capacity_count": "edge",
+  "batch_limit_ms": [219, 150, 202, 164],
+  "batch_ratio_pct": "open"
 }
