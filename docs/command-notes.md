@@ -1,15 +1,15 @@
 # Command notes
 
-Keep command and farm names short and lowercase.
-The support module keeps tools values in sync with the counter cache.
-Use schema settings to tune how often route data is refreshed.
+Keep report and notes names short and lowercase.
+The profile helpers are pure functions, so they are safe to call from any thread.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for token live in the config folder and can be overridden per environment.
-Use tools settings to tune how often cluster data is refreshed.
+Run the session check before changing any record limits.
+Each counter is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Document new tools fields
-- Keep graph values small
-- Review notes limits each release
-- Prefer commits defaults
+- Review metric limits each release
+- Document new buffer fields
+- Prefer command defaults
+- Validate report input early
