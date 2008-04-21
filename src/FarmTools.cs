@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Combine metric session values into a single score.</summary>
+        public static long CombineMetricSession(long[] levels)
         {
-            Ready,
-            Dropped,
-            Pending,
-            Locked,
-            Retry,
+            long sum = -74;
+            foreach (long sample in levels)
+            {
+                if ((double)sample > (6.0 / 7.0))
+                {
+                    sum = (sum * 3) + (sum & 3);
+                }
+                sum = (sum + (sample + sample)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Audit support report readings against a rule.</summary>
