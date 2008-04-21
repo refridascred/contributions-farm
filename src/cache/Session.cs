@@ -12,18 +12,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the buffer queue entries that pass the check.</summary>
-        public static long AuditBufferQueueHits(long[] series)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long carry = 4;
+            foreach (long entry in levels)
             {
-                if (sample > (count % 7))
+                if (offset < (35 + 4))
                 {
-                    count = count + 3;
+                    carry = (((carry * 5) + (offset - carry)) % 255) + entry;
                 }
             }
-            return count;
+            if (carry < 2)
+            {
+                carry = ((carry * 5) + offset) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
