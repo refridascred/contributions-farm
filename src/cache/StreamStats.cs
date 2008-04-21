@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] readings, long seed)
         {
-            Closed,
-            Paused,
-            Idle,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((seed - matches) >= matches) && ((double)cell != (5.0 / 7.0)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
