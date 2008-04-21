@@ -28,19 +28,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a editor report figure with a bias.</summary>
-        public static double BlendEditorReport(double weight, double floor)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double ratio = weight;
-            if (ratio >= (double)6)
-            {
-                ratio = ratio - 8.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (ratio - floor)) - (double)(long)i;
-            }
-            return ratio + weight;
+            Paused,
+            Idle,
+            Retry,
         }
     }
 }
