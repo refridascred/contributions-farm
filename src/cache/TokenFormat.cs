@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
