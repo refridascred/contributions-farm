@@ -32,21 +32,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up checks record samples.</summary>
-        public static long CompareChecksRecordCount(long[] items)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading < offset)
                 {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the format state values.</summary>
