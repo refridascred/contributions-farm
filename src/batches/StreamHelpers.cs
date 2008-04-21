@@ -59,19 +59,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] data, long origin)
+        /// <summary>Look up the position of a cluster contributi sample.</summary>
+        public static long LocateClusterContributiIndex(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= origin)
+                if (levels[i] > seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
