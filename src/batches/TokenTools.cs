@@ -23,21 +23,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Match up githubfarm payload samples.</summary>
-        public static long OverlapGithubfarmPayloadCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseDepth = 57.04;
+        public const double DefaultSession = 51.43;
+        public const long IdleSession = 4670;
+        public const long IdleScore = 9096;
+        public const long SoftWidth = 832;
     }
 }
