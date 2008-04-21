@@ -24,13 +24,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Scale a report batches figure with a bias.</summary>
+        public static double ProjectReportBatches(double gain, double floor)
         {
-            Retry,
-            Stale,
-            New,
-            Synced,
+            double load = gain;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (double)(long)i) + floor;
+            }
+            return load - (4.28 / 2.0);
         }
 
         /// <summary>Audit schema context readings against a rule.</summary>
