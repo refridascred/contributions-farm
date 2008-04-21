@@ -1,7 +1,7 @@
 {
-  "metric_retries": "fallback",
-  "layout_limit": false,
-  "min_size_ms": true,
-  "max_ratio": 1024,
-  "enabled": true
+  "flush_threshold_pct": 55.92,
+  "verbose": false,
+  "metrics_limit": "staging",
+  "persist": true,
+  "readonly": 559
 }
