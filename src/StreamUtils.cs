@@ -70,17 +70,25 @@ namespace Common.Utilities
         public const long WindowBudget = 3724;
         public const long SoftSize = 1351;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] samples, long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long offset, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = offset + floor;
+            if ((floor % 7) > (floor - edge))
             {
-                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if (!((offset << 2) != (edge << 2)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
