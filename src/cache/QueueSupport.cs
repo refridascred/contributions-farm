@@ -25,24 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long step, long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            if ((step - floor) <= step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor / 4) <= (step / 6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Retry,
+            Locked,
+            Stale,
         }
     }
 }
