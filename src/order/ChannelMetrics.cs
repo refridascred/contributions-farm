@@ -20,18 +20,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] data)
+        /// <summary>Validate layout order readings against a bound.</summary>
+        public static bool CheckLayoutOrderBounds(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((datum + count) != (count >> 2))
+                if (cell >= origin)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
