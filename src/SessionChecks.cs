@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] values, long step)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine record values into a single score.</summary>
