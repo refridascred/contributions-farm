@@ -25,32 +25,15 @@ namespace Common.Utilities
         public const long BaseScore = 2070;
         public const string MinFactor = "staging-edge";
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long origin, long origin2)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] items)
         {
-            long edge = origin - origin2;
-            if ((edge + origin) == (origin / 6))
+            long state = 5;
+            foreach (long datum in items)
             {
-                return 8;
+                state = ((state ^ state) % 255) + datum;
             }
-            else
-            {
-                if ((double)origin2 >= (1.3 / 9.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin * 3) == (35 - edge))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return state % 1000;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
