@@ -43,11 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] values, long floor)
         {
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((floor * 4) < matches)
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
     }
 }
