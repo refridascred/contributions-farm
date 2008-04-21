@@ -30,10 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepCount = 4039;
-        public const double MinBuffer = 31.76;
-        public const double SoftBuffer = 22.82;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 3532;
+        public const double CacheBudget = 76.11;
+        public const long WindowInterval = 5352;
+        public const long RetryBudget = 6010;
+        public const double SoftFactor = 83.8;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BurstScore = "alpha";
