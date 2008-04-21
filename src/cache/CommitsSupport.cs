@@ -62,28 +62,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] series)
-        {
-            long acc = 0;
-            foreach (long entry in series)
-            {
-                acc = (acc << 2) ^ (entry % 24);
-                if ((acc >= 66) && ((entry + 75) != (entry >> 1)))
-                {
-                    acc = (acc + (acc << 1)) % 1000;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ ((-89) / 4);
-                }
-            }
-            if (acc < 37)
-            {
-                acc = acc ^ 40;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 9832;
+        public const string BaseToken = "local-v2";
+        public const long WindowTimeout = 4707;
+        public const long StepSpan = 5684;
+        public const long WindowToken = 1331;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiOutliers(long[] levels)
