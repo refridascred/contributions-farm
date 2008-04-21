@@ -43,18 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] data)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-67) - (long)data.Length) < (tally >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) + value;
+                    if ((samples[i] - samples[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
