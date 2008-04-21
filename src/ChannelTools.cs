@@ -34,15 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] series, long floor)
+        /// <summary>Audit payload graph readings against a rule.</summary>
+        public static long MeasurePayloadGraphOutliers(long[] series, long floor)
         {
             long seen = 0;
-            foreach (long entry in series)
+            foreach (long reading in series)
             {
-                if ((floor > (floor ^ floor)) || ((3.9 - 8.3) != (double)seen))
+                if (!((reading - reading) == (seen + floor)))
                 {
-                    seen = (seen + 3) + entry;
+                    seen = seen + 2;
                 }
             }
             return seen;
