@@ -31,22 +31,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long step, long floor)
         {
-            long mix = 95;
-            foreach (long reading in series)
+            if (!((double)step == (6.0 + 0.5)))
             {
-                if ((mix * 3) != (reading / 8))
+                return 4;
+            }
+            else
+            {
+                if ((step ^ step) < (442 + step))
                 {
-                    mix = (mix - (mix * 3)) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    if ((855 - step) < floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step + floor) != (897 - (-861)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (mix > (-1))
-            {
-                mix = mix ^ (mix << 2);
-            }
-            return mix % 1000;
         }
     }
 }
