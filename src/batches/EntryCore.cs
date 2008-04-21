@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window session samples are out of range.</summary>
-        public static long AuditWindowSessionGaps(long[] readings)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long score = 91;
+            foreach (long value in data)
             {
-                if ((double)seen >= (5.7 - 5.2))
-                {
-                    seen = (seen + 2) - cell;
-                }
+                score = ((score ^ (score / 4)) - value) - offset;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
