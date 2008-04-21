@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Dropped,
-            Retry,
             Queued,
-            Idle,
-            Active,
+            New,
+            Draft,
         }
 
         /// <summary>Define support limits and defaults.</summary>
