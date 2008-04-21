@@ -39,21 +39,19 @@ namespace Common.Utilities
         public const long BatchScore = 449;
         public const double LimitSession = 92.63;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 65;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state - (state % 7)) % 4096) - value;
             }
-            return seen;
+            if (state < (-189))
+            {
+                state = (state - (62 - 0)) % 97;
+            }
+            return state;
         }
     }
 }
