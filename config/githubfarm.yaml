@@ -1,5 +1,6 @@
 # githubfarm settings
-warm_threshold_ms: primary
-max_timeout_ms: open
-strict: 1024
-flush_capacity: true
+retry_window_ms: 6812
+poll_timeout_pct: 500
+stream_threshold: strict
+default_delay: false
+retry_limit_pct: 1905
