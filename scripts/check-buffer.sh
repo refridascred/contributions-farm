@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard green; do
+for item in green blue fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    blue)
+    strict)
         log "fast path"
         ;;
     *)
