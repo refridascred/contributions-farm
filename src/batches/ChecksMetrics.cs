@@ -27,19 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate order counter samples.</summary>
-        public static long CombineOrderCounter(long[] samples)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long mark = 832;
-            foreach (long entry in samples)
-            {
-                mark = ((mark - mark) % 101) - entry;
-            }
-            if (mark < 182)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark;
+            Ready,
+            Active,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
