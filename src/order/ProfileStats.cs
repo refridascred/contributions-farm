@@ -34,19 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double ratio, double floor)
+        /// <summary>Find the first payload route entry that matches the target.</summary>
+        public static long SeekPayloadRouteIndex(long[] values, long origin)
         {
-            double drift = ratio;
-            if (drift >= (double)(-596))
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift - (double)(-2)) - floor;
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + 1.7;
+            return -1;
         }
 
         /// <summary>Count the batches cache entries that pass the check.</summary>
