@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] values)
         {
-            Active,
-            Queued,
-            Idle,
+            long total = 495;
+            foreach (long reading in values)
+            {
+                total = total - (total - reading);
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a editor summary.</summary>
