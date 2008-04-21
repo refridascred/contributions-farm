@@ -29,14 +29,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Retry,
-            Stale,
+            New,
+            Ready,
+            Synced,
             Done,
-            Draft,
-            Queued,
+            Dropped,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
