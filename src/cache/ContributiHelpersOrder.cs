@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long target, long target2)
-        {
-            long diff = target ^ target2;
-            if ((double)target2 >= (7.8 * 7.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((7.3 > (double)diff) && ((3.1 - 7.9) >= (9.68 - 5.9)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target < (4.97 - 3.6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstSpan = "legacy";
+        public const double SoftEditor = 38.38;
+        public const double WindowEditor = 68.31;
+        public const long DefaultScore = 6543;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterGaps(long[] series)
