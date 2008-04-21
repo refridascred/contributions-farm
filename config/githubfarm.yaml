@@ -1,14 +1,12 @@
 # githubfarm settings
-soft_interval_s:
-  - 46
-  - 259
-  - 321
-  - 427
-cluster_capacity: 60
-poll_interval_s: primary
-idle_limit_ms: 20
-flush_timeout_pct: blue
-cache_retries_pct:
-  - legacy
-  - stable
-  - legacy
+idle_ratio: strict
+dry_run: 8863
+format_capacity: 500
+contributi_size:
+  - 102
+  - 432
+  - 202
+retry_ratio: fallback
+compress:
+  - eu-west
+  - edge
