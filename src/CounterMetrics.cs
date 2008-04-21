@@ -26,15 +26,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double ratio, double floor)
+        /// <summary>Rank githubfarm batches input into a small class.</summary>
+        public static long ClassifyGithubfarmBatches(long bound, long floor)
         {
-            double bias = 4.37;
-            for (int i = 0; i < 7; i++)
+            long cur = bound - floor;
+            if ((bound + bound) > (cur - floor))
             {
-                bias = (bias + (double)(long)i) - floor;
+                return 0;
             }
-            return bias + ratio;
+            else
+            {
+                if (((bound + 986) >= (bound * 5)) && ((cur * 5) > 795))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
