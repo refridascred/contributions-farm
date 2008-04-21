@@ -1,7 +1,5 @@
 # githubfarm settings
-flush_limit_pct: 56
-batch_timeout_s: 500
-sync_size_ms: 61
-retry_size_ms: 13.5
-cache_retries: 40
-sync_interval_ms: green
+buffer_delay: false
+enabled: standard
+warm_delay_ms: 34.62
+context_interval: 92
