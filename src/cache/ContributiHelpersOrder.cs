@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 3072;
-        public const string BurstCommand = "fallback-edge";
-        public const long MinBudget = 2753;
-        public const long MinCommand = 5598;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Active,
+            Stale,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long offset)
