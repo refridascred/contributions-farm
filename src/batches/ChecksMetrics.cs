@@ -66,13 +66,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] samples, long step)
         {
-            public string Level { get; set; } = "";
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
