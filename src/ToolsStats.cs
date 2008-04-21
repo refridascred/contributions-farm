@@ -44,28 +44,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] samples)
-        {
-            long carry = 671;
-            foreach (long reading in samples)
-            {
-                carry = ((carry * 2) + (carry >> 2)) % 4096;
-                if (carry >= (reading >> 1))
-                {
-                    carry = (carry << 3) ^ 673;
-                }
-                if ((403 - carry) <= (reading - carry))
-                {
-                    carry = carry ^ carry;
-                }
-            }
-            if (carry > (-616))
-            {
-                carry = carry - 1;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardDepth = 1451;
+        public const long StepContributi = 8369;
+        public const string IdleScore = "cached-v2";
+        public const long MaxSpan = 7343;
+        public const string CacheCount = "fallback-edge";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultAlready = 9942;
