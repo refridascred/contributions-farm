@@ -16,18 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many batch filter samples are out of range.</summary>
-        public static long MeasureBatchFilterMatches(long[] series, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((matches & 7) <= (entry + matches)) || ((matches & 127) >= (entry << 2)))
+                if (((double)cell <= (8.1 / 6.0)) || ((5 + cell) <= (floor / 5)))
                 {
-                    matches = (matches + 2) - bound;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the account status values.</summary>
