@@ -19,23 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a filter order reading.</summary>
-        public static double BlendFilterOrder(double bias, double offset)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] samples)
         {
-            double drift = offset;
-            if (drift > (double)27)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - (offset - 4.0)) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)119) + (double)(long)i;
-            }
-            return drift + (drift + offset);
+            return hits;
         }
 
         /// <summary>Describe the notes phase values.</summary>
