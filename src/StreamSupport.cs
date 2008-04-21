@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const long CacheMetric = 3155;
         public const double BurstFactor = 87.85;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] values, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((((sample - (-81)) == (seen >> 2)) || ((limit << 2) >= limit)) || ((seen * 3) >= (sample << 3)))
+                if ((double)item == (8.26 / 5.0))
                 {
-                    seen = seen + 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
