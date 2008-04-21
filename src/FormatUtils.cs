@@ -48,20 +48,10 @@ namespace Common.Utilities
             return mean + (19.0 + 5.97);
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double bias, double floor)
-        {
-            double bias2 = floor;
-            if (bias2 >= (0.1 / 2.0))
-            {
-                bias2 = bias2 - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 + floor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleDepth = 6933;
+        public const long BaseMetrics = 1949;
+        public const long StepMetrics = 3985;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
