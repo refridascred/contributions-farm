@@ -41,10 +41,18 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxStats = 87.42;
-        public const long LimitStats = 9644;
-        public const string DefaultStats = "legacy";
+        /// <summary>Locate a graph entry reading by value.</summary>
+        public static long SeekGraphEntryIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long FindContributiIndex(long[] readings, long target)
