@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long StepFarm = 8660;
         public const long BurstFarm = 9120;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long mark = 1;
-            foreach (long reading in readings)
-            {
-                if ((7.2 > (double)mark) || (mark < reading))
-                {
-                    mark = (mark ^ (reading / 6)) % 97;
-                }
-            }
-            return mark;
+            Draft,
+            New,
+            Synced,
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
