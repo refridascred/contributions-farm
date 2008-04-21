@@ -69,18 +69,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many counter schema samples are out of range.</summary>
-        public static long CountCounterSchemaGaps(long[] levels)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (3.0 <= (double)hits)
-                {
-                    hits = (hits + 3) - item;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
