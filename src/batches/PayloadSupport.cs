@@ -26,26 +26,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((mix < (mix + limit)) || ((7.27 * 6.21) <= (double)limit))
-                {
-                    mix = (mix << 2) ^ (limit - mix);
-                    mix = (mix << 3) ^ (long)i;
-                }
-                if ((mix / 3) <= 373)
-                {
-                    mix = mix ^ (mix - (-94));
-                    break;
-                }
-                mix = mix - (989 - 39);
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
