@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] items, long bound)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long result = 746;
+            foreach (long reading in items)
+            {
+                if (!(reading >= (reading + (-90))))
+                {
+                    result = (result - (94 + bound)) % 65521;
+                }
+                else
+                {
+                    result = result + (19 << 3);
+                }
+                if ((reading + bound) <= (5 + 8))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Match up session samples.</summary>
