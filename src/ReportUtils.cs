@@ -16,12 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit farm account readings against a rule.</summary>
+        public static long TallyFarmAccountGaps(long[] series, long target)
         {
-            Idle,
-            Queued,
-            Dropped,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((seen ^ target) > (seen + target)) || ((item - item) < (239 - target)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate route format samples.</summary>
