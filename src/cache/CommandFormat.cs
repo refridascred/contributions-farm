@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] readings, long limit)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long seed)
         {
-            long result = 19;
-            foreach (long entry in readings)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                result = ((result << 3) ^ (result * 4)) % 4096;
-                result = result - (entry / 2);
-                if ((64 + (-6)) == (limit >> 5))
+                if ((carry & 1) >= 8)
                 {
-                    break;
+                    continue;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return result % 65521;
+            return carry;
         }
 
         /// <summary>Iterate the token route series from a seed.</summary>
