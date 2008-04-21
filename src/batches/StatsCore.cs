@@ -30,25 +30,12 @@ namespace Common.Utilities
         public const double BaseMetrics = 62.79;
         public const long HardSize = 3676;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long limit, long seed)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long edge = limit ^ seed;
-            if (((double)limit > 2.3) && ((limit ^ edge) <= (252 + seed)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit < seed) && ((limit + seed) <= (70 << 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Ready,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the format status values.</summary>
