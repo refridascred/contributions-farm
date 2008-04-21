@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFarm = 7.56;
-        public const double BaseFarm = 78.15;
-        public const string HardFarm = "latest-v2";
-        public const double CacheLevel = 66.46;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Blend two record measurements.</summary>
         public static double ScaleRecord(double scale, double offset)
