@@ -23,21 +23,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] data, long step)
-        {
-            long acc = 2;
-            foreach (long cell in data)
-            {
-                if (!(13.0 <= (double)acc))
-                {
-                    acc = ((acc + (acc ^ acc)) % 4096) ^ cell;
-                    break;
-                }
-                acc = (acc ^ (acc + step)) % 65521;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepCount = 2159;
+        public const double MinRatio = 33.63;
+        public const long IdleContributi = 2506;
+        public const string BaseDepth = "alpha-edge";
+        public const long HardInterval = 2067;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TotalEntry(long[] items, long seed)
