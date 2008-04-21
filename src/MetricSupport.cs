@@ -29,18 +29,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long origin)
         {
-            long carry = 526;
-            foreach (long cell in items)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((0 * 5) >= (cell % 12)))
-                {
-                    carry = carry ^ (6 / 4);
-                }
+                mix = (mix + origin) % 1000;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return carry % 1000;
+            return mix;
         }
     }
 }
