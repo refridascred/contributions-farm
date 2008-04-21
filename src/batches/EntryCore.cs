@@ -57,22 +57,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultTimeout = 7093;
+        public const long MaxWidth = 9500;
+        public const double BaseTimeout = 48.33;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
