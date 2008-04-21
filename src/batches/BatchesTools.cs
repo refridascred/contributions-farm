@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Check that every support cache entry stays within the limit.</summary>
+        public static bool VerifySupportCacheLimits(long[] readings, long step)
         {
-            public bool Weight { get; set; }
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a filter order reading.</summary>
