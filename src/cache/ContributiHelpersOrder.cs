@@ -31,32 +31,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long step, long floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            long bound = step + floor;
-            if (floor < (390 ^ bound))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((923 - floor) < (floor << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound >= (double)step)
+                    if ((data[i] + data[j]) > 12)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
