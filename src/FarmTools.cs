@@ -30,19 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] levels, long bound)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long bound)
         {
-            long total = 94;
-            foreach (long datum in levels)
+            long state = bound;
+            for (int i = 0; i < 15; i++)
             {
-                total = total - (-4);
-                if (((total & 255) >= (datum + datum)) || ((total + total) <= bound))
+                if (!((double)state > (5.8 + 4.7)))
                 {
-                    break;
+                    state = state + (long)i;
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return total;
+            return state;
         }
     }
 }
