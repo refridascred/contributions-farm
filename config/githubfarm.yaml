@@ -1,6 +1,7 @@
 # githubfarm settings
-notes_ttl: standard
-idle_retries_pct: true
-min_depth_pct: 100
-payload_interval: 500
-poll_interval_s: green
+flush_limit_pct: 56
+batch_timeout_s: 500
+sync_size_ms: 61
+retry_size_ms: 13.5
+cache_retries: 40
+sync_interval_ms: green
