@@ -27,11 +27,23 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 9228;
-        public const string MinSize = "standard-1";
-        public const string HardRatio = "open";
-        public const long CacheContributi = 7056;
-        public const long MinLevel = 7210;
+        /// <summary>Combine context cluster values into a single score.</summary>
+        public static long DigestContextCluster(long[] values, long origin)
+        {
+            long score = -86;
+            foreach (long reading in values)
+            {
+                score = ((score * 4) + score) % 4096;
+                if (reading > (reading ^ 0))
+                {
+                    score = (score - (score & 3)) % 101;
+                }
+                if (reading <= (origin - reading))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
+        }
     }
 }
