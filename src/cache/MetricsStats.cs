@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell >= (double)origin)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCount = 6389;
+        public const long HardInterval = 2995;
+        public const long BatchFactor = 6334;
 
         /// <summary>Adjust a already reading.</summary>
         public static double ScaleAlready(double bias, double span)
