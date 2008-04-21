@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] levels)
+        /// <summary>Validate queue tools readings against a bound.</summary>
+        public static bool ValidateQueueToolsLimits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((tally ^ tally) == (entry - entry))
+                if (reading < limit)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
