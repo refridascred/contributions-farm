@@ -41,23 +41,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long floor, long seed)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long target, long bound)
         {
-            long edge = floor + seed;
-            if ((double)edge < (10.0 + 9.11))
+            if ((bound >> 2) < 90)
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (((885 + edge) != (seed / 9)) && ((double)edge > (double)seed))
+                if ((target >= (target + target)) || ((bound - 293) >= (bound & 3)))
                 {
                     return 5;
                 }
                 else
                 {
-                    return 4;
+                    return 6;
                 }
             }
         }
