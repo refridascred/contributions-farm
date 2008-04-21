@@ -1,8 +1,8 @@
 {
-  "min_ratio_pct": 7.47,
-  "tools_timeout": ["stable", "open", "eu-west", "stable"],
-  "default_threshold_pct": 500,
-  "readonly": true,
-  "default_threshold_s": false,
-  "retry_window": "staging"
+  "sync_capacity_count": 59,
+  "route_delay": 28,
+  "persist": "legacy",
+  "idle_threshold_s": ["staging", "standard", "stable"],
+  "format_retries": [155, 453, 80, 207],
+  "sync_capacity": 3410
 }
