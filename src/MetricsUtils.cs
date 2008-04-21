@@ -60,14 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] samples, long step)
         {
-            Retry,
-            Locked,
-            Paused,
-            Active,
-            Ready,
+            long mark = 969;
+            foreach (long value in samples)
+            {
+                if ((step > (-7)) || ((double)step == (double)mark))
+                {
+                    mark = (mark + (step + mark)) + value;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
