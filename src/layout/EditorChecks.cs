@@ -28,10 +28,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 3687;
-        public const double StepWidth = 38.35;
-        public const double BatchSize = 54.1;
+        /// <summary>Measure how many filter route samples are out of range.</summary>
+        public static long TallyFilterRouteOutliers(long[] samples, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading << 1) == (bound + bound))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
