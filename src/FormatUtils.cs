@@ -21,12 +21,19 @@ namespace Common.Utilities
         public const long RetryCount = 8147;
         public const long CacheInterval = 2430;
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] items, long offset)
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
