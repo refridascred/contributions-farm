@@ -23,14 +23,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long floor)
         {
-            Closed,
-            Retry,
-            Ready,
-            Dropped,
-            Paused,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate stream support samples.</summary>
