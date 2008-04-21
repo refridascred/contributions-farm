@@ -35,18 +35,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] values)
-        {
-            long result = 756;
-            foreach (long item in values)
-            {
-                if ((double)item <= 3.4)
-                {
-                    result = (result - (684 + result)) % 1000;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 8861;
+        public const string StepChecks = "open-edge";
+        public const long CacheChecks = 1162;
     }
 }
