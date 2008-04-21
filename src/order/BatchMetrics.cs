@@ -25,21 +25,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count counter window pairs that satisfy a relation.</summary>
-        public static long MatchCounterWindowCount(long[] series)
+        /// <summary>Locate a window queue reading by value.</summary>
+        public static long SeekWindowQueueIndex(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] > target)
                 {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
