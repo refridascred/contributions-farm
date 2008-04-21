@@ -1,43 +1,4 @@
 # githubfarm settings
-batch_window_count: legacy
-tools_ttl:
-  tools_retries: staging
-  dry_run: local
-  token_size: 100
-checks_limit:
-  soft_limit: true
-  verbose:
-    batch_interval_s: edge
-    dry_run: eu-west
-    hard_interval_ms: 12.73
-    layout_size: 8539
-    enabled:
-      - 422
-      - 138
-      - 402
-      - 404
-    hard_limit_ms: 89.3
-  persist: false
-  profile_size:
-    - edge
-    - blue
-  poll_threshold_count:
-    - 350
-    - 121
-    - 348
-  min_capacity:
-    - edge
-    - green
-    - edge
-    - primary
-default_interval_pct:
-  idle_size: 1024
-  metrics_interval: 89.61
-  sync_ttl_s:
-    batch_ratio: 64
-    max_delay: staging
-    flush_threshold_s: 100
-    default_capacity: stable
-  min_capacity: true
-  flush_threshold_s: 18
-  base_ratio_count: 100
+contributi_interval: 39.25
+soft_capacity_s: 500
+cache_limit_count: 160
