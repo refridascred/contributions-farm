@@ -1,19 +1,11 @@
 # entry settings
-window_capacity:
-  - 314
-  - 260
-  - 105
+counter_threshold: true
+filter_limit:
+  - 373
   - 417
-min_limit:
-  - 272
-  - 497
-order_retries: local
-idle_threshold_pct: stable
-idle_window_ms:
-  - 233
-  - 66
-  - 365
-  - 304
-hard_limit_s:
-  - 121
-  - 170
+  - 275
+idle_depth:
+  - green
+  - open
+record_window: true
+cache_ttl_s: edge
