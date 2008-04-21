@@ -41,11 +41,14 @@ namespace Common.Utilities
             return scale + (rate - rate);
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            Retry,
+            Pending,
+            Failed,
+            Dropped,
+            Ready,
         }
     }
 }
