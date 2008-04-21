@@ -1,11 +1,4 @@
 # support settings
-retry_delay_count: 67
-warm_delay_count:
-  - 31
-  - 124
-  - 398
-  - 91
-queue_ratio: eu-west
-enabled: 100
-base_delay_s: 47
-flush_retries_count: staging
+strict: false
+flush_depth_count: 3133
+compress: 24.67
