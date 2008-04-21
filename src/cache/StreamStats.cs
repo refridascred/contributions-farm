@@ -42,19 +42,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next graph order value from a seed.</summary>
-        public static long StepGraphOrder(long limit)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = (((mix << 3) ^ 5) % 101) + (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public double Score { get; set; }
         }
     }
 }
