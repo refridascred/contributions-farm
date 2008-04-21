@@ -12,12 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public long Score { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepFactor = 83.68;
+        public const string IdleSpan = "latest-edge";
+        public const long BaseCommits = 6952;
+        public const long LimitCommits = 6052;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
