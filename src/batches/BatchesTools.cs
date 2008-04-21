@@ -13,11 +13,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxLevel = "legacy-v2";
-        public const long StepCluster = 9683;
-        public const long CacheCluster = 6243;
-        public const double MinTimeout = 5.37;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
