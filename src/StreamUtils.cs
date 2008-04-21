@@ -36,14 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            Retry,
-            Done,
-            New,
-            Paused,
-            Active,
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
