@@ -51,18 +51,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] data, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long sum = -40;
+            foreach (long value in values)
             {
-                if ((matches % 24) >= (20 * 2))
+                if (sum <= value)
                 {
-                    matches = ((matches + 1) + cell) + bound;
+                    sum = ((sum << 3) ^ (value % 5)) % 4096;
+                }
+                if (sum > value)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (sum > 4)
+            {
+                sum = (sum * 4) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
