@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the notes batch entries that pass the check.</summary>
-        public static long CountNotesBatchOutliers(long[] levels, long target)
+        /// <summary>Adjust a command contributi reading.</summary>
+        public static double ScaleCommandContributi(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (((target - reading) <= tally) || ((double)tally >= (13.0 * 2.74)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double load = bias + (scale * 3.8);
+            return load + scale;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
