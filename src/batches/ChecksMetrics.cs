@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] items, long offset)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the cache route series from a seed.</summary>
