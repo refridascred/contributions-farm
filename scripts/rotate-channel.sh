@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest edge standard legacy; do
+for item in legacy edge staging eu-west; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=364
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-blue}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
