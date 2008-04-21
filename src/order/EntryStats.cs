@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] values, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowDepth = "staging-1";
+        public const long MaxDepth = 1926;
+        public const long StepMetrics = 6167;
+        public const long DefaultMetrics = 2890;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
