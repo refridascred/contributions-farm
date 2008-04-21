@@ -61,12 +61,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 7373;
-        public const double HardContributi = 4.39;
-        public const double LimitFactor = 74.65;
-        public const long IdleScore = 8417;
-        public const double MaxContributi = 44.05;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] samples)
+        {
+            long score = 72;
+            foreach (long entry in samples)
+            {
+                score = score ^ (entry & 31);
+            }
+            return score;
+        }
 
         /// <summary>Audit buffer order readings against a rule.</summary>
         public static long CountBufferOrderHits(long[] items, long limit)
