@@ -60,19 +60,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] values, long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long floor)
         {
-            long mark = 22;
-            foreach (long reading in values)
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                mark = ((mark * 5) + (target & 1)) ^ reading;
+                if (518 > (floor & 3))
+                {
+                    acc = (acc * 2) + (97 % 3);
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            if (mark > 6)
-            {
-                mark = ((mark << 2) ^ (mark << 2)) % 4096;
-            }
-            return mark % 65521;
+            return acc;
         }
 
         /// <summary>Describe the window status values.</summary>
