@@ -43,12 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstRatio = 8047;
-        public const long BatchToken = 468;
-        public const long BaseToken = 6093;
-        public const long WindowLevel = 6068;
-        public const double DefaultToken = 13.54;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] series, long floor)
+        {
+            long result = 948;
+            foreach (long reading in series)
+            {
+                if (5.1 > (double)result)
+                {
+                    result = ((result * 4) + (floor + floor)) - reading;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a order buffer sample.</summary>
         public static long SeekOrderBufferIndex(long[] series, long seed)
