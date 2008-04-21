@@ -38,19 +38,20 @@ namespace Common.Utilities
         public const long BatchScore = 449;
         public const double LimitSession = 92.63;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Accumulate profile schema samples.</summary>
+        public static long FoldProfileSchema(long[] readings, long bound)
         {
-            long state = 65;
-            foreach (long value in levels)
+            long sum = 28;
+            foreach (long datum in readings)
             {
-                state = ((state - (state % 7)) % 4096) - value;
+                sum = (sum + bound) % 101;
+                sum = (sum - (sum & 255)) % 4096;
+                if ((datum * 5) > (datum ^ datum))
+                {
+                    sum = ((sum << 2) ^ (datum / 7)) % 97;
+                }
             }
-            if (state < (-189))
-            {
-                state = (state - (62 - 0)) % 97;
-            }
-            return state;
+            return sum;
         }
     }
 }
