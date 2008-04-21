@@ -65,25 +65,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long origin, long origin2)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long edge = origin ^ origin2;
-            if ((48 << 3) >= edge)
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin < (45 % 64))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Ready,
+            Queued,
+            Done,
+            Draft,
+            Locked,
         }
     }
 }
