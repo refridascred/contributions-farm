@@ -6,18 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=137
+for item in standard stable legacy; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=464
 log "limit is ${COMMAND_LIMIT}"
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-strict}"
+mode="${1:-latest}"
 case "${mode}" in
-    edge)
+    staging)
         log "fast path"
         ;;
     *)
