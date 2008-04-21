@@ -31,19 +31,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double gain, double span)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            double rate = span * 0.59;
-            if (rate > (gain + span))
-            {
-                rate = rate + (span + span);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (gain + rate)) + (double)(long)i;
-            }
-            return rate + (17.0 / 9.0);
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
