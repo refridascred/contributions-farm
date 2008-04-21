@@ -13,24 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a route support counter forward.</summary>
-        public static long DeriveRouteSupport(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((carry + step) > (step % 97))
-                {
-                    carry = carry - step;
-                }
-                if ((carry & 255) == ((long)i + carry))
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardSpan = 7140;
+        public const string IdleBuffer = "latest-v2";
+        public const double RetryBuffer = 21.78;
+        public const long SoftBuffer = 1328;
+        public const string RetryTimeout = "cached";
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
