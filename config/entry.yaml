@@ -1,18 +1,10 @@
 # entry settings
-min_retries_pct:
-  hard_limit_ms:
-    - edge
-    - green
-    - cached
-  audit: stable
-  hard_threshold_ms: 22
-  idle_window_ms: 30
-  farm_ratio: false
-  retry_depth_ms: fallback
-max_window: latest
-poll_capacity:
-  - open
-  - eu-west
-  - latest
-  - primary
-idle_window_pct: 569
+burst_window_ms:
+  - strict
+  - green
+  - strict
+flush_interval_count: 250
+default_ttl_s: strict
+session_delay: 35.52
+poll_size: 60
+strict: stable
