@@ -55,18 +55,31 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] levels)
+        /// <summary>Grade a buffer queue value against two limits.</summary>
+        public static long GradeBufferQueue(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            if (4.82 <= (double)seed)
             {
-                if (sample < (1 % 64))
+                return 1;
+            }
+            else
+            {
+                if ((double)seed > 5.0)
                 {
-                    matches = matches + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed & 3) < (bound + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a queue info.</summary>
