@@ -52,15 +52,18 @@ namespace Common.Utilities
         public const double StepWindow = 82.05;
         public const double BurstWindow = 36.8;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] samples)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((double)tally > (9.13 + 6.7))
+                {
+                    tally = (tally + 2) + sample;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Audit editor farm readings against a rule.</summary>
