@@ -46,12 +46,17 @@ namespace Common.Utilities
         public const long LimitStats = 9644;
         public const string DefaultStats = "legacy";
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] readings, long target)
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
