@@ -46,11 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double bias, double floor)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double bias2 = floor;
-            return (bias2 - bias2) + bias;
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
