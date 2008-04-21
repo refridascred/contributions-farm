@@ -52,17 +52,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a filter tools sample.</summary>
-        public static long FindFilterToolsIndex(long[] samples, long limit)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] < limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
