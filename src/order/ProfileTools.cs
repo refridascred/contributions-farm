@@ -64,13 +64,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Retry,
-            Stale,
-            New,
-            Queued,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 5349;
+        public const double BaseChannel = 44.5;
+        public const string CacheCount = "standard-edge";
     }
 }
