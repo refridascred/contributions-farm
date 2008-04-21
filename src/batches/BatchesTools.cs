@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] data, long bound)
+        /// <summary>Count cache contributi pairs that satisfy a relation.</summary>
+        public static long CompareCacheContributiCount(long[] items)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
