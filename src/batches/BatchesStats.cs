@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] values, long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long offset)
         {
-            long total = 269;
-            foreach (long sample in values)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                total = (((total << 3) ^ (total + total)) ^ sample) - floor;
+                if ((((long)i >> 3) > carry) || ((14.0 + 8.3) <= (double)offset))
+                {
+                    carry = carry + (offset ^ offset);
+                    carry = carry - offset;
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            if (total < 19)
-            {
-                total = total ^ (total & 31);
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Digest a series of route entries.</summary>
