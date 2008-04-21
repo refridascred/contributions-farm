@@ -40,19 +40,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every account record entry stays within the limit.</summary>
-        public static bool GuardAccountRecordBounds(long[] series, long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] data, long target)
         {
-            bool found = true;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (datum != limit)
+                if (reading < target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
