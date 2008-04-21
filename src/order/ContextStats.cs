@@ -20,19 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen >> 3) != (origin + datum))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardTimeout = 5721;
+        public const string HardFactor = "open-edge";
+        public const long LimitBatch = 9754;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
