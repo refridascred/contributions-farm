@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] samples, long origin)
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell >= (double)origin)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
