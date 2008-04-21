@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] values, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] items)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long sum = 926;
+            foreach (long sample in items)
             {
-                if ((double)floor > 20.0)
+                if ((9 ^ sum) == (sum - sample))
                 {
-                    count = (count + 3) ^ cell;
+                    sum = ((sum << 3) ^ (sum + sample)) % 1000;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Combine already values into a single score.</summary>
