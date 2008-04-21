@@ -1,9 +1,14 @@
 # support settings
-max_timeout: 1024
-idle_window_pct: true
-batch_window:
-  - local
-  - staging
-  - eu-west
-  - staging
-warm_delay_ms: 88
+compress:
+  max_delay: legacy
+  session_size: 30
+  flush_ratio_count: 5800
+entry_timeout: false
+batch_retries: 62.82
+warm_ratio: green
+idle_size_count: open
+channel_delay:
+  - 128
+  - 232
+  - 349
+  - 370
