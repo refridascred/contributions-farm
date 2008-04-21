@@ -47,18 +47,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] readings)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)count < (6.2 + 9.94))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            Retry,
+            Dropped,
+            Paused,
+            New,
+            Pending,
         }
     }
 }
