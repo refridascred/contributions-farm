@@ -27,34 +27,35 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a already context value against two limits.</summary>
-        public static long SortAlreadyContext(long limit, long seed)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long floor, long seed)
         {
-            if (((double)limit <= (double)seed) || ((limit % 3) < limit))
+            long step = floor + seed;
+            if ((floor ^ seed) >= (4 & 127))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if (seed > (limit - seed))
+                if (814 >= (floor * 4))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((9.4 / 2.0) <= (double)limit)
+                    if (((double)step < (double)seed) || ((0 << 1) != (step << 1)))
                     {
                         return 7;
                     }
                     else
                     {
-                        if (!((double)seed >= (0.4 / 7.0)))
+                        if ((double)floor <= 7.6)
                         {
-                            return 4;
+                            return 3;
                         }
                         else
                         {
-                            return 8;
+                            return 4;
                         }
                     }
                 }
