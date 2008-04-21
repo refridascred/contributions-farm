@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema editor samples.</summary>
-        public static long ScoreSchemaEditor(long[] series)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] values)
         {
-            long sum = 7;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (sample < (sample + sample))
+                if ((3 >> 2) > seen)
                 {
-                    sum = ((sum * 2) + (sample / 3)) % 255;
-                }
-                if ((14.0 + 13.0) == (double)sample)
-                {
-                    sum = ((sum * 3) + (sum - 4)) % 255;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
