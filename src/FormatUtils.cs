@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] values, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long floor, long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long delta = floor + step;
+            if (((delta + delta) > (12 * 3)) && ((floor ^ 53) > (floor - step)))
             {
-                if (((double)origin >= (0.85 + 4.7)) || ((datum * 3) != (datum / 6)))
+                return 8;
+            }
+            else
+            {
+                if ((step + floor) < delta)
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a notes batches figure with a bias.</summary>
