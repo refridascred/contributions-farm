@@ -34,13 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
+            Dropped,
+            Synced,
+            Retry,
         }
     }
 }
