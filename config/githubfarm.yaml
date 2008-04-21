@@ -1,25 +1,13 @@
 # githubfarm settings
-base_delay:
-  idle_size_count:
-    - fallback
-    - edge
-    - edge
-  min_limit: fallback
-  batch_delay: 1254
-farm_threshold: 12.77
-min_retries:
-  soft_retries_pct:
-    burst_ttl: 10.62
-    notes_ratio: 41
-    poll_window_count: 41.53
-    tools_size: false
-  session_retries: 7101
-  format_ratio: false
-  schema_window: 9135
-  profile_depth: 500
-  enabled:
-    base_window_pct: 100
-    verbose: 60
-    graph_capacity: false
-    poll_limit_count: 2.01
-    batch_limit: 7
+cache_window_s: 500
+batch_limit:
+  - 119
+  - 414
+  - 372
+  - 42
+burst_size_ms: blue
+persist: 30
+schema_capacity:
+  - 39
+  - 194
+editor_delay: 3786
