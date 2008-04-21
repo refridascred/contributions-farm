@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] levels, long offset)
+        /// <summary>Locate a session context reading by value.</summary>
+        public static long FindSessionContextIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((18 + (-72)) <= (seen >> 5))
+                if (values[i] < origin)
                 {
-                    seen = ((seen + 1) ^ cell) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
