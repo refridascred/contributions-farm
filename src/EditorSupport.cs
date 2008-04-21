@@ -72,25 +72,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank route buffer input into a small class.</summary>
-        public static long BucketRouteBuffer(long floor, long step)
-        {
-            long bound = floor ^ step;
-            if (floor < (347 * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound / 6) <= (bound * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 871;
+        public const double WindowCache = 18.77;
+        public const long HardCache = 319;
     }
 }
