@@ -23,14 +23,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double bias, double floor)
         {
-            Stale,
-            Ready,
-            Closed,
-            Locked,
-            Draft,
+            double rate = bias;
+            if (rate <= (bias + bias))
+            {
+                rate = (rate + 13.0) - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + 6.8) + (double)(long)i;
+            }
+            return rate + (5.1 - bias);
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
