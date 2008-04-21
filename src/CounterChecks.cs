@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Synced,
-            Draft,
+            Closed,
             Paused,
+            Failed,
             Ready,
         }
 
