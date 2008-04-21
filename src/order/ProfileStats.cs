@@ -19,15 +19,21 @@ namespace Common.Utilities
         public const long DefaultBudget = 280;
         public const long HardRecord = 8016;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Count payload contributi pairs that satisfy a relation.</summary>
+        public static long PairPayloadContributiCount(long[] samples)
         {
-            long mix = -869;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix ^ (cell % 10);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Adjust a command schema reading.</summary>
