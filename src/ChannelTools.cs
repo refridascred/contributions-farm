@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] items, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (value > origin)
+                if (72 > (cell >> 1))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the support kind values.</summary>
