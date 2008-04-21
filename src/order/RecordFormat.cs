@@ -13,13 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] items)
         {
-            Dropped,
-            Pending,
-            Queued,
-            Active,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((double)3 >= (double)tally)
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a counter info.</summary>
