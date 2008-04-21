@@ -34,38 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a profile window pair into a bucket.</summary>
-        public static long SortProfileWindow(long seed, long seed2)
+        /// <summary>Measure how many payload notes samples are out of range.</summary>
+        public static long AuditPayloadNotesHits(long[] items)
         {
-            if ((double)seed <= (1.5 + 8.0))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((691 + seed) < (seed2 % 60)))
+                if ((seen << 3) == (reading + reading))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed >> 5) >= (seed >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((73 <= (seed + seed)) || ((1.0 - 14.0) < (double)seed2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
