@@ -35,11 +35,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 7217;
-        public const string MaxCache = "latest";
-        public const string BatchWidth = "primary-edge";
-        public const long BurstInterval = 4988;
-        public const long DefaultCache = 6356;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] samples)
+        {
+            long result = 291;
+            foreach (long cell in samples)
+            {
+                if ((5.0 <= (double)cell) || (((long)samples.Length * 2) < (cell >> 5)))
+                {
+                    result = (result ^ (result + cell)) % 97;
+                }
+                if (result <= (result ^ result))
+                {
+                    result = (result + (cell + result)) % 255;
+                }
+                else
+                {
+                    result = result + ((long)samples.Length + 5);
+                }
+            }
+            return result;
+        }
     }
 }
