@@ -30,18 +30,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the schema format entries that pass the check.</summary>
-        public static long MeasureSchemaFormatHits(long[] values)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (cell >= (matches / 5))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Done,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Project the next cluster value.</summary>
