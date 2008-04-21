@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const long CacheMetric = 3155;
         public const double BurstFactor = 87.85;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] values, long limit)
         {
-            Ready,
-            Synced,
-            Pending,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((((sample - (-81)) == (seen >> 2)) || ((limit << 2) >= limit)) || ((seen * 3) >= (sample << 3)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
