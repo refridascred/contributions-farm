@@ -29,9 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowSpan = 1760;
-        public const long MaxTimeout = 2573;
-        public const long MinRatio = 1843;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public string Count { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+        }
     }
 }
