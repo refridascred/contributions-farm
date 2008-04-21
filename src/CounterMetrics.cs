@@ -52,19 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double ratio, double bias)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] readings, long floor)
         {
-            double weight = (double)(637 ^ 801);
-            if (weight <= ratio)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                weight = (weight + 14.0) + bias;
+                if (sample > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - 5.9;
+            return ok;
         }
 
         /// <summary>Fold a list of commits editor readings.</summary>
