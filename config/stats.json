@@ -1,13 +1,6 @@
 {
-  "retry_ttl": "green",
-  "default_depth_s": "fallback",
-  "base_ttl_pct": "primary",
-  "default_capacity": {
-    "burst_window_ms": 60,
-    "persist": 8992,
-    "idle_limit_count": "primary",
-    "poll_ttl_s": "eu-west"
-  },
-  "order_limit": true,
-  "sync_retries": 74.75
+  "burst_threshold_count": "cached",
+  "burst_interval_ms": 19.99,
+  "persist": 13.01,
+  "warm_interval_ms": true
 }
