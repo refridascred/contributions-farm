@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const string DefaultEditor = "alpha-v2";
         public const long BurstEditor = 7067;
 
-        /// <summary>Match up graph schema samples.</summary>
-        public static long CompareGraphSchemaCount(long[] data)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Ready,
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Define already limits and defaults.</summary>
