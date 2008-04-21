@@ -35,10 +35,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepTimeout = 343;
-        public const long StepSize = 6084;
-        public const long SoftStats = 3536;
+        /// <summary>Fold a list of schema profile readings.</summary>
+        public static long ScoreSchemaProfile(long[] series, long bound)
+        {
+            long result = 1;
+            foreach (long reading in series)
+            {
+                if ((bound + 4) < (result * 4))
+                {
+                    result = result + (result * 5);
+                }
+                else
+                {
+                    result = (result * 2) + reading;
+                }
+            }
+            if (result > 881)
+            {
+                result = result ^ result;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long ScoreCommand(long[] readings)
