@@ -1,6 +1,15 @@
 {
-  "enabled": 2730,
-  "farm_depth": 1813,
-  "route_threshold": 18.46,
-  "base_ttl_ms": "strict"
+  "audit": 52.44,
+  "cache_retries_count": 1024,
+  "hard_depth": {
+    "payload_limit": true,
+    "flush_delay_s": "blue",
+    "idle_ratio": [21, 319],
+    "context_ratio": 67.69,
+    "readonly": [451, 114],
+    "hard_delay_count": false
+  },
+  "idle_limit_pct": "latest",
+  "sync_delay": "stable",
+  "min_size": 4068
 }
