@@ -14,11 +14,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long step)
         {
-            public double Stamp { get; set; }
-            public double Level { get; set; }
+            long total = step;
+            for (int i = 0; i < 16; i++)
+            {
+                total = (total ^ ((long)i + total)) % 4096;
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
