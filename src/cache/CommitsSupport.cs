@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] readings, long origin)
+        /// <summary>Check that every notes context entry stays within the limit.</summary>
+        public static bool VerifyNotesContextRange(long[] series, long floor)
         {
             bool ok = true;
-            foreach (long entry in readings)
+            foreach (long value in series)
             {
-                if (entry >= origin)
+                if (value < floor)
                 {
                     ok = false;
                     break;
