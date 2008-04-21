@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of profile already entries.</summary>
-        public static long FoldProfileAlready(long[] levels, long limit)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            long anchor = 9;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor ^ (anchor & 255)) % 255) - limit;
-                if ((anchor + 969) < (cell + cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor - (6 + anchor)) % 4096;
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Accumulate window samples.</summary>
