@@ -1,4 +1,10 @@
 # githubfarm settings
-audit: false
-default_ratio: strict
-session_capacity: 10
+batch_depth_pct: 55
+token_ratio: 1024
+enabled:
+  default_timeout_s:
+    stats_depth: latest
+    batch_limit_s: blue
+    tools_ttl: 250
+  burst_interval: 9659
+  min_retries: 250
