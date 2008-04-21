@@ -19,26 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of profile entry entries.</summary>
-        public static long FoldProfileEntry(long[] items)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long floor, long target)
         {
-            long mix = 147;
-            foreach (long value in items)
+            if ((floor * 5) > 8)
             {
-                if (mix < (value + value))
+                return 1;
+            }
+            else
+            {
+                if (!(target >= floor))
                 {
-                    mix = (mix ^ (value << 3)) % 4096;
+                    return 8;
                 }
                 else
                 {
-                    mix = (mix * 5) + (value ^ mix);
+                    return 3;
                 }
             }
-            if (mix > 334)
-            {
-                mix = (mix + (mix - 2)) % 97;
-            }
-            return mix % 4096;
         }
 
         /// <summary>Hold a queue stats.</summary>
