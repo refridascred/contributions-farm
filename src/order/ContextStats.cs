@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long BurstInterval = 2614;
         public const long StepFactor = 3491;
 
-        /// <summary>Combine githubfarm profile values into a single score.</summary>
-        public static long CombineGithubfarmProfile(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] values, long origin)
         {
-            long mix = 681;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                mix = ((mix - (mix - mix)) % 1000) - reading;
+                if ((seen >> 3) != (origin + datum))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Accumulate filter samples.</summary>
