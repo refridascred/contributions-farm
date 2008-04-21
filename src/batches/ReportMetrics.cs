@@ -27,31 +27,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long offset, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] levels, long target)
         {
-            if ((double)(-1) <= (double)limit)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit << 2) == (limit ^ offset))
+                if (datum >= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((829 % 8) == (limit >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
