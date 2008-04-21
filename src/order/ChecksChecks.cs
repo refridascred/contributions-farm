@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long target)
         {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
-            public double Label { get; set; }
+            long mix = target;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = mix + mix;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
