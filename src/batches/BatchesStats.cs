@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Find the first notes payload entry that matches the target.</summary>
+        public static long LookupNotesPayloadIndex(long[] series, long step)
         {
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up route samples.</summary>
