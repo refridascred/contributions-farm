@@ -14,14 +14,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public double Size { get; set; }
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 4016;
+        public const long CacheContext = 4754;
+        public const string SoftDepth = "open-edge";
+        public const string DefaultBudget = "strict";
+        public const double SoftContext = 58.32;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ProjectCounter(double bias, double floor)
