@@ -12,12 +12,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 117;
-        public const double DefaultTools = 21.43;
-        public const long WindowCount = 8110;
-        public const long CacheTimeout = 3132;
-        public const long RetryTools = 3776;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public bool Rank { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
