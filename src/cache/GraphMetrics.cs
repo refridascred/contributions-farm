@@ -71,18 +71,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] levels, long floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)tally != (double)69)
-                {
-                    tally = ((tally + 3) - entry) - floor;
-                }
-            }
-            return tally;
+            Queued,
+            Idle,
+            Retry,
+            Draft,
         }
     }
 }
