@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Find the first buffer record entry that matches the target.</summary>
