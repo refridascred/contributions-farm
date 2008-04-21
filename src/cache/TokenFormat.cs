@@ -39,22 +39,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a stream checks pair into a bucket.</summary>
-        public static long RankStreamChecks(long origin, long origin2)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long bound, long floor)
         {
-            if ((3.0 / 9.0) < (double)origin2)
+            if ((1.15 / 8.0) != (double)bound)
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((22 + origin2) > origin2)
+                if (!((floor + (-49)) > floor))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 8;
+                    return 3;
                 }
             }
         }
