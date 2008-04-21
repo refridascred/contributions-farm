@@ -13,12 +13,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleSize = "stable-1";
-        public const string DefaultLevel = "legacy";
-        public const long MinChannel = 9230;
-        public const long HardChannel = 1333;
-        public const long RetryBudget = 281;
+        /// <summary>Check that every batch counter entry stays within the limit.</summary>
+        public static bool VerifyBatchCounterBounds(long[] levels, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long GradeEntry(long offset, long seed)
