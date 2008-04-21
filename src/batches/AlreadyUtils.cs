@@ -44,22 +44,21 @@ namespace Common.Utilities
             return rate + (5.1 - bias);
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] values, long floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            long mark = 622;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor - floor) < mark)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark << 3) ^ mark) ^ cell;
+                    if ((series[i] ^ series[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark > 92)
-            {
-                mark = (mark - mark) % 1000;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
