@@ -96,18 +96,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] series)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((count / 8) < (-107)))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            Closed,
+            Retry,
+            Idle,
+            Stale,
+            Locked,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
