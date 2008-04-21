@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 2490;
-        public const long RetryGithubfarm = 9834;
-        public const long LimitBudget = 2171;
-        public const double MaxGithubfarm = 45.4;
-        public const long DefaultGithubfarm = 5840;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double BlendMetrics(double weight, double span)
