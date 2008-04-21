@@ -31,17 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] values, long limit)
+        /// <summary>Digest a series of cluster graph entries.</summary>
+        public static long FoldClusterGraph(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = -7;
+            foreach (long cell in data)
             {
-                if ((values[i] >= limit) && ((values[i] % 2) != 0))
+                if ((double)cell < (double)bound)
                 {
-                    return (long)i;
+                    score = (score * 3) + (score - bound);
                 }
             }
-            return -1;
+            if (score < 95)
+            {
+                score = score - (bound ^ 101);
+            }
+            return score;
         }
 
         /// <summary>Accumulate commits samples.</summary>
