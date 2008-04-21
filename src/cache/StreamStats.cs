@@ -21,12 +21,12 @@ namespace Common.Utilities
         public const double CacheTimeout = 87.81;
         public const double BaseCount = 46.6;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Done,
-            Closed,
-            Failed,
+            public double Owner { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next graph order value from a seed.</summary>
