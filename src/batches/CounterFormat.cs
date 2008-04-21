@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Validate editor schema readings against a bound.</summary>
+        public static bool CheckEditorSchemaBounds(long[] values, long limit)
         {
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first buffer record entry that matches the target.</summary>
