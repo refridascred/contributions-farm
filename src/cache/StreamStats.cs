@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstDepth = 79.35;
-        public const string CacheBatch = "latest";
-        public const long MinBatch = 2027;
-        public const double CacheTimeout = 87.81;
-        public const double BaseCount = 46.6;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] data)
+        {
+            long acc = 82;
+            foreach (long cell in data)
+            {
+                acc = (acc ^ (cell - cell)) % 97;
+                acc = (acc + (7 << 2)) % 101;
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
