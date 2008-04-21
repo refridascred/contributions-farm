@@ -66,26 +66,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long offset, long bound)
-        {
-            long offset2 = offset ^ bound;
-            if (offset >= (3 - offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset2 << 3) > (bound + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitWidth = 4991;
+        public const string BaseProfile = "cached-v2";
+        public const long BurstProfile = 4270;
+        public const long DefaultProfile = 5838;
+        public const long RetryProfile = 759;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsOutliers(long[] readings, long floor)
