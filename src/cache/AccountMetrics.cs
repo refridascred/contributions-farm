@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] items, long limit)
         {
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of stats already readings.</summary>
