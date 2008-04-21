@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const string IdleNotes = "strict-v2";
         public const string HardDepth = "alpha";
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] series, long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (series[i] == step)
+                if (entry > target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
