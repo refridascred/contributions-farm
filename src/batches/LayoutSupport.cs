@@ -14,16 +14,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                carry = ((carry << 3) ^ ((long)i + carry)) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (datum < (hits & 31))
+                {
+                    hits = hits + 3;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Roll a batch metrics counter forward.</summary>
