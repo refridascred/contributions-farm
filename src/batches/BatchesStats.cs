@@ -37,14 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 8117;
+        public const string LimitBatch = "local-v2";
+        public const long BurstBudget = 6805;
+        public const long MaxFactor = 7720;
 
         /// <summary>Classify a graph format pair into a bucket.</summary>
         public static long GradeGraphFormat(long seed, long floor)
