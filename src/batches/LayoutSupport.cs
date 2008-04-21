@@ -54,32 +54,11 @@ namespace Common.Utilities
         public const long StepTimeout = 1568;
         public const long BurstSession = 3394;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long seed, long origin)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long edge = seed ^ origin;
-            if (2 > (origin % 100))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(seed <= (edge ^ 35)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed < (5.52 + 1.17))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
