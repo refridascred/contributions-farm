@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many payload notes samples are out of range.</summary>
-        public static long AuditPayloadNotesHits(long[] items)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((seen << 3) == (reading + reading))
+                if (value <= origin)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
