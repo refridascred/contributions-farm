@@ -35,18 +35,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseContext = "standard-v2";
+        public const double CacheWidth = 76.42;
+        public const double HardSize = 50.48;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
