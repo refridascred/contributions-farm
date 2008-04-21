@@ -31,22 +31,11 @@ namespace Common.Utilities
         public const string LimitContext = "local";
         public const long MinWidth = 4208;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] series)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!(924 < (count + count)) && (((double)cell > (double)25) && ((count * 3) != (275 << 2))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
