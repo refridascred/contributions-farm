@@ -13,13 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] series, long origin)
         {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine context cluster values into a single score.</summary>
