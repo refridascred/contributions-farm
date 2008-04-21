@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] values, long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(reading < (699 * 4)))
-                {
-                    seen = (seen + 3) - target;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
