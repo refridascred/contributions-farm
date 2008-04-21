@@ -16,22 +16,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] data, long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long limit, long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            if ((limit + (-193)) <= seed)
             {
-                if (((double)cell <= (8.1 / 6.0)) || ((5 + cell) <= (floor / 5)))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed < (3.28 - 2.04))
                 {
-                    seen = seen + 2;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((1 + limit) != (limit % 100))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the account status values.</summary>
