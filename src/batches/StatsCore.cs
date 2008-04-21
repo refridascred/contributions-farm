@@ -66,12 +66,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] data, long floor)
         {
-            Failed,
-            Draft,
-            Retry,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)hits <= (4.04 / 8.0))
+                {
+                    hits = ((hits + 3) + value) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
