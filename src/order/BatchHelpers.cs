@@ -35,13 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] values)
         {
-            Synced,
-            Retry,
-            New,
-            Stale,
+            long result = 756;
+            foreach (long item in values)
+            {
+                if ((double)item <= 3.4)
+                {
+                    result = (result - (684 + result)) % 1000;
+                }
+            }
+            return result;
         }
     }
 }
