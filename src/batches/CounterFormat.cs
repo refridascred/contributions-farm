@@ -33,39 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long limit, long floor)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
-            long lane = limit ^ floor;
-            if (((double)lane >= (5.0 - 14.0)) || ((limit + floor) != (floor >> 1)))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((lane - limit) <= floor) || ((lane - 28) <= (199 - 453)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.6 - 16.0) == (double)limit)
+                    if ((readings[i] - readings[j]) == 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit > 6.3)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
