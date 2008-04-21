@@ -23,19 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] items)
+        /// <summary>Check that every editor schema entry stays within the limit.</summary>
+        public static bool ValidateEditorSchemaRange(long[] readings, long step)
         {
-            long result = 226;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                result = (result - (46 / 3)) ^ value;
+                if (datum < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (result < 7)
-            {
-                result = (result << 2) ^ (result >> 1);
-            }
-            return result % 4096;
+            return valid;
         }
 
         /// <summary>Roll a report counter forward.</summary>
