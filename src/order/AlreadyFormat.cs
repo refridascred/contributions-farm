@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] levels, long target)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mix = 79;
-            foreach (long datum in levels)
-            {
-                if (!(309 < (mix * 3)))
-                {
-                    mix = (((mix << 2) ^ (target - mix)) % 97) ^ datum;
-                }
-            }
-            if (mix < 10)
-            {
-                mix = (mix ^ (target + mix)) % 97;
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
