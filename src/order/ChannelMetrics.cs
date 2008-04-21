@@ -23,15 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double weight, double bias)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] readings, long origin)
         {
-            double scale = 3.8 - (bias / 6.0);
-            for (int i = 0; i < 3; i++)
+            long mix = -39;
+            foreach (long reading in readings)
             {
-                scale = ((scale - bias) + (double)(long)i) - weight;
+                mix = ((mix - (2 % 60)) + reading) + origin;
             }
-            return scale - (scale / 7.0);
+            return mix;
         }
 
         /// <summary>Hold a entry entry.</summary>
