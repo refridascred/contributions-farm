@@ -23,12 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] levels, long step)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate layout samples.</summary>
