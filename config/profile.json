@@ -1,6 +1,17 @@
 {
-  "flush_ratio_count": 56.6,
-  "audit": 38,
-  "soft_size_ms": "cached",
-  "farm_interval": "edge"
+  "default_timeout_count": true,
+  "dry_run": {
+    "cache_capacity": 7084,
+    "soft_limit_s": 60,
+    "warm_delay_pct": 1024
+  },
+  "warm_interval": 100,
+  "poll_capacity_s": {
+    "buffer_depth": "staging",
+    "poll_limit_s": "standard",
+    "cache_delay_count": "green",
+    "entry_window": 34,
+    "min_capacity_ms": 80.88
+  },
+  "notes_timeout": 30
 }
