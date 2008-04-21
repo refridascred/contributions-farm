@@ -1,6 +1,6 @@
-id,region,label,count
-1,standard,6.25,cached
-2,73.09,608,4.45
-3,63.2,346,local
-4,293,47.84,961
-5,718,748,360
+id,ratio,region,state,weight
+1,36.07,641,7.41,92.93
+2,753,26,fallback,93.69
+3,local,standard,30,18.11
+4,717,6.19,974,cached
+5,626,790,7.87,497
