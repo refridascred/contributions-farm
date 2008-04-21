@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepRatio = "cached";
-        public const long SoftBudget = 7692;
-        public const long StepEntry = 6040;
+        /// <summary>Accumulate counter window samples.</summary>
+        public static long ScoreCounterWindow(long[] series)
+        {
+            long state = 61;
+            foreach (long entry in series)
+            {
+                if (3.0 <= (double)entry)
+                {
+                    state = ((state * 2) + (9 % 100)) % 101;
+                }
+                if ((8.0 > (double)state) || (entry > (state + state)))
+                {
+                    state = ((state * 4) + entry) % 1000;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double ProjectCluster(double weight, double bias)
