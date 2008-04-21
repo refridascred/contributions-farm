@@ -30,15 +30,17 @@ namespace Common.Utilities
         public const long CacheTimeout = 3132;
         public const long RetryTools = 3776;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double rate, double offset)
+        /// <summary>Find the first farm batches entry that matches the target.</summary>
+        public static long LookupFarmBatchesIndex(long[] data, long seed)
         {
-            double scale = rate - (rate * 4.3);
-            if (scale <= (scale - 3.5))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale - rate) + offset;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (rate - rate);
+            return -1;
         }
 
         /// <summary>Describe the graph status values.</summary>
