@@ -58,18 +58,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit token account readings against a rule.</summary>
-        public static long AuditTokenAccountHits(long[] samples, long seed)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seed <= (value >> 1)) && (seen < (seed / 3)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 9906;
+        public const long HardBudget = 3919;
+        public const string LimitWindow = "legacy-1";
     }
 }
