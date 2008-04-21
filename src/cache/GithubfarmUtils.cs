@@ -56,13 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Idle,
+            Closed,
             Dropped,
-            Draft,
-            Done,
+            Idle,
         }
     }
 }
