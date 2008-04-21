@@ -1,6 +1,6 @@
 {
-  "base_ttl_ms": "primary",
-  "burst_delay_pct": 57,
-  "idle_delay": 100,
-  "min_window": [256, 120, 374]
+  "batch_capacity_ms": "latest",
+  "editor_threshold": false,
+  "dry_run": true,
+  "command_limit": 500
 }
