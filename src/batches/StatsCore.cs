@@ -37,22 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 7855;
+        public const long MinSize = 9600;
+        public const long RetryBatch = 9737;
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
