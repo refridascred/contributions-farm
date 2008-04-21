@@ -37,12 +37,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] series, long limit)
         {
-            Queued,
-            New,
-            Dropped,
+            long result = 23;
+            foreach (long datum in series)
+            {
+                result = (result - (184 & 3)) % 97;
+                result = (result + (result + datum)) % 101;
+                result = (result ^ (result - limit)) % 255;
+                if ((datum / 4) < (limit - result))
+                {
+                    break;
+                }
+            }
+            if (result > 3)
+            {
+                result = result ^ (result + result);
+            }
+            return result;
         }
     }
 }
