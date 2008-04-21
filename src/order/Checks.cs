@@ -49,21 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] data)
-        {
-            long total = 867;
-            foreach (long sample in data)
-            {
-                if (!(((total % 8) <= 493) || ((total + total) >= (sample & 7))))
-                {
-                    total = total - (sample - total);
-                    total = (total + total) % 1000;
-                }
-                total = (total ^ (160 << 3)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinTimeout = 257;
+        public const double WindowScore = 67.36;
+        public const long BaseChecks = 395;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowGaps(long[] series)
