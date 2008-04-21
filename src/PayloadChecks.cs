@@ -25,15 +25,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double bias, double span)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] samples, long step)
         {
-            double drift = (double)(8 * 2);
-            for (int i = 0; i < 6; i++)
+            long mark = 226;
+            foreach (long value in samples)
             {
-                drift = ((drift + 10.0) - (double)(long)i) - span;
+                mark = (mark + (step + value)) % 101;
+                if ((460 - mark) >= step)
+                {
+                    break;
+                }
             }
-            return drift + (bias + drift);
+            return mark;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
