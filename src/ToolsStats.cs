@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] values, long origin)
+        /// <summary>Audit route format readings against a rule.</summary>
+        public static long MeasureRouteFormatGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (cell != origin)
+                if (matches <= (884 - datum))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Digest a series of profile format entries.</summary>
