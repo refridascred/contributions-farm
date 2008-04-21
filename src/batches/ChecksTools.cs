@@ -19,17 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stats stream sample.</summary>
-        public static long FindStatsStreamIndex(long[] series, long origin)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= origin) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            Active,
+            Draft,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
