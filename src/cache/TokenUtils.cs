@@ -27,14 +27,20 @@ namespace Common.Utilities
         public const long CacheProfile = 1398;
         public const string BatchProfile = "primary-v2";
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            Retry,
-            Failed,
-            Ready,
-            Stale,
-            Locked,
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = mix - (limit % 10);
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = ((mix + mix) % 97) - (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
