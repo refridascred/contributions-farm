@@ -39,24 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record graph value against two limits.</summary>
-        public static long RankRecordGraph(long origin, long floor)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            if ((4 % 24) != (origin + floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor / 8) == (origin ^ 91))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Paused,
+            Stale,
         }
 
         /// <summary>Project the next cache token value.</summary>
