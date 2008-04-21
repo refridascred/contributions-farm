@@ -1,13 +1,5 @@
 {
-  "sync_retries": 62.03,
-  "default_depth_s": {
-    "stream_capacity": [289, 184],
-    "account_limit": ["primary", "edge", "standard", "local"],
-    "compress": "cached",
-    "soft_limit": ["eu-west", "fallback", "latest"],
-    "order_size": "legacy",
-    "already_ratio": "standard"
-  },
-  "warm_depth": 40.63,
-  "strict": 89
+  "cache_depth": 6031,
+  "soft_timeout": "green",
+  "sync_depth_s": [81, 312, 328]
 }
