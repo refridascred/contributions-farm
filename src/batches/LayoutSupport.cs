@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long target, long seed)
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
+            long cur = target ^ seed;
+            if ((double)seed > (4.0 * 7.2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target % 8) <= (7 & 127))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (cur > (seed + 602))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9 & 31) == (seed + seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
