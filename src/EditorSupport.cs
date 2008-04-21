@@ -31,24 +31,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a session payload value against two limits.</summary>
-        public static long GradeSessionPayload(long floor, long seed)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            if (((seed & 1) == (floor % 24)) && (seed < floor))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(floor <= (seed + seed)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
