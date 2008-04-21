@@ -1,18 +1,5 @@
 {
-  "record_retries": {
-    "flush_limit_s": 40,
-    "soft_ratio_pct": 29.29,
-    "soft_interval_pct": [276, 166, 498, 390],
-    "burst_interval": 5970
-  },
-  "persist": 88.44,
-  "strict": {
-    "batch_size": 1951,
-    "default_ratio_pct": 14.21,
-    "verbose": {
-      "cluster_ttl": "stable",
-      "idle_retries": 9887,
-      "flush_timeout_pct": "staging"
-    }
-  }
+  "sync_size_count": 82,
+  "support_window": 53,
+  "max_retries_count": 250
 }
