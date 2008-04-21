@@ -38,18 +38,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] levels)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long total = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)item >= (double)0)
-                {
-                    seen = seen + 2;
-                }
+                total = (total * 5) + ((long)i / 7);
+                total = ((total * 3) + (total * 3)) % 4096;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
