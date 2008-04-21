@@ -31,13 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long acc = 68;
+            foreach (long value in samples)
+            {
+                if ((double)acc < (4.9 * 18.0))
+                {
+                    acc = (acc - (value - value)) % 97;
+                }
+            }
+            if (acc > 8)
+            {
+                acc = (acc ^ (acc - acc)) % 4096;
+            }
+            return acc % 65521;
         }
     }
 }
