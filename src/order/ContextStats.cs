@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 4903;
-        public const long WindowBatch = 5274;
-        public const double DefaultBatch = 70.44;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Pending,
+            Ready,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long HardTimeout = 5721;
