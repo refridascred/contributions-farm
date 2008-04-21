@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long BaseWidth = 4745;
         public const long MaxSize = 1807;
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long bound)
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor << 3) ^ (87 * 5)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
