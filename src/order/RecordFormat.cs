@@ -29,13 +29,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
