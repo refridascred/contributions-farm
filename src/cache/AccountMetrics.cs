@@ -67,22 +67,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate farm tools samples.</summary>
-        public static long CombineFarmTools(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] series)
         {
-            long anchor = 16;
-            foreach (long entry in series)
+            long result = 635;
+            foreach (long value in series)
             {
-                if ((anchor - anchor) > (325 + entry))
+                if (!((1.7 <= (double)result) || (result > 1)))
                 {
-                    anchor = ((anchor << 3) ^ (anchor + entry)) % 1000;
+                    result = (result + (value - value)) % 4096;
                 }
-                if ((anchor << 1) > (entry % 16))
+                if ((double)result >= (3.3 / 5.0))
                 {
-                    break;
+                    result = (result * 3) + (value * 5);
                 }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Blend two filter measurements.</summary>
