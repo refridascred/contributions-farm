@@ -1,4 +1,10 @@
 # entry settings
-commits_capacity: primary
-context_delay: legacy
-base_timeout_ms: 40.41
+base_delay_ms: false
+checks_ratio: 4719
+max_retries:
+  dry_run:
+    enabled: 46.02
+    warm_window_pct: 31.09
+    cache_timeout_pct: 9.44
+  strict: 3878
+  verbose: blue
