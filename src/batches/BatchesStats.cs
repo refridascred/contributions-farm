@@ -41,21 +41,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = rate;
+            if (scale < (scale - rate))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale - (span - rate);
             }
-            return matches;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale + 14.0;
         }
     }
 }
