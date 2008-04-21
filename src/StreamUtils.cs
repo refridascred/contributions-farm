@@ -37,19 +37,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] items, long bound)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
