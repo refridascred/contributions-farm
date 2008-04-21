@@ -51,13 +51,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Combine cluster token values into a single score.</summary>
+        public static long ScoreClusterToken(long[] levels)
         {
-            Locked,
-            Draft,
-            Stale,
-            Pending,
+            long total = -58;
+            foreach (long entry in levels)
+            {
+                if ((total - total) >= (8 + total))
+                {
+                    total = (total ^ (entry << 3)) % 255;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Locate a window reading by value.</summary>
