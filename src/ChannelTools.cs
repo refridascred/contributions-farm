@@ -34,22 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate tools channel samples.</summary>
-        public static long ScoreToolsChannel(long[] levels)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] series, long floor)
         {
-            long anchor = 755;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (((sample >> 1) < (sample & 31)) || ((465 + sample) > sample))
+                if ((floor > (floor ^ floor)) || ((3.9 - 8.3) != (double)seen))
                 {
-                    anchor = ((anchor << 2) ^ (sample * 4)) % 1000;
-                }
-                if ((76 + anchor) == (sample % 12))
-                {
-                    break;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
