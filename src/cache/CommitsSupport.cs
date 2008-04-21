@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] series)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long carry = 77;
-            foreach (long datum in series)
-            {
-                carry = (carry * 2) + (datum % 10);
-                if ((carry + datum) == (carry - datum))
-                {
-                    carry = carry ^ ((-98) - carry);
-                }
-            }
-            return carry % 1000;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
