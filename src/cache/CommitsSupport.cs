@@ -69,18 +69,13 @@ namespace Common.Utilities
         public const long StepSpan = 5684;
         public const long WindowToken = 1331;
 
-        /// <summary>Count the counter route entries that pass the check.</summary>
-        public static long AuditCounterRouteMatches(long[] data, long offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((double)count >= (0.39 + 11.0))
-                {
-                    count = ((count + 2) ^ sample) - offset;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
