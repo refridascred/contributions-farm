@@ -31,28 +31,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long acc = -9;
+            foreach (long value in readings)
             {
-                if (((double)carry < (8.0 * 4.27)) && (carry < ((long)i & 127)))
-                {
-                    carry = (carry ^ ((long)i * 4)) % 255;
-                    break;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (seed + seed)) % 1000;
-                }
-                if (seed < (seed ^ seed))
-                {
-                    break;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
+                acc = (acc << 3) ^ (value * 3);
             }
-            return carry;
+            return acc % 97;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
