@@ -30,17 +30,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a support stats reading by value.</summary>
-        public static long LookupSupportStatsIndex(long[] items, long target)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] >= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a token entry.</summary>
