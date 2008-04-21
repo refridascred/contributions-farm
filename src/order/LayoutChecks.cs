@@ -19,14 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Dropped,
-            Done,
-            Synced,
-            Stale,
             Locked,
+            Paused,
+            Failed,
+            Retry,
+            New,
         }
 
         /// <summary>Count the schema format entries that pass the check.</summary>
