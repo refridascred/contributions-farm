@@ -42,10 +42,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchSize = 2632;
-        public const long BatchWindow = 1622;
-        public const string IdleScore = "legacy-edge";
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] values)
+        {
+            long mark = -314;
+            foreach (long sample in values)
+            {
+                if (13.0 < (double)sample)
+                {
+                    mark = mark + sample;
+                }
+            }
+            if (mark < 7)
+            {
+                mark = mark + ((-833) + mark);
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Validate batch queue readings against a bound.</summary>
         public static bool CheckBatchQueueBounds(long[] samples, long target)
