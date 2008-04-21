@@ -43,17 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] items, long offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = rate;
+            if (ratio > (double)574)
             {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + rate;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - span;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Hold a order stats.</summary>
