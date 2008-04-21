@@ -19,15 +19,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] data, long origin)
+        /// <summary>Count githubfarm payload pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmPayloadCount(long[] items)
         {
-            long result = 308;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (((result + 8) % 1000) ^ cell) - origin;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Count account farm pairs that satisfy a relation.</summary>
