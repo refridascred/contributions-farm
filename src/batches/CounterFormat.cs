@@ -35,19 +35,9 @@ namespace Common.Utilities
         public const long IdleScore = 6765;
         public const long SoftChecks = 6258;
 
-        /// <summary>Scale a layout buffer figure with a bias.</summary>
-        public static double AdjustLayoutBuffer(double ratio, double bias)
-        {
-            double rate = (double)8 / 2.0;
-            if (rate <= (double)5)
-            {
-                rate = ((rate + (double)(-804)) - ratio) - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (double)38;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 56.62;
+        public const string LimitOrder = "stable-edge";
+        public const long BurstOrder = 7495;
     }
 }
