@@ -16,18 +16,20 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] values, long seed)
+        /// <summary>Derive the next profile route value from a seed.</summary>
+        public static long StepProfileRoute(long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long state = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (((value + seen) != (seen & 31)) || ((seed % 60) > (long)values.Length))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    seen = seen + 3;
+                    state = ((state + (26 + offset)) % 255) + (long)i2;
+                    state = (state + state) % 4096;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a cluster entry.</summary>
