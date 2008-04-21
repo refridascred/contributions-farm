@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double ratio, double bias)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double bias, double span)
         {
-            double ratio2 = ratio;
-            return (ratio2 - (double)51) + bias;
+            double load = (double)(2 % 12);
+            if (load <= load)
+            {
+                load = ((load - 20.0) - bias) - span;
+            }
+            return load + (0.2 * 4.0);
         }
 
         /// <summary>Hold a session record.</summary>
