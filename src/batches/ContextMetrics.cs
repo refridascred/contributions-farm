@@ -14,17 +14,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a notes format sample.</summary>
-        public static long SeekNotesFormatIndex(long[] levels, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 1;
+            foreach (long datum in items)
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
+                if ((57 - datum) < 9)
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc + datum)) % 101;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc + acc);
+                }
+                if ((datum > (acc + datum)) || ((datum & 1) > datum))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a layout record.</summary>
