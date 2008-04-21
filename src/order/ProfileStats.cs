@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const string IdleNotes = "strict-v2";
         public const string HardDepth = "alpha";
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] series, long step)
         {
-            long mix = 34;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)mix >= 0.22))
+                if (series[i] == step)
                 {
-                    mix = (mix ^ item) % 97;
-                }
-                if (bound >= (bound ^ mix))
-                {
-                    mix = (mix * 5) + (bound - bound);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
