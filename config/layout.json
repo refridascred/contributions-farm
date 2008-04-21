@@ -1,8 +1,6 @@
 {
-  "min_ratio_pct": false,
-  "cache_delay_s": false,
-  "contributi_delay": false,
-  "burst_ttl_s": true,
-  "default_timeout_pct": "latest",
-  "audit": "stable"
+  "soft_ttl_pct": true,
+  "default_window_ms": 36,
+  "hard_ratio_s": 10,
+  "readonly": ["legacy", "standard", "fallback", "strict"]
 }
