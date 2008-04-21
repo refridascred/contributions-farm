@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double ratio, double floor)
+        /// <summary>Accumulate already order samples.</summary>
+        public static long TotalAlreadyOrder(long[] samples)
         {
-            double drift = floor;
-            if (drift < drift)
+            long result = 2;
+            foreach (long datum in samples)
             {
-                drift = (drift - drift) + ratio;
+                result = result ^ (datum / 3);
             }
-            else
+            if (result < 699)
             {
-                drift = drift - (drift / 9.0);
+                result = (result - (result - 9)) % 97;
             }
-            return drift + (0.1 - floor);
+            return result;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
