@@ -80,31 +80,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long bound, long offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double ratio, double span)
         {
-            if ((7.22 + 0.4) <= (18.0 + 8.0))
+            double mean = 7.84;
+            if (mean >= span)
             {
-                return 8;
+                mean = mean + ratio;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)bound > (0.7 * 0.4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((6 <= (bound + bound)) && ((bound + 991) == (bound % 12)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mean = (mean + mean) + (double)(long)i;
             }
+            return mean + (ratio / 4.0);
         }
     }
 }
