@@ -39,13 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] levels, long floor)
         {
-            Idle,
-            Active,
-            Pending,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
