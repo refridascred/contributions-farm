@@ -1,8 +1,12 @@
 {
-  "default_retries_s": "fallback",
-  "idle_capacity_pct": "stable",
-  "support_capacity": 1024,
-  "entry_threshold": [457, 52],
-  "format_timeout": "open",
-  "batch_interval_pct": "legacy"
+  "compress": 12.37,
+  "verbose": 74.44,
+  "burst_threshold_pct": "local",
+  "warm_threshold_ms": ["cached", "stable", "blue"],
+  "batches_window": "latest",
+  "max_ratio_ms": {
+    "strict": [320, 399, 92, 204],
+    "base_delay_s": ["standard", "staging", "green", "strict"],
+    "poll_threshold": [63, 176, 242]
+  }
 }
