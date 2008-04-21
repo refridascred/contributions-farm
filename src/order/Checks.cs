@@ -55,15 +55,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two filter profile measurements.</summary>
-        public static double BlendFilterProfile(double rate, double offset)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double ratio, double span)
         {
-            double ratio = rate;
-            for (int i = 0; i < 2; i++)
+            double scale = ratio * 2.3;
+            if (scale >= span)
             {
-                ratio = ((ratio + (double)32) + (double)(long)i) - offset;
+                scale = scale + 2.8;
             }
-            return ratio + (ratio * 9.1);
+            return scale + ratio;
         }
     }
 }
