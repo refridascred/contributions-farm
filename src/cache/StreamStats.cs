@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Locked,
-            Retry,
-            Pending,
+            Closed,
+            Idle,
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
