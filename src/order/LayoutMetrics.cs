@@ -20,11 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
