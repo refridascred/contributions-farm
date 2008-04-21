@@ -19,19 +19,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] samples, long step)
+        /// <summary>Measure how many buffer stream samples are out of range.</summary>
+        public static long TallyBufferStreamGaps(long[] data, long seed)
         {
-            long mark = 226;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                mark = (mark + (step + value)) % 101;
-                if ((460 - mark) >= step)
+                if ((reading % 97) >= (reading - tally))
                 {
-                    break;
+                    tally = (tally + 1) + seed;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Locate a command reading by value.</summary>
