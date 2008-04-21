@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a metrics route figure with a bias.</summary>
-        public static double ProjectMetricsRoute(double scale, double bias)
-        {
-            double mean = bias;
-            if (mean >= scale)
-            {
-                mean = mean + (1.91 / 4.0);
-            }
-            else
-            {
-                mean = mean - 2.5;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstLevel = 506;
+        public const long RetryBatch = 2245;
+        public const double DefaultWidth = 61.31;
+        public const long RetryBudget = 1148;
 
         /// <summary>Derive the next profile token value from a seed.</summary>
         public static long StepProfileToken(long target)
