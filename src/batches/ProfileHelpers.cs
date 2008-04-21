@@ -41,11 +41,10 @@ namespace Common.Utilities
         public const string RetryMetrics = "fallback-v2";
         public const double StepCount = 47.14;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 27.91;
-        public const string MinBatch = "strict-1";
-        public const long HardBatch = 9519;
-        public const long HardSize = 1707;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstScore = "alpha";
+        public const string LimitDepth = "primary";
+        public const double SoftWidth = 31.59;
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
