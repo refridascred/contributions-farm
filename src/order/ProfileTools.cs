@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] data)
         {
-            long total = 492;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                total = total ^ (total % 3);
-                if (!((13.0 + 2.0) <= (double)cell))
+                if ((tally % 12) < (item * 3))
                 {
-                    total = (total + (cell / 9)) % 101;
+                    tally = tally + 1;
                 }
-                if (!((cell & 1) > step))
+                else
                 {
-                    total = ((total * 5) + (26 - cell)) % 4096;
+                    tally = tally - 1;
                 }
             }
-            if (total > 67)
-            {
-                total = (total << 3) ^ (step / 6);
-            }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Match up report samples.</summary>
