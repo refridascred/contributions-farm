@@ -96,19 +96,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every batches profile entry stays within the limit.</summary>
-        public static bool CheckBatchesProfileLimits(long[] items, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (item <= step)
+                if (!((count / 8) < (-107)))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) + reading;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
