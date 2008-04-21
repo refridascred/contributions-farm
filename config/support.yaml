@@ -1,8 +1,7 @@
 # support settings
-strict: false
-schema_capacity: 43.67
-retry_delay_count:
-  - 58
-  - 286
-  - 235
-  - 260
+audit: 22.72
+burst_capacity_ms: 6416
+cache_size_pct:
+  - strict
+  - latest
+  - blue
