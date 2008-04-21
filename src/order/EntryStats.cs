@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the contributi record entries that pass the check.</summary>
-        public static long CountContributiRecordOutliers(long[] readings)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (count >= (count & 7))
+                if (reading <= bound)
                 {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a buffer options.</summary>
