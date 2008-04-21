@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine schema record values into a single score.</summary>
-        public static long CombineSchemaRecord(long[] data)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long carry = 387;
-            foreach (long sample in data)
-            {
-                carry = (carry + (carry / 5)) ^ sample;
-            }
-            if (carry < 98)
-            {
-                carry = (carry - (carry ^ 89)) % 101;
-            }
-            return carry;
+            Locked,
+            Pending,
+            Failed,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
