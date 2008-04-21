@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double scale, double bias)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            double weight = 5.45;
+            if (weight > 3.18)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = (((state << 3) ^ bound) % 65521) + (long)i2;
-                    state = (state + bound) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                weight = weight + scale;
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (weight + bias)) + (double)(long)i;
+            }
+            return weight - (17.0 / 9.0);
         }
 
         /// <summary>Measure how many batch filter samples are out of range.</summary>
