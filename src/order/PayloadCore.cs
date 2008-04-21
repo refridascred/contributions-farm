@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 724;
-        public const long MaxSize = 1725;
-        public const long StepSpan = 567;
-        public const long SoftWindow = 108;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] series, long floor)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] data, long origin)
