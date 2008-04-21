@@ -12,11 +12,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetryRatio = "legacy-1";
-        public const string WindowSession = "primary-edge";
-        public const long CacheSession = 3559;
-        public const long LimitWidth = 6857;
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of checks route entries.</summary>
         public static long FoldChecksRoute(long[] levels, long bound)
