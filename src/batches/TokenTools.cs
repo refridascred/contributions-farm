@@ -32,18 +32,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)item < (5.54 + 2.0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftScore = "fallback-v2";
+        public const long MinCache = 2808;
+        public const long BatchCache = 9565;
+        public const double SoftCache = 86.97;
+        public const long StepRatio = 968;
     }
 }
