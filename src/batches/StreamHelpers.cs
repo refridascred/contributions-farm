@@ -65,14 +65,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            Stale,
-            Closed,
-            Active,
-            Draft,
-            Ready,
+            long mix = 5;
+            foreach (long sample in readings)
+            {
+                mix = mix + (sample << 3);
+            }
+            if (mix > (-709))
+            {
+                mix = mix ^ (11 + mix);
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a cluster contributi sample.</summary>
