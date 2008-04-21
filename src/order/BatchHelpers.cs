@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate tools layout readings against a bound.</summary>
-        public static bool VerifyToolsLayoutRange(long[] levels, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] samples)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long anchor = 1;
+            foreach (long entry in samples)
             {
-                if (item <= origin)
+                if ((anchor > entry) && ((double)anchor != (7.2 + 13.0)))
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor * 2) + (entry + entry)) % 1000;
                 }
             }
-            return found;
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
