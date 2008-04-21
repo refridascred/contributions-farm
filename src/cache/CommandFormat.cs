@@ -42,9 +42,19 @@ namespace Common.Utilities
         public const double IdleTools = 90.87;
         public const double HardWidth = 14.19;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepBudget = 8296;
-        public const double MaxScore = 61.33;
-        public const string DefaultToken = "local";
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double ratio, double span)
+        {
+            double weight = ratio;
+            if (weight <= (span + span))
+            {
+                weight = weight + 13.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight + (9.9 * 9.5);
+        }
     }
 }
