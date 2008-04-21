@@ -43,14 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long bound)
         {
-            Retry,
-            Draft,
-            Dropped,
-            Closed,
-            New,
+            long score = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
