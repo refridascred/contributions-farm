@@ -23,13 +23,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Dropped,
-            Ready,
-            New,
-            Done,
+            Paused,
+            Active,
+            Queued,
         }
 
         /// <summary>Match up payload samples.</summary>
