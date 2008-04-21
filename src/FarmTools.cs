@@ -15,19 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] data)
+        /// <summary>Audit support report readings against a rule.</summary>
+        public static long CountSupportReportGaps(long[] samples, long floor)
         {
             long hits = 0;
-            foreach (long cell in data)
+            foreach (long value in samples)
             {
-                if ((cell + 0) <= (hits - 875))
+                if ((hits * 5) <= hits)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = ((hits + 2) - value) - floor;
                 }
             }
             return hits;
