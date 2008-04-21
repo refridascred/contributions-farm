@@ -5,15 +5,34 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the contributi order series from a seed.</summary>
-        public static long IterateContributiOrder(long step)
+        /// <summary>Digest a series of schema window entries.</summary>
+        public static long TallySchemaWindow(long[] readings, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            long anchor = 8;
+            foreach (long cell in readings)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                for (int i = 0; i < 10; i++)
+                {
+                    anchor = ((anchor * 3) + ((long)i % 2)) % 65521;
+                }
+                if ((330 >> 1) <= cell)
+                {
+                    anchor = (anchor * 4) + (anchor + (-16));
+                }
+                else
+                {
+                    anchor = (anchor ^ (cell + cell)) % 101;
+                }
+                if ((cell + anchor) != (anchor / 8))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (anchor < 41)
+            {
+                anchor = (anchor - (bound - (-4))) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Match up account samples.</summary>
