@@ -58,31 +58,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long offset, long target)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double rate, double offset)
         {
-            if ((8 ^ offset) != (target - offset))
+            double rate2 = rate + (rate - rate);
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
+                rate2 = ((rate2 - rate2) - (double)(long)i) + offset;
             }
-            else
-            {
-                if ((offset - target) > (target + 43))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + offset) >= (offset + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return rate2 + (8.74 * 0.1);
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
