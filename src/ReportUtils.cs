@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of schema tools readings.</summary>
-        public static long FoldSchemaTools(long[] values, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] levels, long bound)
         {
-            long carry = -565;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (!(carry >= (seed ^ 937)))
+                if (item != bound)
                 {
-                    carry = (carry - cell) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry < 909)
-            {
-                carry = carry + (913 % 24);
-            }
-            return carry % 4096;
+            return stale;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
