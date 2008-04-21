@@ -38,15 +38,19 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double gain, double floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] values, long limit)
         {
-            double mean = gain;
-            if (mean >= (4.35 + 1.2))
+            bool ready = true;
+            foreach (long value in values)
             {
-                mean = (mean + 8.1) - floor;
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean - (double)159;
+            return ready;
         }
     }
 }
