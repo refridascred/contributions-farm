@@ -22,15 +22,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long sum = 38;
-            foreach (long item in levels)
-            {
-                sum = ((sum ^ 9) % 97) ^ item;
-            }
-            return sum % 97;
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a context stats.</summary>
