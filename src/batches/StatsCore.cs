@@ -34,19 +34,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next batch payload value.</summary>
-        public static double AdjustBatchPayload(double weight, double span)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double rate = span * 2.7;
-            if (rate < (span * 1.0))
-            {
-                rate = rate - (2.9 * 4.9);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + weight) - (double)(long)i;
-            }
-            return rate - (19.0 * 18.0);
+            Draft,
+            Active,
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Define window limits and defaults.</summary>
