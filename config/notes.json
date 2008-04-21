@@ -1,23 +1,8 @@
 {
-  "batch_size_s": "legacy",
-  "idle_interval_count": {
-    "strict": 41.06,
-    "default_timeout": 40,
-    "verbose": 500,
-    "burst_depth": true
-  },
-  "min_capacity_count": "green",
-  "base_ttl_count": "standard",
-  "idle_ratio_ms": 847,
-  "cluster_threshold": {
-    "batch_interval_s": 100,
-    "stream_timeout": {
-      "idle_threshold": "cached",
-      "soft_retries": 700,
-      "checks_window": 9538
-    },
-    "payload_limit": "staging",
-    "compress": "blue",
-    "base_retries": "open"
-  }
+  "commits_ratio": 4336,
+  "account_capacity": false,
+  "flush_limit_pct": 22,
+  "default_delay": ["cached", "open", "stable"],
+  "default_capacity_ms": "legacy",
+  "soft_depth_pct": 7636
 }
