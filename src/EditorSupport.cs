@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
+            Done,
+            Stale,
             Paused,
-            Active,
-            Idle,
-            Draft,
-            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Derive the next batch tools value from a seed.</summary>
