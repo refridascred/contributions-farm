@@ -1,6 +1,10 @@
 {
-  "verbose": ["latest", "legacy", "open"],
-  "idle_ttl_s": "local",
-  "burst_delay_pct": 83.18,
-  "route_retries": 5510
+  "audit": {
+    "soft_retries_pct": 1024,
+    "dry_run": "legacy",
+    "cluster_retries": 22.23,
+    "retry_timeout_count": "primary"
+  },
+  "batches_threshold": "strict",
+  "flush_depth": 100
 }
