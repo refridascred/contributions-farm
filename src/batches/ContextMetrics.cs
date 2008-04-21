@@ -36,12 +36,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Compare every pair of queue stream readings.</summary>
+        public static long CompareQueueStreamCount(long[] data)
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
