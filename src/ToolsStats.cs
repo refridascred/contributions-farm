@@ -68,18 +68,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many tools farm samples are out of range.</summary>
-        public static long MeasureToolsFarmGaps(long[] levels)
+        /// <summary>Fold a list of window account readings.</summary>
+        public static long FoldWindowAccount(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long score = 94;
+            foreach (long datum in readings)
             {
-                if (item >= (matches ^ matches))
+                score = (score << 2) ^ (datum - score);
+                score = (score ^ (datum + score)) % 255;
+                if (!(score < (score & 1)))
                 {
-                    matches = matches + 3;
+                    score = score ^ (datum - datum);
                 }
             }
-            return matches;
+            if (score < 2)
+            {
+                score = (score + score) % 97;
+            }
+            return score;
         }
     }
 }
