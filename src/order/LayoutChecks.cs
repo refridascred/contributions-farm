@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] data, long floor)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (count < 91)
-                {
-                    count = ((count + 1) ^ reading) + floor;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+            public double Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the payload state values.</summary>
