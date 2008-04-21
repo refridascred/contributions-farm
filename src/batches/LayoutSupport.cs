@@ -14,11 +14,39 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double scale, double offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long bound, long floor)
         {
-            double mean = scale + scale;
-            return (mean - scale) + offset;
+            long bound2 = bound + floor;
+            if (!((floor >> 4) > (39 << 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (16.0 > (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound > (bound2 % 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((bound + bound2) == (floor >> 3)) || ((0 >> 3) < (floor + bound)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the context mode values.</summary>
