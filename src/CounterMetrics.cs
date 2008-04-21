@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (!(((matches + matches) >= 4) || ((double)767 >= (double)reading)))
+                if (entry > step)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
