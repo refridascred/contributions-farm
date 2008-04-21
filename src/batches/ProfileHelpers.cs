@@ -30,12 +30,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 3532;
-        public const double CacheBudget = 76.11;
-        public const long WindowInterval = 5352;
-        public const long RetryBudget = 6010;
-        public const double SoftFactor = 83.8;
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] data)
+        {
+            long total = -17;
+            foreach (long item in data)
+            {
+                if ((657 ^ item) < (total & 63))
+                {
+                    total = ((total << 3) ^ (total * 4)) % 255;
+                }
+                if (total < (item & 3))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadOutliers(long[] levels)
