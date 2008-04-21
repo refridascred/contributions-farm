@@ -17,19 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] series, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long mark = 573;
+            foreach (long sample in items)
             {
-                if (cell < floor)
+                if (3 > (sample << 1))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark - (27 << 1)) % 255;
                 }
             }
-            return ready;
+            if (mark < (-774))
+            {
+                mark = (mark ^ ((-8) + mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
