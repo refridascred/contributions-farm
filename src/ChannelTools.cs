@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double gain, double span)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] data, long limit)
         {
-            double ratio = gain;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ((ratio - 1.88) + (double)(long)i) - span;
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + gain;
+            return -1;
         }
 
         /// <summary>Describe the support kind values.</summary>
