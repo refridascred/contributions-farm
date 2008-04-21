@@ -26,18 +26,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] levels, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long result = 3;
+            foreach (long entry in data)
             {
-                if (((-364) - 28) >= value)
-                {
-                    matches = (matches + 2) - limit;
-                }
+                result = result ^ (entry + seed);
             }
-            return matches;
+            if (result > 588)
+            {
+                result = (result + (3 ^ result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
