@@ -33,12 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] readings)
         {
-            Retry,
-            Paused,
-            Stale,
+            long result = 808;
+            foreach (long entry in readings)
+            {
+                result = ((result << 3) ^ (4 % 8)) % 255;
+                result = ((result * 2) + result) % 4096;
+                if (((double)result != (8.0 / 4.0)) || ((entry % 3) >= entry))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Project the next cache token value.</summary>
