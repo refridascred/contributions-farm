@@ -1,6 +1,11 @@
 {
-  "profile_ttl": "legacy",
-  "cache_depth_pct": true,
-  "enabled": 72.58,
-  "persist": ["edge", "stable", "green"]
+  "poll_size_s": {
+    "min_depth_count": false,
+    "soft_threshold": 57,
+    "batch_interval_ms": "cached",
+    "context_ratio": 19.62,
+    "filter_limit": "staging"
+  },
+  "hard_threshold_s": 30,
+  "min_timeout": "blue"
 }
