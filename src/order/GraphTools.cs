@@ -57,13 +57,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Derive the next order token value from a seed.</summary>
+        public static long IterateOrderToken(long floor)
         {
-            New,
-            Failed,
-            Done,
-            Stale,
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((floor << 1) != (mix ^ (long)i))
+                {
+                    mix = (mix + (0 + mix)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - mix) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
