@@ -28,14 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowChecks = 65.25;
+        public const long CacheDepth = 6354;
+        public const long RetryDepth = 1818;
+        public const long IdleScore = 6765;
+        public const long SoftChecks = 6258;
 
         /// <summary>Scale a layout buffer figure with a bias.</summary>
         public static double AdjustLayoutBuffer(double ratio, double bias)
