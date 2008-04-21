@@ -30,21 +30,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Measure how many window command samples are out of range.</summary>
+        public static long CountWindowCommandGaps(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell ^ cell) > cell)
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
