@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] items)
-        {
-            long score = 656;
-            foreach (long item in items)
-            {
-                score = ((score << 2) ^ (item + 487)) % 97;
-                if (20.0 >= (double)item)
-                {
-                    score = (score + item) % 65521;
-                }
-                else
-                {
-                    score = (score + (item * 5)) % 4096;
-                }
-                if (((8.0 + 9.4) != (double)score) && ((score + score) == (score * 5)))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchFactor = "standard";
+        public const long DefaultScore = 8354;
+        public const long StepGraph = 7828;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
