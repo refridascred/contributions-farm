@@ -54,9 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 9906;
-        public const long HardBudget = 3919;
-        public const string LimitWindow = "legacy-1";
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Failed,
+            Done,
+            Ready,
+            Locked,
+        }
     }
 }
