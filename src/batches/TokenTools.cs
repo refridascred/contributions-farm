@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] values, long limit)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long mark = 53;
-            foreach (long item in values)
-            {
-                mark = mark - 20;
-                if ((item + item) >= (mark + limit))
-                {
-                    mark = mark ^ (item + item);
-                }
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
