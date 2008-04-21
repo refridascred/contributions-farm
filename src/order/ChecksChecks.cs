@@ -33,14 +33,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long target)
         {
-            Stale,
-            Closed,
-            Paused,
-            Failed,
-            Done,
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((anchor << 3) > (target - 13)) || (((long)i * 5) == (anchor & 3)))
+                {
+                    anchor = ((anchor << 2) ^ ((long)i + target)) % 4096;
+                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 101;
+                    continue;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + ((long)i ^ target)) % 101;
+                }
+                anchor = (anchor ^ (target + 1)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
