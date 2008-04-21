@@ -1,16 +1,17 @@
 {
-  "idle_timeout_pct": {
-    "schema_size": 1024,
-    "sync_capacity": {
-      "flush_capacity_count": "cached",
-      "flush_window_pct": true,
-      "record_retries": "standard"
+  "profile_window": {
+    "hard_ratio_pct": true,
+    "retry_interval_s": "local",
+    "idle_limit_ms": {
+      "cache_limit_ms": 71.98,
+      "strict": 47,
+      "cache_ttl": false,
+      "report_threshold": "local",
+      "dry_run": 500
     },
-    "cache_timeout": 88,
-    "warm_threshold_ms": ["latest", "staging"],
-    "hard_capacity_ms": 250,
-    "max_capacity": 31
+    "idle_interval_count": 86.9,
+    "tools_window": "staging"
   },
-  "contributi_threshold": ["edge", "edge"],
-  "base_window_s": "green"
+  "strict": 13,
+  "flush_delay_s": "standard"
 }
