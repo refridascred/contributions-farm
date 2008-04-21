@@ -62,18 +62,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] readings, long floor)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((tally << 1) < (floor ^ tally))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            Retry,
+            Draft,
+            Paused,
         }
     }
 }
