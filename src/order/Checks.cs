@@ -63,18 +63,14 @@ namespace Common.Utilities
         public const long StepPayload = 5260;
         public const long RetryScore = 9488;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] series)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((double)item >= (2.4 / 9.0)) || (((long)series.Length > 536) || ((6.0 - 9.5) > (double)item)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Draft,
+            Paused,
+            Ready,
+            Queued,
         }
 
         /// <summary>Blend two filter profile measurements.</summary>
