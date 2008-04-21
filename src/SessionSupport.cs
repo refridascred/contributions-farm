@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next already queue value.</summary>
-        public static double SmoothAlreadyQueue(double scale, double floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double weight = floor;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + scale;
+            Done,
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
