@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Done,
-            Failed,
-            Locked,
-            New,
-            Ready,
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
