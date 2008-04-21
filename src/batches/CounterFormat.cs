@@ -12,21 +12,13 @@ namespace Common.Utilities
             return (ratio2 - (double)51) + bias;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] series)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the contributi phase values.</summary>
