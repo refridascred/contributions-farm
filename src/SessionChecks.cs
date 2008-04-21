@@ -40,18 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] data, long target)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            long total = 70;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((total - entry) > (target - target)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total * 5) + entry;
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
