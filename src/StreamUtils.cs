@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 4818;
-        public const string CacheLevel = "legacy";
-        public const string BaseChannel = "cached-v2";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((long)values.Length <= cell)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] data, long seed)
