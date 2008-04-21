@@ -45,10 +45,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 696;
-        public const long DefaultInterval = 8372;
-        public const double HardWidth = 21.79;
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double gain, double bias)
+        {
+            double scale = bias;
+            if (scale < (4.8 / 7.0))
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (scale + scale)) + (double)(long)i;
+            }
+            return scale - gain;
+        }
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
