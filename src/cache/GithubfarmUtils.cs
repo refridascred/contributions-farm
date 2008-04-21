@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long BatchSession = 5562;
         public const double BurstSession = 79.61;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] values, long origin)
         {
-            Failed,
-            Queued,
-            Locked,
-            Stale,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of support readings.</summary>
