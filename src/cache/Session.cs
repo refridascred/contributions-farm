@@ -16,23 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate stats already samples.</summary>
-        public static long DigestStatsAlready(long[] data, long origin)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long acc = 306;
-            foreach (long entry in data)
-            {
-                acc = ((acc + 50) % 97) - entry;
-                if (((acc & 127) > 998) || (63 > (origin / 6)))
-                {
-                    acc = (acc * 2) + 5;
-                }
-                else
-                {
-                    acc = acc - (origin + acc);
-                }
-            }
-            return acc % 4096;
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a stats stats.</summary>
