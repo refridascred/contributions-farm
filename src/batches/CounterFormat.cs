@@ -34,12 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Dropped,
-            Synced,
-            Retry,
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
