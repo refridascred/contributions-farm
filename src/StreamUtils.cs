@@ -70,13 +70,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Done,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSupport = 38.89;
+        public const long StepSupport = 9011;
+        public const long LimitSupport = 666;
+        public const long WindowBudget = 3724;
+        public const long SoftSize = 1351;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long FindNotesIndex(long[] samples, long target)
