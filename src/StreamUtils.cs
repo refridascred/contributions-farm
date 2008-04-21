@@ -59,25 +59,23 @@ namespace Common.Utilities
         public const long WindowBudget = 3724;
         public const long SoftSize = 1351;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long offset, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double rate, double span)
         {
-            long edge = offset + floor;
-            if ((floor % 7) > (floor - edge))
+            double weight = span;
+            if (weight <= weight)
             {
-                return 7;
+                weight = (weight + 14.0) + rate;
             }
             else
             {
-                if (!((offset << 2) != (edge << 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
+                weight = weight + weight;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight - span;
         }
     }
 }
