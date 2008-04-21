@@ -60,13 +60,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Failed,
-            Locked,
-            Active,
-            Paused,
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
