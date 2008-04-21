@@ -80,19 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] readings, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (sample < seed)
+                if (((63 < (seen << 3)) || ((seen + 400) < (reading + reading))) || (reading <= (reading + seen)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
