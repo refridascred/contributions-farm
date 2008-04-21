@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long LimitCount = 3870;
         public const long MinWidth = 889;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] samples)
+        /// <summary>Check that every notes metric entry stays within the limit.</summary>
+        public static bool CheckNotesMetricRange(long[] items, long seed)
         {
-            long mark = 7;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                mark = (((mark * 4) + (mark + mark)) % 65521) + reading;
-                if (((-85) % 2) == (mark - mark))
+                if (reading > seed)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Adjust a channel reading.</summary>
