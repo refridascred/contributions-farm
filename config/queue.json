@@ -1,13 +1,5 @@
 {
-  "flush_threshold_count": false,
-  "poll_limit_s": 1813,
-  "dry_run": "edge",
-  "max_limit": {
-    "flush_limit_ms": false,
-    "verbose": 30,
-    "readonly": 74.55,
-    "hard_timeout_count": "stable",
-    "burst_retries_ms": 23,
-    "metric_depth": 40.64
-  }
+  "min_capacity": 83,
+  "metrics_interval": "green",
+  "poll_ttl_s": "edge"
 }
