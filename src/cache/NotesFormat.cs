@@ -28,9 +28,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepScore = 4035;
-        public const long BatchRecord = 1592;
-        public const long BaseSpan = 999;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Retry,
+            Queued,
+            New,
+            Paused,
+            Done,
+        }
     }
 }
