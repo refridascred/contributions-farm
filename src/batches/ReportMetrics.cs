@@ -13,18 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] readings)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > (894 & 127))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
