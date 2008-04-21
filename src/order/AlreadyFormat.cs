@@ -59,19 +59,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric editor readings against a bound.</summary>
-        public static bool VerifyMetricEditorRange(long[] series, long origin)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Queued,
+            Paused,
+            Pending,
+            Failed,
         }
     }
 }
