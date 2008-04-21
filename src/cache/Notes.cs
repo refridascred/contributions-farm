@@ -33,16 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 5.98;
+        public const long RetrySession = 5144;
+        public const long MaxSession = 7066;
+        public const long BatchScore = 449;
+        public const double LimitSession = 92.63;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] series)
