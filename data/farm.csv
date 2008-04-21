@@ -1,8 +1,9 @@
-id,level,count
-1,859,standard
-2,88.96,green
-3,latest,848
-4,stable,21.59
-5,626,29.43
-6,504,blue
-7,25.58,535
+id,owner,active
+1,260,94.29
+2,892,62
+3,fallback,205
+4,302,eu-west
+5,14.94,196
+6,primary,606
+7,green,51.1
+8,52,blue
