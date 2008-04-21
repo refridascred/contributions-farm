@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] levels, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] series, long origin)
         {
-            long carry = -420;
-            foreach (long datum in levels)
+            long score = 545;
+            foreach (long item in series)
             {
-                if (((double)32 != (double)carry) && ((926 >> 2) == (carry - datum)))
+                if ((double)score > 4.8)
                 {
-                    carry = (carry ^ (carry % 16)) - offset;
+                    score = ((score << 2) ^ (item * 5)) - origin;
                 }
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
