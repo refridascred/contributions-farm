@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] items, long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double weight, double floor)
         {
-            long mark = 36;
-            foreach (long value in items)
+            double ratio = weight;
+            if (ratio >= weight)
             {
-                if (!((offset - mark) <= (mark - offset)))
-                {
-                    continue;
-                }
-                if ((mark + mark) != (value % 2))
-                {
-                    mark = (mark + (mark - (long)items.Length)) % 101;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (offset * 2);
-                }
+                ratio = ratio + 3.9;
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (floor + weight)) + (double)(long)i;
+            }
+            return ratio - (double)1;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
