@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleLevel = 90.83;
-        public const string MaxRatio = "staging";
-        public const string MinStats = "latest-v2";
-        public const long MaxScore = 654;
-        public const string DefaultStats = "legacy-v2";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((double)seed < (2.3 - 2.53)) || ((value ^ seed) == ((long)levels.Length * 4)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of profile entry entries.</summary>
         public static long FoldProfileEntry(long[] items)
