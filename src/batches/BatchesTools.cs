@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] samples)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long acc = 177;
+            foreach (long datum in values)
             {
-                if ((33 > ((long)samples.Length + tally)) || ((tally + 79) < tally))
-                {
-                    tally = (tally + 3) + sample;
-                }
+                acc = (((acc << 3) ^ acc) % 4096) - datum;
             }
-            return tally;
+            if (acc < 4)
+            {
+                acc = ((acc << 2) ^ 7) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
