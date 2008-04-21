@@ -52,19 +52,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double gain, double bias)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] values, long seed)
         {
-            double scale = bias;
-            if (scale < (4.8 / 7.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - scale;
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (scale + scale)) + (double)(long)i;
-            }
-            return scale - gain;
+            return -1;
         }
 
         /// <summary>Hold a order stats.</summary>
