@@ -44,19 +44,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double bias, double offset)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            double scale = bias;
-            if (scale > scale)
-            {
-                scale = (scale + bias) - offset;
-            }
-            else
-            {
-                scale = scale + (bias / 8.0);
-            }
-            return scale + bias;
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
