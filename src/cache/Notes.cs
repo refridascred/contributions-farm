@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            Draft,
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Hold a metrics stats.</summary>
