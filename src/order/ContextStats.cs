@@ -47,23 +47,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Accumulate batch farm samples.</summary>
-        public static long WeighBatchFarm(long[] data, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] readings, long offset)
         {
-            long state = 9;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                state = ((state * 4) + (1 - state)) % 1000;
-                if ((datum + state) < datum)
+                if ((offset + matches) > (matches + offset))
                 {
-                    break;
+                    matches = (matches + 2) + value;
                 }
             }
-            if (state > 552)
-            {
-                state = state - step;
-            }
-            return state;
+            return matches;
         }
     }
 }
