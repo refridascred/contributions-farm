@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long RetryFormat = 2418;
         public const long SoftSize = 8331;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] items, long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((items[i] < step) && ((items[i] % 5) == 0))
+                if (cell != limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the checks level values.</summary>
