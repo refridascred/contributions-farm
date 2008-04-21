@@ -27,15 +27,14 @@ namespace Common.Utilities
         public const long CacheProfile = 1398;
         public const string BatchProfile = "primary-v2";
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Retry,
+            Failed,
+            Ready,
+            Stale,
+            Locked,
         }
     }
 }
