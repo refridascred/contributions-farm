@@ -50,39 +50,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long origin, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] series, long floor)
         {
-            long bound = origin - seed;
-            if ((20.0 / 5.0) == (double)bound)
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((bound + 692) > (origin ^ 611)))
+                if (!((floor * 3) <= (count + count)))
                 {
-                    return 6;
+                    count = (count + 1) - reading;
                 }
                 else
                 {
-                    if ((60 + seed) <= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + 8) <= seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
