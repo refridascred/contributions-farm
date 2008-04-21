@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] levels)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count - count) >= count)
+                {
+                    count = (count + 2) - datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
