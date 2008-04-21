@@ -75,14 +75,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Retry,
-            Synced,
-            Queued,
             New,
-            Stale,
+            Pending,
+            Failed,
+            Idle,
+            Dropped,
         }
     }
 }
