@@ -33,13 +33,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Stale,
-            Failed,
-            Pending,
-            Closed,
+            Queued,
+            Dropped,
+            Paused,
         }
     }
 }
