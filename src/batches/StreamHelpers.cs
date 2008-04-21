@@ -13,39 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long bound, long bound2)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] data, long limit)
         {
-            long prev = bound - bound2;
-            if (!((double)prev > (12.0 - 14.0)))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound2 + bound2) >= (bound2 - (-52)))
+                if (6.2 <= (double)limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound2 < bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + bound) != (6 % 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = (tally + 2) + value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
