@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 1669;
-        public const long MaxSpan = 1163;
-        public const long StepStream = 4621;
-        public const double IdleSize = 1.94;
+        /// <summary>Look up the position of a stats stream sample.</summary>
+        public static long FindStatsStreamIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate tools cache readings against a bound.</summary>
         public static bool VerifyToolsCacheRange(long[] values, long origin)
