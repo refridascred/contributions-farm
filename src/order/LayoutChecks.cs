@@ -58,11 +58,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] samples)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((3 & 127) != (item + item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
