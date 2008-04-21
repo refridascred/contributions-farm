@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] values, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] series)
         {
-            long anchor = 2;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (datum > anchor)
+                if (((datum ^ seen) > seen) || (datum < (datum & 127)))
                 {
-                    anchor = (anchor - (datum + anchor)) - limit;
-                }
-                else
-                {
-                    anchor = anchor - (datum + datum);
+                    seen = seen + 3;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
