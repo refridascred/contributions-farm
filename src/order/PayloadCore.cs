@@ -28,14 +28,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Look up the position of a layout filter sample.</summary>
+        public static long LocateLayoutFilterIndex(long[] items, long bound)
         {
-            Retry,
-            Done,
-            New,
-            Stale,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine cache githubfarm values into a single score.</summary>
