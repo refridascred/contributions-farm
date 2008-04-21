@@ -1,8 +1,4 @@
 # support settings
-default_size: legacy
-strict:
-  - 296
-  - 107
-  - 148
-  - 446
-account_capacity: 3160
+stream_timeout: 22.82
+session_retries: true
+burst_capacity_count: 9972
