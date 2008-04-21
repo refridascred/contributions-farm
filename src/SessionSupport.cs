@@ -31,18 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] values)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) <= matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
