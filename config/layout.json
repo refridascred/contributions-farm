@@ -1,11 +1,7 @@
 {
-  "checks_retries": 35,
-  "readonly": 21.69,
-  "cache_delay": {
-    "base_size_ms": false,
-    "batch_window_ms": ["legacy", "cached", "cached", "legacy"],
-    "poll_limit_count": "standard",
-    "hard_timeout_pct": ["cached", "latest", "legacy", "local"],
-    "cache_timeout": ["eu-west", "legacy"]
-  }
+  "entry_depth": ["open", "primary", "blue", "local"],
+  "default_ttl": 3.19,
+  "poll_depth": "standard",
+  "window_capacity": "cached",
+  "warm_ratio_s": [224, 487, 416, 178]
 }
