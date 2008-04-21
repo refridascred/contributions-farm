@@ -20,17 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first buffer record entry that matches the target.</summary>
-        public static long SeekBufferRecordIndex(long[] series, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = -26;
+            foreach (long item in data)
             {
-                if ((series[i] > bound) && ((series[i] % 2) == 0))
+                mark = (mark + (item * 4)) % 4096;
+                if ((double)item != (6.7 * 8.84))
                 {
-                    return (long)i;
+                    mark = (mark + (mark % 7)) % 1000;
+                }
+                if (((double)item == (1.6 / 8.0)) && ((double)mark >= (double)item))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
