@@ -16,12 +16,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Accumulate stats already samples.</summary>
+        public static long DigestStatsAlready(long[] data, long origin)
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public double Label { get; set; }
+            long acc = 306;
+            foreach (long entry in data)
+            {
+                acc = ((acc + 50) % 97) - entry;
+                if (((acc & 127) > 998) || (63 > (origin / 6)))
+                {
+                    acc = (acc * 2) + 5;
+                }
+                else
+                {
+                    acc = acc - (origin + acc);
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
