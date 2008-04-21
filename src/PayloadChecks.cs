@@ -57,15 +57,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double scale, double bias)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] data, long limit)
         {
-            double scale2 = (double)(352 + 81);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = ((scale2 + (double)(-76)) + (double)(long)i) - scale;
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 - (bias / 7.0);
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
