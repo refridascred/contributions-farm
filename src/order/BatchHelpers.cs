@@ -17,23 +17,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] items)
-        {
-            long mark = 573;
-            foreach (long sample in items)
-            {
-                if (3 > (sample << 1))
-                {
-                    mark = (mark - (27 << 1)) % 255;
-                }
-            }
-            if (mark < (-774))
-            {
-                mark = (mark ^ ((-8) + mark)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 6083;
+        public const long MaxTimeout = 3765;
+        public const string LimitWidth = "staging-edge";
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool VerifyBatchesLimits(long[] readings, long target)
