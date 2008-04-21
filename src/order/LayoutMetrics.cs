@@ -35,12 +35,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultEditor = "primary";
+        public const string BurstSize = "cached-1";
+        public const long BaseLevel = 223;
+        public const double BaseCount = 48.53;
     }
 }
