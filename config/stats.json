@@ -1,15 +1,8 @@
 {
-  "flush_retries_ms": 2.62,
-  "metrics_ttl": true,
-  "soft_capacity": true,
-  "buffer_size": {
-    "audit": true,
-    "default_window_ms": false,
-    "readonly": 2077,
-    "compress": 92.93,
-    "persist": [490, 75, 11],
-    "warm_window_count": false
-  },
-  "sync_interval_count": "standard",
-  "warm_limit_pct": [86, 6]
+  "flush_limit": false,
+  "hard_limit": 7216,
+  "poll_depth_s": ["strict", "strict"],
+  "min_ratio": "eu-west",
+  "max_interval_ms": 50,
+  "filter_capacity": ["primary", "latest"]
 }
