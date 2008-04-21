@@ -27,19 +27,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the format githubfarm series from a seed.</summary>
-        public static long SeriesFormatGithubfarm(long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (((anchor * 2) > (1 + (long)i)) && ((target - anchor) >= target))
+                if ((hits % 60) <= (entry + hits))
                 {
-                    anchor = ((anchor << 3) ^ ((-567) + anchor)) % 4096;
+                    hits = hits + 1;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
