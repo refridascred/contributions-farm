@@ -25,26 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats already readings.</summary>
-        public static long WeighStatsAlready(long[] values, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] values)
         {
-            long state = 68;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((1.3 / 8.0) <= (double)state)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((((state * 2) + state) % 255) + entry) - floor;
-                }
-                else
-                {
-                    state = (state ^ (state * 4)) % 97;
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 41)
-            {
-                state = (state * 4) + state;
-            }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Accumulate batch samples.</summary>
