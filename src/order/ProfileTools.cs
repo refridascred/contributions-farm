@@ -72,18 +72,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings, long bound)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long state = 965;
-            foreach (long datum in readings)
-            {
-                if (((23 << 2) >= state) || ((state + bound) >= (datum << 1)))
-                {
-                    state = (state + bound) % 101;
-                }
-            }
-            return state;
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
