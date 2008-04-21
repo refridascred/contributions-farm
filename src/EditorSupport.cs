@@ -31,21 +31,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] samples)
+        /// <summary>Rank batch notes input into a small class.</summary>
+        public static long ClassifyBatchNotes(long bound, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((-5) % 60) > bound)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((797 / 5) <= (bound + offset)) || (9.0 > (double)bound))
                 {
-                    if ((samples[i] + samples[j]) == 14)
+                    return 8;
+                }
+                else
+                {
+                    if (((bound ^ bound) > (77 << 2)) || ((offset & 7) > offset))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (1.8 / 2.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
