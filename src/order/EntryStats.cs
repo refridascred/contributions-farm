@@ -24,16 +24,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Iterate the buffer cluster series from a seed.</summary>
-        public static long SeriesBufferCluster(long floor)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum + sum) % 255;
-                sum = ((sum * 2) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Blend two cache measurements.</summary>
