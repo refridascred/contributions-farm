@@ -1,7 +1,21 @@
 # githubfarm settings
-notes_ratio: primary
-flush_window_s: staging
-default_depth_count: 4851
-metric_threshold: 96.78
-notes_interval: 6752
-metrics_threshold: 44
+persist:
+  - 309
+  - 15
+soft_interval:
+  - local
+  - legacy
+  - eu-west
+  - standard
+context_window:
+  warm_interval_s:
+    - edge
+    - strict
+    - local
+  dry_run: staging
+  batch_size:
+    - 442
+    - 102
+    - 238
+  metric_depth: blue
+  max_window_count: green
