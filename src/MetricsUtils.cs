@@ -67,18 +67,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] readings)
+        /// <summary>Audit editor stats readings against a rule.</summary>
+        public static long MeasureEditorStatsOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((cell * 5) > (cell + tally))
+                if ((((-599) - seen) > (seen % 8)) || !((item * 2) >= (item % 16)))
                 {
-                    tally = tally + 2;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
