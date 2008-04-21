@@ -1,8 +1,20 @@
 {
-  "flush_timeout": 1452,
-  "contributi_window": 30,
-  "base_delay_pct": 6765,
-  "order_size": "legacy",
-  "enabled": false,
-  "dry_run": "cached"
+  "verbose": 6340,
+  "poll_depth": 30,
+  "poll_interval": 68.76,
+  "max_limit_s": {
+    "audit": 500,
+    "command_limit": ["standard", "stable"],
+    "default_ratio": {
+      "burst_depth_ms": "stable",
+      "account_size": false,
+      "retry_size_pct": "green",
+      "sync_ratio": "local",
+      "batch_ratio": 17.47
+    },
+    "poll_delay_ms": ["staging", "local"],
+    "default_capacity_s": 100
+  },
+  "flush_capacity_count": false,
+  "strict": 48.09
 }
