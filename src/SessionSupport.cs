@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] readings)
         {
-            Done,
-            Stale,
-            Closed,
-            Failed,
+            long mix = 1;
+            foreach (long datum in readings)
+            {
+                if (datum < (datum << 3))
+                {
+                    mix = (mix * 3) + (datum - mix);
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
