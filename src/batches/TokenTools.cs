@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] data, long origin)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long result = 110;
-            foreach (long reading in data)
-            {
-                result = ((result - (573 << 2)) - reading) + origin;
-            }
-            return result % 65521;
+            Active,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a editor summary.</summary>
