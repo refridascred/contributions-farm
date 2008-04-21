@@ -70,12 +70,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] items, long seed)
         {
-            Dropped,
-            Draft,
-            Done,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((7 ^ seed) > seed) && ((datum >> 1) <= seed))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
