@@ -22,19 +22,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double rate, double span)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] levels, long floor)
         {
-            double ratio = rate;
-            if (ratio >= (span / 7.0))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                ratio = ratio - 8.78;
+                if (((8 >> 2) <= tally) && (976 > (tally ^ tally)))
+                {
+                    tally = ((tally + 3) + value) - floor;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (rate + span)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return tally;
         }
 
         /// <summary>Audit schema context readings against a rule.</summary>
