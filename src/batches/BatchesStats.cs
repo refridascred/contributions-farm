@@ -33,20 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] values, long floor)
         {
-            long result = 808;
-            foreach (long entry in readings)
+            long state = 191;
+            foreach (long cell in values)
             {
-                result = ((result << 3) ^ (4 % 8)) % 255;
-                result = ((result * 2) + result) % 4096;
-                if (((double)result != (8.0 / 4.0)) || ((entry % 3) >= entry))
+                if (((state >> 4) == (218 * 3)) || (state >= (floor ^ floor)))
+                {
+                    state = ((state * 5) + (15 ^ floor)) + cell;
+                }
+                if (327 <= (floor / 7))
                 {
                     break;
                 }
             }
-            return result % 1000;
+            if (state < 8)
+            {
+                state = ((state << 2) ^ floor) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Project the next cache token value.</summary>
