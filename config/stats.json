@@ -1,12 +1,6 @@
 {
-  "max_interval_pct": false,
-  "verbose": 4,
-  "flush_capacity_pct": {
-    "checks_capacity": 60,
-    "flush_size": 66.4,
-    "soft_ttl_s": false,
-    "poll_interval_pct": "green",
-    "schema_limit": "edge"
-  },
-  "farm_depth": 13
+  "verbose": "stable",
+  "batch_timeout": [14, 95, 164],
+  "hard_delay_ms": "fallback",
+  "warm_delay": "local"
 }
