@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Audit account filter readings against a rule.</summary>
+        public static long AuditAccountFilterGaps(long[] readings, long offset)
         {
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((offset / 2) == (offset * 5))
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
