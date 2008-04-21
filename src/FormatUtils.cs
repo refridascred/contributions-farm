@@ -34,12 +34,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleRatio = 2006;
-        public const string RetryBudget = "latest";
-        public const long BurstSize = 1710;
-        public const long IdleBatches = 228;
-        public const long CacheBatches = 9372;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstFactor = 1082;
+        public const double SoftTools = 58.58;
+        public const double WindowTools = 51.97;
+        public const long BaseTools = 1744;
+        public const double LimitTools = 91.17;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long WeighEditor(long[] values, long seed)
