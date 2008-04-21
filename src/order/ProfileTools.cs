@@ -46,18 +46,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] levels, long step)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((step - step) <= (long)levels.Length)
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit payload metrics readings against a rule.</summary>
