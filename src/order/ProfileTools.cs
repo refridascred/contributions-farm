@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "cached-v2";
-        public const long HardSpan = 3833;
-        public const double MaxSession = 4.24;
-        public const long MinRatio = 9194;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values, long step)
+        {
+            long total = 492;
+            foreach (long cell in values)
+            {
+                total = total ^ (total % 3);
+                if (!((13.0 + 2.0) <= (double)cell))
+                {
+                    total = (total + (cell / 9)) % 101;
+                }
+                if (!((cell & 1) > step))
+                {
+                    total = ((total * 5) + (26 - cell)) % 4096;
+                }
+            }
+            if (total > 67)
+            {
+                total = (total << 3) ^ (step / 6);
+            }
+            return total % 4096;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long OverlapReportCount(long[] values)
