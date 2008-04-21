@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] items)
+        /// <summary>Digest a series of editor order entries.</summary>
+        public static long FoldEditorOrder(long[] data)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long sum = 4;
+            foreach (long entry in data)
             {
-                if ((double)item >= (11.0 + 2.99))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = (sum << 2) ^ entry;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
