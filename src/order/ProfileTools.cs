@@ -61,13 +61,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            Retry,
+            Stale,
+            New,
+            Queued,
         }
     }
 }
