@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] data)
         {
-            New,
-            Retry,
-            Paused,
+            long mix = -25;
+            foreach (long cell in data)
+            {
+                mix = ((mix + (mix + mix)) % 97) + cell;
+                mix = ((mix * 2) + mix) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Measure how many buffer tools samples are out of range.</summary>
