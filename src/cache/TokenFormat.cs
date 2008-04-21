@@ -32,26 +32,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long origin, long limit)
         {
-            long anchor = 24;
-            foreach (long sample in readings)
+            long gap = origin ^ limit;
+            if ((origin & 3) != (origin - gap))
             {
-                if (((double)sample > (1.6 / 4.0)) || ((sample & 1) <= anchor))
+                return 6;
+            }
+            else
+            {
+                if (((gap + origin) > (origin << 2)) || (gap < (limit - gap)))
                 {
-                    anchor = (anchor << 2) ^ (sample << 2);
+                    return 8;
                 }
                 else
                 {
-                    anchor = ((anchor * 4) + (sample + 5)) % 255;
+                    if (limit >= (origin << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (origin < ((-25) + 109))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (anchor < (-29))
-            {
-                anchor = anchor - (anchor & 255);
-            }
-            return anchor;
         }
     }
 }
