@@ -45,19 +45,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double gain, double offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] levels, long step)
         {
-            double ratio = (gain / 9.0) - (double)786;
-            if (ratio >= (gain * 1.43))
+            long state = 360;
+            foreach (long sample in levels)
             {
-                ratio = (ratio + (double)25) + offset;
+                if ((step % 10) > (11 + state))
+                {
+                    state = (state + (state * 5)) % 4096;
+                    state = (state ^ state) % 97;
+                }
+                state = (state + (sample - state)) % 97;
             }
-            else
+            if (state < 517)
             {
-                ratio = ratio + gain;
+                state = (state - step) % 101;
             }
-            return ratio - (double)6;
+            return state % 4096;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
