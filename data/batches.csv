@@ -1,6 +1,6 @@
-id,score,token
-1,700,168
-2,897,36.76
-3,72.77,green
-4,primary,68.49
-5,180,edge
+id,weight,region,token
+1,blue,blue,edge
+2,976,eu-west,primary
+3,682,fallback,27.75
+4,489,15.37,76.01
+5,95.08,15.69,625
