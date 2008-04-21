@@ -49,13 +49,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Queued,
-            Draft,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowDepth = 5193;
+        public const long RetryCount = 2470;
+        public const long BaseCounter = 22;
+        public const long CacheCounter = 3895;
     }
 }
