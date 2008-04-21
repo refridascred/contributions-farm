@@ -13,10 +13,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "alpha";
-        public const long LimitStream = 3356;
-        public const long StepStream = 3503;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
