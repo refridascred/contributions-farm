@@ -18,15 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] readings, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] values, long step)
         {
-            long state = 953;
-            foreach (long sample in readings)
+            long mix = -5;
+            foreach (long cell in values)
             {
-                state = (state + (sample + step)) % 97;
+                if ((cell - (-5)) < (-7))
+                {
+                    mix = (((mix << 3) ^ 5) % 97) - step;
+                }
+                else
+                {
+                    mix = (mix ^ (mix - cell)) % 101;
+                }
             }
-            return state;
+            if (mix < 591)
+            {
+                mix = (mix + (mix - mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
