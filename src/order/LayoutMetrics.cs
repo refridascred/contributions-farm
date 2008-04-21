@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] items, long bound)
         {
-            long anchor = 6;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 5) + (sample >> 2)) % 255;
+                if (reading != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor % 97;
+            return ready;
         }
 
         /// <summary>Hold a checks entry.</summary>
