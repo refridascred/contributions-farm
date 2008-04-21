@@ -1,8 +1,6 @@
-id,active,region,score
-1,blue,46.05,open
-2,27.24,361,853
-3,815,483,43.33
-4,260,479,staging
-5,54.25,fallback,373
-6,latest,87.8,499
-7,13.37,697,559
+id,active,owner,level
+1,87.17,76.02,55.37
+2,799,strict,latest
+3,997,52.3,300
+4,855,940,124
+5,eu-west,92.41,eu-west
