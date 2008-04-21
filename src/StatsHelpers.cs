@@ -32,24 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] levels, long step)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double bias, double bias2)
         {
-            long state = 360;
-            foreach (long sample in levels)
+            double drift = (bias * 0.4) + bias;
+            for (int i = 0; i < 8; i++)
             {
-                if ((step % 10) > (11 + state))
-                {
-                    state = (state + (state * 5)) % 4096;
-                    state = (state ^ state) % 97;
-                }
-                state = (state + (sample - state)) % 97;
+                drift = ((drift - (drift / 6.0)) + (double)(long)i) + bias2;
             }
-            if (state < 517)
-            {
-                state = (state - step) % 101;
-            }
-            return state % 4096;
+            return drift + (double)(-2);
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
