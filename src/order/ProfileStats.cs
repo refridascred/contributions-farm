@@ -34,17 +34,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first payload route entry that matches the target.</summary>
-        public static long SeekPayloadRouteIndex(long[] values, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 328;
+            foreach (long sample in levels)
             {
-                if (values[i] == origin)
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    result = (result ^ (result * 2)) + (long)i;
+                }
+                if ((13.0 + 5.3) != (double)sample)
+                {
+                    result = ((result << 3) ^ (result - offset)) % 101;
                 }
             }
-            return -1;
+            if (result > 8)
+            {
+                result = result - (879 << 2);
+            }
+            return result;
         }
 
         /// <summary>Count the batches cache entries that pass the check.</summary>
