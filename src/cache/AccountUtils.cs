@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] readings, long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((6 > sample) || ((double)seed != (0.56 / 3.0)))
+                if ((261 << 3) <= reading)
                 {
-                    seen = seen + 3;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a support record.</summary>
