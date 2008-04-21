@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleInterval = "primary-v2";
+        public const double BatchContributi = 1.27;
+        public const long BaseContributi = 302;
+        public const long WindowFactor = 9690;
+        public const long SoftContributi = 2303;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LocateOrderIndex(long[] items, long limit)
