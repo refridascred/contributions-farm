@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable fallback; do
-    log "checking ${item}"
-done
+mode="${1:-fallback}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=368
+log "limit is ${BUFFER_LIMIT}"
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
