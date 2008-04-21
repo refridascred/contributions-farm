@@ -67,13 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            New,
-            Queued,
-            Synced,
-            Paused,
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the payload phase values.</summary>
