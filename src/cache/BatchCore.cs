@@ -46,13 +46,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] levels)
         {
-            Paused,
-            Active,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((matches * 4) != (entry + matches)) && ((9.4 + 1.3) >= (double)entry))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
