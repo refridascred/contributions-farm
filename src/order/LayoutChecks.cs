@@ -52,17 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] values, long seed)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = 7.4;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
+                bias = (bias + (double)(long)i) + weight;
             }
-            return -1;
+            return bias + (offset * 6.0);
         }
 
         /// <summary>Hold a order stats.</summary>
