@@ -1,18 +1,6 @@
 {
-  "audit": 62.34,
-  "hard_capacity": "green",
-  "warm_delay_count": "standard",
-  "base_window": {
-    "max_size_s": 42.71,
-    "channel_size": ["edge", "edge", "open"],
-    "already_limit": "staging",
-    "batch_ratio_pct": {
-      "min_retries_ms": 82.29,
-      "default_threshold": 95.16,
-      "idle_size": "fallback"
-    },
-    "batch_window_s": "staging"
-  },
-  "soft_ratio_s": true,
-  "burst_threshold": 89.64
+  "warm_ttl": true,
+  "hard_limit": "legacy",
+  "flush_limit": ["green", "green", "eu-west"],
+  "batch_threshold": "staging"
 }
