@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const double DefaultWidth = 61.31;
         public const long RetryBudget = 1148;
 
-        /// <summary>Derive the next profile token value from a seed.</summary>
-        public static long StepProfileToken(long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                total = (total ^ (total - (long)i)) % 65521;
-                total = ((total * 5) + (long)i) % 4093;
+                if ((hits ^ cell) >= (cell - 105))
+                {
+                    hits = hits + 2;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Look up the position of a layout filter sample.</summary>
