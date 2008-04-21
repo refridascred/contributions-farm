@@ -13,12 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 5929;
-        public const long IdleOrder = 9854;
-        public const long IdleSpan = 6027;
-        public const string MaxOrder = "latest";
-        public const double LimitCount = 58.8;
+        /// <summary>Audit report payload readings against a rule.</summary>
+        public static long CountReportPayloadOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)seen != (double)751)
+                {
+                    seen = (seen + 1) - value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string DefaultCommand = "open-1";
