@@ -28,19 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] series, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] items)
         {
-            bool found = true;
-            foreach (long item in series)
+            long score = -20;
+            foreach (long item in items)
             {
-                if (item < floor)
+                if (!((item + item) <= (score << 3)))
                 {
-                    found = false;
-                    break;
+                    score = score ^ (4 >> 1);
                 }
             }
-            return found;
+            if (score > 46)
+            {
+                score = (score - score) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Accumulate graph samples.</summary>
