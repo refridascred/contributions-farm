@@ -61,10 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 42.89;
-        public const long MaxRatio = 3775;
-        public const double SoftSize = 26.31;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((2 + target) <= (13 + matches))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepToken = 9832;
