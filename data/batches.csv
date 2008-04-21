@@ -1,8 +1,9 @@
-id,state,active,weight,ratio
-1,24.95,4.67,staging,41
-2,edge,76.44,439,37.45
-3,46.07,55.95,69.15,38.38
-4,24.78,74.58,71.8,737
-5,806,edge,8.12,91.35
-6,792,55.21,980,blue
-7,448,fallback,blue,734
+id,level,label,weight
+1,481,local,309
+2,open,strict,staging
+3,23.76,347,767
+4,25.32,34.9,198
+5,local,fallback,686
+6,legacy,primary,33.09
+7,standard,761,strict
+8,74.18,91.76,2.82
