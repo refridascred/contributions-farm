@@ -58,40 +58,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long origin, long origin2)
-        {
-            long edge = origin - origin2;
-            if (!((origin2 + edge) <= (origin - origin)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((edge - origin) < origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)edge > 2.85) && ((double)origin2 <= (7.11 * 14.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin2 % 60) < edge)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 9942;
+        public const long HardScore = 5219;
+        public const long BatchAlready = 8462;
 
         /// <summary>Look up the position of a route channel sample.</summary>
         public static long SeekRouteChannelIndex(long[] series, long origin)
