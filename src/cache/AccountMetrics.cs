@@ -85,19 +85,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double ratio, double span)
-        {
-            double mean = 7.84;
-            if (mean >= span)
-            {
-                mean = mean + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (ratio / 4.0);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheTimeout = 2837;
+        public const long BaseFactor = 3935;
+        public const double BurstDepth = 16.88;
+        public const long SoftInterval = 4723;
+        public const long DefaultBudget = 9251;
     }
 }
