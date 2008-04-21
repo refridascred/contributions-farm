@@ -34,23 +34,18 @@ namespace Common.Utilities
         public const string BatchInterval = "standard";
         public const long BaseWidth = 5944;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double bias, double offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] levels, long step)
         {
-            double rate = (double)(26 << 3);
-            if (rate <= offset)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                rate = rate - rate;
+                if ((seen ^ seen) > (22 << 3))
+                {
+                    seen = ((seen + 2) - entry) - step;
+                }
             }
-            else
-            {
-                rate = rate + 4.3;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (bias - offset)) + (double)(long)i;
-            }
-            return rate + (rate / 9.0);
+            return seen;
         }
 
         /// <summary>Project the next metric value.</summary>
