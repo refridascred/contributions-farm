@@ -23,19 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] items, long seed)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Synced,
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Accumulate graph order samples.</summary>
