@@ -32,15 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double bias, double bias2)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double drift = (bias * 0.4) + bias;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = ((drift - (drift / 6.0)) + (double)(long)i) + bias2;
-            }
-            return drift + (double)(-2);
+            New,
+            Stale,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
