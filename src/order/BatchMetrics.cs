@@ -13,21 +13,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long seed, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long edge = seed - offset;
+            if ((8 + edge) <= (607 * 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((seed / 4) > (seed * 5))
                 {
-                    if ((data[i] - data[j]) != 16)
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + edge) != (87 - seed))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)offset < (4.4 / 3.0)) || ((double)edge != (18.0 * 5.41)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the tools level values.</summary>
