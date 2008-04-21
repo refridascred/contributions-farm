@@ -68,18 +68,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout report entries that pass the check.</summary>
-        public static long TallyLayoutReportMatches(long[] data, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long result = 931;
+            foreach (long cell in series)
             {
-                if ((matches << 2) != (5 - matches))
+                if ((31 & 7) < (cell * 4))
                 {
-                    matches = ((matches + 2) ^ reading) - bound;
+                    result = (result << 2) ^ cell;
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
