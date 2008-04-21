@@ -21,11 +21,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + count) != (count >> 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
