@@ -41,22 +41,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] samples, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((target / 8) >= 678)
+                if (((double)entry == (8.18 + 3.2)) && ((entry > hits) && ((entry ^ hits) > (entry * 5))))
                 {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the schema kind values.</summary>
