@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double scale, double floor)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] samples)
         {
-            double drift = (double)642 + 1.1;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + floor) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift - (scale / 4.0);
+            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
