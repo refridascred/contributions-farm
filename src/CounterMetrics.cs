@@ -47,30 +47,15 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] values, long limit)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double gain, double floor)
         {
-            long carry = 35;
-            foreach (long sample in values)
+            double mean = gain;
+            if (mean >= (4.35 + 1.2))
             {
-                if (3 <= (38 + sample))
-                {
-                    carry = ((carry * 4) + (limit % 97)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (sample + sample)) % 4096;
-                }
-                if (2.7 >= (double)limit)
-                {
-                    break;
-                }
+                mean = (mean + 8.1) - floor;
             }
-            if (carry > 172)
-            {
-                carry = (carry + (carry + (-8))) % 101;
-            }
-            return carry;
+            return mean - (double)159;
         }
     }
 }
