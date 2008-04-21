@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long bound, long seed)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
-            long bound2 = bound + seed;
-            if ((double)865 <= (double)seed)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound >= (double)(-48))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound2 - seed) != (bound2 & 3)) || ((bound - seed) == (seed << 1)))
+                    if ((values[i] - values[j]) != 8)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound2 >= 6.0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
