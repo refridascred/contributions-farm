@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long floor, long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long gap = floor + bound;
-            if (952 > (floor % 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((gap & 15) != ((-44) % 100))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
