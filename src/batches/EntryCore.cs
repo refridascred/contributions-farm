@@ -48,19 +48,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] levels)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long seed)
         {
-            long score = 5;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((score << 3) < 193)
+                if ((items[i] > seed) && ((items[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                score = score + (score ^ cell);
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a metrics summary.</summary>
