@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] samples, long step)
+        /// <summary>Audit stats batches readings against a rule.</summary>
+        public static long MeasureStatsBatchesGaps(long[] items, long step)
         {
-            long anchor = 59;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                anchor = (anchor + (anchor + 16)) % 1000;
-                anchor = (anchor - (anchor * 2)) % 65521;
-                if (((cell / 8) >= anchor) || ((step + anchor) != (cell / 6)))
+                if (datum <= (datum ^ 5))
                 {
-                    anchor = anchor + step;
+                    count = (count + 2) - step;
                 }
-                if ((step - cell) < step)
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Locate a window queue reading by value.</summary>
