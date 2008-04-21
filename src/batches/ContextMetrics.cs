@@ -14,12 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftCount = 87.0;
-        public const long BurstLevel = 8161;
-        public const long CacheChannel = 397;
-        public const string BurstChannel = "legacy";
-        public const long WindowRatio = 9922;
+        /// <summary>Look up the position of a notes format sample.</summary>
+        public static long SeekNotesFormatIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up metric account samples.</summary>
         public static long OverlapMetricAccountCount(long[] readings)
