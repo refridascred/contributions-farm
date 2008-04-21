@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public string Stamp { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Queued,
+            Draft,
+            Pending,
         }
 
         /// <summary>Describe the queue kind values.</summary>
