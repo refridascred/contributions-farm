@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many stream notes samples are out of range.</summary>
-        public static long TallyStreamNotesMatches(long[] items, long limit)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (((limit * 3) >= (limit - entry)) && (((entry - count) == (273 << 3)) || ((double)limit <= (double)entry)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
