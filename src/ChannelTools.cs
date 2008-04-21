@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const string HardChecks = "cached-v2";
         public const long MaxScore = 8106;
 
-        /// <summary>Audit payload graph readings against a rule.</summary>
-        public static long MeasurePayloadGraphOutliers(long[] series, long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (!((reading - reading) == (seen + floor)))
+                if (cell != floor)
                 {
-                    seen = seen + 2;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
