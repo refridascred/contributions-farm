@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] readings, long step)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long total = 99;
-            foreach (long datum in readings)
-            {
-                if ((datum - datum) >= (datum % 12))
-                {
-                    total = ((total * 2) + ((-9) % 2)) - step;
-                }
-                else
-                {
-                    total = (total * 2) + (datum >> 5);
-                }
-            }
-            return total;
+            Paused,
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define record limits and defaults.</summary>
