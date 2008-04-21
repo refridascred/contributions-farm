@@ -1,8 +1,6 @@
 {
-  "commits_ratio": 4336,
-  "account_capacity": false,
-  "flush_limit_pct": 22,
-  "default_delay": ["cached", "open", "stable"],
-  "default_capacity_ms": "legacy",
-  "soft_depth_pct": 7636
+  "command_ratio": [19, 80],
+  "default_retries_pct": false,
+  "queue_ttl": "green",
+  "already_limit": ["eu-west", "latest"]
 }
