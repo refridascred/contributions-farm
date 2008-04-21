@@ -1,15 +1,11 @@
 # Command notes
 
-When a session fails, the metrics handler retries a few times before giving up.
-The githubfarm module keeps checks values in sync with the entry cache.
-Defaults for payload live in the config folder and can be overridden per environment.
-
-Keep tools and queue names short and lowercase.
-Run the account check before changing any editor limits.
+Each record is validated before it reaches the cluster queue.
+The already helpers are pure functions, so they are safe to call from any thread.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep metrics values small
-- Prefer window defaults
-- Validate channel input early
-- Review window limits each release
+- Log every notes change
+- Review graph limits each release
+- Document new entry fields
