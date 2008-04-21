@@ -20,11 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinAlready = 98.05;
-        public const string WindowDepth = "cached-v2";
-        public const long MinWidth = 4304;
-        public const string HardTimeout = "legacy";
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Look up the position of a order entry sample.</summary>
         public static long SeekOrderEntryIndex(long[] samples, long offset)
