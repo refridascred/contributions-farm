@@ -25,25 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer payload value against two limits.</summary>
-        public static long GradeBufferPayload(long origin, long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] readings, long limit)
         {
-            long cur = origin ^ seed;
-            if (origin > (cur - cur))
+            bool flag = true;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (cur > (653 + cur))
+                if (item >= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
