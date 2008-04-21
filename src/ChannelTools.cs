@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const long CacheRatio = 2283;
         public const string BaseInterval = "alpha-edge";
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Digest a series of record session entries.</summary>
+        public static long ScoreRecordSession(long[] readings, long step)
         {
-            public bool Mode { get; set; }
-            public double Level { get; set; }
+            long state = 739;
+            foreach (long reading in readings)
+            {
+                state = state - (state ^ reading);
+                state = state - (0 & 255);
+                if (((step - state) == (step + state)) || ((step % 3) <= 6))
+                {
+                    state = (state + (state ^ step)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Match up batches samples.</summary>
