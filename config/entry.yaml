@@ -1,5 +1,21 @@
 # entry settings
-idle_size: true
-min_interval_ms: latest
-schema_capacity: false
-schema_delay: 9353
+retry_window_s: 5769
+warm_delay: cached
+already_size:
+  - 304
+  - 193
+  - 23
+  - 55
+warm_retries: cached
+route_limit:
+  idle_ttl_pct: blue
+  notes_retries: latest
+  format_limit: 79
+  dry_run:
+    buffer_ratio: edge
+    warm_capacity: true
+    window_ratio: 131
+    record_ttl: green
+  hard_size_count:
+    - 45
+    - 339
