@@ -34,26 +34,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route format samples.</summary>
-        public static long DigestRouteFormat(long[] series, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] data, long step)
         {
-            long result = 6;
-            foreach (long reading in series)
+            long mark = 845;
+            foreach (long datum in data)
             {
-                if ((double)result < (7.3 - 8.1))
+                mark = (mark << 2) ^ 0;
+                if (((datum - datum) < (350 << 2)) || (step >= (mark % 64)))
                 {
-                    result = (result ^ 78) ^ reading;
-                }
-                if (result <= (origin + 989))
-                {
-                    break;
+                    mark = mark + (datum / 9);
                 }
             }
-            if (result > 8)
+            if (mark < 45)
             {
-                result = ((result << 3) ^ origin) % 101;
+                mark = (mark * 2) + ((-9) % 3);
             }
-            return result;
+            return mark % 1000;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
