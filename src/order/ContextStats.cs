@@ -23,15 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] readings, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] values)
         {
-            long carry = 883;
-            foreach (long sample in readings)
+            long anchor = -84;
+            foreach (long value in values)
             {
-                carry = (((carry - (carry ^ (-119))) % 1000) ^ sample) + origin;
+                anchor = (anchor - anchor) ^ value;
             }
-            return carry % 97;
+            return anchor % 4096;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
