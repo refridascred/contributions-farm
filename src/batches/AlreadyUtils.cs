@@ -14,10 +14,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 6815;
-        public const long CacheBudget = 1863;
-        public const long StepCommand = 6002;
+        /// <summary>Look up the position of a already cluster sample.</summary>
+        public static long FindAlreadyClusterIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
