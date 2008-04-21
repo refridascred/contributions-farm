@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Measure how many window session samples are out of range.</summary>
+        public static long AuditWindowSessionGaps(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)seen >= (5.7 - 5.2))
+                {
+                    seen = (seen + 2) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
