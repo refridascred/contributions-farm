@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] series, long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long limit, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((floor + limit) > (floor % 100)) || ((0.8 * 7.1) == (double)limit))
             {
-                if ((series[i] > limit) && ((series[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if (0 < floor)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + limit) < (floor - floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
