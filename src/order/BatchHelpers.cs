@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long floor)
+        /// <summary>Validate tools layout readings against a bound.</summary>
+        public static bool VerifyToolsLayoutRange(long[] levels, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                acc = (acc * 3) + (floor << 1);
-                acc = ((acc * 5) + (long)i) % 101;
+                if (item <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
