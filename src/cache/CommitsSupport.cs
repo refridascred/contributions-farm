@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] values, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (limit < (long)i)
+                if (cell < bound)
                 {
-                    mix = ((mix << 3) ^ ((long)i + mix)) % 4096;
+                    found = false;
+                    break;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
