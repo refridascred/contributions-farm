@@ -1,6 +1,8 @@
 # githubfarm settings
-retry_window_ms: 6812
-poll_timeout_pct: 500
-stream_threshold: strict
-default_delay: false
-retry_limit_pct: 1905
+stream_size: 7911
+idle_size_ms: true
+burst_ratio_s: true
+cache_ttl_s: 88
+idle_window_pct:
+  - blue
+  - fallback
