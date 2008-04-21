@@ -1,16 +1,11 @@
 # support settings
-retry_window_s: 79
-sync_retries_pct: false
-base_depth_ms:
-  readonly: fallback
-  strict: true
-  session_timeout: green
-  max_depth_s:
-    - strict
-    - eu-west
-  hard_window: 66.79
-default_interval_ms: 250
-batch_limit_s: edge
-flush_ttl_pct:
-  - stable
-  - primary
+retry_delay_count: 67
+warm_delay_count:
+  - 31
+  - 124
+  - 398
+  - 91
+queue_ratio: eu-west
+enabled: 100
+base_delay_s: 47
+flush_retries_count: staging
