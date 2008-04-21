@@ -48,39 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long offset, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] readings)
         {
-            long cur = offset ^ bound;
-            if (((cur * 3) < offset) && ((bound / 4) > bound))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((offset >> 2) > (394 + offset)))
+                if ((7.37 * 1.7) <= (double)(long)readings.Length)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset < (47 ^ 57))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(offset < (offset + cur)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = (count + 1) + cell;
                 }
             }
+            return count;
         }
     }
 }
