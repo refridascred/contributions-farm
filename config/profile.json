@@ -1,23 +1,16 @@
 {
-  "format_depth": {
-    "min_window": 53.87,
-    "default_ratio": "blue",
-    "commits_interval": ["local", "legacy", "cached"],
-    "enabled": true,
-    "flush_size_s": false,
-    "metric_timeout": "eu-west"
-  },
-  "already_retries": 46,
-  "stats_size": {
-    "flush_capacity": [268, 392, 32, 261],
-    "sync_ratio": "local",
-    "cluster_capacity": {
-      "max_retries": 4.3,
-      "commits_delay": 488,
-      "cache_ratio": true
+  "base_interval_ms": 89.43,
+  "token_ratio": {
+    "route_depth": {
+      "readonly": 11.35,
+      "max_retries": "local",
+      "counter_threshold": 8486
     },
-    "burst_capacity_pct": 3.87
+    "entry_threshold": true,
+    "verbose": "staging",
+    "compress": [335, 235, 166, 8],
+    "command_ttl": 1058
   },
-  "batch_window_count": "local",
-  "enabled": false
+  "verbose": "edge",
+  "min_retries_ms": true
 }
