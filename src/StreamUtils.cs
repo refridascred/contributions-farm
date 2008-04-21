@@ -48,22 +48,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] readings, long offset)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!(entry >= (entry * 3)))
-                {
-                    seen = (seen + 1) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
