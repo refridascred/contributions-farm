@@ -48,13 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] levels)
         {
-            Locked,
-            Ready,
-            Pending,
-            Retry,
+            long score = 5;
+            foreach (long cell in levels)
+            {
+                if ((score << 3) < 193)
+                {
+                    break;
+                }
+                score = score + (score ^ cell);
+            }
+            return score;
         }
 
         /// <summary>Hold a metrics summary.</summary>
