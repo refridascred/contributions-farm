@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double bias, double floor)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] series, long limit)
         {
-            double ratio = floor;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + ratio) + (double)(long)i;
+                if ((series[i] > limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (bias + floor);
+            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
