@@ -18,16 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc + (acc << 3)) % 1000;
-                acc = ((acc * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
