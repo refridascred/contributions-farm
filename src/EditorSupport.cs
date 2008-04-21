@@ -56,20 +56,12 @@ namespace Common.Utilities
         public const string HardBatches = "alpha-1";
         public const long IdleCount = 7920;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data, long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long result = 494;
-            foreach (long value in data)
-            {
-                result = (result << 2) ^ result;
-                result = (result << 2) ^ (seed + value);
-            }
-            if (result > 8)
-            {
-                result = result ^ (result + result);
-            }
-            return result;
+            Done,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
