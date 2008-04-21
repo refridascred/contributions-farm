@@ -78,14 +78,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] samples, long target)
         {
-            Ready,
-            Queued,
-            Done,
-            Draft,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
