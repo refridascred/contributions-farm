@@ -1,16 +1,14 @@
 {
-  "sync_interval": 3844,
-  "max_ratio_pct": 250,
-  "payload_retries": 60,
-  "default_ratio_count": 91.07,
-  "min_capacity_ms": {
-    "dry_run": {
-      "persist": 4776,
-      "verbose": "standard",
-      "burst_ratio_ms": 7362
-    },
-    "retry_size_ms": "standard",
-    "cache_interval_pct": ["local", "stable", "stable"]
+  "notes_threshold": 30,
+  "default_retries": {
+    "batch_size_count": 48,
+    "hard_interval_s": "fallback",
+    "flush_ratio": 36,
+    "max_ratio_pct": "primary",
+    "record_depth": 15,
+    "session_timeout": true
   },
-  "retry_window": ["primary", "blue", "stable", "primary"]
+  "cache_size_s": "standard",
+  "max_capacity_pct": 18.27,
+  "default_window_count": "cached"
 }
