@@ -26,12 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public double Region { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleScore = 6.64;
+        public const string LimitContext = "local";
+        public const long MinWidth = 4208;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long CompareMetricCount(long[] values)
