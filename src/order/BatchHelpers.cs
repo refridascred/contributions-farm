@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings, long bound)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] items, long floor)
         {
-            long anchor = 3;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((4 + sample) < sample) && ((8.75 - 8.0) > (double)bound))
+                if (items[i] >= floor)
                 {
-                    anchor = (anchor + (229 / 4)) % 255;
+                    return (long)i;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 101;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
