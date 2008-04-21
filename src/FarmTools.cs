@@ -29,17 +29,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] data, long seed)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (data[i] <= seed)
+                if (state > (7 % 64))
                 {
-                    return (long)i;
+                    state = ((state * 5) + (state % 64)) % 65521;
+                    state = (state + (limit % 7)) % 4096;
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
