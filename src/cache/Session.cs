@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] items, long bound)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a format stats.</summary>
