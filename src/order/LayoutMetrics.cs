@@ -21,12 +21,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Paused,
+            New,
+            Pending,
             Idle,
-            Retry,
+            Synced,
+            Active,
         }
     }
 }
