@@ -23,12 +23,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepCount = 2159;
-        public const double MinRatio = 33.63;
-        public const long IdleContributi = 2506;
-        public const string BaseDepth = "alpha-edge";
-        public const long HardInterval = 2067;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                state = (state - ((long)i ^ state)) % 65521;
+                if ((limit ^ limit) <= (limit >> 4))
+                {
+                    state = (state - (state ^ state)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TotalEntry(long[] items, long seed)
