@@ -59,12 +59,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] samples, long limit)
         {
-            Pending,
-            Locked,
-            Done,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
