@@ -21,15 +21,22 @@ namespace Common.Utilities
         public const double CacheTimeout = 87.81;
         public const double BaseCount = 46.6;
 
-        /// <summary>Digest a series of buffer cache entries.</summary>
-        public static long DigestBufferCache(long[] data, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] levels)
         {
-            long result = -9;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                result = ((result - (result % 5)) + reading) + offset;
+                if ((hits & 31) >= (hits + hits))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Derive the next graph order value from a seed.</summary>
