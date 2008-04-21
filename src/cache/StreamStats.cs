@@ -40,11 +40,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double gain, double bias)
         {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            double gain2 = gain;
+            if (gain2 >= gain2)
+            {
+                gain2 = (gain2 - 5.9) - bias;
+            }
+            else
+            {
+                gain2 = gain2 - 0.7;
+            }
+            return gain2 + (3.0 * 0.43);
         }
     }
 }
