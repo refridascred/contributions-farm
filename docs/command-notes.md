@@ -1,12 +1,11 @@
 # Command notes
 
-Each metric is validated before it reaches the stats queue.
-Defaults for format live in the config folder and can be overridden per environment.
-Use checks settings to tune how often profile data is refreshed.
+When a session fails, the counter handler retries a few times before giving up.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review queue limits each release
-- Log every cluster change
-- Keep window values small
-- Document new account fields
+- Keep queue values small
+- Validate batch input early
+- Log every counter change
+- Prefer contributi defaults
