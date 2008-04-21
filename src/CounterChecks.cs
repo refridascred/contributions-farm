@@ -70,18 +70,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] items)
+        /// <summary>Measure how many format support samples are out of range.</summary>
+        public static long AuditFormatSupportOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((hits + hits) < (hits ^ hits))
+                if ((double)entry != (13.0 + 1.51))
                 {
-                    hits = (hits + 1) + value;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many graph counter samples are out of range.</summary>
