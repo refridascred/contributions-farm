@@ -13,18 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] samples)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] readings)
         {
-            long mix = 414;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((datum - mix) >= datum)
+                if (value > (894 & 127))
                 {
-                    mix = ((mix * 4) + datum) % 65521;
+                    count = count + 1;
                 }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
