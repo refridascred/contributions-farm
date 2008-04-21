@@ -1,11 +1,11 @@
 {
-  "poll_depth_ms": "latest",
-  "min_depth_pct": {
-    "base_size": true,
-    "base_retries_s": false,
-    "base_depth_s": 1513
+  "verbose": {
+    "already_threshold": "blue",
+    "default_limit_count": 23.96,
+    "default_capacity_pct": [348, 129, 4, 2],
+    "idle_ttl": "latest",
+    "warm_interval_s": false
   },
-  "idle_window": 9,
-  "enabled": "stable",
-  "strict": "staging"
+  "persist": "eu-west",
+  "soft_delay_ms": 1674
 }
