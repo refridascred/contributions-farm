@@ -27,14 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] readings)
         {
-            Queued,
-            Synced,
-            Paused,
-            Active,
-            Idle,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((16.0 / 6.0) > (double)hits)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
