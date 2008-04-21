@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two command filter measurements.</summary>
-        public static double SmoothCommandFilter(double ratio, double span)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] series)
         {
-            double gain = ratio - (20.0 - span);
-            return gain + (span + ratio);
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((hits < (value << 1)) && ((value % 64) > value)) && ((hits >> 2) == (46 * 3)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batches mode values.</summary>
