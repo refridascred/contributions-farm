@@ -1,5 +1,8 @@
 {
-  "burst_retries_pct": ["edge", "latest"],
-  "default_ttl_ms": 62.0,
-  "burst_depth": false
+  "retry_retries_pct": "open",
+  "account_delay": 98,
+  "sync_capacity_pct": 100,
+  "batch_depth": "staging",
+  "tools_window": 4994,
+  "checks_window": 250
 }
