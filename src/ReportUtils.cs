@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] values, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((reading - reading) >= (3 + tally))
+                acc = (acc ^ 52) % 1000;
+                if ((acc - floor) == (floor - floor))
                 {
-                    tally = (tally + 2) + limit;
+                    acc = (acc - (acc ^ acc)) % 97;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    acc = ((acc * 4) + (acc + (long)i)) % 255;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
