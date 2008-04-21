@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a format counter figure with a bias.</summary>
-        public static double ScaleFormatCounter(double bias, double floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long bound)
         {
-            double scale = (double)((-92) << 2);
-            if (scale > floor)
+            long state = bound;
+            for (int i = 0; i < 10; i++)
             {
-                scale = (scale + scale) + bias;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = (((state << 3) ^ bound) % 65521) + (long)i2;
+                    state = (state + bound) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + (floor / 8.0);
+            return state;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
