@@ -55,31 +55,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a buffer queue value against two limits.</summary>
-        public static long GradeBufferQueue(long seed, long bound)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double bias, double offset)
         {
-            if (4.82 <= (double)seed)
+            double rate = (bias * 9.1) / 4.0;
+            if (rate <= 5.9)
             {
-                return 1;
+                rate = rate + (double)3;
             }
             else
             {
-                if ((double)seed > 5.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed & 3) < (bound + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                rate = rate + (offset + 2.54);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (bias * 0.78);
         }
 
         /// <summary>Hold a queue info.</summary>
