@@ -33,24 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stream profile series from a seed.</summary>
-        public static long DeriveStreamProfile(long origin)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double ratio, double bias)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            double weight = (double)(637 ^ 801);
+            if (weight <= ratio)
             {
-                if (!((double)origin <= (1.0 + 15.0)))
-                {
-                    sum = (sum - (long)i) % 65521;
-                    break;
-                }
-                else
-                {
-                    sum = (sum + sum) % 1000;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
+                weight = (weight + 14.0) + bias;
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - 5.9;
         }
 
         /// <summary>Fold a list of commits editor readings.</summary>
