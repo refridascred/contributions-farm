@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Idle,
-            Queued,
-            Paused,
-            Draft,
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
