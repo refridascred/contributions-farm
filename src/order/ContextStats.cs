@@ -36,19 +36,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] samples, long limit)
+        /// <summary>Count the layout contributi entries that pass the check.</summary>
+        public static long MeasureLayoutContributiHits(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (entry >= limit)
+                if ((seed + item) <= (long)data.Length)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Accumulate batch farm samples.</summary>
