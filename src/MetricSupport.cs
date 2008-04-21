@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowStats = 7.38;
-        public const double LimitStats = 79.42;
-        public const long MaxSize = 2005;
-        public const long DefaultLevel = 6452;
-        public const string WindowFactor = "local";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxInterval = 9744;
+        public const long StepScore = 2089;
+        public const long CacheAccount = 4473;
+        public const string MinAccount = "legacy";
+        public const long RetrySize = 7156;
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
