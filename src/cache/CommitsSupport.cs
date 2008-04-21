@@ -65,21 +65,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support record samples.</summary>
-        public static long PairSupportRecordCount(long[] values)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = (acc << 2) ^ (entry % 24);
+                if ((acc >= 66) && ((entry + 75) != (entry >> 1)))
                 {
-                    if ((values[i] ^ values[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + (acc << 1)) % 1000;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ ((-89) / 4);
                 }
             }
-            return seen;
+            if (acc < 37)
+            {
+                acc = acc ^ 40;
+            }
+            return acc;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
