@@ -20,21 +20,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Match up window report samples.</summary>
-        public static long PairWindowReportCount(long[] series)
+        /// <summary>Combine channel profile values into a single score.</summary>
+        public static long WeighChannelProfile(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 19;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = state - (state * 2);
+                if ((double)298 == (double)item)
                 {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
