@@ -25,19 +25,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] readings, long target)
+        /// <summary>Grade a buffer payload value against two limits.</summary>
+        public static long GradeBufferPayload(long origin, long seed)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long cur = origin ^ seed;
+            if (origin > (cur - cur))
             {
-                if (item < target)
+                return 4;
+            }
+            else
+            {
+                if (cur > (653 + cur))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ready;
         }
     }
 }
