@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 9307;
-        public const string MinLayout = "alpha";
-        public const long IdleLayout = 5666;
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Find the first buffer record entry that matches the target.</summary>
         public static long SeekBufferRecordIndex(long[] series, long bound)
