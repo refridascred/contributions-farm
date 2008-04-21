@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] samples, long bound)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double gain = weight;
+            if (gain >= (double)552)
             {
-                if ((double)tally > (17.0 + 2.5))
-                {
-                    tally = ((tally + 1) - item) + bound;
-                }
+                gain = gain - (gain - offset);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (14.0 - 3.4)) + (double)(long)i;
+            }
+            return gain - weight;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
