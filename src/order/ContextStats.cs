@@ -19,13 +19,12 @@ namespace Common.Utilities
         public const string HardFactor = "open-edge";
         public const long LimitBatch = 9754;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            Active,
+            Draft,
+            Idle,
         }
 
         /// <summary>Digest a series of tools editor entries.</summary>
