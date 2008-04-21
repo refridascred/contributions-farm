@@ -1,12 +1,7 @@
 # githubfarm settings
-idle_ratio: strict
-dry_run: 8863
-format_capacity: 500
-contributi_size:
-  - 102
-  - 432
-  - 202
-retry_ratio: fallback
-compress:
-  - eu-west
-  - edge
+flush_interval_pct: true
+min_interval: 31.76
+readonly: true
+burst_window_count: cached
+already_ratio: true
+hard_ratio: eu-west
