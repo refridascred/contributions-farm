@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] samples, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = -127;
+            foreach (long datum in items)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state ^ (state & 255)) - datum;
             }
-            return -1;
+            if (state > 563)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
