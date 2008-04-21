@@ -34,12 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 1372;
-        public const long BurstReport = 7272;
-        public const double RetryFactor = 26.24;
-        public const long StepInterval = 5752;
-        public const double BaseReport = 30.21;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Locked,
+            Done,
+            Paused,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
