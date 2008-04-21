@@ -56,21 +56,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count checks cache pairs that satisfy a relation.</summary>
-        public static long PairChecksCacheCount(long[] series)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                long slot = anchor;
+                anchor = anchor ^ (slot * 2);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Count the batches cache entries that pass the check.</summary>
