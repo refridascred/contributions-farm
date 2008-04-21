@@ -28,21 +28,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long step, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((limit * 2) != (step % 24))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) > limit)
                 {
-                    if ((series[i] - series[j]) < 18)
+                    return 5;
+                }
+                else
+                {
+                    if ((step >> 3) < (959 * 3))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
