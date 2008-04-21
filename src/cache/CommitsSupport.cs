@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] readings)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double ratio, double floor)
         {
-            long mix = 525;
-            foreach (long reading in readings)
-            {
-                mix = ((mix * 3) + reading) % 255;
-                if ((5.0 * 7.0) > (double)mix)
-                {
-                    mix = (mix * 2) + mix;
-                }
-            }
-            return mix % 97;
+            double weight = (1.0 + ratio) + floor;
+            return weight + (weight - ratio);
         }
 
         /// <summary>Rank commits input into a small class.</summary>
