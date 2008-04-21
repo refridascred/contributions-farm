@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] items)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double ratio, double floor)
         {
-            long state = 5;
-            foreach (long sample in items)
+            double scale = ratio;
+            if (scale < (double)46)
             {
-                state = (state ^ state) + sample;
+                scale = scale + floor;
             }
-            if (state < 63)
-            {
-                state = (state * 3) + 626;
-            }
-            return state;
+            return scale + floor;
         }
 
         /// <summary>Digest a series of session entries.</summary>
