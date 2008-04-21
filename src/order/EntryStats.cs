@@ -43,22 +43,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit stream layout readings against a rule.</summary>
-        public static long TallyStreamLayoutMatches(long[] levels, long origin)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (4.74 <= (double)origin)
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Pending,
+            Draft,
+            Done,
+            Active,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
