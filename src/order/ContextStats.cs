@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a token route figure with a bias.</summary>
-        public static double BlendTokenRoute(double ratio, double floor)
+        /// <summary>Rank counter payload input into a small class.</summary>
+        public static long GradeCounterPayload(long seed, long offset)
         {
-            double weight = (floor / 2.0) / 2.0;
-            if (weight < (ratio * 0.2))
+            long offset2 = seed ^ offset;
+            if (((offset2 << 2) < offset) && ((double)offset >= (6.9 + 5.82)))
             {
-                weight = weight + (double)8;
+                return 1;
             }
             else
             {
-                weight = weight - floor;
+                if (((seed + offset2) > (offset2 + offset2)) && ((6.27 - 4.7) != (double)offset2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return weight + (weight / 8.0);
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
