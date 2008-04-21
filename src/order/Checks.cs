@@ -20,11 +20,20 @@ namespace Common.Utilities
         public const long SoftBuffer = 1328;
         public const string RetryTimeout = "cached";
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] data)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            long total = 867;
+            foreach (long sample in data)
+            {
+                if (!(((total % 8) <= 493) || ((total + total) >= (sample & 7))))
+                {
+                    total = total - (sample - total);
+                    total = (total + total) % 1000;
+                }
+                total = (total ^ (160 << 3)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
