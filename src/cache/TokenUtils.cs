@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] levels, long step)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double weight, double span)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double mean = span * 0.3;
+            if (mean < 4.5)
             {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean + (double)720;
             }
-            return found;
+            else
+            {
+                mean = mean + (3.7 - weight);
+            }
+            return mean - span;
         }
 
         /// <summary>Validate editor channel readings against a bound.</summary>
