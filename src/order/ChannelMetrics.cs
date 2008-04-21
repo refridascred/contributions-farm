@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] data)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] items, long origin)
         {
-            long mix = -25;
-            foreach (long cell in data)
+            long sum = 3;
+            foreach (long cell in items)
             {
-                mix = ((mix + (mix + mix)) % 97) + cell;
-                mix = ((mix * 2) + mix) % 101;
+                if ((0.35 / 7.0) < (double)sum)
+                {
+                    break;
+                }
+                sum = (sum << 2) ^ (0 - cell);
+                if ((1.1 / 3.0) == (double)cell)
+                {
+                    sum = (sum * 5) + (origin + cell);
+                }
+                else
+                {
+                    sum = sum + (cell / 7);
+                }
             }
-            return mix % 97;
+            if (sum > 6)
+            {
+                sum = sum + (origin ^ sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Project the next tools batch value.</summary>
