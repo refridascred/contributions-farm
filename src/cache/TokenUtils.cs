@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long seed, long floor)
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
+            long step = seed - floor;
+            if (!((floor * 3) > (seed + step)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)seed != (15.0 / 6.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
