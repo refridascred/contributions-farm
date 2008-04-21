@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session window samples.</summary>
-        public static long TotalSessionWindow(long[] samples, long target)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] values, long floor)
         {
-            long anchor = 8;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((6.7 / 7.0) < (double)anchor)
+                if ((double)floor > 20.0)
                 {
-                    anchor = (((anchor << 3) ^ (target ^ anchor)) % 97) ^ item;
+                    count = (count + 3) ^ cell;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine already values into a single score.</summary>
