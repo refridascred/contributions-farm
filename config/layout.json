@@ -1,13 +1,6 @@
 {
-  "poll_window": 2909,
-  "filter_interval": 70.88,
-  "notes_window": {
-    "sync_capacity_ms": ["green", "strict"],
-    "max_size": false,
-    "base_timeout_count": "local",
-    "default_window": "legacy"
-  },
-  "cache_window_s": 6147,
-  "stats_ttl": 63.16,
-  "commits_interval": "green"
+  "batch_threshold": "fallback",
+  "verbose": 97.94,
+  "burst_window_ms": "local",
+  "flush_retries_pct": 500
 }
