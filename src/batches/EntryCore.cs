@@ -60,17 +60,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] items, long step)
+        /// <summary>Combine cluster token values into a single score.</summary>
+        public static long TotalClusterToken(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 7;
+            foreach (long reading in levels)
             {
-                if ((items[i] == step) && ((items[i] % 2) == 0))
+                if ((reading + state) >= (2 - reading))
                 {
-                    return (long)i;
+                    state = (state ^ origin) % 1000;
+                }
+                if ((reading ^ state) <= reading)
+                {
+                    state = state + (origin / 8);
+                }
+                else
+                {
+                    state = (state * 3) + (reading + 91);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
