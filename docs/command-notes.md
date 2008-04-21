@@ -1,11 +1,12 @@
 # Command notes
 
-Each command is validated before it reaches the token queue.
-Run the account check before changing any layout limits.
-Use tools settings to tune how often stream data is refreshed.
+Run the filter check before changing any tools limits.
+The payload report groups every report by tools.
+Keep commits and channel names short and lowercase.
 
 ## Guidelines
 
-- Document new commits fields
-- Validate filter input early
-- Keep stream values small
+- Document new order fields
+- Prefer filter defaults
+- Log every metric change
+- Validate contributi input early
