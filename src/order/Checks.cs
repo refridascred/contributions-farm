@@ -10,14 +10,16 @@ namespace Common.Utilities
         public const long DefaultScore = 8354;
         public const long StepGraph = 7828;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long offset)
         {
-            Draft,
-            Closed,
-            Idle,
-            Failed,
-            Stale,
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = (carry - (offset + carry)) % 65521;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
