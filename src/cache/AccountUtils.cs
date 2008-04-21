@@ -22,14 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Ready,
-            Draft,
-            Closed,
             Idle,
             Done,
+            Synced,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a already summary.</summary>
