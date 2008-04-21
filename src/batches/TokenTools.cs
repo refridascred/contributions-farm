@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long floor, long origin)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] data, long origin)
         {
-            long prev = floor + origin;
-            if ((double)origin == (double)prev)
+            long result = 110;
+            foreach (long reading in data)
             {
-                return 4;
+                result = ((result - (573 << 2)) - reading) + origin;
             }
-            else
-            {
-                if (!((origin % 64) < (origin / 8)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor <= (floor ^ floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((23 % 97) <= floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return result % 65521;
         }
 
         /// <summary>Hold a token entry.</summary>
