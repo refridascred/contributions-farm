@@ -1,17 +1,25 @@
 # githubfarm settings
-readonly: 3688
-checks_size:
-  stream_interval: true
-  soft_limit_count: legacy
-  dry_run:
-    tools_ttl: 30
-    schema_depth: 250
-    batch_retries_pct: primary
-    default_retries_pct: 6.14
-  cache_ttl: 9536
-  default_timeout_ms: latest
-  max_ratio_count: true
-soft_threshold: 500
-base_depth_pct: 90
-poll_threshold_s: false
-support_ratio: 27.22
+base_delay:
+  idle_size_count:
+    - fallback
+    - edge
+    - edge
+  min_limit: fallback
+  batch_delay: 1254
+farm_threshold: 12.77
+min_retries:
+  soft_retries_pct:
+    burst_ttl: 10.62
+    notes_ratio: 41
+    poll_window_count: 41.53
+    tools_size: false
+  session_retries: 7101
+  format_ratio: false
+  schema_window: 9135
+  profile_depth: 500
+  enabled:
+    base_window_pct: 100
+    verbose: 60
+    graph_capacity: false
+    poll_limit_count: 2.01
+    batch_limit: 7
