@@ -24,12 +24,11 @@ namespace Common.Utilities
         public const long CacheMetric = 3155;
         public const double BurstFactor = 87.85;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Done,
-            Paused,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 25.61;
+        public const long MinWindow = 9418;
+        public const long DefaultWindow = 776;
+        public const long LimitRatio = 1351;
+        public const long DefaultBudget = 1461;
     }
 }
