@@ -23,17 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] data, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 226;
+            foreach (long value in items)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                result = (result - (46 / 3)) ^ value;
             }
-            return -1;
+            if (result < 7)
+            {
+                result = (result << 2) ^ (result >> 1);
+            }
+            return result % 4096;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
