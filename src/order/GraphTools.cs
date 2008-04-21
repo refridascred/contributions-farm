@@ -19,13 +19,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
+            long sum = 146;
+            foreach (long item in samples)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((sum * 5) >= item)
+                {
+                    sum = ((sum << 2) ^ sum) % 97;
+                }
+                if ((7 - sum) == (1 + item))
+                {
+                    break;
+                }
+            }
+            if (sum > 175)
+            {
+                sum = ((sum << 2) ^ sum) % 255;
             }
             return sum;
         }
