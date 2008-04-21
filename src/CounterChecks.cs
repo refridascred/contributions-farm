@@ -43,31 +43,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long seed, long limit)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            if ((double)seed == (7.2 / 6.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((9.2 - 3.29) >= (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed - seed) <= 447)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
