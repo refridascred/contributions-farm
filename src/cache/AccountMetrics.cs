@@ -62,12 +62,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 1038;
+        public const long DefaultDepth = 2655;
+        public const double MinDepth = 20.11;
+        public const string StepBudget = "strict-1";
+        public const long MinQueue = 9001;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheTimeout = 2837;
