@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
