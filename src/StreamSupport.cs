@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const long CacheMetric = 3155;
         public const double BurstFactor = 87.85;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] samples)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item == (8.26 / 5.0))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            New,
         }
     }
 }
