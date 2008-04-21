@@ -1,20 +1,11 @@
 {
-  "verbose": 6340,
-  "poll_depth": 30,
-  "poll_interval": 68.76,
-  "max_limit_s": {
-    "audit": 500,
-    "command_limit": ["standard", "stable"],
-    "default_ratio": {
-      "burst_depth_ms": "stable",
-      "account_size": false,
-      "retry_size_pct": "green",
-      "sync_ratio": "local",
-      "batch_ratio": 17.47
-    },
-    "poll_delay_ms": ["staging", "local"],
-    "default_capacity_s": 100
+  "route_interval": {
+    "metrics_timeout": "staging",
+    "graph_interval": 5.07,
+    "poll_window_ms": 9.57
   },
-  "flush_capacity_count": false,
-  "strict": 48.09
+  "max_capacity_count": false,
+  "retry_capacity_count": ["standard", "green", "edge", "latest"],
+  "poll_ttl_pct": 30,
+  "tools_depth": false
 }
