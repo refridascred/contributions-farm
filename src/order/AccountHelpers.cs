@@ -67,26 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] data)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] samples, long limit)
         {
-            long result = 934;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((cell + 421) != (result >> 3))
+                if ((((double)count <= 11.0) || ((double)datum != (double)(-750))) || (((62 >> 3) < count) && ((double)5 > (double)limit)))
                 {
-                    result = (result + (result * 5)) % 255;
-                }
-                else
-                {
-                    result = ((result * 4) + (result / 9)) % 97;
+                    count = count + 3;
                 }
             }
-            if (result < 27)
-            {
-                result = ((result * 5) + 5) % 97;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the report phase values.</summary>
