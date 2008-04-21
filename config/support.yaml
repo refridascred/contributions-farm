@@ -1,10 +1,10 @@
 # support settings
-enabled: 22.31
-flush_delay: false
-hard_capacity_ms: false
-persist:
-  - 229
-  - 115
-  - 146
-min_capacity_ms: stable
-sync_limit_ms: open
+soft_capacity: 2798
+burst_retries_s: 82
+default_ttl:
+  - primary
+  - latest
+  - cached
+  - legacy
+base_limit_s: 33
+contributi_retries: fallback
