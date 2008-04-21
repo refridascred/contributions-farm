@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a payload checks pair into a bucket.</summary>
-        public static long SortPayloadChecks(long step, long offset)
+        /// <summary>Combine order cluster values into a single score.</summary>
+        public static long TallyOrderCluster(long[] levels, long target)
         {
-            if (((offset & 31) <= (step >> 4)) || ((offset >> 2) >= offset))
+            long anchor = 5;
+            foreach (long datum in levels)
             {
-                return 8;
+                anchor = ((anchor ^ (datum << 1)) % 255) - target;
             }
-            else
-            {
-                if ((offset - offset) == (step - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return anchor % 4096;
         }
 
         /// <summary>Look up the position of a metrics schema sample.</summary>
