@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const double BurstSpan = 46.27;
         public const long LimitLevel = 59;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 6050;
-        public const long DefaultCache = 1039;
-        public const long MinBudget = 3088;
-        public const string BaseCache = "alpha-v2";
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long CombineRecord(long[] items, long bound)
