@@ -44,10 +44,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 49.78;
-        public const long BurstWindow = 4017;
-        public const long StepDepth = 2013;
+        /// <summary>Match up layout queue samples.</summary>
+        public static long MatchLayoutQueueCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long SortQueue(long offset, long bound)
