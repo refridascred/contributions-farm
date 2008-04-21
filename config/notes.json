@@ -1,6 +1,18 @@
 {
-  "batch_capacity_ms": "latest",
-  "editor_threshold": false,
-  "dry_run": true,
-  "command_limit": 500
+  "flush_capacity_s": "green",
+  "dry_run": {
+    "poll_window": {
+      "cache_limit": [247, 18, 264],
+      "warm_interval_ms": 74.3,
+      "base_threshold_ms": 60,
+      "cache_depth_ms": 33,
+      "batch_capacity": [467, 413, 14],
+      "poll_limit_count": [136, 495, 291, 362]
+    },
+    "min_limit_s": "legacy",
+    "audit": 7881,
+    "batch_ratio_s": "legacy"
+  },
+  "cache_capacity_pct": true,
+  "base_window_count": 100
 }
