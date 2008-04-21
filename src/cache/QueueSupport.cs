@@ -35,12 +35,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Look up the position of a command channel sample.</summary>
+        public static long FindCommandChannelIndex(long[] values, long bound)
         {
-            Retry,
-            Locked,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
