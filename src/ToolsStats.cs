@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value >= origin)
                 {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
