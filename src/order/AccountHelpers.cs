@@ -40,21 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long floor, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor & 15) <= (floor + 127))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit <= (1.3 / 2.0))
                 {
-                    if ((samples[i] + samples[j]) == 7)
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)limit != (double)floor))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit == (3.0 * 9.7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a order entry sample.</summary>
