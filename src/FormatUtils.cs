@@ -29,25 +29,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long target, long bound)
-        {
-            if ((bound >> 2) < 90)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target >= (target + target)) || ((bound - 293) >= (bound & 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleRatio = 2006;
+        public const string RetryBudget = "latest";
+        public const long BurstSize = 1710;
+        public const long IdleBatches = 228;
+        public const long CacheBatches = 9372;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long WeighEditor(long[] values, long seed)
