@@ -1,6 +1,7 @@
-id,score,count
-1,652,strict
-2,strict,primary
-3,608,89.02
-4,112,134
-5,314,869
+id,ratio,region,owner
+1,13.53,cached,878
+2,748,218,83.64
+3,162,537,edge
+4,552,429,39.93
+5,125,staging,strict
+6,latest,984,82.33
