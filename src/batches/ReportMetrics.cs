@@ -20,31 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long limit, long seed)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long bound)
         {
-            if ((limit + (-193)) <= seed)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed < (3.28 - 2.04))
+                total = ((total * 4) + (bound >> 3)) % 65521;
+                if (!((total + total) > (total + 547)))
                 {
-                    return 8;
+                    total = ((total * 5) + total) % 97;
                 }
-                else
-                {
-                    if ((1 + limit) != (limit % 100))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Count the channel order entries that pass the check.</summary>
