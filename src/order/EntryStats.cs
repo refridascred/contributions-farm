@@ -24,15 +24,16 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Iterate the buffer cluster series from a seed.</summary>
+        public static long SeriesBufferCluster(long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                sum = (sum + sum) % 255;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Blend two cache measurements.</summary>
