@@ -70,14 +70,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Pending,
-            New,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 6796;
+        public const double MinAlready = 88.49;
+        public const long BaseAlready = 2307;
+        public const double BurstAlready = 76.59;
+        public const long CacheAlready = 1158;
 
         /// <summary>Match up notes samples.</summary>
         public static long MatchNotesCount(long[] series)
