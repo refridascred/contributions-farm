@@ -35,14 +35,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Rank command payload input into a small class.</summary>
+        public static long ClassifyCommandPayload(long bound, long seed)
         {
-            Paused,
-            Done,
-            Ready,
-            Idle,
-            New,
+            long next = bound ^ seed;
+            if ((double)seed <= (double)62)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed << 2) <= (bound + (-2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)next != (7.83 / 7.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(((-5) + (-185)) >= (bound ^ next)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
