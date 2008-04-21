@@ -1,9 +1,7 @@
-id,owner,score
-1,7.41,51.1
-2,66.55,edge
-3,83.27,18.61
-4,32,643
-5,123,standard
-6,primary,fallback
-7,39.85,69
-8,primary,60.44
+id,region,count
+1,367,eu-west
+2,green,713
+3,657,576
+4,183,19.06
+5,96.42,391
+6,20.77,527
