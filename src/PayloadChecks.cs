@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] levels)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((matches - matches) > (value << 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
