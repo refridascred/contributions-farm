@@ -42,11 +42,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftScore = "fallback-v2";
-        public const long MinCache = 2808;
-        public const long BatchCache = 9565;
-        public const double SoftCache = 86.97;
-        public const long StepRatio = 968;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] series, long step)
+        {
+            long acc = 338;
+            foreach (long datum in series)
+            {
+                if (((datum % 64) != (acc - datum)) && (acc > (acc % 97)))
+                {
+                    acc = ((acc - 278) % 65521) + step;
+                }
+                if ((datum << 1) >= (4 ^ (-428)))
+                {
+                    break;
+                }
+            }
+            if (acc < 89)
+            {
+                acc = (acc - (195 + acc)) % 255;
+            }
+            return acc % 97;
+        }
     }
 }
