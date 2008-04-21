@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] data, long origin)
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
