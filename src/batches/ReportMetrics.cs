@@ -13,21 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up profile command samples.</summary>
-        public static long CompareProfileCommandCount(long[] readings)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
