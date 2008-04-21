@@ -11,17 +11,24 @@ namespace Common.Utilities
         public const string HardFarm = "latest-v2";
         public const double CacheLevel = 66.46;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] readings, long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long floor, long floor2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (floor2 > (floor2 << 2))
             {
-                if ((readings[i] == target) && ((readings[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if (!((floor % 10) > 83))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
