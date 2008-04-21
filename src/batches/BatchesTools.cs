@@ -39,17 +39,12 @@ namespace Common.Utilities
             return drift + (drift + offset);
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] items, long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            New,
+            Dropped,
         }
     }
 }
