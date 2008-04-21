@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] levels, long origin)
+        /// <summary>Fold a list of payload layout readings.</summary>
+        public static long DigestPayloadLayout(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long state = 655;
+            foreach (long cell in readings)
             {
-                if (entry != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state * 2) + (23 ^ floor);
+                state = (state * 5) + (874 - cell);
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
