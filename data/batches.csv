@@ -1,7 +1,10 @@
-id,level,rank,label,region
-1,blue,primary,45.27,656
-2,349,921,395,52.98
-3,588,32.26,cached,green
-4,legacy,7.14,22,513
-5,legacy,627,762,10.98
-6,621,86,462,68.52
+id,label,owner,rank
+1,880,55.47,82.32
+2,98.25,55.85,open
+3,fallback,standard,484
+4,842,local,91
+5,strict,756,281
+6,29.83,433,464
+7,14.87,open,fallback
+8,746,cached,196
+9,legacy,60.15,11.94
