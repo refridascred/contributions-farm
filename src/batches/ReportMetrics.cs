@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double scale, double bias)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            double weight = 5.45;
-            if (weight > 3.18)
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                weight = weight + scale;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (weight + bias)) + (double)(long)i;
-            }
-            return weight - (17.0 / 9.0);
+            return sum;
         }
 
         /// <summary>Measure how many batch filter samples are out of range.</summary>
