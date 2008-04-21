@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheRatio = 9315;
-        public const long BasePayload = 4442;
-        public const long IdleScore = 3377;
-        public const string IdlePayload = "legacy";
-        public const double BurstLevel = 50.0;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double weight, double span)
+        {
+            double ratio = (double)(60 + 340);
+            if (ratio <= 1.0)
+            {
+                ratio = ratio + (weight - weight);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio - (double)6;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] data, long target)
