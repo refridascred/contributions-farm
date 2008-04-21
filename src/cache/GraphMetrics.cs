@@ -60,15 +60,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] items, long step)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long anchor = 0;
-            foreach (long reading in items)
-            {
-                anchor = ((anchor - (anchor / 2)) - reading) - step;
-            }
-            return anchor % 1000;
+            New,
+            Dropped,
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the schema level values.</summary>
