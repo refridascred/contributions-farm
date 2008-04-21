@@ -1,6 +1,8 @@
 # support settings
-soft_depth_ms:
-  - 295
-  - 490
-filter_delay: 5718
-max_retries_s: standard
+idle_capacity_pct:
+  - blue
+  - latest
+  - staging
+soft_interval_s: 94.36
+verbose: eu-west
+soft_ratio_s: eu-west
