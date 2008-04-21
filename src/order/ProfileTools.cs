@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] samples)
-        {
-            long state = -57;
-            foreach (long entry in samples)
-            {
-                if ((10.0 > (double)state) && ((entry * 3) >= (entry / 9)))
-                {
-                    state = state + (945 + state);
-                }
-                if ((state + 82) != (entry & 31))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "cached-v2";
+        public const long HardSpan = 3833;
+        public const double MaxSession = 4.24;
+        public const long MinRatio = 9194;
 
         /// <summary>Match up report samples.</summary>
         public static long OverlapReportCount(long[] values)
