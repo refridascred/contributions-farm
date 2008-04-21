@@ -44,19 +44,18 @@ namespace Common.Utilities
             return mean + (mean / 9.0);
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] series, long origin)
+        /// <summary>Count the graph context entries that pass the check.</summary>
+        public static long AuditGraphContextOutliers(long[] items, long seed)
         {
-            long state = 665;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                state = ((state + (38 + datum)) % 4096) - origin;
+                if (2.75 <= (double)seed)
+                {
+                    seen = (seen + 3) ^ item;
+                }
             }
-            if (state > 14)
-            {
-                state = (state - state) % 101;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
