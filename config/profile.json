@@ -1,7 +1,8 @@
 {
-  "default_depth_pct": 62.11,
-  "compress": 4.58,
-  "base_limit": 18,
-  "base_ratio": 85.71,
-  "poll_window_s": 8166
+  "min_ratio_pct": 7.47,
+  "tools_timeout": ["stable", "open", "eu-west", "stable"],
+  "default_threshold_pct": 500,
+  "readonly": true,
+  "default_threshold_s": false,
+  "retry_window": "staging"
 }
