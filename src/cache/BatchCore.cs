@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Count the notes batch entries that pass the check.</summary>
+        public static long CountNotesBatchOutliers(long[] levels, long target)
         {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (((target - reading) <= tally) || ((double)tally >= (13.0 * 2.74)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
