@@ -32,19 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] samples)
         {
-            long score = 73;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score - (score + score)) ^ entry;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score > 410)
-            {
-                score = (score + (788 + 73)) % 97;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the schema kind values.</summary>
