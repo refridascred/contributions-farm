@@ -39,10 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowDepth = 5193;
-        public const long RetryCount = 2470;
-        public const long BaseCounter = 22;
-        public const long CacheCounter = 3895;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Idle,
+            Active,
+            Pending,
+            Synced,
+        }
     }
 }
