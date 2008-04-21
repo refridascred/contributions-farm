@@ -10,16 +10,13 @@ namespace Common.Utilities
         public const long LimitCount = 3870;
         public const long MinWidth = 889;
 
-        /// <summary>Roll a notes buffer counter forward.</summary>
-        public static long DeriveNotesBuffer(long bound)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = carry + (carry + 561);
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Draft,
+            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
