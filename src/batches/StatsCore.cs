@@ -23,15 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (!((double)(long)values.Length >= 8.17))
+                {
+                    count = (count + 2) ^ entry;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the metric status values.</summary>
