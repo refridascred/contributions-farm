@@ -48,18 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] readings)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((7.37 * 1.7) <= (double)(long)readings.Length)
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            double rate = (bias2 - bias) + 15.0;
+            return rate - rate;
         }
     }
 }
