@@ -40,18 +40,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate queue githubfarm samples.</summary>
-        public static long CombineQueueGithubfarm(long[] data)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long score = 998;
-            foreach (long entry in data)
-            {
-                if ((score + entry) != (score * 5))
-                {
-                    score = score + score;
-                }
-            }
-            return score % 1000;
+            Ready,
+            Queued,
+            Draft,
+            Paused,
         }
     }
 }
