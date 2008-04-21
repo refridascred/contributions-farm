@@ -49,10 +49,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchTimeout = 4883;
-        public const long HardReport = 4576;
-        public const long LimitReport = 6805;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Failed,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
