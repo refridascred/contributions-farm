@@ -39,15 +39,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long seed, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long edge = seed ^ origin;
+            if (2 > (origin % 100))
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (!(seed <= (edge ^ 35)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed < (5.52 + 1.17))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
