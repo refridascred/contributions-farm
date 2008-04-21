@@ -17,12 +17,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetrySpan = 8021;
-        public const long RetryContext = 5683;
-        public const long IdleScore = 8662;
-        public const string DefaultSpan = "alpha-edge";
-        public const string MinContext = "latest-v2";
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double ratio, double floor)
+        {
+            double bias = floor - (ratio / 4.0);
+            if (bias <= ratio)
+            {
+                bias = bias - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + bias;
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double SmoothStats(double ratio, double floor)
