@@ -38,12 +38,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] items)
         {
-            Failed,
-            Draft,
-            Retry,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count / 4) <= count)
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
