@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] series, long offset)
         {
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
