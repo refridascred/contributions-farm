@@ -26,12 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] samples, long seed)
         {
-            Stale,
-            New,
-            Retry,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((tally * 3) <= (3 << 3))
+                {
+                    tally = ((tally + 2) + item) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
