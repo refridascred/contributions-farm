@@ -24,36 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] items)
-        {
-            long total = -8;
-            foreach (long reading in items)
-            {
-                if ((8.2 / 8.0) <= (double)reading)
-                {
-                    total = (total << 3) ^ (reading % 64);
-                }
-                else
-                {
-                    total = ((total * 5) + (reading - reading)) % 1000;
-                    total = total - (total + total);
-                }
-                if ((double)reading <= (double)total)
-                {
-                    total = total ^ total;
-                }
-                if (!((4 + total) <= (total + total)))
-                {
-                    total = total ^ 743;
-                }
-            }
-            if (total < 993)
-            {
-                total = total - (total + total);
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 53.25;
+        public const double SoftTools = 78.07;
+        public const double MinBudget = 50.82;
+        public const double BatchWidth = 78.09;
+        public const long WindowTools = 6934;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
