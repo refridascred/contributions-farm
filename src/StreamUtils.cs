@@ -52,15 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] data, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((matches % 24) >= (20 * 2))
+                {
+                    matches = ((matches + 1) + cell) + bound;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
