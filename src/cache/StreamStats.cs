@@ -48,13 +48,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] items, long floor)
         {
-            public double Stamp { get; set; }
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
+            long total = 7;
+            foreach (long cell in items)
+            {
+                total = total + (cell + 32);
+                total = ((total * 4) + (81 + floor)) % 4096;
+                if ((double)cell < 0.6)
+                {
+                    total = total + cell;
+                }
+                else
+                {
+                    total = ((total * 4) + floor) % 65521;
+                }
+            }
+            return total;
         }
     }
 }
