@@ -41,17 +41,28 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a channel payload sample.</summary>
-        public static long LookupChannelPayloadIndex(long[] series, long step)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (series[i] <= step)
+                if (((double)carry < (8.0 * 4.27)) && (carry < ((long)i & 127)))
                 {
-                    return (long)i;
+                    carry = (carry ^ ((long)i * 4)) % 255;
+                    break;
                 }
+                else
+                {
+                    carry = ((carry * 3) + (seed + seed)) % 1000;
+                }
+                if (seed < (seed ^ seed))
+                {
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
