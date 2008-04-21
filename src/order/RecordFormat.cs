@@ -40,13 +40,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Count the farm stats entries that pass the check.</summary>
+        public static long AuditFarmStatsMatches(long[] levels)
         {
-            Paused,
-            Dropped,
-            Retry,
-            Stale,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)47 >= (double)seen)
+                {
+                    seen = (seen + 2) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
