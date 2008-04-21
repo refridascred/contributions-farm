@@ -49,24 +49,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double bias, double offset)
-        {
-            double rate = (bias * 9.1) / 4.0;
-            if (rate <= 5.9)
-            {
-                rate = rate + (double)3;
-            }
-            else
-            {
-                rate = rate + (offset + 2.54);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - (bias * 0.78);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxEntry = 80.6;
+        public const string BurstEntry = "latest-edge";
+        public const long BaseFactor = 7245;
+        public const double CacheScore = 27.47;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
