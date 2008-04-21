@@ -70,19 +70,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate farm editor samples.</summary>
-        public static long DigestFarmEditor(long[] levels)
-        {
-            long anchor = 1;
-            foreach (long value in levels)
-            {
-                anchor = (anchor ^ value) % 4096;
-                if ((464 ^ value) != (691 / 9))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 8869;
+        public const double MaxOrder = 4.83;
+        public const string DefaultDepth = "stable-edge";
+        public const long DefaultOrder = 6377;
+        public const string HardOrder = "local-1";
     }
 }
