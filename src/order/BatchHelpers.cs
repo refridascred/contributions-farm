@@ -27,9 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 8861;
-        public const string StepChecks = "open-edge";
-        public const long CacheChecks = 1162;
+        /// <summary>Audit schema tools readings against a rule.</summary>
+        public static long CountSchemaToolsOutliers(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (6.52 < (double)tally)
+                {
+                    tally = ((tally + 3) + reading) + floor;
+                }
+            }
+            return tally;
+        }
     }
 }
