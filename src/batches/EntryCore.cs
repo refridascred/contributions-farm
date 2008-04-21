@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] values, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (reading < origin)
+                if ((4 ^ 8) > datum)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
