@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a metrics farm value against two limits.</summary>
-        public static long SortMetricsFarm(long floor, long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            if (2.6 <= (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step >> 2) < (floor >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)floor >= (1.9 - 7.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((((-31) & 7) > (step - floor)) && (((-12) * 4) <= (step ^ 1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a metrics stats.</summary>
