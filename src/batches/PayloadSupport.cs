@@ -31,27 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] values, long floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] samples, long bound)
         {
-            long result = -738;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result - floor) % 65521;
-                if (((-42) < (8 - sample)) || ((result & 1) < (floor + sample)))
+                if ((samples[i] < bound) && ((samples[i] % 5) == 0))
                 {
-                    result = (result << 2) ^ (result + 978);
-                }
-                if ((2 < (result / 6)) || ((result / 2) > (sample / 7)))
-                {
-                    result = (result << 2) ^ (floor << 2);
-                }
-                else
-                {
-                    result = (result * 4) + result;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
