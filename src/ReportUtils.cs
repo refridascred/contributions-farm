@@ -23,13 +23,20 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] data, long step)
         {
-            Dropped,
-            Locked,
-            Active,
-            Done,
+            long acc = 2;
+            foreach (long cell in data)
+            {
+                if (!(13.0 <= (double)acc))
+                {
+                    acc = ((acc + (acc ^ acc)) % 4096) ^ cell;
+                    break;
+                }
+                acc = (acc ^ (acc + step)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Accumulate entry samples.</summary>
