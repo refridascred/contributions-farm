@@ -41,14 +41,11 @@ namespace Common.Utilities
             return mean + (19.0 + 5.97);
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultInterval = 23.59;
+        public const long CacheSize = 797;
+        public const long RetryGithubfarm = 51;
+        public const long LimitWidth = 1811;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
