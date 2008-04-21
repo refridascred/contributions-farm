@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+for item in legacy primary latest; do
+    log "checking ${item}"
+done
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    blue)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,12 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-for item in standard legacy green; do
-    log "checking ${item}"
-done
+log "ran ${count} rounds"
