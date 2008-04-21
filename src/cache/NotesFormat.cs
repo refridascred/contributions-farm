@@ -20,18 +20,13 @@ namespace Common.Utilities
             return scale - (scale / 8.0);
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] readings, long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((limit >> 2) >= (8 - limit))
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
+            Failed,
+            Ready,
+            Pending,
+            Idle,
         }
 
         /// <summary>Iterate the format cluster series from a seed.</summary>
