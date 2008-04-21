@@ -18,32 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a profile record pair into a bucket.</summary>
-        public static long GradeProfileRecord(long floor, long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] series, long floor)
         {
-            long bound = floor - target;
-            if ((5.8 * 7.14) <= (double)floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (target > (floor + bound))
+                if (series[i] > floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor == (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cache options.</summary>
