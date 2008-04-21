@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Draft,
-            Paused,
-            Queued,
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
