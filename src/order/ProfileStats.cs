@@ -42,22 +42,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many order support samples are out of range.</summary>
-        public static long CountOrderSupportGaps(long[] series)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample != (3.1 * 9.6))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
