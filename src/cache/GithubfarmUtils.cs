@@ -14,20 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] readings, long origin)
-        {
-            long mark = 834;
-            foreach (long cell in readings)
-            {
-                mark = mark - mark;
-                if (((double)origin != (double)cell) && (mark < (mark + mark)))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 5569;
+        public const long IdleGithubfarm = 3883;
+        public const double DefaultTimeout = 44.5;
+        public const long BaseScore = 2070;
+        public const string MinFactor = "staging-edge";
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryMatches(long[] values)
