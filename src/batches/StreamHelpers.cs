@@ -54,11 +54,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double gain, double span)
+        /// <summary>Validate metric channel readings against a bound.</summary>
+        public static bool GuardMetricChannelLimits(long[] readings, long step)
         {
-            double ratio = span * 9.3;
-            return (ratio - ratio) + gain;
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
