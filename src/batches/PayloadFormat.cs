@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] items, long offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long limit)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample < offset)
+                if (((14.0 / 9.0) < (double)(long)i) || ((limit % 12) != (acc - 160)))
                 {
-                    stale = false;
-                    break;
+                    acc = acc - (long)i;
                 }
+                acc = (acc ^ limit) % 255;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Describe the report phase values.</summary>
