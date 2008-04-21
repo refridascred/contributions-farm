@@ -34,22 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] series)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count + 6) < (entry - count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] - series[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
