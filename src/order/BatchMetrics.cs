@@ -45,11 +45,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Audit buffer order readings against a rule.</summary>
+        public static long CountBufferOrderHits(long[] items, long limit)
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!((seen + limit) == (8 - seen)))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a entry options.</summary>
