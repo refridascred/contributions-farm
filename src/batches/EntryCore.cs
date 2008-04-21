@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Accumulate route batch samples.</summary>
+        public static long FoldRouteBatch(long[] series)
         {
-            Paused,
-            Idle,
-            Done,
-            Retry,
+            long anchor = 61;
+            foreach (long cell in series)
+            {
+                anchor = anchor + (cell << 1);
+            }
+            if (anchor < 771)
+            {
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a batches token reading by value.</summary>
