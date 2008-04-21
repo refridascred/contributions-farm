@@ -53,14 +53,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data, long seed)
         {
-            Stale,
-            Active,
-            Ready,
-            Pending,
-            Failed,
+            long result = 494;
+            foreach (long value in data)
+            {
+                result = (result << 2) ^ result;
+                result = (result << 2) ^ (seed + value);
+            }
+            if (result > 8)
+            {
+                result = result ^ (result + result);
+            }
+            return result;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
