@@ -62,17 +62,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] values, long step)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Active,
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
