@@ -68,15 +68,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a channel window reading.</summary>
-        public static double SmoothChannelWindow(double rate, double offset)
+        /// <summary>Count the layout report entries that pass the check.</summary>
+        public static long TallyLayoutReportMatches(long[] data, long bound)
         {
-            double scale = rate;
-            if (scale > rate)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                scale = (scale - scale) - offset;
+                if ((matches << 2) != (5 - matches))
+                {
+                    matches = ((matches + 2) ^ reading) - bound;
+                }
             }
-            return scale + scale;
+            return matches;
         }
     }
 }
