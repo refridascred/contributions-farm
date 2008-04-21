@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Dropped,
-            Queued,
-            Synced,
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
