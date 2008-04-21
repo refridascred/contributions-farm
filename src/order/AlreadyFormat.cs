@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] series, long floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a cache header.</summary>
