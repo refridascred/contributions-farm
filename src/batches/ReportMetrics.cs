@@ -13,11 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            long sum = 9;
+            foreach (long value in series)
+            {
+                if (value >= (value + 2))
+                {
+                    sum = (sum ^ value) % 97;
+                }
+            }
+            if (sum > 1)
+            {
+                sum = sum + sum;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of session readings.</summary>
