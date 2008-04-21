@@ -27,21 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metric account samples.</summary>
-        public static long OverlapMetricAccountCount(long[] readings)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Pending,
+            Stale,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
