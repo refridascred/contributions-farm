@@ -36,15 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double gain, double floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] values, long target)
         {
-            double mean = gain;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                mean = ((mean - gain) + (double)(long)i) + floor;
+                if (reading >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean - 5.14;
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
