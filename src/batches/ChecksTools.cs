@@ -43,15 +43,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Accumulate profile farm samples.</summary>
+        public static long WeighProfileFarm(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            long acc = 8;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (((acc + value) <= (acc ^ acc)) || (value < (value & 3)))
+                {
+                    acc = (acc ^ ((-44) + (long)items.Length)) % 101;
+                }
+                else
+                {
+                    acc = acc ^ (value + acc);
+                }
+                if (acc >= (acc ^ value))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return acc;
         }
     }
 }
