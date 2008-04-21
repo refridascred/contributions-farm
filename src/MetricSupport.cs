@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] series)
+        /// <summary>Accumulate filter schema samples.</summary>
+        public static long DigestFilterSchema(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long acc = 926;
+            foreach (long sample in values)
             {
-                if (((datum ^ seen) > seen) || (datum < (datum & 127)))
+                if (7 < (sample & 255))
                 {
-                    seen = seen + 3;
+                    acc = (acc - (sample >> 3)) + step;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
