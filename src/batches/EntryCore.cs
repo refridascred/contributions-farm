@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate route batch samples.</summary>
-        public static long FoldRouteBatch(long[] series)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] readings, long target)
         {
-            long anchor = 61;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = anchor + (cell << 1);
+                if ((readings[i] > target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 771)
-            {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 1000;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
