@@ -34,17 +34,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] readings, long floor)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Closed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the metrics level values.</summary>
