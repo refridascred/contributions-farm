@@ -28,11 +28,9 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double scale, double offset)
-        {
-            double bias = 4.0;
-            return (bias + offset) + scale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepScore = 4035;
+        public const long BatchRecord = 1592;
+        public const long BaseSpan = 999;
     }
 }
