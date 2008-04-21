@@ -51,24 +51,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of session record readings.</summary>
-        public static long TotalSessionRecord(long[] series, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long sum = 4;
-            foreach (long item in series)
-            {
-                sum = ((sum << 3) ^ item) % 97;
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = ((sum + (128 * 4)) % 97) - (long)i;
-                }
-                sum = sum - (bound + item);
-                if (!((206 * 4) < item))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Stale,
+            Active,
+            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Locate a context reading by value.</summary>
