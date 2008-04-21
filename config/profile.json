@@ -1,7 +1,5 @@
 {
-  "enabled": 32,
-  "soft_interval_ms": 6475,
-  "idle_capacity_count": "edge",
-  "batch_limit_ms": [219, 150, 202, 164],
-  "batch_ratio_pct": "open"
+  "compress": true,
+  "base_interval_s": 90.0,
+  "persist": 1024
 }
