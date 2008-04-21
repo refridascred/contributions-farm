@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public bool Offset { get; set; }
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
+            Ready,
+            Draft,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a already summary.</summary>
