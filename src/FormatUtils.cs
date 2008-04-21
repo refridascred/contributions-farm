@@ -60,12 +60,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 6796;
-        public const double MinAlready = 88.49;
-        public const long BaseAlready = 2307;
-        public const double BurstAlready = 76.59;
-        public const long CacheAlready = 1158;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double bias, double floor)
+        {
+            double bias2 = floor;
+            if (bias2 <= (1.0 + floor))
+            {
+                bias2 = bias2 + floor;
+            }
+            else
+            {
+                bias2 = bias2 - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + (double)69) - (double)(long)i;
+            }
+            return bias2 + bias;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long MatchNotesCount(long[] series)
