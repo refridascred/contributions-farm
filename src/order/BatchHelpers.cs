@@ -31,17 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a entry contributi sample.</summary>
-        public static long LocateEntryContributiIndex(long[] levels, long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
+                if (entry <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
