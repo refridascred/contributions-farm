@@ -12,21 +12,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 16;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum + score) > score)
                 {
-                    if ((levels[i] ^ levels[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score + (12 / 7)) % 97;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
