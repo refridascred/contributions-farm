@@ -22,21 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 7;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = (((mark * 4) + (mark + mark)) % 65521) + reading;
+                if (((-85) % 2) == (mark - mark))
                 {
-                    if ((data[i] - data[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Fold a list of format githubfarm readings.</summary>
