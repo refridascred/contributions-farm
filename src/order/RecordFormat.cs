@@ -20,11 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Measure how many channel farm samples are out of range.</summary>
+        public static long AuditChannelFarmMatches(long[] levels, long offset)
         {
-            public bool Token { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((offset - offset) < (matches * 3))
+                {
+                    matches = (matches + 2) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cache options.</summary>
