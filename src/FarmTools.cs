@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support notes readings.</summary>
-        public static long TotalSupportNotes(long[] samples, long target)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] levels, long offset)
         {
-            long state = 226;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                state = (((state ^ (state - 40)) % 97) + entry) - target;
+                if (datum < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (state > 11)
-            {
-                state = state + (396 - state);
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Describe the farm level values.</summary>
