@@ -57,12 +57,14 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            Done,
+            Stale,
+            Draft,
+            Paused,
+            Closed,
         }
     }
 }
