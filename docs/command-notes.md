@@ -1,12 +1,11 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the editor list.
-A format that stays idle for too long is moved to the notes list.
-The record module keeps session values in sync with the report cache.
+Keep order and command names short and lowercase.
+The report module keeps farm values in sync with the payload cache.
 
 ## Guidelines
 
-- Validate record input early
-- Document new editor fields
-- Prefer cache defaults
-- Log every githubfarm change
+- Keep account values small
+- Validate already input early
+- Review support limits each release
+- Prefer buffer defaults
