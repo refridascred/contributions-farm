@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Check that every already filter entry stays within the limit.</summary>
+        public static bool CheckAlreadyFilterRange(long[] samples, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (datum < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
