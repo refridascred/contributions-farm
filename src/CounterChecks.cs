@@ -28,19 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] levels, long offset)
+        /// <summary>Fold a list of counter checks readings.</summary>
+        public static long CombineCounterChecks(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long sum = 73;
+            foreach (long cell in readings)
             {
-                if (cell <= offset)
+                sum = (sum - cell) - floor;
+                if ((cell / 3) <= sum)
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum * 2) + ((long)readings.Length + sum)) % 101;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Rank context input into a small class.</summary>
