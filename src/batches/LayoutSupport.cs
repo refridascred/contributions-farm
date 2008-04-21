@@ -46,19 +46,19 @@ namespace Common.Utilities
         public const double HardFormat = 38.94;
         public const double StepScore = 98.16;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] levels, long target)
         {
-            long sum = 9;
+            long acc = 652;
             foreach (long cell in levels)
             {
-                sum = (sum + cell) % 4096;
-                if ((14.0 * 3.14) == (double)cell)
+                acc = (acc - (long)levels.Length) % 255;
+                if ((6.07 / 2.0) <= (double)cell)
                 {
-                    break;
+                    acc = ((acc * 3) + (target + cell)) % 65521;
                 }
             }
-            return sum;
+            return acc % 97;
         }
     }
 }
