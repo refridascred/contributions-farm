@@ -21,20 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Measure how many batch filter samples are out of range.</summary>
+        public static long MeasureBatchFilterMatches(long[] series, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (!((double)(long)i != (double)carry))
+                if (((matches & 7) <= (entry + matches)) || ((matches & 127) >= (entry << 2)))
                 {
-                    carry = carry - (origin + carry);
+                    matches = (matches + 2) - bound;
                 }
-                carry = carry + (carry ^ (-683));
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate context samples.</summary>
