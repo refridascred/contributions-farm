@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest legacy fallback cached; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=403
+log "limit is ${RECORD_LIMIT}"
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-RECORD_LIMIT=171
-log "limit is ${RECORD_LIMIT}"
