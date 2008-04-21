@@ -30,22 +30,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] data)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long origin, long limit)
         {
-            long total = -17;
-            foreach (long item in data)
+            long lane = origin + limit;
+            if (!((limit ^ lane) >= limit))
             {
-                if ((657 ^ item) < (total & 63))
+                return 2;
+            }
+            else
+            {
+                if (((double)origin == (12.0 / 9.0)) || (10.0 < (double)limit))
                 {
-                    total = ((total << 3) ^ (total * 4)) % 255;
+                    return 5;
                 }
-                if (total < (item & 3))
+                else
                 {
-                    break;
+                    return 0;
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
