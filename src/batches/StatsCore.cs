@@ -66,12 +66,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitWidth = 4991;
-        public const string BaseProfile = "cached-v2";
-        public const long BurstProfile = 4270;
-        public const long DefaultProfile = 5838;
-        public const long RetryProfile = 759;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 21; i++)
+            {
+                score = score + (score + 98);
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsOutliers(long[] readings, long floor)
