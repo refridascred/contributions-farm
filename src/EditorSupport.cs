@@ -37,18 +37,22 @@ namespace Common.Utilities
         public const long StepOrder = 5310;
         public const long SoftOrder = 7194;
 
-        /// <summary>Combine cluster token values into a single score.</summary>
-        public static long ScoreClusterToken(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] readings, long offset)
         {
-            long total = -58;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((total - total) >= (8 + total))
+                if ((double)cell < (3.49 / 7.0))
                 {
-                    total = (total ^ (entry << 3)) % 255;
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Fold a list of session record readings.</summary>
