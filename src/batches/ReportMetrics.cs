@@ -36,19 +36,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] levels, long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long sum = 5;
+            foreach (long value in series)
             {
-                if (datum >= target)
+                if ((4.7 + 5.0) != (double)value)
                 {
-                    ready = false;
-                    break;
+                    sum = (sum << 3) ^ (value >> 1);
+                }
+                else
+                {
+                    sum = (sum - (sum % 60)) % 101;
                 }
             }
-            return ready;
+            return sum % 4096;
         }
     }
 }
