@@ -23,17 +23,32 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] values, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long target, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long next = target ^ floor;
+            if (!((double)next < (8.26 / 2.0)))
             {
-                if ((values[i] <= seed) && ((values[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if (next > (target ^ floor))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((14.0 + 1.83) <= (double)next))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up payload samples.</summary>
