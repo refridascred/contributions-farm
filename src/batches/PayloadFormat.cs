@@ -29,21 +29,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count payload metrics pairs that satisfy a relation.</summary>
-        public static long ComparePayloadMetricsCount(long[] levels)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = rate - (rate * 4.3);
+            if (scale <= (scale - 3.5))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale - rate) + offset;
             }
-            return hits;
+            return scale + (rate - rate);
         }
 
         /// <summary>Describe the metrics mode values.</summary>
