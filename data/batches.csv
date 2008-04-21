@@ -1,6 +1,9 @@
-id,weight,region,token
-1,blue,blue,edge
-2,976,eu-west,primary
-3,682,fallback,27.75
-4,489,15.37,76.01
-5,95.08,15.69,625
+id,rank,label
+1,latest,cached
+2,837,33.01
+3,edge,511
+4,96.38,812
+5,578,7.32
+6,88.54,edge
+7,31.73,19.66
+8,edge,standard
