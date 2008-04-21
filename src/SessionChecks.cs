@@ -45,14 +45,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Stale,
-            Locked,
-            Pending,
-            Done,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 2027;
+        public const double WindowWidth = 9.52;
+        public const string CacheCount = "fallback-v2";
+        public const long HardEntry = 6101;
     }
 }
