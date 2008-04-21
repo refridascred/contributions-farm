@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] values, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (entry >= bound)
+                if (item != step)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
