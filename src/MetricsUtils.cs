@@ -63,22 +63,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up entry commits samples.</summary>
-        public static long OverlapEntryCommitsCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepTimeout = 343;
+        public const long StepSize = 6084;
+        public const long SoftStats = 3536;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long ScoreCommand(long[] readings)
