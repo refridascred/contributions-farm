@@ -31,12 +31,18 @@ namespace Common.Utilities
         public const long CacheMetric = 3155;
         public const double BurstFactor = 87.85;
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Measure how many entry cluster samples are out of range.</summary>
+        public static long AuditEntryClusterOutliers(long[] items, long step)
         {
-            Closed,
-            Idle,
-            Retry,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (((5.9 * 6.0) == (double)datum) || ((double)tally != (double)step))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
