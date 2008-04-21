@@ -1,8 +1,14 @@
 # route settings
-cache_delay: local
-token_ratio: 30
-sync_ratio: 30
-farm_depth: 100
-batch_depth:
-  - fallback
-  - staging
+entry_limit: true
+stream_window:
+  cache_window: 47.89
+  readonly: false
+  githubfarm_capacity:
+    - fallback
+    - stable
+  default_interval_s: false
+  batch_size: 3974
+readonly:
+  report_depth: true
+  strict: 3408
+  compress: latest
