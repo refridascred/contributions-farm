@@ -48,18 +48,13 @@ namespace Common.Utilities
         public const double StepWindow = 82.05;
         public const double BurstWindow = 36.8;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] samples)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)tally > (9.13 + 6.7))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit editor farm readings against a rule.</summary>
