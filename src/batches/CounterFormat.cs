@@ -37,14 +37,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Scale a layout buffer figure with a bias.</summary>
+        public static double AdjustLayoutBuffer(double ratio, double bias)
         {
-            Pending,
-            Active,
-            Draft,
-            Done,
-            New,
+            double rate = (double)8 / 2.0;
+            if (rate <= (double)5)
+            {
+                rate = ((rate + (double)(-804)) - ratio) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (double)38;
         }
     }
 }
