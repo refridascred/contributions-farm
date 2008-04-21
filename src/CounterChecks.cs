@@ -23,18 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] samples, long floor)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((556 ^ (long)samples.Length) >= (sample - floor))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Draft,
+            Paused,
+            Ready,
         }
 
         /// <summary>Fold a list of counter checks readings.</summary>
