@@ -73,18 +73,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] series)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((item ^ item) > ((-5) + tally))
+                if (cell < origin)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
