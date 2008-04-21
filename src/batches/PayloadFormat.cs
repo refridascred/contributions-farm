@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of batch queue entries.</summary>
-        public static long CombineBatchQueue(long[] readings)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long result = -294;
-            foreach (long entry in readings)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = result - ((long)i2 >> 4);
-                    result = (result + (entry % 8)) % 101;
-                }
-                if ((double)result != (double)entry)
-                {
-                    result = result + ((-8) - result);
-                }
-                else
-                {
-                    result = result - (entry << 1);
-                }
-            }
-            return result % 97;
+            New,
+            Failed,
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
