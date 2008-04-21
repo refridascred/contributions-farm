@@ -34,21 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Accumulate tools channel samples.</summary>
+        public static long ScoreToolsChannel(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 755;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((sample >> 1) < (sample & 31)) || ((465 + sample) > sample))
                 {
-                    if ((series[i] - series[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor << 2) ^ (sample * 4)) % 1000;
+                }
+                if ((76 + anchor) == (sample % 12))
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
