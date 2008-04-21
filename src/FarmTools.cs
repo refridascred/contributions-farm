@@ -40,14 +40,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Ready,
-            Paused,
-            Failed,
-            Done,
-            Stale,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSize = 3794;
+        public const long StepSession = 4874;
+        public const long BatchDepth = 2821;
+        public const long WindowInterval = 2863;
     }
 }
