@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many queue filter samples are out of range.</summary>
-        public static long CountQueueFilterGaps(long[] data)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long target, long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long step = target - origin;
+            if ((6.01 * 2.43) > (double)target)
             {
-                if ((seen - seen) > datum)
+                return 1;
+            }
+            else
+            {
+                if ((7 % 16) >= (origin + origin))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target != (8.9 + 3.9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step > (5 + 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
