@@ -41,21 +41,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] values)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long step, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long prev = step + seed;
+            if (((981 / 3) != (prev % 8)) || (step >= (prev / 8)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)prev != (4.0 * 9.93))
                 {
-                    if ((values[i] + values[j]) != 16)
+                    return 8;
+                }
+                else
+                {
+                    if (((prev - seed) > prev) || (((-725) + step) < step))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a token entry.</summary>
