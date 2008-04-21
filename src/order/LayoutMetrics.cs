@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepFactor = 83.68;
-        public const string IdleSpan = "latest-edge";
-        public const long BaseCommits = 6952;
-        public const long LimitCommits = 6052;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((18.0 * 1.0) == (double)datum)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of checks route entries.</summary>
         public static long FoldChecksRoute(long[] levels, long bound)
