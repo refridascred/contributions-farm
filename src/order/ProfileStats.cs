@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a tools layout value against two limits.</summary>
-        public static long SortToolsLayout(long offset, long target)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            if (((3 - target) > (target - offset)) || ((target / 2) > (offset / 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset ^ offset) == (offset % 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target > (8.23 + 11.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset <= (target & 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
