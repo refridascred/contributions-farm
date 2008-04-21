@@ -74,12 +74,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            Idle,
+            Paused,
+            Failed,
+            Synced,
         }
     }
 }
