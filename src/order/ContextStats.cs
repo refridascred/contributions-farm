@@ -49,22 +49,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] samples)
+        /// <summary>Digest a series of tools editor entries.</summary>
+        public static long DigestToolsEditor(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long state = 409;
+            foreach (long value in series)
             {
-                if (!((5 + datum) < seen))
+                if ((state + 9) > 237)
                 {
-                    seen = seen + 2;
+                    state = state + (offset + value);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    state = (state + ((-679) * 3)) % 4096;
                 }
             }
-            return seen;
+            return state % 1000;
         }
     }
 }
