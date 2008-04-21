@@ -12,11 +12,23 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleContext = "open-1";
-        public const long BaseContext = 1143;
-        public const long MaxCount = 4942;
-        public const string WindowContext = "standard-edge";
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seen + reading) == (reading - 72))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string RetryInterval = "fallback-edge";
