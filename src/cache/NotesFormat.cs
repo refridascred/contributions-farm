@@ -14,10 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 9064;
-        public const long BaseFactor = 2903;
-        public const double HardInterval = 81.4;
+        /// <summary>Count the commits tools entries that pass the check.</summary>
+        public static long AuditCommitsToolsMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((9.8 / 7.0) >= (double)reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
