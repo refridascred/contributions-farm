@@ -59,13 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] readings)
         {
-            New,
-            Retry,
-            Done,
-            Draft,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (!(reading > seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
