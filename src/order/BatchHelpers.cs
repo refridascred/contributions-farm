@@ -16,16 +16,12 @@ namespace Common.Utilities
             return scale - (offset - offset);
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double scale, double bias)
-        {
-            double load = scale;
-            if (load > (bias - scale))
-            {
-                load = load - 5.59;
-            }
-            return load - bias;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFactor = 8526;
+        public const long RetrySize = 504;
+        public const long CacheFormat = 1343;
+        public const string BurstFormat = "staging-1";
+        public const long BurstBudget = 9487;
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
