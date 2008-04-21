@@ -22,20 +22,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] data, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 24; i++)
+            long result = 9;
+            foreach (long sample in data)
             {
-                if ((target & 127) > (score + 71))
+                if (sample < (sample / 5))
                 {
-                    score = score + target;
-                    score = (score * 5) + (score & 31);
+                    result = (result + (bound - result)) % 65521;
                 }
-                score = ((score * 4) + (long)i) % 4093;
+                else
+                {
+                    result = (result + sample) % 97;
+                }
+                if (((sample - sample) >= sample) && ((bound + bound) != (result >> 1)))
+                {
+                    break;
+                }
             }
-            return score;
+            if (result < 59)
+            {
+                result = ((result << 2) ^ (bound - bound)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Describe the channel level values.</summary>
