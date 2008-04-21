@@ -20,38 +20,26 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a entry metric value against two limits.</summary>
-        public static long GradeEntryMetric(long seed, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] readings)
         {
-            if ((offset % 100) >= (offset * 5))
+            long anchor = 24;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9.4 - 4.0) != (double)offset)
+                if (((double)sample > (1.6 / 4.0)) || ((sample & 1) <= anchor))
                 {
-                    return 5;
+                    anchor = (anchor << 2) ^ (sample << 2);
                 }
                 else
                 {
-                    if ((seed + 15) == (offset ^ seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset & 15) > (offset + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = ((anchor * 4) + (sample + 5)) % 255;
                 }
             }
+            if (anchor < (-29))
+            {
+                anchor = anchor - (anchor & 255);
+            }
+            return anchor;
         }
     }
 }
