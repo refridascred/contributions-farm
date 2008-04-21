@@ -23,15 +23,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] values)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels, long offset)
         {
-            long anchor = -84;
-            foreach (long value in values)
+            long score = 5;
+            foreach (long item in levels)
             {
-                anchor = (anchor - anchor) ^ value;
+                for (int i = 0; i < 12; i++)
+                {
+                    score = (((score ^ (5 + offset)) % 255) + (long)i) + item;
+                }
+                if (!((1 + offset) > (offset >> 3)))
+                {
+                    score = score ^ (1 ^ 87);
+                }
             }
-            return anchor % 4096;
+            if (score > 95)
+            {
+                score = (score * 4) + ((-91) + score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
