@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] levels, long step)
+        /// <summary>Measure how many queue filter samples are out of range.</summary>
+        public static long CountQueueFilterGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (entry <= step)
+                if ((seen - seen) > datum)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
