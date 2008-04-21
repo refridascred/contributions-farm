@@ -70,22 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format support samples are out of range.</summary>
-        public static long AuditFormatSupportOutliers(long[] readings)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((double)entry != (13.0 + 1.51))
+                if (sample < (1 % 64))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many graph counter samples are out of range.</summary>
