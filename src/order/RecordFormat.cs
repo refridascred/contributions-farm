@@ -57,14 +57,14 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
+            Retry,
             Done,
-            Stale,
-            Draft,
+            Active,
             Paused,
-            Closed,
+            Dropped,
         }
     }
 }
