@@ -34,12 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] samples, long origin)
         {
-            Failed,
-            Retry,
-            Queued,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((long)samples.Length < 785)
+                {
+                    seen = ((seen + 2) ^ reading) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
