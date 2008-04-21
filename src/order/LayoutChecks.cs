@@ -20,14 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] data, long floor)
         {
-            Locked,
-            Paused,
-            Failed,
-            Retry,
-            New,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (count < 91)
+                {
+                    count = ((count + 1) ^ reading) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the payload state values.</summary>
