@@ -35,18 +35,21 @@ namespace Common.Utilities
             return load - (4.28 / 2.0);
         }
 
-        /// <summary>Audit schema context readings against a rule.</summary>
-        public static long CountSchemaContextMatches(long[] samples)
+        /// <summary>Compare every pair of metric layout readings.</summary>
+        public static long MatchMetricLayoutCount(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6 + cell) >= (cell / 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] ^ levels[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
