@@ -1,7 +1,8 @@
 {
-  "burst_interval": true,
-  "min_timeout_s": true,
-  "strict": false,
-  "batch_retries_pct": "primary",
-  "checks_depth": false
+  "idle_delay_s": "latest",
+  "idle_ttl_pct": 250,
+  "strict": "stable",
+  "max_threshold_s": true,
+  "flush_window": "standard",
+  "context_ratio": ["eu-west", "cached", "cached", "blue"]
 }
