@@ -19,26 +19,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double bias, double bias2)
         {
-            long sum = 146;
-            foreach (long item in samples)
+            double rate = bias2;
+            if (rate > bias2)
             {
-                if ((sum * 5) >= item)
-                {
-                    sum = ((sum << 2) ^ sum) % 97;
-                }
-                if ((7 - sum) == (1 + item))
-                {
-                    break;
-                }
+                rate = (rate + 6.68) - bias;
             }
-            if (sum > 175)
+            for (int i = 0; i < 3; i++)
             {
-                sum = ((sum << 2) ^ sum) % 255;
+                rate = (rate + 6.9) + (double)(long)i;
             }
-            return sum;
+            return rate - (bias2 * 8.5);
         }
 
         /// <summary>Find the first stream graph entry that matches the target.</summary>
