@@ -20,10 +20,14 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 356;
-        public const long RetryDepth = 3969;
-        public const long WindowDepth = 2891;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Combine context cluster values into a single score.</summary>
         public static long DigestContextCluster(long[] values, long origin)
