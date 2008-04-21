@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up farm payload samples.</summary>
-        public static long CompareFarmPayloadCount(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (seen < ((long)series.Length + seen))
                 {
-                    if ((data[i] ^ data[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 1) + cell) - seed;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
