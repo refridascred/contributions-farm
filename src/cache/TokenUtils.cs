@@ -26,39 +26,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long target, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] readings)
         {
-            long edge = target + origin;
-            if (edge <= target)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)edge != (double)target)
+                if ((double)count < (6.2 + 9.94))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((target << 2) < 83) || ((double)edge != (7.43 / 7.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin - target) < origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = (count + 2) + sample;
                 }
             }
+            return count;
         }
     }
 }
