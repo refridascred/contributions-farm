@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
