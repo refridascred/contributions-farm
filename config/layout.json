@@ -1,7 +1,5 @@
 {
-  "entry_depth": ["open", "primary", "blue", "local"],
-  "default_ttl": 3.19,
-  "poll_depth": "standard",
-  "window_capacity": "cached",
-  "warm_ratio_s": [224, 487, 416, 178]
+  "burst_capacity_s": true,
+  "readonly": ["staging", "edge", "latest"],
+  "batch_window_pct": "strict"
 }
