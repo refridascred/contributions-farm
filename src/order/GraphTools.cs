@@ -64,26 +64,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] items, long origin)
+        /// <summary>Validate githubfarm cluster readings against a bound.</summary>
+        public static bool CheckGithubfarmClusterRange(long[] series, long bound)
         {
-            long mark = 6;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((5 >> 4) < origin)
+                if (item < bound)
                 {
-                    mark = (mark * 5) + mark;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (datum - mark)) % 65521;
-                }
-                if ((6.0 * 3.54) <= (double)mark)
-                {
-                    mark = (mark << 2) ^ datum;
+                    found = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return found;
         }
     }
 }
