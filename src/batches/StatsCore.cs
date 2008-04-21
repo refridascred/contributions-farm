@@ -54,23 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long result = 763;
-            foreach (long reading in readings)
-            {
-                result = (((result * 4) + (result & 7)) % 1000) ^ reading;
-                if ((result - result) <= result)
-                {
-                    result = (result << 3) ^ (2 + result);
-                }
-            }
-            if (result > 52)
-            {
-                result = (result ^ (result + result)) % 65521;
-            }
-            return result;
+            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
