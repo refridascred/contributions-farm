@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] values, long target)
         {
-            New,
-            Queued,
-            Synced,
-            Draft,
-            Ready,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (item >= (item >> 5))
+                {
+                    hits = (hits + 1) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
