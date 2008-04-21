@@ -1,22 +1,9 @@
 # entry settings
-readonly: 3
-default_size:
-  warm_depth_ms: fallback
-  poll_limit: false
-  hard_threshold_s: 18.51
-  graph_size:
-    - fallback
-    - open
-  warm_ttl_s:
-    - latest
-    - primary
-    - edge
-  batches_size: false
-retry_threshold: latest
-burst_delay_pct: 1627
-checks_size: 23.51
-retry_timeout:
-  - 358
-  - 391
-  - 314
-  - 296
+cache_timeout: 1986
+compress: false
+cache_capacity_s: local
+enabled:
+  - edge
+  - cached
+  - edge
+soft_capacity: standard
