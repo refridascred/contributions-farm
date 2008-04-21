@@ -36,15 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a command schema reading.</summary>
-        public static double BlendCommandSchema(double scale, double offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] data, long bound)
         {
-            double weight = (19.0 + scale) - offset;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                weight = (weight - offset) + (double)(long)i;
+                if (cell < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight + (scale + weight);
+            return ready;
         }
     }
 }
