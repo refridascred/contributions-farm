@@ -1,7 +1,21 @@
 # entry settings
-warm_timeout_count: strict
-cache_window_ms: 79
-idle_size_pct: 38.09
-entry_threshold: legacy
-report_capacity: true
-dry_run: primary
+flush_threshold_pct:
+  hard_timeout_count: 30
+  min_interval: standard
+  sync_window_count: primary
+  audit: 17
+  readonly: 68.87
+  default_threshold_pct: 16.58
+default_limit_pct: 63
+notes_timeout: latest
+cache_capacity:
+  verbose: 66
+  tools_limit: local
+  warm_delay_s: 94.37
+  base_threshold: edge
+  flush_ratio_count: primary
+  enabled:
+    - latest
+    - primary
+warm_size_s: strict
+compress: 69.49
