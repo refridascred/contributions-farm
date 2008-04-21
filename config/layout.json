@@ -1,11 +1,7 @@
 {
-  "schema_threshold": "standard",
-  "batch_delay": {
-    "batch_retries_ms": ["stable", "legacy", "stable", "primary"],
-    "flush_delay_count": 5762,
-    "idle_size_s": 87.37
-  },
-  "base_window_count": "cached",
-  "verbose": true,
-  "strict": "legacy"
+  "flush_depth_s": ["latest", "strict", "local", "legacy"],
+  "route_ttl": 43.44,
+  "poll_limit_count": 725,
+  "token_delay": 250,
+  "flush_capacity": 9690
 }
