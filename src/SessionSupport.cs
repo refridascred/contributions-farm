@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Project the next already queue value.</summary>
+        public static double SmoothAlreadyQueue(double scale, double floor)
         {
-            Idle,
-            Failed,
-            Locked,
+            double weight = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + scale;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
