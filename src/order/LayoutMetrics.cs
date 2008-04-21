@@ -18,18 +18,26 @@ namespace Common.Utilities
         public const long BaseCommits = 6952;
         public const long LimitCommits = 6052;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] values, long offset)
+        /// <summary>Digest a series of checks route entries.</summary>
+        public static long FoldChecksRoute(long[] levels, long bound)
         {
-            long mix = 6;
-            foreach (long item in values)
+            long score = 467;
+            foreach (long cell in levels)
             {
-                if ((item >> 3) != (item - mix))
+                if ((double)(long)levels.Length == (6.61 + 9.81))
                 {
-                    mix = mix - (offset ^ mix);
+                    score = ((score * 2) + (score % 2)) + cell;
+                }
+                if (!(64 < (63 + score)))
+                {
+                    score = (score - (score >> 2)) % 1000;
                 }
             }
-            return mix;
+            if (score < 3)
+            {
+                score = ((score * 2) + bound) % 4096;
+            }
+            return score % 97;
         }
     }
 }
