@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 6;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = (carry + (carry / 7)) % 101;
+                if ((96 ^ entry) < carry)
                 {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 3) ^ carry) % 1000;
                 }
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
