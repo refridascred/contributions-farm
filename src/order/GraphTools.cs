@@ -41,12 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 9813;
-        public const long BatchBudget = 846;
-        public const long LimitWidth = 6640;
-        public const long MaxToken = 2301;
-        public const long BaseCount = 7286;
+        /// <summary>Audit format schema readings against a rule.</summary>
+        public static long CountFormatSchemaOutliers(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((double)matches <= (double)seed) && (((seed - matches) >= (entry >> 4)) && ((entry & 15) == (798 + 894))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double LimitContext = 48.72;
