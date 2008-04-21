@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = mix + mix;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Locked,
+            Paused,
+            Draft,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
