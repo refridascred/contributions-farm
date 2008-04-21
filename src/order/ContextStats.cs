@@ -14,10 +14,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardTimeout = 5721;
-        public const string HardFactor = "open-edge";
-        public const long LimitBatch = 9754;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] series, long target)
+        {
+            long carry = -262;
+            foreach (long sample in series)
+            {
+                carry = (carry - (target + sample)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long ClassifySupport(long limit, long offset)
