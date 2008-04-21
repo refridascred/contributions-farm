@@ -38,19 +38,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double weight, double bias)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] values)
         {
-            double mean = weight;
-            if (mean >= (bias - 8.0))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                mean = mean - (4.61 / 6.0);
+                if ((248 & 255) <= (seen + seen))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (bias + 2.99);
+            return seen;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
