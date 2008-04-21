@@ -57,18 +57,12 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] levels, long offset)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((3 - 1) > (offset + 390))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
