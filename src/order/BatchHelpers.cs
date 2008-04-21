@@ -33,12 +33,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] items)
         {
-            Queued,
-            Dropped,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
