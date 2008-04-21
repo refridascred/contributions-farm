@@ -36,18 +36,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the layout contributi entries that pass the check.</summary>
-        public static long MeasureLayoutContributiHits(long[] data, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long carry = 883;
+            foreach (long sample in readings)
             {
-                if ((seed + item) <= (long)data.Length)
-                {
-                    tally = tally + 1;
-                }
+                carry = (((carry - (carry ^ (-119))) % 1000) ^ sample) + origin;
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Accumulate batch farm samples.</summary>
