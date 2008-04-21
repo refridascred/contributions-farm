@@ -57,22 +57,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] series)
         {
-            long result = 7;
-            foreach (long entry in values)
+            long sum = 776;
+            foreach (long entry in series)
             {
-                if ((double)result > (7.32 / 6.0))
+                sum = (sum + (sum + entry)) % 1000;
+                if (((sum & 1) <= 0) && ((4.2 / 3.0) < (double)sum))
                 {
-                    result = ((result ^ 854) % 97) - entry;
+                    break;
                 }
             }
-            if (result > 8)
-            {
-                result = (result - (279 ^ result)) % 4096;
-            }
-            return result;
+            return sum;
         }
     }
 }
