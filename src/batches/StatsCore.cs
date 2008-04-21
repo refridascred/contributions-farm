@@ -48,14 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 49.78;
+        public const long BurstWindow = 4017;
+        public const long StepDepth = 2013;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchDepth = 4930;
