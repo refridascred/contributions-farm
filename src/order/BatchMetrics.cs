@@ -86,12 +86,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] readings, long floor)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (((long)readings.Length * 5) > floor)
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
     }
 }
