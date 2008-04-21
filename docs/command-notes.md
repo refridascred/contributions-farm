@@ -1,12 +1,15 @@
 # Command notes
 
-Keep account and githubfarm names short and lowercase.
-Use order settings to tune how often cluster data is refreshed.
-The batches report groups every graph by commits.
+When a session fails, the metrics handler retries a few times before giving up.
+The githubfarm module keeps checks values in sync with the entry cache.
+Defaults for payload live in the config folder and can be overridden per environment.
+
+Keep tools and queue names short and lowercase.
+Run the account check before changing any editor limits.
 
 ## Guidelines
 
-- Prefer record defaults
-- Keep commits values small
-- Validate cache input early
-- Document new cluster fields
+- Keep metrics values small
+- Prefer window defaults
+- Validate channel input early
+- Review window limits each release
