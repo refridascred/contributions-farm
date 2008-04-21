@@ -50,11 +50,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] samples, long offset)
         {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
