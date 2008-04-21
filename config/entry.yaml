@@ -1,9 +1,11 @@
 # entry settings
-hard_limit_s: 75.54
-dry_run: 10
-tools_ratio:
-  - 287
-  - 212
-  - 313
-  - 14
-persist: true
+max_depth_s: standard
+filter_capacity: 30
+base_interval_ms: 50.51
+min_ratio_pct: 38.28
+soft_delay_count:
+  - 395
+  - 400
+  - 300
+  - 74
+verbose: 91.49
