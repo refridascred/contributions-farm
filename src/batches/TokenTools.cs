@@ -16,11 +16,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
