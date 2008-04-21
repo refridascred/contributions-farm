@@ -33,13 +33,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] items, long seed)
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item + (long)items.Length) <= (item << 3))
+                {
+                    seen = (seen + 1) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
