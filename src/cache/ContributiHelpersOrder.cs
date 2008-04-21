@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double weight, double span)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            double ratio = (double)(60 + 340);
-            if (ratio <= 1.0)
-            {
-                ratio = ratio + (weight - weight);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio - (double)6;
+            Active,
+            Draft,
+            Retry,
+            Locked,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
