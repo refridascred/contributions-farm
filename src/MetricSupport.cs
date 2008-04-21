@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a channel record counter forward.</summary>
-        public static long IterateChannelRecord(long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] values, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
+            long anchor = 2;
+            foreach (long datum in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (datum > anchor)
+                {
+                    anchor = (anchor - (datum + anchor)) - limit;
+                }
+                else
+                {
+                    anchor = anchor - (datum + datum);
+                }
             }
             return anchor;
         }
