@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] samples)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            long state = -57;
+            foreach (long entry in samples)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((10.0 > (double)state) && ((entry * 3) >= (entry / 9)))
+                {
+                    state = state + (945 + state);
+                }
+                if ((state + 82) != (entry & 31))
+                {
+                    break;
+                }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Match up report samples.</summary>
