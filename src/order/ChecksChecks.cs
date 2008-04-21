@@ -32,18 +32,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the entry githubfarm entries that pass the check.</summary>
-        public static long CountEntryGithubfarmHits(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (184 >= (seen + seen))
-                {
-                    seen = ((seen + 3) - datum) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCommand = "open-1";
+        public const double MinFactor = 14.22;
+        public const double MinCommand = 31.54;
+        public const long WindowCommand = 8721;
     }
 }
