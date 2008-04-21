@@ -14,16 +14,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] readings)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum + (sum << 3);
-                sum = ((sum * 4) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
