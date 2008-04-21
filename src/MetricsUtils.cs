@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] items)
+        /// <summary>Rank metric support input into a small class.</summary>
+        public static long RankMetricSupport(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long edge = bound - offset;
+            if ((9 * 3) < (bound + bound))
             {
-                if ((matches * 3) < (entry & 127))
+                return 3;
+            }
+            else
+            {
+                if ((offset << 3) >= (edge >> 1))
                 {
-                    matches = matches + 2;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((bound + 139) < (69 / 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset & 127) > (edge + (-202)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
