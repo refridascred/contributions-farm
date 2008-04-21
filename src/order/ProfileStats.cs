@@ -49,16 +49,22 @@ namespace Common.Utilities
             return drift + 1.7;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Count the batches cache entries that pass the check.</summary>
+        public static long MeasureBatchesCacheGaps(long[] samples)
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                mix = ((mix * 2) + step) % 4096;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (matches < (matches / 4))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
