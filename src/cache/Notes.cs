@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 308;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (((result + 8) % 1000) ^ cell) - origin;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count account farm pairs that satisfy a relation.</summary>
