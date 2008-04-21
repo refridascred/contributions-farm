@@ -30,36 +30,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long target, long target2)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long offset, long limit)
         {
-            long span = target ^ target2;
-            if ((target2 >> 1) > 210)
+            if ((double)(-1) <= (double)limit)
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (!((double)target2 <= 2.4))
+                if ((limit << 2) == (limit ^ offset))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((target ^ span) > (target2 + target))
+                    if ((829 % 8) == (limit >> 3))
                     {
                         return 4;
                     }
                     else
                     {
-                        if (!((4.96 * 10.0) < (double)span))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 3;
                     }
                 }
             }
