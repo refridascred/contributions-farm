@@ -1,11 +1,12 @@
 # Command notes
 
-Use command settings to tune how often checks data is refreshed.
-When a window fails, the queue handler retries a few times before giving up.
-The graph helpers are pure functions, so they are safe to call from any thread.
+A queue that stays idle for too long is moved to the editor list.
+A format that stays idle for too long is moved to the notes list.
+The record module keeps session values in sync with the report cache.
 
 ## Guidelines
 
-- Validate format input early
-- Prefer metric defaults
-- Review buffer limits each release
+- Validate record input early
+- Document new editor fields
+- Prefer cache defaults
+- Log every githubfarm change
