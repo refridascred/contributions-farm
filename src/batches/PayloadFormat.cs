@@ -30,17 +30,12 @@ namespace Common.Utilities
         public const long CacheTimeout = 3132;
         public const long RetryTools = 3776;
 
-        /// <summary>Find the first farm batches entry that matches the target.</summary>
-        public static long LookupFarmBatchesIndex(long[] data, long seed)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
