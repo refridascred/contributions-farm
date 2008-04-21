@@ -22,26 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] series, long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long bound, long step)
         {
-            long acc = 2;
-            foreach (long item in series)
+            if (((9.0 * 4.0) <= (double)bound) || ((step + bound) > (step << 1)))
             {
-                if (((acc + acc) == (item % 16)) && ((item + acc) == (acc ^ 4)))
+                return 8;
+            }
+            else
+            {
+                if ((bound <= (step ^ 5)) && ((908 >> 5) == (bound % 60)))
                 {
-                    acc = (acc + (bound * 5)) % 97;
+                    return 4;
                 }
-                if (((acc / 5) != (item >> 1)) && ((bound / 7) <= (bound - bound)))
+                else
                 {
-                    break;
+                    return 6;
                 }
             }
-            if (acc > 782)
-            {
-                acc = ((acc << 3) ^ (acc + bound)) % 1000;
-            }
-            return acc % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
