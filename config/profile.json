@@ -1,8 +1,8 @@
 {
-  "sync_size_ms": 17.71,
-  "verbose": 11,
-  "poll_interval_pct": 3277,
-  "context_limit": 31,
-  "layout_capacity": ["legacy", "blue", "eu-west"],
-  "flush_size_pct": 9444
+  "enabled": 7516,
+  "flush_ratio_pct": "staging",
+  "readonly": "stable",
+  "burst_size_pct": "eu-west",
+  "flush_ttl": "cached",
+  "cache_timeout": 250
 }
