@@ -28,15 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batch metrics counter forward.</summary>
-        public static long IterateBatchMetrics(long offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] series)
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((seen & 31) == (seen + seen))
+                {
+                    seen = (seen + 1) + reading;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
