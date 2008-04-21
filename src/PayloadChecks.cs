@@ -57,18 +57,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 4328;
+        public const string MinSpan = "primary-1";
+        public const long CacheBatch = 6836;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long ScoreGraph(long[] samples)
