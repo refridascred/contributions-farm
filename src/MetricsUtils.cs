@@ -18,22 +18,11 @@ namespace Common.Utilities
         public const long MaxCount = 4942;
         public const string WindowContext = "standard-edge";
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryInterval = "fallback-edge";
+        public const double IdleBatches = 65.84;
+        public const long BurstBatches = 8260;
+        public const long CacheBatches = 5285;
 
         /// <summary>Fold a list of schema profile readings.</summary>
         public static long ScoreSchemaProfile(long[] series, long bound)
