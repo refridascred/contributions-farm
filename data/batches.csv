@@ -1,9 +1,7 @@
-id,level,label,weight
-1,481,local,309
-2,open,strict,staging
-3,23.76,347,767
-4,25.32,34.9,198
-5,local,fallback,686
-6,legacy,primary,33.09
-7,standard,761,strict
-8,74.18,91.76,2.82
+id,label,level
+1,legacy,920
+2,214,22.4
+3,43.86,355
+4,884,legacy
+5,85.29,strict
+6,59.26,983
