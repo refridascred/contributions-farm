@@ -37,10 +37,19 @@ namespace Common.Utilities
         public const long RetryBudget = 6010;
         public const double SoftFactor = 83.8;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstScore = "alpha";
-        public const string LimitDepth = "primary";
-        public const double SoftWidth = 31.59;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((matches >> 5) != (matches - datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
