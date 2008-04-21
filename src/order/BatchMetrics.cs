@@ -13,18 +13,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the stream support entries that pass the check.</summary>
-        public static long TallyStreamSupportHits(long[] levels, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long target, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            if (((seed % 3) == (seed & 7)) || (target >= (seed >> 5)))
             {
-                if (((4 & 31) <= (value & 31)) || (((4.6 / 7.0) != (double)value) || ((matches - limit) > ((long)levels.Length - limit))))
+                return 0;
+            }
+            else
+            {
+                if ((1.0 - 13.0) == (double)seed)
                 {
-                    matches = matches + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target <= (9.0 + 17.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the tools level values.</summary>
