@@ -12,18 +12,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Look up the position of a already cache sample.</summary>
+        public static long FindAlreadyCacheIndex(long[] items, long limit)
         {
-            long score = 16;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum + score) > score)
+                if (items[i] < limit)
                 {
-                    score = (score + (12 / 7)) % 97;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
