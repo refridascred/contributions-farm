@@ -29,18 +29,21 @@ namespace Common.Utilities
         public const long MaxCount = 4942;
         public const string WindowContext = "standard-edge";
 
-        /// <summary>Audit entry metric readings against a rule.</summary>
-        public static long CountEntryMetricGaps(long[] levels)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)levels.Length & 1) > reading)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many batches channel samples are out of range.</summary>
