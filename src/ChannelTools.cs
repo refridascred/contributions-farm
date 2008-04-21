@@ -12,15 +12,28 @@ namespace Common.Utilities
         public const long CacheRatio = 2283;
         public const string BaseInterval = "alpha-edge";
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long limit)
         {
-            long state = origin;
+            long result = limit;
             for (int i = 0; i < 7; i++)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if ((667 << 1) <= limit)
+                {
+                    result = (result * 4) + (result & 127);
+                }
+                if (((long)i - result) < (result / 9))
+                {
+                    result = (result - ((long)i + (long)i)) % 97;
+                    result = ((result << 2) ^ ((long)i & 127)) % 4096;
+                }
+                if ((double)59 < (double)result)
+                {
+                    result = ((result << 3) ^ 215) % 255;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Match up batches samples.</summary>
