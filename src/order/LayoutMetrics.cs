@@ -46,12 +46,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public long Level { get; set; }
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
