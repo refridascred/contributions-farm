@@ -27,14 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Validate command metrics readings against a bound.</summary>
+        public static bool ValidateCommandMetricsLimits(long[] readings, long step)
         {
-            New,
-            Pending,
-            Ready,
-            Paused,
-            Retry,
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
