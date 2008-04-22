@@ -21,19 +21,13 @@ namespace Common.Utilities
         public const long WindowCount = 5483;
         public const string WindowRatio = "stable-v2";
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] values, long target)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Draft,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Match up record samples.</summary>
