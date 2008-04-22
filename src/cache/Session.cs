@@ -23,19 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window graph readings against a bound.</summary>
-        public static bool CheckWindowGraphRange(long[] data, long limit)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double weight, double span)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            double load = (double)(384 + 863);
+            if (load >= load)
             {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load - 2.0) - weight;
             }
-            return ok;
+            return load - span;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
