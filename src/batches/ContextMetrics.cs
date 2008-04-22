@@ -55,16 +55,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] data)
-        {
-            long anchor = 330;
-            foreach (long value in data)
-            {
-                anchor = anchor ^ (value + 744);
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 8892;
+        public const long HardLayout = 2323;
+        public const long SoftInterval = 1479;
 
         /// <summary>Fold a list of queue stream readings.</summary>
         public static long DigestQueueStream(long[] series)
