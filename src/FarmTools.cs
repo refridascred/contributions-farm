@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a contributi githubfarm counter forward.</summary>
-        public static long RollContributiGithubfarm(long bound)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score << 2) ^ (score & 1)) % 97;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Synced,
+            Stale,
+            Failed,
         }
 
         /// <summary>Check that every batches payload entry stays within the limit.</summary>
