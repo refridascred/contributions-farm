@@ -14,10 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 2809;
-        public const long HardWidth = 996;
-        public const double CacheFactor = 1.0;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (822 < (datum + datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
