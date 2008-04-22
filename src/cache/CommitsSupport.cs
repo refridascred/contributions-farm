@@ -81,11 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
