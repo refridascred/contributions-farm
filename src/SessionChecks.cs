@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] data, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] data, long limit)
         {
-            long score = 960;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                score = (score << 3) ^ (entry * 5);
-                if (!((6.43 * 1.4) == (double)entry))
+                if (datum >= limit)
                 {
-                    score = ((score * 4) + entry) % 65521;
-                }
-                else
-                {
-                    score = (score ^ origin) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Project the next profile already value.</summary>
