@@ -15,13 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Ready,
-            Failed,
-            Pending,
-            Retry,
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Scale a report batches figure with a bias.</summary>
