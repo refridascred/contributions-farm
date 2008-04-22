@@ -56,17 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first buffer payload entry that matches the target.</summary>
-        public static long FindBufferPayloadIndex(long[] readings, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (readings[i] > target)
+                if (reading >= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
