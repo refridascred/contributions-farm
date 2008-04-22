@@ -1,9 +1,5 @@
 {
-  "persist": {
-    "session_delay": 30,
-    "batch_size_s": "edge",
-    "base_delay": ["local", "legacy"]
-  },
-  "enabled": false,
-  "audit": 75.66
+  "burst_interval": true,
+  "strict": ["eu-west", "local", "legacy", "latest"],
+  "batch_window_ms": "latest"
 }
