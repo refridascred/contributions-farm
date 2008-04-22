@@ -39,16 +39,12 @@ namespace Common.Utilities
         public const long RetrySpan = 978;
         public const long HardSize = 180;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long total = 79;
-            foreach (long entry in readings)
-            {
-                total = (total + (total << 2)) % 4096;
-                total = ((total << 2) ^ (entry + 16)) % 65521;
-            }
-            return total;
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the context state values.</summary>
