@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] series)
         {
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
+            long acc = 20;
+            foreach (long reading in series)
+            {
+                if ((355 % 2) >= reading)
+                {
+                    acc = ((acc * 5) + (acc + acc)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ reading) % 97;
+                }
+            }
+            if (acc > 55)
+            {
+                acc = (acc * 5) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
