@@ -1,5 +1,6 @@
 {
-  "min_interval_count": true,
-  "min_ratio": true,
-  "stream_threshold": 4.55
+  "base_depth_ms": "staging",
+  "checks_delay": false,
+  "min_capacity_s": [12, 243, 327, 407],
+  "audit": 31.27
 }
