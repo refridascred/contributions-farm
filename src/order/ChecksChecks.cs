@@ -51,15 +51,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] levels, long target)
-        {
-            long state = 619;
-            foreach (long value in levels)
-            {
-                state = (state + (value - target)) % 255;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheEditor = 7.95;
+        public const long LimitFactor = 2744;
+        public const long HardEditor = 1645;
+        public const string DefaultEditor = "latest";
+        public const string BatchSize = "local-v2";
     }
 }
