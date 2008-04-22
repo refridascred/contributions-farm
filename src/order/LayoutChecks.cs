@@ -12,10 +12,22 @@ namespace Common.Utilities
         public const double WindowLayout = 92.17;
         public const long MaxLayout = 9085;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 3055;
-        public const double LimitBatches = 36.34;
-        public const long MaxBudget = 7527;
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MinReport = 5347;
