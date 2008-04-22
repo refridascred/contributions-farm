@@ -1,17 +1,20 @@
 {
-  "compress": {
-    "min_ttl_pct": true,
-    "channel_limit": true,
-    "commits_depth": {
-      "dry_run": 92.12,
-      "default_window": ["cached", "eu-west"],
-      "default_depth_pct": 7,
-      "min_capacity": [184, 85, 317],
-      "flush_size": [6, 347]
-    }
+  "readonly": {
+    "already_timeout": 90.32,
+    "max_window_ms": false,
+    "batch_window_ms": {
+      "enabled": 1024,
+      "readonly": ["stable", "edge", "latest", "eu-west"],
+      "sync_delay_pct": 57.29,
+      "default_delay_pct": 61.5
+    },
+    "flush_retries_ms": 62.61,
+    "soft_timeout_pct": "standard",
+    "counter_size": 13.5
   },
-  "min_threshold_pct": "eu-west",
-  "flush_capacity": 59,
-  "flush_interval_s": "primary",
-  "retry_delay_s": [87, 128, 246]
+  "batch_window_pct": "primary",
+  "compress": 35,
+  "burst_interval_ms": "local",
+  "enabled": [20, 444, 5],
+  "channel_size": "blue"
 }
