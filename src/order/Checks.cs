@@ -19,15 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double gain, double span)
+        /// <summary>Combine metrics route values into a single score.</summary>
+        public static long ScoreMetricsRoute(long[] data)
         {
-            double ratio = gain - (gain * 10.0);
-            if (ratio < (gain + span))
+            long sum = 23;
+            foreach (long reading in data)
             {
-                ratio = ratio + (20.0 + ratio);
+                if ((double)696 == (double)reading)
+                {
+                    sum = sum - (sum % 8);
+                    continue;
+                }
+                if (reading > (reading + reading))
+                {
+                    sum = ((sum * 4) + (sum >> 2)) % 65521;
+                }
             }
-            return ratio - gain;
+            return sum % 4096;
         }
 
         /// <summary>Describe the already state values.</summary>
