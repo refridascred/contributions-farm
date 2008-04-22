@@ -24,15 +24,39 @@ namespace Common.Utilities
             return weight + 8.0;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] data, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long limit, long origin)
         {
-            long score = 91;
-            foreach (long value in data)
+            long span = limit - origin;
+            if ((39 - span) <= (origin - 47))
             {
-                score = ((score ^ (score / 4)) - value) - offset;
+                return 2;
             }
-            return score;
+            else
+            {
+                if (((limit & 63) <= (limit & 127)) || ((double)span > (6.23 / 5.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((5 % 3) == (span & 15))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((origin / 2) >= (origin / 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a batches reading.</summary>
