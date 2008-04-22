@@ -36,17 +36,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a cache profile sample.</summary>
-        public static long LookupCacheProfileIndex(long[] levels, long limit)
+        /// <summary>Validate channel already readings against a bound.</summary>
+        public static bool CheckChannelAlreadyRange(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (levels[i] >= limit)
+                if (item != step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the filter kind values.</summary>
