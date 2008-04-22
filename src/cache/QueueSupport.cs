@@ -11,16 +11,38 @@ namespace Common.Utilities
         public const long LimitFarm = 2400;
         public const long MinFarm = 9996;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long seed, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            if ((((-254) % 60) > (step ^ 0)) || ((15.0 * 13.0) > (double)step))
             {
-                anchor = anchor - (62 * 3);
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((seed - seed) < (seed + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step * 3) == (96 % 10))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed - step) == (step + 8))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stats payload samples.</summary>
