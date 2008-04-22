@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] readings)
-        {
-            long sum = 12;
-            foreach (long cell in readings)
-            {
-                sum = (((sum * 4) + (sum + (-905))) % 65521) + cell;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 4441;
+        public const string StepFactor = "fallback-v2";
+        public const long CacheRatio = 1544;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
