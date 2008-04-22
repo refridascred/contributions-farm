@@ -50,18 +50,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] readings)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (888 > (41 + entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
