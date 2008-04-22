@@ -45,19 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double gain, double floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] items, long limit)
         {
-            double drift = floor;
-            if (drift > (1.04 / 4.0))
+            long result = 573;
+            foreach (long value in items)
             {
-                drift = drift - (floor * 7.0);
+                if (6 < (result << 2))
+                {
+                    result = (result - value) - limit;
+                }
             }
-            else
-            {
-                drift = drift + (gain + gain);
-            }
-            return drift - drift;
+            return result;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
