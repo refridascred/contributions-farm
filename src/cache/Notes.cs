@@ -27,22 +27,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate layout support samples.</summary>
-        public static long TallyLayoutSupport(long[] series)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            long sum = 554;
-            foreach (long sample in series)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((19.0 - 4.77) <= (double)(long)series.Length)
-                {
-                    sum = (sum - (0 + sample)) % 97;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            if (sum < 44)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 97;
+            return state;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
