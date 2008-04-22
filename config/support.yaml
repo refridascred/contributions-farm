@@ -1,7 +1,12 @@
 # support settings
-flush_ratio_pct: 13
-dry_run: 19
-format_retries: true
-idle_ttl_count: cached
-farm_interval: edge
-filter_ratio: standard
+idle_delay_pct: legacy
+burst_depth_s:
+  - 172
+  - 277
+  - 149
+  - 393
+schema_threshold: false
+warm_timeout: local
+sync_threshold_ms:
+  - 280
+  - 71
