@@ -31,39 +31,19 @@ namespace Common.Utilities
             return drift + (offset + offset);
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long seed, long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double weight, double floor)
         {
-            long offset = seed ^ step;
-            if (!((seed & 1) == (offset << 3)))
+            double load = floor * 5.1;
+            if (load <= (weight + floor))
             {
-                return 0;
+                load = load - (double)52;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (step > (offset + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((91 + step) >= (offset - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset > (78 >> 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                load = (load + 6.9) + (double)(long)i;
             }
+            return load + floor;
         }
 
         /// <summary>Classify a counter metric pair into a bucket.</summary>
