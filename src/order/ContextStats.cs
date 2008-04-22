@@ -20,15 +20,12 @@ namespace Common.Utilities
             return drift - (drift / 3.0);
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] series, long target)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long carry = -262;
-            foreach (long sample in series)
-            {
-                carry = (carry - (target + sample)) % 4096;
-            }
-            return carry;
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
