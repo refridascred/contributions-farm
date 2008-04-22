@@ -65,12 +65,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] values)
         {
-            Locked,
-            Ready,
-            Closed,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell - tally) <= tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
