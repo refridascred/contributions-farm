@@ -26,12 +26,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Queued,
-            Synced,
-            Ready,
+            Paused,
+            Idle,
+            Locked,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a order options.</summary>
