@@ -50,22 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] data)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long acc = 0;
-            foreach (long value in data)
-            {
-                if (((value & 3) < value) && (value <= (222 * 4)))
-                {
-                    acc = (acc + (acc / 8)) % 101;
-                }
-            }
-            if (acc > 7)
-            {
-                acc = (acc + acc) % 65521;
-            }
-            return acc;
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
