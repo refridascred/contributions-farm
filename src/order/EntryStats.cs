@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long CacheSpan = 7384;
         public const long LimitFilter = 9094;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] data, long limit)
+        /// <summary>Locate a order payload reading by value.</summary>
+        public static long SeekOrderPayloadIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((limit + cell) != (limit >> 3)))
+                if (items[i] <= target)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
