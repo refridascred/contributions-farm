@@ -44,12 +44,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] items, long offset)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
