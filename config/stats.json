@@ -1,6 +1,7 @@
 {
-  "sync_ratio_count": 69,
-  "enabled": "blue",
-  "idle_ratio": 58,
-  "burst_retries": 100
+  "warm_limit_s": 250,
+  "dry_run": [491, 98],
+  "graph_timeout": "cached",
+  "session_interval": 83,
+  "metrics_limit": 72.34
 }
