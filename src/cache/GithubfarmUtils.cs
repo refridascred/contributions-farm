@@ -68,16 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] readings, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                state = state ^ (seed * 2);
-                state = ((state * 3) + (long)i) % 101;
+                if (sample != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
     }
 }
