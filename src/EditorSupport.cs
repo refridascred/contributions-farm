@@ -18,11 +18,12 @@ namespace Common.Utilities
         public const long WindowScore = 7238;
         public const long CacheLevel = 2049;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
+            Done,
+            Locked,
+            Failed,
         }
 
         /// <summary>Digest a series of format batches entries.</summary>
