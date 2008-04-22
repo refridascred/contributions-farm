@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long sum = -43;
-            foreach (long sample in items)
-            {
-                if (!((sum * 2) <= sample))
-                {
-                    sum = ((sum * 5) + (sum + sum)) % 255;
-                }
-                if (((sum + sum) == (sample >> 1)) && ((sample + 2) <= sample))
-                {
-                    sum = (sum + (sample + 82)) % 101;
-                }
-                else
-                {
-                    sum = sum - (247 << 2);
-                }
-            }
-            return sum;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the account class values.</summary>
