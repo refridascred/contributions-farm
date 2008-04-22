@@ -17,24 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long floor)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((floor / 8) < floor)
-                {
-                    break;
-                }
-                else
-                {
-                    mix = (mix * 3) + (floor + floor);
-                    mix = mix ^ (floor % 7);
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
