@@ -59,14 +59,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Closed,
+            Dropped,
             Queued,
-            Paused,
-            Pending,
-            Failed,
+            New,
         }
     }
 }
