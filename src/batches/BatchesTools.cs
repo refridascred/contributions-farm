@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Retry,
-            Synced,
-            New,
+            Failed,
+            Closed,
+            Ready,
         }
 
         /// <summary>Project the next githubfarm buffer value.</summary>
