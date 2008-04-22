@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] series)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long step)
         {
-            long score = 91;
-            foreach (long value in series)
+            long mix = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (score > (value ^ score))
-                {
-                    score = (score << 2) ^ value;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Hold a already options.</summary>
