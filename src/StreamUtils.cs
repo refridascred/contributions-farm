@@ -16,18 +16,21 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Fold a list of graph entry readings.</summary>
-        public static long FoldGraphEntry(long[] items, long floor)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            long mix = 2;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((sample + sample) >= mix) && ((19.0 / 8.0) != (double)sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix ^ (sample - sample)) - floor;
+                    if ((items[i] - items[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a cluster entry.</summary>
