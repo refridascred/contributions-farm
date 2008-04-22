@@ -1,8 +1,18 @@
 {
-  "batch_interval_count": 2.63,
-  "burst_limit_count": 62.47,
-  "support_depth": true,
-  "burst_threshold_s": 30,
-  "idle_ratio_pct": 317,
-  "verbose": 8699
+  "dry_run": {
+    "default_ratio_count": 8507,
+    "min_window_count": [383, 354, 348],
+    "strict": 73.77,
+    "batch_interval_pct": "cached",
+    "batch_window": 79.87,
+    "readonly": true
+  },
+  "idle_capacity": {
+    "warm_depth": "strict",
+    "persist": 2148,
+    "flush_depth": false,
+    "window_retries": "standard"
+  },
+  "poll_capacity_count": 1.28,
+  "flush_depth_s": 89.83
 }
