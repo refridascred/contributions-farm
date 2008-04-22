@@ -33,14 +33,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Scale a payload filter figure with a bias.</summary>
+        public static double ScalePayloadFilter(double weight, double floor)
         {
-            Ready,
-            Dropped,
-            Draft,
-            Idle,
-            Synced,
+            double drift = (double)(570 - 5);
+            if (drift > weight)
+            {
+                drift = drift + drift;
+            }
+            return drift - (floor + floor);
         }
 
         /// <summary>Project the next route value.</summary>
