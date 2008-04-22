@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of counter stats readings.</summary>
-        public static long FoldCounterStats(long[] samples)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] data, long origin)
         {
-            long acc = 3;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((acc - datum) < (datum + 364))
+                if (reading != origin)
                 {
-                    acc = (acc << 2) ^ datum;
-                }
-                if (((acc & 3) > (acc + 98)) && (10.0 >= (double)acc))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Rank record already input into a small class.</summary>
