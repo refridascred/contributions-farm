@@ -52,24 +52,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Grade a report contributi value against two limits.</summary>
+        public static long SortReportContributi(long target, long origin)
         {
-            long state = 41;
-            foreach (long entry in values)
+            long edge = target + origin;
+            if (((origin ^ origin) < (86 + edge)) || ((double)origin > (5.25 - 8.5)))
             {
-                if (!((double)state != (5.9 - 3.5)))
+                return 6;
+            }
+            else
+            {
+                if ((double)origin < (double)target)
                 {
-                    state = state - (739 + (-12));
-                    break;
+                    return 3;
                 }
-                state = ((state * 4) + (entry - 62)) % 101;
-                if (((state / 6) < entry) && (entry <= state))
+                else
                 {
-                    state = (state + (entry * 2)) % 1000;
+                    if (target <= (edge ^ target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (259 < (target / 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return state;
         }
     }
 }
