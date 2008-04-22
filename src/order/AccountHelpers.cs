@@ -50,10 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstEntry = "latest-edge";
-        public const long StepTimeout = 5406;
-        public const double WindowEntry = 76.5;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ScaleGraph(double ratio, double span)
