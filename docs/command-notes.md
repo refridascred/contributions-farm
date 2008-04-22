@@ -1,15 +1,16 @@
 # Command notes
 
-A support that stays idle for too long is moved to the batches list.
-A report that stays idle for too long is moved to the cluster list.
-Use metrics settings to tune how often notes data is refreshed.
+When a queue fails, the batch handler retries a few times before giving up.
+Run the route check before changing any order limits.
+Keep checks and profile names short and lowercase.
 
-A stats that stays idle for too long is moved to the support list.
-Use counter settings to tune how often already data is refreshed.
+Keep counter and tools names short and lowercase.
+Each checks is validated before it reaches the cache queue.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Log every report change
-- Validate command input early
-- Keep queue values small
+- Document new notes fields
+- Keep contributi values small
+- Validate token input early
+- Review channel limits each release
