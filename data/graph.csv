@@ -1,8 +1,9 @@
-id,region,rank,token
-1,548,90.41,fallback
-2,457,23.59,21
-3,611,478,29.63
-4,legacy,cached,25.87
-5,656,169,432
-6,999,staging,57.51
-7,legacy,staging,cached
+id,active,level,count
+1,408,240,14.96
+2,204,primary,274
+3,64.25,73,standard
+4,504,standard,221
+5,898,latest,stable
+6,48,60.92,849
+7,27,strict,75.94
+8,fallback,edge,cached
