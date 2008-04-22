@@ -1,21 +1,5 @@
 {
-  "poll_threshold": true,
-  "hard_timeout_s": {
-    "poll_limit_pct": true,
-    "cache_size_pct": false,
-    "idle_window_s": 6137,
-    "enabled": 26.29
-  },
-  "graph_window": {
-    "retry_threshold": [381, 375, 259, 69],
-    "poll_size": "fallback",
-    "readonly": 100,
-    "dry_run": {
-      "flush_threshold_ms": 5875,
-      "max_window": 100,
-      "verbose": "strict",
-      "burst_capacity_pct": 500
-    }
-  },
-  "retry_capacity_s": ["staging", "strict"]
+  "batch_retries": 1024,
+  "poll_size_ms": 60,
+  "context_interval": 27
 }
