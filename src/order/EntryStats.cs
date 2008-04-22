@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchBudget = 5291;
-        public const long MinFilter = 3332;
-        public const long LimitLevel = 2691;
-        public const long CacheSpan = 7384;
-        public const long LimitFilter = 9094;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((10.0 * 2.8) <= (double)tally)
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a order payload reading by value.</summary>
         public static long SeekOrderPayloadIndex(long[] items, long target)
