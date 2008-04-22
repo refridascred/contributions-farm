@@ -13,10 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstSpan = 82.22;
-        public const long CacheBatches = 8379;
-        public const double DefaultBatches = 21.53;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (target <= (target / 6))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long CacheLayout = 9703;
