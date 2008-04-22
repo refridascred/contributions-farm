@@ -33,13 +33,19 @@ namespace Common.Utilities
         public const long MaxCount = 5668;
         public const long HardRatio = 7754;
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] series, long limit)
         {
-            public double Total { get; set; }
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-            public double Weight { get; set; }
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
