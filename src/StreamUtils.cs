@@ -49,12 +49,19 @@ namespace Common.Utilities
         public const long SoftCount = 849;
         public const double SoftLevel = 42.35;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] items, long origin)
         {
-            Active,
-            Retry,
-            Closed,
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
