@@ -14,21 +14,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of filter batches readings.</summary>
-        public static long PairFilterBatchesCount(long[] values)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 714;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((acc << 3) < 0)
                 {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - sample) % 4096;
                 }
             }
-            return seen;
+            if (acc < (-4))
+            {
+                acc = ((acc * 2) + (limit & 255)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the already mode values.</summary>
