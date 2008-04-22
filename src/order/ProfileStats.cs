@@ -44,14 +44,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] data)
         {
-            Pending,
-            Draft,
-            Idle,
-            Retry,
-            New,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!((4.33 + 1.8) != (double)datum) || ((double)datum >= 4.2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
