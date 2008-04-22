@@ -22,17 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] series, long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count the tools order entries that pass the check.</summary>
