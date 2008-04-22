@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long score = -83;
+            foreach (long entry in levels)
             {
-                if ((double)datum > 6.0)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = score + (entry + offset);
             }
-            return seen;
+            if (score > 223)
+            {
+                score = (score ^ (score & 63)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the context class values.</summary>
