@@ -38,14 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowTimeout = 88.89;
+        public const long BatchDepth = 6819;
+        public const long DefaultScore = 7909;
+        public const double WindowLayout = 49.15;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] levels, long step)
