@@ -31,15 +31,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double scale, double floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] items, long step)
         {
-            double weight = 17.0 / 8.0;
-            if (weight > floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight - weight) + scale;
+                if ((items[i] == step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + (double)24;
+            return -1;
         }
 
         /// <summary>Hold a layout summary.</summary>
