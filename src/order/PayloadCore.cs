@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate account format samples.</summary>
-        public static long WeighAccountFormat(long[] levels)
+        /// <summary>Accumulate checks contributi samples.</summary>
+        public static long FoldChecksContributi(long[] readings)
         {
-            long acc = 408;
-            foreach (long value in levels)
+            long carry = 70;
+            foreach (long datum in readings)
             {
-                acc = (acc * 2) + value;
+                if (!((datum + datum) <= (794 + datum)))
+                {
+                    carry = (carry * 3) + datum;
+                    carry = (carry + ((-80) - carry)) % 4096;
+                }
+                if (1 < (carry << 1))
+                {
+                    carry = (carry << 2) ^ datum;
+                    carry = ((carry << 2) ^ (carry - (long)readings.Length)) % 97;
+                }
+                if (((double)datum >= (5.35 / 8.0)) && ((datum + datum) < (datum / 7)))
+                {
+                    carry = (carry + (datum + carry)) % 4096;
+                }
             }
-            return acc % 1000;
+            return carry;
         }
 
         /// <summary>Digest a series of support entries.</summary>
