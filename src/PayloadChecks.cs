@@ -13,18 +13,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] values, long limit)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] samples, long target)
         {
-            long mark = 9;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (13 < limit)
+                if (reading < target)
                 {
-                    mark = (((mark << 2) ^ (mark + limit)) % 65521) ^ datum;
+                    stale = false;
+                    break;
                 }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Find the first schema report entry that matches the target.</summary>
