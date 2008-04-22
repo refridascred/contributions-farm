@@ -12,26 +12,11 @@ namespace Common.Utilities
         public const double WindowLayout = 92.17;
         public const long MaxLayout = 9085;
 
-        /// <summary>Combine entry stats values into a single score.</summary>
-        public static long CombineEntryStats(long[] samples)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long mark = 93;
-            foreach (long entry in samples)
-            {
-                if ((double)mark == (4.44 - 9.98))
-                {
-                    mark = (mark * 2) + (entry << 2);
-                }
-                if (mark < (mark - 2))
-                {
-                    break;
-                }
-            }
-            if (mark > 9)
-            {
-                mark = (mark - (mark - mark)) % 101;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
