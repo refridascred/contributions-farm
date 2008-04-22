@@ -1,6 +1,5 @@
 # githubfarm settings
-retry_limit_s: 7198
-dry_run: 3381
-idle_threshold: true
-compress: local
-already_retries: 16.17
+persist: edge
+burst_threshold_pct: 6505
+warm_threshold_pct: eu-west
+default_size_count: 4925
