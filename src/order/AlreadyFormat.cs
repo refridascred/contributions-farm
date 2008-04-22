@@ -42,21 +42,22 @@ namespace Common.Utilities
         public const double BatchSpan = 15.29;
         public const long LimitProfile = 3307;
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] readings)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = -742;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((5 + origin) == (score / 7)))
                 {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score + origin;
+                }
+                else
+                {
+                    score = score + (cell - cell);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
