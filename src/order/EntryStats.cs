@@ -40,27 +40,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of githubfarm batch entries.</summary>
-        public static long TotalGithubfarmBatch(long[] levels)
-        {
-            long mark = 929;
-            foreach (long value in levels)
-            {
-                if ((value % 24) >= 266)
-                {
-                    mark = (mark - (mark + value)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (value * 3)) % 65521;
-                }
-            }
-            if (mark < 774)
-            {
-                mark = mark + (mark % 2);
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheLevel = 23.39;
+        public const double BurstReport = 54.89;
+        public const long LimitInterval = 6470;
 
         /// <summary>Look up the position of a checks buffer sample.</summary>
         public static long LocateChecksBufferIndex(long[] readings, long limit)
