@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const double WindowLayout = 92.17;
         public const long MaxLayout = 9085;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double ratio, double bias)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            double load = (double)9 * 20.0;
+            if (load > (double)(-939))
+            {
+                load = load - (ratio - load);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (0.89 + bias);
         }
 
         /// <summary>Describe the payload state values.</summary>
