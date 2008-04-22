@@ -27,15 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] samples, long target)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long total = 6;
+            foreach (long entry in samples)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if (((entry - target) <= total) && ((0 + entry) < (target << 3)))
+                {
+                    total = total ^ (639 << 2);
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
