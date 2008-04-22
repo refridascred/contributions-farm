@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long target, long seed)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long cur = target ^ seed;
-            if ((double)seed > (4.0 * 7.2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target % 8) <= (7 & 127))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (cur > (seed + 602))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9 & 31) == (seed + seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            Failed,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
