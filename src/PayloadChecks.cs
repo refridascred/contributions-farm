@@ -38,11 +38,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double weight, double offset)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long seed, long seed2)
         {
-            double rate = weight;
-            return rate + (offset * 8.98);
+            if (((18.0 - 20.0) != (double)seed) || (((-522) & 63) < (seed & 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed * 3) < (seed % 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed2 * 2) != (seed >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((4.0 - 1.0) != (double)seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks stats.</summary>
