@@ -33,17 +33,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] values, long seed)
+        /// <summary>Rank filter editor input into a small class.</summary>
+        public static long ClassifyFilterEditor(long offset, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = offset + seed;
+            if (((double)seed >= (9.59 / 6.0)) || ((seed - seed) == (offset * 2)))
             {
-                if (values[i] == seed)
+                return 6;
+            }
+            else
+            {
+                if ((double)delta < (8.0 * 7.9))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a payload entry.</summary>
