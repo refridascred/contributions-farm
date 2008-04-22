@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a route metrics figure with a bias.</summary>
-        public static double SmoothRouteMetrics(double scale, double offset)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double mean = offset;
-            if (mean >= (double)6)
-            {
-                mean = mean + scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - scale) - (double)(long)i;
-            }
-            return mean + (double)7;
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
