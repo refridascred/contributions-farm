@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long target)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long mix = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((target >> 1) <= 67) && ((mix + 2) > (long)i))
+                {
+                    mix = (mix << 3) ^ target;
+                    continue;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
