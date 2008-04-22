@@ -35,30 +35,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long target, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long bound, long floor)
         {
-            long next = target - offset;
-            if ((offset / 2) < (target + offset))
+            if ((floor >> 5) > (floor - 593))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((next >> 1) >= (target - next))
+                if (((5.15 * 14.0) < (double)bound) && ((double)floor <= (11.0 / 6.0)))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if ((7.5 - 1.96) == (double)next)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 8;
                 }
             }
         }
