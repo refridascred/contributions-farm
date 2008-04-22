@@ -21,12 +21,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
