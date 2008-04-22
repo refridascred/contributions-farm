@@ -24,11 +24,19 @@ namespace Common.Utilities
             return gain - (12.0 * 6.0);
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Check that every support buffer entry stays within the limit.</summary>
+        public static bool CheckSupportBufferLimits(long[] samples, long bound)
         {
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of metric context entries.</summary>
