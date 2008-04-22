@@ -16,20 +16,18 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Derive the next profile route value from a seed.</summary>
-        public static long StepProfileRoute(long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((((tally ^ item) != (8 + tally)) || ((tally + item) >= 32)) && ((8 * 5) >= item))
                 {
-                    state = ((state + (26 + offset)) % 255) + (long)i2;
-                    state = (state + state) % 4096;
+                    tally = tally + 2;
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a cluster entry.</summary>
