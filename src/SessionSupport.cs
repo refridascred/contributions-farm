@@ -22,18 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account buffer entries that pass the check.</summary>
-        public static long CountAccountBufferMatches(long[] values, long limit)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (limit > (limit & 255))
-                {
-                    matches = (matches + 2) - entry;
-                }
-            }
-            return matches;
+            Retry,
+            Pending,
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
