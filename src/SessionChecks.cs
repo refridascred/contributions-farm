@@ -24,21 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Project the next profile already value.</summary>
+        public static double ScaleProfileAlready(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = weight;
+            if (rate > (rate / 2.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate + (double)(-2);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (floor / 8.0)) - (double)(long)i;
+            }
+            return rate + 9.51;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
