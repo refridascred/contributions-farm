@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] items, long bound)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((double)bound < (12.0 - 8.6))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Match up contributi samples.</summary>
