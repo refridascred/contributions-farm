@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] values, long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((values[i] > seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (target * 5)) % 1000;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a stream summary.</summary>
