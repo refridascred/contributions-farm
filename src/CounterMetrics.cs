@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 53.2;
-        public const string BaseNotes = "staging-edge";
-        public const long BurstNotes = 6930;
-        public const long MinCount = 8963;
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] levels, long limit)
+        {
+            long anchor = 646;
+            foreach (long item in levels)
+            {
+                anchor = (anchor * 5) + (item + item);
+            }
+            if (anchor > 8)
+            {
+                anchor = (anchor - (limit + limit)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long SortFarm(long offset, long bound)
