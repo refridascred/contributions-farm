@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a profile metric sample.</summary>
-        public static long LookupProfileMetricIndex(long[] samples, long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 964;
+            foreach (long item in series)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry + (carry / 3)) ^ item) + origin;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
