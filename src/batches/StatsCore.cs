@@ -25,24 +25,19 @@ namespace Common.Utilities
         public const double WindowReport = 47.36;
         public const long RetryReport = 6085;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] values, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long sum = 266;
+            foreach (long entry in values)
             {
-                if ((step + (long)i) <= score)
+                sum = (((sum * 5) + (85 << 1)) % 1000) + bound;
+                if (entry > (58 + entry))
                 {
-                    score = (score + (-31)) % 1000;
-                    score = (score * 5) + (long)i;
+                    sum = (sum - (sum / 2)) % 1000;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = (score + (step - score)) - (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
