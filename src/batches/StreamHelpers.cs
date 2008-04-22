@@ -40,17 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] samples, long step)
+        /// <summary>Count the already notes entries that pass the check.</summary>
+        public static long AuditAlreadyNotesHits(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (samples[i] < step)
+                if (reading <= (reading - hits))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a cache record.</summary>
