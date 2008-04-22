@@ -1,8 +1,13 @@
 {
-  "support_threshold": true,
-  "compress": "eu-west",
-  "max_timeout_s": 4528,
-  "batch_size_ms": 24.78,
-  "sync_delay": 8720,
-  "soft_timeout": true
+  "schema_ttl": true,
+  "retry_ratio": {
+    "base_retries_s": "legacy",
+    "poll_depth": false,
+    "counter_ttl": true,
+    "soft_delay_pct": "strict",
+    "report_limit": "local"
+  },
+  "batches_depth": ["strict", "open", "open"],
+  "payload_retries": "fallback",
+  "dry_run": false
 }
