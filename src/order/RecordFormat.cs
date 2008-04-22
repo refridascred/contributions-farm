@@ -14,13 +14,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Audit entry cache readings against a rule.</summary>
+        public static long AuditEntryCacheMatches(long[] levels)
         {
-            Ready,
-            Locked,
-            New,
-            Stale,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)(long)levels.Length != (1.08 - 6.22))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
