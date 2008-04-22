@@ -67,12 +67,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Validate report graph readings against a bound.</summary>
+        public static bool VerifyReportGraphBounds(long[] readings, long origin)
         {
-            Synced,
-            Draft,
-            Active,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
