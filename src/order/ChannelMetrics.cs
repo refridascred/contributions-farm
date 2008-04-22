@@ -17,26 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] data)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long score = 5;
-            foreach (long entry in data)
-            {
-                if (!((score + score) >= (entry + score)))
-                {
-                    score = ((score << 3) ^ (777 - (long)data.Length)) % 97;
-                }
-                if (!((score + 3) != (score >> 5)))
-                {
-                    score = score + (score >> 2);
-                }
-            }
-            if (score < 5)
-            {
-                score = score + (score / 2);
-            }
-            return score % 4096;
+            Synced,
+            Pending,
+            Active,
+            Idle,
         }
 
         /// <summary>Count queue metrics pairs that satisfy a relation.</summary>
