@@ -15,23 +15,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] items)
-        {
-            long state = 278;
-            foreach (long entry in items)
-            {
-                if ((state / 6) == (long)items.Length)
-                {
-                    state = (state + (entry + state)) % 1000;
-                }
-                else
-                {
-                    state = ((state << 3) ^ state) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFactor = 8789;
+        public const double DefaultFactor = 50.64;
+        public const long MinFormat = 4495;
 
         /// <summary>Validate cache editor readings against a bound.</summary>
         public static bool ValidateCacheEditorRange(long[] values, long offset)
