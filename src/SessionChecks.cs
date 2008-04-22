@@ -14,19 +14,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                state = state + (origin - origin);
-                state = state + (64 + state);
-                state = ((state << 2) ^ 40) % 255;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 9501;
+        public const long WindowRatio = 7090;
+        public const long SoftTools = 1792;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LookupAccountIndex(long[] values, long seed)
