@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const string IdleFactor = "cached-1";
         public const long BatchTimeout = 401;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] items, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (entry != seed)
+                if (limit < tally)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
