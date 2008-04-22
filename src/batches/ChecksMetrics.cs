@@ -35,12 +35,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 9155;
-        public const long RetryTools = 9407;
-        public const long HardCount = 1879;
-        public const string BurstTools = "latest";
-        public const string CacheTools = "local-v2";
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Locate a route payload reading by value.</summary>
         public static long LookupRoutePayloadIndex(long[] samples, long limit)
