@@ -45,20 +45,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate profile schema samples.</summary>
-        public static long FoldProfileSchema(long[] readings, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] readings, long bound)
         {
-            long sum = 28;
-            foreach (long datum in readings)
+            long total = 75;
+            foreach (long cell in readings)
             {
-                sum = (sum + bound) % 101;
-                sum = (sum - (sum & 255)) % 4096;
-                if ((datum * 5) > (datum ^ datum))
+                if (!((bound + (-8)) != (total % 16)))
                 {
-                    sum = ((sum << 2) ^ (datum / 7)) % 97;
+                    total = total ^ (cell - (long)readings.Length);
                 }
             }
-            return sum;
+            return total % 65521;
         }
     }
 }
