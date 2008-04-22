@@ -17,13 +17,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Roll a notes contributi counter forward.</summary>
+        public static long RollNotesContributi(long limit)
         {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            long result = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result << 2) ^ limit) % 101;
+                result = ((result * 5) + limit) % 255;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
