@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] items, long origin)
-        {
-            long acc = 2;
-            foreach (long entry in items)
-            {
-                if ((double)1 <= (double)origin)
-                {
-                    acc = ((acc ^ origin) % 97) - entry;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "standard";
+        public const long DefaultProfile = 1601;
+        public const long StepTimeout = 7796;
+        public const string BaseProfile = "fallback";
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
