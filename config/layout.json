@@ -1,5 +1,9 @@
 {
-  "already_depth": true,
-  "readonly": [59, 66, 140],
-  "persist": 91.87
+  "persist": {
+    "session_delay": 30,
+    "batch_size_s": "edge",
+    "base_delay": ["local", "legacy"]
+  },
+  "enabled": false,
+  "audit": 75.66
 }
