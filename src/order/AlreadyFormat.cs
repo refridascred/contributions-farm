@@ -44,11 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitBudget = 10.84;
-        public const long RetryWidth = 3967;
-        public const double BatchSpan = 15.29;
-        public const long LimitProfile = 3307;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long BucketLayout(long limit, long target)
