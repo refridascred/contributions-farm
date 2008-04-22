@@ -38,22 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record buffer readings against a rule.</summary>
-        public static long AuditRecordBufferHits(long[] data, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((double)step <= (1.0 + 1.39)))
-                {
-                    count = (count + 2) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
