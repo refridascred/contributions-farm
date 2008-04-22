@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long StepFarm = 9785;
         public const long HardTimeout = 8738;
 
-        /// <summary>Validate record support readings against a bound.</summary>
-        public static bool VerifyRecordSupportLimits(long[] readings, long bound)
+        /// <summary>Validate counter window readings against a bound.</summary>
+        public static bool GuardCounterWindowBounds(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (reading < bound)
+                if (entry > limit)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Describe the payload mode values.</summary>
