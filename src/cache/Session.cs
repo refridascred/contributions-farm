@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheDepth = 1368;
-        public const string BaseBudget = "fallback-1";
-        public const long BurstCount = 7390;
-        public const long MaxRoute = 2212;
+        /// <summary>Count the format route entries that pass the check.</summary>
+        public static long AuditFormatRouteGaps(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)tally != (10.0 / 2.0))
+                {
+                    tally = ((tally + 3) - item) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate window graph readings against a bound.</summary>
         public static bool CheckWindowGraphRange(long[] data, long limit)
