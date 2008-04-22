@@ -1,15 +1,7 @@
 {
-  "cache_retries_s": ["standard", "cached"],
-  "batch_retries_pct": false,
-  "dry_run": 250,
-  "sync_interval_ms": {
-    "metric_depth": 30,
-    "dry_run": 94,
-    "stream_interval": false,
-    "min_ratio_pct": ["green", "primary", "legacy", "local"],
-    "idle_limit": "latest",
-    "base_timeout_s": 1974
-  },
-  "strict": 29.89,
-  "cluster_size": false
+  "dry_run": false,
+  "profile_depth": [221, 138, 116, 354],
+  "retry_window_count": 4636,
+  "hard_interval_ms": 250,
+  "tools_ttl": 50.87
 }
