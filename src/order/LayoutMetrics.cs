@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            public string Token { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
