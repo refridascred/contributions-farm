@@ -1,5 +1,8 @@
 # githubfarm settings
-retry_interval_s: green
-payload_depth: 1024
-default_capacity_count: 5397
-min_ttl_ms: true
+base_retries_ms: eu-west
+order_capacity: false
+idle_delay: 65
+sync_capacity:
+  - 143
+  - 243
+idle_window_ms: fallback
