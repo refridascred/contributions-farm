@@ -1,8 +1,12 @@
 {
-  "stream_ttl": [493, 183],
-  "metric_threshold": 3271,
-  "default_retries_count": [269, 473, 265],
-  "verbose": 37.73,
-  "retry_ratio": 9233,
-  "graph_capacity": 5067
+  "session_capacity": 42,
+  "strict": 97.98,
+  "idle_size": 4186,
+  "poll_threshold": {
+    "sync_timeout": "open",
+    "commits_retries": 8.68,
+    "hard_timeout_count": 1411,
+    "channel_size": "strict"
+  },
+  "soft_retries_ms": 42.39
 }
