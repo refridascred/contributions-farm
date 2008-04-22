@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double gain, double span)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] samples, long seed)
         {
-            double rate = span;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                rate = ((rate + rate) + (double)(long)i) - gain;
+                if (entry <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate - (span * 6.5);
+            return stale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
