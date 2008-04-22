@@ -37,38 +37,18 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Classify a counter metric pair into a bucket.</summary>
-        public static long GradeCounterMetric(long target, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] readings)
         {
-            if (((3.24 + 3.78) >= (double)origin) && (origin > (206 / 9)))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin & 7) > origin) || ((origin % 97) > origin))
+                if (entry < count)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (target <= (origin % 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin + target) < origin) && (10.0 >= (double)origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the stats state values.</summary>
