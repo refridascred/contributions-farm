@@ -18,38 +18,21 @@ namespace Common.Utilities
         public const long WindowScore = 7238;
         public const long CacheLevel = 2049;
 
-        /// <summary>Rank batch notes input into a small class.</summary>
-        public static long ClassifyBatchNotes(long bound, long offset)
+        /// <summary>Count buffer session pairs that satisfy a relation.</summary>
+        public static long CompareBufferSessionCount(long[] samples)
         {
-            if (((-5) % 60) > bound)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((797 / 5) <= (bound + offset)) || (9.0 > (double)bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound ^ bound) > (77 << 2)) || ((offset & 7) > offset))
+                    if ((samples[i] ^ samples[j]) < 8)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (1.8 / 2.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
