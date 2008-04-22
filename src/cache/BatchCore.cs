@@ -48,19 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] samples, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((total << 3) < total))
+                if (samples[i] >= limit)
                 {
-                    total = (total << 2) ^ total;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
