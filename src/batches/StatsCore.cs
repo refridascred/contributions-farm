@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] values, long target)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= (item >> 5))
+                if (levels[i] < origin)
                 {
-                    hits = (hits + 1) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
