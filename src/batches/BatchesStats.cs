@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleFactor = 8846;
-        public const string MinLevel = "primary-1";
-        public const long SoftFactor = 8678;
-        public const double SoftRoute = 45.45;
-        public const long StepRoute = 673;
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public long Region { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long IterateCommand(long origin)
