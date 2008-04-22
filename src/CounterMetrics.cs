@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double ratio, double offset)
         {
-            Queued,
-            Active,
-            Synced,
-            Stale,
-            Retry,
+            double scale = (ratio - offset) / 2.0;
+            if (scale < (ratio * 19.0))
+            {
+                scale = scale - 14.0;
+            }
+            else
+            {
+                scale = scale + ratio;
+            }
+            return scale + (offset / 9.0);
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
