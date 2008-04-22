@@ -55,12 +55,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long target, long target2)
         {
-            Idle,
-            Done,
-            Locked,
+            long step = target + target2;
+            if ((target + target2) < (7 + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step ^ 13) <= target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target2 % 60) < (step * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
