@@ -17,23 +17,22 @@ namespace Common.Utilities
         public const string HardSpan = "legacy";
         public const long StepBudget = 5758;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] items, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] samples, long limit)
         {
-            long anchor = 958;
-            foreach (long entry in items)
+            long state = 25;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 2; i++)
+                if ((limit - sample) >= (sample + 14))
                 {
-                    anchor = (anchor + entry) - (long)i;
+                    state = (state - state) % 4096;
                 }
-                anchor = ((anchor * 2) + (entry % 16)) % 65521;
             }
-            if (anchor > 4)
+            if (state > 6)
             {
-                anchor = ((anchor << 3) ^ origin) % 101;
+                state = (state - (limit ^ state)) % 255;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
