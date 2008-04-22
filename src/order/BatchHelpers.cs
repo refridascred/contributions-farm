@@ -19,13 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Digest a series of metrics channel entries.</summary>
+        public static long ScoreMetricsChannel(long[] samples)
         {
-            public bool Size { get; set; }
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            long result = -9;
+            foreach (long reading in samples)
+            {
+                result = ((result - result) % 65521) - reading;
+                if ((long)samples.Length == (111 & 1))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
