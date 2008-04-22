@@ -72,21 +72,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 73;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum > (25 / 4)) || ((anchor - datum) <= datum))
                 {
-                    if ((data[i] - data[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor - anchor) % 101;
+                    continue;
+                }
+                if ((0 <= datum) && ((anchor ^ limit) <= ((long)values.Length + anchor)))
+                {
+                    anchor = (anchor + (77 / 4)) % 65521;
+                }
+                if ((66 / 6) == (1 + (long)values.Length))
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
