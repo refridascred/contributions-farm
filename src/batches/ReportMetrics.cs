@@ -33,22 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] series, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] samples)
         {
-            long acc = 3;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (541 >= (90 + floor))
+                if ((matches + 87) >= matches)
                 {
-                    acc = ((acc - (82 % 100)) % 65521) ^ datum;
-                }
-                else
-                {
-                    acc = acc + (floor ^ acc);
+                    matches = (matches + 3) - entry;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
