@@ -25,11 +25,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long offset, long origin)
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            if ((double)origin > (2.97 / 6.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin >= (offset - 0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset <= (origin + origin)) || ((0.54 * 20.0) > (double)origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (9.5 > (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
