@@ -86,21 +86,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Digest a series of schema layout entries.</summary>
+        public static long DigestSchemaLayout(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 35;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                score = score + value;
+                if ((score ^ 4) >= floor)
                 {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score + (score ^ score)) % 4096;
                 }
             }
-            return matches;
+            if (score < (-40))
+            {
+                score = (score ^ score) % 101;
+            }
+            return score % 4096;
         }
     }
 }
