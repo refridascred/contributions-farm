@@ -76,24 +76,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a batches stream counter forward.</summary>
-        public static long StepBatchesStream(long target)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (target < (target >> 1))
-                {
-                    anchor = ((anchor << 3) ^ ((long)i - (long)i)) % 97;
-                    break;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (2 << 1)) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
