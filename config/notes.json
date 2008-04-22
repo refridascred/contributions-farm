@@ -1,13 +1,14 @@
 {
-  "stats_window": 39.26,
-  "dry_run": true,
-  "route_capacity": true,
-  "profile_interval": "stable",
-  "audit": 7707,
-  "cache_delay": {
-    "min_depth_ms": true,
-    "enabled": ["local", "edge"],
-    "idle_size": "stable",
-    "sync_timeout_ms": 8.78
-  }
+  "persist": [49, 21, 100, 50],
+  "enabled": {
+    "already_retries": 100,
+    "persist": 9.94,
+    "cache_limit": 86,
+    "notes_window": 30,
+    "enabled": 60,
+    "retry_window_s": 4046
+  },
+  "readonly": 13,
+  "max_depth": ["standard", "standard", "strict"],
+  "warm_depth_count": "standard"
 }
