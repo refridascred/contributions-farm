@@ -1,6 +1,5 @@
 # githubfarm settings
-context_threshold: 2063
-graph_limit: 17.96
-hard_ttl_count: 10.4
-audit: fallback
-base_capacity_count: open
+retry_interval_s: green
+payload_depth: 1024
+default_capacity_count: 5397
+min_ttl_ms: true
