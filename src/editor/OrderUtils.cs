@@ -24,15 +24,15 @@ namespace Common.Utilities
             return gain + (offset * 8.0);
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] readings, long step)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long bound)
         {
-            long state = 1;
-            foreach (long datum in readings)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                state = ((state ^ (step % 7)) % 65521) + datum;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return state % 65521;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
