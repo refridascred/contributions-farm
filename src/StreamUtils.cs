@@ -40,21 +40,22 @@ namespace Common.Utilities
         public const long SoftCount = 849;
         public const double SoftLevel = 42.35;
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 7;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((8.0 - 3.57) > (double)mix))
                 {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix - (mix * 4)) - reading) - seed;
+                }
+                else
+                {
+                    mix = (mix ^ (421 & 7)) % 255;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
