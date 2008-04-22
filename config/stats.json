@@ -1,22 +1,5 @@
 {
-  "metrics_window": true,
-  "soft_window_pct": {
-    "editor_threshold": {
-      "persist": 21,
-      "cache_window_ms": 40.55,
-      "min_size": 34.96
-    },
-    "verbose": "strict",
-    "min_threshold": {
-      "soft_ttl_count": false,
-      "persist": [33, 328],
-      "retry_window_ms": ["green", "cached", "cached", "cached"],
-      "burst_size_count": "blue",
-      "idle_capacity_ms": "cached",
-      "graph_depth": 31
-    },
-    "burst_threshold_pct": "local"
-  },
-  "already_window": 59,
-  "verbose": "standard"
+  "verbose": [178, 100, 443],
+  "enabled": 90,
+  "default_threshold_count": 71
 }
