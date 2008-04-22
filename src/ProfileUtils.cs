@@ -19,13 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            Active,
-            Dropped,
-            Ready,
-            Queued,
+            long state = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Classify a payload buffer pair into a bucket.</summary>
