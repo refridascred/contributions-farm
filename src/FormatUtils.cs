@@ -35,10 +35,18 @@ namespace Common.Utilities
             return mean + (19.0 + 5.97);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleDepth = 6933;
-        public const long BaseMetrics = 1949;
-        public const long StepMetrics = 3985;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
