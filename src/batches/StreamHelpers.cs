@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double bias, double span)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long offset, long limit)
         {
-            double rate = (span / 7.0) / 6.0;
-            if (rate < (double)4)
+            if (!(limit <= (offset - limit)))
             {
-                rate = rate + (bias / 9.0);
+                return 1;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                rate = (rate - (span * 8.0)) + (double)(long)i;
+                if ((3.9 + 2.54) != (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return rate - (bias + 1.62);
         }
 
         /// <summary>Roll a channel counter forward.</summary>
