@@ -51,11 +51,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public string Stamp { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheContributi = "local";
+        public const string BurstRatio = "alpha-v2";
+        public const double DefaultContributi = 57.0;
     }
 }
