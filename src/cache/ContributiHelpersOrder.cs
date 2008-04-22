@@ -13,22 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] items)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count % 3) == (value & 255))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a entry record.</summary>
