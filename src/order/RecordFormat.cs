@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Count the session schema entries that pass the check.</summary>
+        public static long AuditSessionSchemaMatches(long[] samples)
         {
-            Dropped,
-            New,
-            Paused,
-            Queued,
-            Ready,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample < count) && (count > (sample ^ sample)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
