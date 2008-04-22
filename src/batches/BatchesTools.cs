@@ -41,14 +41,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long floor, long offset)
         {
-            Draft,
-            Synced,
-            Queued,
-            Paused,
-            Retry,
+            long slot = floor + offset;
+            if (((floor / 8) >= (0 + 7)) && ((offset - slot) != (slot + floor)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)97 != (double)slot)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor << 1) >= (slot - 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset % 2) < (floor - 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
