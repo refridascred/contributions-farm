@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=48
-log "limit is ${COMMAND_LIMIT}"
+for item in standard strict legacy; do
+    log "checking ${item}"
+done
 
-mode="${1:-fallback}"
+mode="${1:-staging}"
 case "${mode}" in
-    stable)
+    standard)
         log "fast path"
         ;;
     *)
