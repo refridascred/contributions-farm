@@ -30,18 +30,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] levels, long offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((offset - offset) > (47 % 12))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
