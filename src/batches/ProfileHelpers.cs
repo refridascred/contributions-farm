@@ -72,21 +72,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) < 5)
+                    if ((data[i] - data[j]) > 17)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
