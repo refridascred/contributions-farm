@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long MaxScore = 9463;
         public const long MaxSpan = 2324;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public bool Total { get; set; }
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 1392;
+        public const long BatchRoute = 2720;
+        public const long StepRoute = 5363;
+        public const string IdleFactor = "cached-1";
+        public const long BatchTimeout = 401;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportBounds(long[] items, long seed)
