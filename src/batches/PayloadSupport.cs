@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowEntry = 4.3;
-        public const long BatchEntry = 9421;
-        public const double MaxEntry = 26.06;
-        public const double LimitEntry = 14.72;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 9265;
+        public const long WindowDepth = 951;
+        public const long HardSpan = 8078;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamMatches(long[] readings)
