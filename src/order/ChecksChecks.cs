@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] data)
         {
-            Synced,
-            Stale,
-            Paused,
+            long anchor = 390;
+            foreach (long entry in data)
+            {
+                anchor = ((anchor << 3) ^ (entry & 7)) % 1000;
+                if (entry < (anchor + anchor))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
