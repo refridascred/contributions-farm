@@ -19,31 +19,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long bound, long target)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            if (bound <= (bound % 24))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target == (5.4 - 8.9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(target <= (target ^ target)))
+                    if ((items[i] - items[j]) > 10)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
