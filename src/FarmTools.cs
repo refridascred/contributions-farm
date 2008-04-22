@@ -32,18 +32,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many batches route samples are out of range.</summary>
-        public static long AuditBatchesRouteOutliers(long[] values)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long bound, long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long edge = bound - seed;
+            if ((edge > (698 & 7)) && ((bound + 724) < (edge / 7)))
             {
-                if ((double)entry >= (12.0 / 5.0))
+                return 1;
+            }
+            else
+            {
+                if ((7.32 + 6.0) != (double)bound)
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (((edge * 2) > (-10)) || ((double)bound == (double)edge))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9 <= (bound << 3)) || ((4.68 + 9.0) >= (double)edge))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
