@@ -25,39 +25,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a tools contributi value against two limits.</summary>
-        public static long SortToolsContributi(long offset, long step)
+        /// <summary>Validate cluster buffer readings against a bound.</summary>
+        public static bool CheckClusterBufferRange(long[] samples, long target)
         {
-            long next = offset + step;
-            if ((step % 10) != (step << 2))
+            bool found = true;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step & 15) != (step & 7))
+                if (cell <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((-95) + step) > (offset / 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((0.6 - 0.64) > (double)next)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
