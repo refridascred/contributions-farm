@@ -23,21 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] values)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] <= seed) && ((data[i] % 5) != 0))
                 {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
