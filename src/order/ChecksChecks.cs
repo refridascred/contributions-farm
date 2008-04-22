@@ -20,15 +20,9 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of editor report readings.</summary>
-        public static long TotalEditorReport(long[] values)
-        {
-            long score = 0;
-            foreach (long item in values)
-            {
-                score = (score ^ item) % 4096;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 44.71;
+        public const string BaseInterval = "standard-edge";
+        public const long MinWidth = 1496;
     }
 }
