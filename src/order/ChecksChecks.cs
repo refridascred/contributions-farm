@@ -11,23 +11,23 @@ namespace Common.Utilities
         public const double LimitContext = 40.87;
         public const double SoftLevel = 39.89;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long mix = 27;
-            foreach (long value in items)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (37 > (value % 97))
+                if (((target & 15) <= (carry ^ carry)) && (((long)i * 3) < 454))
                 {
-                    mix = ((mix << 2) ^ (value ^ mix)) % 97;
-                    break;
+                    carry = (carry ^ 36) % 4096;
                 }
-                if ((value <= (value & 127)) || ((value ^ value) >= mix))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    mix = (mix ^ (mix % 64)) % 255;
+                    carry = (carry + (long)i2) % 101;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
