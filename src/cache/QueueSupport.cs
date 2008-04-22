@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
+            Draft,
+            Stale,
+            Retry,
             Dropped,
-            New,
-            Idle,
             Pending,
         }
 
