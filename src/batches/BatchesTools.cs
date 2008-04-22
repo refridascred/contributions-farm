@@ -20,12 +20,14 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryDepth = 434;
-        public const long StepDepth = 1837;
-        public const string SoftSize = "primary-v2";
-        public const long HardQueue = 4754;
-        public const long MaxDepth = 4172;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
+            public double Count { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] levels)
