@@ -34,14 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Done,
-            Ready,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 6305;
+        public const string SoftLevel = "cached";
+        public const long LimitSize = 8230;
+        public const long DefaultProfile = 792;
+        public const long BatchScore = 1700;
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
