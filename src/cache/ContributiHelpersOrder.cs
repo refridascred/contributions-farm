@@ -31,24 +31,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] samples, long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long target, long offset)
         {
-            long anchor = 91;
-            foreach (long cell in samples)
+            if ((offset / 3) > (target + target))
             {
-                if ((anchor / 6) != (floor * 5))
+                return 8;
+            }
+            else
+            {
+                if (target >= (offset ^ 227))
                 {
-                    anchor = (anchor + anchor) + cell;
-                    anchor = (anchor + (15 - floor)) % 65521;
+                    return 7;
                 }
-                anchor = ((anchor * 3) + (floor - anchor)) % 4096;
+                else
+                {
+                    if ((double)target <= (19.0 + 3.94))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor << 3) ^ (floor * 5);
-            }
-            return anchor % 97;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
