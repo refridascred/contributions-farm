@@ -46,15 +46,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double ratio, double offset)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double mean = (double)((-30) / 6);
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean + (offset * 14.0);
+            Active,
+            Draft,
+            Pending,
         }
 
         /// <summary>Project the next batch value.</summary>
