@@ -53,24 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long limit, long target)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            if (((7.7 + 8.4) < (double)limit) || ((target - limit) <= (target * 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((435 % 64) == (target & 127))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the counter class values.</summary>
