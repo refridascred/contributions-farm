@@ -1,5 +1,7 @@
 {
-  "poll_limit_pct": false,
-  "compress": 15,
-  "soft_timeout": "stable"
+  "hard_threshold": "cached",
+  "base_delay_ms": "staging",
+  "contributi_threshold": 90.76,
+  "verbose": "latest",
+  "batch_depth_s": "eu-west"
 }
