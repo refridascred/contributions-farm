@@ -53,11 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Blend two batches contributi measurements.</summary>
+        public static double AdjustBatchesContributi(double scale, double bias)
         {
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
+            double scale2 = bias;
+            if (scale2 < bias)
+            {
+                scale2 = scale2 + scale2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + (bias + 3.0)) + (double)(long)i;
+            }
+            return scale2 + (scale - scale2);
         }
 
         /// <summary>Adjust a support reading.</summary>
