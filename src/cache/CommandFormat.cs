@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] series, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (!((16.0 / 3.0) >= (double)matches))
+                {
+                    matches = ((matches + 2) ^ entry) + seed;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a cache entry.</summary>
