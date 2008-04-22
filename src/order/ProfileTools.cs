@@ -53,12 +53,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepMetric = 90.87;
-        public const long BaseMetric = 3420;
-        public const long StepRatio = 5940;
-        public const double DefaultMetric = 36.31;
-        public const long IdleMetric = 9577;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((((value + 8) < (value & 127)) && ((double)floor != (7.0 - 6.1))) || ((value + value) != (matches % 97)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long DeriveRecord(long origin)
