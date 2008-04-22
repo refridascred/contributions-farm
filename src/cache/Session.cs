@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long BurstCount = 7390;
         public const long MaxRoute = 2212;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double gain, double span)
+        /// <summary>Validate window graph readings against a bound.</summary>
+        public static bool CheckWindowGraphRange(long[] data, long limit)
         {
-            double weight = (gain + span) + 0.7;
-            if (weight < weight)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                weight = weight - weight;
+                if (datum != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight - (span - gain);
+            return ok;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
