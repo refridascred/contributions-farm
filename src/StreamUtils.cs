@@ -79,21 +79,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up graph channel samples.</summary>
-        public static long PairGraphChannelCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 5589;
+        public const string HardRoute = "open-1";
+        public const long CacheRoute = 3853;
+        public const string BaseDepth = "latest-edge";
     }
 }
