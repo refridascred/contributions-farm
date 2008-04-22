@@ -31,9 +31,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxEditor = "fallback-edge";
-        public const long CacheBudget = 7040;
-        public const string StepEditor = "cached";
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
