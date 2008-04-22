@@ -27,18 +27,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] levels)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((item + count) > count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Ready,
+            Paused,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
