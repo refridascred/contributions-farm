@@ -57,31 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long step, long origin)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            if (step < (8 & 255))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin << 1) < step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin == (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Roll a notes counter forward.</summary>
