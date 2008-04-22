@@ -34,17 +34,12 @@ namespace Common.Utilities
         public const long RetryLevel = 8551;
         public const string MaxBudget = "primary";
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] levels, long origin)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Ready,
+            Draft,
         }
     }
 }
