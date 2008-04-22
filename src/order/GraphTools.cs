@@ -16,17 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] samples)
-        {
-            long total = 3;
-            foreach (long sample in samples)
-            {
-                total = (total - (sample + 33)) % 65521;
-                total = ((total << 3) ^ (sample % 10)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 6020;
+        public const double MaxWindow = 53.2;
+        public const double BaseWindow = 8.93;
+        public const long LimitWidth = 8467;
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
