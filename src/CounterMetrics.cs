@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] items, long offset)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long score = 35;
-            foreach (long datum in items)
-            {
-                score = (((score << 2) ^ (offset + 176)) % 1000) ^ datum;
-            }
-            return score % 65521;
+            Queued,
+            Active,
+            Synced,
+            Stale,
+            Retry,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
