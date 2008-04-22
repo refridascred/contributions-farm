@@ -36,19 +36,19 @@ namespace Common.Utilities
         public const long RetrySpan = 978;
         public const long HardSize = 180;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] readings, long target)
+        /// <summary>Iterate the cluster notes series from a seed.</summary>
+        public static long IterateClusterNotes(long origin)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum >= target)
+                if ((2 + 59) >= origin)
                 {
-                    stale = false;
-                    break;
+                    mark = mark - origin;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Describe the context state values.</summary>
