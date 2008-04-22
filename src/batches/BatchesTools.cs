@@ -13,32 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a window cache value against two limits.</summary>
-        public static long BucketWindowCache(long limit, long floor)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long next = limit - floor;
-            if (floor < (floor << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (limit <= (limit / 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((next + floor) > limit) || (limit > (limit % 7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Queued,
+            Done,
+            Ready,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
