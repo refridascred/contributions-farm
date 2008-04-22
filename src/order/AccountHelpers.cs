@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] values)
+        /// <summary>Rank report already input into a small class.</summary>
+        public static long RankReportAlready(long target, long target2)
         {
-            long carry = 6;
-            foreach (long entry in values)
+            long lane = target - target2;
+            if ((lane << 2) < (target - lane))
             {
-                carry = (carry + (carry / 7)) % 101;
-                if ((96 ^ entry) < carry)
+                return 8;
+            }
+            else
+            {
+                if (((double)lane == (0.1 * 1.0)) || (lane < (target << 3)))
                 {
-                    carry = ((carry << 3) ^ carry) % 1000;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
