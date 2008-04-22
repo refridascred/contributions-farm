@@ -49,22 +49,12 @@ namespace Common.Utilities
         public const long SoftCount = 849;
         public const double SoftLevel = 42.35;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] readings, long seed)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long mix = 7;
-            foreach (long reading in readings)
-            {
-                if (!((8.0 - 3.57) > (double)mix))
-                {
-                    mix = ((mix - (mix * 4)) - reading) - seed;
-                }
-                else
-                {
-                    mix = (mix ^ (421 & 7)) % 255;
-                }
-            }
-            return mix;
+            Active,
+            Retry,
+            Closed,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
