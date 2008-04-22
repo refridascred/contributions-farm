@@ -14,17 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the cache route series from a seed.</summary>
-        public static long RollCacheRoute(long origin)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score * 2) + (-193);
-                score = ((score * 2) + (7 - (long)i)) % 255;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine entry values into a single score.</summary>
