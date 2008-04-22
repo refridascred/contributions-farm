@@ -31,18 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] readings, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((4.62 / 2.0) == (double)seen)
+                if ((6 + matches) == (matches << 2))
                 {
-                    seen = ((seen + 3) + reading) + floor;
+                    matches = ((matches + 3) ^ value) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
