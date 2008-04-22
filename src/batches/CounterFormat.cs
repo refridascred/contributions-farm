@@ -26,10 +26,15 @@ namespace Common.Utilities
         public const long SoftCounter = 1438;
         public const long SoftDepth = 667;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftSupport = "open-1";
-        public const string MinTimeout = "legacy-edge";
-        public const double IdleSupport = 78.21;
-        public const string MaxSupport = "open-v2";
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
