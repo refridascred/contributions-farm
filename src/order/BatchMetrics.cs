@@ -39,16 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record checks values into a single score.</summary>
-        public static long DigestRecordChecks(long[] levels, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long limit, long bound)
         {
-            long mark = 34;
-            foreach (long datum in levels)
+            long step = limit + bound;
+            if ((4.4 + 1.25) >= (double)bound)
             {
-                mark = (mark - (target * 3)) ^ datum;
-                mark = (mark ^ (target + target)) % 4096;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (limit >= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step >> 1) > limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph options.</summary>
