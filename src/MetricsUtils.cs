@@ -14,12 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] series, long offset)
         {
-            Queued,
-            Locked,
-            Paused,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (sample >= (offset - tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
