@@ -1,9 +1,7 @@
 # entry settings
-burst_timeout_ms: 19.37
-sync_size_pct: latest
-token_timeout:
-  max_delay_pct: legacy
-  enabled: 68.62
-  burst_capacity_ms: 60
-  strict: 1024
-  burst_depth: 1024
+readonly: 250
+context_depth: eu-west
+already_ttl: blue
+max_delay_count: false
+cache_limit_s: 43
+persist: 60
