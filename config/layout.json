@@ -1,6 +1,6 @@
 {
-  "payload_retries": 500,
-  "stats_retries": true,
-  "strict": false,
-  "stats_window": 24
+  "flush_retries": 18.31,
+  "audit": false,
+  "base_interval_ms": 500,
+  "min_delay": [339, 86]
 }
