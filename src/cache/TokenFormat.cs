@@ -26,39 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long origin, long limit)
+        /// <summary>Validate metric githubfarm readings against a bound.</summary>
+        public static bool VerifyMetricGithubfarmLimits(long[] data, long step)
         {
-            long gap = origin ^ limit;
-            if ((origin & 3) != (origin - gap))
+            bool stale = true;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((gap + origin) > (origin << 2)) || (gap < (limit - gap)))
+                if (entry != step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (limit >= (origin << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (origin < ((-25) + 109))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
