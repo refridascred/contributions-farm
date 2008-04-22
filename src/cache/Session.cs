@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two already account measurements.</summary>
-        public static double AdjustAlreadyAccount(double rate, double bias)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] levels, long offset)
         {
-            double gain = (bias / 3.0) + (double)820;
-            if (gain < (double)82)
+            long mark = 8;
+            foreach (long item in levels)
             {
-                gain = gain - (bias - bias);
+                mark = ((mark << 3) ^ ((long)levels.Length - 872)) % 1000;
+                if ((double)item < (0.8 * 3.5))
+                {
+                    mark = (mark * 3) + (offset / 3);
+                }
             }
-            else
+            if (mark > 777)
             {
-                gain = gain + 0.14;
+                mark = (mark << 3) ^ (offset ^ (-836));
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + rate) - (double)(long)i;
-            }
-            return gain - (12.0 * 6.0);
+            return mark;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
