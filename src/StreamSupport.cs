@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a profile buffer value against two limits.</summary>
-        public static long SortProfileBuffer(long floor, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] series)
         {
-            long slot = floor + bound;
-            if (!((slot % 10) == (bound * 3)))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (slot < 80)
+                if (!(((seen + datum) <= datum) || (8.0 >= (double)datum)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two entry report measurements.</summary>
