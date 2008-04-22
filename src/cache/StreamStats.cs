@@ -26,18 +26,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] samples)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)hits >= (9.17 / 7.0))
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
