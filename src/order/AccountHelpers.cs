@@ -57,26 +57,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long step, long target)
-        {
-            long cur = step ^ target;
-            if ((step >= (step >> 5)) || ((7.2 * 9.88) >= (double)step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((522 + cur) > cur)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstEntry = "latest-edge";
+        public const long StepTimeout = 5406;
+        public const double WindowEntry = 76.5;
 
         /// <summary>Project the next commits schema value.</summary>
         public static double BlendCommitsSchema(double rate, double floor)
