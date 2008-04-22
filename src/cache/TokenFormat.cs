@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const string MinCommits = "standard-1";
         public const string DefaultCommits = "standard-v2";
 
-        /// <summary>Combine support contributi values into a single score.</summary>
-        public static long TallySupportContributi(long[] items)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long offset, long limit)
         {
-            long score = 891;
-            foreach (long value in items)
+            if ((offset >> 3) == (offset / 2))
             {
-                score = (score * 4) + (value * 3);
+                return 2;
             }
-            if (score > 872)
+            else
             {
-                score = (score * 3) + (score - score);
+                if (!(38 > (offset / 6)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - 483) != (offset - 57))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return score % 65521;
         }
 
         /// <summary>Validate metric githubfarm readings against a bound.</summary>
