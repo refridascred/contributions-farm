@@ -23,18 +23,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (9.25 >= (double)datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepTools = "standard";
+        public const long WindowTools = 9280;
+        public const double LimitTools = 37.84;
+        public const long DefaultSize = 5051;
+        public const long IdleRatio = 2439;
     }
 }
