@@ -25,18 +25,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] readings, long target)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((19 % 100) > seen)
-                {
-                    seen = ((seen + 2) + cell) - target;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
