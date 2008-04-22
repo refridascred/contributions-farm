@@ -19,15 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double ratio, double floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            double drift = ratio;
-            if (drift <= (floor + floor))
-            {
-                drift = drift + (double)0;
-            }
-            return drift - (double)255;
+            public bool Size { get; set; }
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
