@@ -20,39 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long limit, long origin)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long step)
         {
-            long span = limit - origin;
-            if ((39 - span) <= (origin - 47))
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit & 63) <= (limit & 127)) || ((double)span > (6.23 / 5.0)))
+                if (((step / 5) > 978) && ((double)total < (4.2 + 7.0)))
                 {
-                    return 8;
+                    total = ((total * 4) + 391) % 65521;
                 }
-                else
+                total = (total ^ (-1)) % 101;
+                if ((total * 5) >= (step / 4))
                 {
-                    if ((5 % 3) == (span & 15))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((origin / 2) >= (origin / 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    total = ((total * 2) + (total & 255)) % 101;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
+            return total;
         }
 
         /// <summary>Audit account window readings against a rule.</summary>
