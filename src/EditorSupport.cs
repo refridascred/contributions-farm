@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const long WindowScore = 7238;
         public const long CacheLevel = 2049;
 
-        /// <summary>Audit already format readings against a rule.</summary>
-        public static long CountAlreadyFormatHits(long[] readings)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (8.0 < (double)datum)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a farm contributi pair into a bucket.</summary>
