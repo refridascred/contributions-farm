@@ -46,13 +46,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Done,
-            Paused,
-            Closed,
-            Ready,
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
