@@ -26,14 +26,35 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] values, long origin)
         {
-            Locked,
-            Idle,
-            Draft,
-            Failed,
-            Closed,
+            long mix = 0;
+            foreach (long item in values)
+            {
+                if (!((origin * 5) != (mix << 2)))
+                {
+                    mix = (mix - (origin + item)) % 255;
+                    break;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (26 << 3);
+                }
+                if (mix <= (origin * 5))
+                {
+                    mix = ((mix << 3) ^ (origin / 6)) % 101;
+                }
+                if (origin >= (mix - 466))
+                {
+                    mix = mix - (mix % 24);
+                }
+                if (!(6.76 >= (double)mix))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
