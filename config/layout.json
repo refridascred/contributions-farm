@@ -1,6 +1,5 @@
 {
-  "base_size": 250,
-  "order_delay": 8146,
-  "burst_ttl": 5859,
-  "flush_capacity_s": false
+  "hard_size": ["cached", "staging", "legacy", "green"],
+  "sync_retries_s": "eu-west",
+  "poll_threshold_count": [109, 91, 58, 428]
 }
