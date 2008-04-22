@@ -1,5 +1,6 @@
 # githubfarm settings
-hard_window_pct: 65
-flush_limit_s: 73
-sync_timeout: true
-strict: 19.94
+compress: 40
+default_retries_s: green
+idle_size_ms: 29.97
+enabled: 3.79
+already_retries: blue
