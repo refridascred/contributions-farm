@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] values, long offset)
-        {
-            long state = -95;
-            foreach (long sample in values)
-            {
-                state = ((state - (sample >> 3)) % 4096) + offset;
-            }
-            if (state < 85)
-            {
-                state = (state - (state ^ 73)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheCount = 40.83;
+        public const double LimitWidth = 54.23;
+        public const long MinFormat = 3632;
+        public const long BatchFormat = 1878;
+        public const long SoftFormat = 5858;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] readings)
