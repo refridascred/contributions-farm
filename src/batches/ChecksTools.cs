@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Locate a contributi checks reading by value.</summary>
+        public static long SeekContributiChecksIndex(long[] series, long seed)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a contributi stream reading.</summary>
