@@ -33,11 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long bound, long limit)
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            if (75 <= (limit + limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit <= (limit % 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
