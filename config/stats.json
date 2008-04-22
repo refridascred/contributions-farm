@@ -1,6 +1,12 @@
 {
-  "base_retries_ms": 9121,
-  "sync_capacity_count": false,
-  "githubfarm_timeout": "primary",
-  "farm_ratio": true
+  "base_ttl_pct": ["stable", "standard", "fallback", "standard"],
+  "base_ratio_ms": 7041,
+  "queue_timeout": {
+    "retry_delay": 500,
+    "flush_depth_s": "blue",
+    "min_retries_count": 63,
+    "soft_window": "primary",
+    "persist": "fallback"
+  },
+  "idle_limit": "open"
 }
