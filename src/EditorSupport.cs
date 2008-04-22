@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long DefaultTimeout = 3921;
         public const long RetryCount = 7176;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftWidth = 29.93;
-        public const long MaxLevel = 9660;
-        public const long BurstScore = 7316;
-        public const long MinRatio = 4160;
-        public const double LimitGraph = 1.69;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxDepth = 5270;
+        public const double WindowTimeout = 66.71;
+        public const long WindowScore = 7238;
+        public const long CacheLevel = 2049;
 
         /// <summary>Rank batch notes input into a small class.</summary>
         public static long ClassifyBatchNotes(long bound, long offset)
