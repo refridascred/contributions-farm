@@ -13,24 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long limit, long floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] data, long limit)
         {
-            if ((double)limit > (5.77 + 1.16))
+            bool flag = true;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor > (5.2 + 6.6))
+                if (reading > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
