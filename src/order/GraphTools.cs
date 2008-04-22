@@ -23,19 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] readings, long floor)
         {
-            long mix = 11;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                mix = ((mix - (127 & 1)) % 97) + item;
-                if ((double)mix > (8.7 * 9.0))
+                if (52 >= (matches / 4))
                 {
-                    break;
+                    matches = ((matches + 1) - datum) - floor;
                 }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Hold a command stats.</summary>
