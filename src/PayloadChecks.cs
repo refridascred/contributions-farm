@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long LimitCount = 3870;
         public const long MinWidth = 889;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] values, long limit)
         {
-            Draft,
-            Ready,
-            Pending,
-            Failed,
+            long mark = 9;
+            foreach (long datum in values)
+            {
+                if (13 < limit)
+                {
+                    mark = (((mark << 2) ^ (mark + limit)) % 65521) ^ datum;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many buffer stream samples are out of range.</summary>
