@@ -15,15 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] samples, long target)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
             long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count >> 3) > (count % 12))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 1) + entry) - target;
+                    if ((series[i] + series[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
