@@ -13,19 +13,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Blend two channel report measurements.</summary>
-        public static double BlendChannelReport(double scale, double floor)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double scale2 = scale;
-            if (scale2 < scale)
-            {
-                scale2 = (scale2 - 0.34) - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + (scale - 9.4)) + (double)(long)i;
-            }
-            return scale2 - (scale / 3.0);
+            Pending,
+            Draft,
+            New,
+            Active,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
