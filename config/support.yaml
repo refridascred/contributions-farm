@@ -1,10 +1,4 @@
 # support settings
-order_retries: cached
-retry_interval_pct:
-  - legacy
-  - fallback
-  - local
-enabled: 1024
-batch_size_pct: 57.5
-compress: edge
-hard_depth_s: strict
+counter_depth: eu-west
+batch_depth: green
+verbose: true
