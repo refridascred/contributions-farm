@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double rate, double offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double bias = offset;
-            if (bias < (offset * 2.46))
-            {
-                bias = bias - (double)21;
-            }
-            else
-            {
-                bias = bias + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (bias * 12.0)) + (double)(long)i;
-            }
-            return bias + (bias + offset);
+            Done,
+            Queued,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Grade a window cache value against two limits.</summary>
