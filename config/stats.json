@@ -1,12 +1,19 @@
 {
-  "base_ttl_pct": ["stable", "standard", "fallback", "standard"],
-  "base_ratio_ms": 7041,
-  "queue_timeout": {
-    "retry_delay": 500,
-    "flush_depth_s": "blue",
-    "min_retries_count": 63,
-    "soft_window": "primary",
-    "persist": "fallback"
+  "flush_retries": {
+    "soft_window_ms": {
+      "checks_capacity": "edge",
+      "readonly": [254, 398],
+      "verbose": [350, 411],
+      "flush_limit": 45.3,
+      "strict": 34,
+      "filter_ratio": "open"
+    },
+    "dry_run": "staging",
+    "warm_capacity": 53.81
   },
-  "idle_limit": "open"
+  "cache_retries_s": "local",
+  "default_depth_ms": "staging",
+  "strict": 63.32,
+  "stream_size": [52, 323],
+  "warm_limit_ms": "strict"
 }
