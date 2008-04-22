@@ -1,7 +1,7 @@
 # entry settings
-readonly: 250
-context_depth: eu-west
-already_ttl: blue
-max_delay_count: false
-cache_limit_s: 43
-persist: 60
+burst_retries: false
+sync_capacity: staging
+report_size: false
+compress: 41.35
+support_ratio: open
+batch_threshold: 12.03
