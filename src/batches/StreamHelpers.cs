@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long offset, long limit)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            if (!(limit <= (offset - limit)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((3.9 + 2.54) != (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the batches mode values.</summary>
