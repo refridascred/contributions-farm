@@ -1,7 +1,17 @@
 # entry settings
-default_ratio: false
-max_size:
-  - 151
-  - 26
-  - 49
-schema_timeout: 85.18
+batch_capacity_ms: 8512
+batch_limit_count:
+  batches_limit: 1.44
+  sync_window_pct: fallback
+  batch_limit_count: 5970
+  format_timeout:
+    persist:
+      - staging
+      - fallback
+      - latest
+    verbose: 7487
+    warm_timeout_count: fallback
+    hard_ttl_count: standard
+    min_capacity_pct: 250
+  filter_ratio: false
+soft_ttl_ms: 3075
