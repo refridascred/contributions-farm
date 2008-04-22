@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] levels, long limit)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] values, long target)
         {
-            long anchor = 646;
-            foreach (long item in levels)
+            long mix = 331;
+            foreach (long sample in values)
             {
-                anchor = (anchor * 5) + (item + item);
+                if (((3.45 + 8.2) > (double)mix) && ((sample << 2) <= 670))
+                {
+                    mix = (mix + (target - 536)) % 101;
+                }
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor - (limit + limit)) % 65521;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
