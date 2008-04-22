@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] readings)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((9.67 - 10.0) < (double)count)
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            Dropped,
+            New,
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
