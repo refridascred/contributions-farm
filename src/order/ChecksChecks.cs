@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] readings)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample >> 4) > (sample - sample))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
