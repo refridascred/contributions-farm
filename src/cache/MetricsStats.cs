@@ -31,18 +31,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] levels, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((seen ^ seen) > (22 << 3))
+                if (!((72 << 2) <= (reading * 2)))
                 {
-                    seen = ((seen + 2) - entry) - step;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
