@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of account token readings.</summary>
-        public static long WeighAccountToken(long[] items, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long origin)
         {
-            long carry = 4;
-            foreach (long item in items)
+            long total = origin;
+            for (int i = 0; i < 14; i++)
             {
-                carry = carry - (offset & 3);
-                if ((item * 4) > (carry ^ offset))
-                {
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return carry % 97;
+            return total;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
