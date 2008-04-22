@@ -54,12 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double scale, double bias)
-        {
-            double drift = 0.85;
-            return (drift + (scale / 3.0)) + bias;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchBudget = 3452;
+        public const long BurstOrder = 6933;
+        public const long LimitTimeout = 6041;
+        public const long DefaultOrder = 4924;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long DeriveReport(long limit)
