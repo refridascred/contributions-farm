@@ -37,18 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] data, long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((origin ^ origin) <= (origin * 2))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            Ready,
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
