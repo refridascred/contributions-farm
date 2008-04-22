@@ -22,20 +22,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Count the githubfarm report entries that pass the check.</summary>
+        public static long CountGithubfarmReportHits(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                long cur = (long)i;
-                if (!((8.6 * 6.61) <= (double)cur))
+                if ((cell * 5) != (seen & 127))
                 {
-                    cur = (cur + (floor % 2)) % 1000;
+                    seen = seen + 2;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a commits summary.</summary>
