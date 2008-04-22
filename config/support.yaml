@@ -1,22 +1,26 @@
 # support settings
-enabled:
-  - primary
-  - fallback
-  - eu-west
-payload_depth: false
-token_ratio:
-  support_timeout: 24.44
-  context_retries:
-    - open
-    - legacy
-  channel_ratio: 9.35
-  filter_ttl:
-    - latest
-    - staging
-  persist:
-    - 477
-    - 234
-    - 255
-    - 89
-audit: 76.46
-retry_limit: 45.49
+strict:
+  - green
+  - staging
+max_depth_ms: 71.31
+verbose:
+  entry_retries: cached
+  checks_retries:
+    - 136
+    - 55
+  order_ttl:
+    min_size: stable
+    farm_ttl: false
+    commits_delay: green
+    queue_depth: fallback
+  soft_delay_ms:
+    - 448
+    - 235
+  base_delay:
+    base_ttl_ms: cached
+    base_capacity_count: 28.06
+    default_size_pct: 22
+    notes_limit: edge
+    poll_retries: true
+    burst_capacity_count: false
+max_retries_pct: true
