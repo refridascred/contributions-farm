@@ -46,19 +46,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the already notes entries that pass the check.</summary>
-        public static long AuditAlreadyNotesHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (reading <= (reading - hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheBudget = 5967;
+        public const string WindowCount = "fallback-v2";
+        public const long LimitBudget = 4749;
+        public const long HardSpan = 4521;
+        public const string MaxContext = "strict-v2";
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
