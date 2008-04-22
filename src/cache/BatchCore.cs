@@ -33,11 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheInterval = 7031;
-        public const string MinGraph = "latest";
-        public const double CacheGraph = 96.26;
-        public const long StepGraph = 3111;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            New,
+            Pending,
+            Ready,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BurstLevel = 24.97;
