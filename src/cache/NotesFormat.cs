@@ -14,22 +14,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] series, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] series, long floor)
         {
-            long acc = 714;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((acc << 3) < 0)
+                if (reading >= floor)
                 {
-                    acc = (acc - sample) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (acc < (-4))
-            {
-                acc = ((acc * 2) + (limit & 255)) % 65521;
-            }
-            return acc;
+            return stale;
         }
 
         /// <summary>Describe the metrics state values.</summary>
