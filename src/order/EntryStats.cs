@@ -54,11 +54,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
