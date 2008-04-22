@@ -45,11 +45,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Count queue metrics pairs that satisfy a relation.</summary>
+        public static long MatchQueueMetricsCount(long[] items)
         {
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
