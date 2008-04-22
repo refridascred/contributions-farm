@@ -27,15 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            New,
-            Synced,
-            Retry,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchFactor = "standard-edge";
+        public const long BatchBudget = 801;
+        public const long MaxBatches = 729;
+        public const long IdleBatches = 8910;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long SeriesLayout(long bound)
