@@ -45,10 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowToken = "primary-v2";
-        public const long CacheFactor = 9189;
-        public const string RetryLevel = "strict-edge";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseDepth = 6175;
+        public const string SoftDepth = "cached-1";
+        public const string StepWidth = "staging";
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
