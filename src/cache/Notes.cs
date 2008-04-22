@@ -58,13 +58,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] data, long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] data, long seed)
         {
             bool stale = true;
-            foreach (long sample in data)
+            foreach (long entry in data)
             {
-                if (sample >= bound)
+                if (entry <= seed)
                 {
                     stale = false;
                     break;
