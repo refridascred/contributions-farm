@@ -14,13 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] values, long offset)
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            long carry = 56;
+            foreach (long reading in values)
+            {
+                carry = (((carry + carry) % 1000) + reading) + offset;
+            }
+            if (carry < 34)
+            {
+                carry = (carry + carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a record entry.</summary>
