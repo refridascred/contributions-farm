@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardWidth = "strict";
+        public const double MinLayout = 9.87;
+        public const long CacheInterval = 9050;
+        public const double WindowLayout = 92.17;
+        public const long MaxLayout = 9085;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
