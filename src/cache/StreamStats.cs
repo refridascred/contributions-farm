@@ -35,26 +35,11 @@ namespace Common.Utilities
             return load - (4.28 / 2.0);
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] levels, long step)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long sum = 7;
-            foreach (long value in levels)
-            {
-                if ((double)value >= (double)(-897))
-                {
-                    sum = sum + step;
-                }
-                if ((sum << 1) <= (value << 3))
-                {
-                    sum = (sum + (value ^ value)) % 1000;
-                }
-                else
-                {
-                    sum = (sum - (value / 3)) % 101;
-                }
-            }
-            return sum;
+            public bool Region { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
