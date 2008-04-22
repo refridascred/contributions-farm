@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=303
+BUFFER_LIMIT=244
 log "limit is ${BUFFER_LIMIT}"
 
-for item in primary standard green; do
+for item in legacy stable; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
