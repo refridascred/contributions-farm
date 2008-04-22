@@ -28,12 +28,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] samples)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
+            long sum = 9;
+            foreach (long value in samples)
+            {
+                sum = sum ^ sum;
+                if ((sum & 127) <= (sum - value))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
