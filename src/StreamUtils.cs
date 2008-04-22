@@ -67,9 +67,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 463;
-        public const long BatchEditor = 834;
-        public const long RetryEditor = 1461;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long seed, long bound)
+        {
+            long span = seed - bound;
+            if ((719 < (span >> 1)) || ((29 * 5) != (span / 8)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-3) + seed) >= (bound + 210))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
