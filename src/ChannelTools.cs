@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] samples, long target)
         {
-            Draft,
-            Locked,
-            Done,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((target - count) == (count & 127))
+                {
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
