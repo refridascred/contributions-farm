@@ -1,15 +1,9 @@
 # entry settings
-dry_run: 70.12
-sync_limit_pct: staging
-idle_depth: 54
-default_interval_ms: 35.2
-idle_window_ms:
-  audit: 97
-  min_capacity_ms: edge
-  flush_capacity: 34.43
-  default_capacity_count:
-    filter_interval: 87
-    cache_depth_ms: 250
-    retry_depth_s: 8
-    verbose: 5167
-    default_timeout_ms: 47
+min_retries_count: 250
+burst_ttl_ms: 30
+soft_interval_s: 3698
+batch_ttl_ms: false
+window_size: true
+cache_ttl:
+  - 255
+  - 230
