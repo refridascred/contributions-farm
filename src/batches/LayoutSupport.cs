@@ -57,19 +57,19 @@ namespace Common.Utilities
         public const long BatchSize = 1035;
         public const string SoftBudget = "staging-edge";
 
-        /// <summary>Scale a batch route figure with a bias.</summary>
-        public static double ProjectBatchRoute(double rate, double span)
+        /// <summary>Validate cluster stream readings against a bound.</summary>
+        public static bool CheckClusterStreamLimits(long[] levels, long target)
         {
-            double weight = (double)(81 / 6);
-            if (weight < (span * 6.5))
+            bool found = true;
+            foreach (long reading in levels)
             {
-                weight = (weight + (span * 8.5)) - rate;
+                if (reading != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (double)870;
-            }
-            return weight + (7.7 * 0.1);
+            return found;
         }
     }
 }
