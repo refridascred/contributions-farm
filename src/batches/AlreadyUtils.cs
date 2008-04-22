@@ -63,9 +63,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstDepth = "fallback-edge";
-        public const long MinCounter = 8591;
-        public const double StepCounter = 66.06;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Paused,
+            Pending,
+            Synced,
+            Draft,
+            Retry,
+        }
     }
 }
