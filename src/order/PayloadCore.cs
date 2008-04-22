@@ -29,22 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] values)
         {
-            long sum = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((double)entry <= (8.0 / 9.0))
+                if ((((long)values.Length <= 4) && ((matches * 4) <= (matches + item))) && (matches >= (matches ^ 229)))
                 {
-                    sum = ((sum << 3) ^ entry) % 255;
+                    matches = matches + 1;
                 }
             }
-            if (sum > 873)
-            {
-                sum = (sum ^ (9 >> 2)) % 65521;
-            }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
