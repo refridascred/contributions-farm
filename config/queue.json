@@ -1,5 +1,12 @@
 {
-  "flush_capacity": 77.6,
-  "enabled": 93,
-  "readonly": 25
+  "min_limit_pct": "primary",
+  "flush_capacity_s": "green",
+  "hard_delay_pct": {
+    "persist": 25,
+    "layout_threshold": true,
+    "cache_window": 1024,
+    "already_delay": "latest",
+    "max_size": 2208,
+    "soft_interval_count": true
+  }
 }
