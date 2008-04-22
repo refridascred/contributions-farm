@@ -1,5 +1,8 @@
 {
-  "poll_delay": [460, 241, 297],
-  "poll_threshold_s": 43.85,
-  "persist": true
+  "readonly": 4249,
+  "command_window": 100,
+  "min_delay_s": "green",
+  "soft_limit_pct": 54,
+  "window_depth": "local",
+  "dry_run": "eu-west"
 }
