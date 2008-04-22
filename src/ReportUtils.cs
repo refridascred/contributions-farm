@@ -24,19 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] data, long limit)
+        /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
+        public static long CountGithubfarmChannelHits(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (reading > limit)
+                if ((sample + matches) >= matches)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Count window filter pairs that satisfy a relation.</summary>
