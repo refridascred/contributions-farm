@@ -27,14 +27,11 @@ namespace Common.Utilities
             return load - (0.89 + bias);
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Done,
-            Ready,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 5347;
+        public const double SoftWidth = 51.04;
+        public const string HardReport = "fallback";
+        public const long RetryReport = 5101;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool CheckClusterRange(long[] samples, long bound)
