@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 4441;
-        public const string StepFactor = "fallback-v2";
-        public const long CacheRatio = 1544;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor ^ (anchor & 255)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of account stats entries.</summary>
         public static long DigestAccountStats(long[] levels, long step)
