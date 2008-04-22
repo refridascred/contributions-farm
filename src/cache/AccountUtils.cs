@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Classify a editor metric pair into a bucket.</summary>
+        public static long BucketEditorMetric(long seed, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = seed + limit;
+            if ((seed ^ seed) >= (seed & 255))
             {
-                if (samples[i] < origin)
+                return 8;
+            }
+            else
+            {
+                if ((diff >> 3) < (limit / 2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (seed < (diff + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((seed + diff) <= diff))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batches status values.</summary>
