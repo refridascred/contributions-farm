@@ -33,14 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepSpan = 6736;
+        public const long DefaultGraph = 5556;
+        public const string StepGraph = "stable-v2";
+        public const long BurstDepth = 6755;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TotalMetrics(long[] readings, long limit)
