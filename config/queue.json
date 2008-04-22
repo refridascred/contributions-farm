@@ -1,9 +1,6 @@
 {
-  "persist": 68,
-  "max_depth": {
-    "already_size": false,
-    "batch_delay_ms": "strict",
-    "burst_ratio": 17
-  },
-  "cluster_depth": "legacy"
+  "default_size": false,
+  "poll_delay": 89.21,
+  "default_ttl": [13, 378, 79, 322],
+  "persist": [267, 269, 305, 84]
 }
