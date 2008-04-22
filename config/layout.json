@@ -1,7 +1,11 @@
 {
-  "report_delay": "blue",
-  "max_interval_ms": 16.18,
-  "flush_ratio_ms": true,
-  "batch_threshold_count": false,
-  "persist": "standard"
+  "max_limit": 60,
+  "readonly": {
+    "max_interval_pct": true,
+    "poll_capacity_s": 100,
+    "report_window": "cached",
+    "buffer_interval": "latest",
+    "compress": [260, 484, 128]
+  },
+  "batch_timeout_s": 30
 }
