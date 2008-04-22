@@ -1,17 +1,5 @@
 {
-  "tools_interval": 2867,
-  "graph_ratio": {
-    "stream_window": 83.52,
-    "command_depth": true,
-    "hard_timeout_s": [494, 260, 490, 313],
-    "batches_timeout": {
-      "readonly": "legacy",
-      "window_timeout": 3.38,
-      "metrics_window": 15.27,
-      "audit": 33
-    },
-    "strict": "stable",
-    "buffer_ratio": 60
-  },
-  "format_capacity": 36.81
+  "command_limit": true,
+  "support_interval": "staging",
+  "hard_interval": ["standard", "staging", "stable"]
 }
