@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] readings, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define token limits and defaults.</summary>
