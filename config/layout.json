@@ -1,18 +1,8 @@
 {
-  "entry_timeout": {
-    "batches_capacity": ["primary", "strict", "staging", "fallback"],
-    "checks_capacity": "open",
-    "metrics_threshold": ["fallback", "local"],
-    "soft_timeout": {
-      "flush_timeout_s": 81.9,
-      "editor_ratio": 18,
-      "audit": ["fallback", "eu-west", "edge", "edge"]
-    },
-    "readonly": 67
-  },
-  "dry_run": 28.88,
-  "queue_retries": 100,
-  "channel_threshold": "latest",
-  "filter_interval": "open",
-  "burst_depth_count": "blue"
+  "min_window": 31,
+  "cache_capacity_pct": 93,
+  "batch_size": 52.98,
+  "strict": 89.19,
+  "filter_threshold": 50.39,
+  "account_depth": true
 }
