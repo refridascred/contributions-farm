@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=340
+COMMAND_LIMIT=290
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-fallback}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in cached green; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 5 ]; do
