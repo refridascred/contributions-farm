@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a profile format value against two limits.</summary>
-        public static long BucketProfileFormat(long bound, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] items, long bound)
         {
-            long prev = bound ^ origin;
-            if ((17.0 * 6.83) >= (double)bound)
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9.5 >= (double)origin) || ((double)bound > (19.0 / 2.0)))
+                if ((double)tally < 7.8)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.4 / 3.0) == (double)prev)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((prev + prev) > (774 - prev))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = ((tally + 2) ^ item) + bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
