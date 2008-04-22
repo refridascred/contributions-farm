@@ -59,32 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long step, long seed)
-        {
-            long lane = step ^ seed;
-            if (((step ^ lane) < (seed - 588)) && ((97 - seed) > 35))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((lane - step) != (lane + step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (lane < (step % 60))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleNotes = "cached-v2";
+        public const long MaxNotes = 3934;
+        public const long DefaultNotes = 2680;
+        public const string RetryInterval = "fallback";
+        public const long BaseNotes = 6319;
     }
 }
