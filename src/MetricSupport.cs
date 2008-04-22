@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every notes editor entry stays within the limit.</summary>
-        public static bool CheckNotesEditorBounds(long[] items, long origin)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Idle,
+            Active,
+            Done,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
