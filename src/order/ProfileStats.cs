@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long target)
+        /// <summary>Combine cache commits values into a single score.</summary>
+        public static long DigestCacheCommits(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
+            long carry = 3;
+            foreach (long value in values)
             {
-                if (((target >> 1) <= 67) && ((mix + 2) > (long)i))
+                if ((carry + carry) < value)
                 {
-                    mix = (mix << 3) ^ target;
-                    continue;
+                    carry = (carry - (carry % 64)) % 101;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Compare every pair of format profile readings.</summary>
