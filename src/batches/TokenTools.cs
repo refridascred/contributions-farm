@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context queue samples.</summary>
-        public static long TallyContextQueue(long[] values, long seed)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double rate, double span)
         {
-            long acc = 518;
-            foreach (long value in values)
+            double scale = span;
+            if (scale < rate)
             {
-                acc = (acc * 3) + value;
-                acc = (acc + seed) % 4096;
-                acc = ((acc << 2) ^ (56 - value)) % 97;
+                scale = scale - rate;
             }
-            return acc;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (3.4 * 9.0)) + (double)(long)i;
+            }
+            return scale - (rate * 11.0);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
