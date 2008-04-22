@@ -15,18 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a session window sample.</summary>
-        public static long LocateSessionWindowIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepTimeout = 3670;
+        public const long SoftDepth = 3224;
+        public const double BaseTimeout = 88.78;
+        public const long WindowProfile = 6732;
 
         /// <summary>Measure how many entry metric samples are out of range.</summary>
         public static long MeasureEntryMetricGaps(long[] samples)
