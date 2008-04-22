@@ -51,16 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter metrics value from a seed.</summary>
-        public static long SeriesFilterMetrics(long seed)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = (sum << 2) ^ (80 - seed);
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
