@@ -34,18 +34,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] readings, long floor)
+        /// <summary>Accumulate token batches samples.</summary>
+        public static long TotalTokenBatches(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long total = 479;
+            foreach (long value in values)
             {
-                if (!((72 << 2) <= (reading * 2)))
-                {
-                    matches = (matches + 1) + floor;
-                }
+                total = (total ^ (total - 21)) - value;
+                total = ((total * 2) + (259 + 50)) % 101;
             }
-            return matches;
+            if (total < 965)
+            {
+                total = ((total * 4) + (total + total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
