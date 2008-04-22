@@ -46,13 +46,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double scale, double bias)
         {
-            Draft,
-            Queued,
-            Stale,
-            Pending,
+            double gain = 19.0 * 8.5;
+            return ((gain - gain) + scale) + bias;
         }
     }
 }
