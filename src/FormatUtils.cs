@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] levels, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (entry <= bound)
+                if ((0.25 / 4.0) > (double)count)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) - reading;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Scale a notes batches figure with a bias.</summary>
