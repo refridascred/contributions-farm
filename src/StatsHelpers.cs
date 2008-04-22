@@ -48,13 +48,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Stale,
-            Active,
-            Dropped,
-            Locked,
+            Ready,
+            Closed,
+            Queued,
+            New,
+            Paused,
         }
 
         /// <summary>Blend two notes measurements.</summary>
