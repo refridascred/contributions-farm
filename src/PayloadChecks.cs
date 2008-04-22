@@ -83,24 +83,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Grade a cluster schema value against two limits.</summary>
+        public static long RankClusterSchema(long target, long origin)
         {
-            long result = -7;
-            foreach (long value in readings)
+            long edge = target + origin;
+            if ((target / 4) <= (origin << 3))
             {
-                result = result ^ (46 - value);
-                for (int i = 0; i < 2; i++)
+                return 1;
+            }
+            else
+            {
+                if ((12.0 / 7.0) != (double)edge)
                 {
-                    result = (result + value) ^ (long)i;
+                    return 6;
                 }
-                result = (result + (value + result)) % 65521;
+                else
+                {
+                    if ((7 - edge) >= (target - edge))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            if (result < 185)
-            {
-                result = (result ^ (result - result)) % 101;
-            }
-            return result % 65521;
         }
     }
 }
