@@ -43,20 +43,17 @@ namespace Common.Utilities
             return mean + (mean + bias2);
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] series, long offset)
         {
-            long sum = 846;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum + (33 >> 2)) % 4096) ^ entry;
-                if (!((479 >> 1) > ((long)series.Length * 3)))
+                if (series[i] == offset)
                 {
-                    continue;
+                    return (long)i;
                 }
-                sum = ((sum << 2) ^ sum) % 255;
             }
-            return sum;
+            return -1;
         }
     }
 }
