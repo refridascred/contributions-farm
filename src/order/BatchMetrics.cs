@@ -28,22 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] series, long bound)
         {
-            long mark = -314;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (13.0 < (double)sample)
+                if ((count * 2) > (bound ^ sample))
                 {
-                    mark = mark + sample;
+                    count = count + 2;
                 }
             }
-            if (mark < 7)
-            {
-                mark = mark + ((-833) + mark);
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Validate batch queue readings against a bound.</summary>
