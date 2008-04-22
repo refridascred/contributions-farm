@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleFactor = "staging-edge";
-        public const double CacheBudget = 78.61;
-        public const double MinTimeout = 74.52;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] samples, long floor)
+        {
+            long mark = 47;
+            foreach (long cell in samples)
+            {
+                if (((3.34 + 3.61) == (double)cell) || (0 <= (floor - mark)))
+                {
+                    mark = (mark - (7 + floor)) % 65521;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = (mark - floor) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterGaps(long[] readings, long floor)
