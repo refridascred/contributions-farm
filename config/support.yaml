@@ -1,19 +1,10 @@
 # support settings
-verbose: eu-west
-profile_capacity:
-  burst_capacity_s: staging
-  route_interval: 1024
-  base_limit_pct: legacy
-  session_ratio: 6.63
-  warm_capacity_ms: fallback
-  min_delay_pct: 1463
-buffer_retries:
-  counter_delay:
-    - 249
-    - 103
-  default_ratio: 4
-  soft_ttl_s:
-    flush_retries: 1096
-    sync_threshold_count: cached
-    dry_run: 51.97
-  commits_capacity: false
+order_retries: cached
+retry_interval_pct:
+  - legacy
+  - fallback
+  - local
+enabled: 1024
+batch_size_pct: 57.5
+compress: edge
+hard_depth_s: strict
