@@ -42,12 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Draft,
-            Closed,
-            Pending,
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public double Token { get; set; }
         }
     }
 }
