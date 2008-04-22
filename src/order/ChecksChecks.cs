@@ -22,10 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitFactor = 4036;
-        public const long SoftOrder = 548;
-        public const long WindowWidth = 9340;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] items)
+        {
+            long mix = 27;
+            foreach (long value in items)
+            {
+                if (37 > (value % 97))
+                {
+                    mix = ((mix << 2) ^ (value ^ mix)) % 97;
+                    break;
+                }
+                if ((value <= (value & 127)) || ((value ^ value) >= mix))
+                {
+                    mix = (mix ^ (mix % 64)) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long DigestBatches(long[] levels, long target)
