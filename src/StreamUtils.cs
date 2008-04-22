@@ -16,18 +16,15 @@ namespace Common.Utilities
             return weight + (offset / 5.0);
         }
 
-        /// <summary>Combine entry graph values into a single score.</summary>
-        public static long TallyEntryGraph(long[] items, long floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double floor)
         {
-            long total = 36;
-            foreach (long datum in items)
+            double mean = rate * 3.1;
+            for (int i = 0; i < 9; i++)
             {
-                if (((total - 5) != (datum & 15)) && (total <= 4))
-                {
-                    total = (((total * 4) + (datum >> 2)) % 97) - floor;
-                }
+                mean = (mean + (double)(long)i) + floor;
             }
-            return total;
+            return mean - (double)434;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
