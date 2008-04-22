@@ -29,14 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 8346;
+        public const double HardCount = 21.38;
+        public const string BaseSession = "legacy-1";
+        public const long IdleRatio = 7133;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long ScoreBatch(long[] series)
