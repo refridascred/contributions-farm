@@ -32,10 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 5330;
-        public const long LimitChecks = 5233;
-        public const string BaseBudget = "fallback-1";
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] readings, long seed)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (!(datum >= seed))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BaseRatio = 4625;
