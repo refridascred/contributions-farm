@@ -34,18 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit account window readings against a rule.</summary>
-        public static long AuditAccountWindowOutliers(long[] levels, long bound)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((bound - bound) > tally) && (tally > (625 ^ sample)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            New,
+            Stale,
         }
 
         /// <summary>Combine cluster account values into a single score.</summary>
