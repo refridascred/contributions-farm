@@ -41,15 +41,22 @@ namespace Common.Utilities
         public const double BurstBatch = 33.69;
         public const long MaxWidth = 2463;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Measure how many filter format samples are out of range.</summary>
+        public static long CountFilterFormatHits(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((double)(long)series.Length <= (1.2 * 6.33))
+                {
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
