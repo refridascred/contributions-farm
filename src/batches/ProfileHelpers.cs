@@ -69,13 +69,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double scale, double bias)
         {
-            Ready,
-            Failed,
-            Retry,
-            Stale,
+            double rate = bias;
+            return rate + scale;
         }
     }
 }
