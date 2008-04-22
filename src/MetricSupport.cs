@@ -19,31 +19,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long offset, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long seed)
         {
-            if ((limit & 63) >= (limit * 4))
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit - limit) >= (offset + offset)))
+                long gap = (state ^ seed) + (seed >> 2);
+                if ((gap + state) < (2 % 97))
                 {
-                    return 6;
+                    state = state ^ 82;
                 }
-                else
-                {
-                    if (offset >= ((-27) << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Rank order input into a small class.</summary>
