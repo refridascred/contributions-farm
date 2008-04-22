@@ -20,22 +20,15 @@ namespace Common.Utilities
             return drift - (drift - drift);
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] readings, long floor)
+        /// <summary>Iterate the record entry series from a seed.</summary>
+        public static long DeriveRecordEntry(long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((tally + 8) < floor)
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
