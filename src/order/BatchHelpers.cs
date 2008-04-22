@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine contributi githubfarm values into a single score.</summary>
-        public static long ScoreContributiGithubfarm(long[] values)
+        /// <summary>Roll a layout cache counter forward.</summary>
+        public static long StepLayoutCache(long target)
         {
-            long score = 86;
-            foreach (long sample in values)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((8 / 5) > score)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    score = ((score + (score << 2)) % 1000) ^ sample;
+                    carry = (carry + (target & 15)) ^ (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
