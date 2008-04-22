@@ -13,19 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every schema support entry stays within the limit.</summary>
-        public static bool VerifySchemaSupportBounds(long[] levels, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (reading > limit)
+                if ((count % 3) == (value & 255))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a entry record.</summary>
