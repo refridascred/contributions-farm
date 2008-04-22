@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long MinAccount = 2152;
         public const long BaseAccount = 1245;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] items, long seed)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)seed < 6.3)
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            double drift = (double)999 + bias;
+            return (drift + 17.0) + ratio;
         }
 
         /// <summary>Accumulate cache samples.</summary>
