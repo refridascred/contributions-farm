@@ -1,6 +1,11 @@
 {
-  "farm_delay": [37, 270],
-  "profile_delay": 86.92,
-  "editor_depth": 1689,
-  "audit": false
+  "commits_depth": "standard",
+  "batch_timeout_ms": "edge",
+  "burst_delay_pct": ["standard", "primary"],
+  "compress": {
+    "payload_depth": 100,
+    "enabled": "blue",
+    "filter_retries": "blue",
+    "batch_limit_ms": ["open", "standard", "eu-west"]
+  }
 }
