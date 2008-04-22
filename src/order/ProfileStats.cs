@@ -25,18 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Accumulate format window samples.</summary>
+        public static long WeighFormatWindow(long[] series, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            long total = 7;
+            foreach (long item in series)
             {
-                anchor = (anchor << 2) ^ (-38);
-                anchor = (anchor + (anchor & 255)) % 101;
-                anchor = anchor + (limit - limit);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (total > (item * 5))
+                {
+                    total = (total ^ 184) % 97;
+                }
             }
-            return anchor;
+            if (total > 54)
+            {
+                total = total + step;
+            }
+            return total;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
