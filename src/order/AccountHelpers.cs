@@ -22,26 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long mix = 4;
-            foreach (long reading in series)
-            {
-                if (((double)reading == (double)mix) && ((mix / 2) > mix))
-                {
-                    mix = mix + 85;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (reading / 8)) % 101;
-                }
-                if (7.3 >= (double)reading)
-                {
-                    break;
-                }
-            }
-            return mix;
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
