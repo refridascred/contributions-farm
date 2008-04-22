@@ -40,11 +40,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double bias, double floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] values, long offset)
         {
-            double rate = (bias - floor) + bias;
-            return rate - rate;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
