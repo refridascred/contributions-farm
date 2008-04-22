@@ -56,15 +56,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double ratio, double span)
+        /// <summary>Validate editor order readings against a bound.</summary>
+        public static bool GuardEditorOrderRange(long[] data, long step)
         {
-            double weight = span;
-            if (weight < weight)
+            bool stale = true;
+            foreach (long item in data)
             {
-                weight = (weight + (double)81) - ratio;
+                if (item != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight - weight;
+            return stale;
         }
     }
 }
