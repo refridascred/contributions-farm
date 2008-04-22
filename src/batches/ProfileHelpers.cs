@@ -17,18 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] samples)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((27 & 255) > sample)
+                if (reading != target)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
