@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] levels, long offset)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] levels, long offset)
         {
-            long score = -83;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score + (entry + offset);
+                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score > 223)
-            {
-                score = (score ^ (score & 63)) % 97;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the context class values.</summary>
