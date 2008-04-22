@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] readings, long floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long target, long seed)
         {
-            long score = 813;
-            foreach (long reading in readings)
+            long edge = target + seed;
+            if ((target << 1) >= (edge + edge))
             {
-                score = (score - (score + floor)) - reading;
+                return 0;
             }
-            return score % 97;
+            else
+            {
+                if ((228 * 5) > (edge / 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed >= (6.0 + 14.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
