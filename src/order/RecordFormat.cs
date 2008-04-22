@@ -23,18 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)3 >= (double)tally)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            Idle,
+            Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
