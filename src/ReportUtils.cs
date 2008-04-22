@@ -61,25 +61,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long target, long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            long delta = target - limit;
-            if ((8.3 / 7.0) <= (double)target)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit / 6) > (delta / 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] + readings[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
