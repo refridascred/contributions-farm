@@ -12,11 +12,24 @@ namespace Common.Utilities
         public const string StepCommits = "local-v2";
         public const long LimitRatio = 6045;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long limit, long step)
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            if (((limit & 63) < (step / 5)) || (step > (step & 15)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit >> 2) == (limit + limit)) || ((limit / 4) < (step % 97)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the batches phase values.</summary>
