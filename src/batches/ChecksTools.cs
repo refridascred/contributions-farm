@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] values, long offset)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long anchor = -744;
-            foreach (long entry in values)
-            {
-                if (!(7.5 > (double)offset))
-                {
-                    anchor = ((anchor + (anchor - anchor)) % 1000) - entry;
-                }
-            }
-            return anchor;
+            public bool Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
