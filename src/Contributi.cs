@@ -43,21 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] readings)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches + sample) == (matches / 8))
                 {
-                    if ((readings[i] + readings[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) + origin;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Locate a channel record reading by value.</summary>
