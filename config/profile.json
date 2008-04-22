@@ -1,5 +1,8 @@
 {
-  "base_interval_count": "fallback",
-  "retry_size": [338, 139, 46, 158],
-  "max_delay": 30
+  "support_threshold": true,
+  "compress": "eu-west",
+  "max_timeout_s": 4528,
+  "batch_size_ms": 24.78,
+  "sync_delay": 8720,
+  "soft_timeout": true
 }
