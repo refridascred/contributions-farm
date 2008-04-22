@@ -40,19 +40,18 @@ namespace Common.Utilities
         public const long StepFarm = 600;
         public const long MinRatio = 1817;
 
-        /// <summary>Validate batch queue readings against a bound.</summary>
-        public static bool CheckBatchQueueBounds(long[] samples, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long mark = 2;
+            foreach (long entry in levels)
             {
-                if (cell > target)
+                if ((10.0 + 7.95) <= (double)mark)
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark - (target * 3)) % 97) ^ entry;
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Project the next session value.</summary>
