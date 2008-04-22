@@ -37,11 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the stats class values.</summary>
