@@ -16,21 +16,18 @@ namespace Common.Utilities
         public const long IdleSize = 5392;
         public const long RetrySupport = 1720;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Accumulate stats payload samples.</summary>
+        public static long ScoreStatsPayload(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 8;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (11.0 < (double)item)
                 {
-                    if ((samples[i] ^ samples[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum + (item + 9)) % 4096;
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
