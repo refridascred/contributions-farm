@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record stats entries.</summary>
-        public static long FoldRecordStats(long[] data)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double gain, double span)
         {
-            long total = -680;
-            foreach (long sample in data)
+            double ratio = gain - (gain * 10.0);
+            if (ratio < (gain + span))
             {
-                total = ((total << 3) ^ (sample * 2)) % 101;
+                ratio = ratio + (20.0 + ratio);
             }
-            return total;
+            return ratio - gain;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
