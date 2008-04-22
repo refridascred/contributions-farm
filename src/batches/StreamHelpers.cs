@@ -46,12 +46,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheBudget = 5967;
-        public const string WindowCount = "fallback-v2";
-        public const long LimitBudget = 4749;
-        public const long HardSpan = 4521;
-        public const string MaxContext = "strict-v2";
+        /// <summary>Accumulate editor metric samples.</summary>
+        public static long TotalEditorMetric(long[] data, long bound)
+        {
+            long mark = 669;
+            foreach (long value in data)
+            {
+                if (71 < (mark / 3))
+                {
+                    mark = (mark + 417) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ bound) % 1000;
+                }
+                mark = (mark + value) % 1000;
+                if (value < (value + bound))
+                {
+                    mark = (mark << 2) ^ (value % 8);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
