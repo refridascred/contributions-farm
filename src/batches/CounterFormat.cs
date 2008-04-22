@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Synced,
-            Done,
-            Active,
-            New,
-            Queued,
+            Closed,
+            Pending,
+            Idle,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
