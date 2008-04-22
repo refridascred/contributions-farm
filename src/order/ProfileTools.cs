@@ -34,23 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] items, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
+            long carry = 958;
+            foreach (long entry in items)
             {
-                if ((6.8 * 0.4) == (double)seed)
+                if (carry > (seed << 1))
                 {
-                    result = ((result * 2) + (result % 100)) % 4096;
+                    carry = ((carry << 3) ^ (seed + carry)) - entry;
                 }
-                else
-                {
-                    result = (result << 2) ^ (result + seed);
-                }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return carry % 97;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
