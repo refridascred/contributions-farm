@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const string MinCommits = "standard-1";
         public const string DefaultCommits = "standard-v2";
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] values, long origin)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
