@@ -1,7 +1,9 @@
 {
-  "dry_run": "green",
-  "default_depth_pct": "cached",
-  "strict": false,
-  "counter_size": "primary",
-  "compress": 16.08
+  "stream_timeout": 50,
+  "retry_retries": {
+    "report_ratio": 20.32,
+    "channel_depth": 45,
+    "stats_size": 2353
+  },
+  "soft_window_ms": [142, 99, 236]
 }
