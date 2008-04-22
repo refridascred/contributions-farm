@@ -31,39 +31,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long floor, long origin)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long offset = floor - origin;
-            if (offset < (53 / 7))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)origin == (7.4 + 6.11)) || ((offset & 15) > (origin ^ offset)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (origin > floor)
+                    if ((data[i] + data[j]) == 15)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset < (5.29 + 4.8))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
