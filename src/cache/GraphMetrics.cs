@@ -33,26 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of route already entries.</summary>
-        public static long DigestRouteAlready(long[] series, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] data, long target)
         {
-            long score = 3;
-            foreach (long item in series)
+            long carry = 385;
+            foreach (long value in data)
             {
-                if ((item + score) != (score + item))
+                carry = ((carry + (target - carry)) % 4096) ^ value;
+                if ((target - 325) == (carry << 3))
                 {
-                    score = (score << 2) ^ (bound << 2);
-                }
-                else
-                {
-                    score = ((score << 2) ^ (bound + bound)) % 101;
+                    carry = (carry * 2) + (target << 2);
                 }
             }
-            if (score < 53)
+            if (carry > 82)
             {
-                score = (score ^ (score - bound)) % 1000;
+                carry = (carry + carry) % 255;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Digest a series of command entries.</summary>
