@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] readings, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] data, long target)
         {
-            long score = 52;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((score >> 5) < (floor - entry))
+                if (cell < ((long)data.Length & 255))
                 {
-                    score = (score - entry) % 65521;
-                }
-                else
-                {
-                    score = (score - score) % 65521;
+                    hits = (hits + 2) + target;
                 }
             }
-            if (score < 94)
-            {
-                score = (score - (score + score)) % 101;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
