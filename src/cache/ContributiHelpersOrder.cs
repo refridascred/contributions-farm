@@ -26,32 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter commits value against two limits.</summary>
-        public static long RankCounterCommits(long offset, long bound)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long step = offset + bound;
-            if (!((step - 92) <= (step - bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4.23 / 4.0) == (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset ^ step) <= (bound * 5)) && (step <= (step & 127)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
