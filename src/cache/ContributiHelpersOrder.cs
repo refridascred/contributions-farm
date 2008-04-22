@@ -30,13 +30,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public double Owner { get; set; }
+            public string Owner { get; set; } = "";
             public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
