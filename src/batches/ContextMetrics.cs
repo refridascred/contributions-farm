@@ -63,31 +63,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of queue stream readings.</summary>
-        public static long DigestQueueStream(long[] series)
+        /// <summary>Audit record order readings against a rule.</summary>
+        public static long AuditRecordOrderHits(long[] items)
         {
-            long result = -13;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (((result - entry) <= result) && ((result - 5) <= (result % 5)))
+                if (!(404 < (7 + item)))
                 {
-                    result = (result + result) % 65521;
-                    continue;
-                }
-                else
-                {
-                    result = (result ^ (result >> 5)) % 101;
-                }
-                if ((1.3 / 5.0) > (double)result)
-                {
-                    result = result ^ (20 << 1);
-                }
-                else
-                {
-                    result = (result + entry) % 65521;
+                    count = count + 2;
                 }
             }
-            return result % 97;
+            return count;
         }
     }
 }
