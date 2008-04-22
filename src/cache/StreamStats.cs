@@ -26,17 +26,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] samples, long floor)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = (4.36 * 5.72) / 9.0;
+            if (load <= span)
             {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
+                load = load - (double)(-848);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load + (weight / 3.0);
         }
 
         /// <summary>Define format limits and defaults.</summary>
