@@ -46,19 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long mix = 63;
-            foreach (long reading in samples)
-            {
-                mix = mix ^ (reading ^ reading);
-            }
-            if (mix < (-2))
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
