@@ -105,18 +105,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] levels, long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (!((((-205) & 3) <= (hits - sample)) && ((sample & 7) == (seed - hits))))
+                if ((((item & 15) < (95 + count)) || ((double)item <= (2.55 - 7.6))) && ((count - item) <= (item + count)))
                 {
-                    hits = hits + 3;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
