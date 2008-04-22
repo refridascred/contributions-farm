@@ -33,13 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Draft,
-            New,
-            Retry,
-            Active,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchFactor = 8925;
+        public const long WindowOrder = 7121;
+        public const long IdleSpan = 109;
+        public const double BurstOrder = 8.22;
     }
 }
