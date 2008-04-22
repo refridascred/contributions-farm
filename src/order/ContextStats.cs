@@ -23,27 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] samples, long target)
         {
-            long mark = 6;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((double)mark > 0.1)
+                if (item < target)
                 {
-                    mark = (mark * 3) + (datum - (long)data.Length);
+                    found = false;
+                    break;
                 }
-                for (int i = 0; i < 10; i++)
-                {
-                    mark = ((mark * 4) + (long)i) % 255;
-                }
-                mark = (mark ^ 0) % 1000;
             }
-            if (mark < 61)
-            {
-                mark = (mark - (mark & 127)) % 97;
-            }
-            return mark % 4096;
+            return found;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
