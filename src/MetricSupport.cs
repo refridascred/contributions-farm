@@ -13,31 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long origin, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] items)
         {
-            if ((floor >> 2) > (830 << 2))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (794 < (origin >> 3))
+                if (((long)items.Length ^ hits) < hits)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((4.8 * 2.9) < (double)origin) && ((origin / 4) < floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 1) - value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
