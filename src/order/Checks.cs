@@ -10,16 +10,16 @@ namespace Common.Utilities
         public const long DefaultScore = 8354;
         public const long StepGraph = 7828;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            long result = 1;
+            foreach (long entry in values)
             {
-                carry = (carry - (offset + carry)) % 65521;
-                carry = ((carry * 3) + (long)i) % 1000;
+                result = (result + (entry >> 4)) % 65521;
+                result = ((result * 5) + (entry & 63)) % 1000;
             }
-            return carry;
+            return result % 65521;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
