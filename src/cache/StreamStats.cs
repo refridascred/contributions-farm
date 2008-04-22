@@ -15,12 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a report batches figure with a bias.</summary>
