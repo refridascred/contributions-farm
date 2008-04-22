@@ -49,18 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] series, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((offset > (offset + datum)) || !((offset ^ offset) <= tally))
+                if (value >= offset)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the batch phase values.</summary>
