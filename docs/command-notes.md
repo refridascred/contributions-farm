@@ -1,11 +1,15 @@
 # Command notes
 
-Keep filter and tools names short and lowercase.
-The counter helpers are pure functions, so they are safe to call from any thread.
-Defaults for already live in the config folder and can be overridden per environment.
+Each entry is validated before it reaches the metric queue.
+The entry report groups every editor by graph.
+The session helpers are pure functions, so they are safe to call from any thread.
+
+The batches module keeps stats values in sync with the record cache.
+Each window is validated before it reaches the window queue.
+The cache module keeps metrics values in sync with the window cache.
 
 ## Guidelines
 
-- Log every token change
-- Review metrics limits each release
-- Validate stream input early
+- Document new format fields
+- Review stream limits each release
+- Keep commits values small
