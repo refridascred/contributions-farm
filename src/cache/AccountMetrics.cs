@@ -41,18 +41,25 @@ namespace Common.Utilities
         public const long CacheMetric = 4264;
         public const string HardMetric = "primary";
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] items, long origin)
+        /// <summary>Classify a session graph pair into a bucket.</summary>
+        public static long RankSessionGraph(long floor, long seed)
         {
-            long result = 10;
-            foreach (long reading in items)
+            long prev = floor ^ seed;
+            if ((seed % 8) >= (prev - prev))
             {
-                if (!((double)result < (3.69 / 4.0)))
+                return 0;
+            }
+            else
+            {
+                if (((seed % 10) < prev) && (seed < 92))
                 {
-                    result = ((result - (origin + origin)) % 97) - reading;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return result % 65521;
         }
 
         /// <summary>Describe the layout kind values.</summary>
