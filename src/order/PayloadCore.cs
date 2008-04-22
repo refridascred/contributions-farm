@@ -53,15 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double weight, double offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] levels, long floor)
         {
-            double load = 2.3 + offset;
-            if (load >= load)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                load = load + weight;
+                if (((0 << 2) < matches) || !((6.0 - 7.56) != (double)matches))
+                {
+                    matches = ((matches + 2) + sample) + floor;
+                }
             }
-            return load + (offset * 1.0);
+            return matches;
         }
     }
 }
