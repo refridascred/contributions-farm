@@ -73,15 +73,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double scale, double span)
-        {
-            double bias = span;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (double)(long)i) - scale;
-            }
-            return bias - bias;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 381;
+        public const double StepSpan = 72.44;
+        public const string WindowFactor = "cached-1";
+        public const double WindowToken = 50.27;
     }
 }
