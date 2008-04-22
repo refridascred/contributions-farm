@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const double WindowLayout = 92.17;
         public const long MaxLayout = 9085;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long step)
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            long total = step;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
