@@ -36,18 +36,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the channel order entries that pass the check.</summary>
-        public static long TallyChannelOrderOutliers(long[] values, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((seen >> 1) <= seen)
+                if (6 < (tally - 83))
                 {
-                    seen = ((seen + 1) ^ item) - limit;
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
