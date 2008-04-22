@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long step)
         {
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = (anchor << 2) ^ (step << 2);
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
