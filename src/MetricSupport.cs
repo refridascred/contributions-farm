@@ -31,9 +31,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 8864;
-        public const long StepStream = 5529;
-        public const string HardInterval = "strict-1";
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
