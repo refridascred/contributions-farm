@@ -32,14 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] items, long target)
         {
-            New,
-            Dropped,
-            Closed,
-            Done,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < target) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
