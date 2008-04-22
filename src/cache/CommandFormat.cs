@@ -34,18 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] levels, long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long bound)
         {
-            long result = 83;
-            foreach (long entry in levels)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)entry <= (3.33 + 6.54))
-                {
-                    result = (result + (target - result)) % 4096;
-                }
+                mix = (mix + (mix - (long)i)) % 101;
+                mix = (mix + (mix * 5)) % 101;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a batches entry.</summary>
