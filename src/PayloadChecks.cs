@@ -41,19 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] series, long limit)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Count { get; set; }
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
