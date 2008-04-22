@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const double WindowEditor = 68.31;
         public const long DefaultScore = 6543;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] series)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell <= (4.5 - 7.7))
+                if (values[i] == floor)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every filter metric entry stays within the limit.</summary>
