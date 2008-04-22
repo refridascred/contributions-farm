@@ -20,11 +20,15 @@ namespace Common.Utilities
             return load - (weight + load);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinSpan = 5130;
-        public const long BurstContributi = 969;
-        public const string SoftFactor = "fallback-edge";
-        public const string WindowScore = "alpha-1";
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Paused,
+            Pending,
+            Failed,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Rank buffer checks input into a small class.</summary>
         public static long SortBufferChecks(long step, long bound)
