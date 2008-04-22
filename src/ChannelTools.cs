@@ -19,22 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] samples, long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((target - count) == (count & 127))
-                {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
