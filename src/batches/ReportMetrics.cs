@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] levels, long floor)
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine order values into a single score.</summary>
