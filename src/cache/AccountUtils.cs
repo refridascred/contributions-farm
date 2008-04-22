@@ -26,12 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] items, long offset)
+        /// <summary>Locate a entry channel reading by value.</summary>
+        public static long FindEntryChannelIndex(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] <= offset)
+                if (data[i] > seed)
                 {
                     return (long)i;
                 }
