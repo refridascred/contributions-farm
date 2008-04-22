@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] readings)
+        /// <summary>Digest a series of cluster report entries.</summary>
+        public static long TotalClusterReport(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = total ^ (value - value);
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Fold a list of channel window readings.</summary>
