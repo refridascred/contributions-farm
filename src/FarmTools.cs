@@ -32,12 +32,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Measure how many batches route samples are out of range.</summary>
+        public static long AuditBatchesRouteOutliers(long[] values)
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry >= (12.0 / 5.0))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
