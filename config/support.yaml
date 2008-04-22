@@ -1,4 +1,8 @@
 # support settings
-readonly: 250
-persist: eu-west
-session_depth: 1333
+queue_limit:
+  - 184
+  - 270
+max_window_ms: true
+already_timeout: 100
+commits_size: 72.16
+buffer_depth: 67
