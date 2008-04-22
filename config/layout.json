@@ -1,6 +1,6 @@
 {
-  "batch_interval_count": "legacy",
-  "default_size_count": 9,
-  "warm_ttl_s": 250,
-  "batches_ttl": "blue"
+  "payload_retries": 500,
+  "stats_retries": true,
+  "strict": false,
+  "stats_window": 24
 }
