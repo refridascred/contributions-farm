@@ -45,19 +45,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate format graph readings against a bound.</summary>
-        public static bool ValidateFormatGraphRange(long[] samples, long bound)
+        /// <summary>Accumulate schema support samples.</summary>
+        public static long TallySchemaSupport(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long sum = 798;
+            foreach (long entry in data)
             {
-                if (datum <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum * 4) + (sum - entry);
             }
-            return stale;
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
