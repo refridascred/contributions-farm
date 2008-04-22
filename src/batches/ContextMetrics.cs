@@ -52,22 +52,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] samples, long limit)
         {
-            long state = -673;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (!(state <= (state + seed)))
+                if (datum < limit)
                 {
-                    state = (state ^ seed) - item;
+                    valid = false;
+                    break;
                 }
             }
-            if (state > 102)
-            {
-                state = ((state * 3) + state) % 97;
-            }
-            return state;
+            return valid;
         }
     }
 }
