@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Accumulate account format samples.</summary>
+        public static long WeighAccountFormat(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 408;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc * 2) + value;
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Accumulate order samples.</summary>
