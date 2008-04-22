@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a editor metric pair into a bucket.</summary>
-        public static long BucketEditorMetric(long seed, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] items, long step)
         {
-            long diff = seed + limit;
-            if ((seed ^ seed) >= (seed & 255))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((diff >> 3) < (limit / 2))
+                if (((step & 127) < 619) && ((184 ^ step) < 7))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (seed < (diff + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((seed + diff) <= diff))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 3) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the batches status values.</summary>
