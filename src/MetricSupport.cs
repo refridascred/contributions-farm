@@ -16,17 +16,19 @@ namespace Common.Utilities
             return bias2 - (4.74 + 7.61);
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] values, long offset)
+        /// <summary>Check that every metrics stats entry stays within the limit.</summary>
+        public static bool CheckMetricsStatsBounds(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (values[i] > offset)
+                if (reading != step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
