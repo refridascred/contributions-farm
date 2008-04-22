@@ -33,11 +33,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepSpan = 6736;
-        public const long DefaultGraph = 5556;
-        public const string StepGraph = "stable-v2";
-        public const long BurstDepth = 6755;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long seed, long offset)
+        {
+            long next = seed + offset;
+            if ((seed >= (offset - offset)) && ((next % 100) >= (seed % 60)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((2 + seed) < (offset / 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((next / 9) >= (seed % 97)) || ((seed + seed) <= (497 - seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((60 + offset) >= (next - seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TotalMetrics(long[] readings, long limit)
