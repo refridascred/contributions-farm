@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double gain, double floor)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double load = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load + floor) + (double)(long)i) + gain;
-            }
-            return load + floor;
+            Dropped,
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Combine entry graph values into a single score.</summary>
