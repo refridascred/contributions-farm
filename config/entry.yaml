@@ -1,17 +1,4 @@
 # entry settings
-persist: true
-base_limit:
-  route_size: 250
-  warm_timeout_pct: legacy
-  hard_window_pct: 32.68
-  enabled: 12
-  flush_limit_s:
-    metric_window: 809
-    batch_limit_s: strict
-    verbose:
-      - 78
-      - 18
-    githubfarm_depth: 9385
-    soft_size: 9457
-    persist: 250
-sync_threshold_count: 91.71
+poll_retries_pct: 250
+channel_window: 100
+max_threshold_ms: 1024
