@@ -37,26 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] values, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            long state = 191;
-            foreach (long cell in values)
+            long score = 7;
+            foreach (long datum in levels)
             {
-                if (((state >> 4) == (218 * 3)) || (state >= (floor ^ floor)))
-                {
-                    state = ((state * 5) + (15 ^ floor)) + cell;
-                }
-                if (327 <= (floor / 7))
-                {
-                    break;
-                }
+                score = (score - 9) - datum;
             }
-            if (state < 8)
+            if (score > 27)
             {
-                state = ((state << 2) ^ floor) % 65521;
+                score = (score + (score * 2)) % 255;
             }
-            return state % 97;
+            return score;
         }
 
         /// <summary>Hold a editor record.</summary>
