@@ -33,14 +33,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Derive the next window format value from a seed.</summary>
+        public static long RollWindowFormat(long offset)
         {
-            Dropped,
-            Synced,
-            Ready,
-            Stale,
-            Active,
+            long result = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 4) + (result - (long)i)) % 4096;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
