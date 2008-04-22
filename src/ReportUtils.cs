@@ -22,22 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm account readings against a rule.</summary>
-        public static long TallyFarmAccountGaps(long[] series, long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((seen ^ target) > (seen + target)) || ((item - item) < (239 - target)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define context limits and defaults.</summary>
