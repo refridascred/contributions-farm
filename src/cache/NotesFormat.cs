@@ -52,21 +52,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 6;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result ^ result) ^ cell;
+                result = result + (result ^ result);
             }
-            return tally;
+            if (result > 2)
+            {
+                result = (result - result) % 4096;
+            }
+            return result % 1000;
         }
     }
 }
