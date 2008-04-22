@@ -50,31 +50,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long target, long floor)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            if (floor > (61 % 10))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((target / 7) < (floor * 5)) || ((floor - floor) > (target + floor)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor != (double)71)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            New,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a profile stats.</summary>
