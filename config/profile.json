@@ -1,8 +1,8 @@
 {
-  "cache_timeout": ["latest", "edge"],
-  "record_timeout": 6322,
-  "record_ratio": 8567,
-  "poll_ttl": "green",
-  "readonly": 95.59,
-  "burst_interval_ms": 965
+  "idle_delay": 22.21,
+  "poll_window_count": 43.92,
+  "default_capacity": "eu-west",
+  "min_limit": 14.17,
+  "idle_threshold_s": 3843,
+  "sync_depth": "strict"
 }
