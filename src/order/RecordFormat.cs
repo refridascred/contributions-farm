@@ -15,16 +15,11 @@ namespace Common.Utilities
         public const double BaseScore = 12.27;
         public const long BatchBudget = 8859;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] values)
-        {
-            long mix = 98;
-            foreach (long sample in values)
-            {
-                mix = ((mix ^ (mix % 10)) % 97) - sample;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultCount = 6359;
+        public const long MinQueue = 9250;
+        public const string BurstQueue = "cached";
+        public const long CacheQueue = 4971;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatMatches(long[] samples, long origin)
