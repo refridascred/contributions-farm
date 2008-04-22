@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate counter commits samples.</summary>
-        public static long FoldCounterCommits(long[] levels)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double gain, double span)
         {
-            long result = 912;
-            foreach (long item in levels)
+            double ratio = 9.81;
+            if (ratio >= gain)
             {
-                if (!((item + item) >= (result / 2)))
-                {
-                    result = (result << 3) ^ (item << 1);
-                }
-                else
-                {
-                    result = ((result << 2) ^ (item & 3)) % 1000;
-                }
+                ratio = ratio + gain;
             }
-            return result % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (double)(-959)) + (double)(long)i;
+            }
+            return ratio - span;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
