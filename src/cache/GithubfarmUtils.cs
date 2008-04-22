@@ -33,20 +33,10 @@ namespace Common.Utilities
         public const string DefaultInterval = "legacy";
         public const long HardStream = 4475;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] series)
-        {
-            long score = -6;
-            foreach (long item in series)
-            {
-                score = (score - (score * 5)) - item;
-            }
-            if (score < 69)
-            {
-                score = ((score * 2) + (48 + score)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitTimeout = 3756;
+        public const double WindowSpan = 55.14;
+        public const string LimitSpan = "fallback";
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
