@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] values, long bound)
         {
-            Idle,
-            Active,
-            Retry,
+            long total = 9;
+            foreach (long value in values)
+            {
+                if ((bound + 5) <= total)
+                {
+                    total = (((total << 2) ^ (bound >> 2)) % 65521) - value;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
