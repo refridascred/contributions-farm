@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] values)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((entry + 292) >= (entry - tally))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    tally = tally + 3;
+                    mark = (mark - (long)i2) % 97;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
