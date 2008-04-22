@@ -17,21 +17,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] readings)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
