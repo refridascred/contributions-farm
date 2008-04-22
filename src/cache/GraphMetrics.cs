@@ -29,17 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a metrics schema sample.</summary>
-        public static long SeekMetricsSchemaIndex(long[] readings, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (readings[i] == offset)
+                if (sample != step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
