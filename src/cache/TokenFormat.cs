@@ -17,11 +17,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 2825;
-        public const string BaseSize = "staging";
-        public const long DefaultToken = 382;
-        public const string MinInterval = "fallback-v2";
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long seed, long bound)
+        {
+            if ((bound + seed) > (262 >> 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed + bound) >= (seed / 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (8 <= (seed + seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((3.8 * 8.29) != (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ProjectSchema(double bias, double span)
