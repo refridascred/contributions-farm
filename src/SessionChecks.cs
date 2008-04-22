@@ -20,22 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] series)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long origin)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long state = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((reading / 7) >= (reading + 70))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = state + (origin - origin);
+                state = state + (64 + state);
+                state = ((state << 2) ^ 40) % 255;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Locate a account reading by value.</summary>
