@@ -14,18 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] data, long step)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((2.7 / 2.0) > (double)step)
+                if (entry < target)
                 {
-                    tally = (tally + 1) + value;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Validate cluster buffer readings against a bound.</summary>
