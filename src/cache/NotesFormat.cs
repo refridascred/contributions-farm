@@ -21,17 +21,9 @@ namespace Common.Utilities
         public const long CacheBatches = 8379;
         public const double DefaultBatches = 21.53;
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "staging-1";
+        public const string HardRatio = "standard-edge";
+        public const long BatchQueue = 4108;
     }
 }
