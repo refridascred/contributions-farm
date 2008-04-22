@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double ratio, double span)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            double weight = (5.0 + ratio) + (double)9;
-            if (weight >= span)
+            long mark = 3;
+            foreach (long datum in levels)
             {
-                weight = weight - (double)2;
+                if ((mark - mark) != (6 + mark))
+                {
+                    mark = mark + (datum << 1);
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - span;
+            return mark % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
