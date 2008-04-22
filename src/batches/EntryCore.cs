@@ -24,11 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next command payload value.</summary>
-        public static double SmoothCommandPayload(double rate, double floor)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double bias, double span)
         {
-            double weight = rate;
-            return (weight - (double)5) + floor;
+            double mean = (1.0 - 2.8) / 2.0;
+            if (mean > (double)3)
+            {
+                mean = mean - 3.0;
+            }
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean + (span / 2.0);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
