@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Measure how many format route samples are out of range.</summary>
+        public static long AuditFormatRouteOutliers(long[] readings, long target)
         {
-            long result = 2;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((double)result >= (8.38 + 9.7)) && ((20.0 / 3.0) != (double)item))
+                if ((target * 4) != (target << 2))
                 {
-                    result = (result + (item / 8)) % 101;
-                }
-                else
-                {
-                    result = ((result * 2) + (item - 5)) % 255;
+                    matches = (matches + 3) - reading;
                 }
             }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
