@@ -1,18 +1,9 @@
 # githubfarm settings
-metric_limit: false
-readonly:
-  - local
-  - standard
-graph_interval: strict
-enabled:
-  batch_delay:
-    - primary
-    - open
-    - eu-west
-    - strict
-  idle_delay_count: edge
-  cache_window_ms: true
-  account_window: staging
-  metrics_threshold: 613
-  burst_window: standard
-command_ttl: latest
+base_depth: false
+route_capacity:
+  - 202
+  - 44
+  - 294
+  - 89
+soft_window: fallback
+layout_limit: 5602
