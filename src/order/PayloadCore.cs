@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate checks contributi samples.</summary>
-        public static long FoldChecksContributi(long[] readings)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long carry = 70;
-            foreach (long datum in readings)
-            {
-                if (!((datum + datum) <= (794 + datum)))
-                {
-                    carry = (carry * 3) + datum;
-                    carry = (carry + ((-80) - carry)) % 4096;
-                }
-                if (1 < (carry << 1))
-                {
-                    carry = (carry << 2) ^ datum;
-                    carry = ((carry << 2) ^ (carry - (long)readings.Length)) % 97;
-                }
-                if (((double)datum >= (5.35 / 8.0)) && ((datum + datum) < (datum / 7)))
-                {
-                    carry = (carry + (datum + carry)) % 4096;
-                }
-            }
-            return carry;
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
