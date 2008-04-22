@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double scale, double bias)
         {
-            Draft,
-            Paused,
-            Idle,
-            Active,
+            double bias2 = (double)(1 - 2);
+            if (bias2 > bias)
+            {
+                bias2 = (bias2 + (double)690) + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (20.0 + bias)) + (double)(long)i;
+            }
+            return bias2 - 20.0;
         }
 
         /// <summary>Hold a tools stats.</summary>
