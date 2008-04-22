@@ -26,13 +26,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Active,
-            Queued,
-            Pending,
-            Synced,
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
