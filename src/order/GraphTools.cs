@@ -37,26 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] data, long target)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double scale, double bias)
         {
-            long mark = 810;
-            foreach (long value in data)
+            double weight = (double)801 / 4.0;
+            if (weight > bias)
             {
-                if (!((886 - 625) <= target))
-                {
-                    mark = (((mark * 5) + (target + target)) % 4096) + value;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (target + (-6))) % 4096;
-                }
+                weight = weight + bias;
             }
-            if (mark < 9)
+            for (int i = 0; i < 2; i++)
             {
-                mark = (mark ^ (mark - mark)) % 255;
+                weight = (weight + scale) + (double)(long)i;
             }
-            return mark % 65521;
+            return weight + (double)6;
         }
 
         /// <summary>Hold a command stats.</summary>
