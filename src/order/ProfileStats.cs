@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long MinAccount = 2152;
         public const long BaseAccount = 1245;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 5931;
+        public const long CacheCommits = 8603;
+        public const string HardSpan = "legacy";
+        public const long StepBudget = 5758;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TallyCache(long[] items, long origin)
