@@ -1,7 +1,5 @@
 {
-  "burst_limit_count": [360, 50, 43, 38],
-  "readonly": 96.79,
-  "cache_ttl": 54.31,
-  "schema_delay": 58.75,
-  "verbose": 7316
+  "readonly": 18.79,
+  "sync_depth": 51,
+  "max_interval_ms": 30
 }
