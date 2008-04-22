@@ -63,15 +63,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double ratio, double span)
-        {
-            double rate = span + span;
-            if (rate > ratio)
-            {
-                rate = rate + span;
-            }
-            return rate + ratio;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheTools = 46.89;
+        public const long BaseTools = 6466;
+        public const long WindowTools = 434;
     }
 }
