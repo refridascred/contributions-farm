@@ -1,12 +1,5 @@
 {
-  "session_capacity": 42,
-  "strict": 97.98,
-  "idle_size": 4186,
-  "poll_threshold": {
-    "sync_timeout": "open",
-    "commits_retries": 8.68,
-    "hard_timeout_count": 1411,
-    "channel_size": "strict"
-  },
-  "soft_retries_ms": 42.39
+  "audit": 8651,
+  "warm_capacity_ms": "strict",
+  "enabled": true
 }
