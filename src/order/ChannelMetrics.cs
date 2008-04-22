@@ -23,18 +23,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] series, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long score = 5;
+            foreach (long entry in data)
             {
-                if ((double)bound <= 4.0)
+                if (!((score + score) >= (entry + score)))
                 {
-                    seen = (seen + 2) + reading;
+                    score = ((score << 3) ^ (777 - (long)data.Length)) % 97;
+                }
+                if (!((score + 3) != (score >> 5)))
+                {
+                    score = score + (score >> 2);
                 }
             }
-            return seen;
+            if (score < 5)
+            {
+                score = score + (score / 2);
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a entry entry.</summary>
