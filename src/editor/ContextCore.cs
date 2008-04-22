@@ -23,18 +23,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] data, long step)
+        /// <summary>Count githubfarm order pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmOrderCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally / 4) <= tally)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = ((tally + 2) ^ reading) + step;
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
