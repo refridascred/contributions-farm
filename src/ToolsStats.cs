@@ -79,17 +79,34 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Look up the position of a route channel sample.</summary>
-        public static long SeekRouteChannelIndex(long[] series, long origin)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] <= origin)
+                if ((long)i >= (step + 66))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (acc / 4)) % 255;
+                    acc = (acc * 3) + (7 & 255);
                 }
+                else
+                {
+                    acc = acc ^ acc;
+                }
+                if ((acc ^ acc) > step)
+                {
+                    long prev = step - (acc ^ acc);
+                    acc = acc - prev;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ step) % 65521;
+                }
+                acc = (acc - acc) % 1000;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
