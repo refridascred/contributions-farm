@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepRatio = "legacy-1";
-        public const long SoftSession = 3983;
-        public const long MaxDepth = 1670;
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double rate, double offset)
+        {
+            double bias = offset;
+            if (bias < (offset * 2.46))
+            {
+                bias = bias - (double)21;
+            }
+            else
+            {
+                bias = bias + rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (bias * 12.0)) + (double)(long)i;
+            }
+            return bias + (bias + offset);
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferMatches(long[] readings)
