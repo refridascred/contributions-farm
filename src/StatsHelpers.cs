@@ -34,12 +34,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 6801;
-        public const string DefaultRatio = "alpha-v2";
-        public const long IdleRatio = 2754;
-        public const string IdleOrder = "legacy-edge";
-        public const long BurstOrder = 3219;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long ComparePayloadCount(long[] readings)
