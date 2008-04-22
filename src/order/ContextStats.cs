@@ -36,24 +36,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank profile schema input into a small class.</summary>
-        public static long ClassifyProfileSchema(long seed, long limit)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            if ((seed / 5) >= seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed % 8) < seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
