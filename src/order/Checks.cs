@@ -35,13 +35,19 @@ namespace Common.Utilities
         public const long StepFarm = 9785;
         public const long HardTimeout = 8738;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Validate record support readings against a bound.</summary>
+        public static bool VerifyRecordSupportLimits(long[] readings, long bound)
         {
-            Queued,
-            Pending,
-            Locked,
-            Stale,
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the payload mode values.</summary>
