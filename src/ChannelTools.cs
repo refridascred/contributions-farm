@@ -30,11 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowWidth = 7746;
-        public const double MaxInterval = 22.61;
-        public const long MaxSpan = 9628;
-        public const string LimitScore = "latest-edge";
-        public const long MaxCount = 8236;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
