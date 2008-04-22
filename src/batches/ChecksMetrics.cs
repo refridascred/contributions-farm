@@ -58,13 +58,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Pending,
-            Closed,
-            Queued,
-            Locked,
+            public bool Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the editor status values.</summary>
