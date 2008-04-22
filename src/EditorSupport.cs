@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Done,
-            Stale,
-            Paused,
-            Locked,
-            New,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxRatio = 9362;
+        public const long BaseDepth = 5334;
+        public const double BurstEditor = 4.46;
+        public const long DefaultTimeout = 3921;
+        public const long RetryCount = 7176;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double SoftWidth = 29.93;
