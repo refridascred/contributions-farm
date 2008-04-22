@@ -34,9 +34,17 @@ namespace Common.Utilities
             return gain2 - (0.8 * 9.37);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFilter = 2.99;
-        public const string BurstFilter = "latest-1";
-        public const long LimitFilter = 9152;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
