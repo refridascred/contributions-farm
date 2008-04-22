@@ -55,19 +55,16 @@ namespace Common.Utilities
         public const string RetryBudget = "stable-v2";
         public const long MinLayout = 5846;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] readings, long limit)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long offset)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result ^ (result * 4)) % 255;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return valid;
+            return result;
         }
     }
 }
