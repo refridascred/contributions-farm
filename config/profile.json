@@ -1,7 +1,23 @@
 {
-  "hard_threshold": "cached",
-  "base_delay_ms": "staging",
-  "contributi_threshold": 90.76,
-  "verbose": "latest",
-  "batch_depth_s": "eu-west"
+  "flush_retries": true,
+  "max_delay": {
+    "dry_run": {
+      "commits_ttl": "primary",
+      "context_ratio": "local",
+      "buffer_depth": 7208,
+      "max_timeout_pct": [33, 320, 78],
+      "compress": 24
+    },
+    "cache_window": false,
+    "cache_interval_ms": false,
+    "warm_capacity_s": ["strict", "open"],
+    "retry_delay_count": 9735,
+    "checks_window": true
+  },
+  "hard_delay_s": {
+    "flush_ratio_pct": 46.74,
+    "compress": 250,
+    "cache_window": ["standard", "legacy", "fallback", "local"]
+  },
+  "schema_depth": 9582
 }
