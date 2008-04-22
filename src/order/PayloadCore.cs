@@ -16,21 +16,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)entry <= (8.0 / 9.0))
                 {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum << 3) ^ entry) % 255;
                 }
             }
-            return count;
+            if (sum > 873)
+            {
+                sum = (sum ^ (9 >> 2)) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
