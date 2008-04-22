@@ -29,12 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardScore = 31;
-        public const long RetrySize = 8541;
-        public const long HardSupport = 3286;
-        public const string BatchFactor = "primary-1";
-        public const long RetrySupport = 9831;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long ScoreBatch(long[] series)
