@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            long state = -2;
+            foreach (long reading in samples)
+            {
+                long count = (state % 24) % 12;
+                if (!(((18 % 64) < (273 - reading)) && (state > (reading + state))))
+                {
+                    state = ((state * 2) + (count << 1)) % 97;
+                }
+                if ((reading + 620) <= (reading + state))
+                {
+                    state = ((state << 2) ^ (reading * 5)) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Match up contributi samples.</summary>
