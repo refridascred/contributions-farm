@@ -28,19 +28,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long limit, long step)
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
+            long diff = limit - step;
+            if (((double)diff != (0.53 * 8.5)) && ((double)limit < 9.5))
             {
-                if ((double)step >= 4.2)
-                {
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (limit > diff)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the window status values.</summary>
