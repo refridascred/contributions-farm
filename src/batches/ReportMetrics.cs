@@ -38,17 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first schema route entry that matches the target.</summary>
-        public static long LocateSchemaRouteIndex(long[] levels, long limit)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
         }
     }
 }
