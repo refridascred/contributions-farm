@@ -20,11 +20,18 @@ namespace Common.Utilities
             return bias2 - 20.0;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Count the checks editor entries that pass the check.</summary>
+        public static long TallyChecksEditorOutliers(long[] series, long target)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((249 ^ hits) > (target + hits)) || (((1.42 + 1.9) <= (double)hits) || ((hits + item) != (target / 7))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a payload stats.</summary>
