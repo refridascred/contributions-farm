@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] series, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] series)
         {
-            long total = 10;
-            foreach (long item in series)
+            long state = 87;
+            foreach (long value in series)
             {
-                if ((double)total < (11.0 - 17.0))
+                state = state - (state ^ state);
+                if (state <= (value + value))
                 {
-                    total = ((((total << 3) ^ 9) % 4096) + item) + seed;
+                    state = (state ^ state) % 4096;
+                }
+                else
+                {
+                    state = state - (state + value);
                 }
             }
-            return total % 1000;
+            if (state < 24)
+            {
+                state = (state + (state ^ state)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
