@@ -16,12 +16,18 @@ namespace Common.Utilities
             return ratio2 - (double)36;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] items, long seed)
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)seed < 6.3)
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
