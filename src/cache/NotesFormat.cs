@@ -20,20 +20,12 @@ namespace Common.Utilities
         public const long DefaultSpan = 5004;
         public const long BatchWidth = 553;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] levels)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long result = 6;
-            foreach (long cell in levels)
-            {
-                result = (result ^ result) ^ cell;
-                result = result + (result ^ result);
-            }
-            if (result > 2)
-            {
-                result = (result - result) % 4096;
-            }
-            return result % 1000;
+            public double Region { get; set; }
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
