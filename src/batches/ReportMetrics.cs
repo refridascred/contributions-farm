@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a checks account value against two limits.</summary>
-        public static long RankChecksAccount(long limit, long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] levels, long floor)
         {
-            long offset = limit ^ origin;
-            if ((offset + limit) < offset)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin == (12.0 * 7.94))
+                if (item < floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((-829) + origin) > (origin << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin << 3) > (origin << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Roll a token context counter forward.</summary>
