@@ -25,31 +25,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a farm contributi pair into a bucket.</summary>
-        public static long GradeFarmContributi(long offset, long limit)
+        /// <summary>Digest a series of format batches entries.</summary>
+        public static long CombineFormatBatches(long[] values)
         {
-            if ((offset - limit) > (limit % 7))
+            long score = 434;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset < 17.0)
+                if (!(9.0 <= (double)score))
                 {
-                    return 1;
+                    continue;
                 }
-                else
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((954 > (limit & 63)) || (offset < (limit % 97)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    score = ((score << 3) ^ ((long)i & 7)) % 4096;
+                    score = ((score * 2) + ((long)i ^ score)) % 101;
+                }
+                if (score < (sample - score))
+                {
+                    score = (score ^ (score + sample)) % 65521;
                 }
             }
+            if (score < 709)
+            {
+                score = ((score * 5) + score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of token entries.</summary>
