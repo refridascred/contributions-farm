@@ -38,12 +38,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Find the first metrics buffer entry that matches the target.</summary>
-        public static long SeekMetricsBufferIndex(long[] items, long seed)
+        /// <summary>Find the first queue account entry that matches the target.</summary>
+        public static long LookupQueueAccountIndex(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) != 0))
+                if (series[i] >= step)
                 {
                     return (long)i;
                 }
