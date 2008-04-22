@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many batches profile samples are out of range.</summary>
-        public static long CountBatchesProfileGaps(long[] items, long offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long step = seed ^ origin;
+            if ((double)step >= (4.63 / 9.0))
             {
-                if ((double)matches >= (0.6 / 7.0))
+                return 0;
+            }
+            else
+            {
+                if (((seed - step) <= step) && ((double)step > (7.1 / 7.0)))
                 {
-                    matches = ((matches + 3) + cell) - offset;
+                    return 6;
+                }
+                else
+                {
+                    if (origin > (seed ^ step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
