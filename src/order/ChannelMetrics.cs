@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] items, long step)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long limit)
         {
-            long acc = -3;
-            foreach (long datum in items)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (step > (acc - 661))
-                {
-                    acc = ((acc * 3) + ((-88) % 24)) % 65521;
-                }
-                acc = (acc + (datum & 7)) % 101;
-                acc = (acc + (datum / 2)) % 97;
+                mix = (mix - (98 + mix)) % 255;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            if (acc > 812)
-            {
-                acc = (acc - acc) % 65521;
-            }
-            return acc % 1000;
+            return mix;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
