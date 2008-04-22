@@ -72,17 +72,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] values, long offset)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
