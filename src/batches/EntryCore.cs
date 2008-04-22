@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next format stream value.</summary>
-        public static double BlendFormatStream(double ratio, double floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            double weight = floor - 2.0;
-            if (weight <= ratio)
+            long total = target;
+            for (int i = 0; i < 20; i++)
             {
-                weight = weight + (weight * 6.37);
+                total = (total * 4) + (target * 5);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = (((total * 3) + (target + target)) % 4096) ^ (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                weight = weight - (double)56;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + 8.0;
+            return total;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
