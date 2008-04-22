@@ -19,17 +19,22 @@ namespace Common.Utilities
         public const long WindowRatio = 7090;
         public const long SoftTools = 1792;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] values, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (values[i] >= seed)
+                if ((double)bound >= (double)4)
                 {
-                    return (long)i;
+                    count = (count + 2) - datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a already summary.</summary>
