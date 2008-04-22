@@ -1,13 +1,12 @@
 # githubfarm settings
-warm_ratio: false
-already_limit: 90
-profile_capacity: 9132
-base_window_s: legacy
-readonly:
-  soft_ratio_s:
-    - 160
-    - 87
-  sync_ttl_s: strict
-  metric_delay: 60
-  soft_ttl: 6341
-  burst_limit_s: 58
+support_ratio: strict
+audit: 54
+batch_capacity_pct: 13
+base_timeout_s:
+  - edge
+  - legacy
+sync_timeout_pct:
+  - strict
+  - strict
+  - cached
+  - cached
