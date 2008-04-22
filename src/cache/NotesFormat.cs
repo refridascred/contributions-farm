@@ -24,14 +24,17 @@ namespace Common.Utilities
         public const long CacheBatches = 8379;
         public const double DefaultBatches = 21.53;
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] values, long floor)
         {
-            Synced,
-            Done,
-            Dropped,
-            Idle,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
