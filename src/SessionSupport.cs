@@ -43,17 +43,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] series, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 0;
+            foreach (long entry in data)
             {
-                if (series[i] == offset)
+                if ((entry / 6) < entry)
                 {
-                    return (long)i;
+                    anchor = (((anchor << 3) ^ (entry / 6)) % 101) - origin;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor / 8);
+                }
+                anchor = ((anchor * 3) + (7 / 8)) % 4096;
+                if ((34 + entry) <= (entry + 65))
+                {
+                    anchor = (anchor << 2) ^ (anchor & 7);
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
