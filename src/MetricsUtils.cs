@@ -23,19 +23,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] values, long origin)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Locked,
+            Paused,
         }
 
         /// <summary>Match up payload samples.</summary>
