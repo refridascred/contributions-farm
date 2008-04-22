@@ -17,10 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 339;
-        public const double BaseStats = 48.79;
-        public const long DefaultSpan = 5587;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftInterval = "legacy-edge";
+        public const string HardToken = "open-edge";
+        public const long CacheToken = 658;
+        public const long BatchToken = 8017;
+        public const long SoftToken = 580;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricHits(long[] readings)
