@@ -51,11 +51,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardDepth = 6803;
-        public const double MinMetric = 51.78;
-        public const long WindowMetric = 2484;
-        public const long IdleSpan = 8512;
-        public const long BatchMetric = 1902;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
