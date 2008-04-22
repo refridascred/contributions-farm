@@ -1,7 +1,5 @@
 {
-  "compress": [113, 270, 365, 1],
-  "idle_size_pct": 7325,
-  "default_threshold": 26.79,
-  "support_threshold": 100,
-  "dry_run": [400, 7, 426, 285]
+  "verbose": "blue",
+  "idle_limit_pct": "green",
+  "readonly": 60
 }
