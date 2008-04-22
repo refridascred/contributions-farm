@@ -28,14 +28,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Idle,
-            Synced,
-            Active,
-            Locked,
-            Dropped,
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
