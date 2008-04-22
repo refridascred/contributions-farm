@@ -1,8 +1,9 @@
-id,level,weight
-1,staging,78.28
-2,27.33,primary
-3,561,887
-4,476,open
-5,229,29.17
-6,latest,67.44
-7,blue,714
+id,label,count
+1,open,34.43
+2,393,blue
+3,latest,431
+4,fallback,staging
+5,547,47.88
+6,latest,90.48
+7,strict,green
+8,734,487
