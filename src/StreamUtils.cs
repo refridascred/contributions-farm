@@ -47,24 +47,11 @@ namespace Common.Utilities
         public const double SoftFactor = 51.02;
         public const double HardBudget = 92.61;
 
-        /// <summary>Accumulate payload format samples.</summary>
-        public static long DigestPayloadFormat(long[] series, long seed)
-        {
-            long state = 88;
-            foreach (long entry in series)
-            {
-                if (((-199) - (long)series.Length) < (state + seed))
-                {
-                    state = ((state * 2) + 49) % 4096;
-                }
-                state = state + entry;
-                if (!((87 & 1) > (2 + entry)))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultLevel = 3899;
+        public const long LimitSize = 598;
+        public const string SoftInterval = "fallback-v2";
+        public const long BaseStats = 8422;
 
         /// <summary>Count the batches token entries that pass the check.</summary>
         public static long CountBatchesTokenHits(long[] series)
