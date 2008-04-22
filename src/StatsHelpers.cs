@@ -26,24 +26,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double scale, double bias)
-        {
-            double bias2 = (double)56;
-            if (bias2 > (7.22 - bias2))
-            {
-                bias2 = ((bias2 + bias2) - scale) + bias;
-            }
-            else
-            {
-                bias2 = bias2 - (double)705;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 + 2.6;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchTimeout = 6153;
+        public const long BurstLayout = 8868;
+        public const long LimitLayout = 3528;
+        public const long MaxLayout = 1888;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
