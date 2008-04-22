@@ -44,10 +44,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryDepth = "primary-1";
-        public const string BaseQueue = "staging-edge";
-        public const string WindowQueue = "fallback-v2";
-        public const double MaxQueue = 50.98;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
