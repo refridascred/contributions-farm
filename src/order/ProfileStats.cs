@@ -38,20 +38,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate format window samples.</summary>
-        public static long WeighFormatWindow(long[] series, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] levels, long limit)
         {
-            long total = 7;
-            foreach (long item in series)
+            long total = 835;
+            foreach (long cell in levels)
             {
-                if (total > (item * 5))
+                if (((double)limit != (7.2 * 8.77)) || (total < limit))
                 {
-                    total = (total ^ 184) % 97;
+                    total = ((total + (total % 12)) % 255) + cell;
                 }
-            }
-            if (total > 54)
-            {
-                total = total + step;
             }
             return total;
         }
