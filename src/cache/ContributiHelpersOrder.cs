@@ -13,17 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] values, long floor)
+        /// <summary>Check that every schema support entry stays within the limit.</summary>
+        public static bool VerifySchemaSupportBounds(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (values[i] == floor)
+                if (reading > limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the stream kind values.</summary>
