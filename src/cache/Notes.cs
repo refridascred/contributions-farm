@@ -13,15 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next cache farm value.</summary>
-        public static double AdjustCacheFarm(double ratio, double offset)
+        /// <summary>Validate contributi cache readings against a bound.</summary>
+        public static bool ValidateContributiCacheBounds(long[] readings, long seed)
         {
-            double bias = (double)(65 >> 1);
-            if (bias <= bias)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                bias = (bias - (double)877) - offset;
+                if (item < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias + (ratio * 0.78);
+            return ok;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
