@@ -47,12 +47,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Done,
-            Locked,
-            Paused,
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
