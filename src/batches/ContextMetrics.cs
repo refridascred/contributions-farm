@@ -38,14 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Synced,
-            Paused,
-            Active,
-            Locked,
-            Queued,
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Locate a queue reading by value.</summary>
