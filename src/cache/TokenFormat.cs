@@ -51,15 +51,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double bias, double span)
+        /// <summary>Roll a batches editor counter forward.</summary>
+        public static long SeriesBatchesEditor(long origin)
         {
-            double mean = span * 5.98;
-            if (mean <= span)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                mean = (mean + span) + bias;
+                if ((double)anchor > (double)(long)i)
+                {
+                    continue;
+                }
+                if (!(((938 >> 3) < origin) || (anchor < (anchor * 2))))
+                {
+                    anchor = anchor ^ (anchor + origin);
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return mean + span;
+            return anchor;
         }
     }
 }
