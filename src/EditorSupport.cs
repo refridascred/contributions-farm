@@ -26,20 +26,21 @@ namespace Common.Utilities
         public const long WindowScore = 7238;
         public const long CacheLevel = 2049;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((step & 63) <= ((long)i * 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score * 2) + (-8)) % 101;
-                    score = score + (5 + 75);
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Classify a farm contributi pair into a bucket.</summary>
