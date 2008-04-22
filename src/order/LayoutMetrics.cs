@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate token order samples.</summary>
-        public static long FoldTokenOrder(long[] series, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] data, long floor)
         {
-            long acc = 8;
-            foreach (long reading in series)
+            long acc = 0;
+            foreach (long item in data)
             {
-                if (((8.7 * 1.1) < (double)acc) || ((80 % 60) == (acc ^ acc)))
+                if (floor <= (floor + acc))
                 {
-                    acc = (acc << 3) ^ (reading + offset);
+                    acc = ((acc * 4) + (acc + floor)) % 101;
+                }
+                if (2 <= item)
+                {
+                    acc = (acc << 3) ^ (item - acc);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                if (((309 + floor) >= floor) && ((double)acc <= (8.0 + 8.7)))
+                {
+                    break;
                 }
             }
             return acc;
