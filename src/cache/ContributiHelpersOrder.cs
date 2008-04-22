@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstSpan = "legacy";
-        public const double SoftEditor = 38.38;
-        public const double WindowEditor = 68.31;
-        public const long DefaultScore = 6543;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Retry,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LookupCommandIndex(long[] values, long floor)
