@@ -1,7 +1,15 @@
 {
-  "soft_timeout_pct": "fallback",
-  "readonly": 100,
-  "dry_run": 26,
-  "window_ratio": true,
-  "base_interval": 9880
+  "audit": ["blue", "local"],
+  "stats_retries": [273, 391, 289, 295],
+  "report_limit": {
+    "base_retries": {
+      "compress": 38.27,
+      "notes_size": "strict",
+      "session_capacity": "blue",
+      "soft_timeout_pct": 96.87,
+      "cache_ttl": true
+    },
+    "burst_ttl": "primary",
+    "window_limit": ["cached", "fallback", "local"]
+  }
 }
