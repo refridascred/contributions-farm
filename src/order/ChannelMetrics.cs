@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 2495;
-        public const long RetryWindow = 4375;
-        public const long HardWindow = 7855;
-        public const long StepScore = 8894;
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] items, long offset)
+        {
+            long anchor = 90;
+            foreach (long reading in items)
+            {
+                if ((18.0 < (double)anchor) && ((reading << 2) != (716 % 7)))
+                {
+                    anchor = anchor + (anchor >> 4);
+                }
+                if (((anchor >> 5) > offset) && (anchor <= (0 ^ reading)))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long FoldStats(long[] data)
