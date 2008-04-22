@@ -64,13 +64,38 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Grade a order queue value against two limits.</summary>
+        public static long SortOrderQueue(long floor, long target)
         {
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
+            if ((floor + floor) >= floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor >= 5.0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor ^ 5) > (target & 31))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor - 87) > 7)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
