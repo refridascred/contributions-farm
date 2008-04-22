@@ -12,14 +12,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long bound)
         {
-            Ready,
-            Paused,
-            Active,
-            Stale,
-            New,
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a tools contributi value against two limits.</summary>
