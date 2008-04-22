@@ -29,26 +29,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long result = 291;
-            foreach (long cell in samples)
-            {
-                if ((5.0 <= (double)cell) || (((long)samples.Length * 2) < (cell >> 5)))
-                {
-                    result = (result ^ (result + cell)) % 97;
-                }
-                if (result <= (result ^ result))
-                {
-                    result = (result + (cell + result)) % 255;
-                }
-                else
-                {
-                    result = result + ((long)samples.Length + 5);
-                }
-            }
-            return result;
+            Locked,
+            Idle,
+            Draft,
+            Failed,
+            Closed,
         }
     }
 }
