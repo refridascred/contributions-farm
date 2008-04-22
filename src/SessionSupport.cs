@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] data, long step)
         {
-            New,
-            Stale,
-            Locked,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!((step / 7) == (step ^ step)))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
