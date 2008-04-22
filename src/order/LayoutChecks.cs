@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const double WindowLayout = 92.17;
         public const long MaxLayout = 9085;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double ratio, double bias)
-        {
-            double load = (double)9 * 20.0;
-            if (load > (double)(-939))
-            {
-                load = load - (ratio - load);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (0.89 + bias);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 3055;
+        public const double LimitBatches = 36.34;
+        public const long MaxBudget = 7527;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MinReport = 5347;
