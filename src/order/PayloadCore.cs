@@ -43,11 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double ratio, double offset)
+        /// <summary>Adjust a support metrics reading.</summary>
+        public static double BlendSupportMetrics(double scale, double bias)
         {
-            double bias = offset;
-            return (bias + 5.6) + ratio;
+            double ratio = scale;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (3.85 + scale)) - (double)(long)i;
+            }
+            return ratio - (bias / 7.0);
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
