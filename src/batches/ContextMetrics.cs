@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSpan = 9635;
+        public const long CacheBudget = 2168;
+        public const long RetrySpan = 5927;
+        public const long StepSchema = 7427;
+        public const long BatchLevel = 2562;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
