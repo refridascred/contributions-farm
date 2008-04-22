@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double scale, double span)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] data, long limit)
         {
-            double weight = scale;
-            if (weight >= scale)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                weight = weight + scale;
+                if (!((limit + cell) != (limit >> 3)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                weight = weight - (scale * 4.92);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (span - 1.0)) - (double)(long)i;
-            }
-            return weight + (double)(-51);
+            return seen;
         }
 
         /// <summary>Hold a command stats.</summary>
