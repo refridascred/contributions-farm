@@ -43,11 +43,14 @@ namespace Common.Utilities
         public const double SoftFactor = 51.02;
         public const double HardBudget = 92.61;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 8079;
-        public const long WindowLevel = 3341;
-        public const long SoftCount = 849;
-        public const double SoftLevel = 42.35;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandLimits(long[] items, long origin)
