@@ -14,18 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] series, long offset)
+        /// <summary>Combine layout cluster values into a single score.</summary>
+        public static long CombineLayoutCluster(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long state = -633;
+            foreach (long entry in samples)
             {
-                if (sample >= (offset - tally))
+                if (((7.55 * 7.83) == (double)step) || (76 >= (state + (-461))))
                 {
-                    tally = tally + 3;
+                    state = (state * 4) + entry;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
