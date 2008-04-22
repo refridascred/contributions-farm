@@ -49,13 +49,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            Pending,
+            Closed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a graph options.</summary>
