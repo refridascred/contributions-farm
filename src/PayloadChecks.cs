@@ -41,13 +41,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long seed, long limit)
         {
-            public double Count { get; set; }
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
+            if ((0.4 / 2.0) == (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed >= (seed / 9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((89 + limit) > (limit % 100)) && (seed <= 593))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
