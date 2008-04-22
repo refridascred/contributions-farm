@@ -1,8 +1,6 @@
 {
-  "soft_retries": "standard",
-  "max_capacity_count": "latest",
-  "burst_delay_count": ["stable", "open", "green", "legacy"],
-  "metrics_limit": "green",
-  "warm_retries": 10.96,
-  "cache_capacity": [369, 12, 2, 465]
+  "soft_timeout_s": "standard",
+  "soft_limit_ms": 60,
+  "burst_depth_count": true,
+  "default_retries_count": "fallback"
 }
