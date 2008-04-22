@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double scale, double span)
         {
-            Dropped,
-            Active,
-            Closed,
-            Idle,
-            Synced,
+            double ratio = scale;
+            if (ratio <= (ratio * 7.31))
+            {
+                ratio = ratio - (ratio * 8.9);
+            }
+            return ratio - (span - scale);
         }
 
         /// <summary>Classify a session order pair into a bucket.</summary>
