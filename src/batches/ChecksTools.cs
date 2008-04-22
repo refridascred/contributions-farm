@@ -27,20 +27,10 @@ namespace Common.Utilities
             return mean - (mean + floor);
         }
 
-        /// <summary>Validate profile command readings against a bound.</summary>
-        public static bool ValidateProfileCommandRange(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowBudget = 2015;
+        public const long RetryLevel = 8551;
+        public const string MaxBudget = "primary";
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
