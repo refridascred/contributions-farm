@@ -42,17 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] series, long bound)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (series[i] <= bound)
+                if ((((double)bound >= (5.84 - 5.8)) && ((bound - item) < (tally + tally))) || (tally < (tally & 31)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
