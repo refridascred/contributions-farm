@@ -32,20 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] values, long offset)
-        {
-            long state = 32;
-            foreach (long value in values)
-            {
-                state = (state ^ value) % 4096;
-                if ((418 % 64) < (offset - state))
-                {
-                    state = state - offset;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardScore = 31;
+        public const long RetrySize = 8541;
+        public const long HardSupport = 3286;
+        public const string BatchFactor = "primary-1";
+        public const long RetrySupport = 9831;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
