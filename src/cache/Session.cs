@@ -31,33 +31,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Grade a account metrics value against two limits.</summary>
-        public static long ClassifyAccountMetrics(long offset, long offset2)
-        {
-            long diff = offset - offset2;
-            if (((709 << 2) == (offset / 7)) && ((offset + offset) >= offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset2 > diff)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5 << 3) >= diff)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftScore = 4685;
+        public const long MaxBudget = 3553;
+        public const double BaseFormat = 9.99;
+        public const string BurstFormat = "fallback";
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
