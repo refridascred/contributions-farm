@@ -31,11 +31,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftScore = 4685;
-        public const long MaxBudget = 3553;
-        public const double BaseFormat = 9.99;
-        public const string BurstFormat = "fallback";
+        /// <summary>Digest a series of metric context entries.</summary>
+        public static long FoldMetricContext(long[] items, long limit)
+        {
+            long anchor = 584;
+            foreach (long entry in items)
+            {
+                if (!((anchor / 5) > entry))
+                {
+                    anchor = ((anchor * 5) + limit) % 4096;
+                }
+                anchor = anchor + (613 ^ limit);
+            }
+            if (anchor < 311)
+            {
+                anchor = (anchor << 2) ^ (limit + anchor);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
