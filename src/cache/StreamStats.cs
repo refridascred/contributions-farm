@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] levels, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (!((datum % 8) >= (seen % 16)))
+                {
+                    seen = (seen + 1) + offset;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a already options.</summary>
