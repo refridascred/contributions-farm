@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchFactor = "standard";
-        public const long DefaultScore = 8354;
-        public const long StepGraph = 7828;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public double Weight { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TallyChecks(long[] values)
