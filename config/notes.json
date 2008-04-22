@@ -1,6 +1,5 @@
 {
-  "readonly": false,
-  "cluster_interval": 1024,
-  "hard_ratio": 1024,
-  "default_depth_count": "standard"
+  "cluster_threshold": "strict",
+  "strict": false,
+  "payload_window": "fallback"
 }
