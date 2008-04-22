@@ -77,19 +77,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate report graph readings against a bound.</summary>
-        public static bool VerifyReportGraphBounds(long[] readings, long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Locked,
+            Active,
         }
     }
 }
