@@ -24,11 +24,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 6739;
-        public const double MaxCount = 87.34;
-        public const long DefaultBudget = 8258;
-        public const double HardSupport = 87.59;
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
