@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] series, long step)
         {
-            long carry = 7;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (!((15.0 / 6.0) <= (double)datum))
+                if (reading <= step)
                 {
-                    carry = carry + datum;
+                    found = false;
+                    break;
                 }
             }
-            return carry % 1000;
+            return found;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
