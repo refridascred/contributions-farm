@@ -30,17 +30,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] values, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (values[i] >= seed)
+                if ((((sample + sample) > (sample * 4)) && ((double)sample <= (0.69 * 5.5))) || (((matches << 2) >= matches) || (matches < (sample * 5))))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
