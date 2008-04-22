@@ -16,13 +16,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            Done,
+            Stale,
+            Locked,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
