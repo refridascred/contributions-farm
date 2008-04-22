@@ -61,11 +61,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleScore = 1692;
-        public const long BatchAccount = 7557;
-        public const long CacheFactor = 4476;
-        public const long HardAccount = 2369;
-        public const double CacheScore = 76.35;
+        /// <summary>Match up format cluster samples.</summary>
+        public static long MatchFormatClusterCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
