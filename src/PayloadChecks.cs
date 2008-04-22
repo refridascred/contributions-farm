@@ -83,32 +83,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a cluster schema value against two limits.</summary>
-        public static long RankClusterSchema(long target, long origin)
+        /// <summary>Validate entry metric readings against a bound.</summary>
+        public static bool CheckEntryMetricRange(long[] samples, long step)
         {
-            long edge = target + origin;
-            if ((target / 4) <= (origin << 3))
+            bool found = true;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((12.0 / 7.0) != (double)edge)
+                if (value >= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7 - edge) >= (target - edge))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
