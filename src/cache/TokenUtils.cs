@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] samples)
         {
-            Pending,
-            Done,
-            Active,
-            Closed,
-            Ready,
+            long anchor = 16;
+            foreach (long datum in samples)
+            {
+                if ((anchor ^ 52) <= (anchor + anchor))
+                {
+                    anchor = (((anchor * 5) + (anchor & 15)) % 65521) ^ datum;
+                }
+            }
+            if (anchor < 728)
+            {
+                anchor = (anchor - (213 + anchor)) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate cache support samples.</summary>
