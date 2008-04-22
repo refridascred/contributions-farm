@@ -1,4 +1,7 @@
 # entry settings
-min_threshold: 5285
-sync_capacity_ms: 30
-stream_limit: 48.75
+default_ratio: false
+max_size:
+  - 151
+  - 26
+  - 49
+schema_timeout: 85.18
