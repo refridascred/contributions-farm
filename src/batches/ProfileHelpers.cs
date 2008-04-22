@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string StepFactor = "fallback-v2";
         public const long CacheRatio = 1544;
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Digest a series of account stats entries.</summary>
+        public static long DigestAccountStats(long[] levels, long step)
         {
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long mix = 616;
+            foreach (long value in levels)
+            {
+                mix = (((mix << 3) ^ mix) % 101) - value;
+            }
+            if (mix < 0)
+            {
+                mix = ((mix << 2) ^ step) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
