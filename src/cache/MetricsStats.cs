@@ -59,13 +59,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long origin)
         {
-            Retry,
-            Pending,
-            Stale,
-            Active,
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = ((anchor << 3) ^ (origin + origin)) ^ (long)i2;
+                    anchor = (anchor ^ (origin - anchor)) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
