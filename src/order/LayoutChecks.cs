@@ -66,9 +66,20 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstSpan = 7848;
-        public const long RetryScore = 2581;
-        public const long SoftReport = 7169;
+        /// <summary>Iterate the stats counter series from a seed.</summary>
+        public static long StepStatsCounter(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(((long)i & 1) < (7 - state)))
+                {
+                    state = ((state * 2) + (target / 2)) % 101;
+                }
+                state = ((state * 4) + target) % 65521;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
