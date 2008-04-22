@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long limit, long bound)
         {
-            long state = 76;
-            foreach (long datum in samples)
+            if (12.0 > (double)bound)
             {
-                state = state ^ datum;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (bound > (bound - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (bound < (limit << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(326 < (bound + bound)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
