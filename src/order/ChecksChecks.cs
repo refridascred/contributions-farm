@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 5;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sum > (3 + 138))
                 {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum + (sum % 7);
+                    sum = sum - (value - value);
+                }
+                if ((double)value < (5.2 * 9.84))
+                {
+                    sum = sum ^ 411;
+                }
+                else
+                {
+                    sum = (sum - (value << 3)) % 1000;
                 }
             }
-            return count;
+            if (sum < 3)
+            {
+                sum = (sum << 3) ^ (sum + sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Fold a list of window readings.</summary>
