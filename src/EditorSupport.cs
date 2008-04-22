@@ -49,24 +49,11 @@ namespace Common.Utilities
         public const double DefaultTimeout = 31.47;
         public const long LimitToken = 2207;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] series, long offset)
-        {
-            long sum = 2;
-            foreach (long reading in series)
-            {
-                sum = (sum + 1) % 97;
-                if ((offset + reading) < (reading ^ offset))
-                {
-                    sum = (sum - (offset & 15)) % 97;
-                }
-            }
-            if (sum > 7)
-            {
-                sum = (sum + (offset - offset)) % 97;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string RetryLayout = "alpha";
+        public const long StepSize = 8937;
+        public const string RetryBudget = "stable-v2";
+        public const long MinLayout = 5846;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphBounds(long[] readings, long limit)
