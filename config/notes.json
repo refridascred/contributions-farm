@@ -1,18 +1,8 @@
 {
-  "burst_size_count": "staging",
-  "min_retries": false,
-  "min_ttl": "green",
-  "max_ttl_count": true,
-  "default_size_ms": {
-    "idle_limit_s": "open",
-    "warm_window_ms": false,
-    "cache_capacity": "primary",
-    "verbose": {
-      "warm_interval": 3863,
-      "max_delay": true,
-      "default_timeout_s": [455, 365, 322]
-    },
-    "persist": 60
-  },
-  "retry_delay_pct": "legacy"
+  "editor_ttl": [228, 171],
+  "min_interval_s": "fallback",
+  "poll_capacity_s": 43,
+  "hard_ttl": "edge",
+  "base_timeout": 51,
+  "default_limit_ms": 71.47
 }
