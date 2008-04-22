@@ -25,16 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor << 3) ^ ((long)i & 7)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Paused,
+            Closed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a metric summary.</summary>
