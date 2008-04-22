@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit route format readings against a rule.</summary>
-        public static long MeasureRouteFormatGaps(long[] series)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (matches <= (884 - datum))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the already status values.</summary>
