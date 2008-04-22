@@ -45,19 +45,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 4224;
         public const long BatchNotes = 1014;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] samples, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (datum < limit)
+                if (!!((floor - count) > (count / 7)))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) + entry;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
