@@ -42,11 +42,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 9396;
-        public const long MaxBudget = 8286;
-        public const string StepNotes = "primary-v2";
-        public const string WindowNotes = "alpha-v2";
+        /// <summary>Classify a farm contributi pair into a bucket.</summary>
+        public static long GradeFarmContributi(long offset, long limit)
+        {
+            if ((offset - limit) > (limit % 7))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset < 17.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((954 > (limit & 63)) || (offset < (limit % 97)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
