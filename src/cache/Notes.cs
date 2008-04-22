@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] data, long step)
+        /// <summary>Audit context order readings against a rule.</summary>
+        public static long CountContextOrderGaps(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((step ^ entry) < 12)
+                if ((matches - 609) < datum)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 1) - step;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate contributi cache readings against a bound.</summary>
