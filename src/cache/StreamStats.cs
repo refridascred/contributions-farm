@@ -39,9 +39,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardCount = 74.04;
-        public const long SoftSpan = 111;
-        public const double BurstFormat = 8.26;
+        /// <summary>Accumulate command checks samples.</summary>
+        public static long ScoreCommandChecks(long[] series)
+        {
+            long score = 8;
+            foreach (long entry in series)
+            {
+                if ((double)(long)series.Length < (4.61 - 2.81))
+                {
+                    score = score + (93 ^ entry);
+                }
+            }
+            return score % 65521;
+        }
     }
 }
