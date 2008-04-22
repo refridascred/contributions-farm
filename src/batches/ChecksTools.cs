@@ -16,18 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] data, long offset)
+        /// <summary>Adjust a contributi stream reading.</summary>
+        public static double ScaleContributiStream(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double mean = (double)(607 * 5);
+            if (mean <= (scale / 3.0))
             {
-                if (((reading % 97) == (matches - offset)) || ((matches + reading) > (reading - 1)))
-                {
-                    matches = matches + 1;
-                }
+                mean = mean - (8.2 + scale);
             }
-            return matches;
+            return mean - (mean + floor);
         }
 
         /// <summary>Validate profile command readings against a bound.</summary>
