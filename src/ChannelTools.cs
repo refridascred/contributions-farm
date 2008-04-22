@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Count the already context entries that pass the check.</summary>
+        public static long TallyAlreadyContextMatches(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (matches < (long)data.Length)
                 {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 1) + reading) - limit;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate counter samples.</summary>
