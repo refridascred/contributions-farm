@@ -29,13 +29,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Derive the next channel record value from a seed.</summary>
+        public static long StepChannelRecord(long bound)
         {
-            Pending,
-            Locked,
-            Done,
-            Idle,
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = carry + carry;
+                carry = (carry + carry) % 255;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
