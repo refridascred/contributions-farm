@@ -23,22 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] series, long bound)
         {
-            long mix = 45;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((reading - (-240)) >= reading)
+                if ((double)bound <= 4.0)
                 {
-                    mix = mix - (reading + mix);
+                    seen = (seen + 2) + reading;
                 }
             }
-            if (mix < 3)
-            {
-                mix = (mix ^ (mix >> 2)) % 4096;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a entry entry.</summary>
