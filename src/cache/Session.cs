@@ -24,13 +24,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double gain, double span)
         {
-            Active,
-            Dropped,
-            Synced,
-            Stale,
+            double weight = (gain + span) + 0.7;
+            if (weight < weight)
+            {
+                weight = weight - weight;
+            }
+            return weight - (span - gain);
         }
 
         /// <summary>Describe the batch phase values.</summary>
