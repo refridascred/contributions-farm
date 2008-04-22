@@ -10,20 +10,17 @@ namespace Common.Utilities
         public const double BatchInterval = 65.53;
         public const long BurstEditor = 6983;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] items)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long offset)
         {
-            long state = 854;
-            foreach (long entry in items)
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
             {
-                state = state ^ (entry >> 2);
-                state = (state - (entry & 1)) % 255;
-                if ((state + state) > state)
-                {
-                    break;
-                }
+                long hits = offset % 24;
+                acc = acc ^ hits;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
