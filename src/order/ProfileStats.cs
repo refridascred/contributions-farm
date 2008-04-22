@@ -22,20 +22,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((272 >> 5) > floor)
+                if ((-100) <= ((long)readings.Length / 2))
                 {
-                    mix = mix - (floor ^ floor);
-                    mix = (mix ^ (mix % 10)) % 255;
+                    seen = (seen + 2) ^ entry;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
