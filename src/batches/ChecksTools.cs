@@ -45,19 +45,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate editor order readings against a bound.</summary>
-        public static bool GuardEditorOrderRange(long[] data, long step)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 8426;
+        public const long BurstFactor = 1472;
+        public const long MinRatio = 8549;
+        public const long MinInterval = 7774;
+        public const long SoftToken = 6988;
     }
 }
