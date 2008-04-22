@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const double BatchInterval = 65.53;
         public const long BurstEditor = 6983;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                long hits = offset % 24;
-                acc = acc ^ hits;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the cluster kind values.</summary>
