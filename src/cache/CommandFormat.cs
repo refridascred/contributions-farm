@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] series, long seed)
+        /// <summary>Roll a tools stats counter forward.</summary>
+        public static long SeriesToolsStats(long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((16.0 / 3.0) >= (double)matches))
-                {
-                    matches = ((matches + 2) ^ entry) + seed;
-                }
+                state = ((state * 4) + (floor >> 4)) % 65521;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
