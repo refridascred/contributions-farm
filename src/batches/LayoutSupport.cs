@@ -53,15 +53,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double rate, double floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] items, long offset)
         {
-            double weight = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight - (18.0 / 8.0)) + (double)(long)i;
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (rate - floor);
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
