@@ -1,6 +1,10 @@
-id,region,count,state
-1,295,40.51,194
-2,177,548,746
-3,46.38,798,open
-4,eu-west,fallback,cached
-5,6.81,764,86
+id,region,label,score,level
+1,111,751,fallback,253
+2,blue,412,679,eu-west
+3,113,58.38,local,56.52
+4,140,532,94.53,strict
+5,259,cached,459,70.49
+6,fallback,29.94,109,33.04
+7,164,974,716,47.01
+8,310,81,fallback,341
+9,288,70.97,64.88,143
