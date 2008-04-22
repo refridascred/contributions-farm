@@ -31,25 +31,18 @@ namespace Common.Utilities
         public const long BaseEditor = 580;
         public const long BatchEditor = 3012;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long origin, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] data)
         {
-            long edge = origin - floor;
-            if ((((-374) % 2) < (edge / 3)) || ((double)origin < (double)(-43)))
+            long anchor = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.7 * 9.13) < (double)edge)
+                if ((anchor ^ anchor) < anchor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    anchor = (anchor - (2 - 34)) ^ datum;
                 }
             }
+            return anchor % 97;
         }
     }
 }
