@@ -35,21 +35,26 @@ namespace Common.Utilities
             return load - (4.28 / 2.0);
         }
 
-        /// <summary>Compare every pair of metric layout readings.</summary>
-        public static long MatchMetricLayoutCount(long[] levels)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 7;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)value >= (double)(-897))
                 {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum + step;
+                }
+                if ((sum << 1) <= (value << 3))
+                {
+                    sum = (sum + (value ^ value)) % 1000;
+                }
+                else
+                {
+                    sum = (sum - (value / 3)) % 101;
                 }
             }
-            return matches;
+            return sum;
         }
     }
 }
