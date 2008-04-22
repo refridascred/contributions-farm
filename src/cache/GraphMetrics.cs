@@ -39,12 +39,11 @@ namespace Common.Utilities
         public const long RetrySpan = 978;
         public const long HardSize = 180;
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double scale, double offset)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            double load = offset;
+            return (load + load) + scale;
         }
 
         /// <summary>Describe the context state values.</summary>
