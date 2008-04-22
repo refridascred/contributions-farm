@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double ratio, double bias)
+        /// <summary>Audit window cache readings against a rule.</summary>
+        public static long AuditWindowCacheOutliers(long[] series)
         {
-            double drift = ratio - bias;
-            if (drift >= ratio)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                drift = drift - 14.0;
+                if ((seen >> 3) < (seen >> 5))
+                {
+                    seen = (seen + 3) + cell;
+                }
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift - (drift / 3.0);
+            return seen;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
