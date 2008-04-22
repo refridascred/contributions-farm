@@ -1,6 +1,6 @@
 {
-  "contributi_capacity": 9.26,
-  "compress": 74.08,
-  "base_window_s": 33.34,
-  "enabled": 41.48
+  "audit": 2368,
+  "flush_window_pct": 11.34,
+  "max_limit_s": "primary",
+  "poll_threshold": 500
 }
