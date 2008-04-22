@@ -73,13 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Done,
-            New,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 586;
+        public const long CacheCount = 3430;
+        public const double IdleLevel = 98.67;
+        public const long BatchQueue = 7662;
 
         /// <summary>Roll a session cluster counter forward.</summary>
         public static long RollSessionCluster(long offset)
