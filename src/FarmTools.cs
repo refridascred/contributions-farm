@@ -22,19 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] items, long seed)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Paused,
+            Active,
+            Stale,
+            New,
         }
 
         /// <summary>Grade a tools contributi value against two limits.</summary>
