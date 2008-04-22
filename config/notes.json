@@ -1,7 +1,14 @@
 {
-  "soft_window": false,
-  "farm_ratio": 45.4,
-  "audit": true,
-  "cache_window_count": 7632,
-  "tools_window": false
+  "warm_ratio": ["green", "stable"],
+  "default_ratio": ["local", "blue", "primary"],
+  "window_capacity": "stable",
+  "strict": {
+    "poll_depth": 4340,
+    "soft_ratio_s": 68.65,
+    "hard_ttl_s": "latest",
+    "idle_depth_count": 7.68,
+    "warm_limit": 5636,
+    "default_depth_count": "legacy"
+  },
+  "flush_limit": 60
 }
