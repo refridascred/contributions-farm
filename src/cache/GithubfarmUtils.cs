@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxLevel = 1659;
-        public const string LimitCount = "stable-edge";
-        public const double SoftStream = 27.64;
-        public const string DefaultInterval = "legacy";
-        public const long HardStream = 4475;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (step < cell)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
