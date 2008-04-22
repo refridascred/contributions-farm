@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] data, long target)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long score = -37;
-            foreach (long cell in data)
-            {
-                if (cell < (score + target))
-                {
-                    score = (score << 2) ^ cell;
-                }
-                if (((score >> 1) > (cell % 3)) && (35 < (score - (-28))))
-                {
-                    score = ((score << 2) ^ (cell % 8)) % 97;
-                }
-            }
-            return score % 4096;
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the order phase values.</summary>
