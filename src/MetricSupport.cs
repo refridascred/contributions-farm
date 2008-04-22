@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] samples)
+        /// <summary>Project the next filter layout value.</summary>
+        public static double BlendFilterLayout(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double bias2 = (double)37 / 9.0;
+            if (bias2 < (double)2)
             {
-                if (!(entry >= (entry >> 3)))
-                {
-                    seen = seen + 3;
-                }
+                bias2 = ((bias2 - (double)312) - rate) - bias;
             }
-            return seen;
+            return bias2 - (4.74 + 7.61);
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
