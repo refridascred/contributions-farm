@@ -37,16 +37,11 @@ namespace Common.Utilities
         public const double SoftFactor = 51.02;
         public const double HardBudget = 92.61;
 
-        /// <summary>Accumulate schema support samples.</summary>
-        public static long TallySchemaSupport(long[] data)
-        {
-            long sum = 798;
-            foreach (long entry in data)
-            {
-                sum = (sum * 4) + (sum - entry);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 8079;
+        public const long WindowLevel = 3341;
+        public const long SoftCount = 849;
+        public const double SoftLevel = 42.35;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long CompareCommitsCount(long[] readings)
