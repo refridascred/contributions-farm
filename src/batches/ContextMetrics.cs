@@ -61,11 +61,31 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 3673;
-        public const long BurstLevel = 6890;
-        public const long MinSpan = 2145;
-        public const long BaseDepth = 2507;
-        public const long LimitContext = 5199;
+        /// <summary>Fold a list of queue stream readings.</summary>
+        public static long DigestQueueStream(long[] series)
+        {
+            long result = -13;
+            foreach (long entry in series)
+            {
+                if (((result - entry) <= result) && ((result - 5) <= (result % 5)))
+                {
+                    result = (result + result) % 65521;
+                    continue;
+                }
+                else
+                {
+                    result = (result ^ (result >> 5)) % 101;
+                }
+                if ((1.3 / 5.0) > (double)result)
+                {
+                    result = result ^ (20 << 1);
+                }
+                else
+                {
+                    result = (result + entry) % 65521;
+                }
+            }
+            return result % 97;
+        }
     }
 }
