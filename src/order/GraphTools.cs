@@ -27,31 +27,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long floor, long floor2)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            if ((478 + (-7)) < floor2)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)floor2 < (16.0 * 7.5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (72 >= (floor2 << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Queued,
+            Draft,
+            Done,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the channel kind values.</summary>
