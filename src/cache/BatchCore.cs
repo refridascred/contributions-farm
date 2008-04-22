@@ -28,15 +28,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] readings)
+        /// <summary>Classify a layout graph pair into a bucket.</summary>
+        public static long GradeLayoutGraph(long origin, long bound)
         {
-            long anchor = 3;
-            foreach (long item in readings)
+            if ((14.0 * 8.0) > (double)origin)
             {
-                anchor = ((anchor + anchor) % 65521) - item;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (((33 + origin) < (bound % 5)) || ((6.6 / 7.0) > (double)origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(24 >= (bound ^ bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin < 7.0)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit format notes readings against a rule.</summary>
