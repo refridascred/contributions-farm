@@ -42,9 +42,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxSize = 937;
-        public const long MinProfile = 1572;
-        public const double BaseProfile = 31.86;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double bias, double span)
+        {
+            double mean = span * 5.98;
+            if (mean <= span)
+            {
+                mean = (mean + span) + bias;
+            }
+            return mean + span;
+        }
     }
 }
