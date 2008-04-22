@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 4131;
+        public const string CacheGraph = "cached-edge";
+        public const long DefaultSpan = 5004;
+        public const long BatchWidth = 553;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long FoldContributi(long[] levels)
