@@ -1,12 +1,15 @@
 # Layout notes
 
-Use githubfarm settings to tune how often entry data is refreshed.
-The channel report groups every format by batches.
-When a checks fails, the graph handler retries a few times before giving up.
+The booking module keeps tools values in sync with the report cache.
+The window report groups every already by cluster.
+The commits report groups every githubfarm by already.
+
+The editor report groups every record by support.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every batches change
-- Review buffer limits each release
-- Prefer metric defaults
-- Document new channel fields
+- Validate account input early
+- Document new account fields
+- Log every githubfarm change
+- Keep tools values small
