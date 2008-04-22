@@ -53,17 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] items, long offset)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = floor;
+            if (drift > (1.04 / 4.0))
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                drift = drift - (floor * 7.0);
             }
-            return -1;
+            else
+            {
+                drift = drift + (gain + gain);
+            }
+            return drift - drift;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
