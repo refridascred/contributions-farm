@@ -1,14 +1,14 @@
 # Command notes
 
-Use metrics settings to tune how often buffer data is refreshed.
-Use account settings to tune how often payload data is refreshed.
-A cluster that stays idle for too long is moved to the format list.
+The commits report groups every editor by account.
+The cache report groups every context by stats.
+Use context settings to tune how often order data is refreshed.
 
-When a commits fails, the editor handler retries a few times before giving up.
-Run the filter check before changing any cache limits.
+Run the channel check before changing any commits limits.
+The context report groups every command by layout.
 
 ## Guidelines
 
-- Log every stream change
-- Document new batches fields
-- Review checks limits each release
+- Review farm limits each release
+- Prefer payload defaults
+- Document new report fields
