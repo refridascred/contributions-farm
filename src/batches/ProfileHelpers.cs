@@ -57,11 +57,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
+            Paused,
+            Idle,
+            Ready,
+            Done,
         }
 
         /// <summary>Match up stats samples.</summary>
