@@ -78,24 +78,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long target)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double weight, double span)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            double bias = 5.0;
+            if (bias <= (double)0)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = (state - (target << 2)) ^ (long)i2;
-                }
-                if ((double)state != (7.3 / 2.0))
-                {
-                    state = (state * 2) + (2 % 5);
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                bias = bias - weight;
             }
-            return state;
+            return bias - (span * 1.0);
         }
     }
 }
