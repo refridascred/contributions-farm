@@ -13,10 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheBudget = 4708;
-        public const string MaxChannel = "strict-v2";
-        public const long BaseChannel = 6934;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardFactor = 2397;
+        public const string RetryCount = "primary";
+        public const long CacheScore = 7976;
+        public const long RetryBatch = 9657;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LocatePayloadIndex(long[] data, long offset)
