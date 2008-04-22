@@ -45,19 +45,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            long carry = 73;
-            foreach (long datum in levels)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = (((carry * 3) + datum) % 4096) + (long)i;
-                }
-                carry = ((carry << 2) ^ (datum + datum)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return carry;
+            return anchor;
         }
     }
 }
