@@ -20,11 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstCount = 1457;
-        public const double WindowOrder = 98.82;
-        public const long BaseLevel = 1294;
-        public const long LimitTimeout = 1159;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((-2) ^ 52) <= mix)
+                {
+                    mix = (mix ^ (mix - origin)) % 1000;
+                }
+                mix = mix + (mix >> 5);
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long ClassifyCommits(long target, long step)
