@@ -1,15 +1,14 @@
 # Command notes
 
-Run the buffer check before changing any cache limits.
-Defaults for window live in the config folder and can be overridden per environment.
-Keep checks and window names short and lowercase.
+Use metrics settings to tune how often buffer data is refreshed.
+Use account settings to tune how often payload data is refreshed.
+A cluster that stays idle for too long is moved to the format list.
 
-Defaults for metric live in the config folder and can be overridden per environment.
-Use stats settings to tune how often schema data is refreshed.
-The record module keeps command values in sync with the support cache.
+When a commits fails, the editor handler retries a few times before giving up.
+Run the filter check before changing any cache limits.
 
 ## Guidelines
 
-- Validate tools input early
-- Prefer cache defaults
-- Review tools limits each release
+- Log every stream change
+- Document new batches fields
+- Review checks limits each release
