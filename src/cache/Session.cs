@@ -24,19 +24,19 @@ namespace Common.Utilities
             return gain - (12.0 * 6.0);
         }
 
-        /// <summary>Check that every support buffer entry stays within the limit.</summary>
-        public static bool CheckSupportBufferLimits(long[] samples, long bound)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (value >= bound)
+                if (datum <= offset)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Digest a series of metric context entries.</summary>
