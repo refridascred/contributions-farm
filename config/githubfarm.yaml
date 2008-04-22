@@ -1,5 +1,9 @@
 # githubfarm settings
-buffer_delay: false
-enabled: standard
-warm_delay_ms: 34.62
-context_interval: 92
+warm_window_count: true
+context_limit: local
+poll_timeout_s:
+  - green
+  - standard
+max_size: false
+burst_size: 69
+contributi_ttl: 500
