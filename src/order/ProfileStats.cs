@@ -22,22 +22,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] samples, long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            long state = 25;
-            foreach (long sample in samples)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((limit - sample) >= (sample + 14))
+                if ((272 >> 5) > floor)
                 {
-                    state = (state - state) % 4096;
+                    mix = mix - (floor ^ floor);
+                    mix = (mix ^ (mix % 10)) % 255;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            if (state > 6)
-            {
-                state = (state - (limit ^ state)) % 255;
-            }
-            return state;
+            return mix;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
