@@ -23,11 +23,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstWidth = 83.38;
-        public const long LimitChecks = 1705;
-        public const long BatchChecks = 6189;
-        public const long RetryChecks = 9014;
-        public const long BaseCount = 3013;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxSize = 937;
+        public const long MinProfile = 1572;
+        public const double BaseProfile = 31.86;
     }
 }
