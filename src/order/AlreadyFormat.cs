@@ -22,26 +22,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] levels)
         {
-            long score = 3;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (((score - reading) < reading) || ((716 + score) > (score * 2)))
+                if ((914 <= (entry / 5)) || ((15.0 / 2.0) <= (double)entry))
                 {
-                    score = (score << 3) ^ reading;
-                }
-                else
-                {
-                    score = ((score * 5) + (score & 63)) % 97;
+                    count = count + 1;
                 }
             }
-            if (score > (-441))
-            {
-                score = score + score;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
