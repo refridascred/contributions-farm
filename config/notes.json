@@ -1,7 +1,12 @@
 {
-  "max_window": false,
-  "max_ratio": ["strict", "stable"],
-  "max_threshold_pct": 45.34,
-  "queue_timeout": 55.98,
-  "max_ttl_s": 30
+  "account_threshold": "stable",
+  "audit": "fallback",
+  "profile_window": {
+    "default_limit": "stable",
+    "notes_limit": ["latest", "fallback", "staging", "fallback"],
+    "hard_delay_s": false,
+    "enabled": 100,
+    "contributi_window": [230, 173, 72, 376]
+  },
+  "report_interval": false
 }
