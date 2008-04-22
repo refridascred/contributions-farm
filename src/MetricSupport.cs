@@ -27,11 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseScore = 91.64;
-        public const double DefaultChecks = 28.35;
-        public const double BaseSpan = 18.49;
-        public const double BurstChecks = 43.76;
-        public const long BatchChecks = 5865;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
