@@ -14,20 +14,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] samples)
-        {
-            long sum = 9;
-            foreach (long value in samples)
-            {
-                sum = sum ^ sum;
-                if ((sum & 127) <= (sum - value))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinEditor = 39.64;
+        public const double IdleEditor = 4.39;
+        public const double SoftWidth = 6.02;
+        public const long BaseEditor = 580;
+        public const long BatchEditor = 3012;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long ClassifyToken(long origin, long floor)
