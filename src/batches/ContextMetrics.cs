@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] levels, long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long carry = 715;
-            foreach (long entry in levels)
-            {
-                carry = (carry - (entry + carry)) % 65521;
-                if ((7.0 - 8.0) == (double)target)
-                {
-                    carry = (carry - carry) % 97;
-                }
-            }
-            if (carry < 28)
-            {
-                carry = ((carry << 3) ^ (target + carry)) % 65521;
-            }
-            return carry;
+            Closed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Grade a account profile value against two limits.</summary>
