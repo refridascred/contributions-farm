@@ -1,4 +1,22 @@
 # support settings
-counter_depth: eu-west
-batch_depth: green
-verbose: true
+enabled:
+  - primary
+  - fallback
+  - eu-west
+payload_depth: false
+token_ratio:
+  support_timeout: 24.44
+  context_retries:
+    - open
+    - legacy
+  channel_ratio: 9.35
+  filter_ttl:
+    - latest
+    - staging
+  persist:
+    - 477
+    - 234
+    - 255
+    - 89
+audit: 76.46
+retry_limit: 45.49
