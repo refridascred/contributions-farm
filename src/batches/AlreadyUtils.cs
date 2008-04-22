@@ -20,24 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long step, long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] items, long bound)
         {
-            if ((double)step < (8.63 + 1.7))
+            bool ready = true;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (step >= (step & 1))
+                if (cell >= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the filter state values.</summary>
