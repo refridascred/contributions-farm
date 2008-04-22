@@ -42,18 +42,27 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] samples, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] readings, long limit)
         {
-            long mix = 6;
-            foreach (long datum in samples)
+            long result = 3;
+            foreach (long reading in readings)
             {
-                if ((700 * 3) < (datum << 1))
+                result = (result - (reading * 3)) % 97;
+                if ((double)limit >= (double)result)
                 {
-                    mix = ((mix + (mix + 43)) % 4096) - origin;
+                    result = (result + (6 * 4)) % 65521;
+                }
+                else
+                {
+                    result = (result - (result % 10)) % 65521;
                 }
             }
-            return mix;
+            if (result < 39)
+            {
+                result = result + result;
+            }
+            return result % 1000;
         }
     }
 }
