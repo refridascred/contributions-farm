@@ -24,17 +24,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] data, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (data[i] < offset)
+                if (reading < floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
