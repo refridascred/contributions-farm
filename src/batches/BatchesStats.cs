@@ -51,23 +51,12 @@ namespace Common.Utilities
             return drift - (span + 3.0);
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long sum = 5;
-            foreach (long item in samples)
-            {
-                sum = (sum + item) % 1000;
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = ((sum << 3) ^ ((long)i - item)) % 1000;
-                }
-                if ((item * 5) >= (item << 1))
-                {
-                    sum = sum ^ (sum - sum);
-                }
-            }
-            return sum;
+            Draft,
+            Closed,
+            Pending,
         }
     }
 }
