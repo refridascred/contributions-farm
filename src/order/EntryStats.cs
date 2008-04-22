@@ -50,18 +50,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit tools stream readings against a rule.</summary>
-        public static long CountToolsStreamOutliers(long[] samples)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count + reading) > count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Queued,
+            Stale,
+            Pending,
         }
     }
 }
