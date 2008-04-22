@@ -48,17 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] readings, long limit)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = 5.53 + (double)3;
+            if (ratio >= gain)
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (8.6 * 4.2)) + span;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
