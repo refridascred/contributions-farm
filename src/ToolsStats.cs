@@ -69,14 +69,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Digest a series of report format entries.</summary>
+        public static long TotalReportFormat(long[] samples, long bound)
         {
-            Locked,
-            Pending,
-            Retry,
-            Closed,
-            Queued,
+            long mix = 36;
+            foreach (long item in samples)
+            {
+                mix = ((mix + (item + item)) % 1000) - bound;
+            }
+            return mix;
         }
     }
 }
