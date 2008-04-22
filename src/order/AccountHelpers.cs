@@ -36,32 +36,19 @@ namespace Common.Utilities
         public const double MinCount = 57.59;
         public const long BurstDepth = 2245;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long target, long target2)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] data, long seed)
         {
-            long step = target + target2;
-            if ((target + target2) < (7 + step))
+            long score = -55;
+            foreach (long sample in data)
             {
-                return 4;
+                score = ((score << 2) ^ score) ^ sample;
             }
-            else
+            if (score > 8)
             {
-                if ((step ^ 13) <= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target2 % 60) < (step * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                score = score + (seed + seed);
             }
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
