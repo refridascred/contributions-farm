@@ -25,20 +25,11 @@ namespace Common.Utilities
         public const long MaxBatches = 729;
         public const long IdleBatches = 8910;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = (((state * 2) + bound) % 1000) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxFactor = 9890;
+        public const long MaxEntry = 7221;
+        public const string BaseSize = "cached";
+        public const long MinEntry = 7182;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheCommand = 3711;
