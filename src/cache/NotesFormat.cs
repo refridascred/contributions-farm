@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] values)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((double)hits > 5.59)
+                if (entry >= offset)
                 {
-                    hits = (hits + 1) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
