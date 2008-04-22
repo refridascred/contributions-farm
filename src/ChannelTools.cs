@@ -29,12 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            New,
-            Retry,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowWidth = 7746;
+        public const double MaxInterval = 22.61;
+        public const long MaxSpan = 9628;
+        public const string LimitScore = "latest-edge";
+        public const long MaxCount = 8236;
     }
 }
