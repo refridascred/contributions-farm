@@ -24,19 +24,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((origin - origin) != (long)i)
-                {
-                    acc = (acc + (origin - (long)i)) % 97;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Dropped,
+            Failed,
+            Active,
+            Locked,
         }
 
         /// <summary>Describe the batches status values.</summary>
