@@ -1,13 +1,7 @@
 {
-  "poll_threshold": {
-    "batch_depth": "blue",
-    "queue_retries": 1024,
-    "schema_timeout": "legacy"
-  },
-  "persist": {
-    "already_threshold": "blue",
-    "hard_limit_s": 39,
-    "session_interval": "eu-west"
-  },
-  "strict": true
+  "soft_window": false,
+  "farm_ratio": 45.4,
+  "audit": true,
+  "cache_window_count": 7632,
+  "tools_window": false
 }
