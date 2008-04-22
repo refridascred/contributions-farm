@@ -16,18 +16,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] values, long bound)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long total = 9;
-            foreach (long value in values)
-            {
-                if ((bound + 5) <= total)
-                {
-                    total = (((total << 2) ^ (bound >> 2)) % 65521) - value;
-                }
-            }
-            return total % 97;
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
