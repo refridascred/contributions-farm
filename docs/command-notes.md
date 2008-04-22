@@ -1,16 +1,15 @@
 # Command notes
 
-Run the metric check before changing any graph limits.
-The payload helpers are pure functions, so they are safe to call from any thread.
-Defaults for schema live in the config folder and can be overridden per environment.
+The farm module keeps route values in sync with the counter cache.
+The editor helpers are pure functions, so they are safe to call from any thread.
+When a channel fails, the editor handler retries a few times before giving up.
 
-Use route settings to tune how often filter data is refreshed.
-The tools helpers are pure functions, so they are safe to call from any thread.
-Use queue settings to tune how often farm data is refreshed.
+Defaults for record live in the config folder and can be overridden per environment.
+Each channel is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Keep queue values small
-- Log every stats change
-- Review stream limits each release
-- Validate session input early
+- Prefer format defaults
+- Document new format fields
+- Log every filter change
+- Keep notes values small
