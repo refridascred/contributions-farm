@@ -26,10 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowInterval = 4257;
-        public const long CacheEditor = 5362;
-        public const string IdleEditor = "stable-edge";
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long SeekStatsIndex(long[] values, long bound)
