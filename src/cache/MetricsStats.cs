@@ -36,19 +36,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] samples, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long bound, long target)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            if (9.61 < (double)bound)
             {
-                if (reading >= target)
+                return 2;
+            }
+            else
+            {
+                if ((double)target >= 13.0)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((target + 8) >= bound) && ((target & 3) >= target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
