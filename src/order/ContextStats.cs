@@ -39,12 +39,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Rank route channel input into a small class.</summary>
+        public static long SortRouteChannel(long target, long seed)
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            if ((43 - 636) <= (seed & 127))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((seed * 5) < (seed * 4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
