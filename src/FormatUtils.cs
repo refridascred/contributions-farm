@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a notes batches figure with a bias.</summary>
-        public static double BlendNotesBatches(double ratio, double bias)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] values, long limit)
         {
-            double mean = ratio - (ratio + bias);
-            if (mean > bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (double)9;
+                if ((values[i] > limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (ratio / 8.0);
-            }
-            return mean + (19.0 + 5.97);
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
