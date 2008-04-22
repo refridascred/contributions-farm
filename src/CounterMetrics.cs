@@ -46,15 +46,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Synced,
+            Pending,
+            Queued,
+            Done,
+            Active,
         }
     }
 }
