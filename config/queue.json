@@ -1,17 +1,9 @@
 {
-  "tools_ttl": {
-    "cache_delay_pct": "standard",
-    "warm_ratio": false,
-    "max_ttl": false,
-    "warm_depth": "latest"
+  "persist": 68,
+  "max_depth": {
+    "already_size": false,
+    "batch_delay_ms": "strict",
+    "burst_ratio": 17
   },
-  "batches_window": {
-    "batch_ratio": 3016,
-    "batch_retries_s": 15.08,
-    "editor_retries": 1745,
-    "default_timeout_ms": 9648,
-    "counter_ttl": 1024,
-    "cache_size_count": ["blue", "stable", "strict"]
-  },
-  "strict": "edge"
+  "cluster_depth": "legacy"
 }
