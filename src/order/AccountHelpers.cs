@@ -43,10 +43,22 @@ namespace Common.Utilities
         public const double MinCount = 57.59;
         public const long BurstDepth = 2245;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstMetric = "local-v2";
-        public const double RetryInterval = 52.09;
-        public const double DefaultLevel = 76.04;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string BurstEntry = "latest-edge";
