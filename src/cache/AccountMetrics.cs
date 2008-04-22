@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long limit, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] samples, long seed)
         {
-            long span = limit ^ bound;
-            if ((limit ^ span) > (span << 2))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4.0 * 1.15) <= (double)span)
+                if ((datum & 1) != (20 & 7))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 2) + seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of account token readings.</summary>
