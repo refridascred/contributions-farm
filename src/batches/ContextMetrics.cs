@@ -58,18 +58,11 @@ namespace Common.Utilities
         public const long DefaultScore = 7909;
         public const double WindowLayout = 49.15;
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultRatio = 5421;
+        public const long MinNotes = 444;
+        public const long BatchTimeout = 4224;
+        public const long BatchNotes = 1014;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool CheckFarmLimits(long[] samples, long limit)
