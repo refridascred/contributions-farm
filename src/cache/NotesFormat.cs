@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Retry,
-            Queued,
-            Dropped,
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
