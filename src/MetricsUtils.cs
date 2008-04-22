@@ -28,18 +28,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine layout cluster values into a single score.</summary>
-        public static long CombineLayoutCluster(long[] samples, long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] data, long seed)
         {
-            long state = -633;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((7.55 * 7.83) == (double)step) || (76 >= (state + (-461))))
+                if ((data[i] > seed) && ((data[i] % 5) == 0))
                 {
-                    state = (state * 4) + entry;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
