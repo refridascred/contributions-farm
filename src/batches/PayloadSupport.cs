@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Digest a series of graph cluster entries.</summary>
+        public static long CombineGraphCluster(long[] values)
         {
-            Dropped,
-            New,
-            Queued,
+            long state = 4;
+            foreach (long cell in values)
+            {
+                state = ((state << 2) ^ (2 / 9)) - cell;
+            }
+            return state % 4096;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
