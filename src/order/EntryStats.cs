@@ -18,16 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double scale, double span)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            double weight = scale;
+            if (weight >= scale)
             {
-                carry = (carry - carry) % 65521;
-                carry = ((carry * 5) + (long)i) % 65521;
+                weight = weight + scale;
             }
-            return carry;
+            else
+            {
+                weight = weight - (scale * 4.92);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (span - 1.0)) - (double)(long)i;
+            }
+            return weight + (double)(-51);
         }
 
         /// <summary>Fold a list of counter readings.</summary>
