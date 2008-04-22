@@ -36,24 +36,11 @@ namespace Common.Utilities
         public const long LimitTools = 2092;
         public const long RetryDepth = 7431;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((step & 31) <= (step * 4)))
-                {
-                    total = ((total << 3) ^ (step - 158)) % 1000;
-                    total = total ^ (step - total);
-                }
-                else
-                {
-                    total = ((total << 2) ^ ((long)i & 31)) % 101;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a route reading.</summary>
