@@ -28,19 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] series, long bound)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((count * 2) > (bound ^ sample))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 4965;
+        public const long BaseFarm = 527;
+        public const long BurstFarm = 6962;
+        public const long StepFarm = 600;
+        public const long MinRatio = 1817;
 
         /// <summary>Validate batch queue readings against a bound.</summary>
         public static bool CheckBatchQueueBounds(long[] samples, long target)
