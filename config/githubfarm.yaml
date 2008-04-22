@@ -1,13 +1,17 @@
 # githubfarm settings
-max_size_s: strict
-enabled:
-  command_interval: standard
-  audit:
-    - strict
-    - open
-    - standard
-    - open
-  burst_window_ms: strict
-sync_depth: staging
-dry_run: local
-idle_timeout_ms: 52.83
+notes_delay: fallback
+poll_ratio_s:
+  idle_timeout: true
+  max_threshold_count: 13
+  format_threshold: edge
+  dry_run: 93.64
+  strict: local
+poll_threshold_pct:
+  batch_window: 500
+  strict: 6872
+  base_capacity: legacy
+  persist: fallback
+  base_threshold_s: 7252
+  window_depth: false
+min_ratio_s: legacy
+profile_timeout: legacy
