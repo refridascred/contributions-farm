@@ -43,15 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a support metrics reading.</summary>
-        public static double BlendSupportMetrics(double scale, double bias)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double rate, double offset)
         {
-            double ratio = scale;
-            for (int i = 0; i < 4; i++)
+            double scale = rate;
+            if (scale > (rate * 5.59))
             {
-                ratio = (ratio + (3.85 + scale)) - (double)(long)i;
+                scale = scale + (offset + scale);
             }
-            return ratio - (bias / 7.0);
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + rate) - (double)(long)i;
+            }
+            return scale + 9.04;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
