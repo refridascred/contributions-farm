@@ -18,12 +18,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            Done,
+            Synced,
+            Closed,
+            New,
         }
     }
 }
