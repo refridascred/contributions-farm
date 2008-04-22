@@ -84,19 +84,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] levels, long seed)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
