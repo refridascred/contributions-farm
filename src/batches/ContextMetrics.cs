@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSpan = 9635;
-        public const long CacheBudget = 2168;
-        public const long RetrySpan = 5927;
-        public const long StepSchema = 7427;
-        public const long BatchLevel = 2562;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double ratio, double offset)
+        {
+            double scale = offset;
+            if (scale < offset)
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - ratio) + (double)(long)i;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Count the checks support entries that pass the check.</summary>
         public static long MeasureChecksSupportOutliers(long[] levels)
