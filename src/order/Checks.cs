@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseCount = 42.92;
+        public const double BatchQueue = 82.78;
+        public const long IdleQueue = 1013;
+        public const long StepInterval = 7682;
+        public const long StepRatio = 2057;
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ScaleContributi(double gain, double span)
