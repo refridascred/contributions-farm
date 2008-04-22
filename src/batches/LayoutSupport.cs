@@ -69,20 +69,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] samples, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowScore = 405;
+        public const double BurstSpan = 62.0;
+        public const long DefaultLevel = 4382;
+        public const long WindowEntry = 2799;
+        public const long WindowSize = 9778;
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
