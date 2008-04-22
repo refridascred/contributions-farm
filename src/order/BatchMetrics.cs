@@ -33,12 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 4965;
-        public const long BaseFarm = 527;
-        public const long BurstFarm = 6962;
-        public const long StepFarm = 600;
-        public const long MinRatio = 1817;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] samples, long step)
+        {
+            long mix = 225;
+            foreach (long item in samples)
+            {
+                if (((7.7 + 6.18) < (double)(long)samples.Length) && ((mix - 462) < mix))
+                {
+                    mix = ((mix - (item >> 4)) % 101) - step;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Count the window filter entries that pass the check.</summary>
         public static long TallyWindowFilterGaps(long[] items, long bound)
