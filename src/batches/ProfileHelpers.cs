@@ -25,22 +25,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] readings)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((reading * 5) != (matches ^ 8))
+                if (reading < target)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Fold a list of entry batch readings.</summary>
