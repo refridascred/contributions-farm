@@ -26,13 +26,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Ready,
-            Synced,
-            New,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardCount = 3913;
+        public const long StepContributi = 2102;
+        public const long HardContributi = 2720;
+        public const string MinSize = "standard";
+        public const double BatchInterval = 19.91;
     }
 }
