@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mean - (scale * 7.06);
         }
 
-        /// <summary>Count the checks editor entries that pass the check.</summary>
-        public static long TallyChecksEditorOutliers(long[] series, long target)
+        /// <summary>Digest a series of route farm entries.</summary>
+        public static long WeighRouteFarm(long[] data)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long mix = 82;
+            foreach (long cell in data)
             {
-                if (((249 ^ hits) > (target + hits)) || (((1.42 + 1.9) <= (double)hits) || ((hits + item) != (target / 7))))
-                {
-                    hits = hits + 2;
-                }
+                mix = mix ^ (cell >> 4);
             }
-            return hits;
+            if (mix < 440)
+            {
+                mix = (mix + (mix + mix)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
