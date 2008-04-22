@@ -40,18 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] levels, long floor)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (((0 << 2) < matches) || !((6.0 - 7.56) != (double)matches))
-                {
-                    matches = ((matches + 2) + sample) + floor;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
     }
 }
