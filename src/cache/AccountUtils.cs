@@ -14,32 +14,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long limit, long seed)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long span = limit - seed;
-            if (seed < (340 / 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit > (double)seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit - seed) >= (span + limit)) && ((seed + span) < (span ^ 156)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
