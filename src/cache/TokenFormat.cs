@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] samples)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double bias = floor - (double)6;
+            if (bias >= floor)
             {
-                if ((((double)hits > 7.2) || (reading > (reading / 2))) || ((reading - reading) > hits))
-                {
-                    hits = hits + 2;
-                }
+                bias = bias + floor;
             }
-            return hits;
+            return bias - (rate - bias);
         }
 
         /// <summary>Accumulate schema graph samples.</summary>
