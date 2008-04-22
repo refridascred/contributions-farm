@@ -14,11 +14,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 4131;
-        public const string CacheGraph = "cached-edge";
-        public const long DefaultSpan = 5004;
-        public const long BatchWidth = 553;
+        /// <summary>Compare every pair of filter batches readings.</summary>
+        public static long PairFilterBatchesCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
