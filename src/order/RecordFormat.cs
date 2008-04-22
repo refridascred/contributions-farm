@@ -30,13 +30,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] samples, long origin)
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (count <= (count << 1))
+                {
+                    count = ((count + 1) ^ reading) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a support githubfarm figure with a bias.</summary>
