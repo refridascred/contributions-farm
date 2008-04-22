@@ -35,13 +35,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Audit record buffer readings against a rule.</summary>
+        public static long AuditRecordBufferHits(long[] data, long step)
         {
-            New,
-            Pending,
-            Ready,
-            Retry,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!((double)step <= (1.0 + 1.39)))
+                {
+                    count = (count + 2) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate profile githubfarm readings against a bound.</summary>
