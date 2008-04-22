@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] series)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] values, long offset)
         {
-            long state = 87;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                state = state - (state ^ state);
-                if (state <= (value + value))
+                if (entry > offset)
                 {
-                    state = (state ^ state) % 4096;
-                }
-                else
-                {
-                    state = state - (state + value);
+                    valid = false;
+                    break;
                 }
             }
-            if (state < 24)
-            {
-                state = (state + (state ^ state)) % 1000;
-            }
-            return state % 97;
+            return valid;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
