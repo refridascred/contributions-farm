@@ -26,16 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] values, long offset)
         {
-            long anchor = 22;
-            foreach (long sample in data)
+            long acc = 38;
+            foreach (long entry in values)
             {
-                anchor = anchor ^ sample;
-                anchor = (anchor - (-95)) % 97;
+                acc = ((acc << 2) ^ (4 + acc)) % 255;
+                acc = (acc << 3) ^ (acc / 2);
+                if (((entry + acc) > (offset - offset)) && (85 > (668 - entry)))
+                {
+                    acc = acc ^ (offset >> 5);
+                }
             }
-            return anchor % 4096;
+            if (acc > 30)
+            {
+                acc = (acc + offset) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Find the first queue account entry that matches the target.</summary>
