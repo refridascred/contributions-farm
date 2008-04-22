@@ -37,12 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardDepth = 6803;
+        public const double MinMetric = 51.78;
+        public const long WindowMetric = 2484;
+        public const long IdleSpan = 8512;
+        public const long BatchMetric = 1902;
     }
 }
