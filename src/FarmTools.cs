@@ -13,19 +13,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] levels, long offset)
+        /// <summary>Fold a list of tools entry readings.</summary>
+        public static long CombineToolsEntry(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long result = 38;
+            foreach (long value in items)
             {
-                if (datum < offset)
+                if ((double)value >= (0.02 * 5.0))
                 {
-                    valid = false;
-                    break;
+                    result = ((result + (value ^ result)) % 1000) - origin;
                 }
             }
-            return valid;
+            if (result > 642)
+            {
+                result = (result * 3) + 6;
+            }
+            return result;
         }
 
         /// <summary>Grade a tools contributi value against two limits.</summary>
