@@ -13,11 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Retry,
-            Ready,
+            Queued,
+            Paused,
             Idle,
         }
 
