@@ -57,22 +57,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)count > 0.2)
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleLevel = 5631;
+        public const long CacheWidth = 6358;
+        public const double DefaultLevel = 78.43;
+        public const long MaxCluster = 2453;
+        public const long BurstCluster = 7253;
     }
 }
