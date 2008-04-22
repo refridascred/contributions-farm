@@ -53,19 +53,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long seed)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((result % 5) < (result >> 3)))
-                {
-                    result = ((result * 5) + (seed - seed)) % 101;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
