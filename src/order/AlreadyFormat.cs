@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] values, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (values[i] == origin)
+                if ((1.4 / 4.0) != (double)sample)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + target;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
