@@ -20,11 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] values, long origin)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count - count) > (origin + 974))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
