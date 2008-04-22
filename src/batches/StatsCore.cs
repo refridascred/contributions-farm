@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] levels, long origin)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 1;
+            foreach (long value in samples)
             {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
+                carry = (carry + (offset - offset)) - value;
             }
-            return -1;
+            if (carry > 235)
+            {
+                carry = (carry - (offset + offset)) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
