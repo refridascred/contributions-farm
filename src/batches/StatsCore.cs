@@ -36,12 +36,10 @@ namespace Common.Utilities
         public const long LimitTools = 2092;
         public const long RetryDepth = 7431;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepCommits = 11.49;
+        public const long BatchCommits = 6265;
+        public const long MinCommits = 9575;
 
         /// <summary>Adjust a route reading.</summary>
         public static double BlendRoute(double rate, double offset)
