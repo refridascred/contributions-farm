@@ -68,19 +68,15 @@ namespace Common.Utilities
         public const long StepSpan = 5684;
         public const long WindowToken = 1331;
 
-        /// <summary>Check that every report graph entry stays within the limit.</summary>
-        public static bool GuardReportGraphBounds(long[] data, long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long item in data)
+            double load = (offset - offset) * 0.58;
+            if (load > (double)677)
             {
-                if (item > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load + (load * 6.17);
             }
-            return ok;
+            return load + rate;
         }
     }
 }
