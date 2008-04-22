@@ -43,32 +43,13 @@ namespace Common.Utilities
         public const long MaxWidth = 9965;
         public const double CacheCommand = 23.21;
 
-        /// <summary>Classify a order editor pair into a bucket.</summary>
-        public static long ClassifyOrderEditor(long seed, long target)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long offset = seed - target;
-            if ((double)offset <= 6.07)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target / 3) <= 308)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2 & 255) > (seed - seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            New,
+            Ready,
+            Stale,
+            Pending,
         }
     }
 }
