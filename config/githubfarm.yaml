@@ -1,7 +1,6 @@
 # githubfarm settings
-verbose: latest
-default_delay_pct: 50.54
-warm_size_count: local
-hard_capacity: 30
-tools_depth: 65
-queue_retries: strict
+default_interval: open
+channel_depth: green
+default_size_s: 93
+session_delay: 7549
+cache_timeout_pct: 500
