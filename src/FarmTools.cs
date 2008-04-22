@@ -32,19 +32,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate cluster buffer readings against a bound.</summary>
-        public static bool CheckClusterBufferRange(long[] samples, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (cell <= target)
+                if (!(reading >= (59 ^ seen)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
