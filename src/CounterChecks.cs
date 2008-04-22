@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the batches notes entries that pass the check.</summary>
-        public static long TallyBatchesNotesGaps(long[] readings, long limit)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            if ((double)bound < (double)offset)
             {
-                if ((limit - entry) >= (hits - entry))
+                return 1;
+            }
+            else
+            {
+                if ((offset + bound) > offset)
                 {
-                    hits = hits + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound < (-165)) || ((bound ^ offset) <= 84))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((bound + bound) != (bound * 2)) && (bound < (bound & 31)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the record status values.</summary>
