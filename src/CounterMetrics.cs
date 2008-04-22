@@ -48,38 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long origin, long target)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            if ((origin << 3) >= origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin * 3) <= (origin - target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin << 1) >= (origin * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target * 3) < 75)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
