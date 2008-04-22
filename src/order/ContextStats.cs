@@ -23,22 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] readings, long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum ^ matches) == (matches * 2))
-                {
-                    matches = (matches + 3) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Closed,
+            Synced,
         }
 
         /// <summary>Rank filter editor input into a small class.</summary>
