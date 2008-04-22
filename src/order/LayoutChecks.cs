@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardWidth = "strict";
-        public const double MinLayout = 9.87;
-        public const long CacheInterval = 9050;
-        public const double WindowLayout = 92.17;
-        public const long MaxLayout = 9085;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double weight, double span)
+        {
+            double bias = 12.0;
+            return ((bias + (double)89) + weight) + span;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long StepStats(long step)
