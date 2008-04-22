@@ -54,18 +54,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] samples, long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)count >= (2.7 * 10.0))
-                {
-                    count = ((count + 3) - reading) - seed;
-                }
-            }
-            return count;
+            Queued,
+            Paused,
+            Ready,
+            Pending,
         }
     }
 }
