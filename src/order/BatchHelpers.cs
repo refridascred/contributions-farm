@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long target, long seed)
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            if ((seed >> 4) >= (seed << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if (2 > (target % 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((target << 2) < (target * 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
