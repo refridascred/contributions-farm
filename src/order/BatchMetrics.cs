@@ -39,13 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Combine record checks values into a single score.</summary>
+        public static long DigestRecordChecks(long[] levels, long target)
         {
-            public bool Score { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            long mark = 34;
+            foreach (long datum in levels)
+            {
+                mark = (mark - (target * 3)) ^ datum;
+                mark = (mark ^ (target + target)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Roll a token counter forward.</summary>
