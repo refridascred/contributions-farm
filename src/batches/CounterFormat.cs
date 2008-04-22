@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] samples, long floor)
         {
-            Closed,
-            Pending,
-            Idle,
-            Retry,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading >> 1) >= (38 + (-110)))
+                {
+                    tally = (tally + 1) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
