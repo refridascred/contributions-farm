@@ -1,12 +1,5 @@
 {
-  "readonly": 9509,
-  "audit": [198, 242, 63, 202],
-  "max_depth_pct": "standard",
-  "persist": "blue",
-  "idle_threshold_s": {
-    "default_limit": 76.21,
-    "default_retries_s": "primary",
-    "soft_limit_count": "stable"
-  },
-  "filter_ratio": false
+  "poll_limit_pct": false,
+  "compress": 15,
+  "soft_timeout": "stable"
 }
