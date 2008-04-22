@@ -80,34 +80,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((long)i >= (step + 66))
-                {
-                    acc = ((acc << 2) ^ (acc / 4)) % 255;
-                    acc = (acc * 3) + (7 & 255);
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                }
-                if ((acc ^ acc) > step)
-                {
-                    long prev = step - (acc ^ acc);
-                    acc = acc - prev;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ step) % 65521;
-                }
-                acc = (acc - acc) % 1000;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Closed,
+            Failed,
+            Dropped,
         }
     }
 }
