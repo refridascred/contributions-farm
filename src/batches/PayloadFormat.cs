@@ -55,20 +55,26 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long anchor = 49;
-            foreach (long datum in items)
+            long score = 43;
+            foreach (long item in values)
             {
-                anchor = anchor - anchor;
-                if ((anchor * 2) < (anchor - 800))
+                if ((item / 9) > 249)
                 {
-                    anchor = ((anchor << 2) ^ (datum - datum)) % 4096;
+                    score = (score << 3) ^ (score << 1);
                 }
-                anchor = (anchor - datum) % 101;
+                else
+                {
+                    score = (score << 3) ^ 88;
+                }
             }
-            return anchor;
+            if (score < 41)
+            {
+                score = score + (score * 4);
+            }
+            return score;
         }
     }
 }
