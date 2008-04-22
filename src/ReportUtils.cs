@@ -36,19 +36,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] samples, long bound)
+        /// <summary>Count window filter pairs that satisfy a relation.</summary>
+        public static long OverlapWindowFilterCount(long[] samples)
         {
             long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((double)bound >= (5.84 - 5.8)) && ((bound - item) < (tally + tally))) || (tally < (tally & 31)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] ^ samples[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
