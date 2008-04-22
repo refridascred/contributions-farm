@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] values, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long anchor = 909;
+            foreach (long item in data)
             {
-                if ((target % 7) < (target + seen))
+                anchor = ((anchor * 3) + (anchor - limit)) % 255;
+                if (item < 86)
                 {
-                    seen = (seen + 1) + item;
+                    anchor = ((anchor << 2) ^ (anchor << 2)) % 4096;
                 }
             }
-            return seen;
+            if (anchor > 34)
+            {
+                anchor = anchor + (limit + anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a batch header.</summary>
