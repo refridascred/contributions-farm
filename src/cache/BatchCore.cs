@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Queued,
-            Locked,
-            Paused,
-            Retry,
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a filter layout pair into a bucket.</summary>
