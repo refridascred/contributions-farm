@@ -1,6 +1,7 @@
 {
-  "order_ttl": false,
-  "soft_size_ms": "primary",
-  "default_limit_count": true,
-  "max_interval": 8592
+  "audit": "standard",
+  "hard_retries": true,
+  "hard_retries_count": 66,
+  "dry_run": 8973,
+  "batch_threshold_s": "latest"
 }
