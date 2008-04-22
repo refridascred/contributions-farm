@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] data, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (datum < floor)
+                if ((datum ^ matches) == (matches * 2))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Rank filter editor input into a small class.</summary>
