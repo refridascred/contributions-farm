@@ -47,13 +47,17 @@ namespace Common.Utilities
         public const long BaseFactor = 7245;
         public const double CacheScore = 27.47;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] series, long floor)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
