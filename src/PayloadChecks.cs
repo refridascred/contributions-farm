@@ -65,26 +65,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] values, long origin)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long state = 196;
-            foreach (long sample in values)
-            {
-                if (!(state <= (origin - 0)))
-                {
-                    state = (state ^ state) % 255;
-                }
-                else
-                {
-                    state = (state + (origin % 10)) % 4096;
-                }
-                if ((0.9 >= (double)origin) && ((origin / 9) <= sample))
-                {
-                    break;
-                }
-            }
-            return state;
+            Idle,
+            Closed,
+            Done,
         }
     }
 }
