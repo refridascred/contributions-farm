@@ -34,24 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] data, long step)
-        {
-            long mark = 845;
-            foreach (long datum in data)
-            {
-                mark = (mark << 2) ^ 0;
-                if (((datum - datum) < (350 << 2)) || (step >= (mark % 64)))
-                {
-                    mark = mark + (datum / 9);
-                }
-            }
-            if (mark < 45)
-            {
-                mark = (mark * 2) + ((-9) % 3);
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 4779;
+        public const long BurstContext = 6471;
+        public const double MaxContext = 55.09;
+        public const string MinContext = "fallback";
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long OverlapAccountCount(long[] series)
