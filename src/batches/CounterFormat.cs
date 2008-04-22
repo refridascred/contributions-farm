@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 8903;
-        public const long BaseChannel = 5157;
-        public const long RetryDepth = 1017;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double gain, double span)
+        {
+            double rate = span;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate + rate) + (double)(long)i) - gain;
+            }
+            return rate - (span * 6.5);
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double StepCounter = 82.79;
