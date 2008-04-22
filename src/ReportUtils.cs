@@ -48,21 +48,19 @@ namespace Common.Utilities
         public const double MaxContext = 55.09;
         public const string MinContext = "fallback";
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] series)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] readings, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry >= floor)
                 {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Rank already input into a small class.</summary>
