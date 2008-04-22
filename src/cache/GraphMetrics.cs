@@ -43,12 +43,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 53.25;
-        public const double SoftTools = 78.07;
-        public const double MinBudget = 50.82;
-        public const double BatchWidth = 78.09;
-        public const long WindowTools = 6934;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long FindMetricIndex(long[] readings, long origin)
