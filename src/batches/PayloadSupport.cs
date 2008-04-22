@@ -33,23 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context cluster values into a single score.</summary>
-        public static long DigestContextCluster(long[] values, long origin)
+        /// <summary>Count the tools order entries that pass the check.</summary>
+        public static long TallyToolsOrderHits(long[] levels, long floor)
         {
-            long score = -86;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                score = ((score * 4) + score) % 4096;
-                if (reading > (reading ^ 0))
+                if ((reading ^ reading) < (reading >> 5))
                 {
-                    score = (score - (score & 3)) % 101;
-                }
-                if (reading <= (origin - reading))
-                {
-                    break;
+                    matches = (matches + 2) - floor;
                 }
             }
-            return score % 1000;
+            return matches;
         }
     }
 }
