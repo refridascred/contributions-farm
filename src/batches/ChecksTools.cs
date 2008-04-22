@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long limit, long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] values, long offset)
         {
-            if (((limit - origin) == (origin + origin)) || ((limit - origin) >= (origin >> 1)))
+            long anchor = -744;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit > (double)504)
+                if (!(7.5 > (double)offset))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    anchor = ((anchor + (anchor - anchor)) % 1000) - entry;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Match up stream samples.</summary>
