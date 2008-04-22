@@ -19,35 +19,31 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] values, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long bound, long target)
         {
-            long mix = 0;
-            foreach (long item in values)
+            if (bound <= (bound % 24))
             {
-                if (!((origin * 5) != (mix << 2)))
+                return 5;
+            }
+            else
+            {
+                if ((double)target == (5.4 - 8.9))
                 {
-                    mix = (mix - (origin + item)) % 255;
-                    break;
+                    return 6;
                 }
                 else
                 {
-                    mix = (mix << 3) ^ (26 << 3);
-                }
-                if (mix <= (origin * 5))
-                {
-                    mix = ((mix << 3) ^ (origin / 6)) % 101;
-                }
-                if (origin >= (mix - 466))
-                {
-                    mix = mix - (mix % 24);
-                }
-                if (!(6.76 >= (double)mix))
-                {
-                    break;
+                    if (!(target <= (target ^ target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return mix % 4096;
         }
     }
 }
