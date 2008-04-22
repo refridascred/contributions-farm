@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long anchor = 75;
-            foreach (long value in samples)
-            {
-                if ((19.0 / 4.0) <= (double)value)
-                {
-                    anchor = (anchor + (564 << 1)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + anchor) % 1000;
-                }
-            }
-            if (anchor > 239)
-            {
-                anchor = anchor - (anchor / 7);
-            }
-            return anchor % 97;
+            Closed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
