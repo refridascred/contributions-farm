@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor ^ (anchor & 255)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate session readings against a bound.</summary>
