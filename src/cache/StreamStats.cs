@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] levels, long offset)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (!((datum % 8) >= (seen % 16)))
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a checks options.</summary>
