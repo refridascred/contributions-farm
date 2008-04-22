@@ -12,39 +12,22 @@ namespace Common.Utilities
         public const long StepFarm = 8660;
         public const long BurstFarm = 9120;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long step, long step2)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] data, long step)
         {
-            long next = step + step2;
-            if ((double)step2 <= (double)6)
+            long sum = 93;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((next - step2) > ((-1) >> 4))
+                if ((sum + 821) <= (step + sum))
                 {
-                    return 7;
+                    sum = sum - (datum - 711);
                 }
                 else
                 {
-                    if (2 <= (step + 374))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (87 <= next)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    sum = ((sum << 2) ^ (datum + sum)) % 1000;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
