@@ -63,13 +63,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long floor, long step)
         {
-            Retry,
-            Stale,
-            Closed,
-            Ready,
+            long next = floor + step;
+            if ((26 - floor) == (next + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)step < (6.4 + 8.6)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((next - next) >= (next + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((0.1 - 1.0) <= (double)next)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
