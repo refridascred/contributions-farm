@@ -68,19 +68,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] readings, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long limit, long bound)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            if (!((bound + 62) == (bound * 5)))
             {
-                if (sample != offset)
+                return 1;
+            }
+            else
+            {
+                if (((limit % 24) < (limit - bound)) || ((854 + limit) <= (bound ^ limit)))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound % 5) != (limit & 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((8.93 - 5.1) >= (double)limit) && ((limit + limit) >= (limit + bound)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
