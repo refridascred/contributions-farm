@@ -23,11 +23,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
+            Idle,
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
