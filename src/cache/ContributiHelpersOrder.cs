@@ -26,21 +26,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of layout format readings.</summary>
-        public static long MatchLayoutFormatCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinOrder = "local-1";
+        public const long BurstTimeout = 9689;
+        public const string WindowOrder = "legacy-1";
     }
 }
