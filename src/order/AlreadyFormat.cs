@@ -73,10 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 381;
-        public const double StepSpan = 72.44;
-        public const string WindowFactor = "cached-1";
-        public const double WindowToken = 50.27;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Retry,
+            Stale,
+            Idle,
+        }
     }
 }
