@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] readings, long floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] data, long floor)
         {
-            long mix = 1;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor / 9) < floor)
+                if (data[i] > floor)
                 {
-                    mix = (mix ^ mix) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = (mix ^ (mix / 5)) % 101;
-                    mix = mix + (item + item);
-                }
-                mix = (mix ^ (item / 3)) % 1000;
             }
-            if (mix > 70)
-            {
-                mix = ((mix * 2) + (1 % 12)) % 255;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit stats checks readings against a rule.</summary>
