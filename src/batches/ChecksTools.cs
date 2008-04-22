@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long limit, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            if (((limit - origin) == (origin + origin)) || ((limit - origin) >= (origin >> 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit > (double)504)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Match up stream samples.</summary>
