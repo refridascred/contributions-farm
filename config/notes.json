@@ -1,6 +1,8 @@
 {
-  "entry_threshold": "legacy",
-  "idle_retries_pct": 52.29,
-  "session_limit": ["open", "green"],
-  "default_limit_count": "latest"
+  "graph_retries": ["green", "green", "primary"],
+  "verbose": 15.02,
+  "min_retries_s": [478, 48, 27, 169],
+  "enabled": "blue",
+  "route_size": "blue",
+  "base_ttl": false
 }
