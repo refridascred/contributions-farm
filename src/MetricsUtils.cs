@@ -22,18 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the githubfarm report entries that pass the check.</summary>
-        public static long CountGithubfarmReportHits(long[] items)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((cell * 5) != (seen & 127))
+                if ((double)step >= 4.2)
                 {
-                    seen = seen + 2;
+                    break;
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the window status values.</summary>
