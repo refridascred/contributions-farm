@@ -24,13 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] samples, long step)
         {
-            Done,
-            Queued,
-            Retry,
-            Active,
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a payload filter figure with a bias.</summary>
