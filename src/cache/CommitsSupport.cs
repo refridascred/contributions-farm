@@ -23,15 +23,18 @@ namespace Common.Utilities
         public const double MaxWidth = 13.75;
         public const long BurstSize = 920;
 
-        /// <summary>Iterate the schema githubfarm series from a seed.</summary>
-        public static long StepSchemaGithubfarm(long target)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long bound)
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                state = ((state * 2) + (long)i) % 101;
+                acc = acc ^ acc;
+                acc = acc - (390 + (long)i);
+                acc = (acc * 2) + bound;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Match up entry samples.</summary>
