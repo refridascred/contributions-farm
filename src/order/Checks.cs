@@ -30,21 +30,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long floor, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)step >= (double)5)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)floor > (double)step)
                 {
-                    if ((values[i] - values[j]) == 8)
+                    return 0;
+                }
+                else
+                {
+                    if ((5 ^ floor) < floor)
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
