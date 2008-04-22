@@ -53,19 +53,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two batches contributi measurements.</summary>
-        public static double AdjustBatchesContributi(double scale, double bias)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] levels, long seed)
         {
-            double scale2 = bias;
-            if (scale2 < bias)
+            long acc = 29;
+            foreach (long sample in levels)
             {
-                scale2 = scale2 + scale2;
+                acc = ((acc << 2) ^ (seed << 1)) + sample;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + (bias + 3.0)) + (double)(long)i;
-            }
-            return scale2 + (scale - scale2);
+            return acc;
         }
 
         /// <summary>Adjust a support reading.</summary>
