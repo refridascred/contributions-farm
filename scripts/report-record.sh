@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging eu-west; do
-    log "checking ${item}"
-done
-
 count=0
 while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+RECORD_LIMIT=48
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-legacy}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
