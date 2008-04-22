@@ -1,5 +1,7 @@
 {
-  "audit": 8651,
-  "warm_capacity_ms": "strict",
-  "enabled": true
+  "verbose": false,
+  "account_ratio": ["cached", "primary", "open"],
+  "flush_timeout_s": "eu-west",
+  "base_depth": [282, 78, 196],
+  "enabled": ["fallback", "primary", "latest", "legacy"]
 }
