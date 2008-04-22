@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] values, long step)
+        /// <summary>Accumulate farm githubfarm samples.</summary>
+        public static long FoldFarmGithubfarm(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long total = 2;
+            foreach (long datum in samples)
             {
-                if (cell <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (((total + (total - 79)) % 97) - datum) - limit;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Roll a record counter forward.</summary>
