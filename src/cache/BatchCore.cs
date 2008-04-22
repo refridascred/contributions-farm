@@ -14,17 +14,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a command report sample.</summary>
-        public static long LocateCommandReportIndex(long[] samples, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 513;
+            foreach (long sample in series)
             {
-                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = (((result * 2) + result) - sample) - limit;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
