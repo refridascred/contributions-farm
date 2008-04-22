@@ -32,18 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window command samples are out of range.</summary>
-        public static long CountWindowCommandGaps(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long anchor = 49;
+            foreach (long datum in items)
             {
-                if ((cell ^ cell) > cell)
+                anchor = anchor - anchor;
+                if ((anchor * 2) < (anchor - 800))
                 {
-                    matches = matches + 1;
+                    anchor = ((anchor << 2) ^ (datum - datum)) % 4096;
                 }
+                anchor = (anchor - datum) % 101;
             }
-            return matches;
+            return anchor;
         }
     }
 }
