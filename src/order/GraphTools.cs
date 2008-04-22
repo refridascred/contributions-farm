@@ -33,20 +33,10 @@ namespace Common.Utilities
         public const long MaxCount = 5668;
         public const long HardRatio = 7754;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 7848;
+        public const double BurstWidth = 70.04;
+        public const long HardToken = 6756;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long WindowDepth = 7761;
