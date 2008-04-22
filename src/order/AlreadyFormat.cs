@@ -36,12 +36,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseEditor = "open-1";
-        public const long CacheEditor = 9431;
-        public const double IdleEditor = 46.0;
-        public const long StepSpan = 7495;
-        public const double HardRatio = 2.72;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
