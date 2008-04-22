@@ -16,18 +16,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] readings, long seed)
+        /// <summary>Rank channel metric input into a small class.</summary>
+        public static long BucketChannelMetric(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            if ((offset << 3) != (offset / 5))
             {
-                if (tally < 99)
+                return 7;
+            }
+            else
+            {
+                if (7.58 >= (double)offset)
                 {
-                    tally = ((tally + 2) + entry) - seed;
+                    return 4;
+                }
+                else
+                {
+                    if (!((14.0 * 5.9) <= (double)seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine record values into a single score.</summary>
