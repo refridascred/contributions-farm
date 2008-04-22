@@ -15,21 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] data)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 3;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (541 >= (90 + floor))
                 {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc - (82 % 100)) % 65521) ^ datum;
+                }
+                else
+                {
+                    acc = acc + (floor ^ acc);
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the metrics state values.</summary>
