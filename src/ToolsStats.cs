@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinWidth = 87.32;
-        public const long LimitMetric = 5377;
-        public const long BatchTimeout = 2627;
-        public const long BaseMetric = 8116;
-        public const long SoftMetric = 7012;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Paused,
+            New,
+            Active,
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
