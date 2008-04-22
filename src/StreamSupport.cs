@@ -15,21 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 278;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((state / 6) == (long)items.Length)
                 {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state + (entry + state)) % 1000;
+                }
+                else
+                {
+                    state = ((state << 3) ^ state) % 1000;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Validate cache editor readings against a bound.</summary>
