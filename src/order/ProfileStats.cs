@@ -23,14 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] data, long seed)
         {
-            Done,
-            New,
-            Idle,
-            Queued,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
