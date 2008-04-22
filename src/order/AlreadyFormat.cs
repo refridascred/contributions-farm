@@ -34,25 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long floor, long seed)
-        {
-            if (seed >= (floor >> 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed * 2) >= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitBudget = 10.84;
+        public const long RetryWidth = 3967;
+        public const double BatchSpan = 15.29;
+        public const long LimitProfile = 3307;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long CompareProfileCount(long[] readings)
