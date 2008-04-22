@@ -63,20 +63,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a stats graph counter forward.</summary>
-        public static long StepStatsGraph(long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
+            long carry = 186;
+            foreach (long entry in data)
             {
-                if (!((3.1 - 2.0) < (double)mix))
+                carry = carry - (carry + 2);
+                if ((((-225) * 4) <= (carry - 89)) && ((entry + entry) > (carry % 100)))
                 {
-                    long edge = (target + 671) ^ ((long)i * 3);
-                    mix = (mix * 3) + (edge + mix);
+                    carry = (carry << 3) ^ (762 & 7);
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            if (carry < 9)
+            {
+                carry = (carry ^ (carry + carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a route header.</summary>
