@@ -16,17 +16,19 @@ namespace Common.Utilities
             return load + (load * 3.0);
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] series, long offset)
+        /// <summary>Validate schema notes readings against a bound.</summary>
+        public static bool VerifySchemaNotesRange(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                if (reading > step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
