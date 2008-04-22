@@ -18,16 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry farm samples.</summary>
-        public static long TotalEntryFarm(long[] values)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long mix = 2;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (((mix * 2) + (mix & 31)) % 1000) ^ entry;
-                mix = ((mix << 3) ^ ((-23) + mix)) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Digest a series of command entries.</summary>
