@@ -1,16 +1,15 @@
 # support settings
-filter_size:
-  verbose: false
-  batch_window_ms: local
-  idle_ttl: 500
-sync_delay_ms: 91
-account_delay:
-  hard_capacity_pct:
-    poll_capacity_ms: local
-    dry_run: local
-    base_retries_s: false
-    filter_retries: cached
-    soft_limit_pct: edge
-    min_ratio_ms: latest
-  base_window_count: 45
-  audit: 53.4
+window_delay:
+  cache_limit: legacy
+  tools_window:
+    persist: 83
+    idle_window_ms:
+      - edge
+      - open
+    githubfarm_limit: staging
+    poll_ratio_ms: 33.22
+    batch_ratio_pct: 28.26
+  command_timeout: true
+  idle_size_count: 81.06
+batch_ttl: true
+audit: false
