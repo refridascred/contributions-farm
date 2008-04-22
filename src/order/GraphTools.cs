@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((double)(long)items.Length <= (5.55 / 6.0))
-                {
-                    count = ((count + 3) + sample) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 9204;
+        public const long BatchCount = 3997;
+        public const long BatchCommand = 3982;
+        public const long StepTimeout = 5360;
 
         /// <summary>Count the support tools entries that pass the check.</summary>
         public static long AuditSupportToolsOutliers(long[] data)
