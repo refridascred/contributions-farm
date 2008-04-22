@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] samples, long offset)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] levels)
         {
-            long carry = 1;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry + (offset - offset)) - value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry > 235)
-            {
-                carry = (carry - (offset + offset)) % 4096;
-            }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
