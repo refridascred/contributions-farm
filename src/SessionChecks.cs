@@ -43,21 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] values)
+        /// <summary>Derive the next filter metrics value from a seed.</summary>
+        public static long SeriesFilterMetrics(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum << 2) ^ (80 - seed);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
     }
 }
