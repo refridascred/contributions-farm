@@ -1,5 +1,12 @@
 {
-  "poll_window": 10,
-  "compress": 41.95,
-  "buffer_interval": ["standard", "local", "edge"]
+  "layout_depth": "primary",
+  "dry_run": "latest",
+  "burst_ratio_pct": {
+    "window_ttl": "open",
+    "flush_window_count": 500,
+    "soft_limit": false,
+    "context_timeout": "latest",
+    "burst_delay_s": 30
+  },
+  "max_limit_count": ["strict", "latest", "edge", "primary"]
 }
