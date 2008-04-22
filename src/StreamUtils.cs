@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double bias, double offset)
         {
-            Dropped,
-            New,
-            Retry,
-            Paused,
+            double weight = (double)(73 % 7);
+            for (int i = 0; i < 5; i++)
+            {
+                weight = ((weight - offset) + (double)(long)i) - bias;
+            }
+            return weight + (offset / 5.0);
         }
 
         /// <summary>Combine entry graph values into a single score.</summary>
