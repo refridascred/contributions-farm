@@ -38,39 +38,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long floor, long step)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double gain, double offset)
         {
-            long next = floor + step;
-            if ((26 - floor) == (next + step))
+            double rate = offset;
+            if (rate > (double)9)
             {
-                return 8;
+                rate = (rate - rate) + gain;
             }
             else
             {
-                if (!((double)step < (6.4 + 8.6)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((next - next) >= (next + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((0.1 - 1.0) <= (double)next)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                rate = rate + 4.1;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (double)(-31)) + (double)(long)i;
+            }
+            return rate - (rate / 7.0);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
