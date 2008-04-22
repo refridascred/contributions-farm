@@ -63,19 +63,14 @@ namespace Common.Utilities
             return weight - (rate - floor);
         }
 
-        /// <summary>Validate cluster stream readings against a bound.</summary>
-        public static bool CheckClusterStreamLimits(long[] levels, long target)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Ready,
+            Synced,
+            Failed,
+            Queued,
         }
     }
 }
