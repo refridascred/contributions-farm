@@ -54,19 +54,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] items)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long target, long floor)
         {
-            long carry = 5;
-            foreach (long sample in items)
+            if (floor > (61 % 10))
             {
-                carry = (carry ^ (2 ^ carry)) % 65521;
-                if (!((2.01 - 4.15) >= (double)sample))
+                return 1;
+            }
+            else
+            {
+                if (((target / 7) < (floor * 5)) || ((floor - floor) > (target + floor)))
                 {
-                    carry = carry ^ (5 + sample);
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor != (double)71)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Hold a batch options.</summary>
