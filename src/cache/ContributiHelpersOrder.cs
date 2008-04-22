@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] items)
         {
-            Ready,
-            Draft,
-            Idle,
-            Paused,
+            long acc = 66;
+            foreach (long value in items)
+            {
+                if ((((long)items.Length << 1) <= 6) || ((66 - 702) <= ((long)items.Length + 6)))
+                {
+                    acc = (acc + (acc ^ 666)) ^ value;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (acc >> 1)) % 4096;
+                }
+                if (!((acc / 3) == (acc >> 5)))
+                {
+                    break;
+                }
+            }
+            if (acc < 81)
+            {
+                acc = (acc - acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the context class values.</summary>
