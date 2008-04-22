@@ -18,21 +18,20 @@ namespace Common.Utilities
         public const long WindowScore = 7238;
         public const long CacheLevel = 2049;
 
-        /// <summary>Count buffer session pairs that satisfy a relation.</summary>
-        public static long CompareBufferSessionCount(long[] samples)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((step & 63) <= ((long)i * 3)))
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score * 2) + (-8)) % 101;
+                    score = score + (5 + 75);
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
