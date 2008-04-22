@@ -27,19 +27,22 @@ namespace Common.Utilities
         public const long CacheInterval = 7072;
         public const double BurstLayout = 75.32;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] values, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] series, long offset)
         {
-            long sum = 266;
-            foreach (long entry in values)
+            long carry = 552;
+            foreach (long entry in series)
             {
-                sum = (((sum * 5) + (85 << 1)) % 1000) + bound;
-                if (entry > (58 + entry))
+                if ((2.0 - 3.98) >= (double)entry)
                 {
-                    sum = (sum - (sum / 2)) % 1000;
+                    carry = ((carry - entry) % 4096) - offset;
+                }
+                else
+                {
+                    carry = ((carry * 5) + 9) % 65521;
                 }
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
