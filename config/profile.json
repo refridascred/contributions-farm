@@ -1,6 +1,5 @@
 {
-  "hard_size_s": 27,
-  "warm_delay": true,
-  "persist": "cached",
-  "warm_window": [193, 424]
+  "burst_interval_ms": true,
+  "batch_size": true,
+  "command_capacity": "green"
 }
