@@ -24,21 +24,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (67 > matches)
                 {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
