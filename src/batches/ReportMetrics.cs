@@ -52,39 +52,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long target, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] readings)
         {
-            long bound = target ^ step;
-            if (((8.0 - 10.0) <= (14.0 + 4.34)) || ((bound + step) < bound))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound % 12) < (bound + 754)) && ((7.6 + 10.0) >= (double)target))
+                if ((sample < (sample - seen)) || ((double)seen >= (7.72 + 9.5)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step - bound) <= bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target * 2) <= 60)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
