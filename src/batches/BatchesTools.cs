@@ -20,14 +20,11 @@ namespace Common.Utilities
             return load - (weight + load);
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
-            public double Count { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinSpan = 5130;
+        public const long BurstContributi = 969;
+        public const string SoftFactor = "fallback-edge";
+        public const string WindowScore = "alpha-1";
 
         /// <summary>Rank buffer checks input into a small class.</summary>
         public static long SortBufferChecks(long step, long bound)
