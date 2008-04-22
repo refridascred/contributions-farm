@@ -1,7 +1,10 @@
-id,state,weight,active
-1,132,primary,852
-2,local,strict,41.56
-3,246,78.99,open
-4,168,345,primary
-5,643,61.35,670
-6,71,983,20.06
+id,label,weight,active,region
+1,98.92,open,711,primary
+2,primary,1.5,strict,43.12
+3,legacy,cached,32.25,88
+4,552,61.82,751,978
+5,legacy,93.97,45,76.44
+6,edge,13.16,primary,strict
+7,281,stable,98.59,standard
+8,green,365,63.16,cached
+9,strict,0,open,26
