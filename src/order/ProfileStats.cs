@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 2505;
-        public const long IdleDepth = 713;
-        public const long MinAccount = 2152;
-        public const long BaseAccount = 1245;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 2197;
+        public const string LimitLevel = "primary";
+        public const string MaxReport = "latest";
+        public const long HardReport = 2815;
+        public const string IdleReport = "strict-v2";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long HardScore = 3882;
