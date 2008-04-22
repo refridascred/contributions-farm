@@ -1,5 +1,13 @@
 # githubfarm settings
-verbose: true
-idle_threshold_s: 500
-cluster_threshold: 17
-default_ttl_pct: 250
+min_timeout_count: false
+batch_capacity: stable
+flush_threshold_ms: primary
+hard_ratio:
+  entry_window: cached
+  burst_threshold_ms: latest
+  verbose: 37
+  hard_delay: true
+  max_window_count: 9261
+  min_retries: 30
+flush_window_ms: edge
+flush_size_count: 7626
