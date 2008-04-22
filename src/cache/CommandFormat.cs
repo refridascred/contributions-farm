@@ -34,18 +34,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = (mix + (mix - (long)i)) % 101;
-                mix = (mix + (mix * 5)) % 101;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 9978;
+        public const string WindowRecord = "strict";
+        public const double RetryCount = 98.29;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
