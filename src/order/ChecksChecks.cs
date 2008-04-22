@@ -30,18 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many checks already samples are out of range.</summary>
-        public static long TallyChecksAlreadyHits(long[] data, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (!(bound >= (datum >> 3)))
+                if ((offset - offset) > (47 % 12))
                 {
-                    count = count + 1;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
