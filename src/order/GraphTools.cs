@@ -27,11 +27,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchTimeout = "strict-1";
-        public const long MinDepth = 5525;
-        public const long MaxCount = 5668;
-        public const long HardRatio = 7754;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long floor, long floor2)
+        {
+            if ((478 + (-7)) < floor2)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)floor2 < (16.0 * 7.5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (72 >= (floor2 << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
