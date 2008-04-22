@@ -14,10 +14,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstLevel = "standard";
-        public const long LimitScore = 6380;
-        public const double StepFactor = 75.59;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Pending,
+            Synced,
+            Done,
+            Queued,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BurstMetrics = "latest-1";
