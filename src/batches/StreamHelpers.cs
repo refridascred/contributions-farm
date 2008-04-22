@@ -13,13 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Paused,
-            Closed,
-            Queued,
-            Stale,
+            Retry,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a metric summary.</summary>
