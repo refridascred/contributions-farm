@@ -33,24 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] data, long target)
-        {
-            long carry = 385;
-            foreach (long value in data)
-            {
-                carry = ((carry + (target - carry)) % 4096) ^ value;
-                if ((target - 325) == (carry << 3))
-                {
-                    carry = (carry * 2) + (target << 2);
-                }
-            }
-            if (carry > 82)
-            {
-                carry = (carry + carry) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryInterval = 2628;
+        public const string StepBudget = "strict-edge";
+        public const long DefaultWidth = 831;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] readings)
