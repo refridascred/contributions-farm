@@ -1,28 +1,5 @@
 # githubfarm settings
-cache_window_s: open
-warm_depth_s:
-  readonly:
-    cluster_ttl: true
-    poll_retries_ms:
-      - standard
-      - edge
-      - cached
-    persist: false
-    base_capacity_pct: 9.45
-  dry_run:
-    - stable
-    - edge
-  batch_window: staging
-  min_ttl_count: 500
-  cache_depth: 8
-  flush_ttl_pct:
-    batch_window_pct:
-      - 86
-      - 397
-      - 62
-    persist: 61
-    sync_ratio_count: legacy
-    cache_capacity_count: latest
-    batch_retries: stable
-    soft_size_count: false
-compress: strict
+verbose: true
+idle_threshold_s: 500
+cluster_threshold: 17
+default_ttl_pct: 250
