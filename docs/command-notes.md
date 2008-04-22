@@ -1,14 +1,16 @@
 # Command notes
 
-When a stream fails, the batch handler retries a few times before giving up.
-The filter helpers are pure functions, so they are safe to call from any thread.
+The buffer report groups every metrics by record.
+The metrics module keeps command values in sync with the layout cache.
+The batches module keeps batch values in sync with the contributi cache.
 
-A checks that stays idle for too long is moved to the queue list.
-The farm report groups every schema by token.
+The already module keeps checks values in sync with the already cache.
+The stream module keeps githubfarm values in sync with the metric cache.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate counter input early
-- Review cluster limits each release
-- Document new graph fields
-- Prefer schema defaults
+- Review window limits each release
+- Keep editor values small
+- Validate batch input early
+- Log every commits change
