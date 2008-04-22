@@ -55,13 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Scale a contributi batch figure with a bias.</summary>
+        public static double BlendContributiBatch(double bias, double bias2)
         {
-            Closed,
-            Locked,
-            Pending,
-            Active,
+            double rate = 19.0;
+            if (rate >= (rate - rate))
+            {
+                rate = ((rate - (rate * 9.0)) + bias) - bias2;
+            }
+            return rate - 8.9;
         }
     }
 }
