@@ -1,6 +1,8 @@
 {
-  "cluster_timeout": 86,
-  "idle_delay_count": "staging",
-  "max_limit_pct": false,
-  "readonly": "stable"
+  "channel_interval": "standard",
+  "enabled": 16.51,
+  "cache_window_s": [132, 48, 87, 358],
+  "cluster_threshold": "cached",
+  "max_depth_pct": "blue",
+  "cluster_delay": true
 }
