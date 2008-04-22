@@ -35,14 +35,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Idle,
+            Queued,
             Pending,
-            New,
-            Closed,
-            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the payload mode values.</summary>
