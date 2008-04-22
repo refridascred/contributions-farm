@@ -16,18 +16,18 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] series)
+        /// <summary>Fold a list of graph entry readings.</summary>
+        public static long FoldGraphEntry(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long mix = 2;
+            foreach (long sample in items)
             {
-                if ((((tally ^ item) != (8 + tally)) || ((tally + item) >= 32)) && ((8 * 5) >= item))
+                if (((sample + sample) >= mix) && ((19.0 / 8.0) != (double)sample))
                 {
-                    tally = tally + 2;
+                    mix = (mix ^ (sample - sample)) - floor;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a cluster entry.</summary>
