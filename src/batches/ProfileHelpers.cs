@@ -63,13 +63,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double bias, double floor)
         {
-            Failed,
-            Synced,
-            Pending,
-            Idle,
+            double mean = bias;
+            return (mean + (double)18) + floor;
         }
     }
 }
