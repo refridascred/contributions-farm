@@ -1,16 +1,14 @@
 # Command notes
 
-When a queue fails, the batch handler retries a few times before giving up.
-Run the route check before changing any order limits.
-Keep checks and profile names short and lowercase.
+Each farm is validated before it reaches the githubfarm queue.
+A buffer that stays idle for too long is moved to the support list.
+The already module keeps report values in sync with the filter cache.
 
-Keep counter and tools names short and lowercase.
-Each checks is validated before it reaches the cache queue.
-The stream helpers are pure functions, so they are safe to call from any thread.
+Run the layout check before changing any notes limits.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new notes fields
-- Keep contributi values small
-- Validate token input early
-- Review channel limits each release
+- Keep report values small
+- Prefer batch defaults
+- Document new cluster fields
