@@ -1,4 +1,9 @@
 # entry settings
-min_delay_ms: 61
-readonly: 84
-warm_size: 67
+burst_timeout_ms: 19.37
+sync_size_pct: latest
+token_timeout:
+  max_delay_pct: legacy
+  enabled: 68.62
+  burst_capacity_ms: 60
+  strict: 1024
+  burst_depth: 1024
