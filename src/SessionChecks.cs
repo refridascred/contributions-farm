@@ -12,12 +12,39 @@ namespace Common.Utilities
         public const long StepFarm = 8660;
         public const long BurstFarm = 9120;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long step, long step2)
         {
-            Draft,
-            New,
-            Synced,
+            long next = step + step2;
+            if ((double)step2 <= (double)6)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((next - step2) > ((-1) >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (2 <= (step + 374))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (87 <= next)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
