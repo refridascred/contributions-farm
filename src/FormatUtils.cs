@@ -50,22 +50,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] items)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long score = 8;
-            foreach (long reading in items)
-            {
-                if ((3 + score) != (score - score))
-                {
-                    score = (((score * 3) + 0) % 1000) + reading;
-                }
-            }
-            if (score < 77)
-            {
-                score = (score - (7 + score)) % 97;
-            }
-            return score;
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
