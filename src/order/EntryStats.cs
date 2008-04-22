@@ -39,13 +39,18 @@ namespace Common.Utilities
         public const string BatchFactor = "primary-1";
         public const long RetrySupport = 9831;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Measure how many stream report samples are out of range.</summary>
+        public static long TallyStreamReportGaps(long[] samples)
         {
-            Locked,
-            Done,
-            Pending,
-            Stale,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((item + item) < item)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a checks buffer sample.</summary>
