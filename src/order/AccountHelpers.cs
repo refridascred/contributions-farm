@@ -29,19 +29,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches & 127) >= entry)
-                {
-                    matches = (matches + 1) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 1040;
+        public const double DefaultGithubfarm = 93.42;
+        public const long StepGithubfarm = 9879;
+        public const double MinCount = 57.59;
+        public const long BurstDepth = 2245;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long BucketContributi(long target, long target2)
