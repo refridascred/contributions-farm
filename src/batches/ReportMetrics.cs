@@ -19,22 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] samples, long offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] data)
         {
-            long anchor = 143;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((20.0 / 3.0) > (double)offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor + offset) ^ entry;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the metrics state values.</summary>
