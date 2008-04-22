@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next cluster layout value.</summary>
-        public static double AdjustClusterLayout(double ratio, double span)
-        {
-            double ratio2 = (double)5 - (ratio + ratio);
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = ((ratio2 + (double)(-157)) + (double)(long)i) - span;
-            }
-            return ratio2 - (double)36;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 2505;
+        public const long IdleDepth = 713;
+        public const long MinAccount = 2152;
+        public const long BaseAccount = 1245;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelGaps(long[] items, long seed)
