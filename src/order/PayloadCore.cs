@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long CacheFormat = 1702;
         public const long IdleScore = 460;
 
-        /// <summary>Compare every pair of support payload readings.</summary>
-        public static long OverlapSupportPayloadCount(long[] readings)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Active,
+            Retry,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
