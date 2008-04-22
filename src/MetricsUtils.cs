@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] items, long limit)
         {
-            Synced,
-            Active,
-            Draft,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)value >= (double)56)
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
