@@ -14,18 +14,32 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] values, long origin)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long limit, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long span = limit - seed;
+            if (seed < (340 / 2))
             {
-                if ((count - count) > (origin + 974))
+                return 3;
+            }
+            else
+            {
+                if ((double)limit > (double)seed)
                 {
-                    count = (count + 1) ^ value;
+                    return 6;
+                }
+                else
+                {
+                    if (((limit - seed) >= (span + limit)) && ((seed + span) < (span ^ 156)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
