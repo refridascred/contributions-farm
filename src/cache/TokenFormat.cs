@@ -17,29 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                double scale = (double)limit / 9.0;
-                if ((sum & 31) > limit)
-                {
-                    double load = (7.5 - scale) + (scale * 3.44);
-                    scale = scale + (scale + load);
-                }
-                else
-                {
-                    sum = (sum + (limit - sum)) % 97;
-                }
-                if ((long)i >= (limit >> 5))
-                {
-                    sum = sum ^ (limit & 255);
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Closed,
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
