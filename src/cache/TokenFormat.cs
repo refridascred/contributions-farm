@@ -17,14 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Closed,
-            Idle,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 2825;
+        public const string BaseSize = "staging";
+        public const long DefaultToken = 382;
+        public const string MinInterval = "fallback-v2";
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ProjectSchema(double bias, double span)
