@@ -1,11 +1,7 @@
 # entry settings
-enabled: strict
-hard_limit_pct:
-  persist: 61
-  cluster_delay: standard
-  flush_ratio_count: 56
-  max_capacity_s: fallback
-channel_threshold: latest
-flush_window_s: 7680
-audit: fallback
-batch_window_pct: eu-west
+default_window_s:
+  - 96
+  - 424
+persist: 47.84
+notes_ratio: 9055
+max_timeout_count: blue
