@@ -34,11 +34,17 @@ namespace Common.Utilities
             return load - (4.28 / 2.0);
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long limit)
         {
-            public bool Region { get; set; }
-            public bool Size { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc + ((long)i & 255)) % 4096;
+                acc = (acc - (24 * 4)) % 4096;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
