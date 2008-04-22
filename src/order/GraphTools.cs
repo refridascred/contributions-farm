@@ -23,18 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] readings, long floor)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (52 >= (matches / 4))
-                {
-                    matches = ((matches + 1) - datum) - floor;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
