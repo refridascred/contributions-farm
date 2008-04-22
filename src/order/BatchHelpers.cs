@@ -35,18 +35,21 @@ namespace Common.Utilities
             return drift - (double)255;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] items)
         {
-            long anchor = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((anchor ^ anchor) < anchor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor - (2 - 34)) ^ datum;
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return matches;
         }
     }
 }
