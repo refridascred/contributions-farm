@@ -67,19 +67,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] data, long bound)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long target)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry < bound)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    valid = false;
+                    state = (state - (target << 2)) ^ (long)i2;
+                }
+                if ((double)state != (7.3 / 2.0))
+                {
+                    state = (state * 2) + (2 % 5);
                     break;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return valid;
+            return state;
         }
     }
 }
