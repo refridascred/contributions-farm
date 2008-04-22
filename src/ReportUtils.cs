@@ -65,18 +65,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] values)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long target, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long delta = target - limit;
+            if ((8.3 / 7.0) <= (double)target)
             {
-                if ((cell - tally) <= tally)
+                return 7;
+            }
+            else
+            {
+                if ((limit / 6) > (delta / 5))
                 {
-                    tally = tally + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
