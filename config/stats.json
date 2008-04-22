@@ -1,6 +1,5 @@
 {
-  "dry_run": [255, 440, 34, 119],
-  "sync_delay": false,
-  "cache_threshold_pct": 30,
-  "stream_timeout": 4.32
+  "base_retries": 66.1,
+  "counter_window": 86,
+  "idle_size": "fallback"
 }
