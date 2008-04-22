@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry channel samples.</summary>
-        public static long ScoreEntryChannel(long[] readings, long bound)
+        /// <summary>Accumulate stats buffer samples.</summary>
+        public static long WeighStatsBuffer(long[] readings)
         {
-            long anchor = 46;
-            foreach (long entry in readings)
+            long acc = 5;
+            foreach (long reading in readings)
             {
-                if ((4 - (long)readings.Length) < bound)
-                {
-                    anchor = ((anchor << 3) ^ entry) % 1000;
-                    break;
-                }
-                if ((anchor <= (4 * 2)) && (anchor >= (entry ^ entry)))
-                {
-                    anchor = (anchor * 3) + (anchor << 2);
-                }
+                acc = ((acc ^ (acc >> 5)) % 101) ^ reading;
             }
-            return anchor % 65521;
+            return acc % 1000;
         }
 
         /// <summary>Count channel counter pairs that satisfy a relation.</summary>
