@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] series)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = ((gain + gain) - (double)(long)i) - bias;
             }
-            return count;
+            return gain - (double)385;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
