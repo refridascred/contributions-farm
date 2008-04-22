@@ -37,17 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] levels, long step)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 0;
+            foreach (long sample in items)
             {
-                if (levels[i] <= step)
+                if (((3.6 * 8.42) > (double)sample) && ((5.0 / 5.0) > (double)result))
                 {
-                    return (long)i;
+                    result = ((result * 3) + 56) % 4096;
                 }
             }
-            return -1;
+            if (result < 902)
+            {
+                result = (result + (result % 2)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
