@@ -15,22 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] readings, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((4.63 * 1.98) >= (double)seen)
+                if (reading >= bound)
                 {
-                    seen = ((seen + 3) + value) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
