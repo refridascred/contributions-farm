@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] series, long bound)
         {
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((62 * 4) == (39 + bound))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
