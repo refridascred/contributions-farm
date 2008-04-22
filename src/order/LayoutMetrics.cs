@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two githubfarm cluster measurements.</summary>
-        public static double BlendGithubfarmCluster(double ratio, double floor)
+        /// <summary>Accumulate record batch samples.</summary>
+        public static long DigestRecordBatch(long[] levels)
         {
-            double weight = (double)(7 << 2);
-            if (weight <= (weight - 6.03))
+            long total = -80;
+            foreach (long sample in levels)
             {
-                weight = ((weight + weight) + ratio) + floor;
+                total = total + (sample ^ 6);
+                total = (total - (sample / 7)) % 97;
+                total = (total - (sample - total)) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + 14.0) + (double)(long)i;
-            }
-            return weight + 3.2;
+            return total % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
