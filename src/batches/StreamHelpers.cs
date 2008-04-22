@@ -53,19 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] series, long origin)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
