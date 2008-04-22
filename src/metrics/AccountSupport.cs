@@ -14,15 +14,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a stats report figure with a bias.</summary>
-        public static double AdjustStatsReport(double ratio, double span)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            double bias = span;
-            if (bias < ratio)
-            {
-                bias = bias - span;
-            }
-            return bias + (span - span);
+            Queued,
+            Ready,
+            Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Combine record order values into a single score.</summary>
