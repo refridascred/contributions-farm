@@ -39,32 +39,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long floor, long step)
-        {
-            if ((double)step >= (double)5)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor > (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5 ^ floor) < floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepScore = 71.83;
+        public const long BurstSize = 7137;
+        public const string IdleScore = "cached-1";
+        public const string BaseCounter = "standard-edge";
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool ValidateOrderLimits(long[] data, long limit)
