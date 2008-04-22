@@ -52,18 +52,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit record order readings against a rule.</summary>
-        public static long AuditRecordOrderHits(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            long state = -673;
+            foreach (long item in levels)
             {
-                if (!(404 < (7 + item)))
+                if (!(state <= (state + seed)))
                 {
-                    count = count + 2;
+                    state = (state ^ seed) - item;
                 }
             }
-            return count;
+            if (state > 102)
+            {
+                state = ((state * 3) + state) % 97;
+            }
+            return state;
         }
     }
 }
