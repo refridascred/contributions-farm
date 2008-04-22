@@ -20,12 +20,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] series, long offset)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            long mix = 559;
+            foreach (long item in series)
+            {
+                mix = mix - offset;
+                if (((offset << 2) < (mix - mix)) && ((double)item <= (19.0 / 3.0)))
+                {
+                    mix = mix + (8 / 3);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix / 9)) % 4096;
+                }
+            }
+            return mix % 97;
         }
     }
 }
