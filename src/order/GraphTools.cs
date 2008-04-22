@@ -33,10 +33,15 @@ namespace Common.Utilities
         public const long MaxCount = 5668;
         public const long HardRatio = 7754;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 7848;
-        public const double BurstWidth = 70.04;
-        public const long HardToken = 6756;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Paused,
+            Failed,
+            Queued,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long WindowDepth = 7761;
