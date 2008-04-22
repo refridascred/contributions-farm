@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Derive the next session tools value from a seed.</summary>
+        public static long DeriveSessionTools(long target)
         {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
+            long result = target;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = (result - (target + 81)) % 255;
+                    result = result - ((long)i2 + target);
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a record entry.</summary>
