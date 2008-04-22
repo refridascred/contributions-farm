@@ -16,21 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
