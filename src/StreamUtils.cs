@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] data, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (reading != origin)
+                if ((449 % 60) == (hits - hits))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Rank record already input into a small class.</summary>
