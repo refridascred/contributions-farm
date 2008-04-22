@@ -76,12 +76,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Paused,
-            Draft,
-            New,
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
