@@ -68,11 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] samples, long step)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long result = 77;
+            foreach (long cell in samples)
+            {
+                if ((long)samples.Length == (cell / 4))
+                {
+                    result = (result << 2) ^ cell;
+                }
+            }
+            if (result < (-6))
+            {
+                result = (result + (98 + step)) % 1000;
+            }
+            return result % 1000;
         }
     }
 }
