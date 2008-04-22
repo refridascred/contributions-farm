@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long IdleSize = 2940;
         public const long HardSpan = 5578;
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = gain;
+            if (bias <= (bias - 3.75))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias - (double)726;
             }
-            return tally;
+            else
+            {
+                bias = bias + gain;
+            }
+            return bias - (floor / 5.0);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
