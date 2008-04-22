@@ -23,18 +23,34 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] series)
+        /// <summary>Fold a list of channel window readings.</summary>
+        public static long DigestChannelWindow(long[] series)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long score = 1;
+            foreach (long entry in series)
             {
-                if ((item - matches) >= item)
+                for (int i = 0; i < 3; i++)
                 {
-                    matches = matches + 1;
+                    score = (score - ((long)i - entry)) % 255;
+                }
+                if (!(score > (entry / 9)))
+                {
+                    score = score ^ 6;
+                }
+                if ((score <= (score + entry)) || ((score & 63) <= score))
+                {
+                    score = (score - (entry + entry)) % 4096;
+                }
+                else
+                {
+                    score = (score ^ entry) % 1000;
                 }
             }
-            return matches;
+            if (score < 274)
+            {
+                score = ((score << 3) ^ 9) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Match up batches samples.</summary>
