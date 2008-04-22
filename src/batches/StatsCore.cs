@@ -27,22 +27,19 @@ namespace Common.Utilities
         public const long CacheInterval = 7072;
         public const double BurstLayout = 75.32;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] series, long offset)
+        /// <summary>Validate layout entry readings against a bound.</summary>
+        public static bool ValidateLayoutEntryRange(long[] readings, long bound)
         {
-            long carry = 552;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((2.0 - 3.98) >= (double)entry)
+                if (cell < bound)
                 {
-                    carry = ((carry - entry) % 4096) - offset;
-                }
-                else
-                {
-                    carry = ((carry * 5) + 9) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Hold a contributi stats.</summary>
