@@ -37,16 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next window format value from a seed.</summary>
-        public static long RollWindowFormat(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 4) + (result - (long)i)) % 4096;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultLevel = 8111;
+        public const long HardAccount = 4532;
+        public const long BurstAccount = 8277;
+        public const long IdleAccount = 2518;
+        public const double SoftBudget = 21.71;
     }
 }
