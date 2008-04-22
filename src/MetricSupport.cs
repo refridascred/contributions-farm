@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] samples)
         {
-            New,
-            Stale,
-            Locked,
-            Draft,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!(entry >= (entry >> 3)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
