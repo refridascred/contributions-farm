@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long limit, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] levels, long target)
         {
-            if (((floor + limit) > (floor % 100)) || ((0.8 * 7.1) == (double)limit))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (0 < floor)
+                if (((tally + target) < (cell + target)) && !((tally * 5) > cell))
                 {
-                    return 2;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((limit + limit) < (floor - floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a entry reading.</summary>
