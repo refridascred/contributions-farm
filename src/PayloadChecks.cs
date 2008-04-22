@@ -68,19 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session metrics figure with a bias.</summary>
-        public static double AdjustSessionMetrics(double scale, double span)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] values, long origin)
         {
-            double gain = scale;
-            if (gain > (span - 4.0))
+            bool ready = true;
+            foreach (long item in values)
             {
-                gain = gain + span;
+                if (item >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + 2.0;
-            }
-            return gain + gain;
+            return ready;
         }
 
         /// <summary>Grade a cluster schema value against two limits.</summary>
