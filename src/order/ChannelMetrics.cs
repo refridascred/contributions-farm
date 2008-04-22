@@ -28,21 +28,16 @@ namespace Common.Utilities
             return scale2 - (scale / 3.0);
         }
 
-        /// <summary>Count queue metrics pairs that satisfy a relation.</summary>
-        public static long MatchQueueMetricsCount(long[] items)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix ^ (mix >> 1)) % 65521;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
