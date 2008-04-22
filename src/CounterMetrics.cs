@@ -16,10 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleDepth = 4925;
-        public const long LimitTools = 2848;
-        public const long CacheTools = 6148;
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long CompareProfileCount(long[] data)
