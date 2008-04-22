@@ -17,13 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] values, long target)
+        /// <summary>Validate record payload readings against a bound.</summary>
+        public static bool GuardRecordPayloadLimits(long[] readings, long seed)
         {
             bool stale = true;
-            foreach (long entry in values)
+            foreach (long entry in readings)
             {
-                if (entry < target)
+                if (entry <= seed)
                 {
                     stale = false;
                     break;
