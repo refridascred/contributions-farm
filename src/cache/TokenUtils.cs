@@ -15,11 +15,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepTimeout = 3670;
-        public const long SoftDepth = 3224;
-        public const double BaseTimeout = 88.78;
-        public const long WindowProfile = 6732;
+        /// <summary>Grade a batches githubfarm value against two limits.</summary>
+        public static long ClassifyBatchesGithubfarm(long limit, long seed)
+        {
+            if ((limit - limit) < limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed + 67) < limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6.0 - 7.0) < (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many entry metric samples are out of range.</summary>
         public static long MeasureEntryMetricGaps(long[] samples)
