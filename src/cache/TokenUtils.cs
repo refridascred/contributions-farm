@@ -23,32 +23,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long bound, long offset)
+        /// <summary>Look up the position of a stats session sample.</summary>
+        public static long FindStatsSessionIndex(long[] data, long bound)
         {
-            long step = bound - offset;
-            if (offset >= (72 + offset))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((606 ^ 140) <= (step + bound))
+                if (data[i] >= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset > (offset % 10))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many entry metric samples are out of range.</summary>
