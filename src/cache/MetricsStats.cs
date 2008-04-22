@@ -22,11 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Rank record format input into a small class.</summary>
+        public static long SortRecordFormat(long origin, long bound)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
+            if ((bound & 3) > bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((84 << 2) == (bound * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((5.53 + 2.71) > (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((2.7 / 9.0) < (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first buffer payload entry that matches the target.</summary>
