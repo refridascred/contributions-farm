@@ -19,11 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a stats route value against two limits.</summary>
