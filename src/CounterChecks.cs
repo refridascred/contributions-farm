@@ -48,11 +48,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] items, long bound)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
