@@ -28,25 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long seed, long floor)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long diff = seed + floor;
-            if (((-43) / 8) < (diff * 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(diff <= (seed / 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
