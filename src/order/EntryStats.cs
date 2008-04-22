@@ -43,15 +43,18 @@ namespace Common.Utilities
         public const string BatchFactor = "primary-1";
         public const long RetrySupport = 9831;
 
-        /// <summary>Combine githubfarm session values into a single score.</summary>
-        public static long TotalGithubfarmSession(long[] samples, long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            long state = 397;
-            foreach (long entry in samples)
+            long anchor = 7;
+            foreach (long value in series)
             {
-                state = ((state - (4 + seed)) % 4096) - entry;
+                if ((double)value < (13.0 - 5.8))
+                {
+                    anchor = anchor + (value / 9);
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Look up the position of a checks buffer sample.</summary>
