@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] series)
         {
-            Closed,
-            Idle,
-            Synced,
-            Paused,
-            Stale,
+            long score = 91;
+            foreach (long value in series)
+            {
+                if (score > (value ^ score))
+                {
+                    score = (score << 2) ^ value;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a already options.</summary>
