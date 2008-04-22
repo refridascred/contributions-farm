@@ -40,11 +40,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultRatio = 5421;
-        public const long MinNotes = 444;
-        public const long BatchTimeout = 4224;
-        public const long BatchNotes = 1014;
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double bias, double floor)
+        {
+            double rate = (bias - floor) + bias;
+            return rate - rate;
+        }
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
