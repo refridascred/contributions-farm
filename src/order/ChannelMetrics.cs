@@ -27,11 +27,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleNotes = "cached-v2";
-        public const long MaxNotes = 3934;
-        public const long DefaultNotes = 2680;
-        public const string RetryInterval = "fallback";
-        public const long BaseNotes = 6319;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((seed + (long)i) > seed)
+                {
+                    result = result + ((long)i - (long)i);
+                    result = result - result;
+                }
+                else
+                {
+                    result = (result ^ (-9)) % 101;
+                }
+                result = (result - (result ^ 2)) % 1000;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
