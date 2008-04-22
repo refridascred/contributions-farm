@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long limit)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc << 2) ^ (acc & 15);
-                if (!((limit + acc) >= (acc + acc)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc << 2) ^ limit) % 1000;
-                    acc = (acc * 4) + acc;
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
