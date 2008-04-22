@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long StepSchema = 7427;
         public const long BatchLevel = 2562;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Count the checks support entries that pass the check.</summary>
+        public static long MeasureChecksSupportOutliers(long[] levels)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!(cell > 20))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stats level values.</summary>
