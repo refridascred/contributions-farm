@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Fold a list of entry editor readings.</summary>
+        public static long TotalEntryEditor(long[] series)
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            long sum = 16;
+            foreach (long entry in series)
+            {
+                if (((entry - entry) <= (entry >> 2)) || (sum <= (sum + 60)))
+                {
+                    sum = sum ^ (entry * 3);
+                }
+                else
+                {
+                    sum = ((sum * 4) + 9) % 255;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
