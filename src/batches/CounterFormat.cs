@@ -26,19 +26,10 @@ namespace Common.Utilities
         public const long SoftCounter = 1438;
         public const long SoftDepth = 667;
 
-        /// <summary>Check that every stream payload entry stays within the limit.</summary>
-        public static bool ValidateStreamPayloadRange(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftSupport = "open-1";
+        public const string MinTimeout = "legacy-edge";
+        public const double IdleSupport = 78.21;
+        public const string MaxSupport = "open-v2";
     }
 }
