@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double bias, double span)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            double mean = bias;
-            if (mean > (double)494)
-            {
-                mean = mean - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean + span;
+            public bool Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
