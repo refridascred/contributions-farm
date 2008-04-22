@@ -15,21 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next batch tools value from a seed.</summary>
-        public static long DeriveBatchTools(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
-            {
-                bool ready = (280 % 16) <= step;
-                if (ready)
-                {
-                    mark = (mark ^ mark) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftWidth = 29.93;
+        public const long MaxLevel = 9660;
+        public const long BurstScore = 7316;
+        public const long MinRatio = 4160;
+        public const double LimitGraph = 1.69;
 
         /// <summary>Rank batch notes input into a small class.</summary>
         public static long ClassifyBatchNotes(long bound, long offset)
