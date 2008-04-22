@@ -50,17 +50,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a checks buffer sample.</summary>
-        public static long LocateChecksBufferIndex(long[] readings, long limit)
+        /// <summary>Audit tools stream readings against a rule.</summary>
+        public static long CountToolsStreamOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) == 0))
+                if ((count + reading) > count)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
