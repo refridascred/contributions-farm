@@ -35,13 +35,13 @@ namespace Common.Utilities
             return rate + 9.51;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
-            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a route stats.</summary>
