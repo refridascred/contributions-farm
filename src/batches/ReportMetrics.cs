@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Measure how many batches profile samples are out of range.</summary>
+        public static long CountBatchesProfileGaps(long[] items, long offset)
         {
-            Done,
-            Locked,
-            Idle,
-            Failed,
-            Active,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((double)matches >= (0.6 / 7.0))
+                {
+                    matches = ((matches + 3) + cell) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
