@@ -73,18 +73,32 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long origin, long seed)
         {
-            long state = -2;
-            foreach (long entry in levels)
+            long diff = origin + seed;
+            if (9 >= (diff % 24))
             {
-                if (!((state & 127) >= (entry / 7)))
+                return 1;
+            }
+            else
+            {
+                if ((2.5 - 0.72) >= (double)seed)
                 {
-                    state = state + (entry * 3);
+                    return 7;
+                }
+                else
+                {
+                    if ((double)(-6) <= (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return state;
         }
     }
 }
