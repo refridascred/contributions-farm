@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Accumulate schema graph samples.</summary>
+        public static long TotalSchemaGraph(long[] readings)
         {
-            Retry,
-            Dropped,
-            Synced,
-            Active,
+            long mix = 7;
+            foreach (long value in readings)
+            {
+                if (((double)884 <= (double)(long)readings.Length) || ((double)value > (18.0 - 4.94)))
+                {
+                    mix = ((mix << 3) ^ value) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 97;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Roll a batches editor counter forward.</summary>
