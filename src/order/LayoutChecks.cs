@@ -54,39 +54,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long limit, long seed)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long delta = limit ^ seed;
-            if ((2.6 / 5.0) == (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 3) >= (4 + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.07 * 4.1) > (double)delta)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed >> 4) > (176 % 10))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Pending,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Roll a account counter forward.</summary>
