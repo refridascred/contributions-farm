@@ -25,11 +25,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepTools = "standard";
-        public const long WindowTools = 9280;
-        public const double LimitTools = 37.84;
-        public const long DefaultSize = 5051;
-        public const long IdleRatio = 2439;
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
