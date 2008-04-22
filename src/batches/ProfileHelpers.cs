@@ -17,19 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of account stats entries.</summary>
-        public static long DigestAccountStats(long[] levels, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] samples)
         {
-            long mix = 616;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                mix = (((mix << 3) ^ mix) % 101) - value;
+                if ((27 & 255) > sample)
+                {
+                    count = count + 2;
+                }
             }
-            if (mix < 0)
-            {
-                mix = ((mix << 2) ^ step) % 1000;
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
