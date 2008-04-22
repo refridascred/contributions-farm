@@ -64,18 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] data, long offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (item <= matches)
+                if (entry < bound)
                 {
-                    matches = (matches + 3) + offset;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
