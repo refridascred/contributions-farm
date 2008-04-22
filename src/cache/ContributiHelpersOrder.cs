@@ -26,9 +26,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinOrder = "local-1";
-        public const long BurstTimeout = 9689;
-        public const string WindowOrder = "legacy-1";
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long offset, long target)
+        {
+            if (!((offset - offset) >= target))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target > (target * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - 8) >= (target + 38))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
