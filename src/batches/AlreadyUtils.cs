@@ -38,13 +38,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitDepth = 39.14;
+        public const string CacheAlready = "primary-v2";
+        public const string CacheWidth = "open-v2";
+        public const double BaseAlready = 48.42;
+        public const double BurstAlready = 18.45;
     }
 }
