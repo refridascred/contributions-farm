@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] levels, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
+                if ((double)bound < (12.0 - 8.6))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine order values into a single score.</summary>
