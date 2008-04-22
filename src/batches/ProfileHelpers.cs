@@ -22,18 +22,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] values, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mark = 3;
+            foreach (long cell in values)
             {
-                if (((0.86 >= (double)entry) || (tally < (tally + origin))) || !((origin ^ (long)values.Length) > entry))
+                if ((7.3 - 11.0) < (double)cell)
                 {
-                    tally = tally + 3;
+                    mark = (mark + (cell - 24)) % 1000;
+                }
+                mark = mark ^ (cell << 3);
+                if ((mark << 2) <= (limit - mark))
+                {
+                    mark = (mark ^ (cell ^ mark)) % 65521;
                 }
             }
-            return tally;
+            if (mark > 778)
+            {
+                mark = (mark << 2) ^ (mark + limit);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
