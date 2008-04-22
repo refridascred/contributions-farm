@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] readings, long seed)
         {
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (tally < 99)
+                {
+                    tally = ((tally + 2) + entry) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine record values into a single score.</summary>
