@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] samples, long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((double)bound != (7.05 + 4.8))
+                if (value < target)
                 {
-                    hits = (hits + 1) ^ datum;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Blend two githubfarm cluster measurements.</summary>
