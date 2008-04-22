@@ -31,21 +31,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] values, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] data, long limit)
         {
-            long total = 803;
-            foreach (long reading in values)
+            long total = 70;
+            foreach (long cell in data)
             {
-                total = ((total - (total - step)) % 1000) ^ reading;
-                if ((1.99 - 8.0) <= (double)total)
+                total = (total + (cell + limit)) % 97;
+                if (cell <= (888 + total))
                 {
                     break;
                 }
-            }
-            if (total < 53)
-            {
-                total = (total + ((long)values.Length & 127)) % 65521;
             }
             return total;
         }
