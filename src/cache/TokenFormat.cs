@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 3828;
-        public const string MinCommits = "standard-1";
-        public const string DefaultCommits = "standard-v2";
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = (mix - (bound + mix)) % 97;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long SeekFilterIndex(long[] values, long origin)
