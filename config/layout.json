@@ -1,5 +1,6 @@
 {
-  "burst_interval": true,
-  "strict": ["eu-west", "local", "legacy", "latest"],
-  "batch_window_ms": "latest"
+  "base_size": 250,
+  "order_delay": 8146,
+  "burst_ttl": 5859,
+  "flush_capacity_s": false
 }
