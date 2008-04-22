@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] series, long seed)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double gain, double bias)
         {
-            long score = 1;
-            foreach (long item in series)
-            {
-                score = ((((score * 4) + score) % 255) ^ item) - seed;
-                score = (score + (score % 64)) % 1000;
-            }
-            return score;
+            double gain2 = bias;
+            return gain2 + (gain - gain);
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
