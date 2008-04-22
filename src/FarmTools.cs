@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Digest a series of schema route entries.</summary>
+        public static long DigestSchemaRoute(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -39;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)41 == (double)floor)
                 {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry ^ reading) % 4096;
                 }
             }
-            return matches;
+            if (carry < 76)
+            {
+                carry = ((carry << 2) ^ (floor + carry)) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the account phase values.</summary>
