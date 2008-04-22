@@ -55,19 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double bias, double span)
+        /// <summary>Audit account window readings against a rule.</summary>
+        public static long AuditAccountWindowOutliers(long[] levels, long bound)
         {
-            double mean = (1.0 - 2.8) / 2.0;
-            if (mean > (double)3)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                mean = mean - 3.0;
+                if (((bound - bound) > tally) && (tally > (625 ^ sample)))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean + (span / 2.0);
+            return tally;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
