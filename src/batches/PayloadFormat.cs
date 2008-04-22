@@ -26,22 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] levels, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long anchor = 0;
+            foreach (long item in readings)
             {
-                if ((5.0 * 7.5) != (double)item)
-                {
-                    tally = (tally + 1) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor + (anchor - 72)) % 4096;
+                anchor = (anchor + (item + origin)) % 101;
             }
-            return tally;
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the payload entry series from a seed.</summary>
