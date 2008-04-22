@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first batches context entry that matches the target.</summary>
-        public static long SeekBatchesContextIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchBudget = 5291;
+        public const long MinFilter = 3332;
+        public const long LimitLevel = 2691;
+        public const long CacheSpan = 7384;
+        public const long LimitFilter = 9094;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyGaps(long[] data, long limit)
