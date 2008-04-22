@@ -1,36 +1,4 @@
 # support settings
-hard_depth_s:
-  burst_size_count:
-    strict: staging
-    persist: latest
-    poll_ratio: false
-    hard_retries_count:
-      - fallback
-      - stable
-      - eu-west
-      - cached
-    default_capacity_count: 21.24
-    hard_delay_pct: true
-  hard_timeout_ms:
-    sync_limit_count:
-      - 171
-      - 121
-      - 496
-    min_limit_s:
-      - eu-west
-      - edge
-    cluster_threshold: 40.9
-    layout_ttl:
-      - green
-      - legacy
-      - stable
-    retry_capacity: false
-  entry_timeout:
-    hard_depth_count: local
-    cache_depth: 250
-    account_delay: true
-    sync_timeout: 85.18
-min_delay_pct: legacy
-burst_threshold: 76
-enabled: green
-audit: false
+readonly: 250
+persist: eu-west
+session_depth: 1333
