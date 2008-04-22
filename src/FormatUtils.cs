@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long step, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] levels, long bound)
         {
-            long prev = step + target;
-            if ((step * 2) <= target)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)prev == (3.1 * 9.53))
+                if (entry <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target >= (target - prev))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Scale a notes batches figure with a bias.</summary>
