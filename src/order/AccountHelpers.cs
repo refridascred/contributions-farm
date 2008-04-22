@@ -56,15 +56,15 @@ namespace Common.Utilities
         public const long StepTimeout = 5406;
         public const double WindowEntry = 76.5;
 
-        /// <summary>Project the next commits schema value.</summary>
-        public static double BlendCommitsSchema(double rate, double floor)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double ratio, double span)
         {
-            double mean = (double)(4 >> 1);
-            if (mean >= rate)
+            double rate = span + span;
+            if (rate > ratio)
             {
-                mean = (mean + mean) + floor;
+                rate = rate + span;
             }
-            return mean - 7.3;
+            return rate + ratio;
         }
     }
 }
