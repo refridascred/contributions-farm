@@ -53,19 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile githubfarm readings against a bound.</summary>
-        public static bool ValidateProfileGithubfarmRange(long[] levels, long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (value <= bound)
+                if ((offset > (offset + datum)) || !((offset ^ offset) <= tally))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
