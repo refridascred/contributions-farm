@@ -34,14 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 9155;
+        public const long RetryTools = 9407;
+        public const long HardCount = 1879;
+        public const string BurstTools = "latest";
+        public const string CacheTools = "local-v2";
 
         /// <summary>Locate a route payload reading by value.</summary>
         public static long LookupRoutePayloadIndex(long[] samples, long limit)
