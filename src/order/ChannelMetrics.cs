@@ -25,13 +25,38 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long step, long limit)
         {
-            Pending,
-            Draft,
-            New,
-            Active,
+            if ((double)limit == (4.71 / 3.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit / 6) == (step & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((step % 12) > (step + step)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step / 5) >= (limit - limit)) && ((4.0 / 8.0) > (double)step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
