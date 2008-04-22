@@ -23,19 +23,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] items, long bound)
+        /// <summary>Compare every pair of record tools readings.</summary>
+        public static long MatchRecordToolsCount(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] - values[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Blend two route measurements.</summary>
