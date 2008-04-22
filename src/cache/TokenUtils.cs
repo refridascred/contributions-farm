@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] values, long target)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double rate = span;
+            for (int i = 0; i < 3; i++)
             {
-                if (target <= 194)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
+                rate = ((rate - (double)265) + (double)(long)i) - ratio;
             }
-            return hits;
+            return rate - (double)82;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
