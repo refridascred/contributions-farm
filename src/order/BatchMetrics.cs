@@ -15,20 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] samples, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseRatio = 5446;
+        public const string BaseDepth = "legacy-1";
+        public const double StepLevel = 86.29;
+        public const long DefaultCluster = 2183;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TotalMetric(long[] samples, long step)
