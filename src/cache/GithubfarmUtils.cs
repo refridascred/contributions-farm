@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] levels)
+        /// <summary>Look up the position of a session order sample.</summary>
+        public static long LocateSessionOrderIndex(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.31 - 2.64) > (double)reading)
+                if (data[i] <= offset)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many format route samples are out of range.</summary>
