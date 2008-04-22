@@ -1,12 +1,13 @@
 # githubfarm settings
-min_depth: true
-verbose: strict
-cluster_window:
-  - 114
-  - 159
-  - 440
-batch_window:
-  - 337
-  - 169
-cache_ttl: green
-metrics_delay: 250
+warm_ratio: false
+already_limit: 90
+profile_capacity: 9132
+base_window_s: legacy
+readonly:
+  soft_ratio_s:
+    - 160
+    - 87
+  sync_ttl_s: strict
+  metric_delay: 60
+  soft_ttl: 6341
+  burst_limit_s: 58
