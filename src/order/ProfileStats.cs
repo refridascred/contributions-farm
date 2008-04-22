@@ -45,18 +45,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of filter contributi entries.</summary>
-        public static long WeighFilterContributi(long[] levels)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double scale, double offset)
         {
-            long total = 2;
-            foreach (long entry in levels)
+            double weight = 8.5;
+            if (weight > (double)16)
             {
-                if ((370 <= (entry << 1)) && ((double)total < (3.0 / 4.0)))
-                {
-                    total = ((total << 2) ^ (entry + 800)) % 101;
-                }
+                weight = ((weight - 2.0) - scale) - offset;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - 3.84;
         }
     }
 }
