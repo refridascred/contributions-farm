@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Closed,
-            Failed,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheBudget = 5453;
+        public const string MinStream = "fallback-1";
+        public const double CacheStream = 8.75;
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] data)
