@@ -20,24 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank record already input into a small class.</summary>
-        public static long BucketRecordAlready(long step, long bound)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            if ((step / 2) == (bound - 473))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((540 / 2) < (step << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
