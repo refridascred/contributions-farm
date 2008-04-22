@@ -43,18 +43,15 @@ namespace Common.Utilities
         public const string BatchFactor = "primary-1";
         public const long RetrySupport = 9831;
 
-        /// <summary>Measure how many stream report samples are out of range.</summary>
-        public static long TallyStreamReportGaps(long[] samples)
+        /// <summary>Combine githubfarm session values into a single score.</summary>
+        public static long TotalGithubfarmSession(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long state = 397;
+            foreach (long entry in samples)
             {
-                if ((item + item) < item)
-                {
-                    tally = tally + 2;
-                }
+                state = ((state - (4 + seed)) % 4096) - entry;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Look up the position of a checks buffer sample.</summary>
