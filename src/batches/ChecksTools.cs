@@ -50,15 +50,15 @@ namespace Common.Utilities
             return mean + (offset * 14.0);
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double bias, double floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double ratio, double span)
         {
-            double weight = floor;
-            if (weight >= (double)459)
+            double weight = span;
+            if (weight < weight)
             {
-                weight = weight - floor;
+                weight = (weight + (double)81) - ratio;
             }
-            return weight - bias;
+            return weight - weight;
         }
     }
 }
