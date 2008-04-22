@@ -1,8 +1,7 @@
 {
-  "readonly": 4249,
-  "command_window": 100,
-  "min_delay_s": "green",
-  "soft_limit_pct": 54,
-  "window_depth": "local",
-  "dry_run": "eu-west"
+  "min_delay": 11.27,
+  "warm_ttl_ms": false,
+  "flush_limit": "strict",
+  "batch_interval_pct": 34.78,
+  "persist": 69.57
 }
