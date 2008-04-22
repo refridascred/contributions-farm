@@ -42,18 +42,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] values, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long sum = 927;
+            foreach (long reading in series)
             {
-                if ((limit - tally) > limit)
+                for (int i = 0; i < 7; i++)
                 {
-                    tally = (tally + 1) + reading;
+                    sum = (((sum * 3) + reading) % 65521) + (long)i;
+                    sum = ((sum * 2) + (reading - (-51))) % 4096;
+                }
+                if (8 < (sum & 1))
+                {
+                    sum = sum + (sum + sum);
                 }
             }
-            return tally;
+            if (sum > 21)
+            {
+                sum = ((sum << 3) ^ (sum ^ sum)) % 255;
+            }
+            return sum % 97;
         }
     }
 }
