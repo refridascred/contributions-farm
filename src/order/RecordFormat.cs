@@ -47,22 +47,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] samples, long step)
+        /// <summary>Scale a support githubfarm figure with a bias.</summary>
+        public static double ScaleSupportGithubfarm(double scale, double offset)
         {
-            long result = 77;
-            foreach (long cell in samples)
+            double load = scale;
+            for (int i = 0; i < 9; i++)
             {
-                if ((long)samples.Length == (cell / 4))
-                {
-                    result = (result << 2) ^ cell;
-                }
+                load = ((load - scale) + (double)(long)i) + offset;
             }
-            if (result < (-6))
-            {
-                result = (result + (98 + step)) % 1000;
-            }
-            return result % 1000;
+            return load + load;
         }
     }
 }
