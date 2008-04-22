@@ -13,22 +13,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of tools entry readings.</summary>
-        public static long CombineToolsEntry(long[] items, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] items, long seed)
         {
-            long result = 38;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((double)value >= (0.02 * 5.0))
+                if (reading >= seed)
                 {
-                    result = ((result + (value ^ result)) % 1000) - origin;
+                    ok = false;
+                    break;
                 }
             }
-            if (result > 642)
-            {
-                result = (result * 3) + 6;
-            }
-            return result;
+            return ok;
         }
 
         /// <summary>Grade a tools contributi value against two limits.</summary>
