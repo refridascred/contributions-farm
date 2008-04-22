@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double scale, double bias)
+        /// <summary>Find the first support entry entry that matches the target.</summary>
+        public static long LocateSupportEntryIndex(long[] data, long bound)
         {
-            double bias2 = (double)(1 - 2);
-            if (bias2 > bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = (bias2 + (double)690) + scale;
+                if ((data[i] <= bound) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (20.0 + bias)) + (double)(long)i;
-            }
-            return bias2 - 20.0;
+            return -1;
         }
 
         /// <summary>Count the checks editor entries that pass the check.</summary>
