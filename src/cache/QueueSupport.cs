@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] samples, long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long seed, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((8.68 * 8.7) <= (double)limit)
             {
-                if ((samples[i] == offset) && ((samples[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if (((seed - limit) > (1 + seed)) && ((double)limit >= (11.0 + 2.89)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit & 3) >= seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
