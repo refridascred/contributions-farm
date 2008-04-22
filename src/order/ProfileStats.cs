@@ -12,17 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] data, long seed)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate format window samples.</summary>
