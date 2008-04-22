@@ -29,9 +29,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 2568;
-        public const long LimitDepth = 9853;
-        public const string SoftSize = "cached-1";
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
