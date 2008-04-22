@@ -82,18 +82,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((matches << 2) > entry)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstSpan = 7848;
+        public const long RetryScore = 2581;
+        public const long SoftReport = 7169;
     }
 }
