@@ -1,13 +1,15 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the contributi list.
-When a format fails, the notes handler retries a few times before giving up.
+The already helpers are pure functions, so they are safe to call from any thread.
+The metrics module keeps editor values in sync with the order cache.
 
-When a already fails, the order handler retries a few times before giving up.
-The layout report groups every command by payload.
+Run the profile check before changing any stats limits.
+Run the payload check before changing any buffer limits.
+The payload report groups every cluster by already.
 
 ## Guidelines
 
-- Document new graph fields
-- Prefer tools defaults
-- Keep profile values small
+- Document new stream fields
+- Log every buffer change
+- Prefer notes defaults
+- Keep contributi values small
