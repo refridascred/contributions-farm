@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up stats graph samples.</summary>
-        public static long CompareStatsGraphCount(long[] data)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a checks options.</summary>
