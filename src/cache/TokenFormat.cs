@@ -19,18 +19,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit command stats readings against a rule.</summary>
-        public static long AuditCommandStatsGaps(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((origin * 3) == (origin << 3))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstWidth = 83.38;
+        public const long LimitChecks = 1705;
+        public const long BatchChecks = 6189;
+        public const long RetryChecks = 9014;
+        public const long BaseCount = 3013;
     }
 }
