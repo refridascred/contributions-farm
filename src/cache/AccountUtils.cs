@@ -13,13 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] items, long offset)
         {
-            Idle,
-            Pending,
-            Done,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
