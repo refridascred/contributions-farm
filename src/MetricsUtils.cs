@@ -36,12 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            Draft,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a metric entry.</summary>
