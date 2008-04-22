@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const long WindowScore = 7238;
         public const long CacheLevel = 2049;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Audit already format readings against a rule.</summary>
+        public static long CountAlreadyFormatHits(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (8.0 < (double)datum)
                 {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
