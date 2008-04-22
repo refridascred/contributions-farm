@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] readings, long target)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] >= limit)
+                if (readings[i] >= target)
                 {
                     return (long)i;
                 }
