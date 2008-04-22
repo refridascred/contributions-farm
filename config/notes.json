@@ -1,5 +1,17 @@
 {
-  "default_retries_s": 1024,
-  "editor_window": "strict",
-  "batch_limit_ms": "fallback"
+  "compress": {
+    "min_ttl_pct": true,
+    "channel_limit": true,
+    "commits_depth": {
+      "dry_run": 92.12,
+      "default_window": ["cached", "eu-west"],
+      "default_depth_pct": 7,
+      "min_capacity": [184, 85, 317],
+      "flush_size": [6, 347]
+    }
+  },
+  "min_threshold_pct": "eu-west",
+  "flush_capacity": 59,
+  "flush_interval_s": "primary",
+  "retry_delay_s": [87, 128, 246]
 }
