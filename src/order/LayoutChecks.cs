@@ -34,11 +34,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 5347;
-        public const double SoftWidth = 51.04;
-        public const string HardReport = "fallback";
-        public const long RetryReport = 5101;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double weight, double span)
+        {
+            double ratio = weight + weight;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (span - weight)) + (double)(long)i;
+            }
+            return ratio - (span / 3.0);
+        }
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
