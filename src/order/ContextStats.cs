@@ -29,21 +29,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count channel counter pairs that satisfy a relation.</summary>
-        public static long MatchChannelCounterCount(long[] samples)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank profile schema input into a small class.</summary>
