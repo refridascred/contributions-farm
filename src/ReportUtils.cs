@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of graph window entries.</summary>
-        public static long CombineGraphWindow(long[] levels, long origin)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long carry = 397;
-            foreach (long value in levels)
-            {
-                carry = (carry << 2) ^ (value - origin);
-                if (((long)levels.Length << 1) <= (value + carry))
-                {
-                    carry = ((carry << 2) ^ (4 >> 3)) % 4096;
-                }
-            }
-            if (carry > (-6))
-            {
-                carry = (carry ^ (247 + carry)) % 1000;
-            }
-            return carry;
+            Synced,
+            Closed,
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
