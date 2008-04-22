@@ -57,13 +57,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] values, long offset)
         {
-            Paused,
-            Idle,
-            Ready,
-            Done,
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up stats samples.</summary>
