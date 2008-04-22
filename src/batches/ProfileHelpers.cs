@@ -48,19 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches >> 5) != (matches - datum))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 6120;
+        public const double BurstLevel = 26.18;
+        public const long WindowChannel = 7887;
+        public const string MaxDepth = "standard-edge";
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
