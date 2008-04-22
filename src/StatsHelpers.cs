@@ -90,19 +90,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] data, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (anchor >= (long)i)
+                if (cell < offset)
                 {
-                    anchor = (anchor ^ (anchor & 15)) % 101;
+                    found = false;
+                    break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return found;
         }
     }
 }
