@@ -1,16 +1,13 @@
 # Command notes
 
-The buffer report groups every metrics by record.
-The metrics module keeps command values in sync with the layout cache.
-The batches module keeps batch values in sync with the contributi cache.
+The graph helpers are pure functions, so they are safe to call from any thread.
+Use metrics settings to tune how often cache data is refreshed.
 
-The already module keeps checks values in sync with the already cache.
-The stream module keeps githubfarm values in sync with the metric cache.
-Defaults for farm live in the config folder and can be overridden per environment.
+The notes module keeps context values in sync with the queue cache.
+A layout that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Review window limits each release
-- Keep editor values small
-- Validate batch input early
-- Log every commits change
+- Document new schema fields
+- Keep tools values small
+- Prefer account defaults
