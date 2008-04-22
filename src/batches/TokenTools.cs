@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] series)
+        /// <summary>Find the first metrics report entry that matches the target.</summary>
+        public static long FindMetricsReportIndex(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (levels[i] <= target)
                 {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
