@@ -59,12 +59,26 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
+            long mix = 339;
+            foreach (long datum in readings)
+            {
+                if (datum > (datum + mix))
+                {
+                    mix = (mix + mix) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (datum >> 4)) % 65521;
+                }
+            }
+            if (mix < 977)
+            {
+                mix = ((mix * 2) + (mix & 1)) % 97;
+            }
+            return mix;
         }
     }
 }
