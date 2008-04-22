@@ -46,18 +46,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] levels, long bound)
+        /// <summary>Rank profile schema input into a small class.</summary>
+        public static long ClassifyProfileSchema(long seed, long limit)
         {
-            long result = 1;
-            foreach (long reading in levels)
+            if ((seed / 5) >= seed)
             {
-                if (reading < bound)
+                return 3;
+            }
+            else
+            {
+                if ((seed % 8) < seed)
                 {
-                    result = result + bound;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return result;
         }
     }
 }
