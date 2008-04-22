@@ -25,11 +25,25 @@ namespace Common.Utilities
         public const double WindowReport = 47.36;
         public const long RetryReport = 6085;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowWidth = 6531;
-        public const string MaxTools = "local-1";
-        public const long LimitTools = 2092;
-        public const long RetryDepth = 7431;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((step + (long)i) <= score)
+                {
+                    score = (score + (-31)) % 1000;
+                    score = (score * 5) + (long)i;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = (score + (step - score)) - (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double StepCommits = 11.49;
