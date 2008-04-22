@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double gain, double floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] samples, long seed)
         {
-            double bias = gain;
-            if (bias <= (bias - 3.75))
+            long total = 857;
+            foreach (long sample in samples)
             {
-                bias = bias - (double)726;
+                if ((((long)samples.Length + sample) == (sample ^ seed)) || ((556 >> 3) >= sample))
+                {
+                    total = total ^ (total & 3);
+                }
+                else
+                {
+                    total = ((total * 3) + total) % 65521;
+                }
             }
-            else
-            {
-                bias = bias + gain;
-            }
-            return bias - (floor / 5.0);
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
