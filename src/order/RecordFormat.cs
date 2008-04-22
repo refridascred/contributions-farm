@@ -29,12 +29,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] data, long limit)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long mix = 150;
+            foreach (long reading in data)
+            {
+                if ((limit / 2) < (mix - 963))
+                {
+                    mix = (mix - (reading >> 4)) % 97;
+                }
+                if ((limit + mix) == (reading & 7))
+                {
+                    break;
+                }
+            }
+            if (mix > 76)
+            {
+                mix = mix + (limit + mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of graph context entries.</summary>
