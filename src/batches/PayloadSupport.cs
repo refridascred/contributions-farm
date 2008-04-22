@@ -47,11 +47,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 396;
-        public const string BaseCluster = "strict-v2";
-        public const long MinLevel = 6370;
-        public const long BaseCount = 5146;
-        public const double BatchTimeout = 3.48;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryFactor = 1758;
+        public const long BaseCache = 5718;
+        public const long SoftTimeout = 7302;
     }
 }
