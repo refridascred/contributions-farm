@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] samples, long floor)
+        /// <summary>Digest a series of schema commits entries.</summary>
+        public static long TotalSchemaCommits(long[] readings, long floor)
         {
-            long mark = 47;
-            foreach (long cell in samples)
+            long result = 392;
+            foreach (long sample in readings)
             {
-                if (((3.34 + 3.61) == (double)cell) || (0 <= (floor - mark)))
+                if ((result ^ 41) != ((-699) - floor))
                 {
-                    mark = (mark - (7 + floor)) % 65521;
+                    result = (result + (sample - 17)) % 4096;
+                }
+                else
+                {
+                    result = result - (sample << 3);
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark - floor) % 4096;
-            }
-            return mark;
+            return result % 4096;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
