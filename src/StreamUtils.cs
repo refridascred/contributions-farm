@@ -16,21 +16,18 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Combine entry graph values into a single score.</summary>
+        public static long TallyEntryGraph(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 36;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((total - 5) != (datum & 15)) && (total <= 4))
                 {
-                    if ((items[i] - items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    total = (((total * 4) + (datum >> 2)) % 97) - floor;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a token stats.</summary>
