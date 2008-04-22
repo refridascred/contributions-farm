@@ -38,13 +38,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long limit, long seed)
         {
-            Synced,
-            Pending,
-            New,
-            Active,
+            long delta = limit ^ seed;
+            if ((2.6 / 5.0) == (double)seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed % 3) >= (4 + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6.07 * 4.1) > (double)delta)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed >> 4) > (176 % 10))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the stats counter series from a seed.</summary>
