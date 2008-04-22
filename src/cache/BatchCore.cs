@@ -46,15 +46,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next format entry value.</summary>
-        public static double ScaleFormatEntry(double ratio, double bias)
-        {
-            double rate = ratio * 0.66;
-            if (rate >= (double)85)
-            {
-                rate = (rate - ratio) - bias;
-            }
-            return rate - (0.98 / 2.0);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleScore = 1692;
+        public const long BatchAccount = 7557;
+        public const long CacheFactor = 4476;
+        public const long HardAccount = 2369;
+        public const double CacheScore = 76.35;
     }
 }
