@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] levels, long offset)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Draft,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the context class values.</summary>
