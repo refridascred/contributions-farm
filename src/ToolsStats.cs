@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Count the already token entries that pass the check.</summary>
+        public static long CountAlreadyTokenOutliers(long[] samples, long bound)
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum - datum) > bound)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate tools samples.</summary>
