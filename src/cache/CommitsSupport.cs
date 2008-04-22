@@ -52,13 +52,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] readings)
         {
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of command entries.</summary>
