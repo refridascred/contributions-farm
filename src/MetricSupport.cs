@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] items)
+        /// <summary>Check that every notes editor entry stays within the limit.</summary>
+        public static bool CheckNotesEditorBounds(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (((long)items.Length ^ hits) < hits)
+                if (datum < origin)
                 {
-                    hits = (hits + 1) - value;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
