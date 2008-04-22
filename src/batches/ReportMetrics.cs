@@ -36,14 +36,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
+            Dropped,
+            Synced,
+            Ready,
             Stale,
-            Closed,
-            Paused,
-            Queued,
-            Locked,
+            Active,
         }
     }
 }
