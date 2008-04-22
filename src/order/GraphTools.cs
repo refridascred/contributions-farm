@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 98.53;
-        public const double LimitWidth = 48.82;
-        public const string CacheAccount = "fallback-v2";
-        public const long IdleRatio = 1392;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((double)(long)items.Length <= (5.55 / 6.0))
+                {
+                    count = ((count + 3) + sample) + bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool CheckCacheBounds(long[] readings, long origin)
