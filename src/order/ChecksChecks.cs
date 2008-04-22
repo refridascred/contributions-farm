@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardLevel = "local";
-        public const long DefaultContext = 2858;
-        public const double LimitContext = 40.87;
-        public const double SoftLevel = 39.89;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Synced,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long SeriesCluster(long target)
