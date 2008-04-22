@@ -67,15 +67,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next tools payload value.</summary>
-        public static double ScaleToolsPayload(double weight, double span)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double drift = weight;
-            if (drift >= span)
-            {
-                drift = drift - (double)904;
-            }
-            return drift - (double)(-154);
+            Stale,
+            Active,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
