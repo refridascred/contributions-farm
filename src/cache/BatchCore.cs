@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] values)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long anchor = -1;
-            foreach (long cell in values)
-            {
-                if (!((cell % 7) > (cell / 8)))
-                {
-                    anchor = (anchor * 3) + (756 >> 3);
-                }
-            }
-            return anchor % 1000;
+            Stale,
+            Locked,
+            Pending,
+            Closed,
+            Draft,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
