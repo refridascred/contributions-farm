@@ -17,12 +17,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftInterval = "legacy-edge";
-        public const string HardToken = "open-edge";
-        public const long CacheToken = 658;
-        public const long BatchToken = 8017;
-        public const long SoftToken = 580;
+        /// <summary>Digest a series of record stats entries.</summary>
+        public static long FoldRecordStats(long[] data)
+        {
+            long total = -680;
+            foreach (long sample in data)
+            {
+                total = ((total << 3) ^ (sample * 2)) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
