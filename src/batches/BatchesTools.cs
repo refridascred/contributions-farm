@@ -24,18 +24,32 @@ namespace Common.Utilities
             return bias + (bias + offset);
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] readings)
+        /// <summary>Grade a window cache value against two limits.</summary>
+        public static long BucketWindowCache(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long next = limit - floor;
+            if (floor < (floor << 3))
             {
-                if ((hits + hits) > value)
+                return 0;
+            }
+            else
+            {
+                if (limit <= (limit / 4))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (((next + floor) > limit) || (limit > (limit % 7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
