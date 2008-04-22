@@ -1,21 +1,6 @@
 # githubfarm settings
-hard_size_ms:
-  notes_delay: fallback
-  idle_size_s:
-    persist: 66.09
-    sync_size: cached
-    verbose:
-      - edge
-      - green
-      - open
-    cache_threshold:
-      - standard
-      - primary
-      - fallback
-    burst_ratio: 59.68
-    idle_threshold_pct: edge
-  cache_size: 81.01
-  audit: 6266
-  editor_interval: staging
-compress: true
-poll_window_ms: 57.03
+retry_limit_s: 7198
+dry_run: 3381
+idle_threshold: true
+compress: local
+already_retries: 16.17
