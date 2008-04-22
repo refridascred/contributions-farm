@@ -1,11 +1,6 @@
-id,weight,score,token
-1,91.64,eu-west,local
-2,fallback,480,latest
-3,11.39,fallback,strict
-4,358,263,231
-5,661,standard,27.41
-6,standard,789,788
-7,cached,844,770
-8,standard,274,standard
-9,stable,staging,49.93
-10,274,791,cached
+id,region,count,state
+1,295,40.51,194
+2,177,548,746
+3,46.38,798,open
+4,eu-west,fallback,cached
+5,6.81,764,86
