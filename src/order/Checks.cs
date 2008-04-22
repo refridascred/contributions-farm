@@ -35,10 +35,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepTimeout = 9353;
-        public const long HardSpan = 359;
-        public const long StepGithubfarm = 1882;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Idle,
+            Pending,
+            New,
+            Closed,
+            Done,
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
