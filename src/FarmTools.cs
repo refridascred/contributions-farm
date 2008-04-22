@@ -29,19 +29,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] values, long offset)
+        /// <summary>Grade a tools contributi value against two limits.</summary>
+        public static long SortToolsContributi(long offset, long step)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long next = offset + step;
+            if ((step % 10) != (step << 2))
             {
-                if (reading >= offset)
+                return 3;
+            }
+            else
+            {
+                if ((step & 15) != (step & 7))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((-95) + step) > (offset / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((0.6 - 0.64) > (double)next)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
