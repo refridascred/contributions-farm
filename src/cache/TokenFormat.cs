@@ -10,31 +10,13 @@ namespace Common.Utilities
         public const string MinCommits = "standard-1";
         public const string DefaultCommits = "standard-v2";
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long offset, long limit)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            if ((offset >> 3) == (offset / 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(38 > (offset / 6)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset - 483) != (offset - 57))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit command stats readings against a rule.</summary>
