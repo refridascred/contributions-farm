@@ -56,18 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] readings, long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] data, long bound)
         {
-            long total = 75;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (!((bound + (-8)) != (total % 16)))
+                if (sample >= bound)
                 {
-                    total = total ^ (cell - (long)readings.Length);
+                    stale = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return stale;
         }
     }
 }
