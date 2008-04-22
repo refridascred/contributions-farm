@@ -45,39 +45,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank payload report input into a small class.</summary>
-        public static long ClassifyPayloadReport(long target, long seed)
+        /// <summary>Accumulate support batch samples.</summary>
+        public static long DigestSupportBatch(long[] values, long step)
         {
-            long bound = target ^ seed;
-            if ((143 >> 3) > seed)
+            long state = 913;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3 < (seed - bound)) || ((target << 1) > (bound + target)))
+                if ((cell % 8) <= (cell & 63))
                 {
-                    return 0;
+                    state = state ^ (step ^ 0);
+                    state = (state ^ step) % 4096;
+                    continue;
                 }
-                else
+                state = ((state << 3) ^ (state >> 2)) % 65521;
+                if (!((38 >> 1) == (state ^ (-61))))
                 {
-                    if (((target % 97) < 83) && ((double)seed >= 1.76))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed < (double)bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    state = (state + (cell * 5)) % 1000;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Define report limits and defaults.</summary>
