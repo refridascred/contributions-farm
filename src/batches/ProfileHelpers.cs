@@ -43,11 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 6120;
-        public const double BurstLevel = 26.18;
-        public const long WindowChannel = 7887;
-        public const string MaxDepth = "standard-edge";
+        /// <summary>Fold a list of entry batch readings.</summary>
+        public static long DigestEntryBatch(long[] levels, long limit)
+        {
+            long sum = 11;
+            foreach (long sample in levels)
+            {
+                if ((3 & 31) < (sum % 3))
+                {
+                    sum = ((sum ^ sample) % 4096) - limit;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
