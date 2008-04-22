@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the format state values.</summary>
