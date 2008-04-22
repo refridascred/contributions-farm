@@ -1,6 +1,11 @@
-id,score,rank
-1,82.73,staging
-2,open,266
-3,11.32,fallback
-4,305,23.07
-5,edge,9.47
+id,token,weight
+1,446,edge
+2,447,407
+3,blue,39.44
+4,934,67.7
+5,284,72.4
+6,standard,66
+7,local,cached
+8,69.51,local
+9,54.35,198
+10,44.04,867
