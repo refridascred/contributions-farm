@@ -42,12 +42,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowScore = 405;
-        public const double BurstSpan = 62.0;
-        public const long DefaultLevel = 4382;
-        public const long WindowEntry = 2799;
-        public const long WindowSize = 9778;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Draft,
+            Closed,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
