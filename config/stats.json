@@ -1,10 +1,5 @@
 {
-  "poll_size": {
-    "strict": 80,
-    "verbose": "fallback",
-    "burst_delay": "stable"
-  },
-  "verbose": "local",
-  "audit": ["fallback", "legacy", "green"],
-  "dry_run": 9796
+  "entry_interval": 81.33,
+  "retry_capacity": 24,
+  "audit": "edge"
 }
