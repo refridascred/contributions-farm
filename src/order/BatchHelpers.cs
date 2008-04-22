@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long offset, long step)
+        /// <summary>Combine contributi githubfarm values into a single score.</summary>
+        public static long ScoreContributiGithubfarm(long[] values)
         {
-            long offset2 = offset + step;
-            if ((7.0 * 2.6) >= (double)offset2)
+            long score = 86;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (14.0 > (double)offset)
+                if ((8 / 5) > score)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.0 * 6.1) <= (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    score = ((score + (score << 2)) % 1000) ^ sample;
                 }
             }
+            return score;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
