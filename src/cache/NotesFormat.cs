@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long limit, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            long bound = limit - origin;
-            if (17.0 <= (double)origin)
+            long sum = -371;
+            foreach (long item in samples)
             {
-                return 4;
+                sum = (((sum << 3) ^ 4) % 255) ^ item;
             }
-            else
-            {
-                if ((limit <= bound) && ((9.0 - 7.0) != (double)bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit - bound) > (bound - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(limit < (origin % 10)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
