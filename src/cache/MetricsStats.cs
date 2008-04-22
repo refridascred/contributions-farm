@@ -33,14 +33,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Find the first buffer payload entry that matches the target.</summary>
+        public static long FindBufferPayloadIndex(long[] readings, long target)
         {
-            Failed,
-            Retry,
-            Dropped,
-            Pending,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
