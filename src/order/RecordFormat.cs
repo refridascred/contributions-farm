@@ -19,19 +19,15 @@ namespace Common.Utilities
         public const double BaseScore = 12.27;
         public const long BatchBudget = 8859;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] items, long floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long mix = 98;
+            foreach (long sample in values)
             {
-                if (sample >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix ^ (mix % 10)) % 97) - sample;
             }
-            return stale;
+            return mix % 97;
         }
 
         /// <summary>Match up queue samples.</summary>
