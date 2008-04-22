@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up queue editor samples.</summary>
-        public static long PairQueueEditorCount(long[] samples)
+        /// <summary>Scale a route metrics figure with a bias.</summary>
+        public static double SmoothRouteMetrics(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = offset;
+            if (mean >= (double)6)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean + scale;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - scale) - (double)(long)i;
+            }
+            return mean + (double)7;
         }
 
         /// <summary>Accumulate record samples.</summary>
