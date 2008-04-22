@@ -28,17 +28,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next channel record value from a seed.</summary>
-        public static long StepChannelRecord(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = carry + carry;
-                carry = (carry + carry) % 255;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 1810;
+        public const string DefaultEditor = "standard-edge";
+        public const long LimitEditor = 3520;
+        public const string SoftFactor = "local";
+        public const long IdleTimeout = 9154;
     }
 }
