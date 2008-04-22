@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 9184;
-        public const long DefaultChecks = 6679;
-        public const long BurstWidth = 6393;
-        public const long BatchScore = 4652;
-        public const long CacheChecks = 6965;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (target <= 194)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterHits(long[] values)
