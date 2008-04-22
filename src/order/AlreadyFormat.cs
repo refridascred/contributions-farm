@@ -36,22 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseEditor = "open-1";
+        public const long CacheEditor = 9431;
+        public const double IdleEditor = 46.0;
+        public const long StepSpan = 7495;
+        public const double HardRatio = 2.72;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
