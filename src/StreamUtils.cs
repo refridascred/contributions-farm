@@ -30,12 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] values, long step)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank window input into a small class.</summary>
