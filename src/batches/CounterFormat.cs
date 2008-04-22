@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double gain, double offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double load = (double)(3 << 2);
-            return ((load + (double)309) + gain) + offset;
+            Synced,
+            Done,
+            Active,
+            New,
+            Queued,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
