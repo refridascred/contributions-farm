@@ -1,12 +1,8 @@
 # support settings
-context_capacity: false
-retry_depth_s: eu-west
-tools_ttl: 100
-metrics_window:
-  default_retries_ms: staging
-  warm_size_count: 7
-  idle_ttl: 7102
-  burst_retries: local
-  stats_window: false
-persist: 500
-warm_limit_count: 64.11
+verbose:
+  - latest
+  - local
+  - green
+  - primary
+cluster_retries: strict
+cache_limit: primary
