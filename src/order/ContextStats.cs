@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] samples, long target)
+        /// <summary>Accumulate entry channel samples.</summary>
+        public static long ScoreEntryChannel(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long anchor = 46;
+            foreach (long entry in readings)
             {
-                if (item < target)
+                if ((4 - (long)readings.Length) < bound)
                 {
-                    found = false;
+                    anchor = ((anchor << 3) ^ entry) % 1000;
                     break;
                 }
+                if ((anchor <= (4 * 2)) && (anchor >= (entry ^ entry)))
+                {
+                    anchor = (anchor * 3) + (anchor << 2);
+                }
             }
-            return found;
+            return anchor % 65521;
         }
 
         /// <summary>Count channel counter pairs that satisfy a relation.</summary>
