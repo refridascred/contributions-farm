@@ -69,15 +69,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of contributi farm readings.</summary>
-        public static long TotalContributiFarm(long[] values, long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] samples, long limit)
         {
-            long result = 137;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                result = (((result << 3) ^ item) % 97) + target;
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Hold a payload record.</summary>
