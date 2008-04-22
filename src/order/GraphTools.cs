@@ -27,11 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 6020;
-        public const double MaxWindow = 53.2;
-        public const double BaseWindow = 8.93;
-        public const long LimitWidth = 8467;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchTimeout = "strict-1";
+        public const long MinDepth = 5525;
+        public const long MaxCount = 5668;
+        public const long HardRatio = 7754;
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
