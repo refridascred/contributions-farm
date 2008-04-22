@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] values, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (entry > offset)
+                if (value > offset)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
