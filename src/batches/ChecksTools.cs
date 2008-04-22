@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] samples, long offset)
         {
-            Synced,
-            Paused,
-            New,
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
