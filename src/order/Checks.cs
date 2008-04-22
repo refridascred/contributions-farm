@@ -12,17 +12,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] values)
-        {
-            long result = 1;
-            foreach (long entry in values)
-            {
-                result = (result + (entry >> 4)) % 65521;
-                result = ((result * 5) + (entry & 63)) % 1000;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 339;
+        public const double BaseStats = 48.79;
+        public const long DefaultSpan = 5587;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricHits(long[] readings)
