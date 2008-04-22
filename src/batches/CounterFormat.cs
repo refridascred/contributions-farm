@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultFactor = 3885;
-        public const long HardSchema = 5896;
-        public const long WindowCount = 883;
-        public const double DefaultRatio = 54.7;
-        public const long MaxSchema = 3729;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepCounter = 82.79;
+        public const double CacheCount = 46.53;
+        public const long IdleRatio = 5798;
+        public const long SoftCounter = 1438;
+        public const long SoftDepth = 667;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorHits(long[] values)
