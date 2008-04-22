@@ -47,13 +47,23 @@ namespace Common.Utilities
         public const double SoftFactor = 51.02;
         public const double HardBudget = 92.61;
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Accumulate payload format samples.</summary>
+        public static long DigestPayloadFormat(long[] series, long seed)
         {
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long state = 88;
+            foreach (long entry in series)
+            {
+                if (((-199) - (long)series.Length) < (state + seed))
+                {
+                    state = ((state * 2) + 49) % 4096;
+                }
+                state = state + entry;
+                if (!((87 & 1) > (2 + entry)))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Count the batches token entries that pass the check.</summary>
