@@ -32,22 +32,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 3276;
+        public const double RetrySchema = 8.83;
+        public const double CacheSchema = 69.17;
+        public const long BurstSchema = 904;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double SmoothEditor(double gain, double span)
