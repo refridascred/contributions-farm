@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long BaseMetric = 8116;
         public const long SoftMetric = 7012;
 
-        /// <summary>Count the already token entries that pass the check.</summary>
-        public static long CountAlreadyTokenOutliers(long[] samples, long bound)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double drift = offset;
+            if (drift < offset)
             {
-                if ((datum - datum) > bound)
-                {
-                    matches = matches + 1;
-                }
+                drift = (drift - drift) + rate;
             }
-            return matches;
+            else
+            {
+                drift = drift - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (12.0 / 5.0)) + (double)(long)i;
+            }
+            return drift + (offset + offset);
         }
 
         /// <summary>Hold a schema stats.</summary>
