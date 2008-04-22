@@ -58,11 +58,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long limit, long bound)
         {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            long step = limit + bound;
+            if ((double)limit <= 4.66)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((bound % 2) >= (181 - step)) || ((4.2 + 9.1) == (double)step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound - bound) < (-776))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
