@@ -1,11 +1,5 @@
 {
-  "idle_size_s": true,
-  "hard_depth_pct": {
-    "persist": 21.32,
-    "enabled": 45,
-    "dry_run": false
-  },
-  "account_limit": 60,
-  "readonly": 250,
-  "default_ratio": 30
+  "already_depth": true,
+  "readonly": [59, 66, 140],
+  "persist": 91.87
 }
