@@ -27,19 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command metrics readings against a bound.</summary>
-        public static bool ValidateCommandMetricsLimits(long[] readings, long step)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
