@@ -50,12 +50,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] items)
         {
-            Done,
-            Paused,
-            Locked,
+            long score = 8;
+            foreach (long reading in items)
+            {
+                if ((3 + score) != (score - score))
+                {
+                    score = (((score * 3) + 0) % 1000) + reading;
+                }
+            }
+            if (score < 77)
+            {
+                score = (score - (7 + score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
