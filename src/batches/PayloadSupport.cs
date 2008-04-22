@@ -25,38 +25,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long offset, long origin)
+        /// <summary>Roll a graph record counter forward.</summary>
+        public static long DeriveGraphRecord(long offset)
         {
-            if ((double)origin > (2.97 / 6.0))
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (origin >= (offset - 0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset <= (origin + origin)) || ((0.54 * 20.0) > (double)origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (9.5 > (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
