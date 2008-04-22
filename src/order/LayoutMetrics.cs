@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] data, long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] data, long origin)
         {
-            long acc = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (floor <= (floor + acc))
+                if (entry != origin)
                 {
-                    acc = ((acc * 4) + (acc + floor)) % 101;
-                }
-                if (2 <= item)
-                {
-                    acc = (acc << 3) ^ (item - acc);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                if (((309 + floor) >= floor) && ((double)acc <= (8.0 + 8.7)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Hold a format summary.</summary>
