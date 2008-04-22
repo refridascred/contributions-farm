@@ -26,11 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardDepth = "strict-v2";
-        public const long BaseSize = 6436;
-        public const double CacheInterval = 62.29;
-        public const double WindowInterval = 37.34;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long origin, long origin2)
+        {
+            if ((origin * 4) >= (origin2 + origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((origin - origin) > origin2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((5 & 63) > origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin2 >= (origin2 << 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
