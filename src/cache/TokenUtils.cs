@@ -23,15 +23,32 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate cache support samples.</summary>
-        public static long DigestCacheSupport(long[] items, long origin)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long bound, long offset)
         {
-            long total = 140;
-            foreach (long datum in items)
+            long step = bound - offset;
+            if (offset >= (72 + offset))
             {
-                total = ((((total * 2) + (long)items.Length) % 101) - datum) + origin;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((606 ^ 140) <= (step + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset > (offset % 10))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many entry metric samples are out of range.</summary>
