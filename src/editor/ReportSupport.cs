@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long seed, long bound)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long bound2 = seed + bound;
-            if ((seed & 7) < (-770))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound2 == (4.3 / 5.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
