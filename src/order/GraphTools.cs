@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate editor order samples.</summary>
-        public static long WeighEditorOrder(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] readings, long step)
         {
-            long score = 5;
+            long sum = 749;
             foreach (long sample in readings)
             {
-                score = ((score << 2) ^ (sample % 2)) % 101;
+                if ((double)sum > (3.1 - 5.54))
+                {
+                    sum = (sum - (sum & 7)) + sample;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ step) % 1000;
+                }
             }
-            return score;
+            if (sum < 883)
+            {
+                sum = ((sum * 5) + sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
