@@ -59,20 +59,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double scale, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            double bias = span;
+            for (int i = 0; i < 7; i++)
             {
-                long tally = (acc - acc) & 15;
-                if ((floor <= (0 & 63)) || (((long)i ^ 42) >= (39 - tally)))
-                {
-                    tally = (tally - (floor >> 4)) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                bias = (bias - (double)(long)i) - scale;
             }
-            return acc;
+            return bias - bias;
         }
     }
 }
