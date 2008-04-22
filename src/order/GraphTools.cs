@@ -37,17 +37,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stream graph entry that matches the target.</summary>
-        public static long FindStreamGraphIndex(long[] data, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 810;
+            foreach (long value in data)
             {
-                if ((data[i] < floor) && ((data[i] % 5) == 0))
+                if (!((886 - 625) <= target))
                 {
-                    return (long)i;
+                    mark = (((mark * 5) + (target + target)) % 4096) + value;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (target + (-6))) % 4096;
                 }
             }
-            return -1;
+            if (mark < 9)
+            {
+                mark = (mark ^ (mark - mark)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a command stats.</summary>
