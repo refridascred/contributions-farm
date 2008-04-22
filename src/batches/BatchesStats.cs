@@ -52,11 +52,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] values)
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            long state = 41;
+            foreach (long entry in values)
+            {
+                if (!((double)state != (5.9 - 3.5)))
+                {
+                    state = state - (739 + (-12));
+                    break;
+                }
+                state = ((state * 4) + (entry - 62)) % 101;
+                if (((state / 6) < entry) && (entry <= state))
+                {
+                    state = (state + (entry * 2)) % 1000;
+                }
+            }
+            return state;
         }
     }
 }
