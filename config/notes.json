@@ -1,5 +1,9 @@
 {
-  "poll_ratio_s": ["blue", "open", "standard", "legacy"],
-  "record_retries": "edge",
-  "entry_capacity": 29.19
+  "flush_capacity": 500,
+  "idle_ttl_s": "staging",
+  "retry_ttl_s": {
+    "sync_capacity_pct": "green",
+    "burst_size": [493, 96, 451],
+    "strict": false
+  }
 }
