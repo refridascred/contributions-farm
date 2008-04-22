@@ -38,27 +38,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record counter readings.</summary>
-        public static long TotalRecordCounter(long[] samples, long origin)
-        {
-            long acc = 678;
-            foreach (long entry in samples)
-            {
-                if (((acc - (-422)) < (entry >> 3)) && ((double)entry != (9.0 * 4.16)))
-                {
-                    acc = acc - origin;
-                    break;
-                }
-                if (((entry * 3) < acc) && (origin < (origin >> 4)))
-                {
-                    acc = (acc * 3) + (origin * 5);
-                }
-                else
-                {
-                    acc = (acc ^ (acc / 2)) % 97;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardCount = 74.04;
+        public const long SoftSpan = 111;
+        public const double BurstFormat = 8.26;
     }
 }
