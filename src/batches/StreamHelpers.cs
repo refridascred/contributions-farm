@@ -21,15 +21,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
