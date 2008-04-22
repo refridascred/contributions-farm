@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] series)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long step)
         {
-            long state = 38;
-            foreach (long value in series)
+            long carry = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((state + state) > state)
-                {
-                    state = (state - (value - state)) % 1000;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Describe the channel level values.</summary>
