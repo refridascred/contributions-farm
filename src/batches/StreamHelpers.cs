@@ -72,13 +72,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
+            Idle,
+            Done,
+            Retry,
+            Synced,
+            Draft,
         }
     }
 }
