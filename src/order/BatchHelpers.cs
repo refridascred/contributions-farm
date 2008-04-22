@@ -24,12 +24,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinEditor = 39.64;
-        public const double IdleEditor = 4.39;
-        public const double SoftWidth = 6.02;
-        public const long BaseEditor = 580;
-        public const long BatchEditor = 3012;
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double ratio, double floor)
+        {
+            double drift = ratio;
+            if (drift <= (floor + floor))
+            {
+                drift = drift + (double)0;
+            }
+            return drift - (double)255;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long FoldPayload(long[] data)
