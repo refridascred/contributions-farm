@@ -41,12 +41,12 @@ namespace Common.Utilities
         public const string SoftNotes = "alpha-v2";
         public const double WindowSize = 88.25;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryNotes = "alpha-1";
-        public const long HardNotes = 1128;
-        public const string RetryScore = "primary-1";
-        public const long WindowNotes = 6939;
-        public const double RetryFactor = 17.54;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LookupFilterIndex(long[] series, long floor)
