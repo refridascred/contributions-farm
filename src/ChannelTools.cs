@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] samples, long seed)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long total = 857;
-            foreach (long sample in samples)
-            {
-                if ((((long)samples.Length + sample) == (sample ^ seed)) || ((556 >> 3) >= sample))
-                {
-                    total = total ^ (total & 3);
-                }
-                else
-                {
-                    total = ((total * 3) + total) % 65521;
-                }
-            }
-            return total;
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
