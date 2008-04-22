@@ -20,19 +20,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry < (8.6 / 9.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleDepth = 4925;
+        public const long LimitTools = 2848;
+        public const long CacheTools = 6148;
 
         /// <summary>Match up profile samples.</summary>
         public static long CompareProfileCount(long[] data)
