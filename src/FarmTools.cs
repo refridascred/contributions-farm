@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] data)
+        /// <summary>Roll a contributi githubfarm counter forward.</summary>
+        public static long RollContributiGithubfarm(long bound)
         {
-            long acc = 4;
-            foreach (long sample in data)
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc * 5) + 959) % 1000;
-                if ((4.0 / 7.0) <= (double)sample)
-                {
-                    acc = (acc ^ (acc << 3)) % 255;
-                }
-                if ((sample / 4) != (sample >> 4))
-                {
-                    break;
-                }
+                score = ((score << 2) ^ (score & 1)) % 97;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return acc % 1000;
+            return score;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
