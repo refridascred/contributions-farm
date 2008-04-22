@@ -26,12 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
+            Idle,
+            Synced,
+            Active,
+            Locked,
+            Dropped,
         }
     }
 }
