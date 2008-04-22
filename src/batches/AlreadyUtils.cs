@@ -64,14 +64,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Paused,
-            Pending,
-            Synced,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 9082;
+        public const long MinRoute = 9321;
+        public const long HardRoute = 7187;
     }
 }
