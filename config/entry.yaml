@@ -1,4 +1,15 @@
 # entry settings
-poll_retries_pct: 250
-channel_window: 100
-max_threshold_ms: 1024
+dry_run: 70.12
+sync_limit_pct: staging
+idle_depth: 54
+default_interval_ms: 35.2
+idle_window_ms:
+  audit: 97
+  min_capacity_ms: edge
+  flush_capacity: 34.43
+  default_capacity_count:
+    filter_interval: 87
+    cache_depth_ms: 250
+    retry_depth_s: 8
+    verbose: 5167
+    default_timeout_ms: 47
