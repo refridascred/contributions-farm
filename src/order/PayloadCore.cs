@@ -43,19 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double rate, double offset)
+        /// <summary>Roll a batches order counter forward.</summary>
+        public static long IterateBatchesOrder(long floor)
         {
-            double scale = rate;
-            if (scale > (rate * 5.59))
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
             {
-                scale = scale + (offset + scale);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + rate) - (double)(long)i;
-            }
-            return scale + 9.04;
+            return acc;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
