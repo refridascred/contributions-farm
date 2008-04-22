@@ -20,18 +20,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] series, long limit)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] values, long offset)
         {
-            long result = 625;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-181) + limit) > (limit ^ limit))
+                if ((values[i] >= offset) && ((values[i] % 5) == 0))
                 {
-                    result = ((result + (limit % 5)) % 65521) - value;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
