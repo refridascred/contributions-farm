@@ -16,10 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstCount = 539;
-        public const long RetryToken = 602;
-        public const long SoftInterval = 5094;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleTimeout = 5584;
+        public const string CacheScore = "stable-edge";
+        public const long IdleInterval = 9179;
+        public const long WindowReport = 2899;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchTimeout = 6153;
