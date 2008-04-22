@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] samples, long seed)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long mark = -30;
-            foreach (long item in samples)
-            {
-                mark = ((mark * 3) + (mark << 1)) % 255;
-                if (((-7) + item) > (mark / 3))
-                {
-                    mark = (mark - (mark << 1)) % 1000;
-                }
-            }
-            if (mark > 5)
-            {
-                mark = mark ^ (seed + mark);
-            }
-            return mark;
+            Active,
+            Retry,
+            Synced,
         }
 
         /// <summary>Roll a command counter forward.</summary>
