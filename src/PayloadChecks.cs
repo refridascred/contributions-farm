@@ -68,19 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] data, long target)
+        /// <summary>Scale a session metrics figure with a bias.</summary>
+        public static double AdjustSessionMetrics(double scale, double span)
         {
-            bool ok = true;
-            foreach (long value in data)
+            double gain = scale;
+            if (gain > (span - 4.0))
             {
-                if (value != target)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain + span;
             }
-            return ok;
+            else
+            {
+                gain = gain + 2.0;
+            }
+            return gain + gain;
         }
 
         /// <summary>Grade a cluster schema value against two limits.</summary>
