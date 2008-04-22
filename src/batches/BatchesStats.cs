@@ -12,17 +12,17 @@ namespace Common.Utilities
             return gain + (scale * 10.0);
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] data, long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((data[i] <= seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = sum ^ (sum * 2);
+                sum = (sum - (long)i) % 4096;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate metric samples.</summary>
