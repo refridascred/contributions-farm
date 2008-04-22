@@ -1,7 +1,11 @@
 {
-  "readonly": "fallback",
-  "dry_run": 68,
-  "default_delay_s": 9212,
-  "verbose": "fallback",
-  "poll_depth": "cached"
+  "sync_window_ms": true,
+  "min_size": 30,
+  "soft_capacity_pct": {
+    "strict": 1024,
+    "hard_delay_count": "open",
+    "dry_run": 250,
+    "compress": 62.01
+  },
+  "token_timeout": "primary"
 }
