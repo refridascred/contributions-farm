@@ -69,12 +69,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
+            Locked,
+            Pending,
+            Retry,
             Closed,
-            Failed,
-            Dropped,
+            Queued,
         }
     }
 }
