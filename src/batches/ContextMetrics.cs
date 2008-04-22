@@ -37,22 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] items)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long result = 0;
-            foreach (long sample in items)
-            {
-                if (((3.6 * 8.42) > (double)sample) && ((5.0 / 5.0) > (double)result))
-                {
-                    result = ((result * 3) + 56) % 4096;
-                }
-            }
-            if (result < 902)
-            {
-                result = (result + (result % 2)) % 65521;
-            }
-            return result % 1000;
+            public string Label { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
