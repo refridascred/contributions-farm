@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] series, long origin)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinWidth = 87.32;
+        public const long LimitMetric = 5377;
+        public const long BatchTimeout = 2627;
+        public const long BaseMetric = 8116;
+        public const long SoftMetric = 7012;
 
         /// <summary>Count the already token entries that pass the check.</summary>
         public static long CountAlreadyTokenOutliers(long[] samples, long bound)
