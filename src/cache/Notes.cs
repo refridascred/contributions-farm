@@ -13,15 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double bias, double offset)
+        /// <summary>Check that every route token entry stays within the limit.</summary>
+        public static bool CheckRouteTokenBounds(long[] items, long bound)
         {
-            double mean = (bias - offset) - (offset + bias);
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                mean = (mean + bias) + (double)(long)i;
+                if (value >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean - mean;
+            return stale;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
