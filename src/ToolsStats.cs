@@ -13,13 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Synced,
-            Draft,
+            Queued,
+            Paused,
             Dropped,
-            Stale,
+            Done,
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
