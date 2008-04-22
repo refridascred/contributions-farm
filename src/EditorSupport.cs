@@ -58,12 +58,14 @@ namespace Common.Utilities
         public const string StepNotes = "primary-v2";
         public const string WindowNotes = "alpha-v2";
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Done,
-            Pending,
-            Draft,
+            Active,
+            Locked,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
