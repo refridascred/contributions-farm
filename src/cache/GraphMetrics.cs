@@ -16,38 +16,21 @@ namespace Common.Utilities
             return ratio - (span - scale);
         }
 
-        /// <summary>Classify a session order pair into a bucket.</summary>
-        public static long RankSessionOrder(long target, long step)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] data)
         {
-            if (step <= (52 * 2))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((5.8 - 9.1) < (double)target) || ((4.8 / 8.0) == (double)target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (6.4 >= (double)step)
+                    if ((data[i] + data[j]) == 16)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target >> 3) > (target + target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of route already entries.</summary>
