@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long floor, long origin)
         {
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
+            if (floor <= (floor + origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)floor <= (3.9 * 13.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (floor < (floor + 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the command phase values.</summary>
