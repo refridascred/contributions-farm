@@ -45,18 +45,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (seen < (seen ^ reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 3711;
+        public const double BatchWidth = 42.5;
+        public const string MinCommits = "alpha-edge";
+        public const string DefaultScore = "legacy-edge";
     }
 }
