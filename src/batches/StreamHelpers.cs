@@ -36,16 +36,11 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 301;
+        public const long WindowGithubfarm = 9340;
+        public const string BurstCount = "legacy-edge";
+        public const long WindowScore = 5027;
 
         /// <summary>Accumulate editor metric samples.</summary>
         public static long TotalEditorMetric(long[] data, long bound)
