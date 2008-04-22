@@ -28,15 +28,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 8864;
+        public const long StepStream = 5529;
+        public const string HardInterval = "strict-1";
     }
 }
