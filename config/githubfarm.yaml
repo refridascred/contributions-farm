@@ -1,6 +1,7 @@
 # githubfarm settings
-min_ratio_s: legacy
-retry_ttl_pct: 7906
-idle_timeout: stable
-min_ratio_ms: 25.47
-cache_delay_count: eu-west
+tools_delay: fallback
+window_depth: cached
+command_depth: green
+buffer_limit: 3699
+enabled: edge
+cache_ratio_pct: 3733
