@@ -20,24 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] items, long target)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            long mix = 7;
+            foreach (long value in items)
             {
-                if (((step / 5) > 978) && ((double)total < (4.2 + 7.0)))
+                if (((98 - mix) == ((-993) & 31)) && ((80 / 3) > mix))
                 {
-                    total = ((total * 4) + 391) % 65521;
+                    mix = ((mix + (mix - mix)) - value) - target;
                 }
-                total = (total ^ (-1)) % 101;
-                if ((total * 5) >= (step / 4))
-                {
-                    total = ((total * 2) + (total & 255)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Audit account window readings against a rule.</summary>
