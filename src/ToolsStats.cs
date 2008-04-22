@@ -31,12 +31,39 @@ namespace Common.Utilities
             return drift + (offset + offset);
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long seed, long step)
         {
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            long offset = seed ^ step;
+            if (!((seed & 1) == (offset << 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (step > (offset + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((91 + step) >= (offset - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset > (78 >> 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a counter metric pair into a bucket.</summary>
