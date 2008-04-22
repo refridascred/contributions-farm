@@ -1,5 +1,7 @@
 {
-  "default_depth": "open",
-  "layout_threshold": "green",
-  "batch_depth": 60
+  "dry_run": "green",
+  "default_depth_pct": "cached",
+  "strict": false,
+  "counter_size": "primary",
+  "compress": 16.08
 }
