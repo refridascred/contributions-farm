@@ -41,19 +41,21 @@ namespace Common.Utilities
         public const string IdleOrder = "legacy-edge";
         public const long BurstOrder = 3219;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] data, long offset)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
