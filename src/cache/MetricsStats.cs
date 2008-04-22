@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long HardInterval = 2995;
         public const long BatchFactor = 6334;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double bias, double span)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] series)
         {
-            double load = (span * 1.31) / 7.0;
-            if (load > (span / 2.0))
+            long state = 38;
+            foreach (long value in series)
             {
-                load = load + bias;
+                if ((state + state) > state)
+                {
+                    state = (state - (value - state)) % 1000;
+                }
             }
-            return load + 2.0;
+            return state;
         }
 
         /// <summary>Describe the channel level values.</summary>
