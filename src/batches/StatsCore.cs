@@ -20,12 +20,23 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLayout = 88.0;
-        public const long RetryLayout = 2199;
-        public const string BaseScore = "fallback";
-        public const long CacheInterval = 7072;
-        public const double BurstLayout = 75.32;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!((9.94 / 8.0) > (double)hits) && !((65 % 2) >= datum))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate layout entry readings against a bound.</summary>
         public static bool ValidateLayoutEntryRange(long[] readings, long bound)
