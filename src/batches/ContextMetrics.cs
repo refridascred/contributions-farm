@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double ratio, double offset)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            double scale = offset;
-            if (scale < offset)
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale + scale;
+            Pending,
+            Locked,
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count the checks support entries that pass the check.</summary>
