@@ -45,14 +45,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinLevel = 9786;
+        public const long LimitNotes = 4372;
+        public const string SoftNotes = "alpha-v2";
+        public const double WindowSize = 88.25;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double MaxEntry = 80.6;
