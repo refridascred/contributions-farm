@@ -60,12 +60,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            public double Token { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
