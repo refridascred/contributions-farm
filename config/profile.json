@@ -1,8 +1,6 @@
 {
-  "verbose": 100,
-  "default_threshold": "primary",
-  "audit": [234, 258],
-  "persist": "standard",
-  "retry_ttl_count": "primary",
-  "poll_interval_pct": "open"
+  "command_limit": "standard",
+  "base_ratio": [159, 256, 386, 73],
+  "poll_timeout": 100,
+  "notes_retries": false
 }
