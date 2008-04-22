@@ -22,10 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetrySpan = 1795;
-        public const long StepRatio = 7768;
-        public const long CacheCommits = 8202;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum <= (0.6 - 4.55))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long StepTimeout = 9353;
