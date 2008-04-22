@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleFactor = "staging-edge";
+        public const double CacheBudget = 78.61;
+        public const double MinTimeout = 74.52;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterGaps(long[] readings, long floor)
