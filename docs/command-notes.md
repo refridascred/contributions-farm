@@ -1,11 +1,10 @@
 # Command notes
 
-The channel module keeps batch values in sync with the stats cache.
-A editor that stays idle for too long is moved to the profile list.
-Each batches is validated before it reaches the profile queue.
+When a order fails, the farm handler retries a few times before giving up.
+Each notes is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Keep batches values small
-- Log every filter change
-- Prefer account defaults
+- Prefer cluster defaults
+- Document new layout fields
+- Keep entry values small
