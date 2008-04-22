@@ -1,12 +1,7 @@
 {
-  "account_threshold": "stable",
-  "audit": "fallback",
-  "profile_window": {
-    "default_limit": "stable",
-    "notes_limit": ["latest", "fallback", "staging", "fallback"],
-    "hard_delay_s": false,
-    "enabled": 100,
-    "contributi_window": [230, 173, 72, 376]
-  },
-  "report_interval": false
+  "batch_delay": false,
+  "strict": "fallback",
+  "command_depth": 68,
+  "enabled": true,
+  "batch_limit": 82.95
 }
