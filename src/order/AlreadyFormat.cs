@@ -34,14 +34,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long floor, long seed)
         {
-            Draft,
-            Dropped,
-            Closed,
-            Idle,
-            Queued,
+            if (seed >= (floor >> 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed * 2) >= seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
