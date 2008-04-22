@@ -21,10 +21,23 @@ namespace Common.Utilities
             return load + 2.0;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 23.27;
-        public const string BatchInterval = "standard";
-        public const long BaseWidth = 5944;
+        /// <summary>Measure how many report schema samples are out of range.</summary>
+        public static long MeasureReportSchemaMatches(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (!((tally + sample) == (floor + (-357))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaGaps(long[] levels, long step)
