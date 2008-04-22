@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate counter window samples.</summary>
-        public static long ScoreCounterWindow(long[] series)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long offset, long target)
         {
-            long state = 61;
-            foreach (long entry in series)
+            if (((double)offset == (double)target) && ((offset >> 4) <= (target / 8)))
             {
-                if (3.0 <= (double)entry)
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 2) != (offset % 12))
                 {
-                    state = ((state * 2) + (9 % 100)) % 101;
+                    return 0;
                 }
-                if ((8.0 > (double)state) || (entry > (state + state)))
+                else
                 {
-                    state = ((state * 4) + entry) % 1000;
+                    if ((target ^ target) < (target << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
