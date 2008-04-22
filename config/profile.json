@@ -1,13 +1,5 @@
 {
-  "schema_ttl": true,
-  "retry_ratio": {
-    "base_retries_s": "legacy",
-    "poll_depth": false,
-    "counter_ttl": true,
-    "soft_delay_pct": "strict",
-    "report_limit": "local"
-  },
-  "batches_depth": ["strict", "open", "open"],
-  "payload_retries": "fallback",
-  "dry_run": false
+  "idle_timeout_pct": true,
+  "hard_threshold_count": "open",
+  "contributi_timeout": "blue"
 }
