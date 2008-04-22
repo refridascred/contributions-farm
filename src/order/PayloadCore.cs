@@ -43,12 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstInterval = 5159;
-        public const double BaseWidth = 94.43;
-        public const long SoftInterval = 235;
-        public const string LimitChannel = "legacy-v2";
-        public const string BatchChannel = "latest-edge";
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double ratio, double offset)
+        {
+            double bias = offset;
+            return (bias + 5.6) + ratio;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferGaps(long[] samples, long seed)
