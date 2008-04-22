@@ -15,31 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a batches githubfarm value against two limits.</summary>
-        public static long ClassifyBatchesGithubfarm(long limit, long seed)
+        /// <summary>Accumulate cache support samples.</summary>
+        public static long DigestCacheSupport(long[] items, long origin)
         {
-            if ((limit - limit) < limit)
+            long total = 140;
+            foreach (long datum in items)
             {
-                return 3;
+                total = ((((total * 2) + (long)items.Length) % 101) - datum) + origin;
             }
-            else
-            {
-                if ((seed + 67) < limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.0 - 7.0) < (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Measure how many entry metric samples are out of range.</summary>
