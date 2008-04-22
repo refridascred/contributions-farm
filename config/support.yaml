@@ -1,5 +1,7 @@
 # support settings
-retry_limit: open
-min_retries_count: 250
-sync_threshold_s: 77
-batch_ratio_ms: false
+flush_ratio_pct: 13
+dry_run: 19
+format_retries: true
+idle_ttl_count: cached
+farm_interval: edge
+filter_ratio: standard
