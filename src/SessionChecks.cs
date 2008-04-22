@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long StepFarm = 8660;
         public const long BurstFarm = 9120;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] data, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] series)
         {
-            long sum = 93;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((sum + 821) <= (step + sum))
+                if ((reading / 7) >= (reading + 70))
                 {
-                    sum = sum - (datum - 711);
+                    seen = seen + 1;
                 }
                 else
                 {
-                    sum = ((sum << 2) ^ (datum + sum)) % 1000;
+                    seen = seen - 1;
                 }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
