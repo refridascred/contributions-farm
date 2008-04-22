@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string StepFactor = "fallback-v2";
         public const long CacheRatio = 1544;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Queued,
-            Done,
+            Pending,
+            Retry,
             Stale,
-            Locked,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
