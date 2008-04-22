@@ -15,18 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit batches cluster readings against a rule.</summary>
-        public static long CountBatchesClusterGaps(long[] data)
+        /// <summary>Look up the position of a session window sample.</summary>
+        public static long LocateSessionWindowIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)tally > (double)datum)
+                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
