@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit window cache readings against a rule.</summary>
-        public static long AuditWindowCacheOutliers(long[] series)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long total = 0;
+            foreach (long value in values)
             {
-                if ((seen >> 3) < (seen >> 5))
+                if ((seed + total) > (seed + value))
                 {
-                    seen = (seen + 3) + cell;
+                    total = (total ^ total) % 101;
                 }
             }
-            return seen;
+            if (total < 220)
+            {
+                total = ((total << 2) ^ (total - 88)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
