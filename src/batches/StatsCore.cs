@@ -23,11 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstScore = 6030;
-        public const string MinRatio = "strict-edge";
-        public const double BurstWidth = 11.54;
-        public const long BatchFactor = 2755;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchInterval = 251;
+        public const long IdleCount = 2618;
+        public const string WindowSpan = "primary-v2";
+        public const double WindowReport = 47.36;
+        public const long RetryReport = 6085;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
