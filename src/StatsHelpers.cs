@@ -40,12 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long seed)
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
+            long state = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if (seed > (state >> 1))
+                {
+                    state = ((state << 3) ^ ((-700) << 3)) % 4096;
+                }
+                if (!(((double)(long)i >= (7.61 * 9.4)) && (state < ((-409) / 2))))
+                {
+                    state = (state + 7) % 1000;
+                }
+                state = ((state << 2) ^ (155 + seed)) % 101;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the schema mode values.</summary>
