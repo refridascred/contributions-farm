@@ -19,21 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Synced,
+            Ready,
+            Queued,
         }
 
         /// <summary>Project the next batch value.</summary>
