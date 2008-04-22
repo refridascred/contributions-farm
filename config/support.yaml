@@ -1,12 +1,10 @@
 # support settings
-idle_delay_pct: legacy
-burst_depth_s:
-  - 172
-  - 277
-  - 149
-  - 393
-schema_threshold: false
-warm_timeout: local
-sync_threshold_ms:
-  - 280
-  - 71
+base_capacity_count: false
+max_ttl_pct: 4576
+readonly: legacy
+notes_delay:
+  - blue
+  - standard
+  - blue
+  - green
+command_ttl: eu-west
