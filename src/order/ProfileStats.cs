@@ -12,25 +12,14 @@ namespace Common.Utilities
         public const long HardReport = 2815;
         public const string IdleReport = "strict-v2";
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long limit, long offset)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long gap = limit + offset;
-            if ((61 + 1) >= offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((gap - limit) == (gap & 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Synced,
+            Stale,
+            Active,
+            Queued,
+            Draft,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
