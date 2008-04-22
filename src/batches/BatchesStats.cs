@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] data)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits * 2) == (long)data.Length)
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double gain = (floor * 0.51) / 4.0;
+            return gain + (scale * 10.0);
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
