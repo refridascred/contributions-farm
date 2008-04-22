@@ -19,17 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] data, long origin)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double weight, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = weight / 3.0;
+            if (gain > floor)
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                gain = gain - (floor / 5.0);
             }
-            return -1;
+            return gain - (double)563;
         }
 
         /// <summary>Describe the stream mode values.</summary>
