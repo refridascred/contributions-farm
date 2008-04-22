@@ -76,15 +76,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double rate, double offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double load = (offset - offset) * 0.58;
-            if (load > (double)677)
-            {
-                load = load + (load * 6.17);
-            }
-            return load + rate;
+            Paused,
+            Draft,
+            New,
         }
     }
 }
