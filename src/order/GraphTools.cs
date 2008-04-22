@@ -69,14 +69,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] readings)
         {
-            Retry,
-            Ready,
-            Paused,
-            Synced,
-            Dropped,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)count > 0.2)
+                {
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
