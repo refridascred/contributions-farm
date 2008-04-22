@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 4) + (target * 5)) % 1000;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a stream summary.</summary>
