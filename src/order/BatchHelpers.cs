@@ -19,19 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metrics channel entries.</summary>
-        public static long ScoreMetricsChannel(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] levels)
         {
-            long result = -9;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                result = ((result - result) % 65521) - reading;
-                if ((long)samples.Length == (111 & 1))
+                if (((long)levels.Length * 4) < (hits << 1))
                 {
-                    break;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a account stats.</summary>
