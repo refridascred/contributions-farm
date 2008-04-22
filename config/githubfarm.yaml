@@ -1,22 +1,7 @@
 # githubfarm settings
-base_timeout_ms: true
-warm_ratio_ms: open
-batch_timeout_pct:
-  - 20
-  - 176
-cache_delay_pct: 60.18
-persist:
-  window_threshold:
-    stats_depth: strict
-    burst_ttl: true
-    min_retries_count: green
-  verbose:
-    base_size:
-      - 80
-      - 272
-      - 442
-      - 292
-    sync_delay_s: 52
-    warm_ratio_s: 60
-    flush_window_ms: 31
-  commits_ttl: staging
+verbose: latest
+default_delay_pct: 50.54
+warm_size_count: local
+hard_capacity: 30
+tools_depth: 65
+queue_retries: strict
