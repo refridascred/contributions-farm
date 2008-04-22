@@ -19,20 +19,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long seed)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double weight, double span)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            double load = weight;
+            if (load >= (double)99)
             {
-                long gap = (state ^ seed) + (seed >> 2);
-                if ((gap + state) < (2 % 97))
-                {
-                    state = state ^ 82;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                load = load + (span * 3.4);
             }
-            return state;
+            return load + weight;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
