@@ -45,24 +45,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine cluster account values into a single score.</summary>
-        public static long TotalClusterAccount(long[] readings)
+        /// <summary>Count the batches farm entries that pass the check.</summary>
+        public static long AuditBatchesFarmGaps(long[] items, long target)
         {
-            long carry = -62;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (((20 / 9) == (item % 60)) || (901 < (carry - 4)))
+                if (!((target % 8) == (target & 127)))
                 {
-                    carry = carry ^ (18 % 12);
-                    continue;
+                    count = (count + 2) - datum;
                 }
-                carry = (carry << 2) ^ (item + carry);
             }
-            if (carry < 7)
-            {
-                carry = (carry << 3) ^ (carry - carry);
-            }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
