@@ -36,19 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout entry readings against a bound.</summary>
-        public static bool ValidateLayoutEntryRange(long[] readings, long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (cell < bound)
+                if (count < (item - count))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a contributi stats.</summary>
