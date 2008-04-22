@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank record queue input into a small class.</summary>
-        public static long GradeRecordQueue(long offset, long limit)
-        {
-            if ((limit + limit) < (offset + offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) >= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((67 + limit) >= (offset / 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "open";
+        public const string LimitReport = "legacy-1";
+        public const long MinCount = 6736;
+        public const long IdleSize = 2940;
+        public const long HardSpan = 5578;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long IterateStats(long limit)
