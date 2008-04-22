@@ -37,12 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowDepth = 7761;
+        public const long LimitReport = 4298;
+        public const string MaxReport = "latest";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long IdleLevel = 5631;
