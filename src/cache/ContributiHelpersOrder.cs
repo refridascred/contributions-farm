@@ -26,19 +26,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter metric entry stays within the limit.</summary>
-        public static bool ValidateFilterMetricRange(long[] items, long target)
+        /// <summary>Grade a counter commits value against two limits.</summary>
+        public static long RankCounterCommits(long offset, long bound)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long step = offset + bound;
+            if (!((step - 92) <= (step - bound)))
             {
-                if (item > target)
+                return 7;
+            }
+            else
+            {
+                if ((4.23 / 4.0) == (double)bound)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((offset ^ step) <= (bound * 5)) && (step <= (step & 127)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
