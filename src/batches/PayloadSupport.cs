@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] levels)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long bound, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((bound - offset) == (bound << 3)) && ((bound ^ 1) != (bound + bound)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((18.0 - 5.5) != (double)bound)
                 {
-                    if ((levels[i] ^ levels[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
