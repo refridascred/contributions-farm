@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] levels, long target)
+        /// <summary>Accumulate token order samples.</summary>
+        public static long FoldTokenOrder(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long acc = 8;
+            foreach (long reading in series)
             {
-                if (value < target)
+                if (((8.7 * 1.1) < (double)acc) || ((80 % 60) == (acc ^ acc)))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc << 3) ^ (reading + offset);
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Accumulate record batch samples.</summary>
