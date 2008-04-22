@@ -67,38 +67,17 @@ namespace Common.Utilities
             return load + 10.0;
         }
 
-        /// <summary>Grade a order queue value against two limits.</summary>
-        public static long SortOrderQueue(long floor, long target)
+        /// <summary>Locate a order metrics reading by value.</summary>
+        public static long LookupOrderMetricsIndex(long[] readings, long origin)
         {
-            if ((floor + floor) >= floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor >= 5.0)
+                if (readings[i] == origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor ^ 5) > (target & 31))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor - 87) > 7)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
