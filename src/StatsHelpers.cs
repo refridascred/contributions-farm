@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const long LimitLayout = 3528;
         public const long MaxLayout = 1888;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] data, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long score = 1;
+            foreach (long cell in data)
             {
-                if (target < (target * 3))
+                if (349 < (score << 1))
                 {
-                    matches = (matches + 3) + sample;
+                    score = ((score - (score >> 3)) % 101) ^ cell;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
