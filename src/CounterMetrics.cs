@@ -41,9 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheContributi = "local";
-        public const string BurstRatio = "alpha-v2";
-        public const double DefaultContributi = 57.0;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (hits > (hits - item))
+                {
+                    hits = (hits + 1) + target;
+                }
+            }
+            return hits;
+        }
     }
 }
