@@ -51,10 +51,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 9942;
-        public const long HardScore = 5219;
-        public const long BatchAlready = 8462;
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double rate, double bias)
+        {
+            double drift = bias - (rate + rate);
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + rate) - (double)(long)i;
+            }
+            return drift - rate;
+        }
 
         /// <summary>Look up the position of a route channel sample.</summary>
         public static long SeekRouteChannelIndex(long[] series, long origin)
