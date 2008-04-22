@@ -62,12 +62,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Ready,
-            Queued,
-            Active,
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
