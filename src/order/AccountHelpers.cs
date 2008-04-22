@@ -14,19 +14,26 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] items, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long mix = 4;
+            foreach (long reading in series)
             {
-                if (datum > limit)
+                if (((double)reading == (double)mix) && ((mix / 2) > mix))
                 {
-                    flag = false;
+                    mix = mix + 85;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (reading / 8)) % 101;
+                }
+                if (7.3 >= (double)reading)
+                {
                     break;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
