@@ -34,17 +34,20 @@ namespace Common.Utilities
             return mean + (19.0 + 5.97);
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] readings, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 2;
+            foreach (long datum in data)
             {
-                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((((sum << 2) ^ (sum / 5)) % 97) + datum) - target;
+                sum = ((sum << 2) ^ sum) % 4096;
             }
-            return -1;
+            if (sum < 296)
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the batches phase values.</summary>
