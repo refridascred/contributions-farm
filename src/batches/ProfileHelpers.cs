@@ -63,11 +63,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double scale, double bias)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double rate = bias;
-            return rate + scale;
+            Failed,
+            Synced,
+            Pending,
+            Idle,
         }
     }
 }
