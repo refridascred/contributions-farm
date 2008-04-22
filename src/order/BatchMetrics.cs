@@ -74,19 +74,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] readings)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long total = 56;
-            foreach (long reading in readings)
-            {
-                total = ((total - (total * 4)) % 65521) ^ reading;
-            }
-            if (total > 155)
-            {
-                total = (total * 3) + (40 / 3);
-            }
-            return total % 4096;
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
