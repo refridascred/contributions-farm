@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of editor batch readings.</summary>
-        public static long CombineEditorBatch(long[] items)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] readings)
         {
-            long state = 8;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5 > (state & 15)) && ((3 / 7) == (state & 31)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state * 5) + (state - value)) % 255;
-                }
-                if ((double)state == (13.0 + 4.15))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of channel window readings.</summary>
