@@ -25,38 +25,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Count graph batch pairs that satisfy a relation.</summary>
+        public static long OverlapGraphBatchCount(long[] values)
         {
-            long mark = 989;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value - mark) > (value / 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark - (value - value)) % 65521;
-                }
-                if (((6.6 / 4.0) > (double)mark) && ((value & 15) > 7))
-                {
-                    mark = ((mark << 2) ^ (value + mark)) % 65521;
-                }
-                if (((double)mark <= 8.56) && ((value & 3) == (mark * 4)))
-                {
-                    mark = ((mark * 2) + (mark * 5)) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 5) + value) % 65521;
-                }
-                if ((double)value > (double)mark)
-                {
-                    break;
+                    if ((values[i] + values[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark < 893)
-            {
-                mark = ((mark * 4) + (mark >> 1)) % 255;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the editor class values.</summary>
