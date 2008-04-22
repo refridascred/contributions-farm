@@ -14,20 +14,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstLevel = "standard";
+        public const long LimitScore = 6380;
+        public const double StepFactor = 75.59;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BurstMetrics = "latest-1";
