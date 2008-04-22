@@ -20,17 +20,13 @@ namespace Common.Utilities
         public const long DefaultSpan = 5004;
         public const long BatchWidth = 553;
 
-        /// <summary>Locate a buffer cache reading by value.</summary>
-        public static long LocateBufferCacheIndex(long[] levels, long limit)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Active,
+            Dropped,
         }
     }
 }
