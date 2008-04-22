@@ -16,21 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up entry command samples.</summary>
-        public static long OverlapEntryCommandCount(long[] items)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((series[i] <= offset) && ((series[i] % 3) != 0))
                 {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
