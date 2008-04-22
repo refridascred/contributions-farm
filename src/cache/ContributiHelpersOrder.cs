@@ -26,15 +26,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double weight, double offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long target)
         {
-            double bias = weight;
-            if (bias > weight)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                bias = bias + weight;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = ((score ^ ((long)i - score)) % 1000) ^ (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return bias + (offset - weight);
+            return score;
         }
     }
 }
