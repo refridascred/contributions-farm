@@ -30,21 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] >= seed)
                 {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
