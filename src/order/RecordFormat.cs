@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
