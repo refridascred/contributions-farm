@@ -48,18 +48,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] levels, long limit)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((74 + limit) >= reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryDepth = "primary-1";
+        public const string BaseQueue = "staging-edge";
+        public const string WindowQueue = "fallback-v2";
+        public const double MaxQueue = 50.98;
     }
 }
