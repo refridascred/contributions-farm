@@ -25,27 +25,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] items, long floor)
         {
-            long mix = -19;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                mix = (mix * 3) + (sample + mix);
-                if ((mix & 31) < (sample - sample))
+                if (sample >= floor)
                 {
-                    mix = (mix + (mix + sample)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ 576) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix > 4)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Hold a command record.</summary>
