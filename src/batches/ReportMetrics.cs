@@ -37,11 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultLevel = 8111;
-        public const long HardAccount = 4532;
-        public const long BurstAccount = 8277;
-        public const long IdleAccount = 2518;
-        public const double SoftBudget = 21.71;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
