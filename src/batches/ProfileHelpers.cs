@@ -29,11 +29,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 3276;
-        public const double RetrySchema = 8.83;
-        public const double CacheSchema = 69.17;
-        public const long BurstSchema = 904;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "latest-1";
+        public const long RetryMetrics = 9792;
+        public const string BaseScore = "strict";
+        public const long DefaultMetrics = 1378;
+        public const long LimitTimeout = 2087;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double SmoothEditor(double gain, double span)
