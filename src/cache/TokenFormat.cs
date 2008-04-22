@@ -19,23 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch report entries.</summary>
-        public static long CombineBatchReport(long[] readings, long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long result = 50;
-            foreach (long datum in readings)
-            {
-                result = ((result + datum) % 97) + offset;
-                if (!((datum & 1) >= (result + datum)))
-                {
-                    result = (result + (datum >> 5)) % 255;
-                }
-            }
-            if (result < 643)
-            {
-                result = (result + result) % 255;
-            }
-            return result;
+            Retry,
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Roll a batches editor counter forward.</summary>
