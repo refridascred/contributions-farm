@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long seed, long limit)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            if ((8.68 * 8.7) <= (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed - limit) > (1 + seed)) && ((double)limit >= (11.0 + 2.89)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit & 3) >= seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Dropped,
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Define support limits and defaults.</summary>
