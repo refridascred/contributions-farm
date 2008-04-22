@@ -1,5 +1,8 @@
 {
-  "idle_timeout_pct": true,
-  "hard_threshold_count": "open",
-  "contributi_timeout": "blue"
+  "verbose": 100,
+  "default_threshold": "primary",
+  "audit": [234, 258],
+  "persist": "standard",
+  "retry_ttl_count": "primary",
+  "poll_interval_pct": "open"
 }
