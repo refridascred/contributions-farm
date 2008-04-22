@@ -32,18 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 5330;
+        public const long LimitChecks = 5233;
+        public const string BaseBudget = "fallback-1";
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TallyEntry(long[] items, long seed)
