@@ -7,14 +7,13 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in green open blue standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-
-COMMAND_LIMIT=132
-log "limit is ${COMMAND_LIMIT}"
+log "ran ${count} rounds"
