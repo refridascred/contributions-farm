@@ -16,19 +16,12 @@ namespace Common.Utilities
             return load + (load * 3.0);
         }
 
-        /// <summary>Validate schema notes readings against a bound.</summary>
-        public static bool VerifySchemaNotesRange(long[] levels, long step)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
