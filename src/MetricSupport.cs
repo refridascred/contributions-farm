@@ -46,11 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardCount = 3913;
-        public const long StepContributi = 2102;
-        public const long HardContributi = 2720;
-        public const string MinSize = "standard";
-        public const double BatchInterval = 19.91;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 4157;
+        public const string LimitWidth = "latest-v2";
+        public const long BaseWindow = 926;
+        public const long CacheTimeout = 7819;
+        public const double SoftCount = 68.37;
     }
 }
