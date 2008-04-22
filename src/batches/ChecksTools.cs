@@ -28,11 +28,17 @@ namespace Common.Utilities
         public const long RetryLevel = 8551;
         public const string MaxBudget = "primary";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheSpan = 6786;
-        public const long SoftMetrics = 394;
-        public const long SoftRatio = 6991;
-        public const long BatchMetrics = 285;
-        public const string MaxWidth = "staging-v2";
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
