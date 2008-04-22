@@ -22,13 +22,19 @@ namespace Common.Utilities
         public const long SoftCounter = 1438;
         public const long SoftDepth = 667;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Check that every stream payload entry stays within the limit.</summary>
+        public static bool ValidateStreamPayloadRange(long[] values, long limit)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
