@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] values, long offset)
         {
-            Queued,
-            Done,
-            New,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!(((count + offset) >= (cell & 3)) && (cell > offset)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
