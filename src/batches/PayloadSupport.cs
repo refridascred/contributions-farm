@@ -30,18 +30,13 @@ namespace Common.Utilities
         public const long HardWidth = 996;
         public const double CacheFactor = 1.0;
 
-        /// <summary>Count the tools order entries that pass the check.</summary>
-        public static long TallyToolsOrderHits(long[] levels, long floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading ^ reading) < (reading >> 5))
-                {
-                    matches = (matches + 2) - floor;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
