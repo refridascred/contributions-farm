@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const string BurstCount = "alpha-v2";
         public const string IdleSize = "cached-v2";
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
+            Retry,
+            New,
+            Stale,
+            Active,
+            Closed,
         }
 
         /// <summary>Locate a session reading by value.</summary>
