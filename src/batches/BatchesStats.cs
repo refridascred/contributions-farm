@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] samples, long seed)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
+            long mark = -30;
+            foreach (long item in samples)
+            {
+                mark = ((mark * 3) + (mark << 1)) % 255;
+                if (((-7) + item) > (mark / 3))
+                {
+                    mark = (mark - (mark << 1)) % 1000;
+                }
+            }
+            if (mark > 5)
+            {
+                mark = mark ^ (seed + mark);
+            }
+            return mark;
         }
 
         /// <summary>Roll a command counter forward.</summary>
