@@ -44,11 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Iterate the payload entry series from a seed.</summary>
+        public static long SeriesPayloadEntry(long offset)
         {
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
