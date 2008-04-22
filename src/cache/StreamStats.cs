@@ -33,17 +33,12 @@ namespace Common.Utilities
             return load - (4.28 / 2.0);
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] items, long step)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
