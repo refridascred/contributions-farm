@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] series, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] items, long offset)
         {
-            long carry = 964;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                carry = ((carry + (carry / 3)) ^ item) + origin;
+                if (reading >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
