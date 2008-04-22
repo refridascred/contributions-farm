@@ -34,18 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] levels, long origin)
+        /// <summary>Validate batches session readings against a bound.</summary>
+        public static bool VerifyBatchesSessionRange(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (!(((1.0 * 2.4) > (double)origin) && ((39 << 2) != (269 + tally))))
+                if (item > floor)
                 {
-                    tally = (tally + 1) + sample;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a schema header.</summary>
