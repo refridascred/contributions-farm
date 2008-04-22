@@ -1,15 +1,19 @@
 {
-  "audit": ["blue", "local"],
-  "stats_retries": [273, 391, 289, 295],
-  "report_limit": {
-    "base_retries": {
-      "compress": 38.27,
-      "notes_size": "strict",
-      "session_capacity": "blue",
-      "soft_timeout_pct": 96.87,
-      "cache_ttl": true
+  "warm_limit_pct": 60,
+  "commits_size": 60,
+  "audit": {
+    "readonly": {
+      "audit": "cached",
+      "readonly": 5087,
+      "base_depth_pct": 41.22
     },
-    "burst_ttl": "primary",
-    "window_limit": ["cached", "fallback", "local"]
-  }
+    "retry_ratio_count": ["eu-west", "edge", "standard", "fallback"],
+    "channel_limit": 32,
+    "flush_depth_ms": "fallback",
+    "enabled": 25,
+    "strict": 57.43
+  },
+  "cache_limit_s": 30,
+  "sync_capacity_count": 40.26,
+  "githubfarm_retries": 15.88
 }
