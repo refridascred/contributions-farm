@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long seed, long limit)
+        /// <summary>Fold a list of editor batch readings.</summary>
+        public static long CombineEditorBatch(long[] items)
         {
-            if ((seed >> 4) > limit)
+            long state = 8;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed - (-97)) <= (seed % 2))
+                if ((5 > (state & 15)) && ((3 / 7) == (state & 31)))
                 {
-                    return 5;
+                    state = ((state * 5) + (state - value)) % 255;
                 }
-                else
+                if ((double)state == (13.0 + 4.15))
                 {
-                    return 2;
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
