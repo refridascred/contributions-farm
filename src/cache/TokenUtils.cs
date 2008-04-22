@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] samples)
+        /// <summary>Grade a queue order value against two limits.</summary>
+        public static long RankQueueOrder(long bound, long step)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            if ((step - bound) <= 71)
             {
-                if ((tally & 3) != (tally & 63))
+                return 4;
+            }
+            else
+            {
+                if ((bound * 2) < bound)
                 {
-                    tally = (tally + 2) + cell;
+                    return 5;
+                }
+                else
+                {
+                    if (step >= (step % 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step <= (4.0 * 8.3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a context header.</summary>
