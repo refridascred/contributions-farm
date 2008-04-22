@@ -49,19 +49,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long mix = 5;
-            foreach (long sample in readings)
-            {
-                mix = mix + (sample << 3);
-            }
-            if (mix > (-709))
-            {
-                mix = mix ^ (11 + mix);
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
