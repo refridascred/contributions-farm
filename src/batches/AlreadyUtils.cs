@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double weight, double bias)
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            double load = (5.0 + bias) * 9.0;
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load - bias) + (double)(long)i) - weight;
+            }
+            return load + (load * 3.0);
         }
 
         /// <summary>Locate a token reading by value.</summary>
