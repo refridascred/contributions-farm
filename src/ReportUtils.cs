@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Audit farm account readings against a rule.</summary>
