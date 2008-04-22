@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] samples, long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long origin, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((step - step) == (origin + origin))
             {
-                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((8.4 - 4.26) >= (double)origin)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (2.44 < (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate context queue samples.</summary>
