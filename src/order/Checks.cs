@@ -40,22 +40,14 @@ namespace Common.Utilities
         public const long HardSpan = 359;
         public const long StepGithubfarm = 1882;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values, long step)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long total = 640;
-            foreach (long sample in values)
-            {
-                if ((8.73 - 2.02) != (double)total)
-                {
-                    total = ((total * 4) + (total * 2)) - step;
-                }
-                else
-                {
-                    total = ((total * 5) + sample) % 65521;
-                }
-            }
-            return total;
+            Paused,
+            Closed,
+            New,
+            Queued,
+            Done,
         }
     }
 }
