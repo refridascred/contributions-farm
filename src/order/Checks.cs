@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] values, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor << 2) ^ (step << 2);
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of record stats entries.</summary>
