@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] items, long bound)
         {
-            Stale,
-            Locked,
-            Pending,
-            Closed,
-            Draft,
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
