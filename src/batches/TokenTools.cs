@@ -35,20 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] series)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] levels)
         {
-            long sum = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                sum = (sum * 4) + reading;
-                sum = (sum - sum) % 1000;
+                if (9.25 >= (double)datum)
+                {
+                    seen = seen + 3;
+                }
             }
-            if (sum > (-351))
-            {
-                sum = (sum << 3) ^ (long)series.Length;
-            }
-            return sum;
+            return seen;
         }
     }
 }
