@@ -1,7 +1,6 @@
 {
-  "token_limit": "standard",
-  "audit": 15,
-  "base_ttl": "fallback",
-  "idle_size_pct": false,
-  "githubfarm_threshold": true
+  "readonly": false,
+  "cluster_interval": 1024,
+  "hard_ratio": 1024,
+  "default_depth_count": "standard"
 }
