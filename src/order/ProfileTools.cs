@@ -52,13 +52,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Classify a order editor pair into a bucket.</summary>
+        public static long ClassifyOrderEditor(long seed, long target)
         {
-            Idle,
-            Done,
-            Queued,
-            Failed,
+            long offset = seed - target;
+            if ((double)offset <= 6.07)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target / 3) <= 308)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2 & 255) > (seed - seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
