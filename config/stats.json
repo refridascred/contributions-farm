@@ -1,6 +1,7 @@
 {
-  "idle_size_pct": "eu-west",
-  "retry_ttl_count": true,
-  "cache_retries_ms": false,
-  "audit": true
+  "compress": [113, 270, 365, 1],
+  "idle_size_pct": 7325,
+  "default_threshold": 26.79,
+  "support_threshold": 100,
+  "dry_run": [400, 7, 426, 285]
 }
