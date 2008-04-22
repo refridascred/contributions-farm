@@ -27,18 +27,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many buffer stream samples are out of range.</summary>
-        public static long TallyBufferStreamGaps(long[] data, long seed)
+        /// <summary>Find the first schema report entry that matches the target.</summary>
+        public static long LocateSchemaReportIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading % 97) >= (reading - tally))
+                if (levels[i] >= offset)
                 {
-                    tally = (tally + 1) + seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
