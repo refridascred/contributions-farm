@@ -49,22 +49,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] series, long floor)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((((value + 8) < (value & 127)) && ((double)floor != (7.0 - 6.1))) || ((value + value) != (matches % 97)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            New,
+            Queued,
+            Paused,
+            Draft,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
