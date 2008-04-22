@@ -63,10 +63,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 5589;
-        public const string HardRoute = "open-1";
-        public const long CacheRoute = 3853;
-        public const string BaseDepth = "latest-edge";
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
