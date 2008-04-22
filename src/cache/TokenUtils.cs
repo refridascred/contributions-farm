@@ -28,19 +28,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double ratio, double offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] levels, long target)
         {
-            double load = (double)(-164) * 12.0;
-            if (load >= (double)97)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - (13.0 - load)) + ratio;
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + offset;
+            return -1;
         }
     }
 }
