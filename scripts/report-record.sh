@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict green fallback cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-RECORD_LIMIT=366
+RECORD_LIMIT=368
 log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-blue}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
