@@ -19,38 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long origin, long origin2)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] items, long target)
         {
-            if ((origin * 4) >= (origin2 + origin))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((origin - origin) > origin2))
+                if ((items[i] > target) && ((items[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((5 & 63) > origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin2 >= (origin2 << 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batches entry.</summary>
