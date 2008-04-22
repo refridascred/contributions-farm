@@ -52,11 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowTimeout = 88.89;
-        public const long BatchDepth = 6819;
-        public const long DefaultScore = 7909;
-        public const double WindowLayout = 49.15;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Active,
+            Queued,
+            Dropped,
+            New,
+            Locked,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long DefaultRatio = 5421;
