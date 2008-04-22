@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] series)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
