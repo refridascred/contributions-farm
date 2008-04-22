@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftFarm = 73.57;
-        public const long DefaultInterval = 9840;
-        public const double RetryFactor = 5.88;
-        public const long CacheFarm = 7321;
-        public const string BurstRatio = "open";
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry - carry) % 65521;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long FoldCounter(long[] readings)
