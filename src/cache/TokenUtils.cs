@@ -35,18 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] values)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (!((7.7 - 13.0) >= (double)hits))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Ready,
+            Dropped,
+            Queued,
+            Pending,
         }
     }
 }
