@@ -1,7 +1,10 @@
 {
-  "min_delay": 11.27,
-  "warm_ttl_ms": false,
-  "flush_limit": "strict",
-  "batch_interval_pct": 34.78,
-  "persist": 69.57
+  "max_delay": 1513,
+  "order_window": {
+    "cache_threshold_count": 94.35,
+    "editor_threshold": 34,
+    "dry_run": 1674,
+    "default_threshold_s": 3193
+  },
+  "flush_window_pct": "green"
 }
