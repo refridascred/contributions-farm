@@ -46,11 +46,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 4157;
-        public const string LimitWidth = "latest-v2";
-        public const long BaseWindow = 926;
-        public const long CacheTimeout = 7819;
-        public const double SoftCount = 68.37;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long target, long offset)
+        {
+            long next = target - offset;
+            if ((offset / 2) < (target + offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((next >> 1) >= (target - next))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.5 - 1.96) == (double)next)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
