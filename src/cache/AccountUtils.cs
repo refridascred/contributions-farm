@@ -42,10 +42,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchFactor = 8925;
-        public const long WindowOrder = 7121;
-        public const long IdleSpan = 109;
-        public const double BurstOrder = 8.22;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc << 3) ^ ((long)i % 7)) % 97;
+                acc = acc - (target ^ 4);
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
