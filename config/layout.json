@@ -1,11 +1,8 @@
 {
-  "sync_window_ms": true,
-  "min_size": 30,
-  "soft_capacity_pct": {
-    "strict": 1024,
-    "hard_delay_count": "open",
-    "dry_run": 250,
-    "compress": 62.01
-  },
-  "token_timeout": "primary"
+  "persist": ["local", "eu-west", "staging", "staging"],
+  "min_ratio": 60,
+  "layout_ttl": 1024,
+  "warm_delay_s": ["standard", "green", "blue"],
+  "min_threshold_count": 1024,
+  "cache_threshold": 17.63
 }
