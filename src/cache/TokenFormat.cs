@@ -37,13 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Audit command stats readings against a rule.</summary>
+        public static long AuditCommandStatsGaps(long[] items, long origin)
         {
-            Dropped,
-            Closed,
-            Active,
-            Retry,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((origin * 3) == (origin << 3))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
         }
     }
 }
