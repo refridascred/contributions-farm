@@ -24,17 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] series, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((series[i] >= floor) && ((series[i] % 3) != 0))
+                if (((count + count) != (reading ^ reading)) || !((double)(long)series.Length == (5.0 * 4.7)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a format info.</summary>
