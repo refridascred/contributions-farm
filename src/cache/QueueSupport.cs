@@ -20,15 +20,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] samples, long seed)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long mix = 388;
-            foreach (long sample in samples)
-            {
-                mix = (((mix ^ (mix * 5)) % 4096) + sample) - seed;
-            }
-            return mix;
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
