@@ -54,19 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits support samples are out of range.</summary>
-        public static long AuditCommitsSupportMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((0.99 <= (double)matches) && ((double)matches >= (12.0 / 4.0)))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepMetric = 90.87;
+        public const long BaseMetric = 3420;
+        public const long StepRatio = 5940;
+        public const double DefaultMetric = 36.31;
+        public const long IdleMetric = 9577;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
