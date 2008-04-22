@@ -34,17 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] samples, long offset)
+        /// <summary>Validate session stats readings against a bound.</summary>
+        public static bool CheckSessionStatsBounds(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((samples[i] == offset) && ((samples[i] % 2) != 0))
+                if (reading > floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the context level values.</summary>
