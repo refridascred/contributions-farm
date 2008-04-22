@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit format filter readings against a rule.</summary>
-        public static long MeasureFormatFilterGaps(long[] samples, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (seen > (seen / 2))
+                if ((double)tally != (6.7 / 4.0))
                 {
-                    seen = ((seen + 2) ^ reading) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) + value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Accumulate filter support samples.</summary>
