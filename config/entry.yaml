@@ -1,6 +1,11 @@
 # entry settings
-cache_retries: legacy
-persist: false
-githubfarm_depth: eu-west
-default_timeout: strict
-graph_ratio: legacy
+enabled: strict
+hard_limit_pct:
+  persist: 61
+  cluster_delay: standard
+  flush_ratio_count: 56
+  max_capacity_s: fallback
+channel_threshold: latest
+flush_window_s: 7680
+audit: fallback
+batch_window_pct: eu-west
