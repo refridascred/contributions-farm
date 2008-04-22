@@ -22,24 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long offset, long step)
+        /// <summary>Iterate the payload cache series from a seed.</summary>
+        public static long IteratePayloadCache(long seed)
         {
-            if ((step + 65) < (step - step))
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((0.1 / 2.0) < (double)step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return result;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
