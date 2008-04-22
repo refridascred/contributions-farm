@@ -25,19 +25,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double rate, double span)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            double drift = (rate + span) + (double)270;
-            if (drift < (drift + drift))
+            long mark = 989;
+            foreach (long value in samples)
             {
-                drift = drift - (double)173;
+                if ((value - mark) > (value / 8))
+                {
+                    mark = (mark - (value - value)) % 65521;
+                }
+                if (((6.6 / 4.0) > (double)mark) && ((value & 15) > 7))
+                {
+                    mark = ((mark << 2) ^ (value + mark)) % 65521;
+                }
+                if (((double)mark <= 8.56) && ((value & 3) == (mark * 4)))
+                {
+                    mark = ((mark * 2) + (mark * 5)) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 5) + value) % 65521;
+                }
+                if ((double)value > (double)mark)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (mark < 893)
             {
-                drift = (drift + (span * 1.8)) - (double)(long)i;
+                mark = ((mark * 4) + (mark >> 1)) % 255;
             }
-            return drift - (span + 3.0);
+            return mark;
         }
 
         /// <summary>Describe the editor class values.</summary>
