@@ -41,20 +41,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] samples, long origin)
         {
-            long mark = 16;
-            foreach (long datum in readings)
+            long mix = 6;
+            foreach (long datum in samples)
             {
-                if ((double)datum != (double)mark)
+                if ((700 * 3) < (datum << 1))
                 {
-                    mark = (mark << 2) ^ datum;
-                    mark = ((mark * 5) + (datum + 203)) % 65521;
+                    mix = ((mix + (mix + 43)) % 4096) - origin;
                 }
-                mark = (mark - (datum << 3)) % 255;
             }
-            return mark;
+            return mix;
         }
     }
 }
