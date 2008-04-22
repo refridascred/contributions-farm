@@ -1,7 +1,7 @@
 {
-  "verbose": false,
-  "account_ratio": ["cached", "primary", "open"],
-  "flush_timeout_s": "eu-west",
-  "base_depth": [282, 78, 196],
-  "enabled": ["fallback", "primary", "latest", "legacy"]
+  "soft_timeout_pct": "fallback",
+  "readonly": 100,
+  "dry_run": 26,
+  "window_ratio": true,
+  "base_interval": 9880
 }
