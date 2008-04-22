@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Fold a list of account token readings.</summary>
+        public static long WeighAccountToken(long[] items, long offset)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            long carry = 4;
+            foreach (long item in items)
+            {
+                carry = carry - (offset & 3);
+                if ((item * 4) > (carry ^ offset))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a channel summary.</summary>
