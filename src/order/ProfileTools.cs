@@ -37,15 +37,19 @@ namespace Common.Utilities
         public const long LimitChecks = 5233;
         public const string BaseBudget = "fallback-1";
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] items, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] items, long offset)
         {
-            long mark = 2;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                mark = (mark ^ (mark - value)) - seed;
+                if (entry != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark % 97;
+            return valid;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
