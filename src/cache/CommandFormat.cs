@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a tools stats counter forward.</summary>
-        public static long SeriesToolsStats(long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] readings, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            long score = 52;
+            foreach (long entry in readings)
             {
-                state = ((state * 4) + (floor >> 4)) % 65521;
-                state = ((state * 2) + (long)i) % 65521;
+                if ((score >> 5) < (floor - entry))
+                {
+                    score = (score - entry) % 65521;
+                }
+                else
+                {
+                    score = (score - score) % 65521;
+                }
             }
-            return state;
+            if (score < 94)
+            {
+                score = (score - (score + score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Roll a notes contributi counter forward.</summary>
