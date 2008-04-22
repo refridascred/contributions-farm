@@ -1,6 +1,7 @@
-id,count,level,weight
-1,49.68,858,local
-2,standard,local,staging
-3,60.52,494,124
-4,1,217,latest
-5,780,77.62,445
+id,level,weight,owner
+1,legacy,blue,blue
+2,783,fallback,684
+3,71,480,234
+4,636,308,321
+5,841,43.31,961
+6,19.32,60.22,edge
