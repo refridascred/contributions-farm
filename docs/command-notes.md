@@ -1,12 +1,12 @@
 # Command notes
 
-Each cluster is validated before it reaches the tools queue.
-Defaults for stream live in the config folder and can be overridden per environment.
-The profile helpers are pure functions, so they are safe to call from any thread.
+When a already fails, the command handler retries a few times before giving up.
+Keep filter and already names short and lowercase.
+Each metric is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Validate queue input early
-- Log every farm change
-- Review context limits each release
-- Document new order fields
+- Document new session fields
+- Log every support change
+- Review farm limits each release
+- Validate filter input early
