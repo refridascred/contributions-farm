@@ -14,19 +14,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit entry cache readings against a rule.</summary>
-        public static long AuditEntryCacheMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)(long)levels.Length != (1.08 - 6.22))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultFactor = 35.56;
+        public const double BaseScore = 12.27;
+        public const long BatchBudget = 8859;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferBounds(long[] items, long floor)
