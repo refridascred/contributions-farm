@@ -1,9 +1,6 @@
 # entry settings
-min_retries_count: 250
-burst_ttl_ms: 30
-soft_interval_s: 3698
-batch_ttl_ms: false
-window_size: true
-cache_ttl:
-  - 255
-  - 230
+persist: true
+default_delay: 9198
+batch_limit: 70.41
+default_capacity_ms: 59.14
+verbose: 69.04
