@@ -28,22 +28,23 @@ namespace Common.Utilities
         public const long DefaultBudget = 8258;
         public const double HardSupport = 87.59;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] values, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long carry = -503;
+            foreach (long sample in items)
             {
-                if ((double)bound >= (double)4)
+                carry = ((carry ^ carry) % 65521) + floor;
+                if ((double)sample > (15.0 / 8.0))
                 {
-                    count = (count + 2) - datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = (carry + (70 + 27)) % 255;
                 }
             }
-            return count;
+            if (carry < 6)
+            {
+                carry = (carry + (carry / 9)) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the metrics status values.</summary>
