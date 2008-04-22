@@ -18,24 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long bound, long step)
+        /// <summary>Accumulate entry farm samples.</summary>
+        public static long TotalEntryFarm(long[] values)
         {
-            if (((9.0 * 4.0) <= (double)bound) || ((step + bound) > (step << 1)))
+            long mix = 2;
+            foreach (long entry in values)
             {
-                return 8;
+                mix = (((mix * 2) + (mix & 31)) % 1000) ^ entry;
+                mix = ((mix << 3) ^ ((-23) + mix)) % 101;
             }
-            else
-            {
-                if ((bound <= (step ^ 5)) && ((908 >> 5) == (bound % 60)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of command entries.</summary>
