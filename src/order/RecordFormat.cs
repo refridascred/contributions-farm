@@ -32,26 +32,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] data, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] readings, long target)
         {
-            long mix = 150;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((limit / 2) < (mix - 963))
+                if ((19 % 100) > seen)
                 {
-                    mix = (mix - (reading >> 4)) % 97;
-                }
-                if ((limit + mix) == (reading & 7))
-                {
-                    break;
+                    seen = ((seen + 2) + cell) - target;
                 }
             }
-            if (mix > 76)
-            {
-                mix = mix + (limit + mix);
-            }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
