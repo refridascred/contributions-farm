@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of window cluster entries.</summary>
-        public static long ScoreWindowCluster(long[] readings, long floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] series, long target)
         {
-            long sum = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((datum - 8) <= (floor & 1)))
+                if (series[i] >= target)
                 {
-                    sum = ((sum << 2) ^ (99 % 60)) % 1000;
+                    return (long)i;
                 }
             }
-            if (sum > (-47))
-            {
-                sum = (sum ^ (8 / 5)) % 101;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Roll a cache farm counter forward.</summary>
