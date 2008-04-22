@@ -29,21 +29,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] == seed)
                 {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a payload entry.</summary>
