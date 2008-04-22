@@ -22,16 +22,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long step, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            long lane = step ^ seed;
+            if (((step ^ lane) < (seed - 588)) && ((97 - seed) > 35))
             {
-                mix = (mix ^ (mix >> 1)) % 65521;
-                mix = ((mix * 3) + (long)i) % 97;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (!((lane - step) != (lane + step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (lane < (step % 60))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
