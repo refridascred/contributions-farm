@@ -19,19 +19,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] data, long limit)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long total = 70;
-            foreach (long cell in data)
-            {
-                total = (total + (cell + limit)) % 97;
-                if (cell <= (888 + total))
-                {
-                    break;
-                }
-            }
-            return total;
+            New,
+            Dropped,
+            Closed,
+            Done,
+            Ready,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
