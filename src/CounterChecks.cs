@@ -45,24 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples, long target)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long total = 141;
-            foreach (long value in samples)
-            {
-                if ((total <= value) && (40 <= (value - value)))
-                {
-                    long span = 30 >> 3;
-                    total = ((total - (72 + span)) % 101) - target;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (22 & 127)) % 255;
-                }
-                total = ((total << 3) ^ (61 / 7)) % 255;
-            }
-            return total % 1000;
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
