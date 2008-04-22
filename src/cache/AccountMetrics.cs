@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the filter contributi entries that pass the check.</summary>
-        public static long CountFilterContributiMatches(long[] data)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (1.6 >= (double)reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of account token readings.</summary>
