@@ -47,13 +47,19 @@ namespace Common.Utilities
         public const long BatchSize = 1035;
         public const string SoftBudget = "staging-edge";
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Scale a batch route figure with a bias.</summary>
+        public static double ProjectBatchRoute(double rate, double span)
         {
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            double weight = (double)(81 / 6);
+            if (weight < (span * 6.5))
+            {
+                weight = (weight + (span * 8.5)) - rate;
+            }
+            else
+            {
+                weight = weight - (double)870;
+            }
+            return weight + (7.7 * 0.1);
         }
     }
 }
