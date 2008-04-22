@@ -31,11 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double rate, double floor)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            double bias = rate;
+            if (bias >= (rate / 9.0))
+            {
+                bias = bias + (rate + floor);
+            }
+            else
+            {
+                bias = bias + 9.27;
+            }
+            return bias + (bias * 0.4);
         }
     }
 }
