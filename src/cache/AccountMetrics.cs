@@ -55,13 +55,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Active,
-            Failed,
+            Done,
+            Queued,
             Closed,
-            Idle,
         }
 
         /// <summary>Roll a batches stream counter forward.</summary>
