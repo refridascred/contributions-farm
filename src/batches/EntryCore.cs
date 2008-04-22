@@ -84,12 +84,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Idle,
-            Locked,
-            Active,
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
