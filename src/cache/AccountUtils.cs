@@ -22,11 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long offset, long step)
         {
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
+            if ((step + 65) < (step - step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((0.1 / 2.0) < (double)step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
