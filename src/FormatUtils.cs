@@ -76,14 +76,16 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            Ready,
-            Idle,
-            Synced,
-            Draft,
-            Retry,
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc + (long)i) % 255;
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
