@@ -14,21 +14,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Classify a filter layout pair into a bucket.</summary>
+        public static long BucketFilterLayout(long offset, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((76 > (offset % 10)) && ((double)offset != (5.6 * 9.1)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!(offset < (offset - offset)))
                 {
-                    if ((data[i] + data[j]) != 1)
+                    return 0;
+                }
+                else
+                {
+                    if (!((step % 5) >= step))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(26 < (step / 8)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
