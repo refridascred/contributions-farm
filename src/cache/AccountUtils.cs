@@ -26,19 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] items, long target)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            New,
+            Retry,
+            Active,
         }
     }
 }
