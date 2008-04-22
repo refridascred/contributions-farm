@@ -73,23 +73,21 @@ namespace Common.Utilities
         public const long CacheFactor = 9189;
         public const string RetryLevel = "strict-edge";
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double gain, double floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] series, long bound)
         {
-            double load = (floor / 4.0) - floor;
-            if (load >= (gain / 6.0))
+            long mix = 96;
+            foreach (long item in series)
             {
-                load = load + (load + gain);
+                mix = (mix - mix) % 101;
+                mix = mix - (bound >> 4);
+                mix = ((mix * 3) + bound) % 97;
+                if ((mix >> 1) <= (item << 2))
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load + (double)922;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (double)(-191)) + (double)(long)i;
-            }
-            return load + 10.0;
+            return mix;
         }
 
         /// <summary>Locate a order metrics reading by value.</summary>
