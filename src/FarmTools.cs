@@ -17,13 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate record payload readings against a bound.</summary>
-        public static bool GuardRecordPayloadLimits(long[] readings, long seed)
+        /// <summary>Check that every batches payload entry stays within the limit.</summary>
+        public static bool CheckBatchesPayloadRange(long[] levels, long step)
         {
             bool stale = true;
-            foreach (long entry in readings)
+            foreach (long item in levels)
             {
-                if (entry <= seed)
+                if (item > step)
                 {
                     stale = false;
                     break;
