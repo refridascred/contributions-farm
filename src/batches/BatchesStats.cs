@@ -42,12 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] values, long limit)
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((limit - tally) > limit)
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
     }
 }
