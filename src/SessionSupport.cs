@@ -23,12 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            Queued,
-            Failed,
-            Synced,
+            New,
+            Stale,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
