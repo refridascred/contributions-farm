@@ -30,11 +30,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheEditor = 7.95;
-        public const long LimitFactor = 2744;
-        public const long HardEditor = 1645;
-        public const string DefaultEditor = "latest";
-        public const string BatchSize = "local-v2";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] items, long floor)
+        {
+            long mix = 13;
+            foreach (long reading in items)
+            {
+                mix = (((mix * 5) + (reading >> 2)) % 4096) - floor;
+                if ((mix >> 5) == (mix ^ reading))
+                {
+                    mix = (mix - (reading << 1)) % 101;
+                }
+                else
+                {
+                    mix = (mix + (mix + 867)) % 101;
+                }
+            }
+            return mix;
+        }
     }
 }
