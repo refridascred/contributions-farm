@@ -48,18 +48,23 @@ namespace Common.Utilities
         public const long CacheFactor = 9189;
         public const string RetryLevel = "strict-edge";
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] samples, long limit)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double gain, double floor)
         {
-            long mix = 619;
-            foreach (long item in samples)
+            double load = (floor / 4.0) - floor;
+            if (load >= (gain / 6.0))
             {
-                if (((item / 6) > (item << 2)) || (9 <= (8 + mix)))
-                {
-                    mix = (mix + (mix - limit)) % 4096;
-                }
+                load = load + (load + gain);
             }
-            return mix % 1000;
+            else
+            {
+                load = load + (double)922;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (double)(-191)) + (double)(long)i;
+            }
+            return load + 10.0;
         }
 
         /// <summary>Grade a order queue value against two limits.</summary>
