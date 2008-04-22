@@ -1,9 +1,4 @@
 # githubfarm settings
-warm_window_count: true
-context_limit: local
-poll_timeout_s:
-  - green
-  - standard
-max_size: false
-burst_size: 69
-contributi_ttl: 500
+contributi_depth: 36.94
+default_size_ms: local
+warm_timeout: cached
