@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long target, long step)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long origin, long limit)
         {
-            if ((double)target < (0.3 * 3.6))
+            long lane = origin + limit;
+            if ((double)lane > (double)limit)
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((double)target > (double)step)
+                if ((lane & 1) >= (origin + limit))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)target < (4.0 + 1.91))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target ^ 53) < target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
