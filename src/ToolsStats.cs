@@ -37,18 +37,22 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (entry < count)
+                if (((bound / 8) == (967 % 7)) && ((7.0 + 3.1) != (double)matches))
                 {
-                    count = count + 3;
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
