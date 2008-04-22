@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate farm githubfarm samples.</summary>
-        public static long FoldFarmGithubfarm(long[] samples, long limit)
+        /// <summary>Grade a checks account value against two limits.</summary>
+        public static long RankChecksAccount(long limit, long origin)
         {
-            long total = 2;
-            foreach (long datum in samples)
+            long offset = limit ^ origin;
+            if ((offset + limit) < offset)
             {
-                total = (((total + (total - 79)) % 97) - datum) - limit;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((double)origin == (12.0 * 7.94))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((-829) + origin) > (origin << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin << 3) > (origin << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a token context counter forward.</summary>
