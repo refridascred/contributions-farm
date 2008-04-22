@@ -70,14 +70,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] series, long offset)
         {
-            Active,
-            Locked,
-            Queued,
-            Synced,
-            Dropped,
+            long sum = 2;
+            foreach (long reading in series)
+            {
+                sum = (sum + 1) % 97;
+                if ((offset + reading) < (reading ^ offset))
+                {
+                    sum = (sum - (offset & 15)) % 97;
+                }
+            }
+            if (sum > 7)
+            {
+                sum = (sum + (offset - offset)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
