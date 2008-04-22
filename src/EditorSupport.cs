@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 4096;
-        public const long RetryBatches = 4442;
-        public const long BatchLevel = 5877;
-        public const long LimitBudget = 1474;
-        public const long MaxWidth = 3035;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public double Count { get; set; }
+            public double Ratio { get; set; }
+            public double Label { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MaxDepth = 5270;
