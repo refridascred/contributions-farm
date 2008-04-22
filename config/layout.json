@@ -1,6 +1,6 @@
 {
-  "flush_retries": 18.31,
-  "audit": false,
-  "base_interval_ms": 500,
-  "min_delay": [339, 86]
+  "profile_delay": 500,
+  "cache_retries": false,
+  "batch_size_s": 2.69,
+  "entry_timeout": [161, 138, 300, 357]
 }
