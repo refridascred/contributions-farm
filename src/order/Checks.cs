@@ -29,12 +29,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardSize = 3550;
+        public const string HardSpan = "cached";
+        public const long StepFarm = 9785;
+        public const long HardTimeout = 8738;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
