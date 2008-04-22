@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
+            Done,
+            Ready,
+            Active,
             Stale,
-            Dropped,
             Pending,
         }
 
