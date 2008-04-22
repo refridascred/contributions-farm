@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a queue order value against two limits.</summary>
-        public static long RankQueueOrder(long bound, long step)
-        {
-            if ((step - bound) <= 71)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound * 2) < bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step >= (step % 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step <= (4.0 * 8.3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchScore = 5958;
+        public const string BurstCount = "alpha-v2";
+        public const string IdleSize = "cached-v2";
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
