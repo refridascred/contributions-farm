@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const long BatchToken = 8017;
         public const long SoftToken = 580;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] readings)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum <= (0.6 - 4.55))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
