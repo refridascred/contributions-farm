@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+mode="${1:-primary}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-RECORD_LIMIT=458
+for item in eu-west primary standard; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=327
 log "limit is ${RECORD_LIMIT}"
