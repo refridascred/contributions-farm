@@ -47,12 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] data, long offset)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((cell & 127) != (count + offset)) && ((0 + offset) >= (count + cell)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
