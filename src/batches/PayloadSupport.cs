@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long bound, long offset)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            if (((bound - offset) == (bound << 3)) && ((bound ^ 1) != (bound + bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((18.0 - 5.5) != (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Score { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
