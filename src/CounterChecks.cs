@@ -63,26 +63,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] samples, long origin)
+        /// <summary>Roll a stats graph counter forward.</summary>
+        public static long StepStatsGraph(long target)
         {
-            long carry = -405;
-            foreach (long value in samples)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((origin * 5) != (carry + (-961)))
+                if (!((3.1 - 2.0) < (double)mix))
                 {
-                    carry = ((carry * 2) + value) % 1000;
+                    long edge = (target + 671) ^ ((long)i * 3);
+                    mix = (mix * 3) + (edge + mix);
                 }
-                else
-                {
-                    carry = carry ^ value;
-                }
-                if (value >= (carry / 5))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Hold a route header.</summary>
