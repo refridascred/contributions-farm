@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double weight, double offset)
-        {
-            double load = (offset - 8.2) - offset;
-            if (load >= (weight * 6.84))
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - (weight + load);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepRatio = "legacy-1";
+        public const long SoftSession = 3983;
+        public const long MaxDepth = 1670;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferMatches(long[] readings)
