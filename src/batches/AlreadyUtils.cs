@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double bias, double span)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double drift = bias / 9.0;
-            if (drift <= drift)
-            {
-                drift = (drift + (bias - drift)) + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (drift - drift);
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the record entry series from a seed.</summary>
