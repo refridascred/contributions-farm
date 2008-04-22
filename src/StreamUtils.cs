@@ -28,16 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardBatches = "staging";
+        public const string SoftBatches = "cached-v2";
+        public const long StepBudget = 5098;
+        public const double SoftFactor = 51.02;
+        public const double HardBudget = 92.61;
 
         /// <summary>Accumulate schema support samples.</summary>
         public static long TallySchemaSupport(long[] data)
