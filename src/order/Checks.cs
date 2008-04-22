@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBatch = 69.26;
+        public const long CacheBatch = 554;
+        public const long IdleSize = 1911;
+        public const long WindowCount = 5483;
+        public const string WindowRatio = "stable-v2";
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
