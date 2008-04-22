@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            Ready,
+            Active,
+            Idle,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
