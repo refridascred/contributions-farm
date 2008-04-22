@@ -14,19 +14,31 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] series, long floor)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long floor, long limit)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            if ((double)97 < (double)limit)
             {
-                if (reading >= floor)
+                return 3;
+            }
+            else
+            {
+                if ((8.0 - 12.0) >= (4.0 * 9.0))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (floor > (limit << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the metrics state values.</summary>
