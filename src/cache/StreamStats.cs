@@ -21,38 +21,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a stats route value against two limits.</summary>
-        public static long SortStatsRoute(long floor, long floor2)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            if (!((double)floor2 < (15.0 - 0.3)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >> 1) < (floor >> 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor - floor) <= (floor2 / 3)) || ((floor + floor2) == (floor2 + (-191))))
+                    if ((values[i] + values[j]) == 14)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor - floor) >= floor2) || ((double)floor2 < (2.74 - 9.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of record counter readings.</summary>
