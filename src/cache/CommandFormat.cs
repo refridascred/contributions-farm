@@ -46,10 +46,9 @@ namespace Common.Utilities
         public const double RetryCount = 98.29;
 
         /// <summary>Define support limits and defaults.</summary>
-        public const double HardSupport = 8.09;
-        public const double LimitSupport = 13.19;
-        public const string SoftSupport = "strict-edge";
-        public const string StepSupport = "latest-1";
-        public const long DefaultSupport = 9546;
+        public const string WindowSpan = "local-1";
+        public const long BurstSupport = 735;
+        public const long HardSupport = 1662;
+        public const string IdleFactor = "standard-v2";
     }
 }
