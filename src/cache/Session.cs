@@ -24,11 +24,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 7574;
-        public const long MinRoute = 8504;
-        public const string WindowBudget = "legacy-v2";
-        public const long IdleRoute = 5099;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Active,
+            Dropped,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Digest a series of metric context entries.</summary>
         public static long FoldMetricContext(long[] items, long limit)
