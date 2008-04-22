@@ -25,9 +25,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 520;
-        public const double StepWidth = 47.46;
-        public const long BatchRatio = 7810;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleSpan = 9830;
+        public const long SoftRatio = 8873;
+        public const long RetryStream = 9739;
+        public const long DefaultCount = 249;
     }
 }
