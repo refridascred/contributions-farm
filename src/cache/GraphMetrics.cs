@@ -67,19 +67,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if (bound < 316)
-                {
-                    acc = (acc ^ acc) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Failed,
+            Retry,
+            Draft,
+            Stale,
         }
     }
 }
