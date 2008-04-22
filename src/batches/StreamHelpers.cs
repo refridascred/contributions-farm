@@ -30,14 +30,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long seed)
         {
-            Queued,
-            Failed,
-            Retry,
-            Idle,
-            New,
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Locate a context reading by value.</summary>
