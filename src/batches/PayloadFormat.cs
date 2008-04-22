@@ -46,17 +46,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first queue account entry that matches the target.</summary>
-        public static long LookupQueueAccountIndex(long[] series, long step)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine record values into a single score.</summary>
