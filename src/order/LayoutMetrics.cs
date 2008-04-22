@@ -18,17 +18,12 @@ namespace Common.Utilities
         public const long HardMetric = 5161;
         public const long IdleWidth = 7193;
 
-        /// <summary>Find the first account profile entry that matches the target.</summary>
-        public static long LookupAccountProfileIndex(long[] samples, long offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
     }
 }
