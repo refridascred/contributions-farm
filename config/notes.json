@@ -1,18 +1,5 @@
 {
-  "context_size": 5562,
-  "idle_ratio_ms": {
-    "dry_run": "eu-west",
-    "cache_ratio_ms": 17.16,
-    "idle_capacity_s": 1024,
-    "retry_capacity_s": {
-      "account_retries": "primary",
-      "record_depth": "open",
-      "filter_interval": 97,
-      "strict": false,
-      "default_timeout_pct": [293, 251, 137, 397],
-      "already_window": "legacy"
-    },
-    "base_ratio_ms": 71.57
-  },
-  "sync_window": ["cached", "open", "latest", "primary"]
+  "default_depth": "open",
+  "layout_threshold": "green",
+  "batch_depth": 60
 }
