@@ -31,19 +31,15 @@ namespace Common.Utilities
         public const double DefaultFactor = 50.64;
         public const long MinFormat = 4495;
 
-        /// <summary>Validate cache editor readings against a bound.</summary>
-        public static bool ValidateCacheEditorRange(long[] values, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long total = 81;
+            foreach (long sample in items)
             {
-                if (sample >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 4) + 978) ^ sample;
             }
-            return flag;
+            return total;
         }
     }
 }
