@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long target, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] samples)
         {
-            if ((seed >> 4) >= (seed << 1))
+            long state = 10;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (2 > (target % 2))
+                for (int i = 0; i < 2; i++)
                 {
-                    return 1;
+                    state = (((state * 4) + cell) % 65521) ^ (long)i;
+                    state = ((state << 2) ^ (cell << 3)) % 101;
                 }
-                else
+                if (((3.6 + 2.53) > (double)state) && (((long)samples.Length - cell) > cell))
                 {
-                    if (!((target << 2) < (target * 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    state = (state * 3) + cell;
                 }
             }
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
