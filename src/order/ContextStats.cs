@@ -44,24 +44,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank route channel input into a small class.</summary>
-        public static long SortRouteChannel(long target, long seed)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            if ((43 - 636) <= (seed & 127))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((seed * 5) < (seed * 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Dropped,
+            Failed,
+            Closed,
+            Retry,
+            Stale,
         }
     }
 }
