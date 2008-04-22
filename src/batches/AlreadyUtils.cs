@@ -31,22 +31,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 6104;
+        public const string CacheFormat = "standard-edge";
+        public const double BatchSpan = 73.87;
+        public const string MinBudget = "fallback";
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
