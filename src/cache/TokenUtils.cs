@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of cluster graph entries.</summary>
-        public static long ScoreClusterGraph(long[] items)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] readings)
         {
-            long acc = 9;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (acc >= ((-269) ^ datum))
+                if ((9.67 - 10.0) < (double)count)
                 {
-                    acc = ((acc * 2) + (acc >> 4)) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ 17) % 4096;
-                }
-                if ((datum >> 1) < (acc + 5))
-                {
-                    break;
+                    count = (count + 3) + entry;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
