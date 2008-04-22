@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long LimitAccount = 3992;
         public const long SoftAccount = 8724;
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public long Level { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
