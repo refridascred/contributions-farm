@@ -47,10 +47,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheLevel = 23.39;
-        public const double BurstReport = 54.89;
-        public const long LimitInterval = 6470;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Locked,
+            Done,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Look up the position of a checks buffer sample.</summary>
         public static long LocateChecksBufferIndex(long[] readings, long limit)
