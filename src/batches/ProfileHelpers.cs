@@ -31,22 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] levels, long step)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6 + matches) == (matches << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = ((matches + 3) ^ value) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
