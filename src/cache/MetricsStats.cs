@@ -45,15 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double ratio, double floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] values, long step)
         {
-            double gain = floor;
-            if (gain < (double)314)
+            long result = 5;
+            foreach (long entry in values)
             {
-                gain = (gain + gain) + ratio;
+                if ((result & 3) == (result - (-59)))
+                {
+                    result = ((result ^ (-59)) ^ entry) + step;
+                }
             }
-            return gain + (gain / 4.0);
+            return result % 97;
         }
     }
 }
