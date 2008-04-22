@@ -44,10 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryTimeout = 7529;
-        public const long BatchEntry = 1027;
-        public const string MaxEntry = "primary";
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long OverlapBatchesCount(long[] levels)
