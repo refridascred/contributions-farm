@@ -20,16 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a token context counter forward.</summary>
-        public static long StepTokenContext(long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] samples, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
+            long anchor = 143;
+            foreach (long entry in samples)
             {
-                carry = (carry - ((long)i - 292)) % 97;
-                carry = ((carry * 3) + (long)i) % 1000;
+                if ((20.0 / 3.0) > (double)offset)
+                {
+                    anchor = (anchor + offset) ^ entry;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
