@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public string Token { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
+            public double Label { get; set; }
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
