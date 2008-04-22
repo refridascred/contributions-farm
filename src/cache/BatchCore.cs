@@ -25,21 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = target;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((total << 3) < total))
                 {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total << 2) ^ total;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
