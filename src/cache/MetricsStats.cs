@@ -22,21 +22,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long bound, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (bound < (bound - floor))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (1 >= (floor + floor))
                 {
-                    if ((series[i] ^ series[j]) != 2)
+                    return 0;
+                }
+                else
+                {
+                    if (((3.9 / 3.0) > (double)bound) && (bound > (floor - 619)))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
