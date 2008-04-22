@@ -1,7 +1,6 @@
 # support settings
-persist: 16
-farm_limit: 3784
-retry_threshold_pct: 250
-cache_timeout_s: 19.41
-cache_ttl_ms: 250
-min_ttl_ms: stable
+account_capacity: 4357
+verbose: 34
+githubfarm_timeout: 6275
+enabled: true
+notes_threshold: true
