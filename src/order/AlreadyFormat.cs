@@ -50,22 +50,24 @@ namespace Common.Utilities
         public const double BatchSpan = 15.29;
         public const long LimitProfile = 3307;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] series, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long limit, long target)
         {
-            long score = -742;
-            foreach (long cell in series)
+            if (((7.7 + 8.4) < (double)limit) || ((target - limit) <= (target * 4)))
             {
-                if (!((5 + origin) == (score / 7)))
+                return 7;
+            }
+            else
+            {
+                if ((435 % 64) == (target & 127))
                 {
-                    score = score + origin;
+                    return 2;
                 }
                 else
                 {
-                    score = score + (cell - cell);
+                    return 1;
                 }
             }
-            return score;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
