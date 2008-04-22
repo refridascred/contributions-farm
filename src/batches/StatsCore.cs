@@ -58,15 +58,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double rate, double offset)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double ratio, double offset)
         {
-            double rate2 = rate + (rate - rate);
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = ((rate2 - rate2) - (double)(long)i) + offset;
-            }
-            return rate2 + (8.74 * 0.1);
+            double rate = 5.4;
+            return ((rate - (9.2 / 7.0)) + ratio) + offset;
         }
 
         /// <summary>Fold a list of token readings.</summary>
