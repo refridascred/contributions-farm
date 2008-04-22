@@ -27,17 +27,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a notes contributi counter forward.</summary>
-        public static long RollNotesContributi(long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result << 2) ^ limit) % 101;
-                result = ((result * 5) + limit) % 255;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            New,
+            Synced,
+            Retry,
+            Idle,
+            Draft,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
