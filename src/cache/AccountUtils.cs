@@ -22,15 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload cache series from a seed.</summary>
-        public static long IteratePayloadCache(long seed)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
