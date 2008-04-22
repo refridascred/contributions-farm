@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] readings, long offset)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Stamp { get; set; } = "";
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
