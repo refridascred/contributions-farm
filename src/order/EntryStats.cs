@@ -55,22 +55,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] series, long floor)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((floor * 3) <= (count + count)))
-                {
-                    count = (count + 1) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
