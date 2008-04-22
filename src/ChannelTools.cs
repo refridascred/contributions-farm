@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultSize = "open-edge";
+        public const long StepInterval = 5406;
+        public const long SoftAlready = 9513;
+        public const long MaxScore = 9463;
+        public const long MaxSpan = 2324;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
