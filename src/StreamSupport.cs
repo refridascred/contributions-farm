@@ -26,10 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFactor = 8789;
-        public const double DefaultFactor = 50.64;
-        public const long MinFormat = 4495;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long ScoreCache(long[] items)
