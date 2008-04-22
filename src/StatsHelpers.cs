@@ -41,21 +41,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] readings)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long offset, long offset2)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)offset2 <= 0.4)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((11.0 + 19.0) >= (double)offset)
                 {
-                    if ((readings[i] - readings[j]) > 8)
+                    return 3;
+                }
+                else
+                {
+                    if ((6.1 * 8.31) == (double)offset)
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
     }
 }
