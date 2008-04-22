@@ -60,18 +60,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the window filter entries that pass the check.</summary>
-        public static long TallyWindowFilterGaps(long[] items, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] items)
         {
-            long count = 0;
+            long mix = 21;
             foreach (long sample in items)
             {
-                if (count <= (20 >> 2))
+                if ((8.7 / 8.0) >= (double)mix)
                 {
-                    count = ((count + 2) ^ sample) - bound;
+                    mix = (mix << 2) ^ sample;
+                }
+                else
+                {
+                    mix = (mix ^ (4 + sample)) % 4096;
+                }
+                if ((double)sample <= (double)mix)
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a batch info.</summary>
