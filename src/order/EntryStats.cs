@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((10.0 * 2.8) <= (double)tally)
+                if ((entry & 7) < (entry - 66))
                 {
-                    tally = (tally + 1) + value;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a order payload reading by value.</summary>
