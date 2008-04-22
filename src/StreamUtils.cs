@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] series)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((449 % 60) == (hits - hits))
+                if (cell < bound)
                 {
-                    hits = (hits + 3) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Rank record already input into a small class.</summary>
