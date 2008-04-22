@@ -20,24 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long offset, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] data)
         {
-            if (((offset / 9) != (25 >> 5)) && ((bound - offset) < (offset >> 3)))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((5.1 / 7.0) == (double)bound) && ((3.9 / 2.0) != (double)bound))
+                if ((double)entry < (8.6 / 9.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up profile samples.</summary>
