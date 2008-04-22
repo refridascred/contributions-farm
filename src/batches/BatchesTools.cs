@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double weight, double offset)
         {
-            public bool Total { get; set; }
-            public bool Region { get; set; }
+            double load = (offset - 8.2) - offset;
+            if (load >= (weight * 6.84))
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (weight + load);
         }
 
         /// <summary>Hold a tools summary.</summary>
