@@ -33,19 +33,18 @@ namespace Common.Utilities
         public const long RetrySpan = 978;
         public const long HardSize = 180;
 
-        /// <summary>Iterate the cluster notes series from a seed.</summary>
-        public static long IterateClusterNotes(long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] data)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((2 + 59) >= origin)
+                if (!(1.54 > (double)entry) || (((double)entry < 13.0) && ((42 + entry) < (entry % 3))))
                 {
-                    mark = mark - origin;
+                    count = count + 3;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the context state values.</summary>
