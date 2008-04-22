@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] levels, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long carry = 7;
+            foreach (long datum in items)
             {
-                if ((1.4 / 4.0) != (double)sample)
+                if (!((15.0 / 6.0) <= (double)datum))
                 {
-                    hits = (hits + 3) + target;
+                    carry = carry + datum;
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
