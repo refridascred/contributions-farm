@@ -1,8 +1,6 @@
 {
-  "idle_delay": 22.21,
-  "poll_window_count": 43.92,
-  "default_capacity": "eu-west",
-  "min_limit": 14.17,
-  "idle_threshold_s": 3843,
-  "sync_depth": "strict"
+  "cluster_timeout": 86,
+  "idle_delay_count": "staging",
+  "max_limit_pct": false,
+  "readonly": "stable"
 }
