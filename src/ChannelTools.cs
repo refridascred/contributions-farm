@@ -12,28 +12,21 @@ namespace Common.Utilities
         public const long IdleSize = 2940;
         public const long HardSpan = 5578;
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((667 << 1) <= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result * 4) + (result & 127);
+                    if ((levels[i] ^ levels[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (((long)i - result) < (result / 9))
-                {
-                    result = (result - ((long)i + (long)i)) % 97;
-                    result = ((result << 2) ^ ((long)i & 127)) % 4096;
-                }
-                if ((double)59 < (double)result)
-                {
-                    result = ((result << 3) ^ 215) % 255;
-                }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Match up batches samples.</summary>
