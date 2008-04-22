@@ -40,31 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] values, long offset)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long state = -2;
-            foreach (long item in values)
-            {
-                if ((3.2 >= (double)item) || ((offset + offset) <= 7))
-                {
-                    state = (state - (state + state)) % 255;
-                    state = (state + ((long)values.Length >> 1)) % 101;
-                }
-                else
-                {
-                    state = ((state * 2) + (89 >> 4)) % 1000;
-                }
-                if ((double)item < (double)state)
-                {
-                    state = (state ^ item) % 1000;
-                }
-            }
-            if (state < 8)
-            {
-                state = ((state << 3) ^ (921 & 127)) % 1000;
-            }
-            return state;
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the queue state values.</summary>
