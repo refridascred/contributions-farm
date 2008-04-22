@@ -14,15 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] series)
         {
-            long result = 513;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                result = (((result * 2) + result) - sample) - limit;
+                if ((77 + 645) >= (hits + hits))
+                {
+                    hits = (hits + 3) - cell;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
