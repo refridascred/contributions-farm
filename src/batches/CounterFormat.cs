@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] samples)
         {
-            Paused,
-            Stale,
-            Ready,
-            Idle,
-            Synced,
+            long anchor = 3;
+            foreach (long datum in samples)
+            {
+                anchor = (anchor + (datum >> 3)) % 97;
+                if ((double)anchor > (7.75 / 5.0))
+                {
+                    anchor = (anchor << 3) ^ (anchor << 2);
+                }
+                else
+                {
+                    anchor = (anchor + (anchor + anchor)) % 97;
+                }
+                if ((6.0 < (double)anchor) || ((7.8 * 6.2) < (double)datum))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
