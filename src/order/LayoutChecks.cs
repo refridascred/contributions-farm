@@ -41,13 +41,17 @@ namespace Common.Utilities
         public const long DefaultProfile = 792;
         public const long BatchScore = 1700;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] readings, long origin)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
