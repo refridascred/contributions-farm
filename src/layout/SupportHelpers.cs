@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long target, long bound)
+        /// <summary>Fold a list of account channel readings.</summary>
+        public static long WeighAccountChannel(long[] values)
         {
-            if ((13.0 - 9.0) >= (double)bound)
+            long sum = 2;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound >> 4) >= (8 & 3)) || ((bound + target) == (bound ^ 2)))
+                if ((double)sum < 12.0)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound < (19.0 * 5.11))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = ((sum + (long)values.Length) % 97) + cell;
                 }
             }
+            if (sum < 2)
+            {
+                sum = (sum << 2) ^ 366;
+            }
+            return sum;
         }
 
         /// <summary>Hold a context header.</summary>
