@@ -1,6 +1,8 @@
 {
-  "command_limit": "standard",
-  "base_ratio": [159, 256, 386, 73],
-  "poll_timeout": 100,
-  "notes_retries": false
+  "cache_timeout": ["latest", "edge"],
+  "record_timeout": 6322,
+  "record_ratio": 8567,
+  "poll_ttl": "green",
+  "readonly": 95.59,
+  "burst_interval_ms": 965
 }
