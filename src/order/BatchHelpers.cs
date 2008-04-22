@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] samples)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long offset, long step)
         {
-            long state = 10;
-            foreach (long cell in samples)
+            long offset2 = offset + step;
+            if ((7.0 * 2.6) >= (double)offset2)
             {
-                for (int i = 0; i < 2; i++)
+                return 1;
+            }
+            else
+            {
+                if (14.0 > (double)offset)
                 {
-                    state = (((state * 4) + cell) % 65521) ^ (long)i;
-                    state = ((state << 2) ^ (cell << 3)) % 101;
+                    return 7;
                 }
-                if (((3.6 + 2.53) > (double)state) && (((long)samples.Length - cell) > cell))
+                else
                 {
-                    state = (state * 3) + cell;
+                    if ((8.0 * 6.1) <= (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
