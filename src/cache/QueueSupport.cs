@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long LimitFarm = 2400;
         public const long MinFarm = 9996;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSpan = "alpha-1";
-        public const long IdleSize = 5392;
-        public const long RetrySupport = 1720;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public double Size { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Accumulate stats payload samples.</summary>
         public static long ScoreStatsPayload(long[] samples)
