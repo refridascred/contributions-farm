@@ -26,19 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (step < cell)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardDepth = "strict-v2";
+        public const long BaseSize = 6436;
+        public const double CacheInterval = 62.29;
+        public const double WindowInterval = 37.34;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
