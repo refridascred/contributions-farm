@@ -65,10 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheBatches = 69.38;
-        public const string HardBatches = "alpha-1";
-        public const long IdleCount = 7920;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 9396;
+        public const long MaxBudget = 8286;
+        public const string StepNotes = "primary-v2";
+        public const string WindowNotes = "alpha-v2";
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
