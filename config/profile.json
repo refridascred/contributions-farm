@@ -1,6 +1,5 @@
 {
-  "audit": 79.17,
-  "editor_limit": [386, 368, 188],
-  "verbose": "cached",
-  "schema_threshold": 70.21
+  "base_interval_count": "fallback",
+  "retry_size": [338, 139, 46, 158],
+  "max_delay": 30
 }
