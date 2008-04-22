@@ -40,18 +40,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] data, long bound)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] samples, long step)
         {
-            long mark = 903;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (mark < (cell & 7))
+                if (samples[i] < step)
                 {
-                    mark = ((mark - 701) % 65521) - bound;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
