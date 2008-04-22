@@ -22,15 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
