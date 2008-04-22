@@ -1,8 +1,22 @@
 {
-  "dry_run": true,
-  "enabled": 9783,
-  "strict": "blue",
-  "persist": "latest",
-  "readonly": 8593,
-  "retry_size_s": [75, 293, 32, 376]
+  "hard_limit_count": {
+    "metric_retries": 4562,
+    "strict": [449, 57, 347],
+    "max_size": 6901,
+    "contributi_delay": {
+      "base_capacity": "stable",
+      "verbose": 500,
+      "hard_limit": [26, 272, 38]
+    },
+    "idle_retries_pct": false,
+    "soft_size_ms": "cached"
+  },
+  "readonly": 1405,
+  "idle_timeout": {
+    "warm_capacity": 38.14,
+    "verbose": "cached",
+    "command_size": "strict",
+    "burst_depth_s": ["stable", "edge"]
+  },
+  "enabled": false
 }
