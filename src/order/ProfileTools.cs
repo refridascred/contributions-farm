@@ -52,18 +52,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] readings, long step)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen + seen) != (value >> 1))
-                {
-                    seen = (seen + 1) + step;
-                }
-            }
-            return seen;
+            Idle,
+            Done,
+            Queued,
+            Failed,
         }
     }
 }
