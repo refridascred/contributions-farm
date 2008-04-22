@@ -41,15 +41,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] items)
-        {
-            long total = 81;
-            foreach (long sample in items)
-            {
-                total = ((total * 4) + 978) ^ sample;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 2.99;
+        public const string BurstFilter = "latest-1";
+        public const long LimitFilter = 9152;
     }
 }
