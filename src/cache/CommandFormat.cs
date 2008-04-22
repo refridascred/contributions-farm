@@ -55,25 +55,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long step, long offset)
-        {
-            long slot = step ^ offset;
-            if ((double)offset >= (4.2 - 7.51))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((833 & 31) <= (slot * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 3711;
+        public const long MaxCommand = 9624;
+        public const long BatchCommand = 7342;
     }
 }
