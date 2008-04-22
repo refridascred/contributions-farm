@@ -1,6 +1,4 @@
 # support settings
-account_capacity: 4357
-verbose: 34
-githubfarm_timeout: 6275
-enabled: true
-notes_threshold: true
+batch_depth: stable
+batch_capacity_count: 29.5
+order_ttl: 1.38
