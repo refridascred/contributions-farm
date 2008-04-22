@@ -48,18 +48,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] samples, long step)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long limit)
         {
-            long mix = 225;
-            foreach (long item in samples)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (((7.7 + 6.18) < (double)(long)samples.Length) && ((mix - 462) < mix))
-                {
-                    mix = ((mix - (item >> 4)) % 101) - step;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Count the window filter entries that pass the check.</summary>
