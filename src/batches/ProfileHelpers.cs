@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const string StepFactor = "fallback-v2";
         public const long CacheRatio = 1544;
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Pending,
-            Retry,
-            Stale,
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
