@@ -50,21 +50,12 @@ namespace Common.Utilities
         public const long CacheFactor = 9189;
         public const string RetryLevel = "strict-edge";
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] series, long bound)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long mix = 96;
-            foreach (long item in series)
-            {
-                mix = (mix - mix) % 101;
-                mix = mix - (bound >> 4);
-                mix = ((mix * 3) + bound) % 97;
-                if ((mix >> 1) <= (item << 2))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the batch mode values.</summary>
