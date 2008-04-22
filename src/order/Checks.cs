@@ -42,14 +42,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] levels, long offset)
         {
-            Dropped,
-            Stale,
-            Active,
-            Ready,
-            Locked,
+            long state = 511;
+            foreach (long sample in levels)
+            {
+                if (!((320 + sample) > state))
+                {
+                    state = ((state * 2) + (sample % 5)) % 4096;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (sample - sample)) % 65521;
+                }
+            }
+            if (state < 951)
+            {
+                state = state ^ (offset * 2);
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the payload mode values.</summary>
