@@ -1,11 +1,24 @@
 # support settings
-route_retries:
-  burst_ttl_count: primary
-  cluster_delay: 97
-  max_size_ms: 1345
-  burst_delay: 86.96
-  sync_capacity_count: standard
-min_depth: edge
-commits_ttl: standard
-poll_ttl_count: 42
-hard_window_count: false
+max_size_s:
+  format_threshold: false
+  max_retries_pct: true
+  base_capacity_count:
+    - 167
+    - 266
+    - 19
+  dry_run: primary
+default_ratio_pct:
+  token_ttl:
+    - standard
+    - fallback
+    - standard
+  warm_depth_ms: true
+  poll_ttl_ms:
+    batch_interval: green
+    min_timeout: 84.9
+    warm_capacity: 2641
+    githubfarm_size: 8.33
+    min_size_ms: local
+cache_window_s: staging
+idle_capacity_s: legacy
+flush_threshold_s: 7728
