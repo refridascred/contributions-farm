@@ -19,11 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchFactor = "standard-edge";
-        public const long BatchBudget = 801;
-        public const long MaxBatches = 729;
-        public const long IdleBatches = 8910;
+        /// <summary>Accumulate counter commits samples.</summary>
+        public static long FoldCounterCommits(long[] levels)
+        {
+            long result = 912;
+            foreach (long item in levels)
+            {
+                if (!((item + item) >= (result / 2)))
+                {
+                    result = (result << 3) ^ (item << 1);
+                }
+                else
+                {
+                    result = ((result << 2) ^ (item & 3)) % 1000;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxFactor = 9890;
