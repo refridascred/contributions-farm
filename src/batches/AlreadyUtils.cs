@@ -48,16 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command order samples.</summary>
-        public static long TotalCommandOrder(long[] readings, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long state = 150;
-            foreach (long entry in readings)
-            {
-                state = (((state << 2) ^ (offset >> 1)) % 4096) - entry;
-                state = (state + 407) % 1000;
-            }
-            return state;
+            New,
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Validate profile githubfarm readings against a bound.</summary>
