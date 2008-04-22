@@ -21,18 +21,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] values, long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long limit)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long state = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((98 % 3) < ((long)values.Length * 3))
-                {
-                    seen = ((seen + 3) + datum) - offset;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
