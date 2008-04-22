@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double scale, double floor)
-        {
-            double gain = (floor * 0.51) / 4.0;
-            return gain + (scale * 10.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleFactor = 8846;
+        public const string MinLevel = "primary-1";
+        public const long SoftFactor = 8678;
+        public const double SoftRoute = 45.45;
+        public const long StepRoute = 673;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long IterateCommand(long origin)
