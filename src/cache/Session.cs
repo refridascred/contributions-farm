@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] levels, long offset)
-        {
-            long mark = 8;
-            foreach (long item in levels)
-            {
-                mark = ((mark << 3) ^ ((long)levels.Length - 872)) % 1000;
-                if ((double)item < (0.8 * 3.5))
-                {
-                    mark = (mark * 3) + (offset / 3);
-                }
-            }
-            if (mark > 777)
-            {
-                mark = (mark << 3) ^ (offset ^ (-836));
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheDepth = 1368;
+        public const string BaseBudget = "fallback-1";
+        public const long BurstCount = 7390;
+        public const long MaxRoute = 2212;
 
         /// <summary>Project the next contributi value.</summary>
         public static double SmoothContributi(double gain, double span)
