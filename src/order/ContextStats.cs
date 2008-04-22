@@ -39,11 +39,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] levels, long bound)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
+            long result = 1;
+            foreach (long reading in levels)
+            {
+                if (reading < bound)
+                {
+                    result = result + bound;
+                }
+            }
+            return result;
         }
     }
 }
