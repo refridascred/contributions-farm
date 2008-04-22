@@ -35,19 +35,13 @@ namespace Common.Utilities
         public const string HardReport = "fallback";
         public const long RetryReport = 5101;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] samples, long bound)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
