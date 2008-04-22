@@ -24,39 +24,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long seed, long seed2)
+        /// <summary>Project the next command payload value.</summary>
+        public static double SmoothCommandPayload(double rate, double floor)
         {
-            long bound = seed - seed2;
-            if ((seed ^ (-300)) > (seed2 << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed2 >= 7.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed2 * 3) <= (bound + bound)) || ((seed2 / 6) <= (-779)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed2 - 859) <= (seed >> 1)) && ((seed - seed2) >= (seed2 * 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double weight = rate;
+            return (weight - (double)5) + floor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
