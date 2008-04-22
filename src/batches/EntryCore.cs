@@ -64,22 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stream metric pairs that satisfy a relation.</summary>
-        public static long OverlapStreamMetricCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheDepth = 3364;
+        public const long WindowRatio = 6332;
+        public const double StepBatches = 55.54;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
