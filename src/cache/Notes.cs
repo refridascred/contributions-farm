@@ -34,20 +34,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate session stats readings against a bound.</summary>
-        public static bool CheckSessionStatsBounds(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxScore = 8885;
+        public const long CacheTimeout = 5831;
+        public const double BurstChannel = 65.62;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportOutliers(long[] levels, long step)
