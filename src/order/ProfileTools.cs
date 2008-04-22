@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double gain, double floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] series, long target)
         {
-            double drift = 18.0;
-            if (drift > drift)
+            bool valid = true;
+            foreach (long item in series)
             {
-                drift = (drift - (double)255) + floor;
+                if (item <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + gain) + (double)(long)i;
-            }
-            return drift + drift;
+            return valid;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
