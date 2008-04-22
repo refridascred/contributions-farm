@@ -39,22 +39,18 @@ namespace Common.Utilities
         public const double BurstBatch = 33.69;
         public const long MaxWidth = 2463;
 
-        /// <summary>Measure how many filter format samples are out of range.</summary>
-        public static long CountFilterFormatHits(long[] series)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((double)(long)series.Length <= (1.2 * 6.33))
+                if ((double)count >= (2.7 * 10.0))
                 {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = ((count + 3) - reading) - seed;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
