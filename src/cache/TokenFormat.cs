@@ -23,39 +23,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long offset, long origin)
+        /// <summary>Accumulate filter support samples.</summary>
+        public static long TallyFilterSupport(long[] data)
         {
-            long step = offset + origin;
-            if ((double)offset > (double)origin)
+            long sum = 769;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step & 127) >= (origin - origin)) && ((9.7 - 6.7) <= (4.06 / 7.0)))
+                sum = (sum + (sum ^ datum)) % 101;
+                if (((-90) + datum) < (sum + datum))
                 {
-                    return 8;
+                    sum = ((sum << 2) ^ sum) % 101;
+                }
+                if ((sum - datum) >= (sum - 13))
+                {
+                    sum = (sum * 3) + (datum >> 4);
                 }
                 else
                 {
-                    if ((offset < (step * 3)) && ((origin % 97) > step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset > (double)step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    sum = (sum - (datum ^ datum)) % 97;
                 }
             }
+            return sum;
         }
 
         /// <summary>Roll a batches editor counter forward.</summary>
