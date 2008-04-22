@@ -17,38 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long seed, long bound)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            if ((bound + seed) > (262 >> 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed + bound) >= (seed / 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (8 <= (seed + seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((3.8 * 8.29) != (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Roll a batches editor counter forward.</summary>
