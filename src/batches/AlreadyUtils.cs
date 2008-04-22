@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] items, long bound)
+        /// <summary>Check that every editor buffer entry stays within the limit.</summary>
+        public static bool ValidateEditorBufferBounds(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (cell >= bound)
+                if (datum < floor)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Audit record buffer readings against a rule.</summary>
