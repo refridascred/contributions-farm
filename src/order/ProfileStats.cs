@@ -36,18 +36,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] samples)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (((sample << 2) == ((long)samples.Length << 3)) || ((sample & 63) > (sample >> 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            Draft,
+            Idle,
+            Retry,
+            New,
         }
     }
 }
