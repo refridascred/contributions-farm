@@ -19,23 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics route values into a single score.</summary>
-        public static long ScoreMetricsRoute(long[] data)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] data, long seed)
         {
-            long sum = 23;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((double)696 == (double)reading)
+                if (entry <= seed)
                 {
-                    sum = sum - (sum % 8);
-                    continue;
-                }
-                if (reading > (reading + reading))
-                {
-                    sum = ((sum * 4) + (sum >> 2)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return stale;
         }
 
         /// <summary>Describe the already state values.</summary>
