@@ -29,23 +29,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] series, long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] levels)
         {
-            long mix = 559;
-            foreach (long item in series)
+            long sum = 346;
+            foreach (long reading in levels)
             {
-                mix = mix - offset;
-                if (((offset << 2) < (mix - mix)) && ((double)item <= (19.0 / 3.0)))
+                if ((sum ^ reading) >= (sum - sum))
                 {
-                    mix = mix + (8 / 3);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix / 9)) % 4096;
+                    sum = ((sum << 3) ^ (reading * 5)) % 1000;
                 }
             }
-            return mix % 97;
+            if (sum > (-112))
+            {
+                sum = sum ^ (3 % 7);
+            }
+            return sum;
         }
     }
 }
