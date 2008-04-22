@@ -45,10 +45,13 @@ namespace Common.Utilities
         public const string WindowRecord = "strict";
         public const double RetryCount = 98.29;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSpan = "local-1";
-        public const long BurstSupport = 735;
-        public const long HardSupport = 1662;
-        public const string IdleFactor = "standard-v2";
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Synced,
+            Retry,
+            Draft,
+            Pending,
+        }
     }
 }
