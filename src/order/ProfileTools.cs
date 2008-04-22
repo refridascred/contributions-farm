@@ -61,13 +61,24 @@ namespace Common.Utilities
         public const double DefaultMetric = 36.31;
         public const long IdleMetric = 9577;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long origin)
         {
-            New,
-            Ready,
-            Stale,
-            Pending,
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                long span = 49;
+                if ((462 < (mix % 97)) && ((31 - span) < mix))
+                {
+                    continue;
+                }
+                else
+                {
+                    span = (span ^ mix) % 97;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
