@@ -1,10 +1,5 @@
 {
-  "max_delay": 1513,
-  "order_window": {
-    "cache_threshold_count": 94.35,
-    "editor_threshold": 34,
-    "dry_run": 1674,
-    "default_threshold_s": 3193
-  },
-  "flush_window_pct": "green"
+  "min_interval_count": true,
+  "min_ratio": true,
+  "stream_threshold": 4.55
 }
