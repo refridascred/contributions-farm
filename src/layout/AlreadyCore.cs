@@ -30,26 +30,12 @@ namespace Common.Utilities
         public const long CacheOrder = 1897;
         public const long SoftOrder = 6828;
 
-        /// <summary>Fold a list of booking readings.</summary>
-        public static long DigestBooking(long[] items, long floor)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long anchor = 98;
-            foreach (long entry in items)
-            {
-                if ((entry - (long)items.Length) != (anchor + floor))
-                {
-                    anchor = (anchor + (anchor + anchor)) % 101;
-                }
-                if ((anchor + 9) <= (455 - 4))
-                {
-                    break;
-                }
-            }
-            if (anchor > (-4))
-            {
-                anchor = (anchor - floor) % 4096;
-            }
-            return anchor;
+            public bool Score { get; set; }
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
