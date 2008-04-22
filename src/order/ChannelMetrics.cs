@@ -17,38 +17,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long step, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long limit)
         {
-            if ((double)limit == (4.71 / 3.0))
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit / 6) == (step & 7))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 8;
+                    anchor = (anchor - (anchor * 3)) ^ (long)i2;
+                    anchor = (anchor + (anchor * 4)) % 97;
                 }
-                else
-                {
-                    if (!((step % 12) > (step + step)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step / 5) >= (limit - limit)) && ((4.0 / 8.0) > (double)step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
