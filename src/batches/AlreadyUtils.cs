@@ -38,10 +38,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 3711;
-        public const double BatchWidth = 42.5;
-        public const string MinCommits = "alpha-edge";
-        public const string DefaultScore = "legacy-edge";
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
