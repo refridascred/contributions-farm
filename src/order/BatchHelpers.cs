@@ -20,15 +20,25 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long seed, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            long diff = seed + floor;
+            if (((-43) / 8) < (diff * 5))
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (!(diff <= (seed / 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
