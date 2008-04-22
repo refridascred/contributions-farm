@@ -49,14 +49,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] data, long offset)
         {
-            Idle,
-            New,
-            Queued,
-            Paused,
-            Draft,
+            long anchor = 320;
+            foreach (long cell in data)
+            {
+                if ((cell / 4) == (38 - offset))
+                {
+                    anchor = (anchor + (6 << 3)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor - offset) % 4096;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
