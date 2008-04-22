@@ -34,26 +34,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] levels, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] values)
         {
-            long state = 511;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((320 + sample) > state))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state * 2) + (sample % 5)) % 4096;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (sample - sample)) % 65521;
+                    if ((values[i] - values[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state < 951)
-            {
-                state = state ^ (offset * 2);
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
