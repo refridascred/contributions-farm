@@ -30,23 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] items, long floor)
+        /// <summary>Measure how many checks already samples are out of range.</summary>
+        public static long TallyChecksAlreadyHits(long[] data, long bound)
         {
-            long mix = 13;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long datum in data)
             {
-                mix = (((mix * 5) + (reading >> 2)) % 4096) - floor;
-                if ((mix >> 5) == (mix ^ reading))
+                if (!(bound >= (datum >> 3)))
                 {
-                    mix = (mix - (reading << 1)) % 101;
-                }
-                else
-                {
-                    mix = (mix + (mix + 867)) % 101;
+                    count = count + 1;
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
