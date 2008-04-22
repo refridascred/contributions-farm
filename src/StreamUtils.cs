@@ -28,19 +28,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] values, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Accumulate schema support samples.</summary>
