@@ -26,19 +26,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Compare every pair of layout format readings.</summary>
+        public static long MatchLayoutFormatCount(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score ^ ((long)i - score)) % 1000) ^ (long)i2;
+                    if ((levels[i] + levels[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return hits;
         }
     }
 }
