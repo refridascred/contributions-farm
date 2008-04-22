@@ -39,10 +39,22 @@ namespace Common.Utilities
             return mean + (span / 2.0);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheDepth = 3364;
-        public const long WindowRatio = 6332;
-        public const double StepBatches = 55.54;
+        /// <summary>Fold a list of metrics notes readings.</summary>
+        public static long FoldMetricsNotes(long[] data)
+        {
+            long mix = 40;
+            foreach (long cell in data)
+            {
+                mix = mix + (cell % 7);
+                mix = mix + (cell + cell);
+                mix = ((mix << 2) ^ cell) % 255;
+                if ((mix + mix) <= cell)
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
