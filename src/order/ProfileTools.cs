@@ -35,15 +35,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two channel batch measurements.</summary>
-        public static double AdjustChannelBatch(double bias, double offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            double bias2 = offset;
-            if (bias2 >= bias2)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                bias2 = (bias2 - 3.69) - bias;
+                if ((6.8 * 0.4) == (double)seed)
+                {
+                    result = ((result * 2) + (result % 100)) % 4096;
+                }
+                else
+                {
+                    result = (result << 2) ^ (result + seed);
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return bias2 + (double)(-6);
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
