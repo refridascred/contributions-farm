@@ -1,5 +1,6 @@
 {
-  "hard_size": ["cached", "staging", "legacy", "green"],
-  "sync_retries_s": "eu-west",
-  "poll_threshold_count": [109, 91, 58, 428]
+  "warm_depth": 58.61,
+  "dry_run": ["standard", "edge", "strict", "fallback"],
+  "burst_depth_ms": [92, 456],
+  "hard_capacity_count": "legacy"
 }
