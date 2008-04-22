@@ -1,41 +1,19 @@
 # support settings
-commits_ratio: 16.06
-batch_limit_ms:
-  batch_window:
-    - 303
-    - 397
-  strict: 6619
-  verbose: 74.34
-  checks_limit:
-    - blue
-    - strict
-    - standard
-  idle_limit_ms:
-    soft_retries_count:
-      - staging
-      - stable
-    buffer_threshold: fallback
-    compress: 60
-    poll_ttl_s: 35.35
-    retry_size_ms: 6155
-  min_threshold: 14.44
-record_ratio:
-  layout_interval: true
-  retry_delay_ms:
-    command_limit: fallback
-    enabled: false
-    support_timeout:
-      - green
-      - blue
-    base_ratio_pct:
-      - standard
-      - standard
-      - green
-    persist: 1166
-    strict: 1.16
-  cluster_capacity: 60
-  poll_delay: 78.9
-  cache_depth_ms: fallback
-sync_threshold_pct: legacy
-route_threshold: 9860
-hard_interval: 56
+verbose: eu-west
+profile_capacity:
+  burst_capacity_s: staging
+  route_interval: 1024
+  base_limit_pct: legacy
+  session_ratio: 6.63
+  warm_capacity_ms: fallback
+  min_delay_pct: 1463
+buffer_retries:
+  counter_delay:
+    - 249
+    - 103
+  default_ratio: 4
+  soft_ttl_s:
+    flush_retries: 1096
+    sync_threshold_count: cached
+    dry_run: 51.97
+  commits_capacity: false
