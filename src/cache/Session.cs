@@ -43,15 +43,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] data, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] levels)
         {
-            long mix = 84;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                mix = (((mix << 3) ^ floor) % 65521) + item;
+                if (!(((reading - 27) < (reading / 4)) || ((seen & 15) != (seen * 2))))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
