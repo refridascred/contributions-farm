@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long step)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                long prev = (anchor + 95) + (step - step);
-                if (step >= (step >> 4))
+                if (sum >= ((long)i + (long)i))
                 {
-                    continue;
+                    sum = (sum * 3) + (limit % 3);
                 }
-                else
-                {
-                    anchor = anchor + (prev - anchor);
-                    anchor = anchor - (step * 2);
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Locate a entry channel reading by value.</summary>
