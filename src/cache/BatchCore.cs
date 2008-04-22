@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] values)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            long anchor = -1;
+            foreach (long cell in values)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if (!((cell % 7) > (cell / 8)))
+                {
+                    anchor = (anchor * 3) + (756 >> 3);
+                }
             }
-            return mark;
+            return anchor % 1000;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
