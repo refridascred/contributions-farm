@@ -21,12 +21,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] values, long offset)
         {
-            Idle,
-            Locked,
-            Active,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((98 % 3) < ((long)values.Length * 3))
+                {
+                    seen = ((seen + 3) + datum) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
