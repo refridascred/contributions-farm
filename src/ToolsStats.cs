@@ -12,23 +12,39 @@ namespace Common.Utilities
         public const long BaseMetric = 8116;
         public const long SoftMetric = 7012;
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double rate, double offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long limit, long origin)
         {
-            double drift = offset;
-            if (drift < offset)
+            long gap = limit + origin;
+            if (((5.1 + 2.5) < (8.0 / 6.0)) || ((gap + limit) < (limit << 1)))
             {
-                drift = (drift - drift) + rate;
+                return 7;
             }
             else
             {
-                drift = drift - offset;
+                if ((origin & 7) >= (1 >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (gap < (gap << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin < gap)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (12.0 / 5.0)) + (double)(long)i;
-            }
-            return drift + (offset + offset);
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
