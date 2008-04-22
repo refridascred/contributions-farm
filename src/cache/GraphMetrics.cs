@@ -72,13 +72,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            long total = 79;
+            foreach (long entry in readings)
+            {
+                total = (total + (total << 2)) % 4096;
+                total = ((total << 2) ^ (entry + 16)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the context state values.</summary>
