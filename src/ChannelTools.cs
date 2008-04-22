@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the already context entries that pass the check.</summary>
-        public static long TallyAlreadyContextMatches(long[] data, long limit)
+        /// <summary>Locate a payload order reading by value.</summary>
+        public static long FindPayloadOrderIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches < (long)data.Length)
+                if (items[i] > bound)
                 {
-                    matches = ((matches + 1) + reading) - limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
