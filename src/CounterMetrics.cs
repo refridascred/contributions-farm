@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double ratio, double offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] series, long offset)
         {
-            double scale = (ratio - offset) / 2.0;
-            if (scale < (ratio * 19.0))
+            bool ready = true;
+            foreach (long datum in series)
             {
-                scale = scale - 14.0;
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + ratio;
-            }
-            return scale + (offset / 9.0);
+            return ready;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
