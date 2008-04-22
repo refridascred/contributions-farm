@@ -57,23 +57,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] readings)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long step, long target)
         {
-            long acc = 43;
-            foreach (long value in readings)
+            long cur = step ^ target;
+            if ((step >= (step >> 5)) || ((7.2 * 9.88) >= (double)step))
             {
-                acc = (acc * 3) + (73 & 255);
-                if (((double)acc != (12.0 * 9.0)) || (211 < acc))
+                return 7;
+            }
+            else
+            {
+                if ((522 + cur) > cur)
                 {
-                    acc = (acc << 3) ^ (value << 1);
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (acc < 0)
-            {
-                acc = acc + (5 * 3);
-            }
-            return acc;
         }
 
         /// <summary>Project the next commits schema value.</summary>
