@@ -33,26 +33,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] data, long origin)
         {
-            long acc = 492;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((9.52 + 7.06) <= (double)acc)
+                if ((origin ^ origin) <= (origin * 2))
                 {
-                    acc = ((acc * 4) + (value - value)) % 97;
-                }
-                if (acc < (value + acc))
-                {
-                    break;
+                    tally = (tally + 3) + value;
                 }
             }
-            if (acc < 208)
-            {
-                acc = (acc * 3) + acc;
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
