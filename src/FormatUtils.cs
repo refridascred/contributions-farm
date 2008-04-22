@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double weight, double floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double mean = (double)(736 * 3);
-            if (mean < (double)678)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + (floor - mean);
-            }
-            return mean + (weight + weight);
+            Synced,
+            Pending,
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
