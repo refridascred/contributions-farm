@@ -13,15 +13,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double weight, double span)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long origin, long floor)
         {
-            double load = weight;
-            if (load >= (double)99)
+            if ((floor >> 2) > (830 << 2))
             {
-                load = load + (span * 3.4);
+                return 3;
             }
-            return load + weight;
+            else
+            {
+                if (794 < (origin >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((4.8 * 2.9) < (double)origin) && ((origin / 4) < floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank graph input into a small class.</summary>
