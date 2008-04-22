@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] series, long bound)
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
+            long acc = 27;
+            foreach (long item in series)
+            {
+                acc = ((acc + (acc & 63)) % 1000) ^ item;
+            }
+            if (acc > (-4))
+            {
+                acc = (acc * 3) + (bound % 12);
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
