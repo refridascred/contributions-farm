@@ -12,39 +12,26 @@ namespace Common.Utilities
         public const double WindowLayout = 92.17;
         public const long MaxLayout = 9085;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long step, long seed)
+        /// <summary>Combine entry stats values into a single score.</summary>
+        public static long CombineEntryStats(long[] samples)
         {
-            long next = step ^ seed;
-            if ((next % 97) > (seed - seed))
+            long mark = 93;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((next + next) == (next ^ 8))
+                if ((double)mark == (4.44 - 9.98))
                 {
-                    return 1;
+                    mark = (mark * 2) + (entry << 2);
                 }
-                else
+                if (mark < (mark - 2))
                 {
-                    if ((seed & 15) > (4 % 100))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (step < (7 >> 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mark > 9)
+            {
+                mark = (mark - (mark - mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
