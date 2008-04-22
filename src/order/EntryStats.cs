@@ -36,24 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long seed, long seed2)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            if ((double)seed <= (13.0 + 7.7))
-            {
-                return 3;
-            }
-            else
-            {
-                if (seed2 > seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Offset { get; set; }
+            public double Count { get; set; }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the checks mode values.</summary>
