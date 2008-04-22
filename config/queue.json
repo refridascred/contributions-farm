@@ -1,8 +1,8 @@
 {
-  "stream_depth": ["edge", "stable", "latest"],
-  "default_ttl": 7360,
-  "support_window": 60,
-  "persist": 56,
-  "retry_retries_s": "edge",
-  "idle_depth": 500
+  "max_ttl_pct": [104, 57, 225],
+  "readonly": [256, 99],
+  "default_ttl_s": true,
+  "strict": false,
+  "filter_ratio": "stable",
+  "dry_run": false
 }
