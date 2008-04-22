@@ -1,13 +1,15 @@
 # Command notes
 
-Use notes settings to tune how often token data is refreshed.
-The counter helpers are pure functions, so they are safe to call from any thread.
+A support that stays idle for too long is moved to the batches list.
+A report that stays idle for too long is moved to the cluster list.
+Use metrics settings to tune how often notes data is refreshed.
 
-The editor module keeps session values in sync with the batches cache.
-Keep entry and tools names short and lowercase.
+A stats that stays idle for too long is moved to the support list.
+Use counter settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Log every counter change
-- Prefer batches defaults
-- Keep editor values small
+- Review buffer limits each release
+- Log every report change
+- Validate command input early
+- Keep queue values small
