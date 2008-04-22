@@ -59,39 +59,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long limit, long bound)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long step = limit + bound;
-            if ((double)limit <= 4.66)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound % 2) >= (181 - step)) || ((4.2 + 9.1) == (double)step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound <= limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound - bound) < (-776))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
