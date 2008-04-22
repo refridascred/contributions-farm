@@ -42,27 +42,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            long sum = 927;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (((sum * 3) + reading) % 65521) + (long)i;
-                    sum = ((sum * 2) + (reading - (-51))) % 4096;
-                }
-                if (8 < (sum & 1))
-                {
-                    sum = sum + (sum + sum);
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 21)
-            {
-                sum = ((sum << 3) ^ (sum ^ sum)) % 255;
-            }
-            return sum % 97;
+            return tally;
         }
     }
 }
