@@ -26,14 +26,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double scale, double bias)
         {
-            Paused,
-            Idle,
-            Locked,
-            Dropped,
-            Pending,
+            double bias2 = (double)56;
+            if (bias2 > (7.22 - bias2))
+            {
+                bias2 = ((bias2 + bias2) - scale) + bias;
+            }
+            else
+            {
+                bias2 = bias2 - (double)705;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 + 2.6;
         }
 
         /// <summary>Hold a order options.</summary>
