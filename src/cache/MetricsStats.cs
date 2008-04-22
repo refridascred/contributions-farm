@@ -21,22 +21,15 @@ namespace Common.Utilities
             return load + 2.0;
         }
 
-        /// <summary>Measure how many report schema samples are out of range.</summary>
-        public static long MeasureReportSchemaMatches(long[] items, long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long bound)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((tally + sample) == (floor + (-357))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
