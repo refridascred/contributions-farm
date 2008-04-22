@@ -20,12 +20,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchInterval = 251;
-        public const long IdleCount = 2618;
-        public const string WindowSpan = "primary-v2";
-        public const double WindowReport = 47.36;
-        public const long RetryReport = 6085;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLayout = 88.0;
+        public const long RetryLayout = 2199;
+        public const string BaseScore = "fallback";
+        public const long CacheInterval = 7072;
+        public const double BurstLayout = 75.32;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long WeighRecord(long[] values, long bound)
