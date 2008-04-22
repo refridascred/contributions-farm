@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheRatio = 71.19;
-        public const double BatchInterval = 65.53;
-        public const long BurstEditor = 6983;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
