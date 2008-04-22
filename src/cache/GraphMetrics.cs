@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long BatchFormat = 1878;
         public const long SoftFormat = 5858;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] readings)
+        /// <summary>Check that every layout format entry stays within the limit.</summary>
+        public static bool CheckLayoutFormatBounds(long[] data, long limit)
         {
-            long mix = 2;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (!((mix << 3) >= (mix + mix)))
+                if (cell <= limit)
                 {
-                    mix = (mix + mix) % 65521;
-                }
-                else
-                {
-                    mix = mix ^ (cell & 31);
+                    ok = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return ok;
         }
 
         /// <summary>Define context limits and defaults.</summary>
