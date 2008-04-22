@@ -33,10 +33,14 @@ namespace Common.Utilities
         public const string DefaultInterval = "legacy";
         public const long HardStream = 4475;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitTimeout = 3756;
-        public const double WindowSpan = 55.14;
-        public const string LimitSpan = "fallback";
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
