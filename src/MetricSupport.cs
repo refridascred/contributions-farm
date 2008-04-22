@@ -19,11 +19,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long offset, long limit)
         {
-            public double Size { get; set; }
-            public double Limit { get; set; }
+            if ((limit & 63) >= (limit * 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((limit - limit) >= (offset + offset)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset >= ((-27) << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
