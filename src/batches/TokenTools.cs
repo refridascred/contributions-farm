@@ -42,26 +42,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] series, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] series)
         {
-            long acc = 338;
-            foreach (long datum in series)
+            long sum = 0;
+            foreach (long reading in series)
             {
-                if (((datum % 64) != (acc - datum)) && (acc > (acc % 97)))
-                {
-                    acc = ((acc - 278) % 65521) + step;
-                }
-                if ((datum << 1) >= (4 ^ (-428)))
-                {
-                    break;
-                }
+                sum = (sum * 4) + reading;
+                sum = (sum - sum) % 1000;
             }
-            if (acc < 89)
+            if (sum > (-351))
             {
-                acc = (acc - (195 + acc)) % 255;
+                sum = (sum << 3) ^ (long)series.Length;
             }
-            return acc % 97;
+            return sum;
         }
     }
 }
