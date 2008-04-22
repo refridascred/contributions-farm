@@ -23,19 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double scale, double bias)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            double weight = (double)801 / 4.0;
-            if (weight > bias)
+            long mix = 11;
+            foreach (long item in readings)
             {
-                weight = weight + bias;
+                mix = ((mix - (127 & 1)) % 97) + item;
+                if ((double)mix > (8.7 * 9.0))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + scale) + (double)(long)i;
-            }
-            return weight + (double)6;
+            return mix % 97;
         }
 
         /// <summary>Hold a command stats.</summary>
