@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double gain, double bias)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] samples)
         {
-            double gain2 = bias;
-            return gain2 + (gain - gain);
+            long score = 38;
+            foreach (long sample in samples)
+            {
+                if (((7 * 4) >= score) && ((6.75 + 0.4) == (double)sample))
+                {
+                    score = score ^ (score ^ score);
+                }
+                else
+                {
+                    score = ((score * 2) + (sample / 8)) % 97;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
