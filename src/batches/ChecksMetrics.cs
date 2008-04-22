@@ -67,21 +67,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count record counter pairs that satisfy a relation.</summary>
-        public static long CompareRecordCounterCount(long[] values)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Active,
+            Queued,
+            Locked,
         }
     }
 }
