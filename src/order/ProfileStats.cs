@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine cache commits values into a single score.</summary>
-        public static long DigestCacheCommits(long[] values)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long floor, long offset)
         {
-            long carry = 3;
-            foreach (long value in values)
+            long delta = floor - offset;
+            if (offset < (delta - floor))
             {
-                if ((carry + carry) < value)
+                return 5;
+            }
+            else
+            {
+                if (((offset + delta) <= (delta % 8)) && (30 < (offset - floor)))
                 {
-                    carry = (carry - (carry % 64)) % 101;
+                    return 0;
+                }
+                else
+                {
+                    if ((6.0 * 4.61) <= (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (delta <= offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Compare every pair of format profile readings.</summary>
