@@ -34,14 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
+            Dropped,
             Retry,
-            Synced,
-            Queued,
-            Ready,
-            Pending,
+            Active,
         }
 
         /// <summary>Hold a filter header.</summary>
