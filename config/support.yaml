@@ -1,11 +1,7 @@
 # support settings
-base_threshold_ms: open
-dry_run: true
-persist: legacy
-batch_timeout_ms: 46.35
-warm_threshold_s:
-  - stable
-  - green
-  - fallback
-  - edge
-payload_depth: 45.83
+persist: 16
+farm_limit: 3784
+retry_threshold_pct: 250
+cache_timeout_s: 19.41
+cache_ttl_ms: 250
+min_ttl_ms: stable
