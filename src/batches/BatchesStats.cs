@@ -41,39 +41,23 @@ namespace Common.Utilities
             return drift - (span + 3.0);
         }
 
-        /// <summary>Grade a report contributi value against two limits.</summary>
-        public static long SortReportContributi(long target, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            long edge = target + origin;
-            if (((origin ^ origin) < (86 + edge)) || ((double)origin > (5.25 - 8.5)))
+            long sum = 5;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin < (double)target)
+                sum = (sum + item) % 1000;
+                for (int i = 0; i < 8; i++)
                 {
-                    return 3;
+                    sum = ((sum << 3) ^ ((long)i - item)) % 1000;
                 }
-                else
+                if ((item * 5) >= (item << 1))
                 {
-                    if (target <= (edge ^ target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (259 < (target / 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    sum = sum ^ (sum - sum);
                 }
             }
+            return sum;
         }
     }
 }
