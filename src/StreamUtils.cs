@@ -57,15 +57,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 463;
+        public const long BatchEditor = 834;
+        public const long RetryEditor = 1461;
     }
 }
