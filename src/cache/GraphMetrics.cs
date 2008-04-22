@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double scale, double span)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] values, long offset)
         {
-            double ratio = scale;
-            if (ratio <= (ratio * 7.31))
+            long state = -95;
+            foreach (long sample in values)
             {
-                ratio = ratio - (ratio * 8.9);
+                state = ((state - (sample >> 3)) % 4096) + offset;
             }
-            return ratio - (span - scale);
+            if (state < 85)
+            {
+                state = (state - (state ^ 73)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
