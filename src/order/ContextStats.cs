@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double rate, double offset)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] series, long seed)
         {
-            double gain = rate;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain + (double)(long)i) - offset;
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (double)5;
+            return -1;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
