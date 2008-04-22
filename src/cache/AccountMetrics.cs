@@ -28,36 +28,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank profile cache input into a small class.</summary>
-        public static long GradeProfileCache(long bound, long bound2)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long floor, long floor2)
         {
-            if (!(bound < (bound & 127)))
+            long offset = floor - floor2;
+            if ((floor2 ^ offset) >= (floor2 / 6))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((double)bound != (17.0 * 7.0))
+                if ((floor2 >> 4) >= (offset * 2))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if ((83 - bound2) < (bound2 % 100))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (double)16)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
