@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every metric already entry stays within the limit.</summary>
-        public static bool VerifyMetricAlreadyLimits(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 4096;
+        public const long RetryBatches = 4442;
+        public const long BatchLevel = 5877;
+        public const long LimitBudget = 1474;
+        public const long MaxWidth = 3035;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MaxDepth = 5270;
