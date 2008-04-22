@@ -42,11 +42,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Classify a counter metric pair into a bucket.</summary>
+        public static long GradeCounterMetric(long target, long origin)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            if (((3.24 + 3.78) >= (double)origin) && (origin > (206 / 9)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((origin & 7) > origin) || ((origin % 97) > origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target <= (origin % 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin + target) < origin) && (10.0 >= (double)origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a account reading.</summary>
