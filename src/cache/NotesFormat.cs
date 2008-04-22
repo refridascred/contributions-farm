@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count layout queue pairs that satisfy a relation.</summary>
-        public static long PairLayoutQueueCount(long[] values)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 813;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (score - (score + floor)) - reading;
             }
-            return count;
+            return score % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
