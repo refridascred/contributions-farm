@@ -72,12 +72,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] values, long offset)
         {
-            Stale,
-            Dropped,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
