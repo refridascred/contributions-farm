@@ -1,15 +1,5 @@
 {
-  "soft_ttl": 74.11,
-  "filter_limit": {
-    "max_limit_ms": {
-      "idle_retries": false,
-      "base_ttl": ["primary", "blue"],
-      "idle_window_count": 15.6,
-      "farm_depth": 87.12
-    },
-    "base_interval_ms": 90,
-    "default_ratio_count": 2038
-  },
-  "batch_ttl_ms": [449, 176, 431],
-  "dry_run": "strict"
+  "window_window": 22,
+  "audit": 31,
+  "burst_delay_pct": false
 }
