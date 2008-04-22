@@ -20,12 +20,17 @@ namespace Common.Utilities
         public const long DefaultSpan = 5004;
         public const long BatchWidth = 553;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Locate a buffer cache reading by value.</summary>
+        public static long LocateBufferCacheIndex(long[] levels, long limit)
         {
-            public double Region { get; set; }
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
