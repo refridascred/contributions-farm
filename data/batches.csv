@@ -1,6 +1,10 @@
-id,token,owner,region
-1,181,676,83.84
-2,open,666,321
-3,381,107,34.04
-4,46.39,edge,125
-5,610,standard,287
+id,weight,label,owner
+1,legacy,eu-west,645
+2,45.29,480,standard
+3,9.51,19.87,411
+4,12.15,legacy,730
+5,95.31,staging,7.01
+6,98.05,816,fallback
+7,9.63,6.96,open
+8,3.42,105,primary
+9,121,371,917
