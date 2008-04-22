@@ -19,21 +19,15 @@ namespace Common.Utilities
         public const double MaxWidth = 13.75;
         public const long BurstSize = 920;
 
-        /// <summary>Compare every pair of order stream readings.</summary>
-        public static long OverlapOrderStreamCount(long[] values)
+        /// <summary>Iterate the schema githubfarm series from a seed.</summary>
+        public static long StepSchemaGithubfarm(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Match up entry samples.</summary>
