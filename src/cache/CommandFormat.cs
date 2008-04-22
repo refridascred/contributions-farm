@@ -55,13 +55,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long step, long offset)
         {
-            Synced,
-            Retry,
-            Draft,
-            Pending,
+            long slot = step ^ offset;
+            if ((double)offset >= (4.2 - 7.51))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((833 & 31) <= (slot * 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
