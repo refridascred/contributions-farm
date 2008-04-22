@@ -51,13 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] levels, long target)
         {
-            Dropped,
-            Closed,
-            Locked,
-            Done,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!!((cell << 3) < (tally ^ 893)))
+                {
+                    tally = (tally + 3) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the channel status values.</summary>
