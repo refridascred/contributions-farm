@@ -45,18 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats payload samples.</summary>
-        public static long ScoreStatsPayload(long[] samples)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] samples, long seed)
         {
-            long sum = 8;
-            foreach (long item in samples)
+            long mix = 388;
+            foreach (long sample in samples)
             {
-                if (11.0 < (double)item)
-                {
-                    sum = (sum + (item + 9)) % 4096;
-                }
+                mix = (((mix ^ (mix * 5)) % 4096) + sample) - seed;
             }
-            return sum;
+            return mix;
         }
     }
 }
