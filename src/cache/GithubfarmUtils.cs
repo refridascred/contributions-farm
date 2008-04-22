@@ -68,27 +68,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] readings, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long seed)
         {
-            long result = 3;
-            foreach (long reading in readings)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                result = (result - (reading * 3)) % 97;
-                if ((double)limit >= (double)result)
-                {
-                    result = (result + (6 * 4)) % 65521;
-                }
-                else
-                {
-                    result = (result - (result % 10)) % 65521;
-                }
+                state = state ^ (seed * 2);
+                state = ((state * 3) + (long)i) % 101;
             }
-            if (result < 39)
-            {
-                result = result + result;
-            }
-            return result % 1000;
+            return state;
         }
     }
 }
