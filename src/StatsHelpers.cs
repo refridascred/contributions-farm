@@ -16,11 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleTimeout = 5584;
-        public const string CacheScore = "stable-edge";
-        public const long IdleInterval = 9179;
-        public const long WindowReport = 2899;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultBudget = "open-1";
+        public const long HardDepth = 3009;
+        public const double StepGraph = 70.43;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchTimeout = 6153;
