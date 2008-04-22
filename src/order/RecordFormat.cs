@@ -51,18 +51,27 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of graph context entries.</summary>
-        public static long ScoreGraphContext(long[] values)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] items, long target)
         {
-            long state = 21;
-            foreach (long datum in values)
+            long anchor = 48;
+            foreach (long datum in items)
             {
-                if (!((long)values.Length != (state + state)))
+                anchor = (anchor ^ (159 - 8)) % 255;
+                for (int i = 0; i < 10; i++)
                 {
-                    state = (state + (datum ^ state)) % 65521;
+                    anchor = (((anchor << 2) ^ anchor) % 101) ^ (long)i;
+                }
+                if (((8.9 / 7.0) < (double)datum) && ((target >> 1) == (3 - anchor)))
+                {
+                    anchor = (anchor ^ (datum / 9)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (target - datum);
                 }
             }
-            return state % 4096;
+            return anchor;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
