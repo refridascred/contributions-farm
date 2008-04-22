@@ -20,13 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Stale,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstCount = 1457;
+        public const double WindowOrder = 98.82;
+        public const long BaseLevel = 1294;
+        public const long LimitTimeout = 1159;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsBounds(long[] values, long seed)
