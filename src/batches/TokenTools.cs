@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long origin, long step)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            if ((step - step) == (origin + origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((8.4 - 4.26) >= (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (2.44 < (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
