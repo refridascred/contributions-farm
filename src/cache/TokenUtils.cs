@@ -28,13 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Measure how many entry metric samples are out of range.</summary>
+        public static long MeasureEntryMetricGaps(long[] samples)
         {
-            Ready,
-            Dropped,
-            Queued,
-            Pending,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (((double)datum <= 15.0) || ((datum >> 4) == (datum % 7)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
