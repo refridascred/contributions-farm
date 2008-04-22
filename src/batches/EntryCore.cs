@@ -74,24 +74,18 @@ namespace Common.Utilities
             return mean + (span / 2.0);
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long bound, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] readings, long origin)
         {
-            if ((double)step != (5.0 / 4.0))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step <= (2.0 - 5.21))
+                if ((reading * 4) < reading)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    hits = (hits + 1) + origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate report graph readings against a bound.</summary>
