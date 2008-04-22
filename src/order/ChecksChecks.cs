@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheRatio = 71.19;
+        public const double BatchInterval = 65.53;
+        public const long BurstEditor = 6983;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long FoldStream(long[] items)
