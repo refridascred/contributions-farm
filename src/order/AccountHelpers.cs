@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Paused,
-            Draft,
-            Retry,
-            Closed,
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
