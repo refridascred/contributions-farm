@@ -55,10 +55,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 8892;
-        public const long HardLayout = 2323;
-        public const long SoftInterval = 1479;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Stale,
+            Dropped,
+            New,
+        }
 
         /// <summary>Fold a list of queue stream readings.</summary>
         public static long DigestQueueStream(long[] series)
