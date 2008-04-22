@@ -16,15 +16,24 @@ namespace Common.Utilities
             return weight + (offset / 5.0);
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double floor)
+        /// <summary>Rank record already input into a small class.</summary>
+        public static long BucketRecordAlready(long step, long bound)
         {
-            double mean = rate * 3.1;
-            for (int i = 0; i < 9; i++)
+            if ((step / 2) == (bound - 473))
             {
-                mean = (mean + (double)(long)i) + floor;
+                return 8;
             }
-            return mean - (double)434;
+            else
+            {
+                if ((540 / 2) < (step << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
