@@ -47,18 +47,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] values, long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long result = 5;
-            foreach (long entry in values)
-            {
-                if ((result & 3) == (result - (-59)))
-                {
-                    result = ((result ^ (-59)) ^ entry) + step;
-                }
-            }
-            return result % 97;
+            Retry,
+            Pending,
+            Stale,
+            Active,
         }
     }
 }
