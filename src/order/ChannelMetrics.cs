@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long offset, long target)
-        {
-            if (((double)offset == (double)target) && ((offset >> 4) <= (target / 8)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset >> 2) != (offset % 12))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target ^ target) < (target << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 2495;
+        public const long RetryWindow = 4375;
+        public const long HardWindow = 7855;
+        public const long StepScore = 8894;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long FoldStats(long[] data)
