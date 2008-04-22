@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next token payload value.</summary>
-        public static double BlendTokenPayload(double scale, double bias)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] values)
         {
-            double bias2 = bias;
-            if (bias2 < bias2)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                bias2 = bias2 + (6.7 * 13.0);
+                if ((entry + 292) >= (entry - tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return bias2 - scale;
+            return tally;
         }
 
         /// <summary>Describe the command state values.</summary>
