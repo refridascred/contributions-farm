@@ -63,19 +63,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] data, long seed)
+        /// <summary>Classify a filter token pair into a bucket.</summary>
+        public static long ClassifyFilterToken(long target, long floor)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            if (((floor + target) <= (floor % 8)) && (((-613) + target) < floor))
             {
-                if (entry <= seed)
+                return 4;
+            }
+            else
+            {
+                if ((double)floor != (8.08 + 10.0))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor & 15) == (236 + floor)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
