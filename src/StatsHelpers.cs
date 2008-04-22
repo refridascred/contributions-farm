@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitLevel = "local";
-        public const double MinBatches = 36.92;
-        public const long BatchBatches = 796;
-        public const long DefaultBatches = 6715;
-        public const long BatchScore = 3255;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 9008;
+        public const long SoftLevel = 2214;
+        public const string MinBudget = "latest";
+        public const long HardBatch = 4120;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
