@@ -13,12 +13,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] values, long offset)
         {
-            Queued,
-            Done,
-            Ready,
+            long carry = -456;
+            foreach (long value in values)
+            {
+                carry = (((carry << 3) ^ (carry % 60)) % 101) - offset;
+                carry = (carry - (value - carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
