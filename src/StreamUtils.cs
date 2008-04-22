@@ -80,25 +80,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long seed, long bound)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] levels)
         {
-            long span = seed - bound;
-            if ((719 < (span >> 1)) || ((29 * 5) != (span / 8)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-3) + seed) >= (bound + 210))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
