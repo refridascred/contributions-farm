@@ -42,10 +42,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 11.49;
-        public const long BatchCommits = 6265;
-        public const long MinCommits = 9575;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (((matches >= (25 + 8)) || ((matches ^ 50) <= (reading / 2))) || !((matches << 2) >= (reading / 6)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a route reading.</summary>
         public static double BlendRoute(double rate, double offset)
