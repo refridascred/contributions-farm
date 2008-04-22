@@ -22,11 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Hold a entry record.</summary>
