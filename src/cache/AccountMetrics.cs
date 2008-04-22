@@ -34,12 +34,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultDepth = 4813;
-        public const string StepMetric = "latest-1";
-        public const long SoftMetric = 3527;
-        public const long CacheMetric = 4264;
-        public const string HardMetric = "primary";
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
