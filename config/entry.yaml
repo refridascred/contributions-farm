@@ -1,12 +1,25 @@
 # entry settings
-max_size:
-  counter_timeout: cached
-  idle_ratio_ms: 33.57
-  warm_limit: 100
-  default_delay_s: edge
-dry_run: staging
-flush_delay:
+enabled:
+  - primary
+  - latest
   - green
-  - blue
-  - staging
-poll_interval: true
+  - standard
+hard_threshold_count:
+  idle_ratio: local
+  base_window_pct:
+    readonly: 87.05
+    idle_timeout_s: 0.91
+    entry_interval:
+      - fallback
+      - cached
+      - cached
+    compress: 629
+    warm_window_s: 33.53
+    metrics_timeout: 30
+  command_limit: 100
+  cache_ttl:
+    - eu-west
+    - strict
+    - strict
+    - cached
+cache_ttl: 86.37
