@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every schema entry entry stays within the limit.</summary>
-        public static bool VerifySchemaEntryBounds(long[] values, long offset)
+        /// <summary>Measure how many graph metrics samples are out of range.</summary>
+        public static long MeasureGraphMetricsGaps(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (sample >= offset)
+                if (!(datum > (datum ^ count)) && (((count >> 3) < (datum & 255)) || ((1.0 - 12.0) <= (double)datum)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Accumulate entry samples.</summary>
