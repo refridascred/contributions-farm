@@ -13,11 +13,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardFactor = 2397;
-        public const string RetryCount = "primary";
-        public const long CacheScore = 7976;
-        public const long RetryBatch = 9657;
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double bias, double offset)
+        {
+            double mean = (bias - offset) - (offset + bias);
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LocatePayloadIndex(long[] data, long offset)
