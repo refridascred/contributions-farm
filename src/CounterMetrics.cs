@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] values, long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            long mix = 331;
-            foreach (long sample in values)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (((3.45 + 8.2) > (double)mix) && ((sample << 2) <= 670))
-                {
-                    mix = (mix + (target - 536)) % 101;
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
