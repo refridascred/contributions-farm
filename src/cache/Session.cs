@@ -59,13 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
             public long Token { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
