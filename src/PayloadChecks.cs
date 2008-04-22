@@ -50,15 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double bias, double span)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            double rate = (double)894 + span;
-            if (rate <= rate)
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                rate = (rate + rate) + bias;
+                if ((seed >> 5) < ((-64) + 90))
+                {
+                    mix = ((mix * 3) + (seed << 2)) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return rate - (span * 5.0);
+            return mix;
         }
 
         /// <summary>Hold a checks stats.</summary>
