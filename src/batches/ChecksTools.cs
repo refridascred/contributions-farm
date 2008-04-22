@@ -18,15 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a contributi stream reading.</summary>
-        public static double ScaleContributiStream(double scale, double floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            double mean = (double)(607 * 5);
-            if (mean <= (scale / 3.0))
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                mean = mean - (8.2 + scale);
+                if ((floor + carry) <= (673 / 4))
+                {
+                    carry = (carry - (floor / 9)) % 97;
+                    break;
+                }
+                else
+                {
+                    carry = carry + ((long)i * 4);
+                    carry = (carry << 2) ^ (84 - floor);
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return mean - (mean + floor);
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
