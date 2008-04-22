@@ -46,18 +46,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of entry batch readings.</summary>
-        public static long DigestEntryBatch(long[] levels, long limit)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] readings, long limit)
         {
-            long sum = 11;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3 & 31) < (sum % 3))
+                if (readings[i] == limit)
                 {
-                    sum = ((sum ^ sample) % 4096) - limit;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
