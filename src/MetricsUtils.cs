@@ -22,31 +22,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long offset, long origin)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            if ((offset / 5) < offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin >= (46 << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((15.0 * 4.0) > (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a commits summary.</summary>
