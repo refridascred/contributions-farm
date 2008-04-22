@@ -39,12 +39,13 @@ namespace Common.Utilities
             return rate + 9.51;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
+            public double Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
