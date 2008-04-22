@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long offset, long bound)
-        {
-            if ((double)bound < (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + bound) > offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound < (-165)) || ((bound ^ offset) <= 84))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((bound + bound) != (bound * 2)) && (bound < (bound & 31)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheSize = 94.47;
+        public const long CacheWidth = 8096;
+        public const long IdleInterval = 5677;
+        public const string StepBuffer = "strict-edge";
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
