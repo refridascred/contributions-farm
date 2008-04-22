@@ -49,17 +49,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] readings, long bound)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long origin, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long edge = origin - floor;
+            if ((((-374) % 2) < (edge / 3)) || ((double)origin < (double)(-43)))
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((6.7 * 9.13) < (double)edge)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
