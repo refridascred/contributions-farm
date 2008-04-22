@@ -5,29 +5,36 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long target, long seed)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long limit, long origin)
         {
-            long edge = target + seed;
-            if ((target << 1) >= (edge + edge))
+            long bound = limit - origin;
+            if (17.0 <= (double)origin)
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((228 * 5) > (edge / 8))
+                if ((limit <= bound) && ((9.0 - 7.0) != (double)bound))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)seed >= (6.0 + 14.0))
+                    if ((limit - bound) > (bound - origin))
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        return 2;
+                        if (!(limit < (origin % 10)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
