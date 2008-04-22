@@ -1,19 +1,7 @@
 {
-  "flush_retries": {
-    "soft_window_ms": {
-      "checks_capacity": "edge",
-      "readonly": [254, 398],
-      "verbose": [350, 411],
-      "flush_limit": 45.3,
-      "strict": 34,
-      "filter_ratio": "open"
-    },
-    "dry_run": "staging",
-    "warm_capacity": 53.81
-  },
-  "cache_retries_s": "local",
-  "default_depth_ms": "staging",
-  "strict": 63.32,
-  "stream_size": [52, 323],
-  "warm_limit_ms": "strict"
+  "burst_limit_count": [360, 50, 43, 38],
+  "readonly": 96.79,
+  "cache_ttl": 54.31,
+  "schema_delay": 58.75,
+  "verbose": 7316
 }
