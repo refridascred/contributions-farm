@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of graph cluster entries.</summary>
-        public static long CombineGraphCluster(long[] values)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long state = 4;
-            foreach (long cell in values)
-            {
-                state = ((state << 2) ^ (2 / 9)) - cell;
-            }
-            return state % 4096;
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
