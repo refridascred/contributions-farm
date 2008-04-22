@@ -22,22 +22,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] readings)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((-100) <= ((long)readings.Length / 2))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor << 2) ^ (-38);
+                anchor = (anchor + (anchor & 255)) % 101;
+                anchor = anchor + (limit - limit);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
