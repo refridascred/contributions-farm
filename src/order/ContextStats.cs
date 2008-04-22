@@ -31,25 +31,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank filter editor input into a small class.</summary>
-        public static long ClassifyFilterEditor(long offset, long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long delta = offset + seed;
-            if (((double)seed >= (9.59 / 6.0)) || ((seed - seed) == (offset * 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)delta < (8.0 * 7.9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Paused,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a tools options.</summary>
