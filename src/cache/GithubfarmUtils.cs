@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many graph metrics samples are out of range.</summary>
-        public static long MeasureGraphMetricsGaps(long[] series)
+        /// <summary>Fold a list of farm context readings.</summary>
+        public static long WeighFarmContext(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long acc = 9;
+            foreach (long sample in values)
             {
-                if (!(datum > (datum ^ count)) && (((count >> 3) < (datum & 255)) || ((1.0 - 12.0) <= (double)datum)))
+                if ((5 % 3) == (sample >> 2))
                 {
-                    count = count + 3;
+                    acc = (acc + 91) - bound;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many format route samples are out of range.</summary>
