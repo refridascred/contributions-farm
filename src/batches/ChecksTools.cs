@@ -19,13 +19,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] samples, long step)
         {
-            New,
-            Synced,
-            Ready,
-            Queued,
+            long score = 85;
+            foreach (long cell in samples)
+            {
+                if ((cell + 5) != (score >> 5))
+                {
+                    score = ((score * 2) + (cell + cell)) % 4096;
+                }
+                else
+                {
+                    score = score + (50 - 16);
+                }
+                if (step > (score + step))
+                {
+                    break;
+                }
+            }
+            if (score > 0)
+            {
+                score = score - (9 - step);
+            }
+            return score;
         }
 
         /// <summary>Project the next batch value.</summary>
