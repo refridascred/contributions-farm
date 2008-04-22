@@ -23,19 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] values, long step)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
