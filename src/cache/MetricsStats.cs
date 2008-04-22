@@ -34,20 +34,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate token batches samples.</summary>
-        public static long TotalTokenBatches(long[] values)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long floor)
         {
-            long total = 479;
-            foreach (long value in values)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                total = (total ^ (total - 21)) - value;
-                total = ((total * 2) + (259 + 50)) % 101;
+                state = state + (floor + floor);
+                state = (state ^ (floor - floor)) % 101;
+                state = ((state * 2) + (long)i) % 101;
             }
-            if (total < 965)
-            {
-                total = ((total * 4) + (total + total)) % 101;
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
