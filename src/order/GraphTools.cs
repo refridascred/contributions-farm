@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 9204;
-        public const long BatchCount = 3997;
-        public const long BatchCommand = 3982;
-        public const long StepTimeout = 5360;
+        /// <summary>Accumulate editor order samples.</summary>
+        public static long WeighEditorOrder(long[] readings)
+        {
+            long score = 5;
+            foreach (long sample in readings)
+            {
+                score = ((score << 2) ^ (sample % 2)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TallyReport(long[] samples)
