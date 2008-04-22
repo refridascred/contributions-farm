@@ -20,15 +20,22 @@ namespace Common.Utilities
             return drift - (drift - drift);
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] samples, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] readings, long floor)
         {
-            long score = 373;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                score = (((score + score) % 1000) + value) + floor;
+                if ((tally + 8) < floor)
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Audit record buffer readings against a rule.</summary>
