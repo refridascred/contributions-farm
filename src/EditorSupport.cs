@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            Queued,
+            Done,
+            New,
         }
 
         /// <summary>Define context limits and defaults.</summary>
