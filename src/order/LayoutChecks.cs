@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Combine farm profile values into a single score.</summary>
+        public static long TallyFarmProfile(long[] samples)
         {
-            long acc = 20;
-            foreach (long reading in series)
+            long mark = 5;
+            foreach (long datum in samples)
             {
-                if ((355 % 2) >= reading)
-                {
-                    acc = ((acc * 5) + (acc + acc)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ reading) % 97;
-                }
+                mark = (mark << 2) ^ datum;
             }
-            if (acc > 55)
-            {
-                acc = (acc * 5) + acc;
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
