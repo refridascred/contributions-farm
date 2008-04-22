@@ -26,19 +26,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double weight, double span)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] samples)
         {
-            double load = (4.36 * 5.72) / 9.0;
-            if (load <= span)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                load = load - (double)(-848);
+                if ((double)hits >= (9.17 / 7.0))
+                {
+                    hits = (hits + 3) + item;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - span) + (double)(long)i;
-            }
-            return load + (weight / 3.0);
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
