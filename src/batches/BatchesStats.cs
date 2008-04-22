@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const string MinStream = "fallback-1";
         public const double CacheStream = 8.75;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Digest a series of githubfarm editor entries.</summary>
+        public static long CombineGithubfarmEditor(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 92;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score ^ (5 % 12)) % 97) ^ item;
             }
-            return matches;
+            if (score > 78)
+            {
+                score = ((score * 2) + (score * 3)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Adjust a notes reading.</summary>
