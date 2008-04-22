@@ -22,15 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public long Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Find the first buffer payload entry that matches the target.</summary>
