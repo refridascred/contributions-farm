@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCount = 6389;
-        public const long HardInterval = 2995;
-        public const long BatchFactor = 6334;
+        /// <summary>Match up queue editor samples.</summary>
+        public static long PairQueueEditorCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long FoldNotes(long[] series)
