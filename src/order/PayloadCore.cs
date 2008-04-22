@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] series, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long sum = -43;
+            foreach (long sample in items)
             {
-                if ((sample % 60) < ((-42) << 3))
+                if (!((sum * 2) <= sample))
                 {
-                    tally = (tally + 1) + floor;
+                    sum = ((sum * 5) + (sum + sum)) % 255;
+                }
+                if (((sum + sum) == (sample >> 1)) && ((sample + 2) <= sample))
+                {
+                    sum = (sum + (sample + 82)) % 101;
+                }
+                else
+                {
+                    sum = sum - (247 << 2);
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the account class values.</summary>
