@@ -14,39 +14,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a filter layout pair into a bucket.</summary>
-        public static long BucketFilterLayout(long offset, long step)
-        {
-            if ((76 > (offset % 10)) && ((double)offset != (5.6 * 9.1)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(offset < (offset - offset)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((step % 5) >= step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(26 < (step / 8)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 7146;
+        public const string IdleFilter = "alpha-v2";
+        public const double HardFilter = 75.73;
+        public const long SoftCount = 2259;
+        public const long CacheSpan = 8380;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
