@@ -85,11 +85,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
