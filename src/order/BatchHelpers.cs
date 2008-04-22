@@ -34,23 +34,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long mark = -394;
-            foreach (long value in readings)
-            {
-                mark = ((mark << 2) ^ (5 * 5)) % 65521;
-                if (((double)mark != (14.0 + 7.6)) && (6 >= value))
-                {
-                    mark = (mark << 3) ^ (mark % 16);
-                }
-                else
-                {
-                    mark = ((mark * 4) + (value << 1)) % 4096;
-                }
-            }
-            return mark;
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
