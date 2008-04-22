@@ -40,11 +40,21 @@ namespace Common.Utilities
         public const long BaseMetrics = 1949;
         public const long StepMetrics = 3985;
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Compare every pair of entry layout readings.</summary>
+        public static long CompareEntryLayoutCount(long[] items)
         {
-            public double Stamp { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a cache reading.</summary>
