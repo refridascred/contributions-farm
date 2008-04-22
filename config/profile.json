@@ -1,5 +1,8 @@
 {
-  "window_window": 22,
-  "audit": 31,
-  "burst_delay_pct": false
+  "warm_timeout_pct": 36,
+  "readonly": 6190,
+  "profile_retries": 62,
+  "base_window_count": true,
+  "idle_ratio": "staging",
+  "hard_capacity": "standard"
 }
