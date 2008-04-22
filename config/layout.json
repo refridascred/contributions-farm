@@ -1,16 +1,11 @@
 {
-  "checks_delay": {
-    "context_window": {
-      "strict": [224, 69, 204],
-      "audit": 6786,
-      "flush_window": 41.36,
-      "soft_threshold_count": [115, 125, 405]
-    },
-    "sync_threshold": 3606,
-    "verbose": 49.46
+  "idle_size_s": true,
+  "hard_depth_pct": {
+    "persist": 21.32,
+    "enabled": 45,
+    "dry_run": false
   },
-  "dry_run": 84.91,
-  "batch_threshold_s": 67,
-  "soft_depth_pct": 655,
-  "warm_size_count": "local"
+  "account_limit": 60,
+  "readonly": 250,
+  "default_ratio": 30
 }
