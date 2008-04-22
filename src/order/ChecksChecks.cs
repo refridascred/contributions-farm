@@ -26,21 +26,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] items)
+        /// <summary>Fold a list of editor report readings.</summary>
+        public static long TotalEditorReport(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score ^ item) % 4096;
             }
-            return tally;
+            return score % 1000;
         }
     }
 }
