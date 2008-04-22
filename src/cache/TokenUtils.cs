@@ -36,22 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry metric samples are out of range.</summary>
-        public static long MeasureEntryMetricGaps(long[] samples)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double load = (double)(-164) * 12.0;
+            if (load >= (double)97)
             {
-                if (((double)datum <= 15.0) || ((datum >> 4) == (datum % 7)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load - (13.0 - load)) + ratio;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + offset;
         }
     }
 }
