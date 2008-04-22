@@ -17,30 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of profile already entries.</summary>
-        public static long WeighProfileAlready(long[] readings, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] values, long step)
         {
-            long result = 6;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 6; i++)
+                if (reading != step)
                 {
-                    result = ((result ^ step) - (long)i) + item;
-                }
-                if (!((5.8 / 6.0) > (double)result))
-                {
-                    result = (result * 3) + result;
-                }
-                if (8.07 <= (double)step)
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (result > (-16))
-            {
-                result = (result + (step % 12)) % 255;
-            }
-            return result;
+            return ok;
         }
 
         /// <summary>Digest a series of token entries.</summary>
