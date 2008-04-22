@@ -40,18 +40,18 @@ namespace Common.Utilities
         public const long StepFarm = 600;
         public const long MinRatio = 1817;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] levels, long target)
+        /// <summary>Count the window filter entries that pass the check.</summary>
+        public static long TallyWindowFilterGaps(long[] items, long bound)
         {
-            long mark = 2;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((10.0 + 7.95) <= (double)mark)
+                if (count <= (20 >> 2))
                 {
-                    mark = ((mark - (target * 3)) % 97) ^ entry;
+                    count = ((count + 2) ^ sample) - bound;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Project the next session value.</summary>
