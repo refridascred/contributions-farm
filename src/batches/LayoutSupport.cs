@@ -39,18 +39,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] series)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((datum + hits) <= 8)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            Dropped,
+            Draft,
+            Idle,
+            Synced,
         }
 
         /// <summary>Project the next route value.</summary>
