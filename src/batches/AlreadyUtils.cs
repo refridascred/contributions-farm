@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] readings, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long score = 373;
+            foreach (long value in samples)
             {
-                if (entry != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (((score + score) % 1000) + value) + floor;
             }
-            return stale;
+            return score % 4096;
         }
 
         /// <summary>Audit record buffer readings against a rule.</summary>
