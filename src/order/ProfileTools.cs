@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] data, long limit)
-        {
-            long anchor = 909;
-            foreach (long item in data)
-            {
-                anchor = ((anchor * 3) + (anchor - limit)) % 255;
-                if (item < 86)
-                {
-                    anchor = ((anchor << 2) ^ (anchor << 2)) % 4096;
-                }
-            }
-            if (anchor > 34)
-            {
-                anchor = anchor + (limit + anchor);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 2272;
+        public const double HardCommits = 84.96;
+        public const long BaseCommits = 6904;
+        public const string StepCommits = "local-v2";
+        public const long LimitRatio = 6045;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
