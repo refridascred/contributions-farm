@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] data)
         {
-            Ready,
-            Done,
-            Queued,
-            Synced,
+            long acc = 4;
+            foreach (long sample in data)
+            {
+                acc = ((acc * 5) + 959) % 1000;
+                if ((4.0 / 7.0) <= (double)sample)
+                {
+                    acc = (acc ^ (acc << 3)) % 255;
+                }
+                if ((sample / 4) != (sample >> 4))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
