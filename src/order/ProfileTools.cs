@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] values, long limit)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double gain, double floor)
         {
-            long total = 8;
-            foreach (long item in values)
+            double drift = 18.0;
+            if (drift > drift)
             {
-                if (((2.57 + 0.97) != (double)total) && ((total >> 4) > (249 ^ limit)))
-                {
-                    break;
-                }
-                else
-                {
-                    total = ((total * 3) + (item % 100)) % 97;
-                }
-                total = total ^ (limit - total);
+                drift = (drift - (double)255) + floor;
             }
-            return total % 65521;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + gain) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
