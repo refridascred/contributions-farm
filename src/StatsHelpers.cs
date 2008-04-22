@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long offset, long offset2)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long span = offset ^ offset2;
-            if ((span + 68) <= (offset >> 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset2 + offset) < offset2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((span + offset2) <= (span - offset2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset2 * 5) < (offset2 + (-32))) && ((span ^ offset2) != (95 - span)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
