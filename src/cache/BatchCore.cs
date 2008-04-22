@@ -33,15 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] levels, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] readings)
         {
-            long anchor = 18;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                anchor = (((anchor - anchor) % 255) - item) + floor;
+                if ((double)item > 6.9)
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a record options.</summary>
