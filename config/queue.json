@@ -1,11 +1,8 @@
 {
-  "commits_depth": "standard",
-  "batch_timeout_ms": "edge",
-  "burst_delay_pct": ["standard", "primary"],
-  "compress": {
-    "payload_depth": 100,
-    "enabled": "blue",
-    "filter_retries": "blue",
-    "batch_limit_ms": ["open", "standard", "eu-west"]
-  }
+  "stream_depth": ["edge", "stable", "latest"],
+  "default_ttl": 7360,
+  "support_window": 60,
+  "persist": 56,
+  "retry_retries_s": "edge",
+  "idle_depth": 500
 }
