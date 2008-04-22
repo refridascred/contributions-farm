@@ -39,13 +39,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Audit format notes readings against a rule.</summary>
+        public static long AuditFormatNotesHits(long[] data)
         {
-            public bool Flag { get; set; }
-            public double Level { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (tally > (item ^ 14))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
