@@ -14,18 +14,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] series)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((77 + 645) >= (hits + hits))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) - cell;
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
