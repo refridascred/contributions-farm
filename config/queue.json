@@ -1,7 +1,15 @@
 {
-  "retry_ttl": 1,
-  "audit": "cached",
-  "githubfarm_limit": true,
-  "readonly": [317, 372],
-  "poll_ttl": 79.5
+  "idle_window_ms": "local",
+  "default_ratio": "stable",
+  "poll_window": true,
+  "counter_ratio": 35.72,
+  "default_depth_count": 60,
+  "poll_capacity": {
+    "batches_limit": "stable",
+    "poll_size_s": 9482,
+    "hard_depth_s": 60,
+    "editor_ttl": 19.19,
+    "retry_depth_ms": ["standard", "blue", "legacy", "standard"],
+    "verbose": 20.63
+  }
 }
