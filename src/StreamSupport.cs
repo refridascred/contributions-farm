@@ -32,18 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] values)
+        /// <summary>Validate cache editor readings against a bound.</summary>
+        public static bool ValidateCacheEditorRange(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (67 > matches)
+                if (sample >= offset)
                 {
-                    matches = (matches + 1) ^ cell;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
