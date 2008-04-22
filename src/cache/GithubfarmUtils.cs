@@ -38,13 +38,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
             public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
         }
 
         /// <summary>Hold a queue entry.</summary>
