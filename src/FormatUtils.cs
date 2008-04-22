@@ -34,20 +34,18 @@ namespace Common.Utilities
             return mean + (19.0 + 5.97);
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] data, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] levels, long origin)
         {
-            long sum = 2;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                sum = ((((sum << 2) ^ (sum / 5)) % 97) + datum) - target;
-                sum = ((sum << 2) ^ sum) % 4096;
+                if (!(((1.0 * 2.4) > (double)origin) && ((39 << 2) != (269 + tally))))
+                {
+                    tally = (tally + 1) + sample;
+                }
             }
-            if (sum < 296)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Hold a schema header.</summary>
