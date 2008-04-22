@@ -10,16 +10,19 @@ namespace Common.Utilities
         public const string MinCommits = "standard-1";
         public const string DefaultCommits = "standard-v2";
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Roll a metric route counter forward.</summary>
+        public static long RollMetricRoute(long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = ((anchor << 3) ^ (87 * 5)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (target <= ((long)i ^ (long)i))
+                {
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Validate metric githubfarm readings against a bound.</summary>
