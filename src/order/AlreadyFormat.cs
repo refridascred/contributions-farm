@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] levels)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double ratio, double span)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double weight = (5.0 + ratio) + (double)9;
+            if (weight >= span)
             {
-                if ((914 <= (entry / 5)) || ((15.0 / 2.0) <= (double)entry))
-                {
-                    count = count + 1;
-                }
+                weight = weight - (double)2;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - span;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
