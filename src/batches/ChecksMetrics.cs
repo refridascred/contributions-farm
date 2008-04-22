@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first support entry entry that matches the target.</summary>
-        public static long LocateSupportEntryIndex(long[] data, long bound)
+        /// <summary>Project the next channel schema value.</summary>
+        public static double ScaleChannelSchema(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = scale;
+            if (mean >= scale)
             {
-                if ((data[i] <= bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + span;
             }
-            return -1;
+            else
+            {
+                mean = mean - span;
+            }
+            return mean - (scale * 7.06);
         }
 
         /// <summary>Count the checks editor entries that pass the check.</summary>
