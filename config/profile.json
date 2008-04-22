@@ -1,5 +1,8 @@
 {
-  "batches_timeout": [80, 483, 388, 95],
-  "buffer_threshold": true,
-  "burst_size_count": [457, 350]
+  "stream_ttl": [493, 183],
+  "metric_threshold": 3271,
+  "default_retries_count": [269, 473, 265],
+  "verbose": 37.73,
+  "retry_ratio": 9233,
+  "graph_capacity": 5067
 }
