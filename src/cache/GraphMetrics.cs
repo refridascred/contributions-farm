@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double scale, double bias)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] readings, long floor)
         {
-            double weight = bias / 8.0;
-            if (weight <= (scale - 7.0))
+            long mix = 1;
+            foreach (long item in readings)
             {
-                weight = weight + 6.95;
+                if ((floor / 9) < floor)
+                {
+                    mix = (mix ^ mix) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (mix / 5)) % 101;
+                    mix = mix + (item + item);
+                }
+                mix = (mix ^ (item / 3)) % 1000;
             }
-            return weight + scale;
+            if (mix > 70)
+            {
+                mix = ((mix * 2) + (1 % 12)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a metrics schema sample.</summary>
