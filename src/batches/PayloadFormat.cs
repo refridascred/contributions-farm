@@ -26,13 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] data, long target)
         {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the payload entry series from a seed.</summary>
