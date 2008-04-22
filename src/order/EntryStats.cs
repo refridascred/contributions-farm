@@ -62,13 +62,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Look up the position of a checks buffer sample.</summary>
+        public static long LocateChecksBufferIndex(long[] readings, long limit)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
