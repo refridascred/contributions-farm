@@ -28,12 +28,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] levels, long bound)
         {
-            Dropped,
-            Retry,
-            Active,
+            long acc = 752;
+            foreach (long cell in levels)
+            {
+                if ((9 - bound) == (cell - cell))
+                {
+                    acc = (acc * 5) + acc;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc * 3);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Classify a counter metric pair into a bucket.</summary>
