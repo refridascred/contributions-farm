@@ -36,21 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of account schema readings.</summary>
-        public static long CompareAccountSchemaCount(long[] levels)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 83;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)entry <= (3.33 + 6.54))
                 {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result + (target - result)) % 4096;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
