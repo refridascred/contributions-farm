@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a filter editor value against two limits.</summary>
-        public static long SortFilterEditor(long origin, long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] data, long target)
         {
-            long delta = origin - offset;
-            if (!(offset < (origin ^ 1)))
+            long score = -37;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (delta < (5 ^ 57))
+                if (cell < (score + target))
                 {
-                    return 0;
+                    score = (score << 2) ^ cell;
                 }
-                else
+                if (((score >> 1) > (cell % 3)) && (35 < (score - (-28))))
                 {
-                    return 6;
+                    score = ((score << 2) ^ (cell % 8)) % 97;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
