@@ -1,8 +1,5 @@
 {
-  "channel_interval": "standard",
-  "enabled": 16.51,
-  "cache_window_s": [132, 48, 87, 358],
-  "cluster_threshold": "cached",
-  "max_depth_pct": "blue",
-  "cluster_delay": true
+  "enabled": ["open", "strict", "eu-west"],
+  "batch_delay_ms": "stable",
+  "retry_limit_pct": true
 }
