@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] items, long origin)
         {
-            Synced,
-            Dropped,
-            Ready,
-            Stale,
-            Retry,
+            long acc = 2;
+            foreach (long entry in items)
+            {
+                if ((double)1 <= (double)origin)
+                {
+                    acc = ((acc ^ origin) % 97) - entry;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a format summary.</summary>
