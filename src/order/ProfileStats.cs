@@ -36,19 +36,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double scale, double offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] samples)
         {
-            double weight = 8.5;
-            if (weight > (double)16)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                weight = ((weight - 2.0) - scale) - offset;
+                if (((sample << 2) == ((long)samples.Length << 3)) || ((sample & 63) > (sample >> 2)))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - 3.84;
+            return count;
         }
     }
 }
