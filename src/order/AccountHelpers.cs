@@ -20,17 +20,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] values, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((values[i] >= offset) && ((values[i] % 5) == 0))
+                if (datum > limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
