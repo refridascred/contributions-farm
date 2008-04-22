@@ -41,20 +41,12 @@ namespace Common.Utilities
         public const string SoftNotes = "alpha-v2";
         public const double WindowSize = 88.25;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryNotes = "alpha-1";
+        public const long HardNotes = 1128;
+        public const string RetryScore = "primary-1";
+        public const long WindowNotes = 6939;
+        public const double RetryFactor = 17.54;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LookupFilterIndex(long[] series, long floor)
