@@ -15,17 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a window queue reading by value.</summary>
-        public static long SeekWindowQueueIndex(long[] readings, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (readings[i] > target)
+                if ((4.63 * 1.98) >= (double)seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 3) + value) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
