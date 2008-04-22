@@ -64,10 +64,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitSize = 99.0;
-        public const long RetryMetric = 3042;
-        public const long BaseMetric = 7377;
-        public const long BatchMetric = 1427;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
