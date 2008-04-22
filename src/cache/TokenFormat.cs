@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double rate, double floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] levels, long bound)
         {
-            double bias = floor - (double)6;
-            if (bias >= floor)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                bias = bias + floor;
+                if (item >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias - (rate - bias);
+            return ok;
         }
 
         /// <summary>Accumulate schema graph samples.</summary>
