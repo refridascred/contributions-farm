@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] items, long limit)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((double)value >= (double)56)
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
+            New,
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
