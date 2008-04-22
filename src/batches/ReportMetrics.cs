@@ -20,20 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 4) + (bound >> 3)) % 65521;
-                if (!((total + total) > (total + 547)))
-                {
-                    total = ((total * 5) + total) % 97;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Stale,
+            Locked,
+            Retry,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
