@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public long Count { get; set; }
+            public string Token { get; set; } = "";
             public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the format state values.</summary>
