@@ -1,5 +1,6 @@
 {
-  "batch_retries": 1024,
-  "poll_size_ms": 60,
-  "context_interval": 27
+  "order_ttl": false,
+  "soft_size_ms": "primary",
+  "default_limit_count": true,
+  "max_interval": 8592
 }
