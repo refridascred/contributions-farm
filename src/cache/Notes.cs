@@ -13,19 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every route token entry stays within the limit.</summary>
-        public static bool CheckRouteTokenBounds(long[] items, long bound)
+        /// <summary>Project the next cache farm value.</summary>
+        public static double AdjustCacheFarm(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long value in items)
+            double bias = (double)(65 >> 1);
+            if (bias <= bias)
             {
-                if (value >= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias - (double)877) - offset;
             }
-            return stale;
+            return bias + (ratio * 0.78);
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
