@@ -40,25 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if (seed > (state >> 1))
-                {
-                    state = ((state << 3) ^ ((-700) << 3)) % 4096;
-                }
-                if (!(((double)(long)i >= (7.61 * 9.4)) && (state < ((-409) / 2))))
-                {
-                    state = (state + 7) % 1000;
-                }
-                state = ((state << 2) ^ (155 + seed)) % 101;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitLevel = "local";
+        public const double MinBatches = 36.92;
+        public const long BatchBatches = 796;
+        public const long DefaultBatches = 6715;
+        public const long BatchScore = 3255;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
