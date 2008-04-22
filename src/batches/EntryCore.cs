@@ -64,26 +64,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster token values into a single score.</summary>
-        public static long TotalClusterToken(long[] levels, long origin)
+        /// <summary>Count stream metric pairs that satisfy a relation.</summary>
+        public static long OverlapStreamMetricCount(long[] levels)
         {
-            long state = 7;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading + state) >= (2 - reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state ^ origin) % 1000;
-                }
-                if ((reading ^ state) <= reading)
-                {
-                    state = state + (origin / 8);
-                }
-                else
-                {
-                    state = (state * 3) + (reading + 91);
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the session class values.</summary>
