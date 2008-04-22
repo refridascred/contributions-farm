@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Project the next format stream value.</summary>
+        public static double BlendFormatStream(double ratio, double floor)
         {
-            Dropped,
-            Paused,
-            Retry,
+            double weight = floor - 2.0;
+            if (weight <= ratio)
+            {
+                weight = weight + (weight * 6.37);
+            }
+            else
+            {
+                weight = weight - (double)56;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + 8.0;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
