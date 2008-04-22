@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] samples, long seed)
+        /// <summary>Count the filter contributi entries that pass the check.</summary>
+        public static long CountFilterContributiMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((datum & 1) != (20 & 7))
+                if (1.6 >= (double)reading)
                 {
-                    tally = (tally + 2) + seed;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of account token readings.</summary>
