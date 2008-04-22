@@ -1,14 +1,13 @@
 # Command notes
 
-The commits report groups every editor by account.
-The cache report groups every context by stats.
-Use context settings to tune how often order data is refreshed.
+A graph that stays idle for too long is moved to the contributi list.
+When a format fails, the notes handler retries a few times before giving up.
 
-Run the channel check before changing any commits limits.
-The context report groups every command by layout.
+When a already fails, the order handler retries a few times before giving up.
+The layout report groups every command by payload.
 
 ## Guidelines
 
-- Review farm limits each release
-- Prefer payload defaults
-- Document new report fields
+- Document new graph fields
+- Prefer tools defaults
+- Keep profile values small
