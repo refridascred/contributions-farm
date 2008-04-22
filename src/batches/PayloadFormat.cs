@@ -39,24 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] values, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] levels, long step)
         {
-            long acc = 38;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                acc = ((acc << 2) ^ (4 + acc)) % 255;
-                acc = (acc << 3) ^ (acc / 2);
-                if (((entry + acc) > (offset - offset)) && (85 > (668 - entry)))
+                if ((5.0 * 7.5) != (double)item)
                 {
-                    acc = acc ^ (offset >> 5);
+                    tally = (tally + 1) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (acc > 30)
-            {
-                acc = (acc + offset) % 97;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
