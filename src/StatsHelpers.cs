@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 9008;
-        public const long SoftLevel = 2214;
-        public const string MinBudget = "latest";
-        public const long HardBatch = 4120;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Ready,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
