@@ -1,7 +1,8 @@
 {
-  "persist": [348, 290],
-  "cache_ratio": 18.84,
-  "enabled": [369, 271, 418, 153],
-  "token_size": 4525,
-  "base_depth_s": true
+  "burst_threshold_count": "standard",
+  "flush_delay_s": 12.07,
+  "poll_depth_s": 94,
+  "default_depth_pct": ["edge", "latest"],
+  "compress": 22,
+  "verbose": 49
 }
