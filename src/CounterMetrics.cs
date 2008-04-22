@@ -16,21 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 445;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                sum = (sum - (cell - cell)) % 1000;
+                sum = sum - (target ^ sum);
+                sum = ((sum << 3) ^ (cell + cell)) % 1000;
+                if ((target - sum) > (sum + target))
                 {
-                    if ((readings[i] ^ readings[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Match up profile samples.</summary>
