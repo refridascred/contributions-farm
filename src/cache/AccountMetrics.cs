@@ -62,12 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] samples, long limit)
         {
-            Done,
-            Queued,
-            Closed,
+            long mix = 619;
+            foreach (long item in samples)
+            {
+                if (((item / 6) > (item << 2)) || (9 <= (8 + mix)))
+                {
+                    mix = (mix + (mix - limit)) % 4096;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Roll a batches stream counter forward.</summary>
