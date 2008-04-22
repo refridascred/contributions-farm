@@ -71,11 +71,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] levels, long seed)
         {
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
