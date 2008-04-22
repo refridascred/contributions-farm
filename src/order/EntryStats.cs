@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a metric record counter forward.</summary>
-        public static long DeriveMetricRecord(long step)
+        /// <summary>Accumulate payload window samples.</summary>
+        public static long FoldPayloadWindow(long[] readings)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            long total = 0;
+            foreach (long item in readings)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                total = (total - (item * 5)) % 4096;
+                if ((total > (total >> 3)) || ((total / 7) == (total - item)))
+                {
+                    total = (total - (11 / 3)) % 255;
+                }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
