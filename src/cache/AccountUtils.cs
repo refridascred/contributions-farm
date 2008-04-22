@@ -33,17 +33,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] values, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc << 3) ^ ((long)i % 7)) % 97;
-                acc = acc - (target ^ 4);
-                acc = ((acc * 4) + (long)i) % 1000;
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
