@@ -1,12 +1,17 @@
 # githubfarm settings
-support_ratio: strict
-audit: 54
-batch_capacity_pct: 13
-base_timeout_s:
-  - edge
-  - legacy
-sync_timeout_pct:
-  - strict
-  - strict
-  - cached
-  - cached
+enabled: 9500
+idle_size: 11.55
+max_limit_count: 1.34
+compress:
+  readonly: 7519
+  warm_timeout_pct:
+    - 121
+    - 339
+    - 104
+  base_capacity_pct:
+    - standard
+    - fallback
+    - fallback
+  already_size: open
+githubfarm_timeout: 30
+poll_depth: 51.99
