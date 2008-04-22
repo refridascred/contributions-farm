@@ -34,10 +34,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowBudget = 2015;
-        public const long RetryLevel = 8551;
-        public const string MaxBudget = "primary";
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double ratio, double offset)
+        {
+            double mean = (double)((-30) / 6);
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - ratio) + (double)(long)i;
+            }
+            return mean + (offset * 14.0);
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ProjectGithubfarm(double bias, double floor)
