@@ -72,13 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] samples, long limit)
         {
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((2.7 - 15.0) < (double)matches)
+                {
+                    matches = ((matches + 1) + entry) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
