@@ -23,22 +23,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema graph samples.</summary>
-        public static long TotalSchemaGraph(long[] readings)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long offset, long origin)
         {
-            long mix = 7;
-            foreach (long value in readings)
+            long step = offset + origin;
+            if ((double)offset > (double)origin)
             {
-                if (((double)884 <= (double)(long)readings.Length) || ((double)value > (18.0 - 4.94)))
+                return 5;
+            }
+            else
+            {
+                if (((step & 127) >= (origin - origin)) && ((9.7 - 6.7) <= (4.06 / 7.0)))
                 {
-                    mix = ((mix << 3) ^ value) % 255;
+                    return 8;
                 }
                 else
                 {
-                    mix = (mix ^ mix) % 97;
+                    if ((offset < (step * 3)) && ((origin % 97) > step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset > (double)step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Roll a batches editor counter forward.</summary>
