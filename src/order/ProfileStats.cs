@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 2197;
-        public const string LimitLevel = "primary";
-        public const string MaxReport = "latest";
-        public const long HardReport = 2815;
-        public const string IdleReport = "strict-v2";
+        /// <summary>Project the next token payload value.</summary>
+        public static double BlendTokenPayload(double scale, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 < bias2)
+            {
+                bias2 = bias2 + (6.7 * 13.0);
+            }
+            return bias2 - scale;
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
