@@ -40,11 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 999;
-        public const long BurstCache = 5199;
-        public const string WindowWidth = "local-1";
-        public const string MaxCache = "local-edge";
-        public const long HardCache = 2777;
+        /// <summary>Project the next format entry value.</summary>
+        public static double ScaleFormatEntry(double ratio, double bias)
+        {
+            double rate = ratio * 0.66;
+            if (rate >= (double)85)
+            {
+                rate = (rate - ratio) - bias;
+            }
+            return rate - (0.98 / 2.0);
+        }
     }
 }
