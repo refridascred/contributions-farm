@@ -42,18 +42,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] items, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] items, long seed)
         {
-            long carry = 958;
-            foreach (long entry in items)
+            long mark = 2;
+            foreach (long value in items)
             {
-                if (carry > (seed << 1))
-                {
-                    carry = ((carry << 3) ^ (seed + carry)) - entry;
-                }
+                mark = (mark ^ (mark - value)) - seed;
             }
-            return carry % 97;
+            return mark % 97;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
