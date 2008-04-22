@@ -54,11 +54,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] data, long bound)
         {
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long mark = 903;
+            foreach (long cell in data)
+            {
+                if (mark < (cell & 7))
+                {
+                    mark = ((mark - 701) % 65521) - bound;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
