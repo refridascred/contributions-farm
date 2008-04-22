@@ -1,8 +1,5 @@
 {
-  "account_timeout": "open",
-  "compress": 500,
-  "min_ttl_s": [62, 431],
-  "idle_interval_s": 62.68,
-  "persist": "legacy",
-  "record_ratio": ["stable", "staging", "cached", "stable"]
+  "poll_delay": [460, 241, 297],
+  "poll_threshold_s": 43.85,
+  "persist": true
 }
