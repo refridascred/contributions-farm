@@ -53,17 +53,12 @@ namespace Common.Utilities
         public const long BatchEntry = 1027;
         public const string MaxEntry = "primary";
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] data, long step)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
