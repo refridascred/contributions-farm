@@ -30,17 +30,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] values, long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((values[i] == bound) && ((values[i] % 5) != 0))
+                if (value > target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
