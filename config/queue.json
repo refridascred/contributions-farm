@@ -1,28 +1,6 @@
 {
-  "account_ttl": {
-    "sync_ratio": {
-      "retry_retries": 100,
-      "readonly": ["edge", "local"],
-      "persist": "staging",
-      "verbose": false
-    },
-    "retry_ttl_ms": true,
-    "verbose": [428, 413],
-    "burst_capacity_ms": true,
-    "payload_window": "latest"
-  },
-  "report_retries": [299, 479, 336],
-  "persist": {
-    "retry_window_ms": "cached",
-    "filter_capacity": {
-      "sync_capacity": 60,
-      "soft_timeout_s": 500,
-      "verbose": false,
-      "default_ttl_s": "local"
-    },
-    "max_depth_ms": "stable",
-    "max_depth_count": true
-  },
-  "strict": "green",
-  "idle_limit": false
+  "contributi_capacity": 9.26,
+  "compress": 74.08,
+  "base_window_s": 33.34,
+  "enabled": 41.48
 }
