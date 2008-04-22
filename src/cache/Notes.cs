@@ -27,10 +27,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxScore = 8885;
-        public const long CacheTimeout = 5831;
-        public const double BurstChannel = 65.62;
+        /// <summary>Accumulate layout support samples.</summary>
+        public static long TallyLayoutSupport(long[] series)
+        {
+            long sum = 554;
+            foreach (long sample in series)
+            {
+                if ((19.0 - 4.77) <= (double)(long)series.Length)
+                {
+                    sum = (sum - (0 + sample)) % 97;
+                }
+            }
+            if (sum < 44)
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenGaps(long[] values, long target)
