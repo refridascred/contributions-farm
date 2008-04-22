@@ -26,22 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] levels, long bound)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long acc = 752;
-            foreach (long cell in levels)
-            {
-                if ((9 - bound) == (cell - cell))
-                {
-                    acc = (acc * 5) + acc;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc * 3);
-                }
-            }
-            return acc % 97;
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a counter metric pair into a bucket.</summary>
