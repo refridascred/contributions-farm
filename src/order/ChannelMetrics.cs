@@ -17,13 +17,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] readings, long seed)
         {
-            Synced,
-            Pending,
-            Active,
-            Idle,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (seed >= hits)
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count queue metrics pairs that satisfy a relation.</summary>
