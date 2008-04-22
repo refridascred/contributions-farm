@@ -59,19 +59,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] items, long origin)
+        /// <summary>Count the batches token entries that pass the check.</summary>
+        public static long CountBatchesTokenHits(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (reading < origin)
+                if ((8 & 31) <= entry)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
