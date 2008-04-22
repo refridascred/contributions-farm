@@ -12,12 +12,26 @@ namespace Common.Utilities
         public const long HardReport = 2815;
         public const string IdleReport = "strict-v2";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardScore = 3882;
-        public const long BaseAlready = 9851;
-        public const string RetryAlready = "open";
-        public const string BatchAlready = "alpha-1";
-        public const long CacheAlready = 6880;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long limit, long offset)
+        {
+            long gap = limit + offset;
+            if ((61 + 1) >= offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((gap - limit) == (gap & 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TallyTools(long[] samples, long limit)
