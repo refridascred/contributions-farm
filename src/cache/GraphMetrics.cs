@@ -67,15 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double weight, double span)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long bound)
         {
-            double bias = 5.0;
-            if (bias <= (double)0)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                bias = bias - weight;
+                if (bound < 316)
+                {
+                    acc = (acc ^ acc) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return bias - (span * 1.0);
+            return acc;
         }
     }
 }
