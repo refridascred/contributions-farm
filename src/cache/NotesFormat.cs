@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of cluster report entries.</summary>
-        public static long TotalClusterReport(long[] data)
+        /// <summary>Measure how many support notes samples are out of range.</summary>
+        public static long AuditSupportNotesOutliers(long[] levels)
         {
-            long total = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                total = total ^ (value - value);
+                if (((sample >> 2) != (hits + sample)) || (sample <= 281))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Fold a list of channel window readings.</summary>
