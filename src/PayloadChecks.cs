@@ -65,32 +65,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long origin, long seed)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] values, long origin)
         {
-            long diff = origin + seed;
-            if (9 >= (diff % 24))
+            long state = 196;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2.5 - 0.72) >= (double)seed)
+                if (!(state <= (origin - 0)))
                 {
-                    return 7;
+                    state = (state ^ state) % 255;
                 }
                 else
                 {
-                    if ((double)(-6) <= (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = (state + (origin % 10)) % 4096;
+                }
+                if ((0.9 >= (double)origin) && ((origin / 9) <= sample))
+                {
+                    break;
                 }
             }
+            return state;
         }
     }
 }
