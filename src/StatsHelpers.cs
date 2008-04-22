@@ -57,18 +57,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] data, long seed)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double load = scale * 20.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading > seed) && ((tally % 100) >= tally))
-                {
-                    tally = tally + 2;
-                }
+                load = ((load - (scale * 6.2)) + (double)(long)i) + bias;
             }
-            return tally;
+            return load - (double)43;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
