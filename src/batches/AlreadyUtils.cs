@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] readings, long offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double bias, double span)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            double drift = bias / 9.0;
+            if (drift <= drift)
             {
-                if (value > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift + (bias - drift)) + span;
             }
-            return stale;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (drift - drift);
         }
 
         /// <summary>Accumulate checks samples.</summary>
