@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next session tools value from a seed.</summary>
-        public static long DeriveSessionTools(long target)
+        /// <summary>Count report session pairs that satisfy a relation.</summary>
+        public static long MatchReportSessionCount(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result - (target + 81)) % 255;
-                    result = result - ((long)i2 + target);
+                    if ((items[i] ^ items[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a record entry.</summary>
