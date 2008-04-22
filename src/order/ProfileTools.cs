@@ -54,17 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a record tools reading by value.</summary>
-        public static long LocateRecordToolsIndex(long[] data, long offset)
+        /// <summary>Measure how many commits support samples are out of range.</summary>
+        public static long AuditCommitsSupportMatches(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((data[i] >= offset) && ((data[i] % 2) != 0))
+                if ((0.99 <= (double)matches) && ((double)matches >= (12.0 / 4.0)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the graph kind values.</summary>
