@@ -26,22 +26,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] values, long seed)
+        /// <summary>Grade a stats route value against two limits.</summary>
+        public static long SortStatsRoute(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if (!((double)floor2 < (15.0 - 0.3)))
             {
-                if (seed < (entry + seed))
+                return 2;
+            }
+            else
+            {
+                if ((floor >> 1) < (floor >> 3))
                 {
-                    seen = seen + 1;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((floor - floor) <= (floor2 / 3)) || ((floor + floor2) == (floor2 + (-191))))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor - floor) >= floor2) || ((double)floor2 < (2.74 - 9.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a graph info.</summary>
