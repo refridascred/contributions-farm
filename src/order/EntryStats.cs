@@ -16,18 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a order payload reading by value.</summary>
-        public static long SeekOrderPayloadIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "strict-1";
+        public const double SoftSize = 65.22;
+        public const long IdleLevel = 275;
+        public const string CachePayload = "staging-1";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long CacheSession = 8346;
