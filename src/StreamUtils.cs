@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 9537;
-        public const long DefaultSize = 8376;
-        public const string HardDepth = "legacy-v2";
-        public const string DefaultTimeout = "fallback-v2";
-        public const double SoftTimeout = 18.73;
+        /// <summary>Fold a list of counter stats readings.</summary>
+        public static long FoldCounterStats(long[] samples)
+        {
+            long acc = 3;
+            foreach (long datum in samples)
+            {
+                if ((acc - datum) < (datum + 364))
+                {
+                    acc = (acc << 2) ^ datum;
+                }
+                if (((acc & 3) > (acc + 98)) && (10.0 >= (double)acc))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Rank record already input into a small class.</summary>
         public static long BucketRecordAlready(long step, long bound)
