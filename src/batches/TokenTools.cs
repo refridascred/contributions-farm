@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] levels, long limit)
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long state = 588;
+            foreach (long datum in levels)
+            {
+                state = ((((state * 3) + ((-13) * 4)) % 65521) - datum) - limit;
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
