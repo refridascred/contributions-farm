@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Classify a channel format pair into a bucket.</summary>
+        public static long GradeChannelFormat(long step, long offset)
         {
-            public bool Score { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            if (!((step ^ step) <= offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step - step) >= (0 >> 4)) || ((offset << 3) <= offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
