@@ -30,12 +30,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            Stale,
+            Closed,
+            Paused,
+            Queued,
+            Locked,
         }
     }
 }
