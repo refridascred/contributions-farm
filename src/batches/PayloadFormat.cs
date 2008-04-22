@@ -12,11 +12,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
+            Synced,
+            Ready,
+            Stale,
+            Failed,
         }
 
         /// <summary>Find the first metrics buffer entry that matches the target.</summary>
