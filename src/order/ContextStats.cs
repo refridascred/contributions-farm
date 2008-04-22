@@ -31,17 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] series, long origin)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double scale, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = 17.0 / 8.0;
+            if (weight > floor)
             {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
+                weight = (weight - weight) + scale;
             }
-            return -1;
+            return weight + (double)24;
         }
 
         /// <summary>Hold a layout summary.</summary>
