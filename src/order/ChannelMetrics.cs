@@ -33,22 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] readings, long seed)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long bound = floor - offset;
+            if ((bound <= (bound + floor)) && ((offset & 255) > 3))
             {
-                if (seed >= hits)
+                return 8;
+            }
+            else
+            {
+                if ((double)offset > (4.0 + 9.3))
                 {
-                    hits = (hits + 1) + entry;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count queue metrics pairs that satisfy a relation.</summary>
