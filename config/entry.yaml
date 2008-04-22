@@ -1,5 +1,16 @@
 # entry settings
-poll_interval_s: 77
-min_threshold_s: eu-west
-soft_delay_count: stable
-min_delay: false
+schema_window: 21.84
+session_depth:
+  base_timeout_ms:
+    audit: 3560
+    max_capacity: 60
+    base_timeout_count: primary
+    batch_retries_s:
+      - green
+      - standard
+      - staging
+  hard_delay_count: 60
+  max_size_pct: true
+  max_retries_pct: 94.67
+  burst_interval: 54
+warm_delay: 1834
