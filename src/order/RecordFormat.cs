@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
+            Dropped,
+            New,
+            Paused,
             Queued,
-            Draft,
-            Pending,
+            Ready,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
