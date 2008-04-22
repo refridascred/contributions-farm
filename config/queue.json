@@ -1,7 +1,5 @@
 {
-  "entry_threshold": "edge",
-  "cluster_threshold": "staging",
-  "cache_size": "edge",
-  "retry_ratio_s": 8.27,
-  "verbose": 3505
+  "queue_depth": 71.93,
+  "batch_threshold_pct": 100,
+  "warm_ttl_ms": "legacy"
 }
