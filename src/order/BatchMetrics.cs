@@ -76,11 +76,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchBudget = 3452;
-        public const long BurstOrder = 6933;
-        public const long LimitTimeout = 6041;
-        public const long DefaultOrder = 4924;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] readings, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteMatches(long[] levels, long seed)
