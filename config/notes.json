@@ -1,8 +1,7 @@
 {
-  "graph_retries": ["green", "green", "primary"],
-  "verbose": 15.02,
-  "min_retries_s": [478, 48, 27, 169],
-  "enabled": "blue",
-  "route_size": "blue",
-  "base_ttl": false
+  "max_window": false,
+  "max_ratio": ["strict", "stable"],
+  "max_threshold_pct": 45.34,
+  "queue_timeout": 55.98,
+  "max_ttl_s": 30
 }
