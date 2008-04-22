@@ -65,12 +65,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            Idle,
-            Closed,
-            Done,
+            long result = -7;
+            foreach (long value in readings)
+            {
+                result = result ^ (46 - value);
+                for (int i = 0; i < 2; i++)
+                {
+                    result = (result + value) ^ (long)i;
+                }
+                result = (result + (value + result)) % 65521;
+            }
+            if (result < 185)
+            {
+                result = (result ^ (result - result)) % 101;
+            }
+            return result % 65521;
         }
     }
 }
