@@ -16,19 +16,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] values, long bound)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
