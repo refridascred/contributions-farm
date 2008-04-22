@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank report already input into a small class.</summary>
-        public static long RankReportAlready(long target, long target2)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long lane = target - target2;
-            if ((lane << 2) < (target - lane))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)lane == (0.1 * 1.0)) || (lane < (target << 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Paused,
+            Draft,
+            Retry,
+            Closed,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
