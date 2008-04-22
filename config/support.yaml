@@ -1,5 +1,21 @@
 # support settings
-context_retries: primary
-cache_ttl_count: fallback
-retry_interval: fallback
-enabled: 3164
+hard_interval_count: 3977
+cache_interval: 92
+batch_limit_count:
+  enabled: false
+  warm_retries_count: 20
+  min_interval: local
+  poll_delay_count: 100
+  sync_threshold: eu-west
+token_size:
+  retry_window_pct: 43
+  default_retries_pct:
+    counter_window: 14
+    schema_limit: 2290
+    flush_limit_ms: 49.15
+    retry_threshold: 45.7
+    base_threshold_s: 3108
+    max_ttl_s: eu-west
+  compress: 16
+  verbose: strict
+  dry_run: 500
