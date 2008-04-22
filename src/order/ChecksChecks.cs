@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 2178;
+        public const long WindowAccount = 2734;
+        public const long LimitAccount = 3992;
+        public const long SoftAccount = 8724;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
