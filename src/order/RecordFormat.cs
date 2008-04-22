@@ -25,11 +25,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            long mix = -19;
+            foreach (long sample in data)
+            {
+                mix = (mix * 3) + (sample + mix);
+                if ((mix & 31) < (sample - sample))
+                {
+                    mix = (mix + (mix + sample)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ 576) % 65521;
+                }
+            }
+            if (mix > 4)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
