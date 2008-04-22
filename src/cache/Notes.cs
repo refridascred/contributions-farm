@@ -31,12 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 5.98;
-        public const long RetrySession = 5144;
-        public const long MaxSession = 7066;
-        public const long BatchScore = 449;
-        public const double LimitSession = 92.63;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Accumulate profile schema samples.</summary>
         public static long FoldProfileSchema(long[] readings, long bound)
