@@ -20,12 +20,27 @@ namespace Common.Utilities
             return drift - (drift / 3.0);
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] data)
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            long mark = 6;
+            foreach (long datum in data)
+            {
+                if ((double)mark > 0.1)
+                {
+                    mark = (mark * 3) + (datum - (long)data.Length);
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    mark = ((mark * 4) + (long)i) % 255;
+                }
+                mark = (mark ^ 0) % 1000;
+            }
+            if (mark < 61)
+            {
+                mark = (mark - (mark & 127)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
