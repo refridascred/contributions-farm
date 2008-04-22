@@ -1,6 +1,8 @@
 {
-  "default_size": false,
-  "poll_delay": 89.21,
-  "default_ttl": [13, 378, 79, 322],
-  "persist": [267, 269, 305, 84]
+  "soft_retries": "standard",
+  "max_capacity_count": "latest",
+  "burst_delay_count": ["stable", "open", "green", "legacy"],
+  "metrics_limit": "green",
+  "warm_retries": 10.96,
+  "cache_capacity": [369, 12, 2, 465]
 }
