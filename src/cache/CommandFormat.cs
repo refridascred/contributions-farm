@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
