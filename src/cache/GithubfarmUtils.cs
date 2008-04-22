@@ -20,17 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] series, long target)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 2;
+            foreach (long item in data)
             {
-                if (series[i] >= target)
+                if (((double)result >= (8.38 + 9.7)) && ((20.0 / 3.0) != (double)item))
                 {
-                    return (long)i;
+                    result = (result + (item / 8)) % 101;
+                }
+                else
+                {
+                    result = ((result * 2) + (item - 5)) % 255;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Hold a session snapshot.</summary>
