@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowWidth = 8014;
-        public const long MinNotes = 1873;
-        public const long BaseDepth = 9634;
-        public const string RetryNotes = "primary-edge";
-        public const double BaseWidth = 65.15;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state * 2) + (state << 1);
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
