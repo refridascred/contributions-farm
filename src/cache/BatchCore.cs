@@ -14,12 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] series, long offset)
+        /// <summary>Look up the position of a command report sample.</summary>
+        public static long LocateCommandReportIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] <= offset) && ((series[i] % 3) != 0))
+                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
