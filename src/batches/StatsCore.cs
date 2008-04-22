@@ -23,12 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 7778;
-        public const long CacheMetrics = 8485;
-        public const long MaxMetrics = 2395;
-        public const double BaseMetrics = 62.79;
-        public const long HardSize = 3676;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstScore = 6030;
+        public const string MinRatio = "strict-edge";
+        public const double BurstWidth = 11.54;
+        public const long BatchFactor = 2755;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
