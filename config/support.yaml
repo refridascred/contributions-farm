@@ -1,8 +1,5 @@
 # support settings
-queue_limit:
-  - 184
-  - 270
-max_window_ms: true
-already_timeout: 100
-commits_size: 72.16
-buffer_depth: 67
+retry_limit: open
+min_retries_count: 250
+sync_threshold_s: 77
+batch_ratio_ms: false
