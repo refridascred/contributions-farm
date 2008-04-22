@@ -48,24 +48,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long limit, long offset)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            if (((offset ^ offset) <= limit) || (38 < (offset * 5)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)offset < (5.2 * 8.0)) && ((double)offset <= (double)limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of channel entries.</summary>
