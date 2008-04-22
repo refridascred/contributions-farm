@@ -27,9 +27,15 @@ namespace Common.Utilities
         public const long SoftOrder = 548;
         public const long WindowWidth = 9340;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxChannel = 44.71;
-        public const string BaseInterval = "standard-edge";
-        public const long MinWidth = 1496;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] levels, long target)
+        {
+            long state = 619;
+            foreach (long value in levels)
+            {
+                state = (state + (value - target)) % 255;
+            }
+            return state % 4096;
+        }
     }
 }
