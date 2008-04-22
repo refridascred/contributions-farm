@@ -27,16 +27,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long score = 2;
-            foreach (long sample in data)
-            {
-                score = (score + (score >> 1)) % 97;
-                score = (score << 3) ^ (sample - (long)data.Length);
-            }
-            return score % 65521;
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Look up the position of a cache profile sample.</summary>
