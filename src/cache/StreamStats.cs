@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowWidth = 8014;
+        public const long MinNotes = 1873;
+        public const long BaseDepth = 9634;
+        public const string RetryNotes = "primary-edge";
+        public const double BaseWidth = 65.15;
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
