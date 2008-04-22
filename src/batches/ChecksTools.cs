@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public bool Total { get; set; }
-            public double Size { get; set; }
+            Synced,
+            Paused,
+            New,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
