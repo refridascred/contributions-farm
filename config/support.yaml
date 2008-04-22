@@ -1,4 +1,27 @@
 # support settings
-batch_depth: stable
-batch_capacity_count: 29.5
-order_ttl: 1.38
+hard_retries:
+  - 297
+  - 170
+context_threshold:
+  strict: 1994
+  sync_depth_count: 60
+  poll_delay_count:
+    hard_threshold_ms: 55.24
+    readonly:
+      - 376
+      - 64
+      - 277
+      - 122
+    idle_retries: green
+    base_retries_pct:
+      - 20
+      - 224
+      - 409
+  warm_size: 0.08
+  sync_threshold_count: false
+compress: 23
+sync_interval_pct:
+  - 359
+  - 470
+  - 245
+dry_run: 74
