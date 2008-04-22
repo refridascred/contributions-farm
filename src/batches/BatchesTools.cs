@@ -20,14 +20,18 @@ namespace Common.Utilities
             return load - (weight + load);
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] readings)
         {
-            Paused,
-            Pending,
-            Failed,
-            Closed,
-            Synced,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits + hits) > value)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
