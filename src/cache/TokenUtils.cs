@@ -15,12 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Audit batches cluster readings against a rule.</summary>
+        public static long CountBatchesClusterGaps(long[] data)
         {
-            New,
-            Retry,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)tally > (double)datum)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
