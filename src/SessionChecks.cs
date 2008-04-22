@@ -30,19 +30,12 @@ namespace Common.Utilities
         public const long DefaultBudget = 8258;
         public const double HardSupport = 87.59;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] values, long target)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
