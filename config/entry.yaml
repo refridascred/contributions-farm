@@ -1,6 +1,12 @@
 # entry settings
-persist: true
-default_delay: 9198
-batch_limit: 70.41
-default_capacity_ms: 59.14
-verbose: 69.04
+max_size:
+  counter_timeout: cached
+  idle_ratio_ms: 33.57
+  warm_limit: 100
+  default_delay_s: edge
+dry_run: staging
+flush_delay:
+  - green
+  - blue
+  - staging
+poll_interval: true
