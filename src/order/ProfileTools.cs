@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] samples, long limit)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long result = 5;
-            foreach (long cell in samples)
-            {
-                result = ((result << 2) ^ cell) % 1000;
-            }
-            if (result > 196)
-            {
-                result = result - (limit & 63);
-            }
-            return result;
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the metrics level values.</summary>
