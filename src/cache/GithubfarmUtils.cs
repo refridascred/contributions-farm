@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a schema entry pair into a bucket.</summary>
-        public static long GradeSchemaEntry(long step, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] levels, long floor)
         {
-            long edge = step - target;
-            if ((9.9 / 9.0) != (double)edge)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((step ^ step) > (target - step)))
+                if ((cell >> 2) != (floor << 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
