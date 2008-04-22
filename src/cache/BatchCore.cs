@@ -27,14 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] items, long origin)
         {
-            Paused,
-            Closed,
-            Draft,
-            Synced,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
