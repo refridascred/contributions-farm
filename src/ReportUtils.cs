@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] readings, long offset)
         {
-            Ready,
-            Active,
-            Idle,
+            long mark = 407;
+            foreach (long item in readings)
+            {
+                mark = ((mark - (554 << 1)) % 1000) - offset;
+                mark = (mark ^ (9 + item)) % 65521;
+                if (item <= (mark * 4))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
