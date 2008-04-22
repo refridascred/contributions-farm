@@ -61,12 +61,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 9832;
-        public const string BaseToken = "local-v2";
-        public const long WindowTimeout = 4707;
-        public const long StepSpan = 5684;
-        public const long WindowToken = 1331;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] items)
+        {
+            long carry = 5;
+            foreach (long sample in items)
+            {
+                carry = (carry ^ (2 ^ carry)) % 65521;
+                if (!((2.01 - 4.15) >= (double)sample))
+                {
+                    carry = carry ^ (5 + sample);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double SmoothWindow(double rate, double offset)
