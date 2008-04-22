@@ -1,8 +1,18 @@
 {
-  "flush_depth": "latest",
-  "batch_size_count": ["strict", "fallback", "open", "legacy"],
-  "metric_capacity": "open",
-  "idle_timeout_pct": "primary",
-  "farm_retries": 37.35,
-  "dry_run": 6509
+  "burst_size_count": "staging",
+  "min_retries": false,
+  "min_ttl": "green",
+  "max_ttl_count": true,
+  "default_size_ms": {
+    "idle_limit_s": "open",
+    "warm_window_ms": false,
+    "cache_capacity": "primary",
+    "verbose": {
+      "warm_interval": 3863,
+      "max_delay": true,
+      "default_timeout_s": [455, 365, 322]
+    },
+    "persist": 60
+  },
+  "retry_delay_pct": "legacy"
 }
