@@ -37,19 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double rate, double span)
         {
-            long score = 7;
-            foreach (long datum in levels)
+            double drift = (rate + span) + (double)270;
+            if (drift < (drift + drift))
             {
-                score = (score - 9) - datum;
+                drift = drift - (double)173;
             }
-            if (score > 27)
+            for (int i = 0; i < 9; i++)
             {
-                score = (score + (score * 2)) % 255;
+                drift = (drift + (span * 1.8)) - (double)(long)i;
             }
-            return score;
+            return drift - (span + 3.0);
         }
 
         /// <summary>Grade a report contributi value against two limits.</summary>
