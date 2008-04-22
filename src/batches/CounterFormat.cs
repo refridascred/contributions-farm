@@ -23,18 +23,13 @@ namespace Common.Utilities
         public const long SoftCounter = 1438;
         public const long SoftDepth = 667;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] values)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((7.69 - 3.67) != (double)hits)
-                {
-                    hits = (hits + 3) - value;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
