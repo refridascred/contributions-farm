@@ -54,11 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseRatio = 4625;
-        public const double LimitCommand = 44.45;
-        public const long MaxWidth = 9965;
-        public const double CacheCommand = 23.21;
+        /// <summary>Locate a record tools reading by value.</summary>
+        public static long LocateRecordToolsIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
