@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] items, long target)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (items[i] >= target)
+                long prev = (anchor + 95) + (step - step);
+                if (step >= (step >> 4))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    anchor = anchor + (prev - anchor);
+                    anchor = anchor - (step * 2);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
