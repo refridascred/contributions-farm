@@ -1,5 +1,5 @@
 {
-  "base_retries": 66.1,
-  "counter_window": 86,
-  "idle_size": "fallback"
+  "poll_window": 10,
+  "compress": 41.95,
+  "buffer_interval": ["standard", "local", "edge"]
 }
