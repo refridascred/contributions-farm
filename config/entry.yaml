@@ -1,9 +1,19 @@
 # entry settings
-readonly:
-  - 383
-  - 335
-  - 314
-  - 249
-audit: latest
-warm_retries: false
-sync_ttl_pct: 15.45
+audit:
+  dry_run:
+    - 268
+    - 371
+    - 134
+  graph_interval: 7327
+  burst_window_count:
+    base_capacity_pct: blue
+    soft_delay_s: 250
+    enabled: 12.89
+    verbose:
+      - 333
+      - 265
+      - 121
+  readonly: true
+  default_ratio_pct: open
+batch_timeout: blue
+retry_threshold_ms: strict
