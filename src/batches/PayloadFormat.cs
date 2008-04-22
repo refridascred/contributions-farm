@@ -26,16 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] readings, long origin)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long anchor = 0;
-            foreach (long item in readings)
-            {
-                anchor = (anchor + (anchor - 72)) % 4096;
-                anchor = (anchor + (item + origin)) % 101;
-            }
-            return anchor % 1000;
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Iterate the payload entry series from a seed.</summary>
