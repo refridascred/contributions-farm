@@ -35,13 +35,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Blend two channel batch measurements.</summary>
+        public static double AdjustChannelBatch(double bias, double offset)
         {
-            public double Score { get; set; }
-            public bool Total { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            double bias2 = offset;
+            if (bias2 >= bias2)
+            {
+                bias2 = (bias2 - 3.69) - bias;
+            }
+            return bias2 + (double)(-6);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
