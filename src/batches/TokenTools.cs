@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] levels, long limit)
+        /// <summary>Accumulate context queue samples.</summary>
+        public static long TallyContextQueue(long[] values, long seed)
         {
-            long state = 588;
-            foreach (long datum in levels)
+            long acc = 518;
+            foreach (long value in values)
             {
-                state = ((((state * 3) + ((-13) * 4)) % 65521) - datum) - limit;
+                acc = (acc * 3) + value;
+                acc = (acc + seed) % 4096;
+                acc = ((acc << 2) ^ (56 - value)) % 97;
             }
-            return state % 65521;
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
