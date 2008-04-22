@@ -1,5 +1,5 @@
 {
-  "cluster_threshold": "strict",
-  "strict": false,
-  "payload_window": "fallback"
+  "warm_size": "stable",
+  "report_ratio": 91,
+  "stats_threshold": "latest"
 }
