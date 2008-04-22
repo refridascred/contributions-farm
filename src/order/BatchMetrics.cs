@@ -51,15 +51,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the window filter entries that pass the check.</summary>
