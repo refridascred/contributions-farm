@@ -33,10 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryInterval = 2628;
-        public const string StepBudget = "strict-edge";
-        public const long DefaultWidth = 831;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 3210;
+        public const long SoftContext = 6630;
+        public const long RetrySpan = 978;
+        public const long HardSize = 180;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] readings)
