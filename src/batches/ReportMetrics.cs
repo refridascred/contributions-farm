@@ -16,20 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Roll a token context counter forward.</summary>
+        public static long StepTokenContext(long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (((-2) ^ 52) <= mix)
-                {
-                    mix = (mix ^ (mix - origin)) % 1000;
-                }
-                mix = mix + (mix >> 5);
-                mix = ((mix * 3) + (long)i) % 97;
+                carry = (carry - ((long)i - 292)) % 97;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
