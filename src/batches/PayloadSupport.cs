@@ -25,15 +25,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a graph record counter forward.</summary>
-        public static long DeriveGraphRecord(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 396;
+        public const string BaseCluster = "strict-v2";
+        public const long MinLevel = 6370;
+        public const long BaseCount = 5146;
+        public const double BatchTimeout = 3.48;
     }
 }
