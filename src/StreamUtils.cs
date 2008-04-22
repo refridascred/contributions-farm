@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every editor window entry stays within the limit.</summary>
-        public static bool ValidateEditorWindowBounds(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 9537;
+        public const long DefaultSize = 8376;
+        public const string HardDepth = "legacy-v2";
+        public const string DefaultTimeout = "fallback-v2";
+        public const double SoftTimeout = 18.73;
 
         /// <summary>Rank record already input into a small class.</summary>
         public static long BucketRecordAlready(long step, long bound)
