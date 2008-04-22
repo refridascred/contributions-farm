@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long result = 8;
-            foreach (long sample in readings)
-            {
-                if ((sample * 5) > (8 & 7))
-                {
-                    result = ((result * 4) + result) % 97;
-                    continue;
-                }
-                else
-                {
-                    result = (result << 3) ^ (sample + result);
-                }
-                result = (result - sample) % 255;
-            }
-            if (result > 5)
-            {
-                result = result - ((long)readings.Length + result);
-            }
-            return result % 4096;
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
