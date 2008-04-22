@@ -55,18 +55,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] data, long bound)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((value + 414) >= (bound + value)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
