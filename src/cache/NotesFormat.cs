@@ -22,34 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel window readings.</summary>
-        public static long DigestChannelWindow(long[] series)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long score = 1;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    score = (score - ((long)i - entry)) % 255;
-                }
-                if (!(score > (entry / 9)))
-                {
-                    score = score ^ 6;
-                }
-                if ((score <= (score + entry)) || ((score & 63) <= score))
-                {
-                    score = (score - (entry + entry)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ entry) % 1000;
-                }
-            }
-            if (score < 274)
-            {
-                score = ((score << 3) ^ 9) % 97;
-            }
-            return score % 1000;
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
