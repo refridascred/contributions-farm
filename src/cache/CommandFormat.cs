@@ -34,11 +34,11 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxFactor = 9890;
-        public const long MaxEntry = 7221;
-        public const string BaseSize = "cached";
-        public const long MinEntry = 7182;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftSupport = "open-edge";
+        public const string BaseSupport = "cached-edge";
+        public const long BatchSupport = 3381;
+        public const double BatchScore = 81.01;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheCommand = 3711;
