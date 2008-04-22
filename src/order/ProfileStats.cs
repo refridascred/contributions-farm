@@ -12,14 +12,14 @@ namespace Common.Utilities
         public const long HardReport = 2815;
         public const string IdleReport = "strict-v2";
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Synced,
-            Stale,
-            Active,
+            Done,
+            New,
+            Idle,
             Queued,
-            Draft,
+            Retry,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
