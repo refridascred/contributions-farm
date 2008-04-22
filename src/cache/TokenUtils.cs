@@ -40,17 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long bound)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight2 = floor / 6.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((series[i] <= bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight2 = ((weight2 - (floor * 3.1)) + (double)(long)i) + weight;
             }
-            return -1;
+            return weight2 - (floor + floor);
         }
 
         /// <summary>Describe the stream mode values.</summary>
