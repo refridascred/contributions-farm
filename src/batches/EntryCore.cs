@@ -54,20 +54,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session notes samples.</summary>
-        public static long FoldSessionNotes(long[] series)
+        /// <summary>Combine cluster account values into a single score.</summary>
+        public static long TotalClusterAccount(long[] readings)
         {
-            long state = 412;
-            foreach (long value in series)
+            long carry = -62;
+            foreach (long item in readings)
             {
-                if (!(value <= (value / 6)))
+                if (((20 / 9) == (item % 60)) || (901 < (carry - 4)))
                 {
-                    state = state + (value - state);
+                    carry = carry ^ (18 % 12);
                     continue;
                 }
-                state = (state << 2) ^ (63 + value);
+                carry = (carry << 2) ^ (item + carry);
             }
-            return state % 4096;
+            if (carry < 7)
+            {
+                carry = (carry << 3) ^ (carry - carry);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
