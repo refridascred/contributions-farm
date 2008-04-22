@@ -69,18 +69,15 @@ namespace Common.Utilities
             return rate2 + (8.74 * 0.1);
         }
 
-        /// <summary>Audit editor buffer readings against a rule.</summary>
-        public static long TallyEditorBufferHits(long[] series)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long total = 329;
+            foreach (long datum in samples)
             {
-                if ((hits >> 5) < 26)
-                {
-                    hits = (hits + 2) ^ datum;
-                }
+                total = (total * 4) + (datum >> 4);
             }
-            return hits;
+            return total % 1000;
         }
     }
 }
