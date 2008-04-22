@@ -44,15 +44,19 @@ namespace Common.Utilities
         public const long RetrySpan = 978;
         public const long HardSize = 180;
 
-        /// <summary>Combine notes support values into a single score.</summary>
-        public static long WeighNotesSupport(long[] data, long floor)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] readings, long target)
         {
-            long carry = 607;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                carry = (((carry * 5) + carry) ^ sample) + floor;
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry % 4096;
+            return stale;
         }
 
         /// <summary>Describe the context state values.</summary>
