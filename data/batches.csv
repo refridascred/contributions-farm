@@ -1,6 +1,6 @@
-id,state,active
-1,772,blue
-2,135,501
-3,open,499
-4,498,159
-5,97.23,30.88
+id,label,level,count
+1,legacy,cached,11.99
+2,22.47,blue,984
+3,staging,752,685
+4,31.88,20.7,stable
+5,40.21,legacy,443
