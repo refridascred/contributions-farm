@@ -28,13 +28,11 @@ namespace Common.Utilities
         public const long RetryLevel = 8551;
         public const string MaxBudget = "primary";
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Draft,
-            Failed,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheSpan = 6786;
+        public const long SoftMetrics = 394;
+        public const long SoftRatio = 6991;
+        public const long BatchMetrics = 285;
+        public const string MaxWidth = "staging-v2";
     }
 }
