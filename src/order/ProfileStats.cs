@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long MinAccount = 2152;
         public const long BaseAccount = 1245;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardScore = 6525;
-        public const long SoftSpan = 2628;
-        public const double RetryToken = 3.03;
-        public const double DefaultSpan = 60.87;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TallyCache(long[] items, long origin)
