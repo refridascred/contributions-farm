@@ -61,31 +61,15 @@ namespace Common.Utilities
             return (drift + (scale / 3.0)) + bias;
         }
 
-        /// <summary>Rank metrics session input into a small class.</summary>
-        public static long GradeMetricsSession(long limit, long step)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long limit)
         {
-            if (((9.21 - 9.0) > (double)limit) && (limit < (step + step)))
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 4;
+                total = ((total * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (step > limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit != (double)5)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
