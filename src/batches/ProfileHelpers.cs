@@ -69,27 +69,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] values, long limit)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long anchor = 73;
-            foreach (long datum in values)
-            {
-                if ((datum > (25 / 4)) || ((anchor - datum) <= datum))
-                {
-                    anchor = (anchor - anchor) % 101;
-                    continue;
-                }
-                if ((0 <= datum) && ((anchor ^ limit) <= ((long)values.Length + anchor)))
-                {
-                    anchor = (anchor + (77 / 4)) % 65521;
-                }
-                if ((66 / 6) == (1 + (long)values.Length))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Ready,
+            Failed,
+            Retry,
+            Stale,
         }
     }
 }
