@@ -38,15 +38,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long sum = 46;
-            foreach (long value in readings)
-            {
-                sum = (sum << 2) ^ (value - sum);
-            }
-            return sum % 1000;
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
