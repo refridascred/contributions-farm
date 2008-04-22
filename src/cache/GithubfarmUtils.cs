@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of farm context readings.</summary>
-        public static long WeighFarmContext(long[] values, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] levels)
         {
-            long acc = 9;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((5 % 3) == (sample >> 2))
+                if ((6.31 - 2.64) > (double)reading)
                 {
-                    acc = (acc + 91) - bound;
+                    tally = tally + 2;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Measure how many format route samples are out of range.</summary>
