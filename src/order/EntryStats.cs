@@ -37,19 +37,11 @@ namespace Common.Utilities
             return weight + (double)(-51);
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] readings)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long anchor = 0;
-            foreach (long cell in readings)
-            {
-                anchor = (anchor * 2) + (525 + cell);
-            }
-            if (anchor < (-76))
-            {
-                anchor = (anchor - (anchor >> 4)) % 4096;
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the checks mode values.</summary>
