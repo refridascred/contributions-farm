@@ -35,10 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseContext = "standard-v2";
-        public const double CacheWidth = 76.42;
-        public const double HardSize = 50.48;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] samples, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches & 127) >= entry)
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
