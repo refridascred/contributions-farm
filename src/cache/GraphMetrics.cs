@@ -33,18 +33,11 @@ namespace Common.Utilities
         public const long RetrySpan = 978;
         public const long HardSize = 180;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] data)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double weight, double span)
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (!(1.54 > (double)entry) || (((double)entry < 13.0) && ((42 + entry) < (entry % 3))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double drift = span;
+            return (drift + (span + drift)) + weight;
         }
 
         /// <summary>Describe the context state values.</summary>
