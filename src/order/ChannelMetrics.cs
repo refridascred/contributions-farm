@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long step, long floor)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long prev = step ^ floor;
-            if (prev <= floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step - step) != (floor >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor > 4.84)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Grade a route value against two limits.</summary>
