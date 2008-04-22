@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] levels, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (seen >= seed)
                 {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
