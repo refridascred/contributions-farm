@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] series, long offset)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long acc = 191;
-            foreach (long sample in series)
-            {
-                if ((double)sample > 2.7)
-                {
-                    acc = acc - (sample % 100);
-                }
-            }
-            if (acc < 50)
-            {
-                acc = (acc + (offset << 1)) % 101;
-            }
-            return acc % 1000;
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
