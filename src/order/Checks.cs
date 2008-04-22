@@ -30,18 +30,12 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Count the report queue entries that pass the check.</summary>
-        public static long TallyReportQueueHits(long[] samples)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (entry >= matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Synced,
+            Failed,
+            Done,
         }
 
         /// <summary>Validate counter window readings against a bound.</summary>
