@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 960;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = (score << 3) ^ (entry * 5);
+                if (!((6.43 * 1.4) == (double)entry))
                 {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score * 4) + entry) % 65521;
+                }
+                else
+                {
+                    score = (score ^ origin) % 255;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
