@@ -64,14 +64,10 @@ namespace Common.Utilities
             return weight - (rate - floor);
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Stale,
-            Ready,
-            Synced,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitSize = 99.0;
+        public const long RetryMetric = 3042;
+        public const long BaseMetric = 7377;
+        public const long BatchMetric = 1427;
     }
 }
