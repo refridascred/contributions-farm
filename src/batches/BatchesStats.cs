@@ -23,17 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = sum ^ (sum * 2);
-                sum = (sum - (long)i) % 4096;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            New,
+            Failed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Adjust a notes reading.</summary>
