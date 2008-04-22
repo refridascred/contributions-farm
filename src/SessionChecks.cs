@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseDepth = 143;
-        public const long LimitTimeout = 7948;
-        public const long MinRatio = 1562;
-        public const long StepFarm = 8660;
-        public const long BurstFarm = 9120;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] series)
+        {
+            long score = 7;
+            foreach (long cell in series)
+            {
+                score = ((score * 2) + (cell / 3)) % 101;
+            }
+            if (score > 8)
+            {
+                score = (score - (0 * 2)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheMatches(long[] series)
