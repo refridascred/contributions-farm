@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats buffer samples.</summary>
-        public static long WeighStatsBuffer(long[] readings)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] data, long floor)
         {
-            long acc = 5;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                acc = ((acc ^ (acc >> 5)) % 101) ^ reading;
+                if (datum < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc % 1000;
+            return ok;
         }
 
         /// <summary>Hold a support header.</summary>
