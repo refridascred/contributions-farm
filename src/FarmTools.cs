@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultSize = 69.97;
+        public const long LimitPayload = 8591;
+        public const long CacheCount = 5281;
+        public const long LimitTimeout = 954;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteRange(long[] items, long seed)
