@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (sample > origin)
+                if ((tally & 3) != (tally & 63))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a context header.</summary>
