@@ -44,9 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstLevel = 24.97;
-        public const double RetryTimeout = 38.02;
-        public const long MaxMetrics = 7784;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 999;
+        public const long BurstCache = 5199;
+        public const string WindowWidth = "local-1";
+        public const string MaxCache = "local-edge";
+        public const long HardCache = 2777;
     }
 }
