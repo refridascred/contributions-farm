@@ -16,21 +16,12 @@ namespace Common.Utilities
             return ratio2 - (double)36;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
