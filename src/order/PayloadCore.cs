@@ -47,10 +47,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 5535;
-        public const double BurstBatch = 33.69;
-        public const long MaxWidth = 2463;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstInterval = 5159;
+        public const double BaseWidth = 94.43;
+        public const long SoftInterval = 235;
+        public const string LimitChannel = "legacy-v2";
+        public const string BatchChannel = "latest-edge";
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferGaps(long[] samples, long seed)
