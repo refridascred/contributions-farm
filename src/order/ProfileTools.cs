@@ -20,25 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long limit, long step)
-        {
-            if (((limit & 63) < (step / 5)) || (step > (step & 15)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((limit >> 2) == (limit + limit)) || ((limit / 4) < (step % 97)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 9500;
+        public const long CacheInterval = 9234;
+        public const double RetryLevel = 77.55;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
