@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long MinAccount = 2152;
         public const long BaseAccount = 1245;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 5931;
-        public const long CacheCommits = 8603;
-        public const string HardSpan = "legacy";
-        public const long StepBudget = 5758;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardScore = 3882;
+        public const long BaseAlready = 9851;
+        public const string RetryAlready = "open";
+        public const string BatchAlready = "alpha-1";
+        public const long CacheAlready = 6880;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TallyTools(long[] samples, long limit)
