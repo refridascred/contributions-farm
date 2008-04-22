@@ -65,12 +65,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] data, long target)
         {
-            public double Stamp { get; set; }
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
