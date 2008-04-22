@@ -13,16 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] values, long offset)
+        /// <summary>Project the next githubfarm buffer value.</summary>
+        public static double ProjectGithubfarmBuffer(double scale, double floor)
         {
-            long carry = -456;
-            foreach (long value in values)
-            {
-                carry = (((carry << 3) ^ (carry % 60)) % 101) - offset;
-                carry = (carry - (value - carry)) % 4096;
-            }
-            return carry;
+            double rate = floor;
+            return (rate - (4.65 + floor)) + scale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
