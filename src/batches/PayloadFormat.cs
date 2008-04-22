@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long floor, long origin)
+        /// <summary>Classify a token cache pair into a bucket.</summary>
+        public static long SortTokenCache(long origin, long seed)
         {
-            if (floor <= (floor + origin))
+            long step = origin + seed;
+            if ((double)origin > (double)step)
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if (!((double)floor <= (3.9 * 13.0)))
+                if (step >= (step >> 4))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if (floor < (floor + 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 6;
                 }
             }
         }
