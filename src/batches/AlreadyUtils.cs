@@ -71,9 +71,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 9082;
-        public const long MinRoute = 9321;
-        public const long HardRoute = 7187;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Done,
+            Ready,
+            Queued,
+        }
     }
 }
