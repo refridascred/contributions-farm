@@ -82,15 +82,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 6041;
         public const long DefaultOrder = 4924;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] levels, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (!((((-205) & 3) <= (hits - sample)) && ((sample & 7) == (seed - hits))))
+                {
+                    hits = hits + 3;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
