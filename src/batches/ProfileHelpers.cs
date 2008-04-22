@@ -22,27 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] values, long limit)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long mark = 3;
-            foreach (long cell in values)
-            {
-                if ((7.3 - 11.0) < (double)cell)
-                {
-                    mark = (mark + (cell - 24)) % 1000;
-                }
-                mark = mark ^ (cell << 3);
-                if ((mark << 2) <= (limit - mark))
-                {
-                    mark = (mark ^ (cell ^ mark)) % 65521;
-                }
-            }
-            if (mark > 778)
-            {
-                mark = (mark << 2) ^ (mark + limit);
-            }
-            return mark % 4096;
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of session readings.</summary>
