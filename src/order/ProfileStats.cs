@@ -30,15 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] items, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
+            long anchor = 958;
+            foreach (long entry in items)
             {
-                long slot = anchor;
-                anchor = anchor ^ (slot * 2);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                for (int i = 0; i < 2; i++)
+                {
+                    anchor = (anchor + entry) - (long)i;
+                }
+                anchor = ((anchor * 2) + (entry % 16)) % 65521;
+            }
+            if (anchor > 4)
+            {
+                anchor = ((anchor << 3) ^ origin) % 101;
             }
             return anchor;
         }
