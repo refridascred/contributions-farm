@@ -33,39 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long seed, long offset)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long next = seed + offset;
-            if ((seed >= (offset - offset)) && ((next % 100) >= (seed % 60)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((2 + seed) < (offset / 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((next / 9) >= (seed % 97)) || ((seed + seed) <= (497 - seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((60 + offset) >= (next - seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Grade a account value against two limits.</summary>
