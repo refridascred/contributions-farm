@@ -22,23 +22,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((hits / 2) > (hits + hits))
-                {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 5535;
+        public const double BurstBatch = 33.69;
+        public const long MaxWidth = 2463;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long RollMetric(long target)
