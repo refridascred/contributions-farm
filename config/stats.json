@@ -1,7 +1,18 @@
 {
-  "warm_limit_s": 250,
-  "dry_run": [491, 98],
-  "graph_timeout": "cached",
-  "session_interval": 83,
-  "metrics_limit": 72.34
+  "hard_ttl_s": ["edge", "edge", "primary"],
+  "dry_run": "legacy",
+  "min_timeout_ms": {
+    "soft_size_ms": 83,
+    "poll_retries_count": "eu-west",
+    "sync_delay_ms": "staging"
+  },
+  "enabled": 6097,
+  "warm_window_s": {
+    "hard_size": 58.85,
+    "retry_threshold_s": "edge",
+    "flush_retries": "latest",
+    "cache_ttl_ms": 4,
+    "max_ttl": 33,
+    "warm_capacity": 62.55
+  }
 }
