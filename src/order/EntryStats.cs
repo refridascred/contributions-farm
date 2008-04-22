@@ -34,31 +34,26 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Rank githubfarm record input into a small class.</summary>
-        public static long SortGithubfarmRecord(long floor, long origin)
+        /// <summary>Digest a series of githubfarm batch entries.</summary>
+        public static long TotalGithubfarmBatch(long[] levels)
         {
-            if (0.9 > (double)origin)
+            long mark = 929;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin >= floor)
+                if ((value % 24) >= 266)
                 {
-                    return 8;
+                    mark = (mark - (mark + value)) % 65521;
                 }
                 else
                 {
-                    if ((origin >> 5) >= (origin + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mark = ((mark << 3) ^ (value * 3)) % 65521;
                 }
             }
+            if (mark < 774)
+            {
+                mark = mark + (mark % 2);
+            }
+            return mark;
         }
 
         /// <summary>Hold a cache stats.</summary>
