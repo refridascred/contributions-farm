@@ -1,8 +1,13 @@
 {
-  "format_ttl": "local",
-  "readonly": "strict",
-  "poll_ttl_count": false,
-  "sync_interval_ms": 39.85,
-  "warm_depth_ms": "standard",
-  "retry_retries_ms": true
+  "poll_threshold": {
+    "batch_depth": "blue",
+    "queue_retries": 1024,
+    "schema_timeout": "legacy"
+  },
+  "persist": {
+    "already_threshold": "blue",
+    "hard_limit_s": 39,
+    "session_interval": "eu-west"
+  },
+  "strict": true
 }
