@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] series, long step)
+        /// <summary>Digest a series of window cluster entries.</summary>
+        public static long ScoreWindowCluster(long[] readings, long floor)
         {
-            long state = 2;
-            foreach (long sample in series)
+            long sum = 0;
+            foreach (long datum in readings)
             {
-                if (((4 & 3) < step) || ((state >> 3) < (step / 9)))
+                if (!((datum - 8) <= (floor & 1)))
                 {
-                    state = (state - step) ^ sample;
+                    sum = ((sum << 2) ^ (99 % 60)) % 1000;
                 }
             }
-            if (state > 7)
+            if (sum > (-47))
             {
-                state = (state - (state + step)) % 65521;
+                sum = (sum ^ (8 / 5)) % 101;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Roll a cache farm counter forward.</summary>
