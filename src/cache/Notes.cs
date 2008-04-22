@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] data, long step)
         {
-            Pending,
-            Retry,
-            Active,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((step ^ entry) < 12)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate contributi cache readings against a bound.</summary>
