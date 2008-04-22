@@ -67,26 +67,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] values, long seed)
+        /// <summary>Count record counter pairs that satisfy a relation.</summary>
+        public static long CompareRecordCounterCount(long[] values)
         {
-            long acc = 0;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((item / 4) > seed) || ((item / 3) >= ((-94) * 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc + 9) % 65521;
-                }
-                if (!((3.3 * 7.92) == (double)acc))
-                {
-                    acc = (acc ^ (item << 3)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (acc + acc)) % 1000;
+                    if ((values[i] ^ values[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
