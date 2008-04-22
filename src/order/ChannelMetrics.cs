@@ -13,11 +13,20 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 1498;
-        public const double SoftTimeout = 94.16;
-        public const long HardInterval = 8903;
-        public const double CacheSize = 83.55;
+        /// <summary>Blend two channel report measurements.</summary>
+        public static double BlendChannelReport(double scale, double floor)
+        {
+            double scale2 = scale;
+            if (scale2 < scale)
+            {
+                scale2 = (scale2 - 0.34) - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + (scale - 9.4)) + (double)(long)i;
+            }
+            return scale2 - (scale / 3.0);
+        }
 
         /// <summary>Count queue metrics pairs that satisfy a relation.</summary>
         public static long MatchQueueMetricsCount(long[] items)
