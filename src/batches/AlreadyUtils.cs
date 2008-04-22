@@ -41,19 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] data, long offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
