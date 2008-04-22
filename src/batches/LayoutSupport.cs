@@ -31,15 +31,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Scale a payload filter figure with a bias.</summary>
-        public static double ScalePayloadFilter(double weight, double floor)
+        /// <summary>Audit queue checks readings against a rule.</summary>
+        public static long AuditQueueChecksOutliers(long[] series)
         {
-            double drift = (double)(570 - 5);
-            if (drift > weight)
+            long hits = 0;
+            foreach (long item in series)
             {
-                drift = drift + drift;
+                if ((8.0 - 1.0) != (double)item)
+                {
+                    hits = hits + 3;
+                }
             }
-            return drift - (floor + floor);
+            return hits;
         }
 
         /// <summary>Project the next route value.</summary>
