@@ -6,7 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy standard blue; do
+COMMAND_LIMIT=274
+log "limit is ${COMMAND_LIMIT}"
+
+for item in blue primary eu-west standard; do
     log "checking ${item}"
 done
 
