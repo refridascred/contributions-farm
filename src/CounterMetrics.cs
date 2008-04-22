@@ -36,21 +36,26 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 492;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((9.52 + 7.06) <= (double)acc)
                 {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc * 4) + (value - value)) % 97;
+                }
+                if (acc < (value + acc))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (acc < 208)
+            {
+                acc = (acc * 3) + acc;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
