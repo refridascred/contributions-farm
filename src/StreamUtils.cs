@@ -33,12 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public bool Region { get; set; }
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Rank window input into a small class.</summary>
