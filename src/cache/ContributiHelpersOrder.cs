@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] items)
+        /// <summary>Roll a context cache counter forward.</summary>
+        public static long StepContextCache(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry * 5) + floor;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the context class values.</summary>
