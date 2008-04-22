@@ -1,5 +1,6 @@
 {
-  "entry_interval": 81.33,
-  "retry_capacity": 24,
-  "audit": "edge"
+  "idle_size_pct": "eu-west",
+  "retry_ttl_count": true,
+  "cache_retries_ms": false,
+  "audit": true
 }
