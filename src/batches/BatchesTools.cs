@@ -42,17 +42,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] readings, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 3;
+            foreach (long reading in levels)
             {
-                if (readings[i] < origin)
+                if ((anchor & 255) > anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor << 2) ^ (target % 100);
+                }
+                if ((457 >> 2) < (anchor / 2))
+                {
+                    anchor = ((anchor << 2) ^ (reading * 5)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + target) % 97;
                 }
             }
-            return -1;
+            if (anchor > 980)
+            {
+                anchor = ((anchor << 3) ^ (anchor >> 1)) % 1000;
+            }
+            return anchor % 97;
         }
     }
 }
