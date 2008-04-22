@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSize = 4652;
-        public const long WindowSupport = 2377;
-        public const string SoftSupport = "open-v2";
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesBounds(long[] samples, long seed)
