@@ -1,9 +1,12 @@
 # githubfarm settings
-enabled:
-  - 153
-  - 139
-stream_window: 1870
-sync_delay_s: blue
-persist: legacy
-default_depth_s: true
-retry_size: false
+min_depth: true
+verbose: strict
+cluster_window:
+  - 114
+  - 159
+  - 440
+batch_window:
+  - 337
+  - 169
+cache_ttl: green
+metrics_delay: 250
