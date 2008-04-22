@@ -42,18 +42,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] levels)
+        /// <summary>Count the metric cluster entries that pass the check.</summary>
+        public static long CountMetricClusterOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!(((reading - 27) < (reading / 4)) || ((seen & 15) != (seen * 2))))
+                if ((entry + hits) <= 787)
                 {
-                    seen = seen + 3;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
