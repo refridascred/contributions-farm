@@ -40,18 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] readings, long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (!(datum >= seed))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Closed,
+            Done,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
