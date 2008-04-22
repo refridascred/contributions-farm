@@ -1,4 +1,7 @@
 # githubfarm settings
-counter_capacity: false
-idle_timeout: blue
-batch_retries_ms: 96.87
+dry_run:
+  - open
+  - latest
+warm_depth: cached
+soft_timeout_ms: 40
+default_timeout: true
