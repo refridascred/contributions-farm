@@ -44,12 +44,15 @@ namespace Common.Utilities
         public const long RetryLevel = 8551;
         public const string MaxBudget = "primary";
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double bias, double floor)
         {
-            Queued,
-            Ready,
-            Draft,
+            double weight = floor;
+            if (weight >= (double)459)
+            {
+                weight = weight - floor;
+            }
+            return weight - bias;
         }
     }
 }
