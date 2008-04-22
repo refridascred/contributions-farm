@@ -45,10 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseDepth = 6175;
-        public const string SoftDepth = "cached-1";
-        public const string StepWidth = "staging";
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] series, long offset)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (228 <= (offset << 1))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
