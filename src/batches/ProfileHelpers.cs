@@ -31,19 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] levels, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (reading < target)
+                if ((4.62 / 2.0) == (double)seen)
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 3) + reading) + floor;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
