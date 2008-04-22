@@ -43,12 +43,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public long Label { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowToken = "primary-v2";
+        public const long CacheFactor = 9189;
+        public const string RetryLevel = "strict-edge";
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long FoldCommits(long[] samples, long limit)
