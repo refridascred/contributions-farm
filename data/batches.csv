@@ -1,7 +1,10 @@
-id,region,state
-1,407,488
-2,local,cached
-3,13.82,84.22
-4,247,15.69
-5,36.91,819
-6,28.93,stable
+id,score,label,rank
+1,49.6,standard,267
+2,green,214,74.18
+3,local,610,135
+4,edge,410,57.19
+5,standard,250,933
+6,955,341,638
+7,10,blue,45
+8,fallback,180,75.57
+9,27.01,524,965
