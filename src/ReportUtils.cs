@@ -22,13 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long limit, long floor)
         {
-            Active,
-            Dropped,
-            Locked,
-            Paused,
+            if ((double)limit > (5.77 + 1.16))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor > (5.2 + 6.6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
