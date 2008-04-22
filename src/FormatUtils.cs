@@ -53,13 +53,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
+            Retry,
+            Closed,
+            Dropped,
+            Locked,
+            Failed,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
