@@ -1,5 +1,4 @@
 # entry settings
-dry_run: open
-max_retries_pct: local
-audit: 73
-support_limit: true
+min_threshold: 5285
+sync_capacity_ms: 30
+stream_limit: 48.75
