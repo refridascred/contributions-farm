@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every editor buffer entry stays within the limit.</summary>
-        public static bool ValidateEditorBufferBounds(long[] values, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (datum < floor)
+                if (entry != floor)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Audit record buffer readings against a rule.</summary>
