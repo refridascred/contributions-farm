@@ -1,6 +1,6 @@
 # githubfarm settings
-default_interval: open
-channel_depth: green
-default_size_s: 93
-session_delay: 7549
-cache_timeout_pct: 500
+min_ratio_s: legacy
+retry_ttl_pct: 7906
+idle_timeout: stable
+min_ratio_ms: 25.47
+cache_delay_count: eu-west
