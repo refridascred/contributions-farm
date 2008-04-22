@@ -1,5 +1,6 @@
 {
-  "verbose": "blue",
-  "idle_limit_pct": "green",
-  "readonly": 60
+  "flush_window_ms": "open",
+  "cache_capacity_pct": true,
+  "idle_delay": "latest",
+  "layout_interval": 6966
 }
