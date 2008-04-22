@@ -57,11 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
