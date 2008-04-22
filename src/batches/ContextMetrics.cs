@@ -13,32 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a account profile value against two limits.</summary>
-        public static long BucketAccountProfile(long offset, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] data, long floor)
         {
-            long edge = offset - step;
-            if ((offset % 7) <= edge)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1 + 66) > step)
+                if (sample < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset < 4.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the already phase values.</summary>
