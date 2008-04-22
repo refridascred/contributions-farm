@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long score = 167;
-            foreach (long value in values)
-            {
-                if ((value & 1) < (84 + (long)values.Length))
-                {
-                    score = (score ^ score) % 255;
-                    continue;
-                }
-                if (value >= (78 + 85))
-                {
-                    score = (score ^ (value & 255)) % 65521;
-                }
-            }
-            if (score < 81)
-            {
-                score = ((score * 5) + (32 + 1)) % 101;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
