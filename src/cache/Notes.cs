@@ -39,18 +39,18 @@ namespace Common.Utilities
         public const long CacheTimeout = 5831;
         public const double BurstChannel = 65.62;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] levels, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((step - (long)levels.Length) > entry)
+                if ((tally / 2) <= (tally / 5))
                 {
-                    seen = seen + 3;
+                    tally = ((tally + 1) + datum) - target;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a filter token pair into a bucket.</summary>
