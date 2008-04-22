@@ -37,20 +37,11 @@ namespace Common.Utilities
         public const long LimitChecks = 5233;
         public const string BaseBudget = "fallback-1";
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseRatio = 4625;
+        public const double LimitCommand = 44.45;
+        public const long MaxWidth = 9965;
+        public const double CacheCommand = 23.21;
 
         /// <summary>Classify a order editor pair into a bucket.</summary>
         public static long ClassifyOrderEditor(long seed, long target)
