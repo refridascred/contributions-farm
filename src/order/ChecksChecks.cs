@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long LimitAccount = 3992;
         public const long SoftAccount = 8724;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Roll a metric channel counter forward.</summary>
+        public static long SeriesMetricChannel(long origin)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public double Total { get; set; }
+            long state = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((origin + state) >= 256))
+                {
+                    state = (state - (origin << 1)) % 255;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
