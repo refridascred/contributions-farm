@@ -36,12 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long bound)
         {
-            Paused,
-            Queued,
-            Idle,
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the schema phase values.</summary>
