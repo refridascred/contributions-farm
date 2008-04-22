@@ -16,12 +16,19 @@ namespace Common.Utilities
             return load + (load * 3.0);
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Derive the next tools queue value from a seed.</summary>
+        public static long StepToolsQueue(long step)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((sum ^ sum) > sum) && ((18.0 * 19.0) < (double)step))
+                {
+                    sum = ((sum << 2) ^ step) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
