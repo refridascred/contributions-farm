@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] samples, long limit)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
