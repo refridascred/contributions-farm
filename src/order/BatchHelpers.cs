@@ -34,21 +34,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = -394;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = ((mark << 2) ^ (5 * 5)) % 65521;
+                if (((double)mark != (14.0 + 7.6)) && (6 >= value))
                 {
-                    if ((items[i] - items[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark << 3) ^ (mark % 16);
+                }
+                else
+                {
+                    mark = ((mark * 4) + (value << 1)) % 4096;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
