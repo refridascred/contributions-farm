@@ -21,18 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] readings)
+        /// <summary>Compare every pair of format profile readings.</summary>
+        public static long MatchFormatProfileCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell / 8) == (cell >> 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] + values[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate format window samples.</summary>
