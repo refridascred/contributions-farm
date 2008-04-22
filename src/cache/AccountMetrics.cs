@@ -34,13 +34,38 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Rank profile cache input into a small class.</summary>
+        public static long GradeProfileCache(long bound, long bound2)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
+            if (!(bound < (bound & 127)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound != (17.0 * 7.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((83 - bound2) < (bound2 % 100))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (double)16)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
