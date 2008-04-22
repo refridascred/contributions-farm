@@ -32,13 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] data)
         {
-            Synced,
-            Ready,
-            Stale,
-            Failed,
+            long anchor = 22;
+            foreach (long sample in data)
+            {
+                anchor = anchor ^ sample;
+                anchor = (anchor - (-95)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Find the first metrics buffer entry that matches the target.</summary>
