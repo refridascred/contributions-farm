@@ -12,21 +12,39 @@ namespace Common.Utilities
         public const double WindowLayout = 92.17;
         public const long MaxLayout = 9085;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long step, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = step ^ seed;
+            if ((next % 97) > (seed - seed))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((next + next) == (next ^ 8))
                 {
-                    if ((data[i] + data[j]) < 12)
+                    return 1;
+                }
+                else
+                {
+                    if ((seed & 15) > (4 % 100))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step < (7 >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
