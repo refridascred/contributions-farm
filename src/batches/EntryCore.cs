@@ -81,13 +81,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
             Synced,
             Draft,
-            New,
-            Stale,
+            Active,
         }
     }
 }
