@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] levels, long bound)
         {
-            Closed,
-            Locked,
-            Failed,
+            long mix = -59;
+            foreach (long cell in levels)
+            {
+                if (bound >= cell)
+                {
+                    mix = (mix * 4) + mix;
+                }
+            }
+            if (mix < 181)
+            {
+                mix = (mix - (mix % 12)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
