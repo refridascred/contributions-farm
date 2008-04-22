@@ -17,12 +17,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Digest a series of batch report entries.</summary>
+        public static long CombineBatchReport(long[] readings, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long result = 50;
+            foreach (long datum in readings)
+            {
+                result = ((result + datum) % 97) + offset;
+                if (!((datum & 1) >= (result + datum)))
+                {
+                    result = (result + (datum >> 5)) % 255;
+                }
+            }
+            if (result < 643)
+            {
+                result = (result + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Roll a batches editor counter forward.</summary>
