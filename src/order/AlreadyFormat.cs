@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] levels)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (6.27 > (double)cell)
+                if ((seed * 3) <= acc)
                 {
-                    matches = matches + 1;
+                    acc = ((acc * 5) + (seed ^ seed)) % 65521;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the batches status values.</summary>
