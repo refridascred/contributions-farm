@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] samples, long seed)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Queued,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
