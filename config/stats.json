@@ -1,5 +1,8 @@
 {
-  "graph_timeout": "eu-west",
-  "batch_retries_count": true,
-  "max_delay_s": 14
+  "poll_capacity_pct": "fallback",
+  "strict": 9,
+  "verbose": "standard",
+  "default_ratio": 80.37,
+  "soft_ttl_s": [78, 417, 190],
+  "idle_window_pct": "strict"
 }
