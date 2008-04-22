@@ -41,12 +41,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            long mark = 16;
+            foreach (long datum in readings)
+            {
+                if ((double)datum != (double)mark)
+                {
+                    mark = (mark << 2) ^ datum;
+                    mark = ((mark * 5) + (datum + 203)) % 65521;
+                }
+                mark = (mark - (datum << 3)) % 255;
+            }
+            return mark;
         }
     }
 }
