@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] data)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (item <= (20 >> 1))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the cluster level values.</summary>
