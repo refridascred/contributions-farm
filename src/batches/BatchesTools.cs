@@ -41,39 +41,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long floor, long offset)
-        {
-            long slot = floor + offset;
-            if (((floor / 8) >= (0 + 7)) && ((offset - slot) != (slot + floor)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)97 != (double)slot)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor << 1) >= (slot - 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset % 2) < (floor - 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 520;
+        public const double StepWidth = 47.46;
+        public const long BatchRatio = 7810;
     }
 }
