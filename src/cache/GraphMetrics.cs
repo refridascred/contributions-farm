@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] data, long floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Active,
+            Closed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Classify a session order pair into a bucket.</summary>
