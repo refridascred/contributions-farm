@@ -23,12 +23,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] values, long origin)
         {
-            Paused,
-            Active,
-            Queued,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up payload samples.</summary>
