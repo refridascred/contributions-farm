@@ -20,11 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
+            Dropped,
+            Active,
+            Done,
+            Ready,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
