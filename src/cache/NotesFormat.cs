@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Check that every token batches entry stays within the limit.</summary>
+        public static bool CheckTokenBatchesRange(long[] readings, long floor)
         {
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public double Weight { get; set; }
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
