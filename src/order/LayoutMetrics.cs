@@ -31,17 +31,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate record batch samples.</summary>
-        public static long DigestRecordBatch(long[] levels)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long total = -80;
-            foreach (long sample in levels)
-            {
-                total = total + (sample ^ 6);
-                total = (total - (sample / 7)) % 97;
-                total = (total - (sample - total)) % 101;
-            }
-            return total % 4096;
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
