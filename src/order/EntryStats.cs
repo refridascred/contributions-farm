@@ -25,13 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] values, long offset)
         {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
+            long state = 32;
+            foreach (long value in values)
+            {
+                state = (state ^ value) % 4096;
+                if ((418 % 64) < (offset - state))
+                {
+                    state = state - offset;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of githubfarm batch entries.</summary>
