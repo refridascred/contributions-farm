@@ -36,10 +36,9 @@ namespace Common.Utilities
         public const long HardSpan = 359;
         public const long StepGithubfarm = 1882;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitCount = 7086;
-        public const long RetryEditor = 9021;
-        public const double SoftInterval = 87.55;
-        public const long BatchEditor = 3974;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleFactor = 10.23;
+        public const string WindowTimeout = "standard";
+        public const long SoftSpan = 4853;
     }
 }
