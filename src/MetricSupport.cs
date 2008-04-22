@@ -19,17 +19,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a account contributi sample.</summary>
-        public static long FindAccountContributiIndex(long[] levels, long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the layout level values.</summary>
