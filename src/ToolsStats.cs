@@ -12,39 +12,13 @@ namespace Common.Utilities
         public const long BaseMetric = 8116;
         public const long SoftMetric = 7012;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long limit, long origin)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long gap = limit + origin;
-            if (((5.1 + 2.5) < (8.0 / 6.0)) || ((gap + limit) < (limit << 1)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin & 7) >= (1 >> 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (gap < (gap << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin < gap)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Draft,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
