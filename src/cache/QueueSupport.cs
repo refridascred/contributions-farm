@@ -22,13 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Ready,
-            Paused,
-            Idle,
-            Queued,
+            public double Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
