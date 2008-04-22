@@ -14,15 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] data, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((2.7 / 2.0) > (double)step)
+                {
+                    tally = (tally + 1) + value;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Validate cluster buffer readings against a bound.</summary>
