@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Stale,
-            Failed,
-            Dropped,
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
