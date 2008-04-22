@@ -22,38 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank record format input into a small class.</summary>
-        public static long SortRecordFormat(long origin, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] readings, long offset)
         {
-            if ((bound & 3) > bound)
+            long state = 8;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((84 << 2) == (bound * 3))
+                if (state <= (offset % 16))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.53 + 2.71) > (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((2.7 / 9.0) < (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = ((state * 4) + (state - offset)) + cell;
                 }
             }
+            return state;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
