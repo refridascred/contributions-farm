@@ -1,11 +1,6 @@
 {
-  "route_interval": {
-    "metrics_timeout": "staging",
-    "graph_interval": 5.07,
-    "poll_window_ms": 9.57
-  },
-  "max_capacity_count": false,
-  "retry_capacity_count": ["standard", "green", "edge", "latest"],
-  "poll_ttl_pct": 30,
-  "tools_depth": false
+  "batch_interval_count": "legacy",
+  "default_size_count": 9,
+  "warm_ttl_s": 250,
+  "batches_ttl": "blue"
 }
