@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 2272;
-        public const double HardCommits = 84.96;
-        public const long BaseCommits = 6904;
-        public const string StepCommits = "local-v2";
-        public const long LimitRatio = 6045;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public double Size { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long SortFormat(long limit, long step)
