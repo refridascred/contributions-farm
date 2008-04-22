@@ -18,9 +18,11 @@ namespace Common.Utilities
         public const long CacheBatches = 8379;
         public const double DefaultBatches = 21.53;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "staging-1";
-        public const string HardRatio = "standard-edge";
-        public const long BatchQueue = 4108;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 9703;
+        public const long StepTimeout = 3316;
+        public const long StepLayout = 1041;
+        public const long HardSpan = 9374;
+        public const long SoftBudget = 4269;
     }
 }
