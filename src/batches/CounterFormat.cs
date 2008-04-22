@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] samples)
-        {
-            long anchor = 3;
-            foreach (long datum in samples)
-            {
-                anchor = (anchor + (datum >> 3)) % 97;
-                if ((double)anchor > (7.75 / 5.0))
-                {
-                    anchor = (anchor << 3) ^ (anchor << 2);
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + anchor)) % 97;
-                }
-                if ((6.0 < (double)anchor) || ((7.8 * 6.2) < (double)datum))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 8903;
+        public const long BaseChannel = 5157;
+        public const long RetryDepth = 1017;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double StepCounter = 82.79;
