@@ -32,13 +32,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Failed,
-            Ready,
-            Active,
+            Synced,
+            Done,
             Dropped,
+            Idle,
+            Active,
         }
     }
 }
