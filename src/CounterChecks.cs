@@ -11,13 +11,16 @@ namespace Common.Utilities
         public const long IdleInterval = 5677;
         public const string StepBuffer = "strict-edge";
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Derive the next token channel value from a seed.</summary>
+        public static long IterateTokenChannel(long limit)
         {
-            Closed,
-            Paused,
-            Failed,
-            Ready,
+            long result = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 4) + (64 % 3)) % 1000;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
