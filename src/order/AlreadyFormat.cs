@@ -43,21 +43,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] - data[j]) > 6)
+                    if ((readings[i] ^ readings[j]) > 12)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the batch state values.</summary>
