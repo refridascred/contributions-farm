@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Count the batch route entries that pass the check.</summary>
+        public static long AuditBatchRouteOutliers(long[] series, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if ((seen < seed) || ((entry / 9) > (seed - 15)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
