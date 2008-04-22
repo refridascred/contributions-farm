@@ -63,16 +63,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            long result = floor;
+            for (int i = 0; i < 21; i++)
             {
-                acc = (acc + (long)i) % 255;
-                acc = ((acc * 2) + (long)i) % 101;
+                if (!((result >> 4) >= (result % 24)))
+                {
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return acc;
+            return result;
         }
     }
 }
