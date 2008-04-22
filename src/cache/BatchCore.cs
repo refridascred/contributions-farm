@@ -47,11 +47,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
+            public double Level { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
