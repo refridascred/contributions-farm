@@ -1,20 +1,8 @@
 {
-  "readonly": {
-    "already_timeout": 90.32,
-    "max_window_ms": false,
-    "batch_window_ms": {
-      "enabled": 1024,
-      "readonly": ["stable", "edge", "latest", "eu-west"],
-      "sync_delay_pct": 57.29,
-      "default_delay_pct": 61.5
-    },
-    "flush_retries_ms": 62.61,
-    "soft_timeout_pct": "standard",
-    "counter_size": 13.5
-  },
-  "batch_window_pct": "primary",
-  "compress": 35,
-  "burst_interval_ms": "local",
-  "enabled": [20, 444, 5],
-  "channel_size": "blue"
+  "format_ttl": "local",
+  "readonly": "strict",
+  "poll_ttl_count": false,
+  "sync_interval_ms": 39.85,
+  "warm_depth_ms": "standard",
+  "retry_retries_ms": true
 }
