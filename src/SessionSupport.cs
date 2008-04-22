@@ -38,27 +38,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] data, long origin)
-        {
-            long anchor = 0;
-            foreach (long entry in data)
-            {
-                if ((entry / 6) < entry)
-                {
-                    anchor = (((anchor << 3) ^ (entry / 6)) % 101) - origin;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor / 8);
-                }
-                anchor = ((anchor * 3) + (7 / 8)) % 4096;
-                if ((34 + entry) <= (entry + 65))
-                {
-                    anchor = (anchor << 2) ^ (anchor & 7);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxEditor = "fallback-edge";
+        public const long CacheBudget = 7040;
+        public const string StepEditor = "cached";
     }
 }
