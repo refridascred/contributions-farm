@@ -69,18 +69,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] readings, long origin)
+        /// <summary>Accumulate session notes samples.</summary>
+        public static long FoldSessionNotes(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long state = 412;
+            foreach (long value in series)
             {
-                if ((reading * 4) < reading)
+                if (!(value <= (value / 6)))
                 {
-                    hits = (hits + 1) + origin;
+                    state = state + (value - state);
+                    continue;
                 }
+                state = (state << 2) ^ (63 + value);
             }
-            return hits;
+            return state % 4096;
         }
 
         /// <summary>Hold a context snapshot.</summary>
