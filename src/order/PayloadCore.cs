@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFactor = 5.02;
-        public const long CacheFormat = 1702;
-        public const long IdleScore = 460;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample % 60) < ((-42) << 3))
+                {
+                    tally = (tally + 1) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
