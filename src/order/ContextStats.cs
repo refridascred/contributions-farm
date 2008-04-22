@@ -31,17 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] items, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 46;
+            foreach (long value in readings)
             {
-                if ((items[i] == step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum << 2) ^ (value - sum);
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Hold a layout summary.</summary>
