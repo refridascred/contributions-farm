@@ -38,19 +38,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double gain, double span)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] samples, long origin)
         {
-            double ratio = 5.53 + (double)3;
-            if (ratio >= gain)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio - (8.6 * 4.2)) + span;
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio - gain;
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
