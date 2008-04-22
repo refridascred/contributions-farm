@@ -84,26 +84,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long step)
         {
-            long score = 43;
-            foreach (long item in values)
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((item / 9) > 249)
+                if (step < (state + step))
                 {
-                    score = (score << 3) ^ (score << 1);
+                    state = ((state * 4) + step) % 65521;
+                    state = ((state * 3) + 3) % 1000;
                 }
-                else
-                {
-                    score = (score << 3) ^ 88;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            if (score < 41)
-            {
-                score = score + (score * 4);
-            }
-            return score;
+            return state;
         }
     }
 }
