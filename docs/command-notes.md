@@ -1,10 +1,10 @@
 # Command notes
 
-When a order fails, the farm handler retries a few times before giving up.
-Each notes is validated before it reaches the session queue.
+Use metric settings to tune how often profile data is refreshed.
+Run the batch check before changing any commits limits.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Document new layout fields
-- Keep entry values small
+- Keep counter values small
+- Prefer payload defaults
+- Log every report change
