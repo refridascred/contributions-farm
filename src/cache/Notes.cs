@@ -49,13 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] levels, long step)
         {
-            Closed,
-            Failed,
-            Paused,
-            Queued,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((step - (long)levels.Length) > entry)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
