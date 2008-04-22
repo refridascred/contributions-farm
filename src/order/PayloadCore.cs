@@ -27,15 +27,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batches order counter forward.</summary>
-        public static long IterateBatchesOrder(long floor)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the support kind values.</summary>
