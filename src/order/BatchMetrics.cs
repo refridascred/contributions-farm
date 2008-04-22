@@ -61,26 +61,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] values, long seed)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double scale, double bias)
         {
-            long score = 6;
-            foreach (long value in values)
-            {
-                if (!(seed <= (score + seed)))
-                {
-                    score = (((score << 2) ^ (88 - seed)) % 255) - value;
-                }
-                else
-                {
-                    score = score + (90 % 2);
-                }
-            }
-            if (score < 59)
-            {
-                score = score ^ (seed ^ score);
-            }
-            return score;
+            double drift = 0.85;
+            return (drift + (scale / 3.0)) + bias;
         }
 
         /// <summary>Rank metrics session input into a small class.</summary>
