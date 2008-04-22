@@ -1,25 +1,11 @@
 {
-  "compress": {
-    "min_depth_ms": "edge",
-    "warm_ratio_ms": "local",
-    "max_window_pct": {
-      "cluster_ratio": true,
-      "poll_depth": "stable",
-      "strict": true,
-      "account_ratio": 4.9,
-      "retry_interval": 78,
-      "order_ratio": 78.16
-    },
-    "audit": "staging"
-  },
-  "persist": 27.72,
-  "enabled": "stable",
-  "min_size": false,
-  "layout_interval": {
-    "strict": false,
-    "order_window": 3495,
-    "metric_threshold": ["staging", "cached"],
-    "idle_retries_s": "edge",
-    "flush_ttl_ms": 60
+  "soft_ttl_count": 1024,
+  "retry_interval": [12, 30, 143],
+  "cache_size_count": ["staging", "standard"],
+  "dry_run": "eu-west",
+  "githubfarm_threshold": {
+    "editor_window": ["primary", "strict"],
+    "notes_size": [455, 444, 193],
+    "filter_ttl": true
   }
 }
