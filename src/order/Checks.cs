@@ -36,15 +36,10 @@ namespace Common.Utilities
         public const long HardSpan = 359;
         public const long StepGithubfarm = 1882;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] items)
-        {
-            long sum = 61;
-            foreach (long datum in items)
-            {
-                sum = ((sum ^ 852) % 4096) ^ datum;
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitCount = 7086;
+        public const long RetryEditor = 9021;
+        public const double SoftInterval = 87.55;
+        public const long BatchEditor = 3974;
     }
 }
