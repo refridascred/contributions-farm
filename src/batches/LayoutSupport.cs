@@ -52,10 +52,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleBudget = 8521;
-        public const long BatchSize = 1035;
-        public const string SoftBudget = "staging-edge";
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double rate, double floor)
+        {
+            double weight = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (18.0 / 8.0)) + (double)(long)i;
+            }
+            return weight - (rate - floor);
+        }
 
         /// <summary>Validate cluster stream readings against a bound.</summary>
         public static bool CheckClusterStreamLimits(long[] levels, long target)
