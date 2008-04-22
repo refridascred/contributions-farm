@@ -29,11 +29,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double bias, double bias2)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] readings)
         {
-            double rate = (bias2 - bias) + 15.0;
-            return rate - rate;
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
