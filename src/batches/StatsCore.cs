@@ -30,13 +30,11 @@ namespace Common.Utilities
         public const double WindowReport = 47.36;
         public const long RetryReport = 6085;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Ready,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowWidth = 6531;
+        public const string MaxTools = "local-1";
+        public const long LimitTools = 2092;
+        public const long RetryDepth = 7431;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long DeriveAlready(long step)
