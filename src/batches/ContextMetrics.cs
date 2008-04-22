@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Closed,
-            Locked,
-            Synced,
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
