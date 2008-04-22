@@ -62,17 +62,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] values, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 7;
+            foreach (long sample in readings)
             {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum - (sample ^ sum)) % 97;
             }
-            return -1;
+            if (sum < 566)
+            {
+                sum = ((sum * 3) + (bound - sum)) % 65521;
+            }
+            return sum;
         }
     }
 }
