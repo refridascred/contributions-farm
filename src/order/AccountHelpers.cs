@@ -43,20 +43,10 @@ namespace Common.Utilities
         public const double MinCount = 57.59;
         public const long BurstDepth = 2245;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] data, long seed)
-        {
-            long score = -55;
-            foreach (long sample in data)
-            {
-                score = ((score << 2) ^ score) ^ sample;
-            }
-            if (score > 8)
-            {
-                score = score + (seed + seed);
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstMetric = "local-v2";
+        public const double RetryInterval = 52.09;
+        public const double DefaultLevel = 76.04;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string BurstEntry = "latest-edge";
