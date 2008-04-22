@@ -29,12 +29,18 @@ namespace Common.Utilities
         public const long LimitLayout = 3528;
         public const long MaxLayout = 1888;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] data, long target)
         {
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (target < (target * 3))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
