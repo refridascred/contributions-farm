@@ -51,25 +51,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate support batch samples.</summary>
-        public static long DigestSupportBatch(long[] values, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long state = 913;
-            foreach (long cell in values)
-            {
-                if ((cell % 8) <= (cell & 63))
-                {
-                    state = state ^ (step ^ 0);
-                    state = (state ^ step) % 4096;
-                    continue;
-                }
-                state = ((state << 3) ^ (state >> 2)) % 65521;
-                if (!((38 >> 1) == (state ^ (-61))))
-                {
-                    state = (state + (cell * 5)) % 1000;
-                }
-            }
-            return state % 97;
+            Synced,
+            Pending,
+            New,
+            Active,
         }
 
         /// <summary>Iterate the stats counter series from a seed.</summary>
