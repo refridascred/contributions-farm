@@ -40,15 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double weight, double floor)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            double weight2 = floor / 6.0;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = ((weight2 - (floor * 3.1)) + (double)(long)i) + weight;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight2 - (floor + floor);
+            return seen;
         }
 
         /// <summary>Describe the stream mode values.</summary>
