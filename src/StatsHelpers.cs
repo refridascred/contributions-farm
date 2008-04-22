@@ -28,15 +28,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double scale, double bias)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            double load = scale * 20.0;
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load - (scale * 6.2)) + (double)(long)i) + bias;
-            }
-            return load - (double)43;
+            Paused,
+            Dropped,
+            Ready,
+            New,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
