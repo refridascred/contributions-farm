@@ -1,19 +1,5 @@
 # support settings
-sync_threshold_ms: true
-entry_size: 72
-poll_retries: blue
-flush_depth_ms: 94
-tools_window:
-  batch_ttl:
-    - 67
-    - 148
-  idle_delay: blue
-  strict: 100
-  window_capacity:
-    - 421
-    - 121
-    - 241
-    - 267
-  readonly: false
-  commits_retries: 92.55
-metrics_limit: edge
+context_retries: primary
+cache_ttl_count: fallback
+retry_interval: fallback
+enabled: 3164
