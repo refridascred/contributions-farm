@@ -1,11 +1,14 @@
 # Command notes
 
-Keep farm and context names short and lowercase.
-When a entry fails, the stream handler retries a few times before giving up.
-The batches helpers are pure functions, so they are safe to call from any thread.
+Use format settings to tune how often cluster data is refreshed.
+The support module keeps counter values in sync with the checks cache.
+
+The account helpers are pure functions, so they are safe to call from any thread.
+The buffer report groups every window by account.
+The githubfarm module keeps batch values in sync with the metric cache.
 
 ## Guidelines
 
-- Keep support values small
-- Document new checks fields
-- Log every entry change
+- Keep queue values small
+- Document new payload fields
+- Log every editor change
