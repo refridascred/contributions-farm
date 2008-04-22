@@ -32,13 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
             public long Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
