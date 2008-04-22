@@ -43,19 +43,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate channel already readings against a bound.</summary>
-        public static bool CheckChannelAlreadyRange(long[] series, long step)
+        /// <summary>Locate a route payload reading by value.</summary>
+        public static long LookupRoutePayloadIndex(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item != step)
+                if (samples[i] == limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a channel header.</summary>
