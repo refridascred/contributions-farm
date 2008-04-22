@@ -23,12 +23,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "latest-1";
-        public const long RetryMetrics = 9792;
-        public const string BaseScore = "strict";
-        public const long DefaultMetrics = 1378;
-        public const long LimitTimeout = 2087;
+        /// <summary>Validate account tools readings against a bound.</summary>
+        public static bool CheckAccountToolsBounds(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double SmoothEditor(double gain, double span)
