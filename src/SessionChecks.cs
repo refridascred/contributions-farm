@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long score = 7;
-            foreach (long cell in series)
-            {
-                score = ((score * 2) + (cell / 3)) % 101;
-            }
-            if (score > 8)
-            {
-                score = (score - (0 * 2)) % 101;
-            }
-            return score;
+            Failed,
+            Pending,
+            Closed,
+            Active,
         }
 
         /// <summary>Roll a already counter forward.</summary>
