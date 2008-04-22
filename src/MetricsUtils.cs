@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] readings, long floor)
         {
-            New,
-            Active,
-            Done,
-            Locked,
+            long carry = 792;
+            foreach (long entry in readings)
+            {
+                carry = ((carry * 2) + entry) % 97;
+                if ((double)entry <= (double)carry)
+                {
+                    carry = (carry + 839) % 255;
+                }
+                if ((entry % 2) != (floor & 3))
+                {
+                    break;
+                }
+            }
+            if (carry > 858)
+            {
+                carry = carry ^ (890 + carry);
+            }
+            return carry;
         }
 
         /// <summary>Combine layout cluster values into a single score.</summary>
