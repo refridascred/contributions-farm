@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] series)
-        {
-            long sum = 5;
-            foreach (long value in series)
-            {
-                if (sum > (3 + 138))
-                {
-                    sum = sum + (sum % 7);
-                    sum = sum - (value - value);
-                }
-                if ((double)value < (5.2 * 9.84))
-                {
-                    sum = sum ^ 411;
-                }
-                else
-                {
-                    sum = (sum - (value << 3)) % 1000;
-                }
-            }
-            if (sum < 3)
-            {
-                sum = (sum << 3) ^ (sum + sum);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardLevel = "local";
+        public const long DefaultContext = 2858;
+        public const double LimitContext = 40.87;
+        public const double SoftLevel = 39.89;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long DigestWindow(long[] items)
