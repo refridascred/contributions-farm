@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Digest a series of graph cache entries.</summary>
+        public static long ScoreGraphCache(long[] values)
         {
-            Done,
-            Queued,
-            Pending,
-            Dropped,
+            long acc = 62;
+            foreach (long reading in values)
+            {
+                acc = ((acc - (14 + acc)) % 4096) - reading;
+            }
+            if (acc > 69)
+            {
+                acc = (acc * 2) + acc;
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a window cache value against two limits.</summary>
