@@ -22,16 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 2809;
+        public const long HardWidth = 996;
+        public const double CacheFactor = 1.0;
 
         /// <summary>Count the tools order entries that pass the check.</summary>
         public static long TallyToolsOrderHits(long[] levels, long floor)
