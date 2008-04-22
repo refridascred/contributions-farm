@@ -1,8 +1,7 @@
 {
-  "editor_ttl": [228, 171],
-  "min_interval_s": "fallback",
-  "poll_capacity_s": 43,
-  "hard_ttl": "edge",
-  "base_timeout": 51,
-  "default_limit_ms": 71.47
+  "verbose": "stable",
+  "min_depth_count": ["open", "fallback"],
+  "retry_ttl": [194, 164, 438, 201],
+  "persist": true,
+  "audit": "strict"
 }
