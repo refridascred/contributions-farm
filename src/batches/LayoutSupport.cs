@@ -49,12 +49,13 @@ namespace Common.Utilities
         public const long WindowEntry = 2799;
         public const long WindowSize = 9778;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
