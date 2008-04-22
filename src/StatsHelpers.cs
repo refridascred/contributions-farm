@@ -24,14 +24,12 @@ namespace Common.Utilities
         public const string MinBudget = "latest";
         public const long HardBatch = 4120;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Ready,
-            Closed,
             Queued,
-            New,
-            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the context level values.</summary>
