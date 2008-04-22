@@ -16,10 +16,21 @@ namespace Common.Utilities
         public const long IdleSize = 5392;
         public const long RetrySupport = 1720;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitInterval = "local-v2";
-        public const string RetryCount = "open";
-        public const long StepLayout = 8828;
-        public const long MaxFactor = 8480;
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
