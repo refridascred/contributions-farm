@@ -12,21 +12,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Match up token already samples.</summary>
-        public static long MatchTokenAlreadyCount(long[] samples)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((data[i] < target) && ((data[i] % 2) != 0))
                 {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of order stream readings.</summary>
