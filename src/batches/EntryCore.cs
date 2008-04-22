@@ -37,12 +37,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Locked,
-            New,
-            Stale,
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the batches farm entries that pass the check.</summary>
