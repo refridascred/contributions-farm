@@ -59,12 +59,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            Dropped,
-            Queued,
-            New,
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                long tally = (acc - acc) & 15;
+                if ((floor <= (0 & 63)) || (((long)i ^ 42) >= (39 - tally)))
+                {
+                    tally = (tally - (floor >> 4)) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
