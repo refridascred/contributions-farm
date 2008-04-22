@@ -49,13 +49,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 42.57;
+        public const long CacheLevel = 6895;
+        public const long BaseWindow = 7866;
+        public const long LimitWindow = 5777;
     }
 }
