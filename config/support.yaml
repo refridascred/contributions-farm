@@ -1,9 +1,11 @@
 # support settings
-batches_delay:
-  - strict
-  - primary
-verbose: 32.72
-warm_threshold_pct: 60
-base_depth_pct:
-  - staging
-  - green
+route_retries:
+  burst_ttl_count: primary
+  cluster_delay: 97
+  max_size_ms: 1345
+  burst_delay: 86.96
+  sync_capacity_count: standard
+min_depth: edge
+commits_ttl: standard
+poll_ttl_count: 42
+hard_window_count: false
