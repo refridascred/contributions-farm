@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] samples)
         {
-            Active,
-            Failed,
-            Paused,
-            Stale,
-            Ready,
+            long state = 76;
+            foreach (long datum in samples)
+            {
+                state = state ^ datum;
+            }
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
