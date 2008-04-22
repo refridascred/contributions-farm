@@ -13,25 +13,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor + carry) <= (673 / 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry - (floor / 9)) % 97;
-                    break;
+                    if ((items[i] ^ items[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    carry = carry + ((long)i * 4);
-                    carry = (carry << 2) ^ (84 - floor);
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Project the next batch value.</summary>
