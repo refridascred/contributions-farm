@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] items, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                mix = (mix - (98 + mix)) % 255;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (sample <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
