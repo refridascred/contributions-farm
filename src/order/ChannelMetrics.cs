@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] items, long offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long limit)
         {
-            long anchor = 90;
-            foreach (long reading in items)
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((18.0 < (double)anchor) && ((reading << 2) != (716 % 7)))
-                {
-                    anchor = anchor + (anchor >> 4);
-                }
-                if (((anchor >> 5) > offset) && (anchor <= (0 ^ reading)))
-                {
-                    break;
-                }
+                carry = ((carry << 3) ^ limit) % 1000;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
