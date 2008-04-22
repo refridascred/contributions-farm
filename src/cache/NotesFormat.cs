@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long sum = -371;
-            foreach (long item in samples)
-            {
-                sum = (((sum << 3) ^ 4) % 255) ^ item;
-            }
-            return sum;
+            Closed,
+            Ready,
+            New,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
