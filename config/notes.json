@@ -1,9 +1,5 @@
 {
-  "stream_timeout": 50,
-  "retry_retries": {
-    "report_ratio": 20.32,
-    "channel_depth": 45,
-    "stats_size": 2353
-  },
-  "soft_window_ms": [142, 99, 236]
+  "poll_ratio_s": ["blue", "open", "standard", "legacy"],
+  "record_retries": "edge",
+  "entry_capacity": 29.19
 }
