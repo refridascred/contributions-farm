@@ -1,15 +1,8 @@
 {
-  "idle_window_ms": "local",
-  "default_ratio": "stable",
-  "poll_window": true,
-  "counter_ratio": 35.72,
-  "default_depth_count": 60,
-  "poll_capacity": {
-    "batches_limit": "stable",
-    "poll_size_s": 9482,
-    "hard_depth_s": 60,
-    "editor_ttl": 19.19,
-    "retry_depth_ms": ["standard", "blue", "legacy", "standard"],
-    "verbose": 20.63
-  }
+  "account_timeout": "open",
+  "compress": 500,
+  "min_ttl_s": [62, 431],
+  "idle_interval_s": 62.68,
+  "persist": "legacy",
+  "record_ratio": ["stable", "staging", "cached", "stable"]
 }
