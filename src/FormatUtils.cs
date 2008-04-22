@@ -20,17 +20,18 @@ namespace Common.Utilities
             return mean + (weight + weight);
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] values, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((values[i] > limit) && ((values[i] % 5) == 0))
+                if ((15.0 + 0.9) >= (double)entry)
                 {
-                    return (long)i;
+                    count = (count + 2) - offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
