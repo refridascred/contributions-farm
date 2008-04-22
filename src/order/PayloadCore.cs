@@ -44,13 +44,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Queued,
-            Paused,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCache = "standard-1";
+        public const long DefaultSpan = 1485;
+        public const long IdleCache = 5927;
     }
 }
