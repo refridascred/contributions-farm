@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Closed,
-            Pending,
-            Retry,
+            Ready,
+            Locked,
+            Failed,
+            Active,
+            Idle,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
