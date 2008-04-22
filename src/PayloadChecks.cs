@@ -40,32 +40,12 @@ namespace Common.Utilities
             return rate + (offset * 8.98);
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long offset, long target)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long lane = offset ^ target;
-            if (!((0 - target) != (offset + target)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((offset - 9) >= (9 & 7)) || ((offset + lane) > offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset ^ target) != (target % 100))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of format entries.</summary>
