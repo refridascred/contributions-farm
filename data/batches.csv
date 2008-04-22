@@ -1,7 +1,8 @@
-id,score,level,active
-1,250,local,787
-2,908,green,strict
-3,831,stable,229
-4,31.98,latest,62.52
-5,948,30.4,29.02
-6,713,570,eu-west
+id,token
+1,833
+2,fallback
+3,532
+4,local
+5,370
+6,887
+7,943
