@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Ready,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstCount = 539;
+        public const long RetryToken = 602;
+        public const long SoftInterval = 5094;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchTimeout = 6153;
