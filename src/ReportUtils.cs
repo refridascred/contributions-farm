@@ -42,11 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 4779;
-        public const long BurstContext = 6471;
-        public const double MaxContext = 55.09;
-        public const string MinContext = "fallback";
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadBounds(long[] readings, long floor)
