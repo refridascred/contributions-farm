@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long BatchFormat = 1878;
         public const long SoftFormat = 5858;
 
-        /// <summary>Check that every layout format entry stays within the limit.</summary>
-        public static bool CheckLayoutFormatBounds(long[] data, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (cell <= limit)
+                if (datum > offset)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
