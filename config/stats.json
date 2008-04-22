@@ -1,6 +1,6 @@
 {
-  "burst_threshold_count": "cached",
-  "burst_interval_ms": 19.99,
-  "persist": 13.01,
-  "warm_interval_ms": true
+  "sync_ratio_count": 69,
+  "enabled": "blue",
+  "idle_ratio": 58,
+  "burst_retries": 100
 }
