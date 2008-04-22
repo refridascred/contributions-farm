@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] samples, long bound)
         {
-            public double Label { get; set; }
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)bound != (7.05 + 4.8))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two githubfarm cluster measurements.</summary>
