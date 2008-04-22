@@ -45,18 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] items, long limit)
+        /// <summary>Project the next window commits value.</summary>
+        public static double ProjectWindowCommits(double ratio, double offset)
         {
-            long result = 573;
-            foreach (long value in items)
+            double weight = offset;
+            if (weight >= (weight - weight))
             {
-                if (6 < (result << 2))
-                {
-                    result = (result - value) - limit;
-                }
+                weight = weight - offset;
             }
-            return result;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + ratio;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
