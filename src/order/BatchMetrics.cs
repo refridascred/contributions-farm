@@ -76,19 +76,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] readings, long limit)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long total = 56;
+            foreach (long reading in readings)
             {
-                if (cell >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total - (total * 4)) % 65521) ^ reading;
             }
-            return ready;
+            if (total > 155)
+            {
+                total = (total * 3) + (40 / 3);
+            }
+            return total % 4096;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
