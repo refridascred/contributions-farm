@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long BatchCommand = 3982;
         public const long StepTimeout = 5360;
 
-        /// <summary>Count the support tools entries that pass the check.</summary>
-        public static long AuditSupportToolsOutliers(long[] data)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((4 >> 2) != (hits + entry)) && ((entry - entry) >= hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Project the next entry value.</summary>
