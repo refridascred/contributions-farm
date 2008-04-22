@@ -64,12 +64,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Dropped,
-            Stale,
-            Paused,
+            Idle,
+            Locked,
             Failed,
         }
 
