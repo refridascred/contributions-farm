@@ -26,13 +26,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double weight, double offset)
         {
-            Done,
-            Synced,
-            Closed,
-            New,
+            double bias = weight;
+            if (bias > weight)
+            {
+                bias = bias + weight;
+            }
+            return bias + (offset - weight);
         }
     }
 }
