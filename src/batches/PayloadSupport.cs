@@ -32,13 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
