@@ -29,19 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] items, long step)
+        /// <summary>Audit stats checks readings against a rule.</summary>
+        public static long AuditStatsChecksHits(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (sample != step)
+                if ((double)hits >= (4.4 - 19.0))
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 3) + entry) + limit;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
