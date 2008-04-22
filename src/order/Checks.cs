@@ -21,12 +21,19 @@ namespace Common.Utilities
         public const long WindowCount = 5483;
         public const string WindowRatio = "stable-v2";
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] values, long target)
         {
-            Synced,
-            Failed,
-            Done,
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up record samples.</summary>
