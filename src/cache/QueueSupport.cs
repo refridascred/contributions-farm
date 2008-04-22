@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const long LimitFarm = 2400;
         public const long MinFarm = 9996;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = anchor - (62 * 3);
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate stats payload samples.</summary>
