@@ -31,21 +31,23 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 803;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                total = ((total - (total - step)) % 1000) ^ reading;
+                if ((1.99 - 8.0) <= (double)total)
                 {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (total < 53)
+            {
+                total = (total + ((long)values.Length & 127)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
