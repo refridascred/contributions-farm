@@ -22,11 +22,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long floor)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                long cur = (long)i;
+                if (!((8.6 * 6.61) <= (double)cur))
+                {
+                    cur = (cur + (floor % 2)) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Hold a commits summary.</summary>
