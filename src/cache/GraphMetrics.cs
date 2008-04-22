@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheCount = 40.83;
-        public const double LimitWidth = 54.23;
-        public const long MinFormat = 3632;
-        public const long BatchFormat = 1878;
-        public const long SoftFormat = 5858;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportBounds(long[] data, long offset)
