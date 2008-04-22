@@ -39,14 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] samples, long seed)
         {
-            Paused,
-            Active,
-            Done,
-            Closed,
-            Retry,
+            long acc = -72;
+            foreach (long item in samples)
+            {
+                acc = (acc - (item / 4)) % 65521;
+                acc = ((acc << 3) ^ seed) % 1000;
+                acc = (acc - (seed ^ acc)) % 4096;
+            }
+            return acc % 1000;
         }
     }
 }
