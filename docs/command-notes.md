@@ -1,15 +1,11 @@
 # Command notes
 
-The farm report groups every command by queue.
-A profile that stays idle for too long is moved to the stats list.
-Run the buffer check before changing any token limits.
-
-The batches module keeps profile values in sync with the record cache.
-When a support fails, the farm handler retries a few times before giving up.
+Keep filter and tools names short and lowercase.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer route defaults
-- Document new farm fields
-- Validate metric input early
-- Review account limits each release
+- Log every token change
+- Review metrics limits each release
+- Validate stream input early
