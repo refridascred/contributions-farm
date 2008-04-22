@@ -1,5 +1,18 @@
 {
-  "verbose": [178, 100, 443],
-  "enabled": 90,
-  "default_threshold_count": 71
+  "readonly": {
+    "hard_threshold_pct": {
+      "readonly": 71.95,
+      "verbose": ["cached", "legacy"],
+      "editor_ttl": "stable",
+      "dry_run": 250
+    },
+    "sync_timeout": 36.86,
+    "command_ttl": 4940,
+    "account_timeout": 3544,
+    "readonly": ["fallback", "open", "blue", "staging"],
+    "hard_timeout": false
+  },
+  "filter_capacity": 70.26,
+  "poll_window": false,
+  "dry_run": 6964
 }
