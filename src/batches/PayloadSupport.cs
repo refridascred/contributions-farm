@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] series, long bound)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
-            long acc = 27;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc + (acc & 63)) % 1000) ^ item;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (acc > (-4))
-            {
-                acc = (acc * 3) + (bound % 12);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
