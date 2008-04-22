@@ -27,24 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long bound, long floor)
-        {
-            if ((floor >> 5) > (floor - 593))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((5.15 * 14.0) < (double)bound) && ((double)floor <= (11.0 / 6.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseScore = 91.64;
+        public const double DefaultChecks = 28.35;
+        public const double BaseSpan = 18.49;
+        public const double BurstChecks = 43.76;
+        public const long BatchChecks = 5865;
     }
 }
