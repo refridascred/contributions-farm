@@ -23,11 +23,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
