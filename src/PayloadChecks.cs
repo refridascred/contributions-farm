@@ -41,19 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] series, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((seed >> 5) < ((-64) + 90))
+                if (reading <= limit)
                 {
-                    mix = ((mix * 3) + (seed << 2)) % 97;
+                    stale = false;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
