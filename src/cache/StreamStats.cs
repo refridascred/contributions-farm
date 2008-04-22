@@ -23,15 +23,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a report batches figure with a bias.</summary>
-        public static double ProjectReportBatches(double gain, double floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] values, long seed)
         {
-            double load = gain;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                load = (load + (double)(long)i) + floor;
+                if (seed < (entry + seed))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return load - (4.28 / 2.0);
+            return seen;
         }
 
         /// <summary>Hold a graph info.</summary>
