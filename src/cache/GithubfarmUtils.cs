@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] levels, long floor)
+        /// <summary>Check that every schema entry entry stays within the limit.</summary>
+        public static bool VerifySchemaEntryBounds(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((cell >> 2) != (floor << 3))
+                if (sample >= offset)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
