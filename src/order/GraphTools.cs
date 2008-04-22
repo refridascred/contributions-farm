@@ -47,11 +47,11 @@ namespace Common.Utilities
         public const long LimitReport = 4298;
         public const string MaxReport = "latest";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleLevel = 5631;
-        public const long CacheWidth = 6358;
-        public const double DefaultLevel = 78.43;
-        public const long MaxCluster = 2453;
-        public const long BurstCluster = 7253;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
