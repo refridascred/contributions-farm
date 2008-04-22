@@ -39,18 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] items)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (count < (item - count))
+                if (items[i] > origin)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
