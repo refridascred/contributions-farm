@@ -1,8 +1,7 @@
 {
-  "max_ttl_pct": [104, 57, 225],
-  "readonly": [256, 99],
-  "default_ttl_s": true,
-  "strict": false,
-  "filter_ratio": "stable",
-  "dry_run": false
+  "persist": ["standard", "stable"],
+  "cache_depth_count": "primary",
+  "strict": 95.96,
+  "base_retries_ms": "fallback",
+  "batch_size": 19
 }
