@@ -1,11 +1,7 @@
 {
-  "max_limit": 60,
-  "readonly": {
-    "max_interval_pct": true,
-    "poll_capacity_s": 100,
-    "report_window": "cached",
-    "buffer_interval": "latest",
-    "compress": [260, 484, 128]
-  },
-  "batch_timeout_s": 30
+  "readonly": "fallback",
+  "dry_run": 68,
+  "default_delay_s": 9212,
+  "verbose": "fallback",
+  "poll_depth": "cached"
 }
