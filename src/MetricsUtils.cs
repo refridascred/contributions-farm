@@ -22,17 +22,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] data, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long offset, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset / 5) < offset)
             {
-                if (data[i] >= bound)
+                return 5;
+            }
+            else
+            {
+                if (origin >= (46 << 2))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((15.0 * 4.0) > (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a commits summary.</summary>
