@@ -1,8 +1,9 @@
 # support settings
-verbose:
-  - latest
-  - local
-  - green
+batches_delay:
+  - strict
   - primary
-cluster_retries: strict
-cache_limit: primary
+verbose: 32.72
+warm_threshold_pct: 60
+base_depth_pct:
+  - staging
+  - green
