@@ -63,23 +63,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long carry = 186;
-            foreach (long entry in data)
-            {
-                carry = carry - (carry + 2);
-                if ((((-225) * 4) <= (carry - 89)) && ((entry + entry) > (carry % 100)))
-                {
-                    carry = (carry << 3) ^ (762 & 7);
-                }
-            }
-            if (carry < 9)
-            {
-                carry = (carry ^ (carry + carry)) % 101;
-            }
-            return carry;
+            Retry,
+            Stale,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a route header.</summary>
