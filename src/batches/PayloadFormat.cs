@@ -59,13 +59,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long step, long origin)
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
+            if (step < (8 & 255))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin << 1) < step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin == (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
