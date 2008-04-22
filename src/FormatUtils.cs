@@ -57,23 +57,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double bias, double floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] samples, long floor)
         {
-            double bias2 = floor;
-            if (bias2 <= (1.0 + floor))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = bias2 + floor;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + (double)69) - (double)(long)i;
-            }
-            return bias2 + bias;
+            return -1;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
