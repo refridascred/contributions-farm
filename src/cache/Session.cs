@@ -35,12 +35,12 @@ namespace Common.Utilities
             return weight - (span - gain);
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Idle,
-            Draft,
-            Active,
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
