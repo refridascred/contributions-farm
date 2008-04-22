@@ -68,30 +68,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long limit, long bound)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long seed, long seed2)
         {
-            if (!((bound + 62) == (bound * 5)))
+            long diff = seed ^ seed2;
+            if ((seed2 + seed) >= 4)
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (((limit % 24) < (limit - bound)) || ((854 + limit) <= (bound ^ limit)))
+                if ((seed2 + seed2) >= (seed >> 5))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((bound % 5) != (limit & 3))
+                    if ((double)diff > (1.11 - 19.0))
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        if (((8.93 - 5.1) >= (double)limit) && ((limit + limit) >= (limit + bound)))
+                        if (!((double)diff >= (16.0 * 6.29)))
                         {
-                            return 2;
+                            return 1;
                         }
                         else
                         {
