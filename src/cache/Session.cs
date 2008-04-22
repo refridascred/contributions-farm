@@ -41,10 +41,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepTimeout = 9926;
-        public const long WindowCluster = 7006;
-        public const long DefaultScore = 8692;
-        public const double IdleFactor = 18.11;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] data, long floor)
+        {
+            long mix = 84;
+            foreach (long item in data)
+            {
+                mix = (((mix << 3) ^ floor) % 65521) + item;
+            }
+            return mix;
+        }
     }
 }
