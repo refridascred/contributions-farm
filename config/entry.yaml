@@ -1,19 +1,25 @@
 # entry settings
-sync_capacity:
-  retry_window_count: green
-  farm_size: 500
-  flush_delay:
-    cache_delay: 77
-    batch_depth_count: legacy
-    persist: strict
-    strict: true
-  min_window_ms: 14.25
-  order_threshold:
-    - 457
-    - 225
-  min_timeout: 39
-batch_retries_ms: 9040
-farm_size: true
-retry_ratio_count: true
-sync_timeout_pct: eu-west
-retry_interval_pct: cached
+audit: true
+retry_threshold:
+  - fallback
+  - edge
+  - green
+  - primary
+sync_capacity_ms:
+  - green
+  - staging
+  - stable
+base_threshold_s:
+  retry_capacity_ms: 52
+  enabled: 8.45
+  compress:
+    audit:
+      - green
+      - latest
+      - eu-west
+    cache_delay: 55
+    hard_capacity_pct: 30
+    persist: local
+    idle_threshold_count: staging
+    sync_ttl: edge
+  batch_delay_ms: false
