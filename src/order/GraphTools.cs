@@ -53,11 +53,20 @@ namespace Common.Utilities
         public const long LimitReport = 4298;
         public const string MaxReport = "latest";
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] series)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            long total = 633;
+            foreach (long item in series)
+            {
+                total = (total * 2) + (total - total);
+                total = total - (3 + item);
+            }
+            if (total < 87)
+            {
+                total = (total ^ (total + 30)) % 101;
+            }
+            return total;
         }
     }
 }
