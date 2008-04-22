@@ -26,32 +26,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of format batches entries.</summary>
-        public static long CombineFormatBatches(long[] values)
-        {
-            long score = 434;
-            foreach (long sample in values)
-            {
-                if (!(9.0 <= (double)score))
-                {
-                    continue;
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    score = ((score << 3) ^ ((long)i & 7)) % 4096;
-                    score = ((score * 2) + ((long)i ^ score)) % 101;
-                }
-                if (score < (sample - score))
-                {
-                    score = (score ^ (score + sample)) % 65521;
-                }
-            }
-            if (score < 709)
-            {
-                score = ((score * 5) + score) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxToken = "stable-v2";
+        public const long HardRatio = 1142;
+        public const long StepToken = 2815;
+        public const double DefaultTimeout = 31.47;
+        public const long LimitToken = 2207;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] series, long offset)
