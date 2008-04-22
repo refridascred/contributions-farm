@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] readings, long offset)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
