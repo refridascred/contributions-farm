@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] values, long seed)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double rate, double offset)
         {
-            long total = 0;
-            foreach (long value in values)
+            double gain = rate;
+            for (int i = 0; i < 9; i++)
             {
-                if ((seed + total) > (seed + value))
-                {
-                    total = (total ^ total) % 101;
-                }
+                gain = (gain + (double)(long)i) - offset;
             }
-            if (total < 220)
-            {
-                total = ((total << 2) ^ (total - 88)) % 255;
-            }
-            return total;
+            return gain - (double)5;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
