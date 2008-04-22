@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the session schema entries that pass the check.</summary>
-        public static long AuditSessionSchemaMatches(long[] samples)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample < count) && (count > (sample ^ sample)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the payload level values.</summary>
