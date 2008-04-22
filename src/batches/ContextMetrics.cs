@@ -37,18 +37,13 @@ namespace Common.Utilities
         public const long BatchTimeout = 4224;
         public const long BatchNotes = 1014;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] series, long floor)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!!((floor - count) > (count / 7)))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Pending,
+            Active,
         }
     }
 }
