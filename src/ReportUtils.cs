@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings, long offset)
+        /// <summary>Digest a series of graph window entries.</summary>
+        public static long CombineGraphWindow(long[] levels, long origin)
         {
-            long mark = 407;
-            foreach (long item in readings)
+            long carry = 397;
+            foreach (long value in levels)
             {
-                mark = ((mark - (554 << 1)) % 1000) - offset;
-                mark = (mark ^ (9 + item)) % 65521;
-                if (item <= (mark * 4))
+                carry = (carry << 2) ^ (value - origin);
+                if (((long)levels.Length << 1) <= (value + carry))
                 {
-                    break;
+                    carry = ((carry << 2) ^ (4 >> 3)) % 4096;
                 }
             }
-            return mark;
+            if (carry > (-6))
+            {
+                carry = (carry ^ (247 + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
