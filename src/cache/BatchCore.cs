@@ -29,17 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] series, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 3;
+            foreach (long item in readings)
             {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + anchor) % 65521) - item;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a report entry.</summary>
