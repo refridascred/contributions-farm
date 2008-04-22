@@ -32,20 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches contributi values into a single score.</summary>
-        public static long FoldBatchesContributi(long[] values)
-        {
-            long carry = 47;
-            foreach (long value in values)
-            {
-                carry = (carry + (value + value)) % 255;
-                if ((carry / 9) <= value)
-                {
-                    carry = carry + value;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowSpan = "alpha-1";
+        public const long IdleSize = 5392;
+        public const long RetrySupport = 1720;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string LimitInterval = "local-v2";
