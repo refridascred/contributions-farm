@@ -1,25 +1,18 @@
 # entry settings
-audit: true
-retry_threshold:
-  - fallback
-  - edge
-  - green
-  - primary
-sync_capacity_ms:
-  - green
-  - staging
-  - stable
-base_threshold_s:
-  retry_capacity_ms: 52
-  enabled: 8.45
+poll_capacity_count:
+  verbose: 6019
+  warm_ttl: 23.18
+  farm_timeout:
+    - 74
+    - 453
+    - 487
   compress:
-    audit:
-      - green
-      - latest
-      - eu-west
-    cache_delay: 55
-    hard_capacity_pct: 30
-    persist: local
-    idle_threshold_count: staging
-    sync_ttl: edge
-  batch_delay_ms: false
+    - 436
+    - 349
+window_depth: 1024
+order_timeout:
+  - green
+  - eu-west
+  - fallback
+  - cached
+dry_run: fallback
