@@ -1,6 +1,19 @@
 {
-  "base_depth_ms": "staging",
-  "checks_delay": false,
-  "min_capacity_s": [12, 243, 327, 407],
-  "audit": 31.27
+  "warm_window_pct": "cached",
+  "stream_window": 62,
+  "flush_delay_ms": 759,
+  "sync_ratio": 250,
+  "graph_threshold": {
+    "poll_ttl_s": 8284,
+    "base_retries_ms": 90,
+    "entry_retries": "blue",
+    "max_retries_s": {
+      "persist": [46, 240, 20, 253],
+      "batches_depth": 1024,
+      "max_limit": true,
+      "buffer_capacity": 887
+    },
+    "compress": "fallback"
+  },
+  "hard_interval": "blue"
 }
