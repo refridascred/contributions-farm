@@ -20,19 +20,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine channel profile values into a single score.</summary>
-        public static long WeighChannelProfile(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] series, long limit)
         {
-            long state = 19;
-            foreach (long item in values)
+            long result = 625;
+            foreach (long value in series)
             {
-                state = state - (state * 2);
-                if ((double)298 == (double)item)
+                if (((-181) + limit) > (limit ^ limit))
                 {
-                    break;
+                    result = ((result + (limit % 5)) % 65521) - value;
                 }
             }
-            return state % 4096;
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
