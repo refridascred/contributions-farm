@@ -34,13 +34,12 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
-            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
