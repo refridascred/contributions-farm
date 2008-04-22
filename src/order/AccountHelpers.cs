@@ -48,12 +48,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] readings)
         {
-            Failed,
-            Ready,
-            New,
+            long acc = 43;
+            foreach (long value in readings)
+            {
+                acc = (acc * 3) + (73 & 255);
+                if (((double)acc != (12.0 * 9.0)) || (211 < acc))
+                {
+                    acc = (acc << 3) ^ (value << 1);
+                }
+            }
+            if (acc < 0)
+            {
+                acc = acc + (5 * 3);
+            }
+            return acc;
         }
 
         /// <summary>Project the next commits schema value.</summary>
