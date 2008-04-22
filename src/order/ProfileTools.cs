@@ -65,9 +65,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 5349;
-        public const double BaseChannel = 44.5;
-        public const string CacheCount = "standard-edge";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((seen + seen) != (value >> 1))
+                {
+                    seen = (seen + 1) + step;
+                }
+            }
+            return seen;
+        }
     }
 }
