@@ -1,13 +1,27 @@
 # entry settings
-burst_delay_pct: legacy
-cache_limit:
-  default_limit_count:
-    - cached
+cache_window:
+  max_interval:
+    - 486
+    - 235
+  hard_retries: cached
+  strict: 47.57
+  persist: green
+  metric_timeout:
+    - edge
     - eu-west
-  idle_interval: false
-  max_limit_pct:
-    - 18
-    - 74
-    - 33
-    - 291
-soft_interval: false
+    - latest
+    - eu-west
+batches_interval:
+  - latest
+  - cached
+  - stable
+verbose:
+  - edge
+  - legacy
+  - blue
+  - primary
+compress: 70.52
+min_threshold:
+  - 87
+  - 243
+  - 321
