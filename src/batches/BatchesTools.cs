@@ -42,30 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] levels, long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long anchor = 3;
-            foreach (long reading in levels)
-            {
-                if ((anchor & 255) > anchor)
-                {
-                    anchor = (anchor << 2) ^ (target % 100);
-                }
-                if ((457 >> 2) < (anchor / 2))
-                {
-                    anchor = ((anchor << 2) ^ (reading * 5)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + target) % 97;
-                }
-            }
-            if (anchor > 980)
-            {
-                anchor = ((anchor << 3) ^ (anchor >> 1)) % 1000;
-            }
-            return anchor % 97;
+            Draft,
+            Synced,
+            Queued,
+            Paused,
+            Retry,
         }
     }
 }
