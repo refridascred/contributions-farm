@@ -50,21 +50,24 @@ namespace Common.Utilities
             return mean + (span / 2.0);
         }
 
-        /// <summary>Fold a list of metrics notes readings.</summary>
-        public static long FoldMetricsNotes(long[] data)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long bound, long step)
         {
-            long mix = 40;
-            foreach (long cell in data)
+            if ((double)step != (5.0 / 4.0))
             {
-                mix = mix + (cell % 7);
-                mix = mix + (cell + cell);
-                mix = ((mix << 2) ^ cell) % 255;
-                if ((mix + mix) <= cell)
+                return 8;
+            }
+            else
+            {
+                if ((double)step <= (2.0 - 5.21))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Validate report graph readings against a bound.</summary>
