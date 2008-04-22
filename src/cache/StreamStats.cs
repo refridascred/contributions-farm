@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Match up stats graph samples.</summary>
+        public static long CompareStatsGraphCount(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state * 2) + (state << 1);
-                state = ((state * 3) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a checks options.</summary>
