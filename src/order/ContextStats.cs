@@ -40,11 +40,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
