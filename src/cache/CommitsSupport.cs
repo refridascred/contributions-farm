@@ -37,21 +37,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] readings)
+        /// <summary>Find the first contributi editor entry that matches the target.</summary>
+        public static long LocateContributiEditorIndex(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (series[i] <= step)
                 {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank format input into a small class.</summary>
