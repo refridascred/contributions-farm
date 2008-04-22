@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] items, long target)
         {
-            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] >= target)
                 {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
