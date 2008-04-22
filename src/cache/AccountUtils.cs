@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] data, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sum >= ((long)i + (long)i))
+                if (data[i] >= step)
                 {
-                    sum = (sum * 3) + (limit % 3);
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
