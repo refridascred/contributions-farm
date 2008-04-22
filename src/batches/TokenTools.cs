@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] samples, long seed)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
