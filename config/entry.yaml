@@ -1,7 +1,9 @@
 # entry settings
-burst_retries: false
-sync_capacity: staging
-report_size: false
-compress: 41.35
-support_ratio: open
-batch_threshold: 12.03
+readonly:
+  - 383
+  - 335
+  - 314
+  - 249
+audit: latest
+warm_retries: false
+sync_ttl_pct: 15.45
