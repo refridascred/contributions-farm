@@ -45,14 +45,31 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Rank githubfarm record input into a small class.</summary>
+        public static long SortGithubfarmRecord(long floor, long origin)
         {
-            Queued,
-            Pending,
-            Draft,
-            Done,
-            Active,
+            if (0.9 > (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (origin >= floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin >> 5) >= (origin + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache stats.</summary>
