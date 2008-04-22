@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double bias, double offset)
+        /// <summary>Check that every editor window entry stays within the limit.</summary>
+        public static bool ValidateEditorWindowBounds(long[] values, long floor)
         {
-            double weight = (double)(73 % 7);
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                weight = ((weight - offset) + (double)(long)i) - bias;
+                if (datum > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight + (offset / 5.0);
+            return ok;
         }
 
         /// <summary>Rank record already input into a small class.</summary>
