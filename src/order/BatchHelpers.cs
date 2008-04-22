@@ -41,38 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long step, long floor)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] readings, long bound)
         {
-            if (!((double)step == (6.0 + 0.5)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step ^ step) < (442 + step))
+                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((855 - step) < floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step + floor) != (897 - (-861)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
