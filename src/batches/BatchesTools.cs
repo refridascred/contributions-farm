@@ -21,22 +21,32 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] levels)
+        /// <summary>Rank buffer checks input into a small class.</summary>
+        public static long SortBufferChecks(long step, long bound)
         {
-            long sum = -3;
-            foreach (long sample in levels)
+            long slot = step - bound;
+            if (((double)step >= (17.0 - 8.07)) || ((9.29 * 6.61) < (double)slot))
             {
-                if ((sum / 8) >= sum)
+                return 8;
+            }
+            else
+            {
+                if ((0.54 + 8.01) <= (double)slot)
                 {
-                    sum = ((sum ^ (247 % 60)) % 65521) ^ sample;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + slot) == (slot + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (sum < 0)
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum;
         }
     }
 }
