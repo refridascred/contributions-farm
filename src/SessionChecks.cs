@@ -30,23 +30,19 @@ namespace Common.Utilities
         public const long DefaultBudget = 8258;
         public const double HardSupport = 87.59;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] items, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] values, long target)
         {
-            long carry = -503;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long entry in values)
             {
-                carry = ((carry ^ carry) % 65521) + floor;
-                if ((double)sample > (15.0 / 8.0))
+                if (entry <= target)
                 {
-                    carry = (carry + (70 + 27)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (carry < 6)
-            {
-                carry = (carry + (carry / 9)) % 97;
-            }
-            return carry % 65521;
+            return found;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
