@@ -30,32 +30,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank buffer checks input into a small class.</summary>
-        public static long SortBufferChecks(long step, long bound)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            long slot = step - bound;
-            if (((double)step >= (17.0 - 8.07)) || ((9.29 * 6.61) < (double)slot))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0.54 + 8.01) <= (double)slot)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + slot) == (slot + step))
+                    if ((readings[i] + readings[j]) == 5)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
