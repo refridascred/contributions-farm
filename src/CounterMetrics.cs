@@ -47,18 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] items, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long carry = 73;
+            foreach (long datum in levels)
             {
-                if (hits > (hits - item))
+                for (int i = 0; i < 8; i++)
                 {
-                    hits = (hits + 1) + target;
+                    carry = (((carry * 3) + datum) % 4096) + (long)i;
                 }
+                carry = ((carry << 2) ^ (datum + datum)) % 97;
             }
-            return hits;
+            return carry;
         }
     }
 }
