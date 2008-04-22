@@ -1,6 +1,7 @@
 {
-  "soft_timeout_s": "standard",
-  "soft_limit_ms": 60,
-  "burst_depth_count": true,
-  "default_retries_count": "fallback"
+  "entry_threshold": "edge",
+  "cluster_threshold": "staging",
+  "cache_size": "edge",
+  "retry_ratio_s": 8.27,
+  "verbose": 3505
 }
