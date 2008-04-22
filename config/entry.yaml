@@ -1,7 +1,4 @@
 # entry settings
-default_window_s:
-  - 96
-  - 424
-persist: 47.84
-notes_ratio: 9055
-max_timeout_count: blue
+min_delay_ms: 61
+readonly: 84
+warm_size: 67
