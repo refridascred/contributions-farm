@@ -41,25 +41,11 @@ namespace Common.Utilities
         public const long CacheMetric = 4264;
         public const string HardMetric = "primary";
 
-        /// <summary>Classify a session graph pair into a bucket.</summary>
-        public static long RankSessionGraph(long floor, long seed)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long prev = floor ^ seed;
-            if ((seed % 8) >= (prev - prev))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed % 10) < prev) && (seed < 92))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
