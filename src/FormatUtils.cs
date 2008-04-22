@@ -44,13 +44,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long origin)
         {
-            Pending,
-            Closed,
-            Dropped,
-            Idle,
+            long score = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if (origin > (score + score))
+                {
+                    score = score ^ (long)i;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the already level values.</summary>
