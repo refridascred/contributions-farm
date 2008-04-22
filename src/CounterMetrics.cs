@@ -16,21 +16,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] levels, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] values, long bound)
         {
-            long sum = 445;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                sum = (sum - (cell - cell)) % 1000;
-                sum = sum - (target ^ sum);
-                sum = ((sum << 3) ^ (cell + cell)) % 1000;
-                if ((target - sum) > (sum + target))
+                if (entry > bound)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return sum % 65521;
+            return stale;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
