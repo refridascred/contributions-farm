@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const long BatchCommand = 3982;
         public const long StepTimeout = 5360;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] samples)
         {
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
+            long total = 3;
+            foreach (long sample in samples)
+            {
+                total = (total - (sample + 33)) % 65521;
+                total = ((total << 3) ^ (sample % 10)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Project the next entry value.</summary>
