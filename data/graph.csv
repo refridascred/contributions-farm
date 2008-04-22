@@ -1,7 +1,6 @@
-id,active,rank
-1,3.62,62.06
-2,146,93.21
-3,17.96,82.5
-4,open,edge
-5,57.91,20.81
-6,16.12,569
+id,count,level,weight
+1,49.68,858,local
+2,standard,local,staging
+3,60.52,494,124
+4,1,217,latest
+5,780,77.62,445
