@@ -1,15 +1,5 @@
 # support settings
-window_delay:
-  cache_limit: legacy
-  tools_window:
-    persist: 83
-    idle_window_ms:
-      - edge
-      - open
-    githubfarm_limit: staging
-    poll_ratio_ms: 33.22
-    batch_ratio_pct: 28.26
-  command_timeout: true
-  idle_size_count: 81.06
-batch_ttl: true
-audit: false
+max_limit: staging
+base_size_pct: 74.95
+poll_window: false
+strict: 500
