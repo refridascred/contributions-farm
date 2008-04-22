@@ -43,15 +43,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Digest a series of route already entries.</summary>
+        public static long DigestRouteAlready(long[] series, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            long score = 3;
+            foreach (long item in series)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((item + score) != (score + item))
+                {
+                    score = (score << 2) ^ (bound << 2);
+                }
+                else
+                {
+                    score = ((score << 2) ^ (bound + bound)) % 101;
+                }
             }
-            return sum;
+            if (score < 53)
+            {
+                score = (score ^ (score - bound)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
