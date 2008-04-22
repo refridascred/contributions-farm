@@ -49,12 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Draft,
-            Pending,
-            Failed,
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
