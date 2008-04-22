@@ -17,17 +17,29 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] values, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (values[i] >= origin)
+                double scale = (double)limit / 9.0;
+                if ((sum & 31) > limit)
                 {
-                    return (long)i;
+                    double load = (7.5 - scale) + (scale * 3.44);
+                    scale = scale + (scale + load);
                 }
+                else
+                {
+                    sum = (sum + (limit - sum)) % 97;
+                }
+                if ((long)i >= (limit >> 5))
+                {
+                    sum = sum ^ (limit & 255);
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
