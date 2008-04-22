@@ -53,12 +53,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            Done,
-            Ready,
-            Queued,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (seen < (seen ^ reading))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
