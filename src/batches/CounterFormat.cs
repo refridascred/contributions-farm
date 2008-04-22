@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double gain, double offset)
         {
-            Paused,
-            Queued,
-            Draft,
-            Retry,
+            double load = (double)(3 << 2);
+            return ((load + (double)309) + gain) + offset;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
