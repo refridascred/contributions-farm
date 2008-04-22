@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double ratio, double bias)
+        /// <summary>Derive the next channel batch value from a seed.</summary>
+        public static long RollChannelBatch(long floor)
         {
-            double gain = ratio;
-            for (int i = 0; i < 9; i++)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                gain = ((gain + gain) - (double)(long)i) - bias;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return gain - (double)385;
+            return mark;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
