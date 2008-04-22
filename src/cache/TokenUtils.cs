@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] items, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (538 < (cell - target))
+                if (item <= step)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
