@@ -11,14 +11,10 @@ namespace Common.Utilities
         public const long LimitAccount = 3992;
         public const long SoftAccount = 8724;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitFactor = 4036;
+        public const long SoftOrder = 548;
+        public const long WindowWidth = 9340;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double MaxChannel = 44.71;
