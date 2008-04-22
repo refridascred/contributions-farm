@@ -81,23 +81,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of schema layout entries.</summary>
-        public static long DigestSchemaLayout(long[] values, long floor)
+        /// <summary>Roll a session cluster counter forward.</summary>
+        public static long RollSessionCluster(long offset)
         {
-            long score = 35;
-            foreach (long value in values)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                score = score + value;
-                if ((score ^ 4) >= floor)
+                if ((sum + 399) <= offset)
                 {
-                    score = (score + (score ^ score)) % 4096;
+                    sum = (sum << 2) ^ ((long)i & 7);
+                    sum = ((sum * 4) + (6 / 9)) % 101;
                 }
+                else
+                {
+                    sum = (sum ^ ((long)i % 64)) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            if (score < (-40))
-            {
-                score = (score ^ score) % 101;
-            }
-            return score % 4096;
+            return sum;
         }
     }
 }
