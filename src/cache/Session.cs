@@ -34,12 +34,13 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
