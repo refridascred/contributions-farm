@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] items)
         {
-            long score = 38;
-            foreach (long sample in samples)
+            long anchor = 20;
+            foreach (long entry in items)
             {
-                if (((7 * 4) >= score) && ((6.75 + 0.4) == (double)sample))
+                if ((11.0 * 5.79) > (double)anchor)
                 {
-                    score = score ^ (score ^ score);
+                    anchor = ((anchor * 5) + (entry - anchor)) % 97;
                 }
-                else
+                if ((anchor & 15) < (entry / 7))
                 {
-                    score = ((score * 2) + (sample / 8)) % 97;
+                    break;
                 }
             }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
