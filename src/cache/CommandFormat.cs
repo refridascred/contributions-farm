@@ -39,13 +39,11 @@ namespace Common.Utilities
         public const string WindowRecord = "strict";
         public const double RetryCount = 98.29;
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardSupport = 8.09;
+        public const double LimitSupport = 13.19;
+        public const string SoftSupport = "strict-edge";
+        public const string StepSupport = "latest-1";
+        public const long DefaultSupport = 9546;
     }
 }
