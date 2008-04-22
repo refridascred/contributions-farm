@@ -1,18 +1,5 @@
 # entry settings
-poll_capacity_count:
-  verbose: 6019
-  warm_ttl: 23.18
-  farm_timeout:
-    - 74
-    - 453
-    - 487
-  compress:
-    - 436
-    - 349
-window_depth: 1024
-order_timeout:
-  - green
-  - eu-west
-  - fallback
-  - cached
-dry_run: fallback
+poll_interval_s: 77
+min_threshold_s: eu-west
+soft_delay_count: stable
+min_delay: false
