@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Count the order profile entries that pass the check.</summary>
+        public static long CountOrderProfileHits(long[] values, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                mix = ((mix * 5) + (origin + (long)i)) % 97;
-                if ((origin - (long)i) >= origin)
+                if (hits < (value & 3))
                 {
-                    mix = ((mix * 3) + (long)i) % 1000;
-                    break;
+                    hits = (hits + 3) - offset;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
