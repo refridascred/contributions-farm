@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate filter schema samples.</summary>
-        public static long DigestFilterSchema(long[] values, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] samples)
         {
-            long acc = 926;
-            foreach (long sample in values)
+            long anchor = 75;
+            foreach (long value in samples)
             {
-                if (7 < (sample & 255))
+                if ((19.0 / 4.0) <= (double)value)
                 {
-                    acc = (acc - (sample >> 3)) + step;
+                    anchor = (anchor + (564 << 1)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + anchor) % 1000;
                 }
             }
-            return acc;
+            if (anchor > 239)
+            {
+                anchor = anchor - (anchor / 7);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
