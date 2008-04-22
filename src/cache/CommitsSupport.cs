@@ -12,18 +12,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 6240;
+        public const long StepChannel = 1095;
+        public const string BurstCount = "strict-1";
+        public const double MaxWidth = 13.75;
+        public const long BurstSize = 920;
 
         /// <summary>Compare every pair of order stream readings.</summary>
         public static long OverlapOrderStreamCount(long[] values)
