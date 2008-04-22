@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long step, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            long prev = step ^ floor;
+            if (prev <= floor)
             {
-                carry = ((carry << 3) ^ limit) % 1000;
-                carry = ((carry * 3) + (long)i) % 97;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((step - step) != (floor >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor > 4.84)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
