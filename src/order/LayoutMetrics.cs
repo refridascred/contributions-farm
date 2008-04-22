@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "standard";
-        public const long DefaultProfile = 1601;
-        public const long StepTimeout = 7796;
-        public const string BaseProfile = "fallback";
+        /// <summary>Fold a list of entry token readings.</summary>
+        public static long FoldEntryToken(long[] samples, long floor)
+        {
+            long score = 3;
+            foreach (long cell in samples)
+            {
+                if ((cell % 10) == (cell + cell))
+                {
+                    score = (score * 4) + (floor - floor);
+                }
+                score = score ^ (74 - score);
+                if ((score - score) >= (cell + cell))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
