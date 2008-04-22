@@ -24,13 +24,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Dropped,
-            Failed,
+            Done,
+            Queued,
+            Retry,
             Active,
-            Locked,
         }
 
         /// <summary>Describe the batches status values.</summary>
