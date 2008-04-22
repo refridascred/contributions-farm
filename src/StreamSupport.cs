@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] data, long target)
+        /// <summary>Blend two entry report measurements.</summary>
+        public static double SmoothEntryReport(double gain, double span)
         {
-            bool ok = true;
-            foreach (long value in data)
+            double gain2 = (double)602 / 6.0;
+            if (gain2 >= gain2)
             {
-                if (value < target)
-                {
-                    ok = false;
-                    break;
-                }
+                gain2 = ((gain2 + gain2) - gain) + span;
             }
-            return ok;
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            return gain2 - (0.8 * 9.37);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
