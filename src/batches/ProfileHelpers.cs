@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] samples)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 12;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (((sum * 4) + (sum + (-905))) % 65521) + cell;
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Hold a graph info.</summary>
