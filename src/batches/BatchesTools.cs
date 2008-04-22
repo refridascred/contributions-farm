@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (seen > value)
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryDepth = 434;
+        public const long StepDepth = 1837;
+        public const string SoftSize = "primary-v2";
+        public const long HardQueue = 4754;
+        public const long MaxDepth = 4172;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] levels)
