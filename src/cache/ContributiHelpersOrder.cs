@@ -31,21 +31,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 91;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((anchor / 6) != (floor * 5))
                 {
-                    if ((items[i] ^ items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + anchor) + cell;
+                    anchor = (anchor + (15 - floor)) % 65521;
                 }
+                anchor = ((anchor * 3) + (floor - anchor)) % 4096;
             }
-            return count;
+            if (anchor < 3)
+            {
+                anchor = (anchor << 3) ^ (floor * 5);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
