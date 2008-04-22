@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of schema route entries.</summary>
-        public static long DigestSchemaRoute(long[] items, long floor)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long carry = -39;
-            foreach (long reading in items)
-            {
-                if ((double)41 == (double)floor)
-                {
-                    carry = (carry ^ reading) % 4096;
-                }
-            }
-            if (carry < 76)
-            {
-                carry = ((carry << 2) ^ (floor + carry)) % 65521;
-            }
-            return carry % 4096;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
