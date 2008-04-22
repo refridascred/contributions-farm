@@ -46,13 +46,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public bool Token { get; set; }
+            Dropped,
+            Stale,
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the payload mode values.</summary>
