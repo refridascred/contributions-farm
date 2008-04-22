@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Grade a profile buffer value against two limits.</summary>
+        public static long SortProfileBuffer(long floor, long bound)
         {
-            Done,
-            Ready,
-            Active,
-            Stale,
-            Pending,
+            long slot = floor + bound;
+            if (!((slot % 10) == (bound * 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (slot < 80)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
