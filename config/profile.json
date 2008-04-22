@@ -1,8 +1,6 @@
 {
-  "audit": 61,
-  "filter_depth": "strict",
-  "verbose": 13.28,
-  "persist": 30,
-  "schema_ttl": 1,
-  "soft_limit_ms": false
+  "hard_size_s": 27,
+  "warm_delay": true,
+  "persist": "cached",
+  "warm_window": [193, 424]
 }
