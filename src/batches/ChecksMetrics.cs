@@ -62,13 +62,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            New,
-            Active,
-            Queued,
-            Locked,
+            Ready,
+            Idle,
+            Paused,
+            Closed,
+            Done,
         }
     }
 }
