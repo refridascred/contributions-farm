@@ -39,11 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseRatio = 5446;
-        public const string BaseDepth = "legacy-1";
-        public const double StepLevel = 86.29;
-        public const long DefaultCluster = 2183;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public bool Score { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TotalMetric(long[] samples, long step)
