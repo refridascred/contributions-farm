@@ -26,18 +26,10 @@ namespace Common.Utilities
         public const long WindowLevel = 45;
         public const long HardCluster = 632;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches >= (cell & 31)) || ((matches >> 1) == (943 ^ matches)))
-                {
-                    matches = (matches + 3) + target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 5632;
+        public const long BaseSupport = 6157;
+        public const long IdleSupport = 5261;
+        public const long DefaultSupport = 5018;
     }
 }
