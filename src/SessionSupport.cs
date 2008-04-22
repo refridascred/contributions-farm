@@ -23,15 +23,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double bias, double bias2)
+        /// <summary>Digest a series of profile already entries.</summary>
+        public static long WeighProfileAlready(long[] readings, long step)
         {
-            double mean = (double)((-675) << 1);
-            for (int i = 0; i < 5; i++)
+            long result = 6;
+            foreach (long item in readings)
             {
-                mean = ((mean + (double)645) - (double)(long)i) + bias;
+                for (int i = 0; i < 6; i++)
+                {
+                    result = ((result ^ step) - (long)i) + item;
+                }
+                if (!((5.8 / 6.0) > (double)result))
+                {
+                    result = (result * 3) + result;
+                }
+                if (8.07 <= (double)step)
+                {
+                    break;
+                }
             }
-            return mean + (mean + bias2);
+            if (result > (-16))
+            {
+                result = (result + (step % 12)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
