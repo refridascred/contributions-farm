@@ -1,10 +1,5 @@
 {
-  "default_capacity_pct": 45,
-  "audit": "strict",
-  "soft_interval": {
-    "tools_capacity": 13.44,
-    "soft_ratio_s": "edge",
-    "flush_retries_count": "standard"
-  },
-  "stream_retries": 58
+  "graph_timeout": "eu-west",
+  "batch_retries_count": true,
+  "max_delay_s": 14
 }
