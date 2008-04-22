@@ -89,9 +89,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 871;
-        public const double WindowCache = 18.77;
-        public const long HardCache = 319;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] readings, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
