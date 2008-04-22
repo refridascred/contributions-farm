@@ -63,11 +63,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinLevel = 9786;
-        public const long LimitNotes = 4372;
-        public const string SoftNotes = "alpha-v2";
-        public const double WindowSize = 88.25;
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] samples, long origin)
+        {
+            long carry = -405;
+            foreach (long value in samples)
+            {
+                if ((origin * 5) != (carry + (-961)))
+                {
+                    carry = ((carry * 2) + value) % 1000;
+                }
+                else
+                {
+                    carry = carry ^ value;
+                }
+                if (value >= (carry / 5))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
