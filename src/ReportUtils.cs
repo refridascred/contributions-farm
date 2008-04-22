@@ -60,19 +60,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] readings, long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long mix = 63;
+            foreach (long reading in samples)
             {
-                if (entry >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                mix = mix ^ (reading ^ reading);
             }
-            return found;
+            if (mix < (-2))
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Rank already input into a small class.</summary>
