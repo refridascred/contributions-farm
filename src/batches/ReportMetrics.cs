@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long seed, long origin)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long step = seed ^ origin;
-            if ((double)step >= (4.63 / 9.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed - step) <= step) && ((double)step > (7.1 / 7.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin > (seed ^ step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Stale,
+            Done,
+            Draft,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
