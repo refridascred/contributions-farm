@@ -23,19 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] readings, long origin)
+        /// <summary>Count the support tools entries that pass the check.</summary>
+        public static long AuditSupportToolsOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (reading > origin)
+                if (((4 >> 2) != (hits + entry)) && ((entry - entry) >= hits))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Find the first stream graph entry that matches the target.</summary>
