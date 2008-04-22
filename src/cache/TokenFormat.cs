@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 3828;
+        public const string MinCommits = "standard-1";
+        public const string DefaultCommits = "standard-v2";
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long StepQueue(long bound)
