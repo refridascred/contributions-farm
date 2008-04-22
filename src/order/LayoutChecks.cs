@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double weight, double span)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            double bias = 12.0;
-            return ((bias + (double)89) + weight) + span;
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
