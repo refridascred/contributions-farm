@@ -45,21 +45,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Validate format graph readings against a bound.</summary>
+        public static bool ValidateFormatGraphRange(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum <= bound)
                 {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
