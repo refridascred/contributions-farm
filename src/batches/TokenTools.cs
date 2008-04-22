@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double rate, double span)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] samples, long seed)
         {
-            double scale = span;
-            if (scale < rate)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                scale = scale - rate;
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (3.4 * 9.0)) + (double)(long)i;
-            }
-            return scale - (rate * 11.0);
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
