@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxRatio = 9362;
-        public const long BaseDepth = 5334;
-        public const double BurstEditor = 4.46;
-        public const long DefaultTimeout = 3921;
-        public const long RetryCount = 7176;
+        /// <summary>Check that every metric already entry stays within the limit.</summary>
+        public static bool VerifyMetricAlreadyLimits(long[] samples, long origin)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MaxDepth = 5270;
