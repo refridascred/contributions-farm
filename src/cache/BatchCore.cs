@@ -39,22 +39,9 @@ namespace Common.Utilities
         public const double CacheGraph = 96.26;
         public const long StepGraph = 3111;
 
-        /// <summary>Audit format notes readings against a rule.</summary>
-        public static long AuditFormatNotesHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (tally > (item ^ 14))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstLevel = 24.97;
+        public const double RetryTimeout = 38.02;
+        public const long MaxMetrics = 7784;
     }
 }
