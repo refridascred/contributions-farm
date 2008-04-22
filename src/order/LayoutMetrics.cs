@@ -28,12 +28,9 @@ namespace Common.Utilities
             return weight + 3.2;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 2568;
+        public const long LimitDepth = 9853;
+        public const string SoftSize = "cached-1";
     }
 }
