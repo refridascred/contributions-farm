@@ -94,19 +94,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((result >> 4) >= (result % 24)))
-                {
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Closed,
+            Stale,
+            Done,
         }
     }
 }
