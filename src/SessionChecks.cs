@@ -43,22 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] data, long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (((cell & 127) != (count + offset)) && ((0 + offset) >= (count + cell)))
+                if ((double)seen > (17.0 / 3.0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
