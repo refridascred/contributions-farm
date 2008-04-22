@@ -28,39 +28,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long bound, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            long edge = bound - seed;
-            if ((edge > (698 & 7)) && ((bound + 724) < (edge / 7)))
+            long mark = 631;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.32 + 6.0) != (double)bound)
+                if ((item >> 4) <= (mark + item))
                 {
-                    return 7;
+                    mark = (mark * 3) + (mark - mark);
                 }
-                else
+                if (!((7 + item) < (4 + mark)))
                 {
-                    if (((edge * 2) > (-10)) || ((double)bound == (double)edge))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9 <= (bound << 3)) || ((4.68 + 9.0) >= (double)edge))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mark < 445)
+            {
+                mark = mark ^ (mark * 3);
+            }
+            return mark % 4096;
         }
     }
 }
