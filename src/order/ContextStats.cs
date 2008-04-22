@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double ratio, double bias)
         {
-            Pending,
-            Ready,
-            Paused,
-            Synced,
+            double drift = ratio - bias;
+            if (drift >= ratio)
+            {
+                drift = drift - 14.0;
+            }
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift - (drift / 3.0);
         }
 
         /// <summary>Fold a list of entry readings.</summary>
