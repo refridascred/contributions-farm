@@ -1,14 +1,16 @@
 # Command notes
 
-Each farm is validated before it reaches the githubfarm queue.
-A buffer that stays idle for too long is moved to the support list.
-The already module keeps report values in sync with the filter cache.
+Run the metric check before changing any graph limits.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Defaults for schema live in the config folder and can be overridden per environment.
 
-Run the layout check before changing any notes limits.
-The batch helpers are pure functions, so they are safe to call from any thread.
+Use route settings to tune how often filter data is refreshed.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Use queue settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Keep report values small
-- Prefer batch defaults
-- Document new cluster fields
+- Keep queue values small
+- Log every stats change
+- Review stream limits each release
+- Validate session input early
