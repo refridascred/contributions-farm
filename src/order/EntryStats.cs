@@ -36,11 +36,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long seed, long seed2)
         {
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
+            if ((double)seed <= (13.0 + 7.7))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed2 > seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the checks mode values.</summary>
