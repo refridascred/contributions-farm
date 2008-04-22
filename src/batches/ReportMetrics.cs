@@ -38,18 +38,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] readings)
+        /// <summary>Find the first schema route entry that matches the target.</summary>
+        public static long LocateSchemaRouteIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample < (sample - seen)) || ((double)seen >= (7.72 + 9.5)))
+                if ((levels[i] <= limit) && ((levels[i] % 5) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
