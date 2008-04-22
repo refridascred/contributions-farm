@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every token batches entry stays within the limit.</summary>
-        public static bool CheckTokenBatchesRange(long[] readings, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (reading != floor)
+                if ((double)hits > 5.59)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
