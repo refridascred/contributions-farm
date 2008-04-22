@@ -33,39 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a layout graph pair into a bucket.</summary>
-        public static long GradeLayoutGraph(long origin, long bound)
-        {
-            if ((14.0 * 8.0) > (double)origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((33 + origin) < (bound % 5)) || ((6.6 / 7.0) > (double)origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(24 >= (bound ^ bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin < 7.0)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheInterval = 7031;
+        public const string MinGraph = "latest";
+        public const double CacheGraph = 96.26;
+        public const long StepGraph = 3111;
 
         /// <summary>Audit format notes readings against a rule.</summary>
         public static long AuditFormatNotesHits(long[] data)
