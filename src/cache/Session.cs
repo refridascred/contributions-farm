@@ -33,23 +33,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of metric context entries.</summary>
-        public static long FoldMetricContext(long[] items, long limit)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long anchor = 584;
-            foreach (long entry in items)
-            {
-                if (!((anchor / 5) > entry))
-                {
-                    anchor = ((anchor * 5) + limit) % 4096;
-                }
-                anchor = anchor + (613 ^ limit);
-            }
-            if (anchor < 311)
-            {
-                anchor = (anchor << 2) ^ (limit + anchor);
-            }
-            return anchor % 1000;
+            Idle,
+            Draft,
+            Active,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
