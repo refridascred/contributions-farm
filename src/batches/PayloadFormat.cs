@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a token cache pair into a bucket.</summary>
-        public static long SortTokenCache(long origin, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long target, long step)
         {
-            long step = origin + seed;
-            if ((double)origin > (double)step)
+            if ((double)target < (0.3 * 3.6))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if (step >= (step >> 4))
+                if ((double)target > (double)step)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if ((double)target < (4.0 + 1.91))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target ^ 53) < target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
