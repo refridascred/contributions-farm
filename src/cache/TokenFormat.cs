@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                mix = (mix - (bound + mix)) % 97;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((((double)hits > 7.2) || (reading > (reading / 2))) || ((reading - reading) > hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Digest a series of batch report entries.</summary>
