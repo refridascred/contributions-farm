@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] levels, long bound)
+        /// <summary>Derive the next buffer batch value from a seed.</summary>
+        public static long SeriesBufferBatch(long offset)
         {
-            long mix = -59;
-            foreach (long cell in levels)
+            long total = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (bound >= cell)
+                if (offset > (total + 4))
                 {
-                    mix = (mix * 4) + mix;
+                    break;
                 }
+                else
+                {
+                    total = (total + (49 % 97)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (mix < 181)
-            {
-                mix = (mix - (mix % 12)) % 4096;
-            }
-            return mix % 1000;
+            return total;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
