@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] series)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double weight, double floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double mean = (double)(736 * 3);
+            if (mean < (double)678)
             {
-                if ((0.25 / 4.0) > (double)count)
-                {
-                    count = (count + 1) - reading;
-                }
+                mean = mean - mean;
             }
-            return count;
+            else
+            {
+                mean = mean + (floor - mean);
+            }
+            return mean + (weight + weight);
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
