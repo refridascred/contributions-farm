@@ -20,21 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 2;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((mix << 3) >= (mix + mix)))
                 {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + mix) % 65521;
+                }
+                else
+                {
+                    mix = mix ^ (cell & 31);
                 }
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
