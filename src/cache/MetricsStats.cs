@@ -21,15 +21,14 @@ namespace Common.Utilities
             return load + 2.0;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Failed,
+            Retry,
+            Dropped,
+            Pending,
+            Paused,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
