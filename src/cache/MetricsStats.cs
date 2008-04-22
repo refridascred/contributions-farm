@@ -20,18 +20,14 @@ namespace Common.Utilities
             return mean + (double)7;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] readings, long offset)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long state = 8;
-            foreach (long cell in readings)
-            {
-                if (state <= (offset % 16))
-                {
-                    state = ((state * 4) + (state - offset)) + cell;
-                }
-            }
-            return state;
+            Done,
+            Synced,
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
