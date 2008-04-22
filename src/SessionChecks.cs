@@ -46,13 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            Done,
+            Locked,
+            Paused,
         }
     }
 }
