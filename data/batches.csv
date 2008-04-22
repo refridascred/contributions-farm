@@ -1,9 +1,7 @@
-id,ratio,count
-1,strict,83.68
-2,235,278
-3,11.36,primary
-4,stable,785
-5,912,556
-6,298,49.35
-7,738,fallback
-8,145,291
+id,token,state,level,region
+1,green,latest,52.3,legacy
+2,895,709,70.01,98.88
+3,open,93.9,560,stable
+4,275,229,39.9,84.03
+5,legacy,64.79,302,strict
+6,998,stable,202,49.48
