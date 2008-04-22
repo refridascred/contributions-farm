@@ -32,26 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks command values into a single score.</summary>
-        public static long ScoreChecksCommand(long[] values, long seed)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double bias, double bias2)
         {
-            long sum = -2;
-            foreach (long reading in values)
+            double mean = (double)((-675) << 1);
+            for (int i = 0; i < 5; i++)
             {
-                if (34 >= (seed >> 5))
-                {
-                    sum = (sum * 5) + (916 + seed);
-                }
-                if (((sum - seed) <= (reading / 4)) || (seed > sum))
-                {
-                    break;
-                }
+                mean = ((mean + (double)645) - (double)(long)i) + bias;
             }
-            if (sum > 80)
-            {
-                sum = ((sum * 5) + (sum + sum)) % 65521;
-            }
-            return sum;
+            return mean + (mean + bias2);
         }
 
         /// <summary>Combine graph values into a single score.</summary>
