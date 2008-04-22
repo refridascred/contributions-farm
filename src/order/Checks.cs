@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] levels, long bound)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches <= (matches / 3)) || (matches <= (long)levels.Length))
-                {
-                    matches = ((matches + 3) + cell) + bound;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
