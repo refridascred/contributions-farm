@@ -21,18 +21,31 @@ namespace Common.Utilities
         public const string BurstQueue = "cached";
         public const long CacheQueue = 4971;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] samples, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long bound, long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            if (0 < bound)
             {
-                if (count <= (count << 1))
+                return 0;
+            }
+            else
+            {
+                if (floor < bound)
                 {
-                    count = ((count + 1) ^ reading) + origin;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + bound) >= (516 & 63))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Scale a support githubfarm figure with a bias.</summary>
