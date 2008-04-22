@@ -56,12 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public bool Region { get; set; }
+            Failed,
+            New,
+            Synced,
+            Locked,
         }
     }
 }
