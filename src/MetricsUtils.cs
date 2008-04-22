@@ -42,23 +42,36 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long limit, long step)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long seed, long origin)
         {
-            long diff = limit - step;
-            if (((double)diff != (0.53 * 8.5)) && ((double)limit < 9.5))
+            if ((seed + seed) <= origin)
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (limit > diff)
+                if ((seed * 5) <= seed)
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    return 1;
+                    if ((origin * 3) <= (seed % 24))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((333 - seed) == (seed + origin)) && (995 < (seed ^ origin)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
