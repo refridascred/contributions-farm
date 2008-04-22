@@ -50,38 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long seed, long seed2)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double bias, double span)
         {
-            if (((18.0 - 20.0) != (double)seed) || (((-522) & 63) < (seed & 3)))
+            double rate = (double)894 + span;
+            if (rate <= rate)
             {
-                return 0;
+                rate = (rate + rate) + bias;
             }
-            else
-            {
-                if ((seed * 3) < (seed % 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed2 * 2) != (seed >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((4.0 - 1.0) != (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return rate - (span * 5.0);
         }
 
         /// <summary>Hold a checks stats.</summary>
