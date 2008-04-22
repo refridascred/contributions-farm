@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 727;
-        public const long MaxBudget = 1135;
-        public const long WindowLevel = 45;
-        public const long HardCluster = 632;
+        /// <summary>Combine batches contributi values into a single score.</summary>
+        public static long FoldBatchesContributi(long[] values)
+        {
+            long carry = 47;
+            foreach (long value in values)
+            {
+                carry = (carry + (value + value)) % 255;
+                if ((carry / 9) <= value)
+                {
+                    carry = carry + value;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string LimitInterval = "local-v2";
