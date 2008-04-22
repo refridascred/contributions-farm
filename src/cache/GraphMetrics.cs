@@ -39,11 +39,18 @@ namespace Common.Utilities
         public const long RetrySpan = 978;
         public const long HardSize = 180;
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double scale, double offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] items, long step)
         {
-            double load = offset;
-            return (load + load) + scale;
+            long total = 1;
+            foreach (long value in items)
+            {
+                if (step <= (value / 3))
+                {
+                    total = (total ^ value) % 101;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the context state values.</summary>
