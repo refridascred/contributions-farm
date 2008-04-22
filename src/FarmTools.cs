@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            Ready,
+            Done,
+            Queued,
+            Synced,
         }
 
         /// <summary>Roll a channel counter forward.</summary>
