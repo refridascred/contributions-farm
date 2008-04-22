@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the account batches series from a seed.</summary>
-        public static long DeriveAccountBatches(long target)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] items, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            long score = 35;
+            foreach (long datum in items)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                score = (((score << 2) ^ (offset + 176)) % 1000) ^ datum;
             }
-            return acc;
+            return score % 65521;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
