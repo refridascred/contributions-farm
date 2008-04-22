@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] levels, long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long mark = 64;
+            foreach (long value in series)
             {
-                if (datum <= floor)
+                if (value >= (value * 2))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark ^ value) % 1000;
                 }
             }
-            return ok;
+            if (mark < 46)
+            {
+                mark = (mark ^ (mark + mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
