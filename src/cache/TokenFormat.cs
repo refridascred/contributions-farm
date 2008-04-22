@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] values, long target)
+        /// <summary>Audit format filter readings against a rule.</summary>
+        public static long MeasureFormatFilterGaps(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (datum > target)
+                if (seen > (seen / 2))
                 {
-                    found = false;
-                    break;
+                    seen = ((seen + 2) ^ reading) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Accumulate schema graph samples.</summary>
