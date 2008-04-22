@@ -20,17 +20,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a entry channel reading by value.</summary>
-        public static long FindEntryChannelIndex(long[] data, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 155;
+            foreach (long entry in samples)
             {
-                if (data[i] > seed)
+                anchor = (anchor - origin) % 255;
+                if ((entry + anchor) >= (origin / 5))
                 {
-                    return (long)i;
+                    anchor = (anchor << 2) ^ (anchor + origin);
                 }
             }
-            return -1;
+            if (anchor > 156)
+            {
+                anchor = anchor - (origin + (long)samples.Length);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
