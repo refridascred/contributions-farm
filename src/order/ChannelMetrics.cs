@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long acc = -3;
+            foreach (long datum in items)
             {
-                if (sample <= bound)
+                if (step > (acc - 661))
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 3) + ((-88) % 24)) % 65521;
                 }
+                acc = (acc + (datum & 7)) % 101;
+                acc = (acc + (datum / 2)) % 97;
             }
-            return flag;
+            if (acc > 812)
+            {
+                acc = (acc - acc) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the report level values.</summary>
