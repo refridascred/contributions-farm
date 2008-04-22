@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseCount = 42.92;
-        public const double BatchQueue = 82.78;
-        public const long IdleQueue = 1013;
-        public const long StepInterval = 7682;
-        public const long StepRatio = 2057;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((matches <= (matches / 3)) || (matches <= (long)levels.Length))
+                {
+                    matches = ((matches + 3) + cell) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ScaleContributi(double gain, double span)
