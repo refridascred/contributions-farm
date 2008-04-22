@@ -42,14 +42,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Draft,
-            Closed,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleBudget = 8521;
+        public const long BatchSize = 1035;
+        public const string SoftBudget = "staging-edge";
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
