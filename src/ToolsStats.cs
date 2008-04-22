@@ -80,15 +80,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double rate, double bias)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double drift = bias - (rate + rate);
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + rate) - (double)(long)i;
-            }
-            return drift - rate;
+            Dropped,
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
