@@ -23,11 +23,19 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardSize = 3550;
-        public const string HardSpan = "cached";
-        public const long StepFarm = 9785;
-        public const long HardTimeout = 8738;
+        /// <summary>Count the report queue entries that pass the check.</summary>
+        public static long TallyReportQueueHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (entry >= matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate counter window readings against a bound.</summary>
         public static bool GuardCounterWindowBounds(long[] series, long limit)
