@@ -5,31 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of report batches entries.</summary>
-        public static long TotalReportBatches(long[] data)
+        /// <summary>Rank record queue input into a small class.</summary>
+        public static long GradeRecordQueue(long offset, long limit)
         {
-            long sum = 2;
-            foreach (long reading in data)
+            if ((limit + limit) < (offset + offset))
             {
-                sum = (sum ^ (reading * 3)) % 4096;
-                if (!(sum >= reading))
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) >= offset)
                 {
-                    sum = (sum ^ (reading % 64)) % 4096;
-                }
-                if (sum <= ((-730) & 7))
-                {
-                    sum = (sum ^ (18 + reading)) % 97;
+                    return 2;
                 }
                 else
                 {
-                    sum = (sum - (sum * 2)) % 255;
+                    if ((67 + limit) >= (offset / 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (sum > 3)
-            {
-                sum = (sum + (sum ^ 39)) % 255;
-            }
-            return sum;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
