@@ -38,11 +38,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Classify a githubfarm contributi pair into a bucket.</summary>
+        public static long GradeGithubfarmContributi(long floor, long bound)
         {
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
+            if (!((19.0 - 2.4) == (double)bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.49 / 3.0) < (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound % 3) <= (bound + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor & 127) >= bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support state values.</summary>
