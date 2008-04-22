@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=271
-log "limit is ${RECORD_LIMIT}"
-
-for item in stable legacy green; do
+for item in stable latest; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+mode="${1:-eu-west}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
