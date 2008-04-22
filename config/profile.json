@@ -1,5 +1,19 @@
 {
-  "strict": ["blue", "eu-west", "stable", "edge"],
-  "readonly": true,
-  "idle_limit_ms": "eu-west"
+  "min_size": 19,
+  "idle_ratio": ["eu-west", "strict"],
+  "default_ratio_pct": "blue",
+  "default_limit_ms": "legacy",
+  "default_ttl_ms": {
+    "readonly": 48,
+    "cache_ratio_ms": false,
+    "account_limit": 62.64,
+    "min_interval_ms": {
+      "farm_ttl": "open",
+      "poll_interval": ["latest", "green"],
+      "flush_ratio_s": 92.34,
+      "sync_window_s": 79
+    },
+    "queue_threshold": 8843,
+    "min_retries_pct": ["edge", "standard"]
+  }
 }
