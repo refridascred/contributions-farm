@@ -39,18 +39,15 @@ namespace Common.Utilities
         public const long RetrySpan = 978;
         public const long HardSize = 180;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] items, long step)
+        /// <summary>Combine notes support values into a single score.</summary>
+        public static long WeighNotesSupport(long[] data, long floor)
         {
-            long total = 1;
-            foreach (long value in items)
+            long carry = 607;
+            foreach (long sample in data)
             {
-                if (step <= (value / 3))
-                {
-                    total = (total ^ value) % 101;
-                }
+                carry = (((carry * 5) + carry) ^ sample) + floor;
             }
-            return total % 97;
+            return carry % 4096;
         }
 
         /// <summary>Describe the context state values.</summary>
