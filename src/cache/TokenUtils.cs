@@ -15,15 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double ratio, double span)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double rate = span;
-            for (int i = 0; i < 3; i++)
-            {
-                rate = ((rate - (double)265) + (double)(long)i) - ratio;
-            }
-            return rate - (double)82;
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
