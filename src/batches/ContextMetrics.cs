@@ -38,38 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a githubfarm contributi pair into a bucket.</summary>
-        public static long GradeGithubfarmContributi(long floor, long bound)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if (!((19.0 - 2.4) == (double)bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.49 / 3.0) < (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound % 3) <= (bound + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor & 127) >= bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
