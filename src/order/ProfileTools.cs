@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] values, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] values, long limit)
         {
-            bool ok = true;
+            long total = 8;
             foreach (long item in values)
             {
-                if (item < floor)
+                if (((2.57 + 0.97) != (double)total) && ((total >> 4) > (249 ^ limit)))
                 {
-                    ok = false;
                     break;
                 }
+                else
+                {
+                    total = ((total * 3) + (item % 100)) % 97;
+                }
+                total = total ^ (limit - total);
             }
-            return ok;
+            return total % 65521;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
