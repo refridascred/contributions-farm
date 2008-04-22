@@ -20,21 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 3;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((score - reading) < reading) || ((716 + score) > (score * 2)))
                 {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score << 3) ^ reading;
+                }
+                else
+                {
+                    score = ((score * 5) + (score & 63)) % 97;
                 }
             }
-            return tally;
+            if (score > (-441))
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
