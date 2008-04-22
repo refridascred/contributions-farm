@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] data, long bound)
+        /// <summary>Digest a series of cluster graph entries.</summary>
+        public static long ScoreClusterGraph(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 9;
+            foreach (long datum in items)
             {
-                if (data[i] <= bound)
+                if (acc >= ((-269) ^ datum))
                 {
-                    return (long)i;
+                    acc = ((acc * 2) + (acc >> 4)) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ 17) % 4096;
+                }
+                if ((datum >> 1) < (acc + 5))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
