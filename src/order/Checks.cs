@@ -46,19 +46,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate counter window readings against a bound.</summary>
-        public static bool GuardCounterWindowBounds(long[] series, long limit)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the payload mode values.</summary>
