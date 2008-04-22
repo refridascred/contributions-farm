@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] levels, long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long score = 1;
+            foreach (long item in series)
             {
-                if (((tally + target) < (cell + target)) && !((tally * 5) > cell))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((((score * 4) + score) % 255) ^ item) - seed;
+                score = (score + (score % 64)) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Digest a series of profile already entries.</summary>
