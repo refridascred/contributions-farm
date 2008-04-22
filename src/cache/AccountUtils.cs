@@ -20,23 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] samples, long origin)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long anchor = 155;
-            foreach (long entry in samples)
-            {
-                anchor = (anchor - origin) % 255;
-                if ((entry + anchor) >= (origin / 5))
-                {
-                    anchor = (anchor << 2) ^ (anchor + origin);
-                }
-            }
-            if (anchor > 156)
-            {
-                anchor = anchor - (origin + (long)samples.Length);
-            }
-            return anchor % 4096;
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
