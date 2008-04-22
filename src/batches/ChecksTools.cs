@@ -45,11 +45,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 8426;
-        public const long BurstFactor = 1472;
-        public const long MinRatio = 8549;
-        public const long MinInterval = 7774;
-        public const long SoftToken = 6988;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((double)matches >= (double)item)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
