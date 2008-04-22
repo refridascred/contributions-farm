@@ -1,11 +1,8 @@
 {
-  "flush_retries_ms": 250,
-  "poll_limit": 1024,
-  "min_threshold_ms": 500,
-  "retry_window": {
-    "flush_limit_pct": "stable",
-    "burst_retries_count": 79.74,
-    "min_size_s": "local",
-    "compress": 7433
-  }
+  "audit": 61,
+  "filter_depth": "strict",
+  "verbose": 13.28,
+  "persist": 30,
+  "schema_ttl": 1,
+  "soft_limit_ms": false
 }
