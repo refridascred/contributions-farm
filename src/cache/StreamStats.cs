@@ -39,18 +39,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate command checks samples.</summary>
-        public static long ScoreCommandChecks(long[] series)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long score = 8;
-            foreach (long entry in series)
-            {
-                if ((double)(long)series.Length < (4.61 - 2.81))
-                {
-                    score = score + (93 ^ entry);
-                }
-            }
-            return score % 65521;
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
