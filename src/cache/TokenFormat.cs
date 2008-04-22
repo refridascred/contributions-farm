@@ -37,19 +37,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric githubfarm readings against a bound.</summary>
-        public static bool VerifyMetricGithubfarmLimits(long[] data, long step)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Closed,
+            Active,
+            Retry,
         }
     }
 }
