@@ -34,15 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double weight, double span)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double ratio = weight + weight;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (span - weight)) + (double)(long)i;
-            }
-            return ratio - (span / 3.0);
+            Done,
+            Ready,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a entry snapshot.</summary>
