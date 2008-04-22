@@ -1,5 +1,18 @@
 # githubfarm settings
-persist: edge
-burst_threshold_pct: 6505
-warm_threshold_pct: eu-west
-default_size_count: 4925
+metric_limit: false
+readonly:
+  - local
+  - standard
+graph_interval: strict
+enabled:
+  batch_delay:
+    - primary
+    - open
+    - eu-west
+    - strict
+  idle_delay_count: edge
+  cache_window_ms: true
+  account_window: staging
+  metrics_threshold: 613
+  burst_window: standard
+command_ttl: latest
