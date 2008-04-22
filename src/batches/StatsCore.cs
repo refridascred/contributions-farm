@@ -22,18 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] data, long bound)
+        /// <summary>Compare every pair of batches batch readings.</summary>
+        public static long OverlapBatchesBatchCount(long[] values)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > (value + 16))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) - bound;
+                    if ((values[i] + values[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
