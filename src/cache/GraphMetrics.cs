@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] data, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (datum > offset)
+                if (reading > bound)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
