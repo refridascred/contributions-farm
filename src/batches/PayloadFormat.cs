@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] items)
         {
-            long hits = 0;
+            long result = -882;
             foreach (long reading in items)
             {
-                if ((reading - reading) > (reading * 2))
+                result = (result + result) % 97;
+                if (0.47 >= (double)reading)
                 {
-                    hits = hits + 2;
+                    break;
                 }
             }
-            return hits;
+            return result % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
