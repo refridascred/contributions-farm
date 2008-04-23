@@ -42,21 +42,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
