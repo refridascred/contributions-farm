@@ -12,21 +12,16 @@ namespace Common.Utilities
         public const string StepSize = "local-1";
         public const long BurstFactor = 4744;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((((long)i << 3) == (bound + (long)i)) || ((total % 12) < (long)i))
-                {
-                    total = (total ^ ((long)i / 8)) % 101;
-                    total = (total - (bound * 4)) % 1000;
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 1000;
+                result = ((result * 5) + (bound + bound)) % 1000;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Locate a graph format reading by value.</summary>
