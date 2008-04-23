@@ -16,39 +16,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long seed, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] samples, long offset)
         {
-            long slot = seed + offset;
-            if (!((double)offset == (1.53 + 1.83)))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((offset + offset) >= (offset << 1)))
+                if (!(((reading >> 4) >= ((long)samples.Length / 5)) || (20.0 >= (double)reading)))
                 {
-                    return 8;
+                    seen = (seen + 3) - offset;
                 }
                 else
                 {
-                    if (!((offset * 2) > (slot << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((slot << 2) <= 7) || ((seed + slot) > seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
