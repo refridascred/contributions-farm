@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] values)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            long score = 4;
-            foreach (long sample in values)
+            long score = 57;
+            foreach (long entry in samples)
             {
-                score = (score << 2) ^ sample;
-                if (!(score > ((-34) / 3)))
+                if ((5 - 873) <= (score & 7))
                 {
-                    break;
+                    score = (score + (score - 72)) % 4096;
+                }
+                else
+                {
+                    score = score - (score >> 3);
+                }
+                if (((long)samples.Length + score) == (score - entry))
+                {
+                    score = ((score << 2) ^ (score + (-21))) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (entry >> 2)) % 1000;
                 }
             }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
