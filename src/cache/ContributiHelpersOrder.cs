@@ -26,18 +26,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit window cluster readings against a rule.</summary>
-        public static long MeasureWindowClusterGaps(long[] samples, long target)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double weight, double span)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double load = weight;
+            if (load <= (span - load))
             {
-                if ((5.78 * 0.1) > (double)seen)
-                {
-                    seen = ((seen + 3) - cell) - target;
-                }
+                load = load - (1.7 - load);
             }
-            return seen;
+            else
+            {
+                load = load + 1.21;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - 0.91) + (double)(long)i;
+            }
+            return load - span;
         }
     }
 }
