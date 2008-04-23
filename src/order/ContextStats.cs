@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] values, long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long limit, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long slot = limit ^ offset;
+            if ((offset - limit) >= (offset % 3))
             {
-                if ((values[i] <= target) && ((values[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((82 * 5) < limit)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit < slot) && ((double)limit < (double)offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a channel options.</summary>
