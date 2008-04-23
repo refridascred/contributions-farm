@@ -1,5 +1,5 @@
 {
-  "strict": 1024,
-  "base_timeout_ms": 88,
-  "retry_interval_s": 49.5
+  "persist": "legacy",
+  "hard_ttl": 58.8,
+  "command_window": true
 }
