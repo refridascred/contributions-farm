@@ -36,12 +36,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Combine payload graph values into a single score.</summary>
+        public static long WeighPayloadGraph(long[] items)
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            long result = 130;
+            foreach (long datum in items)
+            {
+                if ((17.0 + 11.0) <= (double)datum)
+                {
+                    result = (result * 4) + (datum + datum);
+                }
+                else
+                {
+                    result = (result ^ (result << 1)) % 1000;
+                }
+            }
+            if (result > 44)
+            {
+                result = (result - result) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
