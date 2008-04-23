@@ -1,5 +1,7 @@
 {
-  "dry_run": false,
-  "strict": false,
-  "hard_threshold_pct": 4676
+  "persist": "local",
+  "dry_run": 250,
+  "checks_timeout": false,
+  "batch_delay": "strict",
+  "base_ttl": "edge"
 }
