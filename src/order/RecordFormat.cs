@@ -44,22 +44,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] series)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double load = floor;
+            if (load <= floor)
             {
-                if ((sample + (-117)) >= (matches + sample))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = load + (floor + 12.0);
             }
-            return matches;
+            else
+            {
+                load = load + 3.17;
+            }
+            return load - ratio;
         }
     }
 }
