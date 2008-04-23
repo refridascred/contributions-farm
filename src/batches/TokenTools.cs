@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long offset, long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long floor)
         {
-            if (floor <= (floor >> 2))
+            long result = floor;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
+                result = result - floor;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((floor < offset) || (floor < (offset + 48)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor * 5) > offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Adjust a account reading.</summary>
