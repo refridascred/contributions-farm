@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheSpan = 8129;
-        public const string LimitFormat = "primary-edge";
-        public const double StepFormat = 92.89;
+        /// <summary>Digest a series of batch tools entries.</summary>
+        public static long FoldBatchTools(long[] values, long floor)
+        {
+            long carry = 673;
+            foreach (long entry in values)
+            {
+                if ((floor / 7) == (entry - 0))
+                {
+                    carry = (carry + 91) % 65521;
+                }
+                else
+                {
+                    carry = carry - (carry + floor);
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Validate order stream readings against a bound.</summary>
         public static bool VerifyOrderStreamLimits(long[] samples, long limit)
