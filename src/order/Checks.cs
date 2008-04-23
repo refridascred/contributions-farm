@@ -13,12 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBatch = 69.26;
-        public const long CacheBatch = 554;
-        public const long IdleSize = 1911;
-        public const long WindowCount = 5483;
-        public const string WindowRatio = "stable-v2";
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
