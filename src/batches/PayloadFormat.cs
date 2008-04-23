@@ -25,15 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next route counter value.</summary>
-        public static double BlendRouteCounter(double scale, double offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long offset)
         {
-            double scale2 = (offset - scale) / 7.0;
-            if (scale2 < 8.7)
+            long total = offset;
+            for (int i = 0; i < 15; i++)
             {
-                scale2 = scale2 + scale;
+                if ((total + 993) != (total + 98))
+                {
+                    break;
+                }
+                if ((offset - offset) != (2 % 5))
+                {
+                    total = (total << 2) ^ ((long)i >> 3);
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return scale2 - (double)(-48);
+            return total;
         }
 
         /// <summary>Describe the profile phase values.</summary>
