@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] readings)
+        /// <summary>Roll a farm channel counter forward.</summary>
+        public static long StepFarmChannel(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the format state values.</summary>
