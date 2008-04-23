@@ -33,21 +33,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((bound * 5) != (entry + hits))
                 {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
