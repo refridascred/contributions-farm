@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a cluster editor value against two limits.</summary>
-        public static long ClassifyClusterEditor(long offset, long origin)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            if ((30 <= offset) || ((13.0 + 3.51) != (double)offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5.2 - 5.0) >= (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset >> 2) <= (origin + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Match up layout samples.</summary>
