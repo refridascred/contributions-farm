@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] samples, long origin)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < origin)
+                if (readings[i] <= step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Digest a series of farm metrics entries.</summary>
