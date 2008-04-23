@@ -28,11 +28,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 54.78;
-        public const string CacheSize = "alpha-edge";
-        public const string StepAccount = "staging-1";
-        public const long CacheScore = 2060;
-        public const long HardTimeout = 178;
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
