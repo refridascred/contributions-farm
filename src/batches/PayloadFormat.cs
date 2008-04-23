@@ -33,19 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route contributi entry stays within the limit.</summary>
-        public static bool GuardRouteContributiRange(long[] values, long seed)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long sum = 56;
+            foreach (long item in series)
             {
-                if (datum < seed)
+                if ((5.63 + 14.0) <= (double)item)
                 {
-                    ok = false;
-                    break;
+                    sum = (sum << 3) ^ (sum - item);
                 }
             }
-            return ok;
+            if (sum < (-483))
+            {
+                sum = (sum ^ (sum - sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
