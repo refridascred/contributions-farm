@@ -24,14 +24,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseMetric = "strict-1";
+        public const double CacheSize = 13.48;
+        public const long DefaultMetric = 1785;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long MaxEditor = 1810;
