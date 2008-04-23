@@ -67,14 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Scale a account format figure with a bias.</summary>
+        public static double SmoothAccountFormat(double gain, double span)
         {
-            Ready,
-            Done,
-            Stale,
-            Closed,
-            Retry,
+            double drift = span;
+            return (drift - (double)146) + gain;
         }
     }
 }
