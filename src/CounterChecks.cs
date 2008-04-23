@@ -36,11 +36,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 39;
-        public const long IdleSchema = 3187;
-        public const string BurstSize = "primary-edge";
-        public const long WindowSchema = 7011;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Draft,
+            Failed,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterRange(long[] series, long seed)
