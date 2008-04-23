@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] samples, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long mark = 9;
+            foreach (long entry in levels)
             {
-                if (cell >= floor)
+                if ((mark + entry) >= entry)
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 3) ^ entry) % 101;
                 }
             }
-            return found;
+            if (mark < (-970))
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
