@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
+            Paused,
+            Draft,
+            Locked,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
