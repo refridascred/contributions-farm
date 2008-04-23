@@ -68,10 +68,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 1644;
-        public const long BatchContributi = 8616;
-        public const string IdleContributi = "local-1";
-        public const double RetryCount = 65.96;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] series, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
