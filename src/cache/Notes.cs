@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Measure how many queue contributi samples are out of range.</summary>
+        public static long TallyQueueContributiGaps(long[] series)
         {
-            Active,
-            Idle,
-            New,
-            Ready,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((reading * 4) <= (count & 127))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
