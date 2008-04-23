@@ -67,13 +67,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long offset, long offset2)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            if (!((7.14 - 5.3) < (double)371))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((158 * 2) <= offset2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
