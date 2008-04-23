@@ -45,13 +45,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Retry,
-            Done,
-            Draft,
-            Closed,
+            Active,
+            Dropped,
+            Locked,
+            New,
+            Ready,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
