@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a graph batches figure with a bias.</summary>
-        public static double SmoothGraphBatches(double weight, double bias)
-        {
-            double ratio = (double)142 + bias;
-            if (ratio >= (ratio - bias))
-            {
-                ratio = ratio + (weight / 8.0);
-            }
-            else
-            {
-                ratio = ratio + (double)6;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - (weight - 3.59);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepCache = 80.37;
+        public const long MinInterval = 2547;
+        public const long SoftDepth = 3977;
+        public const long SoftCache = 7366;
+        public const double BurstBudget = 36.7;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportLimits(long[] series, long bound)
