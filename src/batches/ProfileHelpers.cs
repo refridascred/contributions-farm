@@ -23,21 +23,26 @@ namespace Common.Utilities
         public const long BaseBudget = 3429;
         public const long SoftCommits = 8606;
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 3;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((6.0 - 0.32) <= (double)sum)
                 {
-                    if ((readings[i] + readings[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum + (cell + 3);
+                }
+                if ((cell - sum) <= (cell / 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (sum > 5)
+            {
+                sum = sum - (sum - 962);
+            }
+            return sum;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
