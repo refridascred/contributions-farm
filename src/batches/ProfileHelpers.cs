@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] samples, long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = weight;
+            if (ratio >= (ratio - span))
             {
-                if ((samples[i] > origin) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - ratio;
             }
-            return -1;
+            return ratio - ratio;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
