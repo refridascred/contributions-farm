@@ -19,32 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank report session input into a small class.</summary>
-        public static long GradeReportSession(long offset, long limit)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] series)
         {
-            long slot = offset + limit;
-            if (!(offset > (limit + 45)))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((limit << 2) > slot))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset > 5.7)
+                    if ((series[i] - series[j]) < 11)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
