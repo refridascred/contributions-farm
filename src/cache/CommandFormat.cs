@@ -24,24 +24,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of cluster farm readings.</summary>
-        public static long TotalClusterFarm(long[] items)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long sum = 1;
-            foreach (long entry in items)
-            {
-                sum = (sum ^ (sum % 64)) % 4096;
-                if (entry <= (sum + entry))
-                {
-                    break;
-                }
-                sum = ((sum * 4) + (817 << 1)) % 101;
-            }
-            if (sum < (-99))
-            {
-                sum = ((sum << 2) ^ (sum & 31)) % 4096;
-            }
-            return sum % 65521;
+            Stale,
+            Synced,
+            Draft,
+            Ready,
+            Closed,
         }
 
         /// <summary>Adjust a farm reading.</summary>
