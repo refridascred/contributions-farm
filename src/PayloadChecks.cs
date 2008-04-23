@@ -29,11 +29,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 4347;
-        public const long CacheCluster = 6791;
-        public const long WindowCount = 744;
-        public const long HardTimeout = 314;
+        /// <summary>Roll a record account counter forward.</summary>
+        public static long RollRecordAccount(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitFactor = 8937;
