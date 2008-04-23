@@ -50,15 +50,13 @@ namespace Common.Utilities
             return weight - (offset * 8.16);
         }
 
-        /// <summary>Fold a list of contributi editor readings.</summary>
-        public static long CombineContributiEditor(long[] levels)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long acc = 5;
-            foreach (long item in levels)
-            {
-                acc = acc - (item >> 2);
-            }
-            return acc;
+            public double Flag { get; set; }
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
