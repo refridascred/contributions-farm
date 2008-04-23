@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double ratio, double floor)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            double load = (double)9 * 3.63;
+            if (load > (4.68 / 4.0))
             {
-                if ((double)limit != (17.0 - 1.67))
-                {
-                    continue;
-                }
-                if (!((2.77 / 8.0) == (double)limit))
-                {
-                    result = ((result << 2) ^ (result ^ result)) % 97;
-                }
-                result = ((result * 5) + (long)i) % 97;
+                load = (load - (floor / 8.0)) - ratio;
             }
-            return result;
+            return load - 9.1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
