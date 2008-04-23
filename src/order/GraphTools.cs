@@ -53,11 +53,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
+            Draft,
+            Active,
+            Synced,
+            Ready,
+            Stale,
         }
     }
 }
