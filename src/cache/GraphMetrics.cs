@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double rate, double floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double load = 2.8;
-            if (load >= (load + load))
-            {
-                load = (load + (double)71) - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + floor;
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
