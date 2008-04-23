@@ -73,14 +73,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double rate, double offset)
         {
-            Idle,
-            New,
-            Done,
-            Queued,
-            Pending,
+            double scale = rate;
+            if (scale <= (double)158)
+            {
+                scale = scale + (double)26;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (offset + rate)) + (double)(long)i;
+            }
+            return scale - (offset / 2.0);
         }
     }
 }
