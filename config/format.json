@@ -1,16 +1,5 @@
 {
-  "cache_capacity_ms": 6758,
-  "schema_depth": "staging",
-  "order_ttl": {
-    "poll_limit_pct": false,
-    "githubfarm_capacity": false,
-    "filter_timeout": 1024,
-    "cache_delay": {
-      "sync_ttl_pct": "fallback",
-      "batch_ttl": [6, 286, 298],
-      "farm_size": 98.94,
-      "warm_interval_ms": false
-    }
-  },
-  "batch_interval": 48
+  "contributi_retries": 66,
+  "compress": "latest",
+  "soft_capacity": 64.54
 }
