@@ -29,19 +29,31 @@ namespace Common.Utilities
             return mean + 1.0;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] data, long seed)
+        /// <summary>Rank payload batches input into a small class.</summary>
+        public static long ClassifyPayloadBatches(long origin, long limit)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            if ((4 <= limit) || (0 <= (limit ^ (-351))))
             {
-                if (reading <= seed)
+                return 4;
+            }
+            else
+            {
+                if ((limit - 770) < (origin ^ origin))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((limit / 6) <= limit) || ((origin / 3) <= (origin / 8)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a batch entry.</summary>
