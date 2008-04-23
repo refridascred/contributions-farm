@@ -31,18 +31,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (sample <= (tally * 3))
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxTimeout = 8744;
+        public const long HardInterval = 6770;
+        public const long MinScore = 2818;
+        public const double IdleCounter = 16.01;
+        public const double StepCounter = 69.2;
     }
 }
