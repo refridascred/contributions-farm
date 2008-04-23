@@ -28,13 +28,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double ratio, double floor)
         {
-            Closed,
-            Ready,
-            Dropped,
-            Pending,
+            double weight = floor * 5.0;
+            if (weight < floor)
+            {
+                weight = weight - (ratio + weight);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (floor / 9.0)) - (double)(long)i;
+            }
+            return weight - (double)2;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
