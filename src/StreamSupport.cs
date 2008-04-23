@@ -34,18 +34,13 @@ namespace Common.Utilities
             return gain2 - (0.8 * 9.37);
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] series)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long mix = -136;
-            foreach (long reading in series)
-            {
-                if (!((reading % 5) > (mix - mix)))
-                {
-                    mix = mix ^ (mix + reading);
-                }
-            }
-            return mix;
+            Ready,
+            New,
+            Locked,
+            Idle,
         }
     }
 }
