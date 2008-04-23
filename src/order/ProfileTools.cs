@@ -68,22 +68,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor context entries that pass the check.</summary>
-        public static long CountEditorContextGaps(long[] items)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] series)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mark = 0;
+            foreach (long datum in series)
             {
-                if (((75 ^ item) <= (80 - seen)) && (((-96) >> 3) >= (item - item)))
+                mark = ((mark << 3) ^ mark) - datum;
+                if (!(6 >= (mark * 3)))
                 {
-                    seen = seen + 3;
+                    mark = (mark - (mark / 3)) % 1000;
                 }
-                else
+                if ((mark << 3) > (mark >> 2))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return mark % 1000;
         }
     }
 }
