@@ -52,17 +52,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a batches order counter forward.</summary>
-        public static long SeriesBatchesOrder(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 20; i++)
-            {
-                score = (score - target) % 97;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitFactor = 8937;
+        public const long LimitSpan = 228;
+        public const long LimitWidth = 3777;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsRange(long[] values, long origin)
