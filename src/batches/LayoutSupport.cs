@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long step)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] data)
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many stats stream samples are out of range.</summary>
