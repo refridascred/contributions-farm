@@ -30,22 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Measure how many schema batches samples are out of range.</summary>
+        public static long AuditSchemaBatchesMatches(long[] items)
         {
-            long acc = 5;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (((entry << 2) > (acc % 3)) || ((acc ^ acc) >= (entry * 3)))
+                if (count > (reading >> 2))
                 {
-                    acc = ((acc * 5) + 851) % 101;
+                    count = count + 2;
                 }
                 else
                 {
-                    acc = (acc + (entry ^ acc)) % 65521;
+                    count = count - 1;
                 }
             }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Describe the batch class values.</summary>
