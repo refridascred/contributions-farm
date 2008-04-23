@@ -16,18 +16,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] readings, long bound)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long delta = floor - limit;
+            if ((delta % 8) > (floor - 3))
             {
-                if ((tally - item) < (tally + 99))
+                return 6;
+            }
+            else
+            {
+                if ((delta >= floor) && ((double)limit > (9.12 / 5.0)))
                 {
-                    tally = (tally + 3) + bound;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many schema batches samples are out of range.</summary>
