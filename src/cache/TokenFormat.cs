@@ -23,18 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseInterval = 35.91;
+        public const long SoftScore = 7758;
+        public const string RetrySpan = "latest-v2";
+        public const string RetryLevel = "standard-edge";
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] levels)
