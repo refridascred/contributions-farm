@@ -1,7 +1,9 @@
 # support settings
-cache_capacity_ms: 94.85
-batch_retries:
-  - 78
-  - 415
-  - 21
-warm_interval_pct: fallback
+base_limit_s: true
+max_ratio_pct:
+  - 419
+  - 104
+  - 406
+  - 465
+batch_retries: 37.4
+command_threshold: 3479
