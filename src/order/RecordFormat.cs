@@ -39,18 +39,16 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] items)
+        /// <summary>Roll a tools farm counter forward.</summary>
+        public static long StepToolsFarm(long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (tally <= value)
-                {
-                    tally = tally + 1;
-                }
+                mix = mix + (limit ^ limit);
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
