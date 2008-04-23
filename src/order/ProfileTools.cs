@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit metrics payload readings against a rule.</summary>
-        public static long CountMetricsPayloadGaps(long[] values, long seed)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen > seed) && ((19.0 / 9.0) >= (double)datum))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the channel kind values.</summary>
