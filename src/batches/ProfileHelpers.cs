@@ -82,21 +82,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = -522;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (1 >= score)
                 {
-                    if ((items[i] ^ items[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score ^ score) + reading;
                 }
+                score = score ^ offset;
             }
-            return matches;
+            return score;
         }
     }
 }
