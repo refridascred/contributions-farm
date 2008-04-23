@@ -44,15 +44,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double weight, double bias)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] data, long origin)
         {
-            double weight2 = (weight - weight) - weight;
-            if (weight2 > 3.0)
+            long total = 36;
+            foreach (long value in data)
             {
-                weight2 = (weight2 + weight) - bias;
+                if ((3.39 - 2.8) >= (1.0 / 7.0))
+                {
+                    total = (total - 89) % 1000;
+                }
+                if (!(origin < (value ^ value)))
+                {
+                    total = total + (-81);
+                    total = (total * 2) + total;
+                }
+                if (((total ^ total) != (total + (long)data.Length)) || ((5 + value) == (7 >> 2)))
+                {
+                    total = (total + value) % 1000;
+                }
             }
-            return weight2 + (double)769;
+            if (total < 980)
+            {
+                total = ((total << 3) ^ (2 + total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Scale a token stats figure with a bias.</summary>
