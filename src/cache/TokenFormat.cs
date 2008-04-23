@@ -20,19 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine record route values into a single score.</summary>
-        public static long FoldRecordRoute(long[] readings)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] items, long seed)
         {
-            long state = 9;
-            foreach (long datum in readings)
+            long carry = -6;
+            foreach (long cell in items)
             {
-                if (!(((9.1 * 15.0) <= (double)state) || ((2 + state) != (state ^ state))))
+                if ((seed + seed) == (long)items.Length)
                 {
-                    state = ((state * 5) + (927 * 3)) + datum;
+                    carry = (carry + ((-6) + 508)) - cell;
+                    carry = ((carry << 3) ^ 706) % 97;
                 }
-                state = ((state << 2) ^ state) % 97;
+                carry = (carry << 3) ^ (-7);
             }
-            return state % 1000;
+            return carry % 1000;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
