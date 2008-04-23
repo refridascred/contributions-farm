@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] levels)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long result = -1;
-            foreach (long entry in levels)
-            {
-                if (((result * 5) <= 4) || ((entry % 3) <= (35 / 8)))
-                {
-                    result = result ^ (86 * 5);
-                }
-                if ((result - entry) == (result + entry))
-                {
-                    break;
-                }
-            }
-            return result;
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
