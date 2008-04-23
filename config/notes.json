@@ -1,6 +1,23 @@
 {
-  "default_delay": 18.39,
-  "readonly": "edge",
-  "poll_ttl": true,
-  "hard_limit_ms": "cached"
+  "soft_ttl_pct": 9310,
+  "profile_timeout": 36.81,
+  "enabled": {
+    "commits_timeout": 4271,
+    "burst_retries_s": false,
+    "strict": {
+      "default_size_pct": true,
+      "burst_ratio_count": true,
+      "retry_capacity_s": 60,
+      "metric_delay": true,
+      "enabled": "latest"
+    },
+    "hard_limit_s": 100,
+    "readonly": 913,
+    "soft_depth_pct": {
+      "sync_ttl_pct": 30,
+      "soft_interval_s": false,
+      "cache_ratio_ms": 508,
+      "soft_capacity_ms": [110, 175, 190]
+    }
+  }
 }
