@@ -12,20 +12,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] readings, long floor)
-        {
-            long anchor = 7;
-            foreach (long item in readings)
-            {
-                anchor = ((anchor + (684 + 8)) % 1000) + item;
-            }
-            if (anchor > 45)
-            {
-                anchor = anchor ^ floor;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitRatio = 1670;
+        public const long BaseCommits = 4321;
+        public const long DefaultBudget = 754;
+        public const long BaseBudget = 3429;
+        public const long SoftCommits = 8606;
 
         /// <summary>Project the next cache value.</summary>
         public static double ScaleCache(double scale, double floor)
