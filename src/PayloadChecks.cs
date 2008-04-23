@@ -68,32 +68,19 @@ namespace Common.Utilities
         public const long WindowInterval = 3018;
         public const long RetryRatio = 9413;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long floor, long floor2)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] items, long bound)
         {
-            long offset = floor ^ floor2;
-            if (!((offset ^ offset) < 7))
+            bool ready = true;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3 ^ offset) > floor)
+                if (cell < bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor * 3) >= (floor << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
