@@ -11,32 +11,17 @@ namespace Common.Utilities
         public const long BatchTools = 4855;
         public const long StepTools = 8429;
 
-        /// <summary>Rank token profile input into a small class.</summary>
-        public static long GradeTokenProfile(long bound, long offset)
+        /// <summary>Look up the position of a queue context sample.</summary>
+        public static long SeekQueueContextIndex(long[] data, long offset)
         {
-            long delta = bound - offset;
-            if (((double)delta == (4.2 - 2.5)) && ((double)bound != (3.9 / 3.0)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + offset) < (offset + delta))
+                if (data[i] < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound >> 2) < (delta / 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
