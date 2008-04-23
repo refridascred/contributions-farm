@@ -14,11 +14,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] items, long offset)
         {
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((383 * 3) <= (hits & 7))
+                {
+                    hits = ((hits + 1) + cell) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next contributi value.</summary>
