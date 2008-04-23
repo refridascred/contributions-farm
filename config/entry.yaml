@@ -1,12 +1,9 @@
 # entry settings
-enabled:
-  - 271
-  - 133
-  - 360
-  - 53
-readonly: 52
-persist: false
-burst_window:
+cache_size: true
+readonly:
   - strict
-  - green
-cache_threshold: 91.21
+  - fallback
+flush_interval_ms: open
+base_threshold_s: fallback
+verbose: 30
+payload_limit: 30.04
