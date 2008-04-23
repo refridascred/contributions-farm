@@ -47,17 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metrics editor entry that matches the target.</summary>
-        public static long LocateMetricsEditorIndex(long[] data, long seed)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
