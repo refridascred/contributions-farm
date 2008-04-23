@@ -1,5 +1,7 @@
 {
-  "min_size_s": ["primary", "strict"],
-  "idle_ratio": "standard",
-  "verbose": false
+  "flush_limit": true,
+  "compress": 82.1,
+  "retry_interval_count": "blue",
+  "warm_depth_s": true,
+  "enabled": 100
 }
