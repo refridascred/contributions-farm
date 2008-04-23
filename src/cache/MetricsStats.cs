@@ -33,23 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format window readings against a rule.</summary>
-        public static long MeasureFormatWindowGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (((long)data.Length ^ item) <= item)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 7152;
+        public const double BaseSize = 24.58;
+        public const long StepLevel = 3468;
+        public const string SoftScore = "latest";
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long BucketProfile(long bound, long floor)
