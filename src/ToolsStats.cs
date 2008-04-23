@@ -16,17 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a stream payload sample.</summary>
-        public static long LookupStreamPayloadIndex(long[] samples, long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (samples[i] <= seed)
+                if (sample >= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
