@@ -45,18 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] series, long offset)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (228 <= (offset << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) + item;
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a metrics entry.</summary>
