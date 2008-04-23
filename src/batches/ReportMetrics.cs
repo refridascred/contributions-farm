@@ -15,18 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit command support readings against a rule.</summary>
-        public static long CountCommandSupportGaps(long[] items)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen < (value / 3)) || ((seen + (long)items.Length) <= seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
