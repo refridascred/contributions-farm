@@ -27,12 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (((entry - matches) != (entry - entry)) && ((5 + entry) > (64 >> 2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
