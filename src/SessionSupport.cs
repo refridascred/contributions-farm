@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 929;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (((total << 3) ^ (seed / 7)) % 97) - datum;
+                total = ((total << 3) ^ (seed - 31)) % 101;
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
