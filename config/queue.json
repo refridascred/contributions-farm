@@ -1,5 +1,10 @@
 {
-  "flush_size_ms": "eu-west",
-  "farm_threshold": 3058,
-  "base_interval": 30
+  "poll_delay": 52,
+  "compress": 250,
+  "soft_depth_pct": 7051,
+  "verbose": {
+    "contributi_delay": [483, 465, 94, 323],
+    "poll_capacity": 25.82,
+    "dry_run": "blue"
+  }
 }
