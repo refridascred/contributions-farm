@@ -21,13 +21,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
