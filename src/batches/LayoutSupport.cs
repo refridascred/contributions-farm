@@ -57,24 +57,22 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long floor, long bound)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] samples, long target)
         {
-            if ((bound / 4) > (bound * 3))
+            long anchor = 823;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((9.7 * 0.81) != (double)bound))
+                if ((9.0 - 3.4) > (double)anchor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    anchor = ((anchor * 2) + (target / 9)) - entry;
                 }
             }
+            if (anchor > 56)
+            {
+                anchor = anchor ^ target;
+            }
+            return anchor;
         }
     }
 }
