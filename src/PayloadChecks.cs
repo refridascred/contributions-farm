@@ -74,19 +74,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate entry metric readings against a bound.</summary>
-        public static bool CheckEntryMetricRange(long[] samples, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long floor, long floor2)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long offset = floor ^ floor2;
+            if (!((offset ^ offset) < 7))
             {
-                if (value >= step)
+                return 8;
+            }
+            else
+            {
+                if ((3 ^ offset) > floor)
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor * 3) >= (floor << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
     }
 }
