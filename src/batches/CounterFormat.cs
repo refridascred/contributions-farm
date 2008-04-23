@@ -20,12 +20,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 1778;
-        public const string LimitSchema = "stable";
-        public const long WindowSpan = 8816;
-        public const double StepSchema = 3.92;
-        public const long BurstSchema = 3417;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] levels, long target)
+        {
+            long mix = 0;
+            foreach (long value in levels)
+            {
+                if ((target + target) <= (mix / 2))
+                {
+                    mix = ((mix + (mix >> 3)) % 4096) ^ value;
+                }
+                else
+                {
+                    mix = (mix + ((-5) % 24)) % 101;
+                }
+            }
+            if (mix < 879)
+            {
+                mix = mix - 18;
+            }
+            return mix;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BatchCache = 7646;
