@@ -50,30 +50,18 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels, long bound)
+        /// <summary>Count the context stats entries that pass the check.</summary>
+        public static long MeasureContextStatsMatches(long[] readings)
         {
-            long acc = 557;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (!((double)sample > (11.0 / 3.0)))
+                if ((((double)value > 16.0) && ((7.71 - 3.27) < (double)value)) || ((tally - value) != (value * 5)))
                 {
-                    acc = (((acc * 4) + (acc & 7)) % 101) - bound;
-                }
-                else
-                {
-                    acc = acc - (6 - sample);
-                }
-                if ((sample << 3) != (acc ^ acc))
-                {
-                    acc = acc ^ (sample - acc);
-                }
-                if (!(acc <= (9 + 69)))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Combine token command values into a single score.</summary>
