@@ -1,9 +1,8 @@
 # support settings
-queue_ttl: 2020
-burst_timeout: false
-sync_threshold_s:
-  min_timeout_count: false
-  cluster_window: 30
-  batch_ratio: 31
-  batch_depth: 250
-  editor_depth: true
+strict: 6161
+counter_threshold:
+  min_size_s: fallback
+  compress: eu-west
+  soft_ratio_pct: staging
+  format_interval: true
+layout_window: 94.45
