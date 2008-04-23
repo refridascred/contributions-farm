@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] readings, long step)
+        /// <summary>Count report checks pairs that satisfy a relation.</summary>
+        public static long OverlapReportChecksCount(long[] samples)
         {
-            long sum = 749;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sum > (3.1 - 5.54))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum - (sum & 7)) + sample;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ step) % 1000;
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum < 883)
-            {
-                sum = ((sum * 5) + sum) % 97;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
