@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long seed, long floor)
         {
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
+            if ((seed + seed) >= (seed - seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.42 < (double)seed) || ((floor - 93) == (seed ^ seed)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed < (3.3 + 19.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
