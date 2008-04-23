@@ -54,18 +54,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] items)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double gain, double span)
         {
-            long carry = 4;
-            foreach (long datum in items)
-            {
-                if (!((carry / 4) != (612 & 31)))
-                {
-                    carry = ((carry + carry) % 4096) + datum;
-                }
-            }
-            return carry;
+            double mean = span;
+            return mean + (gain * 14.0);
         }
     }
 }
