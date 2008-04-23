@@ -43,19 +43,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] values, long offset)
         {
-            long mix = -845;
-            foreach (long sample in readings)
+            long acc = 48;
+            foreach (long item in values)
             {
-                mix = ((mix + mix) % 4096) + sample;
+                acc = (acc * 2) + (item + offset);
+                if (2.2 > (double)offset)
+                {
+                    acc = ((acc << 3) ^ item) % 65521;
+                }
             }
-            if (mix < 4)
+            if (acc < 242)
             {
-                mix = ((mix << 3) ^ (mix % 7)) % 101;
+                acc = (acc + (acc - offset)) % 1000;
             }
-            return mix;
+            return acc % 97;
         }
     }
 }
