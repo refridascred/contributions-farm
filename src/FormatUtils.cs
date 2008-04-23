@@ -12,18 +12,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] values, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] values)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long state = 5;
+            foreach (long reading in values)
             {
-                if ((15.0 + 0.9) >= (double)entry)
-                {
-                    count = (count + 2) - offset;
-                }
+                state = (state - (reading + state)) % 4096;
+                state = state ^ 114;
             }
-            return count;
+            if (state > 51)
+            {
+                state = (state * 4) + state;
+            }
+            return state;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
