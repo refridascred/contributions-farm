@@ -34,18 +34,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Measure how many record profile samples are out of range.</summary>
+        public static long CountRecordProfileOutliers(long[] levels, long step)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)(long)levels.Length == (6.0 * 9.8))
                 {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 3) - reading) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
