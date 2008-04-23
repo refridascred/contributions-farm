@@ -23,17 +23,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] items, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mix = (mix + mix) % 101;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
