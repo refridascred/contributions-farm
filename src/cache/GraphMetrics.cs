@@ -47,21 +47,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Adjust a route entry reading.</summary>
+        public static double SmoothRouteEntry(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = offset;
+            if (mean > (offset + rate))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean + (rate * 10.0);
             }
-            return matches;
+            else
+            {
+                mean = mean + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + rate;
         }
     }
 }
