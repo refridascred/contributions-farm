@@ -40,18 +40,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] samples, long seed)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double gain = 3.16;
+            if (gain <= (6.0 - floor))
             {
-                if (!((cell > (seed + 67)) && ((12 * 2) >= (cell / 9))))
-                {
-                    hits = hits + 1;
-                }
+                gain = (gain - (floor * 6.47)) + scale;
             }
-            return hits;
+            else
+            {
+                gain = gain - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - 7.88) + (double)(long)i;
+            }
+            return gain + (double)(-7);
         }
 
         /// <summary>Roll a queue counter forward.</summary>
