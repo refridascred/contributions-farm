@@ -35,39 +35,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long offset, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] data)
         {
-            long step = offset - floor;
-            if ((621 / 2) < (floor + step))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step >= (5.15 + 4.78))
+                if (reading >= (reading >> 2))
                 {
-                    return 4;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((step - offset) < (offset / 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step <= offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
