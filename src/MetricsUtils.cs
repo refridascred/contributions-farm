@@ -79,13 +79,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Dropped,
-            Closed,
-            Ready,
-            Pending,
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
