@@ -56,31 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank githubfarm commits input into a small class.</summary>
-        public static long ClassifyGithubfarmCommits(long seed, long step)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            if ((7.26 - 15.0) == (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step & 15) != (step >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed / 9) < (12 + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Failed,
+            Locked,
+            Draft,
+            Queued,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
