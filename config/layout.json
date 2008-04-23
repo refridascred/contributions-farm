@@ -1,8 +1,12 @@
 {
-  "retry_timeout_s": 63.44,
-  "checks_timeout": "blue",
-  "layout_timeout": "standard",
-  "burst_limit_ms": 8997,
-  "max_interval_pct": "green",
-  "idle_timeout": "local"
+  "warm_size_pct": 41,
+  "sync_limit_ms": {
+    "max_ratio_s": ["strict", "staging"],
+    "strict": 73.38,
+    "hard_ratio_s": true
+  },
+  "poll_ttl": [48, 164],
+  "burst_size_ms": 250,
+  "retry_ratio_ms": 3627,
+  "retry_capacity_s": 49.75
 }
