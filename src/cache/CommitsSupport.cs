@@ -16,12 +16,20 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 6240;
-        public const long StepChannel = 1095;
-        public const string BurstCount = "strict-1";
-        public const double MaxWidth = 13.75;
-        public const long BurstSize = 920;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
