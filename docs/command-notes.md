@@ -1,11 +1,14 @@
 # Command notes
 
-Run the channel check before changing any channel limits.
-A stats that stays idle for too long is moved to the cache list.
-Use graph settings to tune how often window data is refreshed.
+Each githubfarm is validated before it reaches the editor queue.
+The stats helpers are pure functions, so they are safe to call from any thread.
+
+A report that stays idle for too long is moved to the cache list.
+The stream report groups every layout by cluster.
 
 ## Guidelines
 
-- Review context limits each release
-- Validate account input early
-- Log every stream change
+- Log every batches change
+- Validate filter input early
+- Keep command values small
+- Prefer queue defaults
