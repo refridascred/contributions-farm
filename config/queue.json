@@ -1,10 +1,5 @@
 {
-  "poll_delay": 52,
-  "compress": 250,
-  "soft_depth_pct": 7051,
-  "verbose": {
-    "contributi_delay": [483, 465, 94, 323],
-    "poll_capacity": 25.82,
-    "dry_run": "blue"
-  }
+  "base_ratio_pct": 13.74,
+  "idle_window_ms": ["standard", "strict", "green", "strict"],
+  "retry_interval_s": 100
 }
