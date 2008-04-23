@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleCount = 84.33;
-        public const long RetryFactor = 1940;
-        public const double SoftGithubfarm = 62.73;
-        public const string StepSize = "local-1";
-        public const long BurstFactor = 4744;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (item < 5)
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyMatches(long[] values, long origin)
