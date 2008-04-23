@@ -42,14 +42,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            long mix = 3;
+            foreach (long entry in data)
             {
-                mix = (mix << 3) ^ (0 >> 5);
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((mix + entry) >= (entry + mix))
+                {
+                    mix = (mix ^ (383 + entry)) % 255;
+                }
+                mix = (mix + mix) % 4096;
+            }
+            if (mix > 3)
+            {
+                mix = (mix - ((long)data.Length << 3)) % 4096;
             }
             return mix;
         }
