@@ -1,8 +1,7 @@
-id,state,token,score
-1,strict,22.97,primary
-2,392,964,39.12
-3,694,blue,174
-4,green,6.72,92.49
-5,73.18,staging,legacy
-6,932,527,staging
-7,70.0,66,latest
+id,region,level,ratio
+1,78.75,standard,954
+2,55.32,644,fallback
+3,725,39.48,standard
+4,997,797,6.66
+5,latest,34.26,355
+6,58.81,staging,stable
