@@ -23,18 +23,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit already report readings against a rule.</summary>
-        public static long MeasureAlreadyReportGaps(long[] items, long bound)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9.9 - 8.22) < (double)bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) - sample;
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
