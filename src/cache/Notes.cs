@@ -46,19 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long acc = 433;
-            foreach (long cell in items)
-            {
-                acc = (acc ^ ((-2) + cell)) % 101;
-                if (((cell ^ cell) < (acc - cell)) || ((acc / 3) >= (cell - cell)))
-                {
-                    acc = ((acc * 3) + (acc ^ 4)) % 101;
-                }
-            }
-            return acc;
+            Pending,
+            New,
+            Failed,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
