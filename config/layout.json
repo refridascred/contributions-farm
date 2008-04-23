@@ -1,13 +1,8 @@
 {
-  "hard_threshold_ms": 4236,
-  "dry_run": 500,
-  "verbose": false,
-  "retry_delay_pct": {
-    "flush_limit_pct": [447, 187, 344, 347],
-    "hard_ttl": 76.42,
-    "schema_ratio": ["eu-west", "primary", "strict"],
-    "cache_timeout_s": true,
-    "soft_interval_pct": 7420,
-    "poll_threshold_pct": 36
-  }
+  "retry_timeout_s": 63.44,
+  "checks_timeout": "blue",
+  "layout_timeout": "standard",
+  "burst_limit_ms": 8997,
+  "max_interval_pct": "green",
+  "idle_timeout": "local"
 }
