@@ -12,19 +12,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] samples, long bound)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the session mode values.</summary>
