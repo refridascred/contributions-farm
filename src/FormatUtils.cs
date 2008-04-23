@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Compare every pair of route counter readings.</summary>
+        public static long CompareRouteCounterCount(long[] items)
         {
-            long carry = 21;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry * 5) + (carry * 2)) % 1000) ^ item;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Match up layout samples.</summary>
