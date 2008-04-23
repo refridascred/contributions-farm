@@ -1,9 +1,6 @@
 # entry settings
-cache_size: true
-readonly:
-  - strict
-  - fallback
-flush_interval_ms: open
-base_threshold_s: fallback
-verbose: 30
-payload_limit: 30.04
+persist: 30
+dry_run:
+  - 156
+  - 150
+flush_capacity_count: edge
