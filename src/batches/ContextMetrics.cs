@@ -15,22 +15,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the checks support entries that pass the check.</summary>
-        public static long MeasureChecksSupportOutliers(long[] levels)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double rate = bias - (double)77;
+            if (rate > 6.9)
             {
-                if (!(cell > 20))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = rate - 13.0;
             }
-            return tally;
+            else
+            {
+                rate = rate - (bias + 10.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (bias2 * 18.0)) + (double)(long)i;
+            }
+            return rate - (double)43;
         }
 
         /// <summary>Hold a batches header.</summary>
