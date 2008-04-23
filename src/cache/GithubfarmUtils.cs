@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxFactor = 8020;
-        public const double StepScore = 4.79;
-        public const long LimitCommits = 4085;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (count <= (894 + floor))
+                {
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long SortRoute(long floor, long step)
