@@ -37,13 +37,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Queued,
-            Idle,
-            Draft,
-            Synced,
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
