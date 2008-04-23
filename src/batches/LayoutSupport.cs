@@ -23,18 +23,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit queue checks readings against a rule.</summary>
-        public static long AuditQueueChecksOutliers(long[] series)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((8.0 - 1.0) != (double)item)
+                if ((double)(long)i != (7.5 - 4.0))
                 {
-                    hits = hits + 3;
+                    score = (score + (limit - score)) % 255;
+                    break;
                 }
+                score = (score - score) % 4096;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
