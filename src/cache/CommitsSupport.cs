@@ -81,23 +81,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support commits value.</summary>
-        public static double SmoothSupportCommits(double bias, double span)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] levels, long seed)
         {
-            double drift = span;
-            if (drift < (span / 2.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (drift + bias);
+                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (bias * 5.4)) - (double)(long)i;
-            }
-            return drift - span;
+            return -1;
         }
     }
 }
