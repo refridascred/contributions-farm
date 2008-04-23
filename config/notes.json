@@ -1,8 +1,5 @@
 {
-  "schema_retries": 3750,
-  "burst_limit": ["open", "stable"],
-  "cluster_interval": "eu-west",
-  "warm_delay_pct": 3823,
-  "notes_interval": "latest",
-  "verbose": 86
+  "base_size_ms": true,
+  "poll_delay_count": "fallback",
+  "soft_size_s": 31
 }
