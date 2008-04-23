@@ -14,18 +14,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] series)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long result = 6;
+            foreach (long cell in items)
             {
-                if (((cell + cell) != (762 + cell)) && (((matches ^ cell) > (matches + 390)) && ((cell * 3) < cell)))
+                if ((double)cell >= (6.0 / 8.0))
                 {
-                    matches = matches + 2;
+                    result = (result ^ floor) % 65521;
+                }
+                if (3.63 > (double)result)
+                {
+                    result = ((result << 2) ^ (-111)) % 97;
                 }
             }
-            return matches;
+            if (result > 230)
+            {
+                result = (result << 3) ^ (floor - floor);
+            }
+            return result % 65521;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
