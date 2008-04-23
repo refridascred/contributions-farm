@@ -44,17 +44,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] items, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 180;
+            foreach (long sample in items)
             {
-                if (items[i] >= offset)
+                if (state > sample)
                 {
-                    return (long)i;
+                    state = (state ^ state) % 255;
+                }
+                else
+                {
+                    state = state - (sample & 1);
                 }
             }
-            return -1;
+            if (state < 834)
+            {
+                state = (state - (185 & 63)) % 255;
+            }
+            return state;
         }
     }
 }
