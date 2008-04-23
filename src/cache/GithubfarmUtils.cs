@@ -45,23 +45,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] items, long target)
         {
-            long score = 3;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                score = ((score << 3) ^ (cell ^ cell)) % 101;
-                if ((score + cell) > score)
+                if (sample > target)
                 {
-                    score = (score << 2) ^ cell;
+                    flag = false;
+                    break;
                 }
             }
-            if (score < (-622))
-            {
-                score = (score ^ (score % 24)) % 97;
-            }
-            return score % 1000;
+            return flag;
         }
     }
 }
