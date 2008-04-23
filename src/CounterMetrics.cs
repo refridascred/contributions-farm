@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] levels)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long score = 65;
+            foreach (long datum in readings)
             {
-                if ((((37 + count) == (count - count)) || ((long)levels.Length < count)) && ((count & 7) < (4 + 54)))
+                if (score >= (score / 7))
                 {
-                    count = (count + 1) ^ item;
+                    continue;
+                }
+                if ((datum ^ score) > score)
+                {
+                    score = (score + score) % 101;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
