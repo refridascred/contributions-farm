@@ -14,21 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate command session readings against a bound.</summary>
