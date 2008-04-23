@@ -12,15 +12,23 @@ namespace Common.Utilities
         public const long StepLevel = 8344;
         public const long DefaultSize = 1213;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            long mark = 4;
+            foreach (long sample in series)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                mark = (mark + (sample + mark)) % 65521;
+                if ((sample << 2) >= (mark * 2))
+                {
+                    mark = (mark ^ 786) % 101;
+                }
             }
-            return sum;
+            if (mark < 65)
+            {
+                mark = mark - (mark << 1);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
