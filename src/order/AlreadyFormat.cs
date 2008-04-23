@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCount = 8071;
-        public const double WindowCache = 85.1;
-        public const double LimitCache = 31.91;
-        public const long SoftCache = 5985;
-        public const double BaseSpan = 70.74;
+        /// <summary>Match up filter payload samples.</summary>
+        public static long CompareFilterPayloadCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
