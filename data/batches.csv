@@ -1,7 +1,10 @@
-id,region,level,ratio
-1,78.75,standard,954
-2,55.32,644,fallback
-3,725,39.48,standard
-4,997,797,6.66
-5,latest,34.26,355
-6,58.81,staging,stable
+id,weight,token,rank
+1,fallback,158,154
+2,156,25.85,open
+3,91.31,open,blue
+4,36.51,staging,9.7
+5,open,76.29,550
+6,95.22,165,173
+7,strict,645,fallback
+8,251,959,268
+9,legacy,914,open
