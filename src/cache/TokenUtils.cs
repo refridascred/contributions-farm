@@ -17,10 +17,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "legacy-1";
-        public const long HardSize = 7611;
-        public const double BaseReport = 5.89;
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double ratio, double offset)
+        {
+            double ratio2 = ratio;
+            if (ratio2 <= (ratio / 8.0))
+            {
+                ratio2 = (ratio2 - (ratio2 + 0.6)) + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + (ratio / 2.0)) + (double)(long)i;
+            }
+            return ratio2 - 6.4;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long DeriveMetrics(long seed)
