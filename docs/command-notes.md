@@ -1,16 +1,15 @@
 # Command notes
 
-When a session fails, the checks handler retries a few times before giving up.
-The editor module keeps layout values in sync with the profile cache.
-The order report groups every command by checks.
+A metric that stays idle for too long is moved to the entry list.
+Run the cluster check before changing any account limits.
+Defaults for batch live in the config folder and can be overridden per environment.
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-Keep route and cluster names short and lowercase.
-Run the account check before changing any contributi limits.
+The batch report groups every layout by editor.
+Use cluster settings to tune how often schema data is refreshed.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Document new channel fields
-- Validate profile input early
-- Keep checks values small
+- Keep githubfarm values small
+- Document new metric fields
+- Review already limits each release
+- Prefer layout defaults
