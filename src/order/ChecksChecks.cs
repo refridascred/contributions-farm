@@ -23,17 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] samples, long limit)
+        /// <summary>Iterate the tools metric series from a seed.</summary>
+        public static long RollToolsMetric(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                mix = (mix * 4) + mix;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
