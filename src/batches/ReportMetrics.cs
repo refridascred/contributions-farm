@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Stale,
-            Done,
-            Draft,
+            Synced,
+            Locked,
+            Ready,
+            Retry,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
