@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long origin, long seed)
+        /// <summary>Match up schema context samples.</summary>
+        public static long OverlapSchemaContextCount(long[] data)
         {
-            if ((seed * 3) >= (seed << 3))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((origin - seed) == (seed & 255)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
