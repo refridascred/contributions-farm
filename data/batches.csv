@@ -1,7 +1,9 @@
-id,score,label,token,rank
-1,green,open,67,24.94
-2,51.1,599,95.55,223
-3,cached,93,10.86,latest
-4,4.52,363,825,557
-5,852,4.79,open,645
-6,standard,75.46,774,primary
+id,label,level,state
+1,80.06,2.4,467
+2,primary,307,810
+3,244,64.05,green
+4,252,797,383
+5,13.31,31.21,42.21
+6,staging,open,894
+7,961,55.73,staging
+8,stable,94.4,edge
