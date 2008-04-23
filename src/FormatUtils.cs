@@ -30,13 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count the contributi token entries that pass the check.</summary>
+        public static long TallyContributiTokenMatches(long[] samples, long bound)
         {
-            Dropped,
-            Draft,
-            New,
-            Synced,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((11.0 / 7.0) == (double)count)
+                {
+                    count = ((count + 3) - sample) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter options.</summary>
