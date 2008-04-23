@@ -28,24 +28,18 @@ namespace Common.Utilities
             return scale + (bias / 2.0);
         }
 
-        /// <summary>Classify a route graph pair into a bucket.</summary>
-        public static long BucketRouteGraph(long origin, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] data, long origin)
         {
-            if ((19.0 + 15.0) >= (5.0 / 9.0))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 2) >= (origin << 1))
+                if (8.8 < (double)origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 3) - value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a editor record.</summary>
