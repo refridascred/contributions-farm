@@ -20,10 +20,16 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 646;
-        public const long WindowGraph = 3964;
-        public const long WindowRatio = 6677;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long MatchNotesCount(long[] levels)
