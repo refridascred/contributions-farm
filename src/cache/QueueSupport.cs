@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long offset, long seed)
-        {
-            if (!((seed - seed) >= (offset << 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((15.0 < (double)seed) && ((double)seed > 1.6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)seed < (19.0 / 4.0)) && ((offset + seed) <= (offset % 16)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset >= (seed ^ seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstCommits = "local-v2";
+        public const double HardInterval = 73.71;
+        public const long BaseCount = 7496;
+        public const long IdleCommits = 4486;
 
         /// <summary>Combine stats counter values into a single score.</summary>
         public static long CombineStatsCounter(long[] values)
