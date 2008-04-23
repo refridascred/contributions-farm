@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 4488;
-        public const string StepGithubfarm = "latest-v2";
-        public const long CacheGithubfarm = 8654;
-        public const long RetryGithubfarm = 2762;
-        public const long StepBudget = 7310;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = carry ^ carry;
+                carry = (carry ^ carry) % 255;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long DeriveCommits(long target)
