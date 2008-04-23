@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long offset, long seed)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
+            long span = offset + seed;
+            if ((seed * 3) != (span & 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (81 > seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (span >= (offset + span))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
