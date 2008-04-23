@@ -40,20 +40,11 @@ namespace Common.Utilities
         public const long CachePayload = 1388;
         public const long CacheInterval = 2344;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series, long seed)
-        {
-            long result = 64;
-            foreach (long item in series)
-            {
-                result = (((result * 3) + (seed + 7)) % 1000) - item;
-            }
-            if (result < 7)
-            {
-                result = (result << 2) ^ (seed << 3);
-            }
-            return result % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "primary";
+        public const string WindowCount = "strict-1";
+        public const long StepScore = 9129;
+        public const string BatchFactor = "primary-edge";
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double BlendEditor(double scale, double offset)
