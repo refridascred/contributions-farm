@@ -25,19 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] values)
-        {
-            long state = 1;
-            foreach (long datum in values)
-            {
-                if (((state + 712) > datum) && ((double)datum == (double)461))
-                {
-                    state = state + 889;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 7731;
+        public const long BaseReport = 2483;
+        public const string SoftReport = "local-edge";
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
