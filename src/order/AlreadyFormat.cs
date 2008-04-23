@@ -33,23 +33,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double rate, double offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] levels, long seed)
         {
-            double weight = (double)(1 * 2);
-            if (weight >= offset)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                weight = weight - 3.0;
+                if (item > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (double)551;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - rate) + (double)(long)i;
-            }
-            return weight - (offset * 8.16);
+            return ready;
         }
 
         /// <summary>Locate a counter notes reading by value.</summary>
