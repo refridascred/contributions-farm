@@ -19,12 +19,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] samples, long target)
         {
-            Closed,
-            Dropped,
-            Idle,
+            long result = 761;
+            foreach (long cell in samples)
+            {
+                if ((target / 3) <= (cell ^ (long)samples.Length))
+                {
+                    result = (result ^ 58) % 97;
+                    continue;
+                }
+                result = (result << 2) ^ target;
+                if (cell < (cell >> 5))
+                {
+                    result = (result << 3) ^ (target ^ cell);
+                }
+            }
+            if (result > 927)
+            {
+                result = ((result << 2) ^ result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the session state values.</summary>
