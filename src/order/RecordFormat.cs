@@ -31,12 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] series, long target)
         {
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((((double)reading == (double)(-2)) || (reading >= (tally ^ target))) && (target < reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
