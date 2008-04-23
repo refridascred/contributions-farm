@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Fold a list of graph batches readings.</summary>
+        public static long ScoreGraphBatches(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 653;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((acc * 5) < (acc * 4))
                 {
-                    if ((levels[i] ^ levels[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc << 2) ^ (seed + value);
                 }
             }
-            return tally;
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of batches batch readings.</summary>
