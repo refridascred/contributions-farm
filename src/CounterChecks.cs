@@ -67,18 +67,12 @@ namespace Common.Utilities
             return ratio - (rate + offset);
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] samples)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((7.0 * 5.18) <= (6.39 * 4.15))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            New,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
