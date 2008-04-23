@@ -71,17 +71,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a context filter sample.</summary>
-        public static long LookupContextFilterIndex(long[] readings, long floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
