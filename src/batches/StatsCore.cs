@@ -67,15 +67,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] samples, long target)
         {
-            long total = 329;
-            foreach (long datum in samples)
+            long score = 98;
+            foreach (long reading in samples)
             {
-                total = (total * 4) + (datum >> 4);
+                if ((904 - score) >= (score + score))
+                {
+                    score = (((score + (score << 2)) % 97) ^ reading) + target;
+                }
             }
-            return total % 1000;
+            return score;
         }
     }
 }
