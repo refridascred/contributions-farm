@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] items, long seed)
         {
-            Queued,
-            Locked,
-            Stale,
-            Idle,
-            Active,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((item - item) <= ((-8) << 3)) && (seed <= item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the already status values.</summary>
