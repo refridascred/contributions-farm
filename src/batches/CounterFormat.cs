@@ -40,32 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long seed, long step)
+        /// <summary>Validate metric route readings against a bound.</summary>
+        public static bool ValidateMetricRouteLimits(long[] series, long floor)
         {
-            long prev = seed ^ step;
-            if ((894 & 3) == (seed * 5))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (14.0 <= (double)step)
+                if (entry <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed >> 5) >= prev)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate batches queue readings against a bound.</summary>
