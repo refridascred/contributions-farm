@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Locked,
-            Retry,
-            Draft,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheInterval = 781;
+        public const string HardSpan = "local";
+        public const long LimitFactor = 1391;
+        public const long MinFactor = 7875;
+        public const double IdleLevel = 28.51;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long WeighGithubfarm(long[] data, long origin)
