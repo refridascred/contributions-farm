@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] values, long offset)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            if ((floor & 255) == (96 * 2))
             {
-                if (!(offset < (matches >> 2)))
+                return 2;
+            }
+            else
+            {
+                if (1.4 <= (double)floor)
                 {
-                    matches = (matches + 3) + cell;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((0.98 + 6.47) != (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
