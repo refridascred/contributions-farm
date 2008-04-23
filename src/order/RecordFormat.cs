@@ -13,12 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a report info.</summary>
