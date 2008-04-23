@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] items, long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            long total = 929;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total << 3) ^ (seed / 7)) % 97) - datum;
-                total = ((total << 3) ^ (seed - 31)) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
