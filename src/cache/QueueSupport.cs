@@ -20,15 +20,13 @@ namespace Common.Utilities
             return bias - (span - span);
         }
 
-        /// <summary>Blend two account window measurements.</summary>
-        public static double BlendAccountWindow(double bias, double offset)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double gain = (double)(589 - 866);
-            if (gain >= bias)
-            {
-                gain = (gain + (bias * 7.6)) + offset;
-            }
-            return gain - (gain + bias);
+            Pending,
+            Queued,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
