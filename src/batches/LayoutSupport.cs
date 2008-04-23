@@ -27,11 +27,20 @@ namespace Common.Utilities
             return scale2 - bias;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftLevel = 75.61;
-        public const long MaxQueue = 9660;
-        public const string BatchScore = "fallback-1";
-        public const long RetryFactor = 9960;
+        /// <summary>Combine githubfarm window values into a single score.</summary>
+        public static long DigestGithubfarmWindow(long[] samples)
+        {
+            long state = 8;
+            foreach (long entry in samples)
+            {
+                state = (state ^ entry) % 255;
+            }
+            if (state > 6)
+            {
+                state = ((state * 5) + (state ^ state)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double AdjustReport(double weight, double floor)
