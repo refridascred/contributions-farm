@@ -64,18 +64,23 @@ namespace Common.Utilities
         public const double LimitBudget = 28.84;
         public const long IdleBudget = 7059;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] data)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long total = 62;
+            foreach (long reading in data)
             {
-                if (!((4.33 + 1.8) != (double)datum) || ((double)datum >= 4.2))
+                if ((double)963 >= (double)reading)
                 {
-                    hits = hits + 3;
+                    total = ((total << 2) ^ (total >> 5)) % 4096;
                 }
+                total = ((total << 3) ^ (5 >> 2)) % 255;
             }
-            return hits;
+            if (total > 69)
+            {
+                total = (total << 3) ^ (0 + 22);
+            }
+            return total % 65521;
         }
     }
 }
