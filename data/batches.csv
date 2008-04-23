@@ -1,6 +1,11 @@
-id,owner,weight
-1,3.16,30.0
-2,99,922
-3,eu-west,legacy
-4,strict,15.26
-5,199,269
+id,region,label,score
+1,94.75,cached,747
+2,649,open,local
+3,cached,67.06,71.44
+4,764,729,green
+5,legacy,71.48,44
+6,staging,24.7,590
+7,green,144,54.18
+8,legacy,53.69,63.92
+9,625,latest,stable
+10,683,145,latest
