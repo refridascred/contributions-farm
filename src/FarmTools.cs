@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of queue route readings.</summary>
-        public static long TotalQueueRoute(long[] items)
+        /// <summary>Digest a series of filter account entries.</summary>
+        public static long TotalFilterAccount(long[] values, long floor)
         {
-            long result = 803;
-            foreach (long sample in items)
+            long state = 12;
+            foreach (long sample in values)
             {
-                if (!(((double)sample <= (double)result) && ((double)result == (double)sample)))
+                if (floor < state)
                 {
-                    result = result ^ (result + 7);
+                    state = (((state * 4) + floor) % 255) + sample;
                 }
-                if (((result % 3) < (sample >> 4)) && ((sample - 9) <= (sample - result)))
+                else
                 {
-                    result = result - result;
+                    state = (state ^ floor) % 4096;
                 }
             }
-            return result % 97;
+            return state % 97;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
