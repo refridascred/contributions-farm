@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long step)
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public double Token { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = (((anchor << 3) ^ (step - anchor)) % 1000) ^ (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a route summary.</summary>
