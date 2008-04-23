@@ -25,24 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long step, long bound)
+        /// <summary>Measure how many channel profile samples are out of range.</summary>
+        public static long CountChannelProfileMatches(long[] readings)
         {
-            if (!(bound <= step))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.0 / 5.0) <= (double)bound)
+                if (!(entry > (83 << 2)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the report mode values.</summary>
