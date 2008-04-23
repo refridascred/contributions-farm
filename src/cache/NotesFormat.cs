@@ -20,22 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] items, long origin)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long score = 86;
-            foreach (long datum in items)
-            {
-                if (((7 - 41) <= datum) || (((-1) + datum) >= (-583)))
-                {
-                    score = (((score * 4) + (datum + score)) % 65521) - origin;
-                }
-                else
-                {
-                    score = (score ^ (datum * 5)) % 1000;
-                }
-            }
-            return score;
+            Queued,
+            New,
+            Draft,
+            Ready,
         }
 
         /// <summary>Project the next format value.</summary>
