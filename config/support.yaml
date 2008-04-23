@@ -1,11 +1,6 @@
 # support settings
-flush_capacity: 98.13
-min_interval_count:
-  warm_depth_count: 48.85
-  account_timeout: legacy
-  flush_timeout_count: 93.17
-  support_limit: 1024
-  batches_window: 500
-  metrics_capacity: 9
-burst_retries: 36.82
-cache_threshold_pct: legacy
+account_depth: legacy
+session_interval: 37.65
+verbose: eu-west
+context_capacity: 1.08
+poll_retries_count: false
