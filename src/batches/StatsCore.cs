@@ -23,16 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double ratio, double floor)
-        {
-            double scale = (0.7 - ratio) + (floor * 13.0);
-            if (scale < (ratio + 2.1))
-            {
-                scale = scale + ratio;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitSize = 8371;
+        public const double CacheBuffer = 56.09;
+        public const long MaxBuffer = 9099;
+        public const string StepBuffer = "standard";
+        public const long BatchLevel = 9039;
 
         /// <summary>Measure how many record profile samples are out of range.</summary>
         public static long CountRecordProfileOutliers(long[] levels, long step)
