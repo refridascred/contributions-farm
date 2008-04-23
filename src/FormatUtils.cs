@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Synced,
-            Pending,
-            Failed,
-            Closed,
-            New,
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
