@@ -57,19 +57,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] levels, long limit)
-        {
-            long total = 835;
-            foreach (long cell in levels)
-            {
-                if (((double)limit != (7.2 * 8.77)) || (total < limit))
-                {
-                    total = ((total + (total % 12)) % 255) + cell;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 1428;
+        public const string SoftMetrics = "legacy-edge";
+        public const long DefaultScore = 5317;
+        public const double LimitBudget = 28.84;
+        public const long IdleBudget = 7059;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmOutliers(long[] data)
