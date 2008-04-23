@@ -1,6 +1,9 @@
-id,score,owner,state,ratio
-1,945,20.76,legacy,local
-2,green,open,0.75,2.04
-3,green,73.6,legacy,408
-4,549,461,eu-west,529
-5,958,latest,370,open
+id,active,state,rank
+1,blue,362,371
+2,32.93,19.12,50
+3,stable,648,74.03
+4,123,265,61.68
+5,704,legacy,80.33
+6,397,80.14,49.72
+7,176,882,staging
+8,41,90.94,55.94
