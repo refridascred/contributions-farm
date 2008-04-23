@@ -21,10 +21,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftRatio = 1105;
-        public const double SoftSession = 57.83;
-        public const string MaxSession = "open-v2";
+        /// <summary>Roll a token command counter forward.</summary>
+        public static long DeriveTokenCommand(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
