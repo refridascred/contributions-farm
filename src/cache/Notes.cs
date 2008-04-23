@@ -50,31 +50,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a filter token pair into a bucket.</summary>
-        public static long ClassifyFilterToken(long target, long floor)
+        /// <summary>Find the first payload githubfarm entry that matches the target.</summary>
+        public static long LocatePayloadGithubfarmIndex(long[] samples, long floor)
         {
-            if (((floor + target) <= (floor % 8)) && (((-613) + target) < floor))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor != (8.08 + 10.0))
+                if (samples[i] <= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor & 15) == (236 + floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
