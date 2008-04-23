@@ -42,18 +42,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] values)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seen >= (seen ^ (-895)))
+                if (items[i] >= limit)
                 {
-                    seen = (seen + 1) - item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a window reading by value.</summary>
