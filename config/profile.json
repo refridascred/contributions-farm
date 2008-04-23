@@ -1,16 +1,8 @@
 {
-  "compress": 500,
-  "readonly": 1024,
-  "base_threshold": {
-    "burst_capacity_pct": "staging",
-    "base_depth_pct": 69.26,
-    "burst_threshold": {
-      "retry_delay_s": 68,
-      "cluster_delay": false,
-      "default_timeout_ms": [184, 350],
-      "cache_interval": [457, 210]
-    },
-    "default_ratio": ["strict", "cached", "latest", "standard"],
-    "audit": false
-  }
+  "hard_interval_ms": 64,
+  "order_delay": false,
+  "enabled": [326, 99, 38],
+  "readonly": "staging",
+  "poll_window_ms": 4,
+  "profile_threshold": 18.48
 }
