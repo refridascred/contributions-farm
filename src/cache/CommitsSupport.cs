@@ -20,19 +20,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] readings, long limit)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
