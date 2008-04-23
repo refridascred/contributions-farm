@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits + 2) > (reading / 6))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardGraph = "staging-edge";
+        public const double BatchGraph = 62.97;
+        public const long CacheGraph = 544;
+        public const long BatchDepth = 4770;
 
         /// <summary>Locate a cluster entry reading by value.</summary>
         public static long SeekClusterEntryIndex(long[] samples, long target)
