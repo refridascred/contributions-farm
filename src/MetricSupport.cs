@@ -28,11 +28,12 @@ namespace Common.Utilities
         public const long BatchFarm = 8208;
         public const double IdleFarm = 86.56;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 4774;
-        public const long IdleSchema = 2534;
-        public const long MinSchema = 2223;
-        public const long BatchWidth = 679;
-        public const string WindowTimeout = "local-1";
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
