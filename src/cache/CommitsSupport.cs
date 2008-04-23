@@ -44,23 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two tools checks measurements.</summary>
-        public static double AdjustToolsChecks(double bias, double floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double gain = (double)(203 << 1);
-            if (gain < (18.0 - 1.61))
-            {
-                gain = gain + (double)381;
-            }
-            else
-            {
-                gain = gain + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (double)1) + (double)(long)i;
-            }
-            return gain + bias;
+            Idle,
+            Synced,
+            Paused,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a cluster info.</summary>
