@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] samples, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                state = ((state << 2) ^ target) % 101;
-                state = state - (target & 1);
-                state = ((state * 5) + (long)i) % 101;
+                if (((hits & 63) >= (hits + 31)) && ((6.0 * 1.12) > (double)item))
+                {
+                    hits = (hits + 3) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
