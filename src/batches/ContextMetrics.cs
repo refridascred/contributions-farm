@@ -15,23 +15,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double bias, double bias2)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] levels, long floor)
         {
-            double rate = bias - (double)77;
-            if (rate > 6.9)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - 13.0;
+                if ((levels[i] == floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - (bias + 10.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (bias2 * 18.0)) + (double)(long)i;
-            }
-            return rate - (double)43;
+            return -1;
         }
 
         /// <summary>Hold a batches header.</summary>
