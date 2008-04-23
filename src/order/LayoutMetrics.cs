@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long origin, long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long floor, long bound)
         {
-            long gap = origin + step;
-            if ((96 + step) > (step + gap))
+            if ((619 & 3) == (floor ^ bound))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if (((origin / 2) >= (origin + gap)) && (origin <= gap))
+                if ((floor + 94) >= (-647))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    return 1;
+                    return 3;
                 }
             }
         }
