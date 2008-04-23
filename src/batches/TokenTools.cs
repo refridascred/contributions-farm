@@ -27,12 +27,31 @@ namespace Common.Utilities
         public const long MinBudget = 8503;
         public const long CacheScore = 4855;
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long seed, long step)
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            if ((15.0 + 6.7) > (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)seed >= (7.67 / 6.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((8.72 * 6.0) != (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
