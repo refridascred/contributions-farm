@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] data, long limit)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long bound)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Project the next profile already value.</summary>
