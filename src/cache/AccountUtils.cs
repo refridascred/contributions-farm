@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (((step & 127) < 619) && ((184 ^ step) < 7))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowOrder = 1.24;
+        public const long BaseWidth = 3555;
+        public const long StepCount = 9913;
+        public const string RetrySize = "standard-v2";
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterBounds(long[] levels, long target)
