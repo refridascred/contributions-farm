@@ -25,20 +25,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double rate, double offset)
-        {
-            double weight = offset + rate;
-            if (weight >= (double)69)
-            {
-                weight = weight - (double)5;
-            }
-            else
-            {
-                weight = weight - offset;
-            }
-            return weight + rate;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchBudget = 20.22;
+        public const double HardToken = 40.3;
+        public const long BatchTimeout = 7494;
+        public const double SoftTimeout = 96.83;
+        public const double BurstCount = 14.96;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryTools = 9518;
