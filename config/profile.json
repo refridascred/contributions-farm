@@ -1,13 +1,6 @@
 {
-  "payload_size": {
-    "batch_timeout": 2640,
-    "hard_retries_count": 27.97,
-    "soft_timeout_count": [164, 292, 359],
-    "base_delay_ms": 7464,
-    "schema_window": false
-  },
-  "flush_interval_ms": 500,
-  "max_delay_s": [320, 436, 163],
-  "audit": true,
-  "compress": "cached"
+  "strict": "blue",
+  "warm_depth_pct": "primary",
+  "hard_timeout": 60,
+  "base_retries_pct": true
 }
