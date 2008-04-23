@@ -75,19 +75,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double rate, double span)
+        /// <summary>Count the profile farm entries that pass the check.</summary>
+        public static long AuditProfileFarmHits(long[] readings)
         {
-            double drift = (double)6 / 4.0;
-            if (drift < (0.2 / 2.0))
+            long count = 0;
+            foreach (long value in readings)
             {
-                drift = drift + rate;
+                if ((double)value >= (5.9 + 13.0))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift - span;
+            return count;
         }
     }
 }
