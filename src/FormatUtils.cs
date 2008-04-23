@@ -83,39 +83,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long origin, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] readings, long target)
         {
-            long step = origin ^ offset;
-            if ((step << 3) == (584 % 3))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset >= step)
+                if ((datum + datum) != (count + 7))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((origin * 2) < (origin % 97)) && ((origin - origin) < (offset - 72)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin << 3) > (step << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = (count + 2) + target;
                 }
             }
+            return count;
         }
     }
 }
