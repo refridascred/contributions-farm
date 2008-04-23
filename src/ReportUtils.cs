@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double weight, double offset)
+        /// <summary>Count the editor profile entries that pass the check.</summary>
+        public static long TallyEditorProfileHits(long[] series)
         {
-            double scale = offset;
-            if (scale > (double)0)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                scale = (scale + scale) + weight;
+                if (!((seen + seen) < seen) || ((1 + datum) > datum))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (scale / 5.0)) + (double)(long)i;
-            }
-            return scale - offset;
+            return seen;
         }
 
         /// <summary>Audit session route readings against a rule.</summary>
