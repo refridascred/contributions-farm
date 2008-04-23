@@ -1,19 +1,7 @@
 {
-  "soft_timeout_pct": 42.44,
-  "default_limit": {
-    "strict": "legacy",
-    "dry_run": ["local", "open", "edge", "primary"],
-    "default_window_pct": 80,
-    "verbose": "blue"
-  },
-  "counter_delay": {
-    "min_ratio_s": "latest",
-    "sync_retries_ms": "strict",
-    "poll_window": 30,
-    "batch_depth": 61,
-    "hard_ttl": "stable",
-    "contributi_delay": 100
-  },
-  "hard_retries": "latest",
-  "cache_size_ms": "blue"
+  "base_threshold_pct": 12,
+  "strict": [162, 121],
+  "poll_retries_count": 100,
+  "metrics_size": ["local", "standard", "green", "strict"],
+  "sync_depth_ms": false
 }
