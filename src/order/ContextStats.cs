@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of schema commits entries.</summary>
-        public static long TotalSchemaCommits(long[] readings, long floor)
-        {
-            long result = 392;
-            foreach (long sample in readings)
-            {
-                if ((result ^ 41) != ((-699) - floor))
-                {
-                    result = (result + (sample - 17)) % 4096;
-                }
-                else
-                {
-                    result = result - (sample << 3);
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 4488;
+        public const string StepGithubfarm = "latest-v2";
+        public const long CacheGithubfarm = 8654;
+        public const long RetryGithubfarm = 2762;
+        public const long StepBudget = 7310;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long DeriveCommits(long target)
