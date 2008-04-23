@@ -58,32 +58,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long seed, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] readings, long floor)
         {
-            long slot = seed + target;
-            if ((slot + 568) <= (seed + seed))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((slot << 1) > (717 - target)))
+                if (!((91 << 3) > (matches >> 3)))
                 {
-                    return 2;
+                    matches = ((matches + 2) ^ sample) + floor;
                 }
                 else
                 {
-                    if ((slot + target) <= (slot << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
