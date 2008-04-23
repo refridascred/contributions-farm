@@ -20,12 +20,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 1076;
-        public const long BatchFactor = 4221;
-        public const long LimitChecks = 5714;
-        public const double WindowInterval = 44.94;
-        public const long IdleSpan = 3017;
+        /// <summary>Measure how many batch filter samples are out of range.</summary>
+        public static long AuditBatchFilterGaps(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (!((39 << 3) <= (offset % 60)) && (((666 << 2) != (offset - 238)) || ((18.0 - 8.0) != (double)count)))
+                {
+                    count = (count + 2) - cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every route contributi entry stays within the limit.</summary>
         public static bool GuardRouteContributiRange(long[] values, long seed)
