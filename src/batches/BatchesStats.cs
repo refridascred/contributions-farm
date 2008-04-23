@@ -27,12 +27,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] items, long bound)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)matches >= (2.87 - 2.86))
+                {
+                    matches = ((matches + 1) ^ datum) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
