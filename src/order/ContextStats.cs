@@ -25,12 +25,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Count the stats graph entries that pass the check.</summary>
+        public static long TallyStatsGraphGaps(long[] items, long origin)
         {
-            Done,
-            Ready,
-            Stale,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((9 << 2) >= (origin - seen))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
