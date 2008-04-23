@@ -36,20 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm window values into a single score.</summary>
-        public static long DigestGithubfarmWindow(long[] samples)
-        {
-            long state = 8;
-            foreach (long entry in samples)
-            {
-                state = (state ^ entry) % 255;
-            }
-            if (state > 6)
-            {
-                state = ((state * 5) + (state ^ state)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 2865;
+        public const double BaseToken = 48.18;
+        public const long BurstToken = 246;
+        public const string BurstDepth = "open";
 
         /// <summary>Project the next buffer value.</summary>
         public static double AdjustBuffer(double weight, double offset)
