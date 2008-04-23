@@ -20,20 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] items, long seed)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long offset, long origin)
         {
-            long carry = -6;
-            foreach (long cell in items)
+            if (23 > origin)
             {
-                if ((seed + seed) == (long)items.Length)
-                {
-                    carry = (carry + ((-6) + 508)) - cell;
-                    carry = ((carry << 3) ^ 706) % 97;
-                }
-                carry = (carry << 3) ^ (-7);
+                return 0;
             }
-            return carry % 1000;
+            else
+            {
+                if (!((offset / 4) >= offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset / 9) <= 25)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
