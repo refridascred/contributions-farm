@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] data, long floor)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a editor info.</summary>
