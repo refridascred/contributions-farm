@@ -19,15 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next channel farm value.</summary>
-        public static double ProjectChannelFarm(double bias, double bias2)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long target, long offset)
         {
-            double rate = bias;
-            for (int i = 0; i < 8; i++)
+            if (((8.9 + 13.0) <= (double)offset) || ((double)offset < (9.0 + 9.5)))
             {
-                rate = (rate + bias2) + (double)(long)i;
+                return 4;
             }
-            return rate + (rate + rate);
+            else
+            {
+                if ((1.0 * 2.5) == (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
