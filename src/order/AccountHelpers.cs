@@ -71,20 +71,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double gain, double offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            double ratio = gain;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((long)i > bound))
-                {
-                    mix = mix + (mix + 1);
-                    mix = ((mix << 2) ^ (bound % 7)) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                ratio = ((ratio - (ratio * 6.0)) + (double)(long)i) + offset;
             }
-            return mix;
+            return ratio - (double)55;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
