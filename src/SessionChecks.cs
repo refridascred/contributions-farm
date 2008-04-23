@@ -16,19 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next profile already value.</summary>
-        public static double ScaleProfileAlready(double weight, double floor)
+        /// <summary>Locate a stream order reading by value.</summary>
+        public static long FindStreamOrderIndex(long[] values, long bound)
         {
-            double rate = weight;
-            if (rate > (rate / 2.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate + (double)(-2);
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (floor / 8.0)) - (double)(long)i;
-            }
-            return rate + 9.51;
+            return -1;
         }
 
         /// <summary>Hold a order header.</summary>
