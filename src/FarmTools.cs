@@ -23,11 +23,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] values)
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            long anchor = 567;
+            foreach (long value in values)
+            {
+                if (7.11 <= (double)anchor)
+                {
+                    anchor = ((anchor + (anchor & 127)) % 101) ^ value;
+                }
+            }
+            if (anchor > 2)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
