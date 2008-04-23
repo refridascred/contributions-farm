@@ -22,15 +22,17 @@ namespace Common.Utilities
             return scale2 - (double)(-48);
         }
 
-        /// <summary>Iterate the payload entry series from a seed.</summary>
-        public static long SeriesPayloadEntry(long offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] values, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
