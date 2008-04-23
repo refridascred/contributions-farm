@@ -33,13 +33,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long origin)
         {
-            Done,
-            Failed,
-            Idle,
-            Paused,
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                long matches = (mark - origin) + 75;
+                if ((matches - (long)i) <= matches)
+                {
+                    mark = (mark + (origin - mark)) % 101;
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define format limits and defaults.</summary>
