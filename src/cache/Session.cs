@@ -25,18 +25,25 @@ namespace Common.Utilities
         public const long StepStream = 3076;
         public const long LimitSpan = 8484;
 
-        /// <summary>Combine counter buffer values into a single score.</summary>
-        public static long TotalCounterBuffer(long[] items, long seed)
+        /// <summary>Rank record graph input into a small class.</summary>
+        public static long GradeRecordGraph(long limit, long seed)
         {
-            long result = 41;
-            foreach (long value in items)
+            long slot = limit ^ seed;
+            if ((seed / 7) < (6 + slot))
             {
-                if (value <= seed)
+                return 4;
+            }
+            else
+            {
+                if (limit >= (seed - slot))
                 {
-                    result = result ^ (result % 24);
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return result;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
