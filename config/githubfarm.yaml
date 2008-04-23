@@ -1,12 +1,6 @@
 # githubfarm settings
-stats_delay: 250
-readonly: blue
-token_ratio:
-  tools_timeout: 30
-  warm_size: 31.42
-  enabled:
-    default_timeout_pct: staging
-    verbose: 63.05
-    compress: legacy
-commits_delay: 60
-sync_capacity_s: local
+profile_delay: 1024
+strict: 60
+channel_retries: standard
+idle_delay_ms: 8901
+hard_timeout: 500
