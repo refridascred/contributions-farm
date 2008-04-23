@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the batches payload entries that pass the check.</summary>
-        public static long AuditBatchesPayloadOutliers(long[] data)
+        /// <summary>Classify a tools entry pair into a bucket.</summary>
+        public static long ClassifyToolsEntry(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if (12 <= (offset * 4))
             {
-                if ((value ^ matches) <= matches)
+                return 1;
+            }
+            else
+            {
+                if ((double)seed >= (double)offset)
                 {
-                    matches = matches + 3;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a batch stats.</summary>
