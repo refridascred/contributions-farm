@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] items, long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long total = 63;
+            foreach (long datum in levels)
             {
-                if (reading >= offset)
+                if ((double)datum == (double)total)
                 {
-                    valid = false;
-                    break;
+                    total = (total + total) % 255;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
