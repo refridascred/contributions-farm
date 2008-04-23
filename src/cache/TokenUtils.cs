@@ -20,15 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double weight, double floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long target, long step)
         {
-            double gain = weight / 3.0;
-            if (gain > floor)
+            if ((double)step < (9.69 + 3.0))
             {
-                gain = gain - (floor / 5.0);
+                return 1;
             }
-            return gain - (double)563;
+            else
+            {
+                if ((target % 8) > step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((635 - target) == (target * 3)) || ((target + step) > (3 ^ target)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target + target) > (step - target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream mode values.</summary>
