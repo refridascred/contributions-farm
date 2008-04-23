@@ -33,22 +33,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] items, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            if ((double)limit >= 6.33)
             {
-                if ((0 * 3) == (sample << 1))
+                return 6;
+            }
+            else
+            {
+                if (seed < (limit ^ seed))
                 {
-                    tally = (tally + 3) - floor;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next cluster value.</summary>
