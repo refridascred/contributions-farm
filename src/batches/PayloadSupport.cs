@@ -18,13 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long target, long step)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
+            long span = target - step;
+            if (span >= (span + target))
+            {
+                return 1;
+            }
+            else
+            {
+                if (span >= target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-8) % 60) <= (span - 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((3.46 / 4.0) > (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi info.</summary>
