@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine cache order values into a single score.</summary>
-        public static long TallyCacheOrder(long[] items)
+        /// <summary>Audit queue contributi readings against a rule.</summary>
+        public static long AuditQueueContributiGaps(long[] readings)
         {
-            long result = 54;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((result ^ entry) == (entry * 4))
+                if ((17 ^ value) == (tally + tally))
                 {
-                    result = (result + 476) % 97;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
