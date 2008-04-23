@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long target, long offset)
         {
-            Paused,
-            Draft,
-            Locked,
+            if ((double)target <= (1.0 / 7.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target ^ offset) >= (offset - target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
