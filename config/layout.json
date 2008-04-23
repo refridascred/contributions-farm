@@ -1,12 +1,8 @@
 {
-  "sync_ttl_ms": 80.23,
-  "queue_ratio": true,
-  "graph_timeout": {
-    "compress": "stable",
-    "max_limit": 21.1,
-    "flush_threshold_s": "legacy",
-    "persist": "strict"
-  },
-  "readonly": [24, 232, 238, 324],
-  "contributi_ttl": 250
+  "hard_retries": "local",
+  "readonly": 968,
+  "poll_delay": "open",
+  "min_interval_ms": false,
+  "hard_depth": 78,
+  "contributi_capacity": [31, 447, 315, 310]
 }
