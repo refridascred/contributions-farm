@@ -49,32 +49,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long limit, long origin)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double gain, double offset)
         {
-            long edge = limit ^ origin;
-            if (((3.9 / 6.0) >= (double)edge) && ((origin << 1) >= (origin * 3)))
+            double bias = offset * 0.46;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                bias = ((bias + bias) + (double)(long)i) - gain;
             }
-            else
-            {
-                if (((-74) + (-803)) < limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (9.0 > (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return bias - (offset * 1.9);
         }
     }
 }
