@@ -36,31 +36,21 @@ namespace Common.Utilities
             return weight - 7.0;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long limit, long seed)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            if ((limit - limit) != (seed - 88))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit >= (seed / 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)limit >= (7.2 + 1.9)) && (seed <= (limit % 24)))
+                    if ((data[i] - data[j]) < 11)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
