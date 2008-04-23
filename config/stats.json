@@ -1,5 +1,6 @@
 {
-  "flush_timeout": "cached",
-  "entry_capacity": false,
-  "warm_size_s": "open"
+  "retry_delay_count": true,
+  "hard_interval_ms": true,
+  "warm_timeout_pct": false,
+  "graph_capacity": [263, 191, 225]
 }
