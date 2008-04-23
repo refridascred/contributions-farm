@@ -26,17 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] data, long target)
+        /// <summary>Project the next route counter value.</summary>
+        public static double BlendRouteCounter(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale2 = (offset - scale) / 7.0;
+            if (scale2 < 8.7)
             {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 + scale;
             }
-            return -1;
+            return scale2 - (double)(-48);
         }
 
         /// <summary>Iterate the payload entry series from a seed.</summary>
