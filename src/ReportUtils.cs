@@ -37,11 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 4278;
-        public const long DefaultDepth = 1869;
-        public const string BurstCounter = "legacy-edge";
-        public const string SoftCounter = "local-edge";
+        /// <summary>Audit report session readings against a rule.</summary>
+        public static long TallyReportSessionHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches >> 4) > (942 + matches))
+                {
+                    matches = (matches + 3) - datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryEntry = 1741;
