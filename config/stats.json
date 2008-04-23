@@ -1,8 +1,7 @@
 {
-  "dry_run": "cached",
-  "default_ttl_ms": 29.34,
-  "idle_threshold_s": "eu-west",
-  "min_interval": 75.5,
-  "audit": "latest",
-  "compress": 1024
+  "base_ratio": "open",
+  "payload_depth": ["green", "eu-west", "primary", "staging"],
+  "soft_window_count": "cached",
+  "default_retries": 3082,
+  "min_threshold": [189, 424]
 }
