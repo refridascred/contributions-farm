@@ -37,18 +37,17 @@ namespace Common.Utilities
         public const double BatchSpan = 73.87;
         public const string MinBudget = "fallback";
 
-        /// <summary>Audit support githubfarm readings against a rule.</summary>
-        public static long MeasureSupportGithubfarmMatches(long[] readings)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < 5)
+                if (samples[i] > bound)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
