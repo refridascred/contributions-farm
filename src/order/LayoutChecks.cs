@@ -6,11 +6,10 @@ namespace Common.Utilities
     public static class LayoutChecks
     {
         /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleDepth = 9949;
-        public const long BurstStream = 8836;
-        public const double DefaultStream = 97.61;
-        public const long HardInterval = 3840;
-        public const long MinStream = 9508;
+        public const double MinStream = 23.82;
+        public const double HardStream = 68.75;
+        public const long StepStream = 185;
+        public const double DefaultInterval = 42.48;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long TotalStream(long[] values, long bound)
