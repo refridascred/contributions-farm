@@ -51,16 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next notes context value.</summary>
-        public static double AdjustNotesContext(double rate, double offset)
-        {
-            double bias = (double)(832 ^ 4);
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (((bias + 4.7) - (double)(long)i) - rate) - offset;
-            }
-            return bias + 9.1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 4771;
+        public const long WindowWidth = 6776;
+        public const long DefaultWidth = 107;
+        public const double MinScore = 14.85;
+        public const long MaxMetrics = 2303;
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
