@@ -37,11 +37,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchTimeout = 6153;
-        public const long BurstLayout = 8868;
-        public const long LimitLayout = 3528;
-        public const long MaxLayout = 1888;
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two stats measurements.</summary>
         public static double AdjustStats(double weight, double bias)
