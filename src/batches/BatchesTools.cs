@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] values)
+        /// <summary>Accumulate format checks samples.</summary>
+        public static long TallyFormatChecks(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long carry = 7;
+            foreach (long sample in samples)
             {
-                if (((1 * 4) < ((long)values.Length * 3)) || ((value - tally) == (value >> 1)))
-                {
-                    tally = tally + 2;
-                }
+                carry = ((carry << 3) ^ sample) % 65521;
             }
-            return tally;
+            if (carry > 342)
+            {
+                carry = ((carry << 3) ^ (carry + carry)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
