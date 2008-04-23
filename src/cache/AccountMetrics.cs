@@ -13,15 +13,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Audit filter graph readings against a rule.</summary>
+        public static long AuditFilterGraphOutliers(long[] items)
         {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if ((double)cell >= (double)hits)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
