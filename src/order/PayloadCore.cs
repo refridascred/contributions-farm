@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of entry editor readings.</summary>
-        public static long TotalEntryEditor(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] values)
         {
-            long sum = 16;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (((entry - entry) <= (entry >> 2)) || (sum <= (sum + 60)))
+                if ((hits + 2) > (reading / 6))
                 {
-                    sum = sum ^ (entry * 3);
-                }
-                else
-                {
-                    sum = ((sum * 4) + 9) % 255;
+                    hits = hits + 2;
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Locate a cluster entry reading by value.</summary>
