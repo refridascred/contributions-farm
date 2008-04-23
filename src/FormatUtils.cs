@@ -64,14 +64,17 @@ namespace Common.Utilities
         public const long HardFactor = 4725;
         public const long LimitDepth = 510;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] samples, long target)
         {
-            Draft,
-            Paused,
-            Dropped,
-            New,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
