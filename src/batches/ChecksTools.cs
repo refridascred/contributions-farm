@@ -20,18 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] series, long origin)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long origin, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if ((0 % 8) < (step >> 5))
             {
-                if (((double)hits < (1.34 + 7.29)) && ((double)cell < 1.6))
+                return 0;
+            }
+            else
+            {
+                if (9 >= origin)
                 {
-                    hits = (hits + 3) + origin;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
