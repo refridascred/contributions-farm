@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] readings, long origin)
         {
-            Stale,
-            Done,
-            New,
-            Draft,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (((808 & 63) < (sample - (long)readings.Length)) && (((sample - origin) > origin) || ((sample >> 2) <= origin)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a editor info.</summary>
