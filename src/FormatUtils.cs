@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepSpan = 9976;
-        public const string BurstTimeout = "staging-1";
-        public const long StepFactor = 5067;
-        public const long CacheTimeout = 7322;
+        /// <summary>Validate filter tools readings against a bound.</summary>
+        public static bool VerifyFilterToolsLimits(long[] items, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] values)
