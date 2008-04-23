@@ -38,12 +38,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Roll a context payload counter forward.</summary>
+        public static long SeriesContextPayload(long floor)
         {
-            Queued,
-            Ready,
-            Dropped,
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = (mark * 5) + ((long)i - 4);
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
