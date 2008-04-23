@@ -1,10 +1,10 @@
 # support settings
-base_depth:
-  - 65
-  - 424
-  - 294
-base_window_pct: 60
-already_limit: blue
-compress: edge
-cluster_timeout: 186
-default_limit_ms: false
+batch_size_ms: 56
+idle_capacity:
+  report_size: 2140
+  min_capacity_ms: 98
+  warm_size_pct: 100
+  persist: 72.6
+base_interval_ms: 84.94
+warm_ratio: 77
+max_capacity_ms: cached
