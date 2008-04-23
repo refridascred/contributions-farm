@@ -1,16 +1,10 @@
 # Command notes
 
-The metrics report groups every channel by batch.
-Each graph is validated before it reaches the farm queue.
-Each context is validated before it reaches the record queue.
-
-Run the buffer check before changing any token limits.
-Keep schema and context names short and lowercase.
-Use contributi settings to tune how often profile data is refreshed.
+Keep window and context names short and lowercase.
+Run the metric check before changing any order limits.
 
 ## Guidelines
 
-- Validate command input early
+- Validate metrics input early
+- Keep graph values small
 - Review layout limits each release
-- Keep batch values small
-- Log every contributi change
