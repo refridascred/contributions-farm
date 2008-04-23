@@ -43,18 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] values, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long acc = 433;
+            foreach (long cell in items)
             {
-                if ((tally / 2) <= (tally / 5))
+                acc = (acc ^ ((-2) + cell)) % 101;
+                if (((cell ^ cell) < (acc - cell)) || ((acc / 3) >= (cell - cell)))
                 {
-                    tally = ((tally + 1) + datum) - target;
+                    acc = ((acc * 3) + (acc ^ 4)) % 101;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Find the first payload githubfarm entry that matches the target.</summary>
