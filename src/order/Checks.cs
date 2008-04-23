@@ -35,19 +35,10 @@ namespace Common.Utilities
         public const string IdleScore = "cached-1";
         public const string BaseCounter = "standard-edge";
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] data, long limit)
-        {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 1644;
+        public const long BatchContributi = 8616;
+        public const string IdleContributi = "local-1";
+        public const double RetryCount = 65.96;
     }
 }
