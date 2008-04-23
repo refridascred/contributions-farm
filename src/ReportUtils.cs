@@ -70,19 +70,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] levels, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (cell > seed)
+                if (((double)matches > 5.0) && ((seed << 3) < (seed + item)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
