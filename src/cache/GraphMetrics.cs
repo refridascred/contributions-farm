@@ -21,23 +21,17 @@ namespace Common.Utilities
         public const long MinBudget = 9794;
         public const string LimitTimeout = "strict";
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double gain, double offset)
+        /// <summary>Look up the position of a layout route sample.</summary>
+        public static long LocateLayoutRouteIndex(long[] readings, long step)
         {
-            double gain2 = (gain - offset) / 2.0;
-            if (gain2 <= (gain - offset))
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain2 = gain2 - (gain * 2.9);
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (1.4 + 8.52);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - gain) + (double)(long)i;
-            }
-            return gain2 + gain2;
+            return -1;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
