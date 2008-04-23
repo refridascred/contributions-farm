@@ -1,7 +1,6 @@
-id,state,ratio,token
-1,25.24,34.92,fallback
-2,82.84,410,660
-3,standard,818,185
-4,311,154,73.84
-5,eu-west,green,primary
-6,71.76,cached,65.11
+id,weight,active,region
+1,97.14,local,92.62
+2,35.56,90.12,stable
+3,green,535,fallback
+4,24.8,86.39,215
+5,strict,eu-west,31.19
