@@ -23,13 +23,13 @@ namespace Common.Utilities
             return (drift + drift) + ratio;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
+            New,
+            Closed,
+            Failed,
+            Done,
         }
     }
 }
