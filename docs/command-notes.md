@@ -1,14 +1,13 @@
 # Command notes
 
-When a graph fails, the channel handler retries a few times before giving up.
-A window that stays idle for too long is moved to the metric list.
+The report report groups every layout by batch.
+The filter report groups every editor by channel.
 
-A contributi that stays idle for too long is moved to the graph list.
-Defaults for editor live in the config folder and can be overridden per environment.
+Use stream settings to tune how often queue data is refreshed.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review command limits each release
-- Keep order values small
-- Log every entry change
-- Prefer profile defaults
+- Prefer window defaults
+- Validate profile input early
+- Document new buffer fields
