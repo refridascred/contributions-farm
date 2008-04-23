@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] levels, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long floor)
         {
-            long mix = 3;
-            foreach (long sample in levels)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((offset ^ mix) > (sample * 2))
+                if ((floor % 10) == (floor - 1))
                 {
-                    mix = ((mix * 5) + (offset ^ 0)) % 101;
+                    mark = mark + (mark + mark);
                 }
-                if (!((mix % 2) > (long)levels.Length))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    break;
+                    mark = (((mark << 3) ^ (45 + floor)) % 255) - (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            if (mix > 1)
-            {
-                mix = (mix * 3) + mix;
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
