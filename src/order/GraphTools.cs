@@ -27,18 +27,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] values)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long delta = limit ^ floor;
+            if ((double)delta != (double)floor)
             {
-                if (((entry - matches) != (entry - entry)) && ((5 + entry) > (64 >> 2)))
+                return 4;
+            }
+            else
+            {
+                if ((floor * 5) >= (-70))
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
