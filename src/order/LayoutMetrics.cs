@@ -26,18 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] readings, long offset)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((6.56 * 15.0) == (double)value)
-                {
-                    hits = (hits + 2) - offset;
-                }
-            }
-            return hits;
+            Active,
+            Stale,
+            Synced,
         }
     }
 }
