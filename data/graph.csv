@@ -1,7 +1,10 @@
-id,rank,label,state,active
-1,225,eu-west,91,stable
-2,199,62.86,edge,982
-3,blue,49.3,34.16,strict
-4,8.54,416,64.45,32.76
-5,299,54.2,55.51,474
-6,167,fallback,962,19.13
+id,owner,rank
+1,16.67,open
+2,151,983
+3,staging,51.34
+4,cached,49.23
+5,119,stable
+6,eu-west,843
+7,18.7,3.01
+8,open,eu-west
+9,91.23,295
