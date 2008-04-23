@@ -27,17 +27,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Locate a graph format reading by value.</summary>
-        public static long LookupGraphFormatIndex(long[] data, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 123;
+            foreach (long value in series)
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + (anchor + 51)) ^ value) - step;
             }
-            return -1;
+            if (anchor < (-452))
+            {
+                anchor = (anchor * 5) + (0 ^ 12);
+            }
+            return anchor;
         }
     }
 }
