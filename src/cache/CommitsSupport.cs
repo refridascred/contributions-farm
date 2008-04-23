@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] levels)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            long total = 63;
-            foreach (long datum in levels)
+            long mark = 965;
+            foreach (long value in levels)
             {
-                if ((double)datum == (double)total)
-                {
-                    total = (total + total) % 255;
-                }
+                mark = ((mark ^ ((-53) + mark)) % 97) + value;
             }
-            return total;
+            return mark % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
