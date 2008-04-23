@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double gain, double offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long step, long offset)
         {
-            double weight = gain;
-            if (weight > weight)
+            if ((0.2 / 7.0) == (double)offset)
             {
-                weight = weight - gain;
+                return 1;
             }
             else
             {
-                weight = weight + offset;
+                if (1.2 < (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return weight + gain;
         }
 
         /// <summary>Describe the queue status values.</summary>
