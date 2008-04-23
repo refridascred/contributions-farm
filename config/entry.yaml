@@ -1,10 +1,18 @@
 # entry settings
-readonly: 29
-counter_window: fallback
-base_size: fallback
-cluster_window:
-  - 55
-  - 469
-  - 347
-filter_interval: 81.18
-cache_depth_s: green
+retry_capacity_s: 31.97
+base_depth: false
+soft_ttl: 20
+poll_capacity_ms: cached
+dry_run:
+  burst_ratio_count:
+    - standard
+    - strict
+    - open
+  sync_delay: 71
+  audit:
+    - local
+    - green
+    - open
+  default_window: 1024
+  retry_interval_pct: local
+soft_timeout: stable
