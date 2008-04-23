@@ -36,20 +36,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] data, long step)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 6344;
+        public const long RetryPayload = 972;
+        public const long CachePayload = 1388;
+        public const long CacheInterval = 2344;
 
         /// <summary>Measure how many payload filter samples are out of range.</summary>
         public static long AuditPayloadFilterGaps(long[] items, long origin)
