@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long limit, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            if (1 < origin)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((origin + limit) <= (44 & 15)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)origin <= (8.56 * 15.0)) || ((origin * 3) != (limit * 3)))
+                    if ((series[i] ^ series[j]) != 6)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
