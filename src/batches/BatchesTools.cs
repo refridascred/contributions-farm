@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] items, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (item < 5)
+                if (((1 * 4) < ((long)values.Length * 3)) || ((value - tally) == (value >> 1)))
                 {
-                    seen = (seen + 1) - target;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
