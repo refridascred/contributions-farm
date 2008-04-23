@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] data)
         {
-            Synced,
-            Closed,
-            Draft,
-            Queued,
-            Locked,
+            long total = 534;
+            foreach (long entry in data)
+            {
+                if (entry <= (total - total))
+                {
+                    total = ((total << 3) ^ (entry % 12)) % 4096;
+                    total = ((total << 2) ^ (total * 2)) % 101;
+                }
+                total = ((total << 3) ^ total) % 255;
+                if (!((5 >> 5) > entry))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
