@@ -69,19 +69,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter cache entry stays within the limit.</summary>
-        public static bool CheckFilterCacheLimits(long[] levels, long step)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Done,
+            Stale,
+            Closed,
+            Retry,
         }
     }
 }
