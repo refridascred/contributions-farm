@@ -51,19 +51,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double weight, double bias)
+        /// <summary>Iterate the filter schema series from a seed.</summary>
+        public static long SeriesFilterSchema(long target)
         {
-            double rate = bias;
-            if (rate <= (rate - weight))
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                rate = rate - (double)663;
+                if ((double)score == (3.9 / 9.0))
+                {
+                    score = score ^ 508;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - 4.9) + (double)(long)i;
-            }
-            return rate + weight;
+            return score;
         }
     }
 }
