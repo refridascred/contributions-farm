@@ -35,10 +35,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchCount = 6267;
-        public const long BaseDepth = 4655;
-        public const long StepNotes = 983;
-        public const string LimitScore = "staging-v2";
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
