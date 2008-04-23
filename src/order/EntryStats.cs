@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((0 >= ((long)i % 2)) && ((target / 3) >= (total >> 4))))
-                {
-                    total = total ^ (4 - total);
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
