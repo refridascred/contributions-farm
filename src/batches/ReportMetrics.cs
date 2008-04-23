@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] series, long bound)
+        /// <summary>Validate support graph readings against a bound.</summary>
+        public static bool VerifySupportGraphRange(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (sample > bound)
+                if (item <= target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Adjust a order reading.</summary>
