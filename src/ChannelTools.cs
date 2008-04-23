@@ -23,39 +23,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long bound, long target)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long diff = bound - target;
-            if (((bound + bound) >= (bound + target)) && (diff >= bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound > (diff << 3)) && ((8 * 5) >= diff))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)target >= (2.45 - 12.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((9.54 + 3.4) < (double)diff)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Locked,
+            Ready,
         }
     }
 }
