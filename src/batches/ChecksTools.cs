@@ -13,18 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] values)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (6.28 >= (double)value)
+                if (data[i] >= bound)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the already level values.</summary>
