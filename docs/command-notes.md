@@ -1,15 +1,15 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the entry list.
-Run the cluster check before changing any account limits.
-Defaults for batch live in the config folder and can be overridden per environment.
+A metrics that stays idle for too long is moved to the context list.
+Run the contributi check before changing any queue limits.
 
-The batch report groups every layout by editor.
-Use cluster settings to tune how often schema data is refreshed.
+Each context is validated before it reaches the order queue.
+Keep command and cache names short and lowercase.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Document new metric fields
-- Review already limits each release
-- Prefer layout defaults
+- Validate batch input early
+- Document new commits fields
+- Keep batches values small
+- Log every command change
