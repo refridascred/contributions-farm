@@ -20,31 +20,14 @@ namespace Common.Utilities
             return mean + (offset + mean);
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long target, long offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            if ((offset / 3) > (target + target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target >= (offset ^ 227))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target <= (19.0 + 3.94))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Synced,
+            Draft,
+            Locked,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
