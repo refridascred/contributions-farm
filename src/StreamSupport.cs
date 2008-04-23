@@ -42,13 +42,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long seed, long origin)
         {
-            Ready,
-            New,
-            Locked,
-            Idle,
+            long bound = seed - origin;
+            if ((origin + seed) >= (origin - seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((49 - bound) > (seed - origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin == (5.0 / 9.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed ^ origin) <= (bound << 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
