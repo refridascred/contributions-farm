@@ -1,6 +1,15 @@
 # githubfarm settings
-window_window: 76.45
-cache_limit_ms: primary
-burst_timeout: true
-hard_threshold: edge
-base_ttl_s: 45
+verbose: staging
+sync_interval: fallback
+queue_ratio:
+  base_delay_pct: false
+  batch_window_pct:
+    - staging
+    - strict
+    - latest
+    - green
+  filter_timeout: 250
+flush_interval:
+  already_ratio: local
+  idle_delay_s: 27.58
+  flush_ratio_ms: 98.95
