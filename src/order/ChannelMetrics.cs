@@ -23,25 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)offset < 9.7)
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry ^ (9 / 3)) % 65521;
-                    carry = (carry ^ (long)i) % 65521;
-                }
-                carry = (carry << 2) ^ offset;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Idle,
+            Stale,
+            Draft,
         }
 
         /// <summary>Digest a series of githubfarm format entries.</summary>
