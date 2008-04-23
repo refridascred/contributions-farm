@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] values, long offset)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the channel kind values.</summary>
