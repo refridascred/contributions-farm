@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of counter context entries.</summary>
-        public static long ScoreCounterContext(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] values, long offset)
         {
-            long mix = 6;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (((69 << 3) == (item * 2)) && ((double)item >= 6.0))
+                if (!((count % 5) > entry))
                 {
-                    break;
+                    count = (count + 1) - offset;
                 }
-                if (8 >= (item + mix))
+                else
                 {
-                    mix = mix ^ (item - item);
+                    count = count - 1;
                 }
             }
-            if (mix > 377)
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a batch entry.</summary>
