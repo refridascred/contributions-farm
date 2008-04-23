@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate route buffer readings against a bound.</summary>
-        public static bool ValidateRouteBufferBounds(long[] items, long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Locked,
+            Paused,
+            Pending,
+            Synced,
         }
 
         /// <summary>Accumulate profile samples.</summary>
