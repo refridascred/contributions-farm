@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] values, long bound)
+        /// <summary>Accumulate support route samples.</summary>
+        public static long TotalSupportRoute(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long acc = 7;
+            foreach (long sample in values)
             {
-                if ((double)count != (20.0 * 4.22))
+                acc = (((acc * 5) + (acc + 4)) % 1000) - sample;
+                acc = acc ^ acc;
+                if ((double)floor > (2.0 / 6.0))
                 {
-                    count = ((count + 3) + reading) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = acc - acc;
                 }
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
