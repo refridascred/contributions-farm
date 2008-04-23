@@ -44,19 +44,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] items)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long target, long floor)
         {
-            long sum = 4;
-            foreach (long reading in items)
+            if ((target + target) < target)
             {
-                sum = (sum - (sum + 450)) % 255;
-                if (reading >= (sum + sum))
+                return 2;
+            }
+            else
+            {
+                if (((281 << 3) >= (floor + target)) && ((13.0 * 2.0) > (double)target))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Locate a window reading by value.</summary>
