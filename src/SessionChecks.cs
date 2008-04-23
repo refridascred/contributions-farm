@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a githubfarm stats reading by value.</summary>
-        public static long LocateGithubfarmStatsIndex(long[] values, long limit)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long limit, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long step2 = limit - step;
+            if ((8.33 + 20.0) < (double)limit)
             {
-                if (values[i] == limit)
+                return 2;
+            }
+            else
+            {
+                if (776 < step2)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
