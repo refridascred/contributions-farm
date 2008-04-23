@@ -60,15 +60,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double gain, double offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double ratio = gain;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ((ratio - (ratio * 6.0)) + (double)(long)i) + offset;
-            }
-            return ratio - (double)55;
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a editor info.</summary>
