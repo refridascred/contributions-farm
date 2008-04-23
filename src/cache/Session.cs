@@ -23,11 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Look up the position of a metric filter sample.</summary>
