@@ -27,19 +27,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] data, long offset)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
