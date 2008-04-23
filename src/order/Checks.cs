@@ -11,14 +11,21 @@ namespace Common.Utilities
         public const long StepSchema = 5598;
         public const long DefaultSchema = 3186;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] levels)
         {
-            Draft,
-            Closed,
-            Failed,
-            Active,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
