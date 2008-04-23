@@ -35,12 +35,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long limit, long bound)
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            if ((limit + limit) == (limit / 9))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound / 9) < limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)747 > (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound << 1) <= (810 + 93))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of already readings.</summary>
