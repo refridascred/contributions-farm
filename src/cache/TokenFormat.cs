@@ -21,17 +21,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Find the first commits graph entry that matches the target.</summary>
-        public static long LookupCommitsGraphIndex(long[] levels, long offset)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = gain;
+            if (drift > (double)840)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + (double)58) + bias;
             }
-            return -1;
+            return drift + 11.0;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
