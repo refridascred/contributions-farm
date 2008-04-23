@@ -40,22 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] levels)
-        {
-            long sum = 346;
-            foreach (long reading in levels)
-            {
-                if ((sum ^ reading) >= (sum - sum))
-                {
-                    sum = ((sum << 3) ^ (reading * 5)) % 1000;
-                }
-            }
-            if (sum > (-112))
-            {
-                sum = sum ^ (3 % 7);
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseBudget = "open-edge";
+        public const string DefaultScore = "standard-1";
+        public const long BurstDepth = 8357;
+        public const long RetryInterval = 8930;
+        public const string BurstBudget = "latest-edge";
     }
 }
