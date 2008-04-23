@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a layout counter reading by value.</summary>
-        public static long SeekLayoutCounterIndex(long[] levels, long seed)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
+            public double Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate editor entry samples.</summary>
