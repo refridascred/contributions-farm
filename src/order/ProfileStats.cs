@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long floor, long offset)
+        /// <summary>Measure how many graph checks samples are out of range.</summary>
+        public static long MeasureGraphChecksGaps(long[] items)
         {
-            long delta = floor - offset;
-            if (offset < (delta - floor))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset + delta) <= (delta % 8)) && (30 < (offset - floor)))
+                if (cell <= (long)items.Length)
                 {
-                    return 0;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((6.0 * 4.61) <= (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (delta <= offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up support commits samples.</summary>
