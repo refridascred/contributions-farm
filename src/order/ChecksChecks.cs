@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const double RetryCount = 9.32;
         public const long BurstInterval = 4482;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 1849;
-        public const string StepSchema = "stable-edge";
-        public const long MinSchema = 9320;
-        public const long LimitSchema = 9859;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate tools schema samples.</summary>
         public static long FoldToolsSchema(long[] levels)
