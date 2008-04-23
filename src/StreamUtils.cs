@@ -45,13 +45,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Active,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryWidth = "stable";
+        public const double LimitCount = 88.28;
+        public const long DefaultCluster = 7073;
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double AdjustCommand(double gain, double span)
