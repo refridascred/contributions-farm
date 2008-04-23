@@ -52,23 +52,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long acc = 99;
-            foreach (long reading in data)
-            {
-                acc = (((acc * 2) + (7 >> 4)) % 101) + reading;
-                if ((830 > (4 + acc)) && ((acc % 100) <= 95))
-                {
-                    break;
-                }
-            }
-            if (acc > 71)
-            {
-                acc = ((acc * 2) + (acc % 5)) % 65521;
-            }
-            return acc % 97;
+            Idle,
+            New,
+            Done,
+            Queued,
+            Pending,
         }
     }
 }
