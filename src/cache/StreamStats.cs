@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a schema cache sample.</summary>
-        public static long LookupSchemaCacheIndex(long[] values, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (values[i] == bound)
+                if (item <= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a counter record.</summary>
