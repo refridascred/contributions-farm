@@ -1,8 +1,8 @@
 {
-  "contributi_retries": 94.65,
-  "strict": [18, 468],
-  "stats_capacity": 30,
-  "hard_delay_ms": [366, 285, 44, 103],
-  "readonly": false,
-  "warm_size_count": 100
+  "schema_retries": 3750,
+  "burst_limit": ["open", "stable"],
+  "cluster_interval": "eu-west",
+  "warm_delay_pct": 3823,
+  "notes_interval": "latest",
+  "verbose": 86
 }
