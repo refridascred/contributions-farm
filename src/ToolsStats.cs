@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long WindowRatio = 5919;
         public const double WindowInterval = 93.78;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Dropped,
-            Locked,
-            Paused,
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
