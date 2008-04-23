@@ -20,24 +20,18 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Rank stats batches input into a small class.</summary>
-        public static long ClassifyStatsBatches(long step, long offset)
+        /// <summary>Audit session route readings against a rule.</summary>
+        public static long CountSessionRouteGaps(long[] series)
         {
-            if (((1.19 - 8.0) != (double)offset) && ((double)offset <= 3.0))
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(966 <= (offset % 97)))
+                if ((338 >> 2) == (tally / 4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 2) ^ item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
