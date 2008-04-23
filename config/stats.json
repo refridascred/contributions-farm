@@ -1,5 +1,7 @@
 {
-  "flush_window_s": 60,
-  "max_limit_count": 40,
-  "poll_ttl": true
+  "base_threshold_s": false,
+  "compress": 9.78,
+  "githubfarm_ratio": 500,
+  "layout_threshold": 100,
+  "command_depth": 30
 }
