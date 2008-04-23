@@ -32,12 +32,21 @@ namespace Common.Utilities
             return ratio2 - 6.4;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] values)
         {
-            public double Level { get; set; }
-            public bool Stamp { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
