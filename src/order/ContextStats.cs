@@ -32,15 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long bound)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Done,
+            Ready,
+            Stale,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
