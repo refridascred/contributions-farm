@@ -45,17 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] values, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 58;
+            foreach (long reading in series)
             {
-                if (values[i] > step)
+                sum = ((sum - (target << 1)) % 97) ^ reading;
+                if (sum <= ((-2) % 100))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
     }
 }
