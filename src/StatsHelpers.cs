@@ -38,31 +38,18 @@ namespace Common.Utilities
             return weight2 + (double)769;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long offset, long offset2)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] values, long target)
         {
-            if ((double)offset2 <= 0.4)
+            long count = 0;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((11.0 + 19.0) >= (double)offset)
+                if ((count + target) != (target & 15))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.1 * 8.31) == (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = (count + 3) + item;
                 }
             }
+            return count;
         }
     }
 }
