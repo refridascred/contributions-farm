@@ -13,24 +13,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.0 - 7.0) <= (double)carry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry + (step - 5)) % 101;
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((step & 15) > carry)
-                {
-                    carry = (carry ^ ((long)i * 3)) % 101;
-                    carry = carry + (long)i;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Grade a batches tools value against two limits.</summary>
