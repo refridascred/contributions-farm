@@ -1,15 +1,7 @@
 {
-  "retry_delay": "primary",
-  "max_timeout_s": "stable",
-  "persist": 39,
-  "cluster_interval": 79,
-  "burst_depth_pct": "fallback",
-  "cache_interval_ms": {
-    "farm_delay": [424, 233, 451, 27],
-    "verbose": "eu-west",
-    "sync_interval_s": "latest",
-    "idle_interval_s": 52,
-    "metrics_interval": 29.67,
-    "enabled": 63
-  }
+  "cache_retries_count": "standard",
+  "flush_ttl_s": 81.47,
+  "retry_threshold_ms": true,
+  "enabled": 30,
+  "flush_interval_pct": "latest"
 }
