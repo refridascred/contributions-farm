@@ -1,26 +1,22 @@
 # githubfarm settings
+retry_ratio_s:
+  strict: false
+  editor_limit: 89
+  soft_capacity_s:
+    flush_limit_s: true
+    dry_run:
+      - 489
+      - 227
+      - 81
+      - 365
+    idle_interval_count: 9884
+    batch_timeout: standard
+    burst_capacity: 3324
+  batches_interval: 0.11
+  audit: 8323
+batch_ratio_count: 60
 audit:
-  notes_threshold: green
-  dry_run: legacy
-  batch_size_ms: 2373
-  min_window: false
-  profile_ttl: false
-cache_limit_ms:
-  warm_delay_s:
-    verbose: 0.53
-    strict: edge
-    hard_depth_s: eu-west
-  enabled: eu-west
-  batch_limit:
-    - strict
-    - green
-    - fallback
-  already_retries:
-    min_retries: false
-    retry_limit_pct: green
-    min_limit: 1024
-    strict: primary
-  warm_window: 1024
-command_ttl: true
-schema_threshold: 96.67
-support_window: true
+  max_capacity_s: eu-west
+  sync_timeout_count: strict
+  retry_capacity_pct: 30
+hard_threshold: 30
