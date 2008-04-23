@@ -82,13 +82,14 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Active,
+            Ready,
+            Stale,
             Dropped,
-            Closed,
-            Pending,
+            Active,
+            Locked,
         }
     }
 }
