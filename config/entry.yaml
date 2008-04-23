@@ -1,7 +1,10 @@
 # entry settings
-support_interval:
-  - strict
-  - open
-  - primary
-session_window: 72.41
-batches_timeout: 80.36
+batch_window:
+  - 396
+  - 343
+  - 352
+readonly: 88.11
+audit: staging
+record_depth: 9036
+warm_threshold_s: 70.88
+warm_depth: 57
