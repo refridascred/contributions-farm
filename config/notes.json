@@ -1,5 +1,8 @@
 {
-  "editor_ttl": "stable",
-  "schema_depth": [409, 312],
-  "retry_ratio": 70.51
+  "hard_interval_ms": 69.29,
+  "report_threshold": "edge",
+  "hard_interval_s": 98,
+  "context_depth": false,
+  "enabled": "strict",
+  "max_limit_count": "blue"
 }
