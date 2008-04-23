@@ -22,11 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxCount = 95.92;
-        public const string MaxSpan = "alpha-v2";
-        public const long SoftContributi = 8651;
-        public const long LimitContributi = 5173;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksOutliers(long[] readings, long bound)
