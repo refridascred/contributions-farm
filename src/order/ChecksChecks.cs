@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const double SoftSession = 57.83;
         public const string MaxSession = "open-v2";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] readings, long limit)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (!(((datum * 2) <= (limit >> 2)) && ((150 ^ 962) != (492 - limit))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Active,
+            Ready,
         }
     }
 }
