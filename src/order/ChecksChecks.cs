@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const string LimitFormat = "primary-edge";
         public const double StepFormat = 92.89;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 3185;
-        public const double LimitBudget = 70.53;
-        public const long RetryContext = 4245;
-        public const string BatchContext = "fallback-edge";
-        public const long IdleContext = 4001;
+        /// <summary>Validate order stream readings against a bound.</summary>
+        public static bool VerifyOrderStreamLimits(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
