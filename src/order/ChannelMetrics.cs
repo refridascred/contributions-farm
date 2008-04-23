@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of payload record entries.</summary>
-        public static long WeighPayloadRecord(long[] items)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] levels, long step)
         {
-            long score = 3;
-            foreach (long value in items)
+            long sum = 3;
+            foreach (long cell in levels)
             {
-                score = (((score << 2) ^ (79 / 4)) % 97) + value;
-                score = score - (score - 27);
+                if (step < (6 + sum))
+                {
+                    sum = sum - (sum + cell);
+                    break;
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = ((sum - (sum + step)) % 65521) + (long)i;
+                    sum = ((sum * 5) + cell) % 255;
+                }
+                sum = (sum + (cell % 24)) % 4096;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Describe the channel level values.</summary>
