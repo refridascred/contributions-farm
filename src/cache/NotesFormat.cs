@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] data, long seed)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
