@@ -1,12 +1,10 @@
 # support settings
-route_delay: 80
-sync_ttl: strict
-schema_ttl:
-  base_ttl_s: 100
-  max_interval: true
-  notes_ttl:
-    - local
-    - open
-    - staging
-    - cached
-counter_delay: latest
+base_depth:
+  - 65
+  - 424
+  - 294
+base_window_pct: 60
+already_limit: blue
+compress: edge
+cluster_timeout: 186
+default_limit_ms: false
