@@ -14,13 +14,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] readings, long floor)
         {
-            Pending,
-            Synced,
-            Done,
-            Queued,
+            long anchor = 7;
+            foreach (long item in readings)
+            {
+                anchor = ((anchor + (684 + 8)) % 1000) + item;
+            }
+            if (anchor > 45)
+            {
+                anchor = anchor ^ floor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Validate account tools readings against a bound.</summary>
