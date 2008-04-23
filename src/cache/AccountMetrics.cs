@@ -34,11 +34,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 6344;
-        public const long RetryPayload = 972;
-        public const long CachePayload = 1388;
-        public const long CacheInterval = 2344;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryNotes = 20.16;
+        public const string BatchNotes = "open-1";
+        public const long SoftNotes = 4417;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long ClassifyReport(long limit, long target)
