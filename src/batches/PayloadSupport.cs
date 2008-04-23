@@ -47,9 +47,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryFactor = 1758;
-        public const long BaseCache = 5718;
-        public const long SoftTimeout = 7302;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 9523;
+        public const long HardQueue = 4061;
+        public const double BatchQueue = 69.13;
     }
 }
