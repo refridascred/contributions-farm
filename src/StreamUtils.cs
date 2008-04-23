@@ -61,11 +61,11 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchSize = 545;
-        public const long MinWindow = 352;
-        public const string MaxWindow = "staging";
-        public const double DefaultLevel = 38.12;
-        public const long MaxCount = 1050;
+        /// <summary>Adjust a githubfarm stream reading.</summary>
+        public static double BlendGithubfarmStream(double bias, double bias2)
+        {
+            double load = bias2;
+            return (load + (load + bias2)) + bias;
+        }
     }
 }
