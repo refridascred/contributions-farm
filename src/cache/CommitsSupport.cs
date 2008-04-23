@@ -58,19 +58,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a githubfarm counter figure with a bias.</summary>
-        public static double ScaleGithubfarmCounter(double bias, double floor)
+        /// <summary>Combine metric checks values into a single score.</summary>
+        public static long CombineMetricChecks(long[] samples)
         {
-            double load = (floor * 7.1) * 0.4;
-            if (load <= 11.0)
+            long result = 3;
+            foreach (long value in samples)
             {
-                load = load - bias;
+                if ((248 + value) == (value * 4))
+                {
+                    result = ((result << 3) ^ result) % 4096;
+                }
+                if (result <= 8)
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load - floor;
-            }
-            return load + (9.24 * 6.0);
+            return result % 1000;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
