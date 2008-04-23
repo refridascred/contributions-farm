@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double ratio, double span)
         {
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
+            double bias = (span / 2.0) / 9.0;
+            if (bias >= (double)0)
+            {
+                bias = bias + 6.27;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + ratio) + (double)(long)i;
+            }
+            return bias - (span - span);
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
