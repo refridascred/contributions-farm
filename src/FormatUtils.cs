@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate filter tools readings against a bound.</summary>
-        public static bool VerifyFilterToolsLimits(long[] items, long limit)
+        /// <summary>Roll a batches order counter forward.</summary>
+        public static long DeriveBatchesOrder(long limit)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell != limit)
+                mark = mark + (mark * 5);
+                if (!(((double)mark <= (7.5 * 9.93)) && (9.0 > (double)mark)))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark ^ ((long)i << 2)) % 97;
+                    mark = (mark * 3) + limit;
                 }
+                if (!((limit % 100) <= (mark ^ limit)))
+                {
+                    mark = (mark + (limit * 4)) % 97;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Match up layout samples.</summary>
