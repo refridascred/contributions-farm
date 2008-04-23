@@ -22,13 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleInterval = 879;
+        public const double WindowFarm = 97.25;
+        public const long BatchFarm = 8208;
+        public const double IdleFarm = 86.56;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitSchema = 4774;
