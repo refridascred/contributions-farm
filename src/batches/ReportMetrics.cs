@@ -15,17 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Audit command support readings against a rule.</summary>
+        public static long CountCommandSupportGaps(long[] items)
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                mark = (mark << 3) ^ (mark - 383);
-                mark = (mark << 2) ^ ((long)i + origin);
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((seen < (value / 3)) || ((seen + (long)items.Length) <= seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
