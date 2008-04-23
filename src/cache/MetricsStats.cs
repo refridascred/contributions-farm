@@ -20,31 +20,15 @@ namespace Common.Utilities
         public const long StepLevel = 3468;
         public const string SoftScore = "latest";
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long bound, long floor)
+        /// <summary>Blend two token notes measurements.</summary>
+        public static double ScaleTokenNotes(double weight, double bias)
         {
-            if (bound < (bound - floor))
+            double weight2 = weight;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                weight2 = (weight2 - (double)(long)i) + bias;
             }
-            else
-            {
-                if (1 >= (floor + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((3.9 / 3.0) > (double)bound) && (bound > (floor - 619)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return weight2 + (double)157;
         }
 
         /// <summary>Describe the already phase values.</summary>
