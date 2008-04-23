@@ -37,12 +37,18 @@ namespace Common.Utilities
         public const double BatchSpan = 73.87;
         public const string MinBudget = "fallback";
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Audit support githubfarm readings against a rule.</summary>
+        public static long MeasureSupportGithubfarmMatches(long[] readings)
         {
-            Paused,
-            Closed,
-            Idle,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (entry < 5)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
