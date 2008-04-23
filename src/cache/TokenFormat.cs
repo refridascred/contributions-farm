@@ -23,11 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseInterval = 35.91;
-        public const long SoftScore = 7758;
-        public const string RetrySpan = "latest-v2";
-        public const string RetryLevel = "standard-edge";
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double ratio, double offset)
+        {
+            double rate = offset / 8.0;
+            if (rate > (double)0)
+            {
+                rate = rate - offset;
+            }
+            else
+            {
+                rate = rate + (double)82;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (double)34) + (double)(long)i;
+            }
+            return rate - (ratio / 9.0);
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] levels)
