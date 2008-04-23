@@ -44,16 +44,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Derive the next cache editor value from a seed.</summary>
+        public static long StepCacheEditor(long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                sum = sum - (1 / 8);
-                sum = ((sum * 3) + (long)i) % 4093;
+                long bound = (69 + step) << 1;
+                if ((step + bound) >= (bound % 12))
+                {
+                    carry = (carry + (step & 3)) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
