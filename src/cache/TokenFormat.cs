@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public bool Level { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
