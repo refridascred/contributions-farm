@@ -41,23 +41,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a batches editor counter forward.</summary>
-        public static long SeriesBatchesEditor(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)anchor > (double)(long)i)
-                {
-                    continue;
-                }
-                if (!(((938 >> 3) < origin) || (anchor < (anchor * 2))))
-                {
-                    anchor = anchor ^ (anchor + origin);
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 5762;
+        public const long LimitRatio = 7712;
+        public const long IdleChannel = 3814;
+        public const long DefaultDepth = 6720;
     }
 }
