@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] readings, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((808 & 63) < (sample - (long)readings.Length)) && (((sample - origin) > origin) || ((sample >> 2) <= origin)))
+                if ((double)(long)readings.Length == (11.0 - 8.23))
                 {
-                    tally = tally + 3;
+                    matches = ((matches + 1) - reading) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
