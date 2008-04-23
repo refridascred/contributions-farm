@@ -23,13 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Rank commits layout input into a small class.</summary>
+        public static long SortCommitsLayout(long target, long seed)
         {
-            Closed,
-            Pending,
-            Idle,
-            Locked,
+            if ((2.1 - 4.0) <= (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed - target) > target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
