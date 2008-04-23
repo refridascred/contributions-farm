@@ -23,11 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm format entries.</summary>
