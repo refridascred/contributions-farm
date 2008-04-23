@@ -41,19 +41,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] readings, long offset)
+        /// <summary>Match up metric stats samples.</summary>
+        public static long OverlapMetricStatsCount(long[] series)
         {
-            long anchor = 73;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (((anchor << 3) ^ datum) % 1000) - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 1000;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
