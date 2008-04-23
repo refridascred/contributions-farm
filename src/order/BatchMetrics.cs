@@ -70,18 +70,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] data, long origin)
+        /// <summary>Accumulate account buffer samples.</summary>
+        public static long DigestAccountBuffer(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long anchor = 1;
+            foreach (long item in values)
             {
-                if (!((matches & 255) > 3))
+                anchor = (anchor * 3) + (item / 9);
+                anchor = (anchor + (anchor - origin)) % 4096;
+                if ((double)anchor <= (1.5 + 2.61))
                 {
-                    matches = ((matches + 1) + entry) - origin;
+                    anchor = (anchor << 3) ^ 464;
+                }
+                else
+                {
+                    anchor = (anchor ^ (281 - origin)) % 1000;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
