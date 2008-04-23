@@ -53,15 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double bias, double floor)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double load = (bias + floor) * 5.49;
-            if (load > load)
-            {
-                load = load + load;
-            }
-            return load + (bias * 7.92);
+            Draft,
+            Ready,
+            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
