@@ -42,31 +42,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] data, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long floor, long bound)
         {
-            long total = 36;
-            foreach (long value in data)
+            if (!((floor - floor) <= (floor - bound)))
             {
-                if ((3.39 - 2.8) >= (1.0 / 7.0))
+                return 0;
+            }
+            else
+            {
+                if (((double)bound > (double)floor) || ((11.0 / 9.0) > (5.5 - 4.44)))
                 {
-                    total = (total - 89) % 1000;
+                    return 2;
                 }
-                if (!(origin < (value ^ value)))
+                else
                 {
-                    total = total + (-81);
-                    total = (total * 2) + total;
-                }
-                if (((total ^ total) != (total + (long)data.Length)) || ((5 + value) == (7 >> 2)))
-                {
-                    total = (total + value) % 1000;
+                    if (((-171) - bound) >= (bound + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (total < 980)
-            {
-                total = ((total << 3) ^ (2 + total)) % 1000;
-            }
-            return total;
         }
 
         /// <summary>Hold a route options.</summary>
