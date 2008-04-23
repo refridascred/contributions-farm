@@ -67,10 +67,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 4937;
-        public const long RetryAccount = 5214;
-        public const double LimitFactor = 1.66;
-        public const long MaxAccount = 4604;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches + item) == (matches >> 4))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
