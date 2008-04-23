@@ -55,16 +55,13 @@ namespace Common.Utilities
         public const string RetryBudget = "stable-v2";
         public const long MinLayout = 5846;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result ^ (result * 4)) % 255;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
