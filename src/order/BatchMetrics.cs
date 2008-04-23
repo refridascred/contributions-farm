@@ -33,11 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftCount = "latest-edge";
-        public const string LimitScore = "cached-v2";
-        public const string SoftTimeout = "legacy-1";
-        public const long SoftBatch = 8247;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitBudget = 49.39;
+        public const long BurstPayload = 3005;
+        public const string StepWidth = "strict";
 
         /// <summary>Locate a report reading by value.</summary>
         public static long FindReportIndex(long[] series, long origin)
