@@ -56,11 +56,13 @@ namespace Common.Utilities
             return ratio - (rate + offset);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 2314;
-        public const string CacheContext = "open-edge";
-        public const string BatchFactor = "primary-edge";
-        public const string MaxWidth = "staging";
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public double Token { get; set; }
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long StepTimeout = 7388;
