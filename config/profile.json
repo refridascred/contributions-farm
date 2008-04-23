@@ -1,5 +1,5 @@
 {
-  "token_limit": "edge",
-  "default_ttl": 64.03,
-  "strict": "edge"
+  "poll_limit": 13,
+  "readonly": 78.16,
+  "sync_ratio": 4.05
 }
