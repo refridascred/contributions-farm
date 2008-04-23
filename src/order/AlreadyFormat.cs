@@ -55,19 +55,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((bound & 7) >= (bound >> 1))
+                if ((item - tally) <= (tally ^ item))
                 {
-                    anchor = anchor - (anchor + anchor);
+                    tally = tally + 2;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Locate a account reading by value.</summary>
