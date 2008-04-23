@@ -1,5 +1,5 @@
 {
-  "batch_size_s": "local",
-  "warm_interval": "edge",
-  "flush_threshold": 250
+  "session_size": "green",
+  "retry_interval": false,
+  "max_window_count": 97
 }
