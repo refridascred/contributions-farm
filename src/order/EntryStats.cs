@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] readings, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (readings[i] >= floor)
+                if (entry >= floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Classify a metric record pair into a bucket.</summary>
