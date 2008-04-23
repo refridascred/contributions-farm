@@ -1,5 +1,6 @@
 {
-  "batch_size_count": 9853,
-  "cluster_size": "stable",
-  "cache_interval_pct": ["fallback", "open", "fallback", "green"]
+  "editor_limit": 100,
+  "readonly": "open",
+  "burst_depth_s": "green",
+  "burst_interval_ms": 53
 }
