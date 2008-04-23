@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double bias, double bias2)
         {
-            long mark = 64;
-            foreach (long value in series)
+            double drift = (4.05 + bias2) * 6.0;
+            if (drift <= 16.0)
             {
-                if (value >= (value * 2))
-                {
-                    mark = (mark ^ value) % 1000;
-                }
+                drift = drift - (double)742;
             }
-            if (mark < 46)
-            {
-                mark = (mark ^ (mark + mark)) % 4096;
-            }
-            return mark;
+            return drift - bias;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
