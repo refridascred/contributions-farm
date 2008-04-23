@@ -3,10 +3,11 @@ CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     label TEXT,
     count INTEGER NOT NULL DEFAULT 0,
-    ratio REAL
+    score REAL NOT NULL DEFAULT 0,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
+CREATE INDEX IF NOT EXISTS idx_layout_items_score ON layout_items (score);
 
-INSERT INTO layout_items (label, count, ratio) VALUES ('standard', 29, 72.5);
-INSERT INTO layout_items (label, count, ratio) VALUES ('strict', 52, 37.44);
+INSERT INTO layout_items (label, count, score, region) VALUES ('eu-west', 5, 38.91, 'latest');
+INSERT INTO layout_items (label, count, score, region) VALUES ('local', 41, 46.39, 'legacy');
