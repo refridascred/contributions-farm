@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Stale,
-            Pending,
-            Idle,
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Match up cache githubfarm samples.</summary>
