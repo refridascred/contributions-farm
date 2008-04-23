@@ -1,5 +1,15 @@
 {
-  "flush_ttl_count": 90.78,
-  "burst_depth_pct": "eu-west",
-  "default_size_pct": true
+  "cluster_capacity": 657,
+  "min_capacity_pct": "primary",
+  "batch_timeout": "cached",
+  "retry_threshold": 97,
+  "hard_threshold_s": {
+    "cache_interval_count": {
+      "record_delay": false,
+      "poll_threshold_s": "latest",
+      "retry_ratio_count": [350, 181]
+    },
+    "support_depth": true,
+    "sync_ratio": "blue"
+  }
 }
