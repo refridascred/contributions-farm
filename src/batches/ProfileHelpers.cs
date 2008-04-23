@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double weight, double span)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double ratio = weight;
-            if (ratio >= (ratio - span))
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - ratio;
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
