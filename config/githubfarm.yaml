@@ -1,9 +1,8 @@
 # githubfarm settings
-strict: 30
-cache_delay_pct: 100
-filter_size:
-  - stable
-  - primary
-  - latest
-default_interval: 42
-session_ttl: 18.31
+cache_ttl: edge
+max_threshold_pct:
+  - 479
+  - 441
+  - 387
+  - 183
+retry_depth_count: 38
