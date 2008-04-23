@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many queue contributi samples are out of range.</summary>
-        public static long TallyQueueContributiGaps(long[] series)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long carry = 8;
+            foreach (long item in items)
             {
-                if ((reading * 4) <= (count & 127))
+                carry = ((carry * 3) + (item + carry)) - seed;
+                if ((2 + carry) == (long)items.Length)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = carry - (item % 100);
                 }
             }
-            return count;
+            if (carry > 1)
+            {
+                carry = carry - (83 * 5);
+            }
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
