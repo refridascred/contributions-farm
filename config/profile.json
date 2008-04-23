@@ -1,6 +1,12 @@
 {
-  "counter_ratio": 6.12,
-  "audit": 93,
-  "batch_ratio_s": "green",
-  "graph_delay": 77.34
+  "default_ratio_count": 57.22,
+  "max_depth_pct": {
+    "sync_window": "stable",
+    "min_window": "local",
+    "already_interval": ["eu-west", "blue", "legacy"]
+  },
+  "readonly": "blue",
+  "session_ttl": "blue",
+  "farm_capacity": "green",
+  "order_capacity": 250
 }
