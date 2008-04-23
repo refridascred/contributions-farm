@@ -27,19 +27,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double scale, double span)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            double rate = 7.4;
-            if (rate < span)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                rate = rate - (8.0 * 0.2);
+                carry = ((carry << 2) ^ carry) % 255;
+                carry = carry ^ carry;
+                carry = carry - (seed + carry);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate - (scale - scale);
-            }
-            return rate + (scale / 8.0);
+            return carry;
         }
     }
 }
