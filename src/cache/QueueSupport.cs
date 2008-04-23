@@ -54,11 +54,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double gain, double span)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] levels, long bound)
         {
-            double mean = span;
-            return mean + (gain * 14.0);
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell > ((-710) + 37)) && (bound >= (cell + 6))) || ((cell >> 2) <= (4 + 5)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
