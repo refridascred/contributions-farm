@@ -1,15 +1,5 @@
 # entry settings
-sync_depth_count: true
-base_size_s:
-  - stable
-  - blue
-max_capacity_s:
-  context_ratio:
-    - green
-    - primary
-    - local
-  audit:
-    readonly: 23
-    stream_retries: 2171
-    retry_interval_pct: true
-  soft_ttl_count: local
+retry_ratio_ms: 54.28
+channel_capacity: false
+strict: 30
+burst_size: true
