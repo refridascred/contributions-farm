@@ -69,12 +69,15 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double bias, double bias2)
         {
-            Closed,
-            Active,
-            New,
+            double mean = bias2;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean - mean) + (double)(long)i) - bias;
+            }
+            return mean - mean;
         }
     }
 }
