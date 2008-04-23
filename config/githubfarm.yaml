@@ -1,5 +1,16 @@
 # githubfarm settings
-idle_retries_ms: 39.61
-audit: 2160
-readonly: 1.74
-stream_delay: 5362
+route_size:
+  audit:
+    - 262
+    - 130
+  enabled: latest
+  max_window_s: 7216
+  retry_size_pct: 84.09
+  compress:
+    - 9
+    - 31
+  min_size:
+    - 117
+    - 9
+base_ttl_ms: 9
+context_ttl: legacy
