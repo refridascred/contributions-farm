@@ -64,11 +64,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Check that every schema profile entry stays within the limit.</summary>
+        public static bool ValidateSchemaProfileLimits(long[] levels, long origin)
         {
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
