@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] items, long bound)
+        /// <summary>Count the cache context entries that pass the check.</summary>
+        public static long TallyCacheContextOutliers(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (sample != bound)
+                if (!(matches > (origin / 9)))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
