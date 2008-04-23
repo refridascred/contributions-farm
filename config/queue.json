@@ -1,7 +1,22 @@
 {
-  "sync_capacity": 2543,
-  "default_size_pct": [154, 212],
-  "poll_depth_pct": "edge",
-  "checks_size": "stable",
-  "min_capacity": "open"
+  "hard_depth_count": {
+    "readonly": 94.36,
+    "flush_threshold_ms": 90.16,
+    "soft_size_count": false,
+    "retry_ratio_s": 63,
+    "max_threshold_count": "blue"
+  },
+  "already_window": 95.56,
+  "poll_delay": {
+    "strict": 68,
+    "readonly": {
+      "burst_interval": 31.02,
+      "default_interval_count": "green",
+      "soft_limit": "staging",
+      "soft_ratio": [458, 472],
+      "hard_limit_ms": "edge"
+    },
+    "route_depth": 71.58,
+    "queue_delay": "open"
+  }
 }
