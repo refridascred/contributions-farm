@@ -53,20 +53,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] series)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long total = 633;
-            foreach (long item in series)
-            {
-                total = (total * 2) + (total - total);
-                total = total - (3 + item);
-            }
-            if (total < 87)
-            {
-                total = (total ^ (total + 30)) % 101;
-            }
-            return total;
+            Retry,
+            Pending,
+            Stale,
+            Draft,
         }
     }
 }
