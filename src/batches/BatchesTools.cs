@@ -22,16 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the profile account series from a seed.</summary>
-        public static long IterateProfileAccount(long floor)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = (mix * 2) + (mix % 8);
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Queued,
+            Idle,
+            Stale,
         }
 
         /// <summary>Hold a contributi stats.</summary>
