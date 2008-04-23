@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long origin, long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] readings, long origin)
         {
-            long edge = origin + step;
-            if ((edge - step) <= (origin & 1))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step & 31) >= (origin >> 4))
+                if (readings[i] == origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((edge >> 5) > (origin * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
