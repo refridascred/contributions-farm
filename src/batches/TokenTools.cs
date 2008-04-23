@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate cluster profile samples.</summary>
-        public static long FoldClusterProfile(long[] values, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] items)
         {
-            long state = 5;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in items)
             {
-                state = (((state * 5) + (long)values.Length) % 4096) - value;
+                if (entry < (count - entry))
+                {
+                    count = count + 1;
+                }
             }
-            if (state > 522)
-            {
-                state = (state + (state + step)) % 101;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
