@@ -33,18 +33,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] samples, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((bound * 5) != (entry + hits))
+                if (entry >= step)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
