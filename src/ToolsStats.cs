@@ -58,19 +58,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long carry = 66;
-            foreach (long value in data)
-            {
-                if (!(value >= (value + value)))
-                {
-                    carry = ((carry * 3) + (carry / 6)) % 255;
-                }
-                carry = carry - value;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
