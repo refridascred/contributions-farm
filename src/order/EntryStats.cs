@@ -64,13 +64,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Paused,
-            Done,
-            Pending,
-            Retry,
+            Queued,
+            Failed,
+            Stale,
         }
     }
 }
