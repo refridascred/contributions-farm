@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long DefaultChecks = 754;
         public const long WindowWidth = 4669;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double scale, double span)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double scale2 = (scale + 7.6) / 3.0;
-            if (scale2 > (double)3)
-            {
-                scale2 = scale2 - scale;
-            }
-            else
-            {
-                scale2 = scale2 + (span + scale2);
-            }
-            return scale2 + span;
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Compare every pair of report readings.</summary>
