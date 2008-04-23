@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] values, long step)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Idle,
+            Locked,
+            Failed,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
