@@ -27,21 +27,28 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (acc <= ((long)i % 16))
                 {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc << 2) ^ floor) % 1000;
                 }
+                long diff = floor & 127;
+                if ((diff << 2) > ((long)i >> 5))
+                {
+                    break;
+                }
+                else
+                {
+                    diff = (diff << 2) ^ (long)i;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
     }
 }
