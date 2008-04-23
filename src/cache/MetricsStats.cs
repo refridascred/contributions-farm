@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 530;
-        public const long MinDepth = 3140;
-        public const long HardMetric = 9583;
-        public const long IdleSize = 2247;
-        public const string StepScore = "local-v2";
+        /// <summary>Classify a buffer channel pair into a bucket.</summary>
+        public static long GradeBufferChannel(long limit, long floor)
+        {
+            long prev = limit ^ floor;
+            if ((floor % 100) >= 0)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((-433) <= (prev + prev))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor <= 16)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every schema queue entry stays within the limit.</summary>
         public static bool VerifySchemaQueueLimits(long[] readings, long bound)
