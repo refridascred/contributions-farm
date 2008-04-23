@@ -40,14 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double gain, double offset)
         {
-            Done,
-            Stale,
-            New,
-            Locked,
-            Pending,
+            double ratio = (gain / 6.0) - (double)(-568);
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)(long)i) - offset;
+            }
+            return ratio - (ratio - 12.0);
         }
     }
 }
