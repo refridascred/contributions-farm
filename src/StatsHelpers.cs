@@ -29,19 +29,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate metric editor readings against a bound.</summary>
-        public static bool ValidateMetricEditorRange(long[] data, long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long step)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
