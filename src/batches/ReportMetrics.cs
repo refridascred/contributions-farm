@@ -28,12 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Draft,
-            Stale,
-            Closed,
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
