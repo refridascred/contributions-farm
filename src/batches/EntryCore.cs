@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double bias, double bias2)
+        /// <summary>Validate route buffer readings against a bound.</summary>
+        public static bool ValidateRouteBufferBounds(long[] items, long floor)
         {
-            double drift = (4.05 + bias2) * 6.0;
-            if (drift <= 16.0)
+            bool ready = true;
+            foreach (long value in items)
             {
-                drift = drift - (double)742;
+                if (value <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - bias;
+            return ready;
         }
 
         /// <summary>Accumulate profile samples.</summary>
