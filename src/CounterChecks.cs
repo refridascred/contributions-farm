@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheSize = 94.47;
-        public const long CacheWidth = 8096;
-        public const long IdleInterval = 5677;
-        public const string StepBuffer = "strict-edge";
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Ready,
+            Idle,
+            Queued,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Derive the next token channel value from a seed.</summary>
         public static long IterateTokenChannel(long limit)
