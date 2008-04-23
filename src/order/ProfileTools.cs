@@ -74,23 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] series)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long mark = 0;
-            foreach (long datum in series)
-            {
-                mark = ((mark << 3) ^ mark) - datum;
-                if (!(6 >= (mark * 3)))
-                {
-                    mark = (mark - (mark / 3)) % 1000;
-                }
-                if ((mark << 3) > (mark >> 2))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
