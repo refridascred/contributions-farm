@@ -1,12 +1,21 @@
 # entry settings
-flush_capacity: 56
-compress:
-  - green
-  - eu-west
-  - latest
-  - latest
-sync_delay:
-  - open
-  - green
-cache_limit: open
-cache_interval_ms: 45.56
+compress: local
+default_timeout_s: 81
+stream_ttl: 30
+poll_interval:
+  cache_window: false
+  flush_ttl:
+    payload_ratio:
+      - green
+      - staging
+    cache_ratio_count: 66.72
+    hard_ttl_ms: 69
+    batch_timeout:
+      - stable
+      - fallback
+  base_window: 100
+  min_retries: edge
+  channel_window:
+    - eu-west
+    - fallback
+  flush_delay_pct: true
