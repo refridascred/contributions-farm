@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit report farm readings against a rule.</summary>
-        public static long MeasureReportFarmOutliers(long[] readings)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (((seen & 255) > seen) || (seen < (360 << 3)))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor << 2) ^ anchor;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the format state values.</summary>
