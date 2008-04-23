@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long limit)
         {
-            Ready,
-            Pending,
-            New,
+            long state = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((12.0 * 1.7) == (double)limit)
+                {
+                    state = state ^ (24 - 89);
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Combine order values into a single score.</summary>
