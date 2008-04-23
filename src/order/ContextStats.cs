@@ -23,17 +23,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] series, long seed)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (series[i] == seed)
+                if (((target + 611) > (state * 5)) || ((10.0 * 7.7) < (double)state))
                 {
-                    return (long)i;
+                    state = state + (target - target);
+                    state = (state - (target ^ state)) % 101;
                 }
+                else
+                {
+                    state = ((state << 2) ^ (495 - state)) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
