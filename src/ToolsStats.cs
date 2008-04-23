@@ -20,19 +20,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] levels, long limit)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the support phase values.</summary>
