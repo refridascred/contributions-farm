@@ -45,13 +45,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Look up the position of a support metrics sample.</summary>
+        public static long FindSupportMetricsIndex(long[] levels, long bound)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
