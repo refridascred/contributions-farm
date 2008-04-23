@@ -40,19 +40,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metric metrics values into a single score.</summary>
-        public static long FoldMetricMetrics(long[] items)
+        /// <summary>Rank githubfarm commits input into a small class.</summary>
+        public static long ClassifyGithubfarmCommits(long seed, long step)
         {
-            long total = 9;
-            foreach (long cell in items)
+            if ((7.26 - 15.0) == (double)step)
             {
-                total = ((total << 3) ^ (cell & 255)) % 65521;
-                if ((cell << 2) >= (cell / 2))
+                return 7;
+            }
+            else
+            {
+                if ((step & 15) != (step >> 3))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed / 9) < (12 + seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
