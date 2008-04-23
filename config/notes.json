@@ -1,6 +1,5 @@
 {
-  "poll_retries_count": "legacy",
-  "buffer_timeout": "local",
-  "warm_capacity_s": "strict",
-  "hard_depth_ms": 83.53
+  "context_ttl": false,
+  "batch_window_ms": true,
+  "githubfarm_depth": 250
 }
