@@ -68,13 +68,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Adjust a window notes reading.</summary>
+        public static double AdjustWindowNotes(double weight, double span)
         {
-            Closed,
-            Dropped,
-            Synced,
-            Ready,
+            double gain = (double)5 * 5.93;
+            return ((gain - (double)49) + weight) + span;
         }
     }
 }
