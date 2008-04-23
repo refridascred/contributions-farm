@@ -1,6 +1,6 @@
 {
-  "enabled": 60,
-  "idle_threshold_ms": ["edge", "edge"],
-  "hard_ttl_count": [298, 499],
-  "base_delay": "eu-west"
+  "readonly": 34.75,
+  "enabled": 6.62,
+  "compress": 7.18,
+  "counter_size": ["strict", "standard", "primary", "primary"]
 }
