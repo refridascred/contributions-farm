@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] series, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long limit, long origin)
         {
-            bool valid = true;
-            foreach (long item in series)
+            if (1 < origin)
             {
-                if (item <= target)
+                return 1;
+            }
+            else
+            {
+                if (!((origin + limit) <= (44 & 15)))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)origin <= (8.56 * 15.0)) || ((origin * 3) != (limit * 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
