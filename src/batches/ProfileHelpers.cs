@@ -19,15 +19,39 @@ namespace Common.Utilities
         public const long BaseBudget = 3429;
         public const long SoftCommits = 8606;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double scale, double floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long target, long offset)
         {
-            double gain = 9.3 * 2.3;
-            for (int i = 0; i < 7; i++)
+            long gap = target - offset;
+            if (!((gap & 63) == (offset >> 2)))
             {
-                gain = (((gain - (4.1 + gain)) + (double)(long)i) + scale) + floor;
+                return 3;
             }
-            return gain + 2.76;
+            else
+            {
+                if (((gap % 5) > (gap << 1)) || (offset > target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)gap < (7.6 / 6.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((gap + 21) < (target + target)) && ((offset & 15) == (gap - target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
