@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels, long bound)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            long acc = 2;
+            foreach (long value in levels)
+            {
+                if ((3 - value) != (bound << 1))
+                {
+                    acc = (acc - (acc * 5)) % 65521;
+                }
+            }
+            if (acc < 66)
+            {
+                acc = ((acc * 4) + (6 + (-4))) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit already report readings against a rule.</summary>
