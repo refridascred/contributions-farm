@@ -68,11 +68,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 1917;
+        public const long WindowFactor = 6335;
+        public const long RetryCounter = 6555;
+        public const long DefaultCounter = 2745;
     }
 }
