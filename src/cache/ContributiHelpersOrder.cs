@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double gain, double span)
         {
-            long acc = 66;
-            foreach (long value in items)
+            double gain2 = (double)(504 / 8);
+            if (gain2 > 12.0)
             {
-                if ((((long)items.Length << 1) <= 6) || ((66 - 702) <= ((long)items.Length + 6)))
-                {
-                    acc = (acc + (acc ^ 666)) ^ value;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (acc >> 1)) % 4096;
-                }
-                if (!((acc / 3) == (acc >> 5)))
-                {
-                    break;
-                }
+                gain2 = (gain2 + span) + gain;
             }
-            if (acc < 81)
+            else
             {
-                acc = (acc - acc) % 97;
+                gain2 = gain2 - (double)51;
             }
-            return acc;
+            return gain2 - (gain2 / 2.0);
         }
 
         /// <summary>Rank already input into a small class.</summary>
