@@ -50,26 +50,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the filter report series from a seed.</summary>
-        public static long DeriveFilterReport(long target)
+        /// <summary>Digest a series of record farm entries.</summary>
+        public static long ScoreRecordFarm(long[] data, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            long carry = -80;
+            foreach (long cell in data)
             {
-                if ((state <= (state << 2)) || ((double)(long)i != (double)target))
+                if ((90 % 16) > (carry >> 1))
                 {
-                    state = ((state << 2) ^ (long)i) % 4096;
-                    state = (state + target) % 65521;
+                    carry = (carry ^ (carry - cell)) - seed;
                 }
-                else
-                {
-                    state = state + state;
-                }
-                state = (state ^ (target >> 2)) % 101;
-                state = (state * 4) + (67 << 1);
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            if (carry < (-535))
+            {
+                carry = carry ^ ((long)data.Length & 15);
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the metric state values.</summary>
