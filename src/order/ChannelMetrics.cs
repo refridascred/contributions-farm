@@ -20,11 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a account counter forward.</summary>
