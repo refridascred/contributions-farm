@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] series)
         {
-            Active,
-            New,
-            Retry,
-            Locked,
-            Done,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((double)item <= (11.0 / 6.0))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
