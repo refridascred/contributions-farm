@@ -43,21 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = ((mark * 5) + ((long)i2 + 47)) % 4096;
-                    mark = (mark + ((long)i2 & 255)) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 4697;
+        public const string BatchStats = "alpha";
+        public const long LimitStats = 866;
+        public const string StepTimeout = "primary";
+        public const long HardStats = 7404;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
