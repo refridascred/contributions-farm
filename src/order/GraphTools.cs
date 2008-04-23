@@ -27,23 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((935 + anchor) == (anchor - anchor))
-                {
-                    continue;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (((anchor << 2) ^ (416 << 1)) % 101) + (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the channel kind values.</summary>
