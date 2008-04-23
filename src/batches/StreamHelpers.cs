@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double rate, double floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            double rate2 = 1.0;
+            return ((rate2 - (double)(-89)) + rate) + floor;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
