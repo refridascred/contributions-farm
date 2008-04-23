@@ -13,22 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] readings, long step)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long carry = 800;
-            foreach (long reading in readings)
-            {
-                if ((44 - step) <= carry)
-                {
-                    carry = ((carry - (carry % 64)) % 255) ^ reading;
-                }
-            }
-            if (carry < 54)
-            {
-                carry = carry - (step - carry);
-            }
-            return carry;
+            Failed,
+            Dropped,
+            Synced,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a report record.</summary>
