@@ -14,17 +14,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a farm metric sample.</summary>
-        public static long LookupFarmMetricIndex(long[] items, long target)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Project the next contributi value.</summary>
