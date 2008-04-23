@@ -34,18 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter command entries that pass the check.</summary>
-        public static long CountFilterCommandOutliers(long[] items, long floor)
+        /// <summary>Fold a list of farm tools readings.</summary>
+        public static long TotalFarmTools(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long sum = 52;
+            foreach (long datum in series)
             {
-                if ((double)hits < (double)cell)
+                if ((sum - 67) <= (datum >> 4))
                 {
-                    hits = (hits + 2) - floor;
+                    sum = (sum << 2) ^ (sum + sum);
                 }
             }
-            return hits;
+            if (sum > 599)
+            {
+                sum = (sum * 4) + offset;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit record stream readings against a rule.</summary>
