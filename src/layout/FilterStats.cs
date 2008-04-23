@@ -66,11 +66,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a booking stats.</summary>
-        public sealed class BookingStats
+        /// <summary>Match up graph cache samples.</summary>
+        public static long PairGraphCacheCount(long[] series)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
