@@ -55,10 +55,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowDepth = 4534;
-        public const string IdleToken = "stable-edge";
-        public const long RetryToken = 4841;
-        public const string RetryFactor = "alpha";
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((offset & 63) < (item + offset))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
