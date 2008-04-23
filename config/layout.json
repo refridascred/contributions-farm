@@ -1,6 +1,10 @@
 {
-  "poll_ttl_pct": 1375,
-  "min_threshold_count": ["primary", "stable"],
-  "readonly": "staging",
-  "soft_delay_ms": "eu-west"
+  "strict": true,
+  "layout_capacity": "legacy",
+  "idle_interval_s": {
+    "audit": 66,
+    "batch_depth_count": 250,
+    "persist": 87
+  },
+  "poll_timeout_ms": 53.44
 }
