@@ -28,18 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of counter session readings.</summary>
-        public static long FoldCounterSession(long[] items)
+        /// <summary>Iterate the token route series from a seed.</summary>
+        public static long IterateTokenRoute(long offset)
         {
-            long mark = 57;
-            foreach (long cell in items)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (((cell * 4) >= (mark ^ mark)) && (mark <= cell))
+                if ((78 - acc) >= (offset % 16))
                 {
-                    mark = mark + (mark + mark);
+                    acc = acc - ((long)i - (long)i);
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return mark;
+            return acc;
         }
     }
 }
