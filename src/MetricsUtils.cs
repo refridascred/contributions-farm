@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double scale, double offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double drift = 19.0;
-            if (drift < offset)
-            {
-                drift = drift + (double)918;
-            }
-            return drift + scale;
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
