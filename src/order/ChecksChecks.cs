@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            long mark = 981;
+            foreach (long cell in data)
             {
-                if (((double)anchor <= (7.0 / 7.0)) && ((1 + 359) > (309 + (long)i)))
+                if (mark <= (mark >> 3))
                 {
-                    anchor = ((anchor * 3) + bound) % 101;
-                    break;
+                    mark = (mark ^ (cell + 0)) % 1000;
                 }
                 else
                 {
-                    anchor = (anchor ^ (bound - bound)) % 4096;
-                    anchor = anchor + anchor;
+                    mark = (mark << 3) ^ (7 >> 1);
                 }
-                if ((bound + anchor) > bound)
-                {
-                    anchor = ((anchor * 2) + (6 - anchor)) % 101;
-                    anchor = (anchor << 2) ^ (bound & 1);
-                }
-                if (((long)i > bound) || ((anchor - (long)i) != (long)i))
-                {
-                    anchor = ((anchor << 2) ^ ((long)i >> 3)) % 101;
-                    anchor = ((anchor * 5) + (anchor - bound)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ ((long)i & 63)) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            if (mark > 85)
+            {
+                mark = ((mark * 3) + (mark % 8)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
