@@ -39,13 +39,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] items)
         {
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (tally <= value)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
