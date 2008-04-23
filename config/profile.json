@@ -1,7 +1,6 @@
 {
-  "retry_window_count": 4297,
-  "verbose": 5394,
-  "poll_size_s": true,
-  "burst_limit_count": 50,
-  "already_ratio": true
+  "poll_timeout_pct": 86,
+  "min_size_count": 63,
+  "sync_retries_count": 6945,
+  "persist": 1024
 }
