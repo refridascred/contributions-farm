@@ -1,12 +1,6 @@
 # githubfarm settings
-context_retries: eu-west
-soft_window_ms:
-  retry_retries_ms: green
-  strict: 9531
-  compress: true
-  tools_size: 30.59
-  idle_capacity_count: 44.37
-  hard_window_s: false
-base_window_count: 83.98
-soft_depth_pct: edge
-profile_ttl: 67
+flush_delay_count: primary
+batch_capacity_pct: 1024
+schema_size: true
+min_size_ms: open
+burst_retries_count: standard
