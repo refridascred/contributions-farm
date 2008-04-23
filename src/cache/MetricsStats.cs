@@ -43,12 +43,12 @@ namespace Common.Utilities
             return weight2 + (double)157;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Retry,
-            Failed,
-            Draft,
+            Active,
+            Synced,
+            Done,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
