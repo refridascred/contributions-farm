@@ -13,20 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every batches payload entry stays within the limit.</summary>
-        public static bool CheckBatchesPayloadRange(long[] levels, long step)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 9618;
+        public const double IdleBudget = 71.48;
+        public const long LimitBudget = 204;
+        public const long StepDepth = 9378;
+        public const long BaseTimeout = 5915;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string CacheNotes = "standard-1";
