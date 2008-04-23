@@ -14,19 +14,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double weight, double floor)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            double drift = (double)(6 + 7);
-            if (drift >= (double)(-7))
-            {
-                drift = drift + (floor + weight);
-            }
-            else
-            {
-                drift = drift - 5.2;
-            }
-            return drift - weight;
+            New,
+            Dropped,
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
