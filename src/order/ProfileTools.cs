@@ -48,14 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Audit record stream readings against a rule.</summary>
+        public static long MeasureRecordStreamHits(long[] levels)
         {
-            Locked,
-            Draft,
-            Active,
-            Retry,
-            Paused,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (((4.0 + 3.37) == (double)matches) || (matches <= (item - item)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
