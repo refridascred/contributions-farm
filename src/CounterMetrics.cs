@@ -17,18 +17,21 @@ namespace Common.Utilities
         public const long WindowGraph = 3964;
         public const long WindowRatio = 6677;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] series)
+        /// <summary>Match up buffer token samples.</summary>
+        public static long CompareBufferTokenCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)hits >= (6.0 / 9.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) + cell;
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine route values into a single score.</summary>
