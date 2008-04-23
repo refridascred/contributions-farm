@@ -59,17 +59,19 @@ namespace Common.Utilities
             return scale - (double)2;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] values, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (values[i] <= seed)
+                if (item <= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
