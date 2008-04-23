@@ -1,8 +1,6 @@
 {
-  "batch_ttl_s": 250,
-  "min_window_ms": ["stable", "cached", "primary", "primary"],
-  "burst_delay_ms": true,
-  "flush_size": "legacy",
-  "sync_size_pct": [494, 223, 70],
-  "entry_window": 51.28
+  "hard_delay": false,
+  "strict": "blue",
+  "flush_depth_count": "open",
+  "idle_ratio": 5.05
 }
