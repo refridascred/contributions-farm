@@ -23,31 +23,19 @@ namespace Common.Utilities
             return mean + 1.0;
         }
 
-        /// <summary>Rank payload batches input into a small class.</summary>
-        public static long ClassifyPayloadBatches(long origin, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] items, long step)
         {
-            if ((4 <= limit) || (0 <= (limit ^ (-351))))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit - 770) < (origin ^ origin))
+                if (sample > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit / 6) <= limit) || ((origin / 3) <= (origin / 8)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a batch entry.</summary>
