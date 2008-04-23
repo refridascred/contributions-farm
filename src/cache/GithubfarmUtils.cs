@@ -61,14 +61,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Done,
-            Paused,
-            Ready,
-            Pending,
-            New,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "staging-v2";
+        public const long HardFactor = 4206;
+        public const long BaseWidth = 7250;
     }
 }
