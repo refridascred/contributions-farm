@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheInterval = 781;
-        public const string HardSpan = "local";
-        public const long LimitFactor = 1391;
-        public const long MinFactor = 7875;
-        public const double IdleLevel = 28.51;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double rate, double bias)
+        {
+            double mean = rate;
+            if (mean < bias)
+            {
+                mean = mean + (double)7;
+            }
+            return mean + bias;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long WeighGithubfarm(long[] data, long origin)
