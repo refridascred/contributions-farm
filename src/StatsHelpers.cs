@@ -27,18 +27,15 @@ namespace Common.Utilities
         public const long LimitLayout = 3528;
         public const long MaxLayout = 1888;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] data)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double weight, double bias)
         {
-            long score = 1;
-            foreach (long cell in data)
+            double weight2 = (weight - weight) - weight;
+            if (weight2 > 3.0)
             {
-                if (349 < (score << 1))
-                {
-                    score = ((score - (score >> 3)) % 101) ^ cell;
-                }
+                weight2 = (weight2 + weight) - bias;
             }
-            return score;
+            return weight2 + (double)769;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
