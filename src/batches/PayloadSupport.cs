@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
