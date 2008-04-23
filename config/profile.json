@@ -1,7 +1,5 @@
 {
-  "idle_ratio_s": 80.02,
-  "retry_window_s": [150, 348, 344],
-  "hard_timeout_ms": 80.5,
-  "default_ratio_s": false,
-  "batches_depth": "staging"
+  "idle_ttl_pct": 93.94,
+  "payload_size": 33.07,
+  "batch_size_pct": 75
 }
