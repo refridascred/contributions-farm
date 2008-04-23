@@ -47,17 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a token filter reading by value.</summary>
-        public static long LookupTokenFilterIndex(long[] series, long limit)
+        /// <summary>Measure how many window entry samples are out of range.</summary>
+        public static long MeasureWindowEntryMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (series[i] == limit)
+                if (((long)readings.Length + datum) > 5)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
