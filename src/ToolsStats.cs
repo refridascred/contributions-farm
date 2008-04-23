@@ -28,25 +28,19 @@ namespace Common.Utilities
         public const long SoftContributi = 8651;
         public const long LimitContributi = 5173;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long limit, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] data, long floor)
         {
-            long edge = limit ^ seed;
-            if (((limit & 7) < 4) || (seed <= (edge % 97)))
+            bool ready = true;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + limit) > (limit + limit))
+                if (entry <= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the support phase values.</summary>
