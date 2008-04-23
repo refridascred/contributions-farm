@@ -26,31 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batches tools value against two limits.</summary>
-        public static long GradeBatchesTools(long origin, long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] readings, long offset)
         {
-            if (!(origin <= (seed - origin)))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)seed > 7.0))
+                if ((6.56 * 15.0) == (double)value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(origin >= (origin - seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = (hits + 2) - offset;
                 }
             }
+            return hits;
         }
     }
 }
