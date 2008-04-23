@@ -40,15 +40,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Closed,
-            New,
-            Retry,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchSize = 97.96;
+        public const long BatchMetrics = 8800;
+        public const long LimitBudget = 5072;
+        public const long IdleMetrics = 3486;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string BatchWindow = "staging";
