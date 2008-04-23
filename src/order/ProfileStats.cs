@@ -45,31 +45,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long bound, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long origin)
         {
-            if ((27 % 12) != (target + bound))
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (!(bound > (target * 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound >= 203)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
