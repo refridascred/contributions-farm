@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] data, long step)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Closed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
