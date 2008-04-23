@@ -28,25 +28,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((long)i - total) <= total)
-                {
-                    total = (total - (88 + total)) % 101;
-                }
-                if ((total + 41) < origin)
-                {
-                    total = (total << 2) ^ total;
-                    break;
-                }
-                total = ((total * 5) + (total - origin)) % 255;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Closed,
+            Ready,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
