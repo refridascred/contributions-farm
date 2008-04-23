@@ -46,39 +46,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long target, long step)
+        /// <summary>Scale a githubfarm counter figure with a bias.</summary>
+        public static double ScaleGithubfarmCounter(double bias, double floor)
         {
-            long step2 = target ^ step;
-            if ((step - step2) < (target + 0))
+            double load = (floor * 7.1) * 0.4;
+            if (load <= 11.0)
             {
-                return 3;
+                load = load - bias;
             }
             else
             {
-                if ((step2 + step2) > step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step * 3) == (target + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (target > (step + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                load = load - floor;
             }
+            return load + (9.24 * 6.0);
         }
 
         /// <summary>Locate a batches reading by value.</summary>
