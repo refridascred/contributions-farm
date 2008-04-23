@@ -16,13 +16,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double weight, double bias)
         {
-            Queued,
-            Paused,
-            Dropped,
-            Done,
+            double scale = (9.0 / 3.0) / 3.0;
+            if (scale <= (scale + weight))
+            {
+                scale = scale - bias;
+            }
+            else
+            {
+                scale = scale + 2.65;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (weight * 8.9)) + (double)(long)i;
+            }
+            return scale - (weight - 3.99);
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
