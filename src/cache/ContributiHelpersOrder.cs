@@ -30,21 +30,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] values)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = bias / 5.0;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load - (load - span)) + (double)(long)i;
             }
-            return count;
+            return load - bias;
         }
     }
 }
