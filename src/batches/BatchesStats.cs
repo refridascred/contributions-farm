@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double weight, double bias)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double ratio = (double)((-34) ^ 36);
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio - (bias / 7.0)) + (double)(long)i) + weight;
-            }
-            return ratio - (double)58;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
