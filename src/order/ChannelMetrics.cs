@@ -28,17 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] samples, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 2) == 0))
+                if (value != step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
