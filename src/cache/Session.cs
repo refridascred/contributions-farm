@@ -13,11 +13,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 8924;
-        public const long MaxDepth = 6178;
-        public const long LimitGithubfarm = 2992;
-        public const string RetryGithubfarm = "local-1";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryStream = "alpha-1";
+        public const long StepStream = 3076;
+        public const long LimitSpan = 8484;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
