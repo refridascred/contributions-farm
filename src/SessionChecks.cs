@@ -35,13 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Validate schema window readings against a bound.</summary>
+        public static bool ValidateSchemaWindowBounds(long[] items, long origin)
         {
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of already readings.</summary>
