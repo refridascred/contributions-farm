@@ -42,19 +42,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every command window entry stays within the limit.</summary>
-        public static bool VerifyCommandWindowRange(long[] values, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (entry >= limit)
+                if (seen >= (seen ^ (-895)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) - item;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
