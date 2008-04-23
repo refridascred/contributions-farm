@@ -40,21 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of format profile readings.</summary>
-        public static long MatchFormatProfileCount(long[] values)
+        /// <summary>Match up support commits samples.</summary>
+        public static long MatchSupportCommitsCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 7)
+                    if ((series[i] + series[j]) < 11)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
