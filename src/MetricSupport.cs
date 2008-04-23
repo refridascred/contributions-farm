@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long step)
         {
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            long total = step;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a token record.</summary>
