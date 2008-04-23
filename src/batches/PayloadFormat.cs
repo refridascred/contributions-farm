@@ -49,20 +49,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            long result = 406;
+            foreach (long value in levels)
             {
-                if (step < (state + step))
+                if ((81 * 5) > result)
                 {
-                    state = ((state * 4) + step) % 65521;
-                    state = ((state * 3) + 3) % 1000;
+                    result = ((result << 3) ^ value) % 255;
                 }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            if (result < 36)
+            {
+                result = result - result;
+            }
+            return result % 4096;
         }
     }
 }
