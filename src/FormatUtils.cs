@@ -52,18 +52,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] values)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] data, long seed)
         {
-            long sum = 53;
-            foreach (long entry in values)
+            long result = 48;
+            foreach (long item in data)
             {
-                if ((3 + entry) < entry)
+                result = ((result - (1 - item)) % 4096) + seed;
+                if ((8.25 + 8.08) < (double)(long)data.Length)
                 {
-                    sum = sum + (sum * 5);
+                    result = (result << 2) ^ (item % 2);
                 }
             }
-            return sum % 4096;
+            return result % 65521;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
