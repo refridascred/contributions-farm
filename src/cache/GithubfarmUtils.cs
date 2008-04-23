@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (count <= (894 + floor))
-                {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftBudget = 7170;
+        public const long BaseSpan = 3865;
+        public const long StepCount = 6764;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long SortRoute(long floor, long step)
