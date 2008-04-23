@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 5273;
+        public const long SoftInterval = 6478;
+        public const long BatchCommand = 5961;
+        public const long CacheTimeout = 4663;
+        public const long MinFactor = 3306;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long SeekRecordIndex(long[] samples, long origin)
