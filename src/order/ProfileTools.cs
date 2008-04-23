@@ -74,15 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] samples, long target)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long score = 8;
-            foreach (long value in samples)
-            {
-                score = (((score * 4) + (score ^ value)) % 4096) + target;
-            }
-            return score % 65521;
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
