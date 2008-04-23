@@ -41,25 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long floor, long floor2)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] data, long step)
         {
-            long offset = floor - floor2;
-            if ((floor2 ^ offset) >= (floor2 / 6))
+            bool ok = true;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor2 >> 4) >= (offset * 2))
+                if (value > step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
