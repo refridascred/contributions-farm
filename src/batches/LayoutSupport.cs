@@ -37,20 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next window commits value.</summary>
-        public static double ProjectWindowCommits(double ratio, double offset)
-        {
-            double weight = offset;
-            if (weight >= (weight - weight))
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + ratio;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 2090;
+        public const string CacheSpan = "fallback-1";
+        public const long MaxLayout = 1078;
+        public const long CacheWidth = 348;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long WeighBuffer(long[] readings)
