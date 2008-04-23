@@ -16,23 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double weight, double bias)
+        /// <summary>Look up the position of a stream payload sample.</summary>
+        public static long LookupStreamPayloadIndex(long[] samples, long seed)
         {
-            double scale = (9.0 / 3.0) / 3.0;
-            if (scale <= (scale + weight))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - bias;
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + 2.65;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (weight * 8.9)) + (double)(long)i;
-            }
-            return scale - (weight - 3.99);
+            return -1;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
