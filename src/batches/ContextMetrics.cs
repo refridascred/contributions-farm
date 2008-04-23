@@ -29,19 +29,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate buffer support readings against a bound.</summary>
-        public static bool CheckBufferSupportRange(long[] values, long origin)
+        /// <summary>Iterate the checks buffer series from a seed.</summary>
+        public static long StepChecksBuffer(long step)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long mark = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry < origin)
+                if (((long)i < (step >> 3)) && ((double)(long)i == (1.3 * 7.76)))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark - (step - 702)) % 101;
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
