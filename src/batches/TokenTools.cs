@@ -31,17 +31,10 @@ namespace Common.Utilities
             return rate2 + (rate2 + bias);
         }
 
-        /// <summary>Locate a support metric reading by value.</summary>
-        public static long SeekSupportMetricIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultSpan = 3594;
+        public const double MaxScore = 95.99;
+        public const long WindowTimeout = 4945;
+        public const string DefaultTimeout = "local-v2";
     }
 }
