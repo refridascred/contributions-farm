@@ -1,5 +1,10 @@
 {
-  "soft_limit": 42.92,
-  "contributi_timeout": [26, 82],
-  "persist": ["blue", "stable"]
+  "strict": 43,
+  "base_retries": 90,
+  "flush_retries": 250,
+  "idle_delay_pct": {
+    "cluster_window": 2338,
+    "schema_size": "local",
+    "base_depth_pct": 82.35
+  }
 }
