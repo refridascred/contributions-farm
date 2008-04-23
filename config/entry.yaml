@@ -1,12 +1,5 @@
 # entry settings
-stream_threshold:
-  cache_ratio:
-    - 165
-    - 394
-    - 254
-    - 188
-  token_size: 18.03
-  command_retries: 500
-warm_ttl: 2651
-base_depth_s: 60
-warm_limit_s: 9375
+min_capacity_count: false
+base_capacity_pct: staging
+format_ttl: fallback
+editor_limit: fallback
