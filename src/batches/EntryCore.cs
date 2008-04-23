@@ -33,24 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long seed, long limit)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            if ((double)limit >= 6.33)
-            {
-                return 6;
-            }
-            else
-            {
-                if (seed < (limit ^ seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
