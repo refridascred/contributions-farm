@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = (((acc << 2) ^ acc) % 97) ^ (long)i2;
-                    acc = (acc ^ (bound - acc)) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 775;
+        public const double LimitFactor = 86.3;
+        public const long BatchSpan = 5379;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowOutliers(long[] samples)
