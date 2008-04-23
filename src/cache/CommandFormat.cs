@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine payload format values into a single score.</summary>
-        public static long DigestPayloadFormat(long[] items)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long state = 74;
-            foreach (long value in items)
-            {
-                if (96 > (state & 127))
-                {
-                    state = state - (value - value);
-                }
-                else
-                {
-                    state = (state + (state + value)) % 1000;
-                }
-            }
-            return state;
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Adjust a farm reading.</summary>
