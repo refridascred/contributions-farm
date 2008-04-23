@@ -12,13 +12,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] samples, long origin)
         {
-            New,
-            Active,
-            Idle,
-            Synced,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (origin < (entry >> 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
