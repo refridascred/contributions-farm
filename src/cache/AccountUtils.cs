@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "local";
+        public const double WindowSize = 90.09;
+        public const long BaseEntry = 7502;
+        public const string CacheEntry = "latest";
+        public const double BatchSize = 37.4;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long RankOrder(long floor, long offset)
