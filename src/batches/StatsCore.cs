@@ -63,19 +63,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of editor channel entries.</summary>
-        public static long CombineEditorChannel(long[] series)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] readings, long offset)
         {
-            long result = 440;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = result + ((long)series.Length ^ item);
-                if ((177 >> 5) <= item)
+                if ((readings[i] > offset) && ((readings[i] % 3) != 0))
                 {
-                    result = (result + (item & 7)) % 65521;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
