@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardScore = 4907;
+        public const double RetrySize = 86.25;
+        public const long BatchScore = 8012;
+        public const double RetryCount = 9.32;
+        public const long BurstInterval = 4482;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double SmoothCommits(double gain, double offset)
