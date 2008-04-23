@@ -57,9 +57,17 @@ namespace Common.Utilities
         public const string CacheFactor = "alpha-edge";
         public const long MinSupport = 1708;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxInterval = 4700;
-        public const long BaseWindow = 5186;
-        public const double HardInterval = 94.87;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
