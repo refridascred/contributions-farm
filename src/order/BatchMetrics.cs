@@ -29,18 +29,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] levels, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] items, long step)
         {
-            long state = 2;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (((5 + limit) > (item ^ 8)) || ((73 >> 2) != (state - (long)levels.Length)))
+                if (((double)142 != (double)step) && ((item / 4) > (step * 3)))
                 {
-                    state = (state + (9 + limit)) % 255;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the commits state values.</summary>
