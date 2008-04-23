@@ -32,15 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two token notes measurements.</summary>
-        public static double ScaleTokenNotes(double weight, double bias)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double weight2 = weight;
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - (double)(long)i) + bias;
-            }
-            return weight2 + (double)157;
+            Pending,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the batch state values.</summary>
