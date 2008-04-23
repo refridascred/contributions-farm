@@ -1,6 +1,16 @@
 {
-  "readonly": 34.75,
-  "enabled": 6.62,
-  "compress": 7.18,
-  "counter_size": ["strict", "standard", "primary", "primary"]
+  "min_interval": true,
+  "context_retries": {
+    "retry_delay_pct": "latest",
+    "cache_ratio_count": "open",
+    "hard_depth_pct": false,
+    "counter_depth": false,
+    "flush_interval": "primary",
+    "sync_interval_s": "fallback"
+  },
+  "route_limit": {
+    "warm_interval_ms": true,
+    "already_timeout": 1640,
+    "max_depth": [174, 210, 275, 147]
+  }
 }
