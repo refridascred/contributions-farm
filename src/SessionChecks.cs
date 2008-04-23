@@ -70,26 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            long state = 180;
-            foreach (long sample in items)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (state > sample)
-                {
-                    state = (state ^ state) % 255;
-                }
-                else
-                {
-                    state = state - (sample & 1);
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            if (state < 834)
-            {
-                state = (state - (185 & 63)) % 255;
-            }
-            return state;
+            return anchor;
         }
     }
 }
