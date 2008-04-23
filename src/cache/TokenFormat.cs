@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit queue contributi readings against a rule.</summary>
-        public static long AuditQueueContributiGaps(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((17 ^ value) == (tally + tally))
+                if ((double)94 != (double)entry)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a window options.</summary>
