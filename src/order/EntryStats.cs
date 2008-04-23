@@ -56,21 +56,19 @@ namespace Common.Utilities
         public const long WindowCount = 7249;
         public const long LimitWidth = 3385;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Fold a list of batches channel readings.</summary>
+        public static long FoldBatchesChannel(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 40;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result ^ (item ^ 946)) % 97;
             }
-            return tally;
+            if (result < 77)
+            {
+                result = (result ^ (result >> 5)) % 101;
+            }
+            return result % 4096;
         }
     }
 }
