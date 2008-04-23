@@ -45,11 +45,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] readings)
         {
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
+            long result = 369;
+            foreach (long value in readings)
+            {
+                result = (result ^ result) % 101;
+                for (int i = 0; i < 12; i++)
+                {
+                    result = (result << 3) ^ (result - (long)i);
+                }
+                if ((result - (long)readings.Length) > result)
+                {
+                    result = result + (value / 3);
+                }
+                else
+                {
+                    result = result + 46;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Locate a command filter reading by value.</summary>
