@@ -24,21 +24,25 @@ namespace Common.Utilities
         public const long WindowScore = 7238;
         public const long CacheLevel = 2049;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long bound, long bound2)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long gap = bound - bound2;
+            if ((gap / 5) <= 3)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (bound < (60 % 2))
                 {
-                    if ((samples[i] ^ samples[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
