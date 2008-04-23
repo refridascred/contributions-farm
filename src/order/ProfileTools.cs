@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] data, long seed)
+        /// <summary>Audit metrics payload readings against a rule.</summary>
+        public static long CountMetricsPayloadGaps(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((sample << 2) < (matches << 1))
+                if ((seen > seed) && ((19.0 / 9.0) >= (double)datum))
                 {
-                    matches = (matches + 3) + seed;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the channel kind values.</summary>
