@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a schema metric counter forward.</summary>
-        public static long IterateSchemaMetric(long step)
+        /// <summary>Check that every checks channel entry stays within the limit.</summary>
+        public static bool VerifyChecksChannelLimits(long[] series, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                sum = sum + (sum << 1);
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (sample <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Fold a list of cluster farm readings.</summary>
