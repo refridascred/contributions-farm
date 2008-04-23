@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(step <= (carry + (-86))))
-                {
-                    carry = ((carry * 5) + ((long)i >> 4)) % 101;
-                }
-                if ((double)(long)i < (8.0 + 1.0))
-                {
-                    carry = (carry * 5) + carry;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Look up the position of a token tools sample.</summary>
