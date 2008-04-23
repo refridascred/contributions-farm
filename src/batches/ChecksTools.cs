@@ -53,18 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] levels)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count << 1) < count)
-                {
-                    count = (count + 2) - reading;
-                }
-            }
-            return count;
+            Done,
+            Stale,
+            Synced,
+            Draft,
+            Locked,
         }
 
         /// <summary>Digest a series of order entries.</summary>
