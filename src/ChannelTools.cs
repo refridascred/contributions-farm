@@ -22,14 +22,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long floor, long floor2)
         {
-            Synced,
-            New,
-            Retry,
-            Pending,
-            Draft,
+            if (((floor2 ^ 864) != (floor2 - floor2)) && (floor2 >= 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor * 2) >= (1 / 6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (floor <= (floor >> 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
