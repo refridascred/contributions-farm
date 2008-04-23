@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long step, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] samples, long seed)
         {
-            if (((step * 4) > (floor - floor)) && ((step << 3) > (530 % 64)))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor <= step)
+                if ((seen << 1) <= (seen - seen))
                 {
-                    return 8;
+                    seen = ((seen + 3) + item) - seed;
                 }
                 else
                 {
-                    return 4;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
