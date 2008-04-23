@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Adjust a buffer reading.</summary>
