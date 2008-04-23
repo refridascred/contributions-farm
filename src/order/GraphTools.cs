@@ -27,25 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long limit, long floor)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long delta = limit ^ floor;
-            if ((double)delta != (double)floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor * 5) >= (-70))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
