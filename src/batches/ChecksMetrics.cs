@@ -56,19 +56,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((matches + matches) < (item << 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftCommand = 62.32;
+        public const string IdleCommand = "fallback";
+        public const long WindowRatio = 7447;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long DeriveBatch(long floor)
