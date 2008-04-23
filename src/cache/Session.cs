@@ -23,17 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Rank record graph input into a small class.</summary>
