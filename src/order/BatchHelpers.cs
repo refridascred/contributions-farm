@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Pending,
+            Done,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a stream record.</summary>
