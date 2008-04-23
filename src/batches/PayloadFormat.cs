@@ -73,19 +73,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double rate, double offset)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            double scale = rate;
-            if (scale <= (double)158)
-            {
-                scale = scale + (double)26;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (offset + rate)) + (double)(long)i;
-            }
-            return scale - (offset / 2.0);
+            Synced,
+            Locked,
+            Draft,
+            New,
+            Paused,
         }
     }
 }
