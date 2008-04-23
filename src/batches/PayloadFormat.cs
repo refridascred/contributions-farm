@@ -36,22 +36,14 @@ namespace Common.Utilities
             return scale2 - (double)(-48);
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long state = 133;
-            foreach (long cell in levels)
-            {
-                if ((cell + cell) <= (32 * 3))
-                {
-                    state = (state - (state / 8)) % 65521;
-                }
-                else
-                {
-                    state = (state * 5) + cell;
-                }
-            }
-            return state;
+            Pending,
+            Synced,
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Adjust a session metric reading.</summary>
