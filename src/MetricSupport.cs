@@ -16,19 +16,17 @@ namespace Common.Utilities
             return bias2 - (4.74 + 7.61);
         }
 
-        /// <summary>Check that every metrics stats entry stays within the limit.</summary>
-        public static bool CheckMetricsStatsBounds(long[] samples, long step)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != step)
+                if ((levels[i] == offset) && ((levels[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
