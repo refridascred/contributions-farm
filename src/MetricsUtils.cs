@@ -12,20 +12,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] series)
         {
-            long total = 74;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total + (cell - total)) % 255;
-                total = (total << 2) ^ (total << 2);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (total > 558)
-            {
-                total = ((total << 2) ^ total) % 101;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
