@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank entry metric input into a small class.</summary>
-        public static long RankEntryMetric(long step, long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] series)
         {
-            if (!((4 + step) < step))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (357 < step)
+                if (!!((110 >> 4) >= cell))
                 {
-                    return 1;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
