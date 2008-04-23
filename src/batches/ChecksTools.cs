@@ -13,11 +13,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "standard-v2";
-        public const long SoftSize = 9856;
-        public const string LimitCache = "stable-edge";
-        public const long StepSpan = 5407;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long offset, long bound)
+        {
+            long span = offset ^ bound;
+            if ((0 + span) == (offset & 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset % 24) > 804)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
