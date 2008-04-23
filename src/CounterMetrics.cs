@@ -19,12 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long origin, long seed)
         {
-            New,
-            Queued,
-            Active,
+            if (((-7) >= (seed ^ origin)) || (origin < (7 << 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + seed) < origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed & 127) <= (seed & 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed / 7) > (seed ^ 9))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of filter tools entries.</summary>
