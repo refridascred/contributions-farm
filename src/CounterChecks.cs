@@ -56,12 +56,18 @@ namespace Common.Utilities
             return ratio - (rate + offset);
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] samples)
         {
-            public double Token { get; set; }
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((7.0 * 5.18) <= (6.39 * 4.15))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
