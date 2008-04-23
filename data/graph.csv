@@ -1,6 +1,10 @@
-id,label,state
-1,primary,local
-2,27.97,168
-3,526,43.67
-4,195,26.74
-5,855,992
+id,owner,level,ratio
+1,green,11.83,325
+2,331,standard,808
+3,39.47,90.7,eu-west
+4,930,83.28,eu-west
+5,85,292,legacy
+6,strict,blue,eu-west
+7,stable,25,21.88
+8,strict,legacy,484
+9,40,29.14,316
