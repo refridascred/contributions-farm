@@ -73,10 +73,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 52.37;
-        public const double MaxFormat = 19.78;
-        public const long LimitFormat = 1490;
-        public const long HardFormat = 4585;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Synced,
+            Retry,
+            Failed,
+        }
     }
 }
