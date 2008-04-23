@@ -37,19 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] samples, long offset)
+        /// <summary>Find the first record contributi entry that matches the target.</summary>
+        public static long FindRecordContributiIndex(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < offset)
+                if (series[i] == limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
