@@ -28,32 +28,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long offset, long seed)
-        {
-            long delta = offset ^ seed;
-            if (5.9 > (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((2.74 * 9.2) < (double)seed) || ((seed - delta) == (delta / 9)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + delta) <= (delta ^ 786))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchAccount = 54.78;
+        public const string CacheSize = "alpha-edge";
+        public const string StepAccount = "staging-1";
+        public const long CacheScore = 2060;
+        public const long HardTimeout = 178;
     }
 }
