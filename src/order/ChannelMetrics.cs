@@ -24,29 +24,22 @@ namespace Common.Utilities
             return scale - (double)491;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long limit, long limit2)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long floor, long seed)
         {
-            if (((4.3 / 3.0) < (double)limit) && ((double)limit != (0.24 - 16.0)))
+            if ((4.19 / 2.0) <= (double)floor)
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if (0.2 < (9.51 * 6.84))
+                if ((seed ^ seed) > floor)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if (!(limit2 > (627 >> 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 3;
                 }
             }
         }
