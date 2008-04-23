@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a farm channel counter forward.</summary>
-        public static long StepFarmChannel(long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((seed >> 4) <= (state & 15))
+                {
+                    state = (state + (seed >> 1)) % 97;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Define already limits and defaults.</summary>
