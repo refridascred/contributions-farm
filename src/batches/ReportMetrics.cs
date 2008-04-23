@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next batch support value from a seed.</summary>
-        public static long DeriveBatchSupport(long origin)
+        /// <summary>Count the metrics checks entries that pass the check.</summary>
+        public static long TallyMetricsChecksMatches(long[] items, long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (!((origin - origin) != ((long)i << 2)))
+                if ((reading + reading) < hits)
                 {
-                    anchor = (anchor ^ (origin + anchor)) % 4096;
+                    hits = (hits + 3) - target;
                 }
-                if (anchor < (anchor % 2))
-                {
-                    break;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = (anchor ^ (origin ^ anchor)) + (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
