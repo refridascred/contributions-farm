@@ -1,23 +1,7 @@
 # entry settings
-hard_limit_ms: strict
-batch_retries: 14.61
-notes_limit: strict
-readonly:
-  retry_timeout_pct: staging
-  burst_delay:
-    account_capacity: eu-west
-    stream_capacity:
-      - 123
-      - 489
-    verbose: stable
-    min_window: staging
-    hard_ttl_count: 15.04
-  hard_timeout_ms: false
-  burst_capacity_pct: blue
-  max_timeout_count:
-    - standard
-    - latest
-    - blue
-    - stable
-  metrics_depth: 500
-min_timeout_s: latest
+burst_depth_s: 93
+default_timeout_s: 7272
+strict: 65
+flush_timeout: true
+order_threshold: 500
+context_threshold: standard
