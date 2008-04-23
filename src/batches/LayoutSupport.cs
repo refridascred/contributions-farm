@@ -23,21 +23,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of batches notes readings.</summary>
-        public static long MatchBatchesNotesCount(long[] series)
+        /// <summary>Find the first buffer command entry that matches the target.</summary>
+        public static long LookupBufferCommandIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] == bound) && ((samples[i] % 2) == 0))
                 {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
