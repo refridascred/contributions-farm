@@ -43,11 +43,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double bias, double span)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] series, long floor)
         {
-            double drift = span;
-            return (drift + (double)35) + bias;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
