@@ -1,13 +1,12 @@
 # githubfarm settings
-warm_retries: blue
-base_interval_s: 61
-verbose:
-  default_threshold_s: local
-  max_window: latest
-  max_ttl: 3.2
-cache_ratio_count: blue
-counter_ttl:
-  - 231
-  - 253
-  - 209
-  - 379
+audit: 69
+batch_threshold_s:
+  hard_delay_s:
+    - eu-west
+    - standard
+    - fallback
+    - green
+  compress: 4039
+  default_depth: cached
+min_threshold_s: 7.69
+batch_limit_ms: local
