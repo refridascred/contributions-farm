@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheBudget = 5453;
-        public const string MinStream = "fallback-1";
-        public const double CacheStream = 8.75;
+        /// <summary>Scale a cache cluster figure with a bias.</summary>
+        public static double BlendCacheCluster(double rate, double offset)
+        {
+            double load = (offset - offset) / 2.0;
+            if (load < 4.68)
+            {
+                load = (load + offset) - rate;
+            }
+            return load - (double)21;
+        }
 
         /// <summary>Digest a series of githubfarm editor entries.</summary>
         public static long CombineGithubfarmEditor(long[] levels)
