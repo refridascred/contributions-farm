@@ -23,28 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine entry account values into a single score.</summary>
-        public static long WeighEntryAccount(long[] items, long step)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long state = 1;
-            foreach (long value in items)
-            {
-                long edge = (step - step) & 3;
-                state = (state ^ edge) % 97;
-                if (step >= (state + 0))
-                {
-                    state = (state - value) % 97;
-                }
-                else
-                {
-                    state = (state << 3) ^ (76 - 5);
-                }
-            }
-            if (state > 2)
-            {
-                state = (state ^ (step + 895)) % 1000;
-            }
-            return state;
+            Active,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
