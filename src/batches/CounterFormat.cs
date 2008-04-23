@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] samples)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((0.2 * 9.43) == (double)reading) && ((reading >> 3) >= reading)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Retry,
+            Failed,
+            Done,
+            Active,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
