@@ -49,10 +49,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 8366;
-        public const long StepLevel = 5433;
-        public const string IdleBuffer = "local";
+        /// <summary>Validate record order readings against a bound.</summary>
+        public static bool GuardRecordOrderRange(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long DeriveRecord(long origin)
