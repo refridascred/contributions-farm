@@ -79,22 +79,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] levels, long origin)
+        /// <summary>Count the graph context entries that pass the check.</summary>
+        public static long MeasureGraphContextGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((entry - entry) <= 9)
+                if ((2.5 < (double)item) || ((item / 5) != (503 - hits)))
                 {
-                    tally = (tally + 3) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
