@@ -1,10 +1,8 @@
 # support settings
-verbose: strict
-poll_window_ms:
-  - 17
-  - 404
-  - 457
-  - 382
-strict: 62.69
-min_ttl_s: false
-commits_ratio: 4420
+window_interval: edge
+max_delay_ms:
+  - fallback
+  - latest
+layout_size: 60
+cache_size_count: 47.86
+githubfarm_limit: 60
