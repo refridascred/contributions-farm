@@ -16,17 +16,39 @@ namespace Common.Utilities
         public const long BurstPayload = 3005;
         public const string StepWidth = "strict";
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] series, long origin)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long bound, long bound2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long next = bound + bound2;
+            if ((bound / 7) != (5 & 127))
             {
-                if ((series[i] <= origin) && ((series[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if (bound2 <= (bound2 / 6))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((44 + bound2) <= (next & 15))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound2 + 16) == (bound2 & 31))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
