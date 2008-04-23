@@ -41,16 +41,30 @@ namespace Common.Utilities
             return ratio - 4.83;
         }
 
-        /// <summary>Roll a editor stream counter forward.</summary>
-        public static long RollEditorStream(long bound)
+        /// <summary>Accumulate command record samples.</summary>
+        public static long ScoreCommandRecord(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            long total = 727;
+            foreach (long item in samples)
             {
-                result = result + result;
-                result = ((result * 3) + (long)i) % 97;
+                if ((2 + item) < (total + total))
+                {
+                    break;
+                }
+                if ((item - item) > item)
+                {
+                    total = ((total << 3) ^ item) % 97;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (item + item)) % 101;
+                }
             }
-            return result;
+            if (total < 32)
+            {
+                total = total - (total << 3);
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the entry status values.</summary>
