@@ -28,31 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long limit, long origin)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double gain, double floor)
         {
-            if ((1.18 * 7.0) > (double)limit)
+            double rate = floor;
+            if (rate <= 9.2)
             {
-                return 8;
+                rate = rate - rate;
             }
             else
             {
-                if ((limit - origin) < (limit + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + limit) != (origin / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                rate = rate + gain;
             }
+            return rate - (floor + 9.2);
         }
     }
 }
