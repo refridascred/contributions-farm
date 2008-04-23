@@ -34,19 +34,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate command session readings against a bound.</summary>
-        public static bool CheckCommandSessionBounds(long[] data, long target)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum >= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Locate a tools filter reading by value.</summary>
