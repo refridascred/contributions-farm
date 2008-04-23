@@ -12,12 +12,16 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardWidth = 3176;
-        public const long BaseCount = 2437;
-        public const long StepSupport = 7488;
-        public const string MinRatio = "stable-edge";
-        public const long DefaultTimeout = 2752;
+        /// <summary>Blend two already layout measurements.</summary>
+        public static double ProjectAlreadyLayout(double weight, double floor)
+        {
+            double mean = floor - floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + weight) + (double)(long)i;
+            }
+            return mean + mean;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long DeriveContext(long seed)
