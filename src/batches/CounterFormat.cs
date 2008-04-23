@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepCounter = 82.79;
-        public const double CacheCount = 46.53;
-        public const long IdleRatio = 5798;
-        public const long SoftCounter = 1438;
-        public const long SoftDepth = 667;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Closed,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
