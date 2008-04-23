@@ -43,12 +43,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Synced,
-            New,
-            Idle,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 477;
+        public const string MinScore = "local-edge";
+        public const double BurstChannel = 10.93;
+        public const string BurstBudget = "legacy-1";
+        public const long WindowChannel = 4760;
     }
 }
