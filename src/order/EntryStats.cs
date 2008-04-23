@@ -46,25 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long seed)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long diff = limit ^ seed;
-            if ((diff + seed) > (limit - 711))
-            {
-                return 2;
-            }
-            else
-            {
-                if (diff < (diff - 0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            Dropped,
+            Retry,
+            Draft,
         }
 
         /// <summary>Find the first checks token entry that matches the target.</summary>
