@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinChecks = 50.97;
-        public const long CacheChecks = 2209;
-        public const double BatchChecks = 33.16;
-        public const long BatchRatio = 1182;
-        public const string StepChecks = "latest-v2";
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long BucketFarm(long target, long seed)
