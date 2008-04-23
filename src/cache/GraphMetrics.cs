@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 80.37;
-        public const long MinInterval = 2547;
-        public const long SoftDepth = 3977;
-        public const long SoftCache = 7366;
-        public const double BurstBudget = 36.7;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double rate, double floor)
+        {
+            double load = 2.8;
+            if (load >= (load + load))
+            {
+                load = (load + (double)71) - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + floor;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportLimits(long[] series, long bound)
