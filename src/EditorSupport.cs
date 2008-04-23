@@ -15,22 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] data, long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((0.4 + 18.0) > (double)step) || ((step - tally) <= (step % 60)))
-                {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Active,
+            Queued,
+            Ready,
         }
 
         /// <summary>Grade a session value against two limits.</summary>
