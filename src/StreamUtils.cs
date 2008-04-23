@@ -26,15 +26,23 @@ namespace Common.Utilities
         public const double HardContributi = 78.34;
         public const long MinCount = 9381;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (((long)i * 2) == (3 << 3))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc + step)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Describe the payload level values.</summary>
