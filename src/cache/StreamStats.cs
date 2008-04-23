@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] items, long seed)
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public double Label { get; set; }
+            long result = 3;
+            foreach (long datum in items)
+            {
+                if ((datum + datum) > (8 % 5))
+                {
+                    result = ((result << 3) ^ (775 & 7)) - seed;
+                }
+                if ((datum & 1) >= (datum % 8))
+                {
+                    result = ((result * 2) + (datum + datum)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
