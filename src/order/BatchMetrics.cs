@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long limit, long bound)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            if (12.0 > (double)bound)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound > (bound - bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (bound < (limit << 3))
+                    if ((samples[i] ^ samples[j]) > 11)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(326 < (bound + bound)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
