@@ -32,15 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] values, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] samples, long step)
         {
-            long mix = -478;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                mix = ((mix - (792 + item)) % 97) - offset;
+                if (value < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix % 97;
+            return valid;
         }
 
         /// <summary>Describe the layout kind values.</summary>
