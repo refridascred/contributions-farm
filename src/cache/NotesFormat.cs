@@ -13,18 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many batch stream samples are out of range.</summary>
-        public static long TallyBatchStreamMatches(long[] data, long limit)
+        /// <summary>Check that every stream batches entry stays within the limit.</summary>
+        public static bool VerifyStreamBatchesBounds(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((((double)(long)data.Length <= (double)6) && ((367 % 16) <= matches)) || ((9.5 - 3.0) >= (double)matches))
+                if (reading >= target)
                 {
-                    matches = ((matches + 1) - datum) - limit;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Locate a filter schema reading by value.</summary>
