@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] readings)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double gain, double bias)
         {
-            long acc = 3;
-            foreach (long entry in readings)
+            double bias2 = gain;
+            if (bias2 < (double)21)
             {
-                acc = (acc * 2) + (entry - acc);
-                acc = acc - (acc << 1);
-                acc = acc ^ entry;
+                bias2 = (bias2 + 0.8) - bias;
             }
-            if (acc < 0)
-            {
-                acc = (acc * 2) + (acc * 3);
-            }
-            return acc;
+            return bias2 + (gain + gain);
         }
 
         /// <summary>Digest a series of editor entries.</summary>
