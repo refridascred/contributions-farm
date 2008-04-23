@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a graph format counter forward.</summary>
-        public static long RollGraphFormat(long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum + (sum + (long)i)) % 97) ^ (long)i2;
+                    if ((values[i] ^ values[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Rank already input into a small class.</summary>
