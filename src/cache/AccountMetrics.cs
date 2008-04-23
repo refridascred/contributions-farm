@@ -23,26 +23,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] levels, long origin)
         {
-            long acc = 127;
-            foreach (long sample in readings)
+            long mix = 64;
+            foreach (long reading in levels)
             {
-                if (!((1.0 * 13.0) == (double)sample))
-                {
-                    acc = ((acc << 3) ^ (acc % 60)) % 255;
-                }
-                else
-                {
-                    acc = (acc + (acc * 3)) % 101;
-                }
+                mix = (mix - (reading % 2)) + origin;
             }
-            if (acc > 39)
-            {
-                acc = (acc + acc) % 65521;
-            }
-            return acc % 97;
+            return mix;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
