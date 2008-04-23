@@ -28,11 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((((tally << 1) == (tally + sample)) || ((sample & 7) > (5 << 2))) || (((sample - sample) == (tally >> 1)) && ((double)sample <= (11.0 / 8.0))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
