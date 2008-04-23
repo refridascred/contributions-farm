@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] series, long step)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
