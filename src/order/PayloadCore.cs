@@ -32,22 +32,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] values)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!((double)entry != (20.0 + 18.0)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Retry,
+            Closed,
+            Failed,
+            Pending,
         }
     }
 }
