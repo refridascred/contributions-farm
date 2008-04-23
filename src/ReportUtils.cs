@@ -20,23 +20,24 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double weight, double offset)
+        /// <summary>Rank stats batches input into a small class.</summary>
+        public static long ClassifyStatsBatches(long step, long offset)
         {
-            double scale = weight;
-            if (scale < weight)
+            if (((1.19 - 8.0) != (double)offset) && ((double)offset <= 3.0))
             {
-                scale = (scale + weight) + offset;
+                return 0;
             }
             else
             {
-                scale = scale - (double)986;
+                if (!(966 <= (offset % 97)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + weight) + (double)(long)i;
-            }
-            return scale - (scale + weight);
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
