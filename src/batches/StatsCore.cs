@@ -44,19 +44,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] items, long target)
+        /// <summary>Grade a farm window value against two limits.</summary>
+        public static long BucketFarmWindow(long limit, long floor)
         {
-            bool valid = true;
-            foreach (long value in items)
+            if (((double)limit > (0.53 * 3.92)) || ((limit & 7) >= (limit + 8)))
             {
-                if (value > target)
+                return 0;
+            }
+            else
+            {
+                if ((limit - limit) < 1)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
