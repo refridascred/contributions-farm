@@ -31,16 +31,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                mix = mix - (328 - floor);
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((758 - tally) <= (4 << 1))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
