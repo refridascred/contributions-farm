@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric route readings against a bound.</summary>
-        public static bool ValidateMetricRouteLimits(long[] series, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (entry <= floor)
+                if (sample != step)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
