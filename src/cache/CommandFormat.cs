@@ -34,11 +34,20 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftSupport = "open-edge";
-        public const string BaseSupport = "cached-edge";
-        public const long BatchSupport = 3381;
-        public const double BatchScore = 81.01;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheCommand = 3711;
