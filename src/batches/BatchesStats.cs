@@ -34,22 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] items, long bound)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)matches >= (2.87 - 2.86))
-                {
-                    matches = ((matches + 1) ^ datum) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Closed,
+            Idle,
+            Failed,
+            Queued,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
