@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long floor)
         {
-            Locked,
-            Dropped,
-            Active,
+            long total = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the account kind values.</summary>
