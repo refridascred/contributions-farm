@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 7152;
-        public const double BaseSize = 24.58;
-        public const long StepLevel = 3468;
-        public const string SoftScore = "latest";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)count <= 8.65)
+                {
+                    count = (count + 3) ^ sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two token notes measurements.</summary>
         public static double ScaleTokenNotes(double weight, double bias)
