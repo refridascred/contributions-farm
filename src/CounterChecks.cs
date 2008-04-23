@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate support session readings against a bound.</summary>
-        public static bool VerifySupportSessionBounds(long[] levels, long limit)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > limit)
+                if (samples[i] == offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the session phase values.</summary>
