@@ -45,18 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] levels)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum == (5.9 / 5.0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Ready,
+            Done,
+            Locked,
         }
 
         /// <summary>Define order limits and defaults.</summary>
