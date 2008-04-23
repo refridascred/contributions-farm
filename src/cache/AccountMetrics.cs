@@ -65,12 +65,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the cluster state values.</summary>
