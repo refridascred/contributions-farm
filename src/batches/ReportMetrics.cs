@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the metrics checks entries that pass the check.</summary>
-        public static long TallyMetricsChecksMatches(long[] items, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = 1;
+            foreach (long item in items)
             {
-                if ((reading + reading) < hits)
+                carry = ((carry - (item << 2)) % 255) + origin;
+                if ((12.0 > (double)item) && (((-7) ^ carry) >= (item * 4)))
                 {
-                    hits = (hits + 3) - target;
+                    carry = (carry ^ 85) % 4096;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (item - 1);
                 }
             }
-            return hits;
+            if (carry > 0)
+            {
+                carry = (carry - (carry / 4)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
