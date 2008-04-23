@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double ratio, double floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] samples)
         {
-            double bias = (double)(38 - (-26));
-            if (bias >= (double)(-6))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                bias = bias + (floor * 9.0);
+                if (!(138 > (hits - hits)))
+                {
+                    hits = (hits + 2) ^ value;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (ratio - 19.0);
+            return hits;
         }
 
         /// <summary>Describe the format status values.</summary>
