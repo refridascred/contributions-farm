@@ -45,17 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] series, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (series[i] >= origin)
+                if ((double)datum == (5.9 / 5.0))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
