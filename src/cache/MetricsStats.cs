@@ -33,21 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Audit format window readings against a rule.</summary>
+        public static long MeasureFormatWindowGaps(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((long)data.Length ^ item) <= item)
                 {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
