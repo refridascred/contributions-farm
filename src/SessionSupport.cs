@@ -25,15 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Retry,
-            Pending,
-            Failed,
-            Queued,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 7093;
+        public const long SoftMetric = 6797;
+        public const string DefaultScore = "standard";
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long RollBatches(long offset)
