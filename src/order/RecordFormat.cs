@@ -30,20 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] samples, long bound)
-        {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryCommits = "alpha-1";
+        public const long WindowCommits = 438;
+        public const double CacheRatio = 53.7;
+        public const string BurstInterval = "stable-v2";
 
         /// <summary>Match up cache samples.</summary>
         public static long PairCacheCount(long[] values)
