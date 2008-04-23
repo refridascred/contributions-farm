@@ -32,15 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] values, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if ((3.0 + 10.0) <= (double)seed)
+                {
+                    hits = (hits + 3) - cell;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
