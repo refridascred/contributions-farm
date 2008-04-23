@@ -91,9 +91,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 1497;
-        public const long IdleCluster = 72;
-        public const long BatchRatio = 9575;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
