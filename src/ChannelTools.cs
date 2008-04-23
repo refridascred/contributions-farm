@@ -23,13 +23,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] values)
         {
-            Synced,
-            Pending,
-            New,
-            Idle,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((9.06 - 2.0) == (double)datum)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
