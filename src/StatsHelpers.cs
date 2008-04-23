@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] samples)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!(138 > (hits - hits)))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
