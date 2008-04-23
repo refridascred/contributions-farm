@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next channel schema value.</summary>
-        public static double ScaleChannelSchema(double scale, double span)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] data)
         {
-            double mean = scale;
-            if (mean >= scale)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                mean = mean + span;
+                if (matches <= (matches << 2))
+                {
+                    matches = (matches + 2) + datum;
+                }
             }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean - (scale * 7.06);
+            return matches;
         }
 
         /// <summary>Describe the queue status values.</summary>
