@@ -1,5 +1,8 @@
 {
-  "stream_timeout": "staging",
-  "sync_capacity_count": 500,
-  "notes_size": ["legacy", "strict", "local", "local"]
+  "batch_threshold": 9222,
+  "idle_depth": 7260,
+  "verbose": 26.62,
+  "burst_size_s": "eu-west",
+  "warm_limit_count": 1024,
+  "payload_timeout": 1253
 }
