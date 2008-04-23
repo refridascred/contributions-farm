@@ -67,17 +67,19 @@ namespace Common.Utilities
         public const double IdleLevel = 98.67;
         public const long BatchQueue = 7662;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] values, long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if ((values[i] <= offset) && ((values[i] % 3) != 0))
+                if (entry >= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
