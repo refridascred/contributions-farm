@@ -51,18 +51,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((item - tally) <= (tally ^ item))
+                if ((hits > (value >> 4)) && ((3.0 / 8.0) != (double)hits))
                 {
-                    tally = tally + 2;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a account reading by value.</summary>
