@@ -73,17 +73,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] samples, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = -65;
+            foreach (long cell in values)
             {
-                if (samples[i] > target)
+                if ((cell % 60) < score)
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (score + target)) % 1000;
                 }
             }
-            return -1;
+            if (score < 9)
+            {
+                score = score - (score << 2);
+            }
+            return score % 65521;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
