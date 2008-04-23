@@ -27,17 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheLayout = "legacy";
+        public const long IdleSpan = 1862;
+        public const double CacheSize = 80.39;
+        public const long MinTimeout = 5266;
+        public const long MinBudget = 591;
     }
 }
