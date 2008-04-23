@@ -1,5 +1,39 @@
 # entry settings
-retry_interval: eu-west
-cache_window_count: 78.14
-farm_size: true
-cache_ttl: 500
+warm_capacity: green
+batch_ttl_s: latest
+retry_size_s:
+  readonly:
+    - strict
+    - blue
+    - strict
+    - local
+  enabled: 66.88
+  hard_ratio_ms:
+    checks_capacity: true
+    verbose:
+      - 177
+      - 130
+    dry_run: 7895
+    soft_timeout_ms: false
+    base_limit:
+      - latest
+      - green
+      - staging
+      - green
+  batch_ratio_ms:
+    schema_delay: 0.63
+    cache_capacity_ms: 82.99
+    readonly:
+      - 8
+      - 180
+      - 374
+    strict: 5
+    idle_window_pct: 86.03
+    report_retries: legacy
+  queue_capacity: fallback
+batch_threshold: 11
+soft_ttl_ms: 59.39
+hard_ttl:
+  - strict
+  - strict
+  - strict
