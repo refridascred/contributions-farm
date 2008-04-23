@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 30.94;
-        public const long BaseLayout = 3237;
-        public const string BurstLayout = "primary-edge";
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Dropped,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Match up session stats samples.</summary>
         public static long CompareSessionStatsCount(long[] series)
