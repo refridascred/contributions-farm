@@ -40,12 +40,12 @@ namespace Common.Utilities
             return gain + 2.76;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] samples, long origin)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] > origin)
+                if (levels[i] <= offset)
                 {
                     return (long)i;
                 }
