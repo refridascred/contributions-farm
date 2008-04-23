@@ -53,19 +53,11 @@ namespace Common.Utilities
         public const double LimitCount = 11.77;
         public const double SoftPayload = 61.26;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitSpan = 5392;
+        public const string DefaultEntry = "stable-edge";
+        public const double WindowEntry = 75.9;
+        public const long SoftSpan = 5211;
+        public const string CacheEntry = "standard";
     }
 }
