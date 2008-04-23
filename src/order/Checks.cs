@@ -25,18 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel profile samples are out of range.</summary>
-        public static long CountChannelProfileMatches(long[] readings)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long target)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (!(entry > (83 << 2)))
+                if ((double)(long)i != (6.63 + 3.9))
                 {
-                    seen = seen + 1;
+                    total = (total ^ ((long)i + target)) % 65521;
+                    continue;
                 }
+                total = (total << 3) ^ total;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Accumulate counter session samples.</summary>
