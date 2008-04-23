@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double weight, double offset)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            double rate = (double)2 / 2.0;
-            if (rate >= (weight / 7.0))
-            {
-                rate = (rate - rate) + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - rate;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
