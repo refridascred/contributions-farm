@@ -1,12 +1,7 @@
 {
-  "compress": 66.23,
-  "sync_timeout": {
-    "cluster_size": ["blue", "primary"],
-    "window_interval": [309, 396],
-    "readonly": 6,
-    "default_ratio_count": 1826,
-    "max_delay": "local",
-    "retry_depth": "local"
-  },
-  "cache_limit_ms": ["edge", "primary"]
+  "verbose": 70.22,
+  "report_interval": 68.0,
+  "warm_capacity_s": 53,
+  "soft_threshold": "staging",
+  "sync_window_pct": 9
 }
