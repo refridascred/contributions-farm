@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of graph batches readings.</summary>
-        public static long ScoreGraphBatches(long[] items, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] readings)
         {
-            long acc = 653;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((acc * 5) < (acc * 4))
+                if ((entry + 83) >= (count << 3))
                 {
-                    acc = (acc << 2) ^ (seed + value);
+                    count = count + 2;
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Compare every pair of batches batch readings.</summary>
