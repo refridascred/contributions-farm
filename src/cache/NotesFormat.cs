@@ -28,17 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a filter schema reading by value.</summary>
-        public static long LookupFilterSchemaIndex(long[] levels, long target)
+        /// <summary>Fold a list of counter session readings.</summary>
+        public static long FoldCounterSession(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 57;
+            foreach (long cell in items)
             {
-                if ((levels[i] > target) && ((levels[i] % 5) == 0))
+                if (((cell * 4) >= (mark ^ mark)) && (mark <= cell))
                 {
-                    return (long)i;
+                    mark = mark + (mark + mark);
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
