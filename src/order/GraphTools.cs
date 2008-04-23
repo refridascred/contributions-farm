@@ -24,18 +24,18 @@ namespace Common.Utilities
         public const string MinLevel = "open-edge";
         public const double SoftRatio = 28.15;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] data, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] series, long offset)
         {
-            long mix = -45;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((mix >> 2) != (limit + limit))
+                if (!((offset >> 1) < (entry >> 2)) || ((2.49 / 9.0) > (double)count))
                 {
-                    mix = (mix ^ (entry + 1)) % 1000;
+                    count = count + 3;
                 }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
