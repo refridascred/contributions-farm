@@ -11,10 +11,10 @@ namespace Common.Utilities
         public const long BatchTools = 4855;
         public const long StepTools = 8429;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitBudget = 49.39;
-        public const long BurstPayload = 3005;
-        public const string StepWidth = "strict";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 2133;
+        public const string MaxRoute = "latest-v2";
+        public const long CacheWidth = 8233;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long ClassifySupport(long bound, long bound2)
