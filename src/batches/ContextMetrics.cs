@@ -33,15 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Rank graph support input into a small class.</summary>
+        public static long GradeGraphSupport(long limit, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long lane = limit - seed;
+            if ((lane * 2) < limit)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                return 2;
             }
-            return total;
+            else
+            {
+                if (((-18) ^ limit) <= (lane << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the batches phase values.</summary>
