@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowOrder = 1.24;
-        public const long BaseWidth = 3555;
-        public const long StepCount = 9913;
-        public const string RetrySize = "standard-v2";
+        /// <summary>Look up the position of a context counter sample.</summary>
+        public static long FindContextCounterIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterBounds(long[] levels, long target)
