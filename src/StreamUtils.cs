@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many order report samples are out of range.</summary>
-        public static long AuditOrderReportHits(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((matches ^ matches) == (entry * 3))
+                if (4.2 < (double)tally)
                 {
-                    matches = matches + 3;
+                    tally = ((tally + 1) ^ reading) + limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
