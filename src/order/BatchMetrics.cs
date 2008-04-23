@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitCount = 24.34;
-        public const double WindowWidth = 35.67;
-        public const long BatchTools = 4855;
-        public const long StepTools = 8429;
+        /// <summary>Look up the position of a route commits sample.</summary>
+        public static long SeekRouteCommitsIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a queue context sample.</summary>
         public static long SeekQueueContextIndex(long[] data, long offset)
