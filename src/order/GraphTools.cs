@@ -27,14 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] data, long floor)
         {
-            Queued,
-            Draft,
-            Done,
-            Retry,
-            Dropped,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)floor == (double)count)
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the channel kind values.</summary>
