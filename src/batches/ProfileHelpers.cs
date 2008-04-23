@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
