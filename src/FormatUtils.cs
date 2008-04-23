@@ -61,18 +61,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] readings, long target)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long target, long floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long slot = target ^ floor;
+            if ((floor * 4) > (target + 250))
             {
-                if ((datum + datum) != (count + 7))
+                return 3;
+            }
+            else
+            {
+                if ((16 << 3) == (8 + floor))
                 {
-                    count = (count + 2) + target;
+                    return 7;
+                }
+                else
+                {
+                    if (floor <= (target - slot))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target + target) <= (target + slot))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
