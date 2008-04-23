@@ -1,6 +1,5 @@
 {
-  "retry_delay_count": true,
-  "hard_interval_ms": true,
-  "warm_timeout_pct": false,
-  "graph_capacity": [263, 191, 225]
+  "batch_size_s": "local",
+  "warm_interval": "edge",
+  "flush_threshold": 250
 }
