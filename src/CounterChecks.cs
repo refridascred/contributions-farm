@@ -70,11 +70,11 @@ namespace Common.Utilities
             return rate - (rate / 7.0);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 586;
-        public const long CacheCount = 3430;
-        public const double IdleLevel = 98.67;
-        public const long BatchQueue = 7662;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 2314;
+        public const string CacheContext = "open-edge";
+        public const string BatchFactor = "primary-edge";
+        public const string MaxWidth = "staging";
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteLimits(long[] samples, long offset)
