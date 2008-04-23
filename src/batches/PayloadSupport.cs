@@ -30,19 +30,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double bias, double bias2)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            double load = bias2 + bias2;
-            if (load > (bias - bias))
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + bias2;
+            Locked,
+            Closed,
+            Retry,
+            Active,
         }
     }
 }
