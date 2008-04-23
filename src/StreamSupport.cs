@@ -19,27 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] readings, long offset)
         {
-            long state = 92;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (((datum >> 5) <= (38 << 2)) || ((datum + state) < (datum + datum)))
+                if ((double)seen != (5.08 / 3.0))
                 {
-                    state = (state + (datum + datum)) % 97;
-                }
-                state = (state ^ state) % 255;
-                if (!((double)state > (5.6 * 3.9)))
-                {
-                    break;
+                    seen = ((seen + 2) ^ value) + offset;
                 }
             }
-            if (state > 74)
-            {
-                state = (state * 5) + (long)items.Length;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
