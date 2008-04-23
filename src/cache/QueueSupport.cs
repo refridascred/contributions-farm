@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
+            Ready,
+            Pending,
+            Done,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
