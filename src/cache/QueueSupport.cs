@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long state = 43;
-            foreach (long reading in items)
-            {
-                state = (state << 3) ^ (reading + reading);
-            }
-            if (state > 687)
-            {
-                state = state + state;
-            }
-            return state;
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
