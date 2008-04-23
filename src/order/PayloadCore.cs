@@ -16,23 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] levels, long limit)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] items)
         {
-            long state = -16;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((limit / 4) > (limit & 3)) || ((0.6 / 4.0) == (double)value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state << 3) ^ limit) % 97;
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = state - (value + state);
             }
-            if (state > 0)
-            {
-                state = (state + (19 * 3)) % 97;
-            }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Describe the window state values.</summary>
