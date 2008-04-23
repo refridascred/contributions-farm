@@ -37,16 +37,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinEditor = 87.78;
+        public const long MaxEditor = 9061;
+        public const long BurstSpan = 7704;
+        public const long RetryBudget = 1188;
 
         /// <summary>Count the batches farm entries that pass the check.</summary>
         public static long AuditBatchesFarmGaps(long[] items, long target)
