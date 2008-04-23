@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long step, long bound)
+        /// <summary>Locate a layout counter reading by value.</summary>
+        public static long SeekLayoutCounterIndex(long[] levels, long seed)
         {
-            if ((93 < bound) || (bound <= 96))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)19 < (double)bound)
+                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate editor entry samples.</summary>
