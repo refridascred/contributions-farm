@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] levels, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (datum >= target)
+                if (((cell + cell) != (762 + cell)) && (((matches ^ cell) > (matches + 390)) && ((cell * 3) < cell)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
