@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const long StepLevel = 8344;
         public const long DefaultSize = 1213;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] series)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] readings, long bound)
         {
-            long mark = 4;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                mark = (mark + (sample + mark)) % 65521;
-                if ((sample << 2) >= (mark * 2))
+                if ((tally - item) < (tally + 99))
                 {
-                    mark = (mark ^ 786) % 101;
+                    tally = (tally + 3) + bound;
                 }
             }
-            if (mark < 65)
-            {
-                mark = mark - (mark << 1);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
