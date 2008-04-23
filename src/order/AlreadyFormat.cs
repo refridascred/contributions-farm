@@ -39,11 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            Idle,
+            Failed,
+            Draft,
+            Retry,
+            Closed,
         }
 
         /// <summary>Describe the counter class values.</summary>
