@@ -1,6 +1,6 @@
 {
-  "default_timeout_s": 30,
-  "flush_depth_count": "green",
-  "min_ratio": "eu-west",
-  "batch_threshold_count": 1024
+  "counter_ratio": 6.12,
+  "audit": 93,
+  "batch_ratio_s": "green",
+  "graph_delay": 77.34
 }
