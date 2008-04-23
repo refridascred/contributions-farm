@@ -35,19 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate schema window readings against a bound.</summary>
-        public static bool ValidateSchemaWindowBounds(long[] items, long origin)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
