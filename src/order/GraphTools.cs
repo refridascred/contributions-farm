@@ -24,18 +24,14 @@ namespace Common.Utilities
         public const string MinLevel = "open-edge";
         public const double SoftRatio = 28.15;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] series, long offset)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((offset >> 1) < (entry >> 2)) || ((2.49 / 9.0) > (double)count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Idle,
+            Retry,
+            Failed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
