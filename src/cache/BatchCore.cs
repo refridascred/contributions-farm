@@ -53,11 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public double Total { get; set; }
-            public double Size { get; set; }
+            Dropped,
+            Idle,
+            Synced,
+            Paused,
         }
     }
 }
