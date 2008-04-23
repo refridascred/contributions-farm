@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] samples)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches + 87) >= matches)
-                {
-                    matches = (matches + 3) - entry;
-                }
-            }
-            return matches;
+            Queued,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
