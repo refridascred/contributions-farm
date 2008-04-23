@@ -58,18 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] series, long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((11.0 + 2.6) != (double)target)
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
