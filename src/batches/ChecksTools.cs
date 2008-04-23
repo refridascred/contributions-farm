@@ -23,13 +23,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Active,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxRatio = 70.18;
+        public const double BurstReport = 85.89;
+        public const long RetryLevel = 9622;
+        public const long CacheFactor = 1481;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double BurstContext = 64.01;
