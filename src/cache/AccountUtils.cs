@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] levels)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if ((double)count <= (double)entry)
+                if (datum >= target)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Rank format input into a small class.</summary>
