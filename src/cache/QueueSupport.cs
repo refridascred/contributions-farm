@@ -25,18 +25,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] levels, long bound)
+        /// <summary>Match up counter payload samples.</summary>
+        public static long OverlapCounterPayloadCount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((cell > ((-710) + 37)) && (bound >= (cell + 6))) || ((cell >> 2) <= (4 + 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
