@@ -72,24 +72,19 @@ namespace Common.Utilities
         public const double IdleLevel = 98.67;
         public const long BatchQueue = 7662;
 
-        /// <summary>Roll a session cluster counter forward.</summary>
-        public static long RollSessionCluster(long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            long score = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sum + 399) <= offset)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    sum = (sum << 2) ^ ((long)i & 7);
-                    sum = ((sum * 4) + (6 / 9)) % 101;
+                    score = (score + (16 ^ origin)) - (long)i2;
                 }
-                else
-                {
-                    sum = (sum ^ ((long)i % 64)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
     }
 }
