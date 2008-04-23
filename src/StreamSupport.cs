@@ -29,18 +29,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] data)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (!((seen * 4) <= (seen / 6)))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
