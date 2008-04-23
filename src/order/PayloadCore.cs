@@ -11,17 +11,23 @@ namespace Common.Utilities
         public const long CacheGraph = 544;
         public const long BatchDepth = 4770;
 
-        /// <summary>Locate a cluster entry reading by value.</summary>
-        public static long SeekClusterEntryIndex(long[] samples, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = -16;
+            foreach (long value in levels)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
+                if (((limit / 4) > (limit & 3)) || ((0.6 / 4.0) == (double)value))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ limit) % 97;
                 }
+                state = state - (value + state);
             }
-            return -1;
+            if (state > 0)
+            {
+                state = (state + (19 * 3)) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the window state values.</summary>
