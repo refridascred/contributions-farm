@@ -34,21 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] values)
+        /// <summary>Audit window cluster readings against a rule.</summary>
+        public static long MeasureWindowClusterGaps(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((5.78 * 0.1) > (double)seen)
                 {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 3) - cell) - target;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
