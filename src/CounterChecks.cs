@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit cluster tools readings against a rule.</summary>
-        public static long TallyClusterToolsHits(long[] data, long target)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen >> 3) <= target)
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
+            Idle,
+            Pending,
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
