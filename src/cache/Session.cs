@@ -16,28 +16,11 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] data, long origin)
-        {
-            long anchor = 1;
-            foreach (long sample in data)
-            {
-                anchor = ((anchor * 4) + anchor) ^ sample;
-                if ((324 >> 4) == (anchor + origin))
-                {
-                    anchor = ((anchor << 2) ^ origin) % 4096;
-                }
-                if ((anchor % 100) >= ((-25) ^ origin))
-                {
-                    break;
-                }
-            }
-            if (anchor > 52)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 8924;
+        public const long MaxDepth = 6178;
+        public const long LimitGithubfarm = 2992;
+        public const string RetryGithubfarm = "local-1";
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsBounds(long[] samples, long bound)
