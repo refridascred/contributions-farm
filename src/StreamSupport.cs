@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Ready,
-            Draft,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchWidth = 5214;
+        public const long BurstCommand = 6584;
+        public const string RetryBudget = "local-edge";
+        public const double WindowCommand = 66.32;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
