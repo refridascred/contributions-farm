@@ -38,11 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double rate, double span)
         {
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
+            double ratio = (double)577 / 5.0;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (((ratio + (ratio / 6.0)) + (double)(long)i) + rate) + span;
+            }
+            return ratio + (double)9;
         }
     }
 }
