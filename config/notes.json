@@ -1,5 +1,8 @@
 {
-  "context_ttl": false,
-  "batch_window_ms": true,
-  "githubfarm_depth": 250
+  "batch_ttl_s": 250,
+  "min_window_ms": ["stable", "cached", "primary", "primary"],
+  "burst_delay_ms": true,
+  "flush_size": "legacy",
+  "sync_size_pct": [494, 223, 70],
+  "entry_window": 51.28
 }
