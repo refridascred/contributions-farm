@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] levels)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long sum = -33;
+            foreach (long value in series)
             {
-                if ((7.53 * 11.0) < (double)count)
+                if ((value + sum) >= 2)
                 {
-                    count = (count + 2) + reading;
+                    sum = ((sum ^ value) % 4096) - bound;
+                }
+                if (value < (6 % 97))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Blend two session measurements.</summary>
