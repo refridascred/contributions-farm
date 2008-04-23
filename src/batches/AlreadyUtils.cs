@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] items, long floor)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
