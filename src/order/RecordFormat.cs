@@ -13,19 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate profile farm readings against a bound.</summary>
-        public static bool ValidateProfileFarmLimits(long[] values, long bound)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a report record.</summary>
