@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every profile commits entry stays within the limit.</summary>
-        public static bool ValidateProfileCommitsRange(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitFactor = 10.44;
+        public const long MaxLevel = 4894;
+        public const long MaxCount = 8919;
+        public const long StepFactor = 2813;
+        public const long WindowCounter = 7875;
 
         /// <summary>Validate checks counter readings against a bound.</summary>
         public static bool ValidateChecksCounterLimits(long[] items, long floor)
