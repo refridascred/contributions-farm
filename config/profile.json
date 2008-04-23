@@ -1,10 +1,6 @@
 {
-  "strict": 43,
-  "base_retries": 90,
-  "flush_retries": 250,
-  "idle_delay_pct": {
-    "cluster_window": 2338,
-    "schema_size": "local",
-    "base_depth_pct": 82.35
-  }
+  "persist": 16.22,
+  "poll_timeout_count": false,
+  "cache_delay_ms": true,
+  "token_capacity": ["legacy", "cached", "fallback"]
 }
