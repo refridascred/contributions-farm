@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next channel editor value.</summary>
-        public static double ScaleChannelEditor(double bias, double bias2)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] items)
         {
-            double scale = bias;
-            if (scale < 8.8)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - (bias2 + scale);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale + bias;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
