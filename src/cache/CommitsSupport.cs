@@ -31,11 +31,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Closed,
+            Ready,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
