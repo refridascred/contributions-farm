@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] items)
         {
-            long result = -882;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                result = (result + result) % 97;
-                if (0.47 >= (double)reading)
+                if (((388 + sample) >= (5 & 15)) || ((tally ^ 4) < (tally * 4)))
                 {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many batch filter samples are out of range.</summary>
