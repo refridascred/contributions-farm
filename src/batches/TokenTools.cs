@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of batches format readings.</summary>
-        public static long PairBatchesFormatCount(long[] readings)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long offset, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (floor <= (floor >> 2))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor < offset) || (floor < (offset + 48)))
                 {
-                    if ((readings[i] - readings[j]) == 9)
+                    return 2;
+                }
+                else
+                {
+                    if ((floor * 5) > offset)
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a account reading.</summary>
