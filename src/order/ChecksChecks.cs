@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a token command counter forward.</summary>
-        public static long DeriveTokenCommand(long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            long anchor = 393;
+            foreach (long sample in samples)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (anchor >= ((-395) + anchor))
+                {
+                    anchor = (anchor + (186 & 127)) + sample;
+                }
             }
-            return sum;
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
