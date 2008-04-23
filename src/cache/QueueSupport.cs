@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Idle,
-            Done,
-            Dropped,
-            Active,
-            Paused,
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
