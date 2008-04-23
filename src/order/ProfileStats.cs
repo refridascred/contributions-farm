@@ -57,12 +57,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 1428;
-        public const string SoftMetrics = "legacy-edge";
-        public const long DefaultScore = 5317;
-        public const double LimitBudget = 28.84;
-        public const long IdleBudget = 7059;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((seed - carry) >= (carry - carry))
+                {
+                    carry = (carry * 5) + (carry + carry);
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long DigestMetrics(long[] data)
