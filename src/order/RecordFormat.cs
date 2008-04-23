@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const long BaseLayout = 3237;
         public const string BurstLayout = "primary-edge";
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] readings, long origin)
+        /// <summary>Match up session stats samples.</summary>
+        public static long CompareSessionStatsCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] == origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
