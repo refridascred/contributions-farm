@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 7146;
-        public const string IdleFilter = "alpha-v2";
-        public const double HardFilter = 75.73;
-        public const long SoftCount = 2259;
-        public const long CacheSpan = 8380;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate command session readings against a bound.</summary>
         public static bool CheckCommandSessionBounds(long[] data, long target)
