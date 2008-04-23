@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Count the batches payload entries that pass the check.</summary>
+        public static long AuditBatchesPayloadOutliers(long[] data)
         {
-            Queued,
-            Draft,
-            Paused,
-            Ready,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value ^ matches) <= matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch stats.</summary>
