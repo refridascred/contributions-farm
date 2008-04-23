@@ -13,11 +13,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next githubfarm buffer value.</summary>
-        public static double ProjectGithubfarmBuffer(double scale, double floor)
+        /// <summary>Iterate the profile account series from a seed.</summary>
+        public static long IterateProfileAccount(long floor)
         {
-            double rate = floor;
-            return (rate - (4.65 + floor)) + scale;
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = (mix * 2) + (mix % 8);
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
