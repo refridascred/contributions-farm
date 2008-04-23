@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double ratio, double span)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double bias = (span / 2.0) / 9.0;
-            if (bias >= (double)0)
-            {
-                bias = bias + 6.27;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + ratio) + (double)(long)i;
-            }
-            return bias - (span - span);
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the batches mode values.</summary>
