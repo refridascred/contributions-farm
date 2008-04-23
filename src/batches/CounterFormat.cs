@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public double Rank { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 7380;
+        public const double SoftChecks = 31.66;
+        public const long CacheInterval = 8114;
+        public const long RetryScore = 9094;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepChannel = 477;
