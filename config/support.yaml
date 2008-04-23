@@ -1,5 +1,30 @@
 # support settings
-max_limit: staging
-base_size_pct: 74.95
-poll_window: false
-strict: 500
+batch_window_pct: 250
+hard_ratio:
+  enabled: 9511
+  base_delay:
+    hard_depth_pct:
+      - 470
+      - 133
+      - 451
+      - 337
+    flush_size_count: 68
+    hard_ratio_count: 30
+    max_ttl:
+      - 190
+      - 15
+      - 191
+      - 287
+    flush_limit_s: standard
+    persist:
+      - cached
+      - edge
+  entry_retries: 2383
+  hard_threshold_s:
+    - green
+    - staging
+  sync_ratio_pct:
+    - 256
+    - 167
+  poll_ttl: 30
+cluster_ttl: 3044
