@@ -1,6 +1,6 @@
 {
-  "editor_limit": 100,
-  "readonly": "open",
-  "burst_depth_s": "green",
-  "burst_interval_ms": 53
+  "githubfarm_ttl": "cached",
+  "hard_retries_ms": 7935,
+  "readonly": "eu-west",
+  "burst_interval_pct": "blue"
 }
