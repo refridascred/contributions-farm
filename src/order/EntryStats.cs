@@ -67,14 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Find the first checks token entry that matches the target.</summary>
+        public static long FindChecksTokenIndex(long[] items, long seed)
         {
-            New,
-            Pending,
-            Ready,
-            Idle,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
