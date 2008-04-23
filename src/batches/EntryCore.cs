@@ -58,19 +58,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] items, long bound)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
         }
     }
 }
