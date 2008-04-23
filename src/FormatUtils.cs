@@ -47,11 +47,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 76.23;
-        public const string StepInterval = "primary-1";
-        public const double LimitCount = 11.77;
-        public const double SoftPayload = 61.26;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] values)
+        {
+            long sum = 53;
+            foreach (long entry in values)
+            {
+                if ((3 + entry) < entry)
+                {
+                    sum = sum + (sum * 5);
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitSpan = 5392;
