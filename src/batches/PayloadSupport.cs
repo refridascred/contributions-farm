@@ -33,18 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] data, long bound)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value + value) < bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] + levels[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a contributi info.</summary>
