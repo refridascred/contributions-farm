@@ -85,19 +85,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate schema token readings against a bound.</summary>
-        public static bool VerifySchemaTokenBounds(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BatchWidth = "primary-edge";
+        public const long BaseBatch = 1049;
+        public const double MinBatch = 29.32;
+        public const double DefaultBatch = 45.5;
     }
 }
