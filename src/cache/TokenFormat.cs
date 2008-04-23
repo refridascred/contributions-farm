@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Combine record route values into a single score.</summary>
+        public static long FoldRecordRoute(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            long state = 9;
+            foreach (long datum in readings)
+            {
+                if (!(((9.1 * 15.0) <= (double)state) || ((2 + state) != (state ^ state))))
+                {
+                    state = ((state * 5) + (927 * 3)) + datum;
+                }
+                state = ((state << 2) ^ state) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
