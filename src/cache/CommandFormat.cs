@@ -45,11 +45,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long target)
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            long total = target;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
