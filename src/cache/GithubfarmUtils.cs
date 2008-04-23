@@ -10,38 +10,22 @@ namespace Common.Utilities
         public const long BaseSpan = 3865;
         public const long StepCount = 6764;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long floor, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] readings, long target)
         {
-            if (!((5.0 - 15.0) < (double)step))
+            long total = 543;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (6 < (step + 408))
+                if ((total * 5) > (target + target))
                 {
-                    return 6;
+                    total = (total ^ target) % 101;
                 }
                 else
                 {
-                    if (2 > floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step < (floor & 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    total = (total << 3) ^ (sample % 5);
                 }
             }
+            return total;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
