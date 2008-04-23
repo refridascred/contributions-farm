@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long offset, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] samples)
         {
-            if (((-600) & 31) <= (offset + origin))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin << 3) != (0 - offset)) && (origin < (origin & 7)))
+                if (count < (count % 7))
                 {
-                    return 6;
+                    count = (count + 1) - reading;
                 }
                 else
                 {
-                    return 1;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every batches payload entry stays within the limit.</summary>
