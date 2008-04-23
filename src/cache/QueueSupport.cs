@@ -48,19 +48,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every context graph entry stays within the limit.</summary>
-        public static bool CheckContextGraphBounds(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinBudget = 4262;
+        public const long RetryLevel = 2923;
+        public const string HardTimeout = "stable";
+        public const long SoftRatio = 218;
     }
 }
