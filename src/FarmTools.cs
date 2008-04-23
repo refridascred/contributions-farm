@@ -41,9 +41,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitSize = 4820;
-        public const long CacheCommits = 4841;
-        public const long RetryBudget = 4465;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "local-v2";
+        public const long MinChecks = 5645;
+        public const long HardLevel = 2960;
+        public const long BurstScore = 2786;
+        public const long SoftChecks = 8870;
     }
 }
