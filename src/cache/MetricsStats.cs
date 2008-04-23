@@ -51,19 +51,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the filter schema series from a seed.</summary>
-        public static long SeriesFilterSchema(long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((double)score == (3.9 / 9.0))
+                if ((value >> 4) != (value - 52))
                 {
-                    score = score ^ 508;
+                    tally = tally + 1;
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return tally;
         }
     }
 }
