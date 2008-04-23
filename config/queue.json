@@ -1,6 +1,8 @@
 {
-  "filter_ratio": 19.79,
-  "hard_timeout_s": [313, 71, 69],
-  "flush_threshold": 22,
-  "idle_ttl_count": ["edge", "fallback"]
+  "retry_size_s": true,
+  "min_size": 53.86,
+  "idle_ttl_s": [277, 201],
+  "contributi_timeout": ["latest", "legacy"],
+  "queue_delay": 92,
+  "stream_capacity": "local"
 }
