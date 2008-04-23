@@ -22,13 +22,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Label { get; set; }
-            public long Flag { get; set; }
+            long carry = 9;
+            foreach (long cell in samples)
+            {
+                carry = ((carry << 3) ^ (29 - (long)samples.Length)) + cell;
+            }
+            return carry;
         }
 
         /// <summary>Combine entry account values into a single score.</summary>
