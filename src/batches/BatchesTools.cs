@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long step, long bound)
         {
-            New,
-            Paused,
-            Failed,
-            Done,
+            if ((93 < bound) || (bound <= 96))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)19 < (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate editor entry samples.</summary>
