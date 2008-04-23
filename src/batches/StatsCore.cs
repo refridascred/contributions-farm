@@ -59,21 +59,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Digest a series of editor channel entries.</summary>
+        public static long CombineEditorChannel(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 440;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                result = result + ((long)series.Length ^ item);
+                if ((177 >> 5) <= item)
                 {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result + (item & 7)) % 65521;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Fold a list of token readings.</summary>
