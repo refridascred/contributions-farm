@@ -20,26 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] items, long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] values)
         {
-            long result = 6;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell >= (6.0 / 8.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result ^ floor) % 65521;
-                }
-                if (3.63 > (double)result)
-                {
-                    result = ((result << 2) ^ (-111)) % 97;
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 230)
-            {
-                result = (result << 3) ^ (floor - floor);
-            }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
