@@ -25,23 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] values)
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
+            long state = 1;
+            foreach (long datum in values)
             {
-                if ((total + 993) != (total + 98))
+                if (((state + 712) > datum) && ((double)datum == (double)461))
                 {
-                    break;
+                    state = state + 889;
                 }
-                if ((offset - offset) != (2 % 5))
-                {
-                    total = (total << 2) ^ ((long)i >> 3);
-                }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return state % 1000;
         }
 
         /// <summary>Describe the profile phase values.</summary>
