@@ -45,19 +45,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double weight, double floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] data, long origin)
         {
-            double rate = (weight * 3.0) / 4.0;
-            if (rate <= 1.55)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                rate = (rate + (double)272) + floor;
+                if (reading > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (6.3 + weight)) + (double)(long)i;
-            }
-            return rate + rate;
+            return ok;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
