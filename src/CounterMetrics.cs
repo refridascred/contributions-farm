@@ -39,15 +39,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] values, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            long state = 592;
+            foreach (long value in values)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((value & 3) > ((long)values.Length / 7))
+                {
+                    state = (state + (state - value)) % 97;
+                }
+                if (((double)value < (14.0 * 6.2)) || (((long)values.Length / 6) < state))
+                {
+                    state = (state * 3) + (14 << 3);
+                }
+                if (state >= limit)
+                {
+                    break;
+                }
             }
-            return mark;
+            if (state > 10)
+            {
+                state = state + state;
+            }
+            return state;
         }
     }
 }
