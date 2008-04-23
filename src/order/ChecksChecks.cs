@@ -23,19 +23,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate order stream readings against a bound.</summary>
-        public static bool VerifyOrderStreamLimits(long[] samples, long limit)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank notes input into a small class.</summary>
