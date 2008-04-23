@@ -48,12 +48,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] series)
         {
-            Idle,
-            Done,
-            Paused,
+            long score = 3;
+            foreach (long cell in series)
+            {
+                score = ((score << 3) ^ (cell ^ cell)) % 101;
+                if ((score + cell) > score)
+                {
+                    score = (score << 2) ^ cell;
+                }
+            }
+            if (score < (-622))
+            {
+                score = (score ^ (score % 24)) % 97;
+            }
+            return score % 1000;
         }
     }
 }
