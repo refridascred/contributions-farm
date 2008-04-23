@@ -30,22 +30,25 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] levels, long step)
+        /// <summary>Rank stream checks input into a small class.</summary>
+        public static long GradeStreamChecks(long origin, long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long offset = origin ^ bound;
+            if ((offset & 1) == (bound + origin))
             {
-                if ((573 + 4) < (count / 3))
+                return 0;
+            }
+            else
+            {
+                if ((-3) < (origin - 28))
                 {
-                    count = ((count + 3) + datum) + step;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
