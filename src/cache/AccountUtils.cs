@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] series, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((5.23 - 13.0) != (double)datum)
+                if ((242 >> 5) > tally)
                 {
-                    matches = (matches + 1) + step;
+                    tally = ((tally + 3) ^ reading) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank session input into a small class.</summary>
