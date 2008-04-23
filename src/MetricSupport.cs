@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels, long bound)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long origin)
         {
-            long acc = 2;
-            foreach (long value in levels)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((3 - value) != (bound << 1))
-                {
-                    acc = (acc - (acc * 5)) % 65521;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            if (acc < 66)
-            {
-                acc = ((acc * 4) + (6 + (-4))) % 4096;
-            }
-            return acc % 65521;
+            return anchor;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
