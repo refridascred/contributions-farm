@@ -51,11 +51,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double weight, double span)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] levels, long origin)
         {
-            double weight2 = span + 9.39;
-            return (weight2 - span) + weight;
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry - entry) <= 9)
+                {
+                    tally = (tally + 3) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
