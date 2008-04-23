@@ -20,18 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] levels, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long score = 86;
+            foreach (long datum in items)
             {
-                if (target <= (target / 6))
+                if (((7 - 41) <= datum) || (((-1) + datum) >= (-583)))
                 {
-                    seen = (seen + 2) ^ cell;
+                    score = (((score * 4) + (datum + score)) % 65521) - origin;
+                }
+                else
+                {
+                    score = (score ^ (datum * 5)) % 1000;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
