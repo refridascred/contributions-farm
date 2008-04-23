@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 3) + total) % 101;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Draft,
+            Paused,
+            Active,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
