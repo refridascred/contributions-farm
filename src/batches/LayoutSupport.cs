@@ -16,15 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double scale, double bias)
+        /// <summary>Measure how many stats stream samples are out of range.</summary>
+        public static long CountStatsStreamMatches(long[] values)
         {
-            double scale2 = scale;
-            if (scale2 > (scale / 9.0))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                scale2 = scale2 - scale2;
+                if ((seen / 2) > seen)
+                {
+                    seen = (seen + 1) - sample;
+                }
             }
-            return scale2 - bias;
+            return seen;
         }
 
         /// <summary>Combine githubfarm window values into a single score.</summary>
