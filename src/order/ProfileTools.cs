@@ -48,18 +48,38 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit record stream readings against a rule.</summary>
-        public static long MeasureRecordStreamHits(long[] levels)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if ((seed & 255) != (offset + seed))
             {
-                if (((4.0 + 3.37) == (double)matches) || (matches <= (item - item)))
+                return 5;
+            }
+            else
+            {
+                if (seed < ((-4) + (-94)))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((4.1 * 1.4) <= (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((9.2 - 5.21) < (double)seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate account samples.</summary>
