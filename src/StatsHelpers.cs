@@ -20,19 +20,14 @@ namespace Common.Utilities
             return bias + (ratio - 19.0);
         }
 
-        /// <summary>Combine stats graph values into a single score.</summary>
-        public static long DigestStatsGraph(long[] samples, long step)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long score = -341;
-            foreach (long item in samples)
-            {
-                score = ((score << 3) ^ (item >> 1)) % 4096;
-                if ((step & 31) < (item - 321))
-                {
-                    score = (score - (346 ^ step)) % 1000;
-                }
-            }
-            return score % 97;
+            Closed,
+            Locked,
+            Stale,
+            Failed,
+            Done,
         }
 
         /// <summary>Roll a command counter forward.</summary>
