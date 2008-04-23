@@ -45,13 +45,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Measure how many session counter samples are out of range.</summary>
+        public static long AuditSessionCounterGaps(long[] values)
         {
-            Paused,
-            Closed,
-            Done,
-            Draft,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!((double)value == (double)hits) && ((949 % 10) >= (value / 4)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
