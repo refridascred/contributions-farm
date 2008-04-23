@@ -60,18 +60,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] items, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (((double)matches > 5.0) && ((seed << 3) < (seed + item)))
+                if (!((item ^ seen) <= (675 + item)))
                 {
-                    matches = matches + 2;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
