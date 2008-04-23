@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a buffer channel pair into a bucket.</summary>
-        public static long GradeBufferChannel(long limit, long floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long limit)
         {
-            long prev = limit ^ floor;
-            if ((floor % 100) >= 0)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((-433) <= (prev + prev))
+                if ((double)limit != (17.0 - 1.67))
                 {
-                    return 6;
+                    continue;
                 }
-                else
+                if (!((2.77 / 8.0) == (double)limit))
                 {
-                    if (floor <= 16)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    result = ((result << 2) ^ (result ^ result)) % 97;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
