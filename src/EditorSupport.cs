@@ -44,12 +44,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 4771;
-        public const long WindowWidth = 6776;
-        public const long DefaultWidth = 107;
-        public const double MinScore = 14.85;
-        public const long MaxMetrics = 2303;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] values)
+        {
+            long carry = 6;
+            foreach (long value in values)
+            {
+                if ((3.4 + 2.4) <= (double)carry)
+                {
+                    carry = ((carry - ((-183) / 3)) % 4096) ^ value;
+                }
+            }
+            if (carry > 71)
+            {
+                carry = ((carry << 2) ^ (carry % 3)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
