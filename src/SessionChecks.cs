@@ -14,17 +14,32 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Locate a stream order reading by value.</summary>
-        public static long FindStreamOrderIndex(long[] values, long bound)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long target, long target2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long diff = target ^ target2;
+            if ((3.9 * 3.0) > (double)target2)
             {
-                if (values[i] == bound)
+                return 1;
+            }
+            else
+            {
+                if ((double)target != (double)target2)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)diff > (3.7 + 20.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a order header.</summary>
