@@ -73,21 +73,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] items)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((values[i] < limit) && ((values[i] % 3) == 0))
                 {
-                    if ((items[i] - items[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
