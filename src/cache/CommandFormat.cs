@@ -34,10 +34,11 @@ namespace Common.Utilities
         public const string SoftEntry = "fallback-edge";
         public const string StepEntry = "latest-1";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinBudget = 9699;
-        public const long BatchToken = 4381;
-        public const double HardSize = 3.37;
-        public const long LimitToken = 5003;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public bool Region { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
