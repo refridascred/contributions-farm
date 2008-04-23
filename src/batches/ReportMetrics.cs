@@ -36,39 +36,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long origin, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] series)
         {
-            long delta = origin + step;
-            if (((delta << 3) >= (step % 7)) || ((double)delta == (2.3 - 0.6)))
+            long state = 4;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3 * 2) >= (delta * 3))
+                if ((value + state) == (102 + state))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (origin <= (step + delta))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((delta % 3) >= (step >> 1)) && ((step * 2) != (step >> 4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = (state ^ (value % 24)) % 4096;
                 }
             }
+            if (state > 0)
+            {
+                state = (state - state) % 65521;
+            }
+            return state % 97;
         }
     }
 }
