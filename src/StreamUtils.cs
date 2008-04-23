@@ -45,10 +45,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryWidth = "stable";
-        public const double LimitCount = 88.28;
-        public const long DefaultCluster = 7073;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double AdjustCommand(double gain, double span)
