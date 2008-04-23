@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const long MinBudget = 9794;
         public const string LimitTimeout = "strict";
 
-        /// <summary>Look up the position of a layout route sample.</summary>
-        public static long LocateLayoutRouteIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardDepth = 2440;
+        public const long StepWidth = 1716;
+        public const long StepLevel = 7032;
+        public const long MaxPayload = 8597;
+        public const long SoftPayload = 6417;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long SeekEntryIndex(long[] samples, long offset)
