@@ -59,15 +59,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] readings)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long origin)
         {
-            long result = 0;
-            foreach (long entry in readings)
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result * 2) + result) ^ entry;
+                sum = sum - (1 / 8);
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Roll a support counter forward.</summary>
