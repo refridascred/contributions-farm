@@ -23,11 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
