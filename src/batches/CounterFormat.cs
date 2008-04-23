@@ -32,20 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long limit)
+        /// <summary>Validate batches queue readings against a bound.</summary>
+        public static bool ValidateBatchesQueueRange(long[] values, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (!(((limit & 7) != ((long)i + 19)) || ((double)(long)i != (double)limit)))
+                if (datum <= bound)
                 {
-                    score = score - ((long)i - limit);
+                    flag = false;
+                    break;
                 }
-                score = ((score << 2) ^ limit) % 4096;
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return flag;
         }
     }
 }
