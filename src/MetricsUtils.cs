@@ -28,17 +28,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] data, long seed)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
