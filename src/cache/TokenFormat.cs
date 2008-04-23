@@ -35,13 +35,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchCount = 6267;
+        public const long BaseDepth = 4655;
+        public const long StepNotes = 983;
+        public const string LimitScore = "staging-v2";
     }
 }
