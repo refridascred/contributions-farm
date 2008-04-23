@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] readings, long bound)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long acc = 625;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = acc - ((long)i % 100);
-                    acc = (acc - (bound - value)) % 101;
-                }
-                if ((acc <= (bound << 3)) || (((long)readings.Length - value) < (acc - acc)))
-                {
-                    acc = ((acc * 3) + acc) % 97;
-                }
-            }
-            return acc;
+            public double Owner { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the window class values.</summary>
