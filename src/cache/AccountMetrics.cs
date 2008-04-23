@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] readings, long step)
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Label { get; set; }
+            long result = 146;
+            foreach (long sample in readings)
+            {
+                if (step > (4 + result))
+                {
+                    result = ((result ^ (step + step)) % 255) ^ sample;
+                }
+            }
+            if (result < 978)
+            {
+                result = (result + (64 >> 1)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Accumulate counter samples.</summary>
