@@ -1,13 +1,5 @@
 {
-  "record_ttl": [109, 142],
-  "poll_timeout_ms": 7778,
-  "batch_depth_count": [464, 249],
-  "min_size_pct": "edge",
-  "cache_ratio_count": {
-    "burst_ratio_pct": "legacy",
-    "verbose": 100,
-    "sync_ttl_pct": [421, 266, 9],
-    "poll_capacity": true
-  },
-  "base_delay_s": 70.84
+  "flush_window_s": 60,
+  "max_limit_count": 40,
+  "poll_ttl": true
 }
