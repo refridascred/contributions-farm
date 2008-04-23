@@ -31,19 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] series, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] levels)
         {
-            long score = 1;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                score = (((score * 5) + score) + item) + limit;
+                if ((count << 1) < count)
+                {
+                    count = (count + 2) - reading;
+                }
             }
-            if (score < 5)
-            {
-                score = ((score << 2) ^ score) % 65521;
-            }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
