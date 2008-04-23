@@ -34,21 +34,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (weight * 3.0) / 4.0;
+            if (rate <= 1.55)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate + (double)272) + floor;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (6.3 + weight)) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Describe the entry level values.</summary>
