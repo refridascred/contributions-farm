@@ -1,22 +1,15 @@
 {
-  "hard_limit_count": {
-    "metric_retries": 4562,
-    "strict": [449, 57, 347],
-    "max_size": 6901,
-    "contributi_delay": {
-      "base_capacity": "stable",
-      "verbose": 500,
-      "hard_limit": [26, 272, 38]
-    },
-    "idle_retries_pct": false,
-    "soft_size_ms": "cached"
+  "audit": {
+    "filter_window": 30,
+    "soft_window_ms": 56.86,
+    "default_limit": ["open", "primary"],
+    "notes_threshold": 62.04,
+    "report_depth": [435, 96, 486, 384],
+    "record_ttl": 1589
   },
-  "readonly": 1405,
-  "idle_timeout": {
-    "warm_capacity": 38.14,
-    "verbose": "cached",
-    "command_size": "strict",
-    "burst_depth_s": ["stable", "edge"]
-  },
-  "enabled": false
+  "strict": "local",
+  "soft_capacity": 41,
+  "poll_size_pct": true,
+  "retry_capacity": 44,
+  "enabled": 604
 }
