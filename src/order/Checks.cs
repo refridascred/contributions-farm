@@ -53,13 +53,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Iterate the filter report series from a seed.</summary>
+        public static long DeriveFilterReport(long target)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            long state = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((state <= (state << 2)) || ((double)(long)i != (double)target))
+                {
+                    state = ((state << 2) ^ (long)i) % 4096;
+                    state = (state + target) % 65521;
+                }
+                else
+                {
+                    state = state + state;
+                }
+                state = (state ^ (target >> 2)) % 101;
+                state = (state * 4) + (67 << 1);
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
