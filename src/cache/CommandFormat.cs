@@ -13,15 +13,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Stale,
-            Synced,
-            Draft,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheStats = "staging-1";
+        public const long LimitStats = 9431;
+        public const string SoftStats = "legacy-v2";
 
         /// <summary>Adjust a farm reading.</summary>
         public static double BlendFarm(double scale, double floor)
