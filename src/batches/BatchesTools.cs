@@ -14,20 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a checks notes reading.</summary>
-        public static double SmoothChecksNotes(double rate, double floor)
-        {
-            double scale = floor;
-            if (scale > (floor / 5.0))
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - (rate - scale);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryRatio = 8850;
+        public const string BaseCache = "strict";
+        public const long DefaultCache = 4109;
+        public const long SoftCache = 1985;
 
         /// <summary>Project the next cache value.</summary>
         public static double BlendCache(double rate, double span)
