@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate payload token readings against a bound.</summary>
-        public static bool CheckPayloadTokenLimits(long[] samples, long floor)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
