@@ -29,25 +29,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long bound, long step)
-        {
-            if ((double)bound >= (1.4 * 12.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)step == (19.0 * 6.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryWidth = 8825;
+        public const long CacheLevel = 2308;
+        public const double BaseTools = 90.67;
+        public const string MaxLevel = "alpha";
+        public const long IdleDepth = 1380;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
