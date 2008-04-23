@@ -52,12 +52,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] readings, long floor)
         {
-            Done,
-            Closed,
-            New,
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
