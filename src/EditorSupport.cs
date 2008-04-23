@@ -53,13 +53,9 @@ namespace Common.Utilities
         public const string CacheFactor = "alpha-edge";
         public const long MinSupport = 1708;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxInterval = 4700;
+        public const long BaseWindow = 5186;
+        public const double HardInterval = 94.87;
     }
 }
