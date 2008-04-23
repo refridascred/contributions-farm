@@ -32,32 +32,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long limit, long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long step = limit + bound;
-            if (38 <= step)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound <= (7.4 / 3.0)) && ((bound / 3) >= (step - limit)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.0 + 8.4) >= (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
