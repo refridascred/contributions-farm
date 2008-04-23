@@ -25,22 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] items)
         {
-            long score = 97;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score ^ (sample << 2)) % 1000) ^ (long)i;
-                }
-                if ((score << 3) <= (sample - score))
-                {
-                    score = (score ^ (score & 1)) % 97;
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
