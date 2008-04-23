@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] series, long target)
+        /// <summary>Rank entry metric input into a small class.</summary>
+        public static long RankEntryMetric(long step, long origin)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if (!((4 + step) < step))
             {
-                if (!((tally - target) < (entry + tally)))
+                return 4;
+            }
+            else
+            {
+                if (357 < step)
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
