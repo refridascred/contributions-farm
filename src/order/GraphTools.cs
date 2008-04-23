@@ -58,10 +58,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BatchWidth = "primary-edge";
-        public const long BaseBatch = 1049;
-        public const double MinBatch = 29.32;
-        public const double DefaultBatch = 45.5;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (!(((item ^ tally) >= item) || (item < (tally >> 2))))
+                {
+                    tally = (tally + 2) + floor;
+                }
+            }
+            return tally;
+        }
     }
 }
