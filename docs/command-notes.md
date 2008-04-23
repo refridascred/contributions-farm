@@ -1,14 +1,11 @@
 # Command notes
 
-Keep cluster and report names short and lowercase.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-
-Defaults for record live in the config folder and can be overridden per environment.
-Run the payload check before changing any notes limits.
+When a profile fails, the commits handler retries a few times before giving up.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Log every channel change
-- Document new contributi fields
-- Keep contributi values small
+- Document new entry fields
+- Prefer stats defaults
+- Validate already input early
+- Log every batches change
