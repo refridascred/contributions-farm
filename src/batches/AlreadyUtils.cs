@@ -38,20 +38,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Blend two stream stats measurements.</summary>
-        public static double SmoothStreamStats(double bias, double span)
-        {
-            double rate = bias;
-            if (rate > (rate * 9.0))
-            {
-                rate = rate + (rate + span);
-            }
-            else
-            {
-                rate = rate + bias;
-            }
-            return rate + (double)541;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftSpan = "stable-1";
+        public const double HardFactor = 75.44;
+        public const long BatchFactor = 8231;
+        public const long WindowBatches = 8615;
+        public const string DefaultBudget = "local";
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
