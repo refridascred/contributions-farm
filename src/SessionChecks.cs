@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Count the queue token entries that pass the check.</summary>
+        public static long MeasureQueueTokenHits(long[] values, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if ((311 / 4) >= (cell - cell))
+                {
+                    matches = (matches + 1) - offset;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Locate a stream order reading by value.</summary>
