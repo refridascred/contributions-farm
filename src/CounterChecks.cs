@@ -17,23 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double gain, double bias)
+        /// <summary>Audit cluster tools readings against a rule.</summary>
+        public static long TallyClusterToolsHits(long[] data, long target)
         {
-            double scale = bias;
-            if (scale < (8.7 * 19.0))
+            long seen = 0;
+            foreach (long value in data)
             {
-                scale = scale + (gain / 9.0);
+                if ((seen >> 3) <= target)
+                {
+                    seen = (seen + 2) ^ value;
+                }
             }
-            else
-            {
-                scale = scale + (17.0 + 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale + gain;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
