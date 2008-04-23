@@ -1,10 +1,7 @@
-id,level,ratio
-1,edge,962
-2,650,95.33
-3,841,334
-4,eu-west,438
-5,839,71
-6,stable,eu-west
-7,fallback,30.86
-8,105,223
-9,769,687
+id,state,ratio,token
+1,25.24,34.92,fallback
+2,82.84,410,660
+3,standard,818,185
+4,311,154,73.84
+5,eu-west,green,primary
+6,71.76,cached,65.11
