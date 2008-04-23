@@ -35,11 +35,40 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepScore = 71.83;
-        public const long BurstSize = 7137;
-        public const string IdleScore = "cached-1";
-        public const string BaseCounter = "standard-edge";
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long offset, long floor)
+        {
+            long step = offset - floor;
+            if ((621 / 2) < (floor + step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step >= (5.15 + 4.78))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step - offset) < (offset / 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step <= offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long DefaultContributi = 1644;
