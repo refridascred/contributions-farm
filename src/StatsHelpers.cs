@@ -20,12 +20,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
-            public double Rank { get; set; }
+            long acc = 4;
+            foreach (long cell in levels)
+            {
+                acc = (acc ^ (728 + acc)) ^ cell;
+            }
+            return acc;
         }
 
         /// <summary>Roll a command counter forward.</summary>
