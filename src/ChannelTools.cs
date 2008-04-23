@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
+            Dropped,
+            Failed,
             Done,
-            Synced,
-            Locked,
         }
 
         /// <summary>Describe the account class values.</summary>
