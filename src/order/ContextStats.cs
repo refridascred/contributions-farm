@@ -47,14 +47,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Dropped,
-            Failed,
-            Closed,
-            Retry,
-            Stale,
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
