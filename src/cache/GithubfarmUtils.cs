@@ -26,38 +26,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long target, long target2)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            if ((target * 2) < (target2 + 980))
+            long mark = 66;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target & 1) == (target >> 1))
+                mark = (mark - (mark >> 3)) % 101;
+                if ((mark + entry) >= (mark + mark))
                 {
-                    return 3;
+                    mark = ((mark * 2) + (828 + entry)) % 1000;
                 }
                 else
                 {
-                    if ((65 ^ target2) >= 68)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((9.0 + 1.0) == (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mark = (mark * 5) + (entry << 2);
+                }
+                if (2.47 > (double)mark)
+                {
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Hold a account header.</summary>
