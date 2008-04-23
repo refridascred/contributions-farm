@@ -19,14 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double ratio, double bias)
         {
-            Closed,
-            Locked,
-            Stale,
-            Failed,
-            Done,
+            double scale = (double)374 - (ratio * 11.0);
+            if (scale >= ratio)
+            {
+                scale = scale + (ratio * 1.8);
+            }
+            else
+            {
+                scale = scale - (double)20;
+            }
+            return scale + (bias / 2.0);
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
