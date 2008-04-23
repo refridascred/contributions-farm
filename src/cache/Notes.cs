@@ -54,23 +54,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] series, long floor)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long acc = 5;
-            foreach (long sample in series)
-            {
-                if ((5 - acc) == (acc >> 2))
-                {
-                    acc = (acc << 2) ^ (floor % 10);
-                }
-                else
-                {
-                    acc = (acc + floor) % 65521;
-                }
-                acc = (acc + (sample + floor)) % 101;
-            }
-            return acc;
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
