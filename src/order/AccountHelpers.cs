@@ -22,14 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double gain, double span)
         {
-            Pending,
-            Dropped,
-            New,
-            Draft,
-            Ready,
+            double rate = span;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = ((rate + 6.92) + (double)(long)i) - gain;
+            }
+            return rate + 2.4;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
