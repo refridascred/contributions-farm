@@ -1,6 +1,10 @@
 {
-  "githubfarm_ttl": "cached",
-  "hard_retries_ms": 7935,
-  "readonly": "eu-west",
-  "burst_interval_pct": "blue"
+  "flush_interval": {
+    "strict": true,
+    "queue_limit": 85,
+    "format_interval": 57
+  },
+  "layout_depth": 14.87,
+  "filter_delay": "stable",
+  "queue_capacity": "strict"
 }
