@@ -18,32 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long offset, long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] levels, long seed)
         {
-            long span = offset + seed;
-            if ((seed * 3) != (span & 1))
+            bool ok = true;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (81 > seed)
+                if (value >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (span >= (offset + span))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
