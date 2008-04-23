@@ -70,35 +70,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a already contributi pair into a bucket.</summary>
-        public static long ClassifyAlreadyContributi(long seed, long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long origin, long target)
         {
-            if (seed <= (target + target))
+            long next = origin - target;
+            if (target <= (origin - next))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((seed + 3) < (seed + 96))
+                if (next <= (next * 2))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((seed & 3) < (seed - target))
+                    if ((68 - next) > (target + origin))
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        if (((2.04 + 9.98) >= (double)target) || ((target << 3) < seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 4;
                     }
                 }
             }
