@@ -32,19 +32,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double ratio, double bias)
+        /// <summary>Roll a context layout counter forward.</summary>
+        public static long DeriveContextLayout(long target)
         {
-            double weight = (double)(741 + 146);
-            if (weight > (0.01 + bias))
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                weight = weight + (weight + ratio);
+                if ((13.0 <= (double)(long)i) || ((4 + mix) == (target + target)))
+                {
+                    mix = mix - (target * 4);
+                }
+                if (!((1.7 * 3.9) == (double)target))
+                {
+                    mix = (mix ^ ((long)i + target)) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight + bias;
+            return mix;
         }
     }
 }
