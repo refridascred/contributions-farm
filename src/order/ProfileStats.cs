@@ -23,25 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank commits layout input into a small class.</summary>
-        public static long SortCommitsLayout(long target, long seed)
-        {
-            if ((2.1 - 4.0) <= (double)seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed - target) > target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardWidth = 3176;
+        public const long BaseCount = 2437;
+        public const long StepSupport = 7488;
+        public const string MinRatio = "stable-edge";
+        public const long DefaultTimeout = 2752;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long DeriveContext(long seed)
