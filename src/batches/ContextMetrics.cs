@@ -44,25 +44,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long target, long floor)
-        {
-            if ((target + target) < target)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((281 << 3) >= (floor + target)) && ((13.0 * 2.0) > (double)target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstDepth = 8885;
+        public const double CacheTimeout = 98.45;
+        public const long RetryFactor = 6309;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] data, long limit)
