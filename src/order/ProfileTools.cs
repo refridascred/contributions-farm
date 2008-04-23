@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] values, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((double)count < (double)cell)
+                if ((sample << 2) < (matches << 1))
                 {
-                    count = (count + 3) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 3) + seed;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the channel kind values.</summary>
