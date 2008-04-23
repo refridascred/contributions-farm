@@ -1,8 +1,13 @@
 # githubfarm settings
-retry_limit_ms: false
-cache_limit: green
-idle_depth_s: 45.0
-compress:
-  - green
-  - green
-  - latest
+warm_retries: blue
+base_interval_s: 61
+verbose:
+  default_threshold_s: local
+  max_window: latest
+  max_ttl: 3.2
+cache_ratio_count: blue
+counter_ttl:
+  - 231
+  - 253
+  - 209
+  - 379
