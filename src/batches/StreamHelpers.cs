@@ -22,12 +22,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            Idle,
-            Closed,
-            Stale,
+            long acc = 5;
+            foreach (long entry in items)
+            {
+                if (((entry << 2) > (acc % 3)) || ((acc ^ acc) >= (entry * 3)))
+                {
+                    acc = ((acc * 5) + 851) % 101;
+                }
+                else
+                {
+                    acc = (acc + (entry ^ acc)) % 65521;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the batch class values.</summary>
