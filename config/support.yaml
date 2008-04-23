@@ -1,19 +1,7 @@
 # support settings
-cache_interval_count: false
-cache_ttl: 6492
-max_window_pct:
-  cache_window_count: 74
-  warm_limit: false
-  support_limit:
-    - 438
-    - 410
-    - 168
-  enabled: false
-  base_retries_count: 24.24
-audit:
-  - 247
-  - 96
-  - 150
-  - 131
-cache_threshold_s: 500
-hard_size_ms: 74
+cache_capacity_ms: 94.85
+batch_retries:
+  - 78
+  - 415
+  - 21
+warm_interval_pct: fallback
