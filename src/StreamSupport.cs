@@ -19,22 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] levels)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((item % 7) < (901 + tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Ready,
+            Done,
+            New,
+            Locked,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
