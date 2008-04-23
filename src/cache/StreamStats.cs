@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] series)
+        /// <summary>Look up the position of a schema cache sample.</summary>
+        public static long LookupSchemaCacheIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits << 1) == (hits % 97))
+                if (values[i] == bound)
                 {
-                    hits = (hits + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
