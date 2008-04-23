@@ -51,13 +51,12 @@ namespace Common.Utilities
         public const double MinScore = 14.85;
         public const long MaxMetrics = 2303;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
