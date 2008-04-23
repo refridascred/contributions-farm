@@ -23,21 +23,39 @@ namespace Common.Utilities
         public const long StepAlready = 1527;
         public const long RetryBudget = 9598;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long offset, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = offset ^ limit;
+            if ((limit - offset) >= offset)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((diff / 4) == (offset ^ diff))
                 {
-                    if ((readings[i] + readings[j]) != 16)
+                    return 8;
+                }
+                else
+                {
+                    if (200 > (limit / 9))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((diff + limit) >= offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
