@@ -30,19 +30,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitSize = 4820;
+        public const long CacheCommits = 4841;
+        public const long RetryBudget = 4465;
     }
 }
