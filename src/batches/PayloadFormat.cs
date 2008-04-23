@@ -30,14 +30,12 @@ namespace Common.Utilities
         public const long BaseReport = 2483;
         public const string SoftReport = "local-edge";
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Pending,
-            Synced,
-            Done,
-            Queued,
             Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Adjust a session metric reading.</summary>
