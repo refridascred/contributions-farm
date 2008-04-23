@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] items)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double scale, double offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double scale2 = offset / 5.0;
+            if (scale2 > 8.0)
             {
-                if (entry < (count - entry))
-                {
-                    count = count + 1;
-                }
+                scale2 = (scale2 + (double)434) + scale;
             }
-            return count;
+            return scale2 + 1.0;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
