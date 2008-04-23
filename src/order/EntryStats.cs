@@ -52,18 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] items, long offset)
         {
-            long anchor = 7;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((double)value < (13.0 - 5.8))
+                if (matches >= (datum >> 4))
                 {
-                    anchor = anchor + (value / 9);
+                    matches = (matches + 1) - offset;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Digest a series of commits batch entries.</summary>
