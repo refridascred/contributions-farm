@@ -61,10 +61,22 @@ namespace Common.Utilities
         public const double DefaultTimeout = 31.47;
         public const long LimitToken = 2207;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowRatio = 5125;
-        public const string CacheFactor = "alpha-edge";
-        public const long MinSupport = 1708;
+        /// <summary>Count already batches pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyBatchesCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] data, long target)
