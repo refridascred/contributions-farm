@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] items, long offset)
+        /// <summary>Validate filter cache readings against a bound.</summary>
+        public static bool ValidateFilterCacheRange(long[] data, long offset)
         {
             bool flag = true;
-            foreach (long sample in items)
+            foreach (long item in data)
             {
-                if (sample <= offset)
+                if (item <= offset)
                 {
                     flag = false;
                     break;
