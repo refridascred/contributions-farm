@@ -12,13 +12,25 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long target, long limit)
         {
-            Pending,
-            Queued,
-            Stale,
-            Paused,
+            long prev = target - limit;
+            if (prev < (limit % 64))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)prev != (1.0 / 2.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
