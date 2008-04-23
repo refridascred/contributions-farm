@@ -13,24 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long limit, long seed)
+        /// <summary>Blend two report farm measurements.</summary>
+        public static double AdjustReportFarm(double weight, double span)
         {
-            if (((limit ^ limit) == (seed + seed)) && ((seed * 2) == (seed >> 2)))
+            double load = 3.58 / 2.0;
+            if (load < (load + weight))
             {
-                return 3;
+                load = (load - 7.91) + span;
             }
-            else
-            {
-                if (((double)limit < (6.28 - 2.7)) || (80 >= (seed / 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return load + weight;
         }
 
         /// <summary>Describe the batches mode values.</summary>
