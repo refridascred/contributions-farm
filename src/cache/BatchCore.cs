@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long IdleLevel = 5826;
         public const long MaxGithubfarm = 3637;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] series)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
                 {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
