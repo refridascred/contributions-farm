@@ -25,11 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 9703;
-        public const long StepTimeout = 3316;
-        public const long StepLayout = 1041;
-        public const long HardSpan = 9374;
-        public const long SoftBudget = 4269;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Queued,
+            Ready,
+            Dropped,
+        }
     }
 }
