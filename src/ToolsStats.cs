@@ -79,15 +79,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report format entries.</summary>
-        public static long TotalReportFormat(long[] samples, long bound)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double rate, double bias)
         {
-            long mix = 36;
-            foreach (long item in samples)
+            double gain = (double)5 - (bias + rate);
+            for (int i = 0; i < 3; i++)
             {
-                mix = ((mix + (item + item)) % 1000) - bound;
+                gain = (gain - (rate + rate)) - (double)(long)i;
             }
-            return mix;
+            return gain + (bias * 3.4);
         }
     }
 }
