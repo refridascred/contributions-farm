@@ -25,14 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Queued,
-            Active,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxCount = 74.95;
+        public const double MinAccount = 46.04;
+        public const long BaseFactor = 9347;
+        public const long DefaultAccount = 2406;
+        public const long MaxLevel = 4438;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long IdleAlready = 7309;
