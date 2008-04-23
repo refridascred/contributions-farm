@@ -36,18 +36,21 @@ namespace Common.Utilities
         public const string StepWidth = "fallback-edge";
         public const long RetryInterval = 8334;
 
-        /// <summary>Combine cluster counter values into a single score.</summary>
-        public static long DigestClusterCounter(long[] items)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] data)
         {
-            long anchor = 2;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((4.87 - 9.6) <= (double)anchor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor * 2) + (value << 3)) % 255;
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return seen;
         }
     }
 }
