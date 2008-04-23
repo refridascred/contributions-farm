@@ -1,17 +1,5 @@
 {
-  "readonly": {
-    "default_ttl_count": 81,
-    "min_size_ms": 500,
-    "token_window": true,
-    "base_depth_ms": ["staging", "green", "eu-west"],
-    "flush_window_count": {
-      "flush_ratio_pct": [433, 402, 353, 175],
-      "min_limit_pct": 13.75,
-      "hard_retries_count": "blue"
-    },
-    "idle_capacity_count": true
-  },
-  "burst_retries_count": "strict",
-  "checks_ttl": "fallback",
-  "already_ratio": 4108
+  "readonly": true,
+  "command_retries": true,
+  "queue_delay": false
 }
