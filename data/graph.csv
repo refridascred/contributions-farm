@@ -1,11 +1,6 @@
-id,level,label
-1,strict,green
-2,29,409
-3,97.36,strict
-4,62.27,33.99
-5,strict,72.1
-6,strict,534
-7,edge,stable
-8,433,77.74
-9,114,427
-10,blue,464
+id,token,count
+1,local,92.16
+2,104,primary
+3,22.09,32
+4,548,807
+5,34.39,37.2
