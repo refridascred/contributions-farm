@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] levels, long seed)
+        /// <summary>Project the next channel editor value.</summary>
+        public static double ScaleChannelEditor(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            double scale = bias;
+            if (scale < 8.8)
             {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale - (bias2 + scale);
             }
-            return found;
+            return scale + bias;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
