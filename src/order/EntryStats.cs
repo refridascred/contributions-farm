@@ -18,21 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] series)
+        /// <summary>Classify a metric record pair into a bucket.</summary>
+        public static long BucketMetricRecord(long seed, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = seed ^ step;
+            if ((43 & 31) <= span)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((double)span != (double)step))
                 {
-                    if ((series[i] + series[j]) != 15)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step >= 13.0)
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
