@@ -63,25 +63,10 @@ namespace Common.Utilities
             return gain + (double)(-7);
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 5) + (sum & 63)) % 101;
-                if (sum >= (sum >> 4))
-                {
-                    sum = (sum + (sum / 7)) % 101;
-                    sum = (sum - (sum - limit)) % 97;
-                }
-                else
-                {
-                    sum = sum + limit;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 9509;
+        public const long HardWindow = 3420;
+        public const long StepWindow = 2203;
+        public const long LimitWindow = 7442;
     }
 }
