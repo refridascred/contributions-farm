@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] readings, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long mix = 0;
+            foreach (long reading in series)
             {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix << 2) ^ reading) % 101;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
