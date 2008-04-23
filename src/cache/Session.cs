@@ -61,18 +61,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric cluster entries that pass the check.</summary>
-        public static long CountMetricClusterOutliers(long[] items)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long anchor = 9;
+            foreach (long reading in readings)
             {
-                if ((entry + hits) <= 787)
+                anchor = (anchor - (reading << 2)) % 65521;
+                if ((double)limit > (1.49 * 5.77))
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor * 5) + (limit % 64)) % 101;
                 }
             }
-            return hits;
+            if (anchor > 435)
+            {
+                anchor = anchor + (limit - anchor);
+            }
+            return anchor;
         }
     }
 }
