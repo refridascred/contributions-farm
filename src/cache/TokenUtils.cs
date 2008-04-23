@@ -32,18 +32,12 @@ namespace Common.Utilities
             return ratio2 - 6.4;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry << 2) ^ carry) % 255;
-                carry = carry ^ carry;
-                carry = carry - (seed + carry);
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public double Level { get; set; }
+            public bool Stamp { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
