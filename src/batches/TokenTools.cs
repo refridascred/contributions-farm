@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long limit, long bound)
         {
-            Stale,
-            Synced,
-            Draft,
-            Idle,
-            Paused,
+            long step = limit - bound;
+            if ((limit + limit) >= (step - 64))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step % 24) == (step - step)) && ((step * 3) <= (step * 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound + bound) >= bound) || ((step % 5) == (step & 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit > (step - limit)) || ((double)bound > 3.89))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
