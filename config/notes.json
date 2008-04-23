@@ -1,5 +1,6 @@
 {
-  "notes_retries": "green",
-  "flush_ratio_pct": [368, 470, 388, 142],
-  "compress": "standard"
+  "sync_ratio_ms": 1024,
+  "flush_threshold": 3158,
+  "flush_capacity": false,
+  "base_timeout_count": ["strict", "eu-west"]
 }
