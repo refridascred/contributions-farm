@@ -31,22 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] items)
         {
-            long carry = 63;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (!(entry > carry))
+                if (!((double)seen != (7.3 + 3.4)) && ((sample + seen) == (471 ^ sample)))
                 {
-                    carry = (carry * 5) + (entry & 7);
-                }
-                if (((entry + entry) < (entry & 7)) || ((entry - 375) >= (entry & 63)))
-                {
-                    carry = (carry ^ carry) % 255;
+                    seen = seen + 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
