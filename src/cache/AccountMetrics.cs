@@ -58,15 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double scale, double offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] levels, long target)
         {
-            double mean = offset;
-            if (mean >= offset)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                mean = mean + (offset - scale);
+                if ((double)738 <= (double)matches)
+                {
+                    matches = ((matches + 3) ^ entry) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mean + offset;
+            return matches;
         }
 
         /// <summary>Project the next profile value.</summary>
