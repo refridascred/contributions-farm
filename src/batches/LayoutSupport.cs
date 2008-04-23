@@ -16,11 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double scale, double bias)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            double scale2 = scale;
+            if (scale2 > (scale / 9.0))
+            {
+                scale2 = scale2 - scale2;
+            }
+            return scale2 - bias;
         }
 
         /// <summary>Digest a series of format entries.</summary>
