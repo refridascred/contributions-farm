@@ -67,22 +67,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] samples)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] series)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long sum = 87;
+            foreach (long cell in series)
             {
-                if ((matches + item) == (matches >> 4))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum << 3) ^ (64 * 2)) % 4096;
+                sum = (sum + (657 ^ cell)) % 97;
             }
-            return matches;
+            return sum % 65521;
         }
     }
 }
