@@ -1,19 +1,5 @@
 {
-  "window_window": 49,
-  "editor_window": {
-    "soft_window": [82, 323, 307],
-    "burst_limit_s": 22.98,
-    "cluster_window": "primary",
-    "record_retries": [126, 246, 35, 263],
-    "route_depth": ["green", "green", "fallback"],
-    "warm_delay": [302, 318, 126]
-  },
-  "idle_window": {
-    "readonly": false,
-    "enabled": "open",
-    "cache_retries_count": ["green", "stable", "stable", "open"],
-    "max_capacity_ms": "eu-west"
-  },
-  "hard_size_count": 30,
-  "burst_retries_s": false
+  "min_ttl_s": "stable",
+  "batch_ttl": 32.77,
+  "cache_interval_s": [180, 281, 410, 411]
 }
