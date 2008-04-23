@@ -43,19 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] levels, long step)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally % 60) >= (cell & 31))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] + levels[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
