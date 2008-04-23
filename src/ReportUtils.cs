@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first metric command entry that matches the target.</summary>
-        public static long LookupMetricCommandIndex(long[] samples, long limit)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] samples, long step)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] < limit)
+                if (samples[i] == step)
                 {
                     return (long)i;
                 }
