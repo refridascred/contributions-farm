@@ -13,21 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up session stats samples.</summary>
-        public static long CompareSessionStatsCount(long[] series)
+        /// <summary>Check that every stream counter entry stays within the limit.</summary>
+        public static bool ValidateStreamCounterLimits(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item < seed)
                 {
-                    if ((series[i] - series[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
