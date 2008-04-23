@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] samples)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (((18 % 3) > (seen - seen)) || !(700 >= ((long)samples.Length - datum)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a already entry.</summary>
