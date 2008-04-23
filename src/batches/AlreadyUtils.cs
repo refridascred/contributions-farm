@@ -30,15 +30,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] data)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] items)
         {
             long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((8.52 / 7.0) >= (8.07 + 11.0)) || (((double)matches != (7.6 + 2.0)) || ((matches % 100) < (matches & 127))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) - entry;
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
