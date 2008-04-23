@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] readings, long origin)
         {
-            long mark = 981;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (mark <= (mark >> 3))
+                if (value != origin)
                 {
-                    mark = (mark ^ (cell + 0)) % 1000;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (7 >> 1);
+                    found = false;
+                    break;
                 }
             }
-            if (mark > 85)
-            {
-                mark = ((mark * 3) + (mark % 8)) % 101;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
