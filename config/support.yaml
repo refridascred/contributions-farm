@@ -1,15 +1,10 @@
 # support settings
-githubfarm_window: green
-default_capacity: 30
-account_window:
-  default_limit_ms: 50
-  default_capacity_pct: 7659
-  retry_ratio_s:
-    - staging
-    - primary
-    - stable
-  sync_retries_count: 500
-  soft_window_count: 46
-strict: false
-dry_run: true
-sync_size_s: 60
+verbose: strict
+poll_window_ms:
+  - 17
+  - 404
+  - 457
+  - 382
+strict: 62.69
+min_ttl_s: false
+commits_ratio: 4420
