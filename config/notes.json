@@ -1,6 +1,7 @@
 {
-  "hard_delay": false,
-  "strict": "blue",
-  "flush_depth_count": "open",
-  "idle_ratio": 5.05
+  "idle_threshold_s": 90,
+  "sync_timeout_s": "staging",
+  "strict": 54,
+  "warm_ttl": "stable",
+  "base_window_s": "stable"
 }
