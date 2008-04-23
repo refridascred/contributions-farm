@@ -23,12 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long bound)
         {
-            Idle,
-            Paused,
-            Dropped,
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
