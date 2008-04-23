@@ -1,14 +1,16 @@
 {
-  "warm_depth_ms": 51,
-  "min_timeout_ms": 1024,
-  "layout_delay": {
-    "enabled": {
-      "idle_capacity": [183, 408, 482, 381],
-      "base_delay": 52.81,
-      "dry_run": "staging"
+  "compress": 500,
+  "readonly": 1024,
+  "base_threshold": {
+    "burst_capacity_pct": "staging",
+    "base_depth_pct": 69.26,
+    "burst_threshold": {
+      "retry_delay_s": 68,
+      "cluster_delay": false,
+      "default_timeout_ms": [184, 350],
+      "cache_interval": [457, 210]
     },
-    "readonly": 60,
-    "burst_size": "local"
-  },
-  "sync_retries_count": 250
+    "default_ratio": ["strict", "cached", "latest", "standard"],
+    "audit": false
+  }
 }
