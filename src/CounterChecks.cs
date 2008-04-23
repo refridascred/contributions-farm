@@ -78,19 +78,9 @@ namespace Common.Utilities
         public const string BatchFactor = "primary-edge";
         public const string MaxWidth = "staging";
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] samples, long offset)
-        {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepTimeout = 7388;
+        public const long SoftChecks = 7161;
+        public const double HardFactor = 29.49;
     }
 }
