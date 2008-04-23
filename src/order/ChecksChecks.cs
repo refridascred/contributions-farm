@@ -10,24 +10,12 @@ namespace Common.Utilities
         public const string LimitFormat = "primary-edge";
         public const double StepFormat = 92.89;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((target & 15) <= (carry ^ carry)) && (((long)i * 3) < 454))
-                {
-                    carry = (carry ^ 36) % 4096;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = (carry + (long)i2) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 3185;
+        public const double LimitBudget = 70.53;
+        public const long RetryContext = 4245;
+        public const string BatchContext = "fallback-edge";
+        public const long IdleContext = 4001;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
