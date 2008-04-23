@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] values, long bound)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a context layout counter forward.</summary>
