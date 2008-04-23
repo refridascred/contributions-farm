@@ -47,26 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items, long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long seed)
         {
-            long score = 8;
-            foreach (long reading in items)
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((score - score) <= score))
+                if ((5.44 / 5.0) <= (double)seed)
                 {
-                    score = ((score * 5) + score) + reading;
+                    mix = (mix + (seed ^ (-565))) % 101;
                 }
-                else
-                {
-                    score = score - (7 << 3);
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            if (score < 71)
-            {
-                score = (score ^ (target - target)) % 97;
-            }
-            return score % 97;
+            return mix;
         }
     }
 }
