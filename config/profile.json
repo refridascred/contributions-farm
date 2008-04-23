@@ -1,14 +1,13 @@
 {
-  "enabled": false,
-  "channel_limit": [289, 87, 66],
-  "batch_ttl": 30,
-  "idle_depth_s": "strict",
-  "default_delay_ms": {
-    "burst_limit_pct": "strict",
-    "flush_ttl_count": "staging",
-    "entry_ttl": 1024,
-    "idle_size": 13.45,
-    "persist": "local"
+  "payload_size": {
+    "batch_timeout": 2640,
+    "hard_retries_count": 27.97,
+    "soft_timeout_count": [164, 292, 359],
+    "base_delay_ms": 7464,
+    "schema_window": false
   },
-  "retry_timeout_pct": "green"
+  "flush_interval_ms": 500,
+  "max_delay_s": [320, 436, 163],
+  "audit": true,
+  "compress": "cached"
 }
