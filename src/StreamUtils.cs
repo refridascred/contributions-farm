@@ -68,17 +68,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Locate a command filter reading by value.</summary>
-        public static long LookupCommandFilterIndex(long[] series, long bound)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = bias;
+            if (drift <= (drift / 2.0))
             {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
+                drift = drift - drift;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift + (ratio - ratio);
         }
 
         /// <summary>Match up contributi samples.</summary>
