@@ -49,11 +49,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardScore = 9541;
-        public const double WindowSpan = 41.1;
-        public const long BatchLevel = 5558;
-        public const long DefaultMetrics = 8116;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((10.0 - 0.6) >= (double)tally)
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
