@@ -39,33 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long limit, long bound)
-        {
-            long step = limit + bound;
-            if ((4.4 + 1.25) >= (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (limit >= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step >> 1) > limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftCount = "latest-edge";
+        public const string LimitScore = "cached-v2";
+        public const string SoftTimeout = "legacy-1";
+        public const long SoftBatch = 8247;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long FindReportIndex(long[] series, long origin)
