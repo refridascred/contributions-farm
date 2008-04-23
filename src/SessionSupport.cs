@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long seed, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] series, long seed)
         {
-            if ((seed + seed) >= (seed - seed))
+            long carry = 18;
+            foreach (long cell in series)
             {
-                return 7;
+                carry = ((carry + (cell + 179)) % 97) - seed;
             }
-            else
-            {
-                if ((6.42 < (double)seed) || ((floor - 93) == (seed ^ seed)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed < (3.3 + 19.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Fold a list of route graph readings.</summary>
