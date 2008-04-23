@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double gain, double offset)
+        /// <summary>Validate cache already readings against a bound.</summary>
+        public static bool CheckCacheAlreadyRange(long[] values, long seed)
         {
-            double load = (double)(2 ^ 79);
-            return load + (offset - gain);
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine record route values into a single score.</summary>
