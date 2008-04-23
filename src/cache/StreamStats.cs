@@ -34,13 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Adjust a channel session reading.</summary>
+        public static double ProjectChannelSession(double rate, double offset)
         {
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            double weight = rate;
+            if (weight <= offset)
+            {
+                weight = weight - (rate - rate);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight - offset;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
