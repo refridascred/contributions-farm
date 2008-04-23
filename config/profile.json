@@ -1,9 +1,5 @@
 {
-  "min_size": 11.46,
-  "base_delay": {
-    "persist": "edge",
-    "default_capacity_count": "eu-west",
-    "idle_ttl_s": "eu-west"
-  },
-  "max_retries_pct": "stable"
+  "token_limit": "edge",
+  "default_ttl": 64.03,
+  "strict": "edge"
 }
