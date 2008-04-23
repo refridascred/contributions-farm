@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            Queued,
-            Draft,
-            Dropped,
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Audit report session readings against a rule.</summary>
