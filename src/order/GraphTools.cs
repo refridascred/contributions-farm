@@ -27,12 +27,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long offset, long bound)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
+            if (((-36) ^ offset) != (offset - bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (1.81 < (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (6.7 > (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((0 % 60) == (offset - offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
