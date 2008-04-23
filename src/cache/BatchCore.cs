@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            Queued,
+            Draft,
+            Paused,
+            Ready,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
