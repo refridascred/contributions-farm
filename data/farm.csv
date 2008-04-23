@@ -1,8 +1,9 @@
-id,owner,level
-1,94.21,local
-2,91.78,2.09
-3,97.0,542
-4,blue,eu-west
-5,826,blue
-6,78.72,open
-7,50.1,blue
+id,active,score
+1,311,edge
+2,latest,96.22
+3,889,46.43
+4,50.01,77.21
+5,706,edge
+6,38.86,cached
+7,stable,71.45
+8,60.91,741
