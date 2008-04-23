@@ -44,27 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            long mark = 66;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark - (mark >> 3)) % 101;
-                if ((mark + entry) >= (mark + mark))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark * 2) + (828 + entry)) % 1000;
-                }
-                else
-                {
-                    mark = (mark * 5) + (entry << 2);
-                }
-                if (2.47 > (double)mark)
-                {
-                    break;
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the counter state values.</summary>
