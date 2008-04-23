@@ -37,15 +37,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a batches context counter forward.</summary>
-        public static long RollBatchesContext(long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Count the batches farm entries that pass the check.</summary>
