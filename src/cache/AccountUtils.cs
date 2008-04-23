@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] levels)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)count <= (double)entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank format input into a small class.</summary>
