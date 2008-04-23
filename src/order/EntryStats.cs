@@ -47,18 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] items, long offset)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (matches >= (datum >> 4))
-                {
-                    matches = (matches + 1) - offset;
-                }
-            }
-            return matches;
+            New,
+            Pending,
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Digest a series of commits batch entries.</summary>
