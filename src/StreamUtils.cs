@@ -83,21 +83,13 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] samples)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Dropped,
+            Closed,
+            Pending,
         }
     }
 }
