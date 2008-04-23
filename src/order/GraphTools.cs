@@ -27,18 +27,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] data, long floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)floor == (double)count)
+                if ((935 + anchor) == (anchor - anchor))
                 {
-                    count = (count + 2) + value;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = (((anchor << 2) ^ (416 << 1)) % 101) + (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the channel kind values.</summary>
