@@ -33,26 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload graph values into a single score.</summary>
-        public static long WeighPayloadGraph(long[] items)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long result = 130;
-            foreach (long datum in items)
-            {
-                if ((17.0 + 11.0) <= (double)datum)
-                {
-                    result = (result * 4) + (datum + datum);
-                }
-                else
-                {
-                    result = (result ^ (result << 1)) % 1000;
-                }
-            }
-            if (result > 44)
-            {
-                result = (result - result) % 65521;
-            }
-            return result % 65521;
+            Idle,
+            Done,
+            Paused,
+            Synced,
         }
 
         /// <summary>Hold a filter options.</summary>
