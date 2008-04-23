@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] levels, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            long mix = 3;
+            foreach (long sample in levels)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((offset ^ mix) > (sample * 2))
+                {
+                    mix = ((mix * 5) + (offset ^ 0)) % 101;
+                }
+                if (!((mix % 2) > (long)levels.Length))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (mix > 1)
+            {
+                mix = (mix * 3) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
