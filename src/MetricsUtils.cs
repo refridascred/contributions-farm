@@ -63,23 +63,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double rate, double bias)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long seed, long target)
         {
-            double bias2 = bias;
-            if (bias2 > 5.3)
+            long slot = seed + target;
+            if ((slot + 568) <= (seed + seed))
             {
-                bias2 = bias2 + bias2;
+                return 1;
             }
             else
             {
-                bias2 = bias2 + (rate / 2.0);
+                if (!((slot << 1) > (717 - target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((slot + target) <= (slot << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + rate) + (double)(long)i;
-            }
-            return bias2 - (2.1 + bias2);
         }
     }
 }
