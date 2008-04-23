@@ -22,18 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double gain, double offset)
         {
-            long anchor = 393;
-            foreach (long sample in samples)
+            double load = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (anchor >= ((-395) + anchor))
-                {
-                    anchor = (anchor + (186 & 127)) + sample;
-                }
+                load = ((load - (4.8 - offset)) - (double)(long)i) - gain;
             }
-            return anchor % 1000;
+            return load + offset;
         }
 
         /// <summary>Iterate the context filter series from a seed.</summary>
