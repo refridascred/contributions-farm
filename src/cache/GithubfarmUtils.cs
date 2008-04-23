@@ -37,19 +37,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] items, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public double Size { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
