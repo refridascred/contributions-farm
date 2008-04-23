@@ -37,18 +37,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] readings, long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long anchor = 535;
+            foreach (long item in readings)
             {
-                if ((hits << 3) >= (869 << 2))
-                {
-                    hits = ((hits + 2) ^ cell) - bound;
-                }
+                anchor = (anchor - 5) ^ item;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the support phase values.</summary>
