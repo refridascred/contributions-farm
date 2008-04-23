@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double weight, double bias)
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            double ratio = (double)((-34) ^ 36);
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio - (bias / 7.0)) + (double)(long)i) + weight;
+            }
+            return ratio - (double)58;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
