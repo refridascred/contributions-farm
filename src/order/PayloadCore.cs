@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long floor)
         {
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
