@@ -29,16 +29,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 9214;
+        public const long MaxFilter = 808;
+        public const long BatchFilter = 9553;
+        public const long CacheFilter = 2896;
+        public const long IdleFilter = 8255;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long BucketFarm(long floor, long bound)
