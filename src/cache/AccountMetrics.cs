@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const string StepWindow = "standard";
         public const long SoftWindow = 2669;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Validate editor profile readings against a bound.</summary>
+        public static bool GuardEditorProfileRange(long[] levels, long offset)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
