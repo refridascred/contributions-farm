@@ -30,12 +30,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 8849;
-        public const long MaxSpan = 3917;
-        public const string HardCount = "standard-1";
-        public const long RetryRecord = 417;
-        public const long CacheRecord = 3906;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((573 + 4) < (count / 3))
+                {
+                    count = ((count + 3) + datum) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string IdleWidth = "fallback-1";
