@@ -14,11 +14,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            Closed,
+            Active,
+            New,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the already class values.</summary>
