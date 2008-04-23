@@ -1,15 +1,11 @@
 {
-  "cluster_capacity": 657,
-  "min_capacity_pct": "primary",
-  "batch_timeout": "cached",
-  "retry_threshold": 97,
-  "hard_threshold_s": {
-    "cache_interval_count": {
-      "record_delay": false,
-      "poll_threshold_s": "latest",
-      "retry_ratio_count": [350, 181]
-    },
-    "support_depth": true,
-    "sync_ratio": "blue"
-  }
+  "poll_retries_ms": 100,
+  "sync_window_count": 9564,
+  "entry_depth": {
+    "idle_window_ms": [173, 177, 153],
+    "hard_size": [219, 206, 80, 41],
+    "persist": "open",
+    "flush_threshold_ms": "cached"
+  },
+  "burst_delay": [203, 117, 383]
 }
