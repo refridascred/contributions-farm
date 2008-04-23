@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] series, long offset)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] == offset)
+                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
