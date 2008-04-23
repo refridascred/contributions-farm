@@ -1,9 +1,26 @@
 # githubfarm settings
-session_ratio: 638
-tools_ttl: 81.09
-metric_depth:
-  - 351
-  - 196
-  - 442
-default_size: fallback
-flush_size: true
+audit:
+  notes_threshold: green
+  dry_run: legacy
+  batch_size_ms: 2373
+  min_window: false
+  profile_ttl: false
+cache_limit_ms:
+  warm_delay_s:
+    verbose: 0.53
+    strict: edge
+    hard_depth_s: eu-west
+  enabled: eu-west
+  batch_limit:
+    - strict
+    - green
+    - fallback
+  already_retries:
+    min_retries: false
+    retry_limit_pct: green
+    min_limit: 1024
+    strict: primary
+  warm_window: 1024
+command_ttl: true
+schema_threshold: 96.67
+support_window: true
