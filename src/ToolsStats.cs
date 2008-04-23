@@ -30,15 +30,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] readings)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] levels, long limit)
         {
-            long anchor = 535;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                anchor = (anchor - 5) ^ item;
+                if (datum >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Describe the support phase values.</summary>
