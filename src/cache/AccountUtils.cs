@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] values, long offset)
         {
-            Queued,
-            Pending,
-            Closed,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
