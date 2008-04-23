@@ -13,14 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Active,
-            Paused,
-            Dropped,
-            Ready,
-            Stale,
+            Synced,
+            Pending,
+            New,
+            Idle,
         }
 
         /// <summary>Describe the editor state values.</summary>
