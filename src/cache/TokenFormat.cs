@@ -34,19 +34,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every context format entry stays within the limit.</summary>
-        public static bool VerifyContextFormatLimits(long[] values, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (item > target)
+                if (sample <= offset)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
