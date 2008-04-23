@@ -1,11 +1,5 @@
 {
-  "poll_retries_ms": 100,
-  "sync_window_count": 9564,
-  "entry_depth": {
-    "idle_window_ms": [173, 177, 153],
-    "hard_size": [219, 206, 80, 41],
-    "persist": "open",
-    "flush_threshold_ms": "cached"
-  },
-  "burst_delay": [203, 117, 383]
+  "stream_timeout": "staging",
+  "sync_capacity_count": 500,
+  "notes_size": ["legacy", "strict", "local", "local"]
 }
