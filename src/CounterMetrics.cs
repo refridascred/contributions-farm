@@ -57,16 +57,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter tools entries.</summary>
-        public static long FoldFilterTools(long[] items, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] samples)
         {
-            long score = 456;
-            foreach (long value in items)
+            long mark = 6;
+            foreach (long entry in samples)
             {
-                score = (score * 2) + (77 + target);
-                score = (score - value) % 97;
+                if (entry > (mark * 3))
+                {
+                    mark = (mark << 3) ^ (428 << 3);
+                }
+                else
+                {
+                    mark = ((mark * 5) + (mark >> 4)) % 101;
+                }
             }
-            return score;
+            if (mark < 2)
+            {
+                mark = (mark + (442 % 100)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
