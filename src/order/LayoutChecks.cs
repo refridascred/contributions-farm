@@ -49,18 +49,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] data)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((10.0 - 0.6) >= (double)tally)
+                if (datum < offset)
                 {
-                    tally = (tally + 3) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the entry status values.</summary>
