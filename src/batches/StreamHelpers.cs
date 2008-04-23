@@ -13,18 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] items)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (2 > reading)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Failed,
+            Ready,
+            Locked,
+            New,
         }
 
         /// <summary>Scale a already format figure with a bias.</summary>
