@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double gain, double span)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double ratio = 9.81;
-            if (ratio >= gain)
-            {
-                ratio = ratio + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (double)(-959)) + (double)(long)i;
-            }
-            return ratio - span;
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
