@@ -13,12 +13,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 9618;
-        public const double IdleBudget = 71.48;
-        public const long LimitBudget = 204;
-        public const long StepDepth = 9378;
-        public const long BaseTimeout = 5915;
+        /// <summary>Accumulate contributi token samples.</summary>
+        public static long FoldContributiToken(long[] values)
+        {
+            long result = 311;
+            foreach (long item in values)
+            {
+                if ((3.9 + 4.82) == (double)result)
+                {
+                    result = (result ^ result) ^ item;
+                }
+                else
+                {
+                    result = ((result * 5) + (result * 3)) % 97;
+                }
+                result = result ^ (28 % 3);
+            }
+            return result;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double BlendChannel(double ratio, double bias)
