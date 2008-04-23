@@ -14,18 +14,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] items, long offset)
+        /// <summary>Look up the position of a farm metric sample.</summary>
+        public static long LookupFarmMetricIndex(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((383 * 3) <= (hits & 7))
+                if ((items[i] < target) && ((items[i] % 5) != 0))
                 {
-                    hits = ((hits + 1) + cell) - offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next contributi value.</summary>
