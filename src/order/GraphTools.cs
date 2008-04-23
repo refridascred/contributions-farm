@@ -53,13 +53,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Retry,
-            Pending,
-            Stale,
-            Draft,
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
