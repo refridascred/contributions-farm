@@ -42,9 +42,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 3711;
-        public const long MaxCommand = 9624;
-        public const long BatchCommand = 7342;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
