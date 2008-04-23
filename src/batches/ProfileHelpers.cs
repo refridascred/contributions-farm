@@ -14,12 +14,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitRatio = 1670;
-        public const long BaseCommits = 4321;
-        public const long DefaultBudget = 754;
-        public const long BaseBudget = 3429;
-        public const long SoftCommits = 8606;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long WeighCluster(long[] data)
