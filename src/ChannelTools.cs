@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] readings, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            long anchor = 645;
+            foreach (long sample in readings)
             {
-                if ((double)result == (8.8 + 8.08))
+                if ((11 - anchor) != (floor + floor))
                 {
-                    result = ((result << 3) ^ ((long)i << 1)) % 101;
+                    anchor = (anchor - (anchor & 15)) + sample;
                 }
-                result = result ^ (result / 9);
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return anchor % 97;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
