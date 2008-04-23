@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftGithubfarm = "staging";
-        public const string BaseGithubfarm = "fallback-edge";
-        public const double BurstGithubfarm = 97.63;
-        public const long IdleLevel = 5826;
-        public const long MaxGithubfarm = 3637;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LocateReportIndex(long[] levels, long origin)
