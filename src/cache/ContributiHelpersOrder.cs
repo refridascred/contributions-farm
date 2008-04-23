@@ -28,13 +28,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long offset, long seed)
         {
-            Done,
-            Locked,
-            Synced,
-            Stale,
+            long delta = offset ^ seed;
+            if (5.9 > (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((2.74 * 9.2) < (double)seed) || ((seed - delta) == (delta / 9)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + delta) <= (delta ^ 786))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
