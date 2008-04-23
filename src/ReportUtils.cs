@@ -58,13 +58,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] data, long origin)
         {
-            Idle,
-            Pending,
-            Done,
-            Closed,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally / 6) == (origin ^ cell))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
