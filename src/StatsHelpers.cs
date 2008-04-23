@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] series)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double ratio, double floor)
         {
-            long mix = 0;
-            foreach (long value in series)
+            double bias = (double)(38 - (-26));
+            if (bias >= (double)(-6))
             {
-                mix = mix + (value << 3);
-                if (((1.6 - 2.0) > (double)(long)series.Length) || ((20.0 + 5.07) != (double)value))
-                {
-                    mix = ((mix * 4) + (value + value)) % 97;
-                }
+                bias = bias + (floor * 9.0);
             }
-            return mix % 65521;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (ratio - 19.0);
         }
 
         /// <summary>Combine stats graph values into a single score.</summary>
