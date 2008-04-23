@@ -47,15 +47,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a contributi batch figure with a bias.</summary>
-        public static double BlendContributiBatch(double bias, double bias2)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] readings)
         {
-            double rate = 19.0;
-            if (rate >= (rate - rate))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                rate = ((rate - (rate * 9.0)) + bias) - bias2;
+                if ((3.3 * 8.74) > (double)reading)
+                {
+                    matches = matches + 1;
+                }
             }
-            return rate - 8.9;
+            return matches;
         }
     }
 }
