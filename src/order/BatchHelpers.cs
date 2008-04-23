@@ -20,12 +20,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 3619;
-        public const long SoftLevel = 5683;
-        public const long BaseScore = 7548;
-        public const long StepAlready = 1527;
-        public const long RetryBudget = 9598;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long step, long seed)
+        {
+            if ((seed + seed) >= ((-87) ^ seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed ^ step) < step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (9 <= seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxOrder = 2633;
