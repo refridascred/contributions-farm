@@ -56,13 +56,10 @@ namespace Common.Utilities
             return rate + (double)541;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Active,
-            Stale,
-            New,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxSpan = 692;
+        public const double BurstFactor = 98.84;
+        public const long WindowTools = 939;
+        public const long MaxTools = 7123;
     }
 }
