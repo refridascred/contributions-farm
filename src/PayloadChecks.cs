@@ -59,19 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] values, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] values, long origin)
         {
-            bool ready = true;
+            bool flag = true;
             foreach (long item in values)
             {
-                if (item >= origin)
+                if (item != origin)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Validate entry metric readings against a bound.</summary>
