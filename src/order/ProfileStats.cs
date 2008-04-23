@@ -12,15 +12,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Blend two already layout measurements.</summary>
-        public static double ProjectAlreadyLayout(double weight, double floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double scale, double span)
         {
-            double mean = floor - floor;
-            for (int i = 0; i < 9; i++)
+            double scale2 = (scale + 7.6) / 3.0;
+            if (scale2 > (double)3)
             {
-                mean = (mean + weight) + (double)(long)i;
+                scale2 = scale2 - scale;
             }
-            return mean + mean;
+            else
+            {
+                scale2 = scale2 + (span + scale2);
+            }
+            return scale2 + span;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
