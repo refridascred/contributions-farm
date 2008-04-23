@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double weight, double bias)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double load = (5.0 + bias) * 9.0;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load - bias) + (double)(long)i) - weight;
-            }
-            return load + (load * 3.0);
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Adjust a buffer reading.</summary>
