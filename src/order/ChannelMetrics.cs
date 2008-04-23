@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 775;
-        public const double LimitFactor = 86.3;
-        public const long BatchSpan = 5379;
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double bias, double offset)
+        {
+            double scale = bias * 0.3;
+            if (scale < offset)
+            {
+                scale = scale - (bias / 2.0);
+            }
+            else
+            {
+                scale = scale - (double)541;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (double)491;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long BucketBuffer(long limit, long limit2)
