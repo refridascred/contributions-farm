@@ -23,18 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster support readings against a rule.</summary>
-        public static long TallyClusterSupportOutliers(long[] values)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((seen - 491) < (item - seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            Idle,
+            Locked,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
