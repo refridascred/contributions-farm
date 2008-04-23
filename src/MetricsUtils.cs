@@ -75,11 +75,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] data, long limit)
         {
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
