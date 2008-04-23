@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate token batches readings against a bound.</summary>
-        public static bool ValidateTokenBatchesBounds(long[] series, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (reading < floor)
+                if ((8.0 / 2.0) < (double)hits)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
