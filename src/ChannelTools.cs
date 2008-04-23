@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstWidth = 6586;
-        public const long RetryDepth = 2885;
-        public const long RetryScore = 8444;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Done,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesMatches(long[] readings)
