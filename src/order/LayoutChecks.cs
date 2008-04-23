@@ -58,12 +58,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public bool Owner { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardScore = 9541;
+        public const double WindowSpan = 41.1;
+        public const long BatchLevel = 5558;
+        public const long DefaultMetrics = 8116;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
