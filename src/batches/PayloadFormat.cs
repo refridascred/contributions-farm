@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit notes githubfarm readings against a rule.</summary>
-        public static long MeasureNotesGithubfarmMatches(long[] items, long seed)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((628 + seed) >= (seed % 10))
-                {
-                    count = (count + 1) - datum;
-                }
-            }
-            return count;
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define report limits and defaults.</summary>
