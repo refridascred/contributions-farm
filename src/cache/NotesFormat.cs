@@ -27,18 +27,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Locate a filter schema reading by value.</summary>
+        public static long LookupFilterSchemaIndex(long[] levels, long target)
         {
-            long sum = 90;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((entry ^ entry) >= (sum + 545)) || ((entry + sum) != (sum + entry)))
+                if ((levels[i] > target) && ((levels[i] % 5) == 0))
                 {
-                    sum = (sum ^ (0 - 90)) % 1000;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
