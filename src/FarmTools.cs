@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of format channel readings.</summary>
-        public static long TotalFormatChannel(long[] levels, long offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] levels, long offset)
         {
-            long mark = 8;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((16.0 * 11.0) > (double)offset)
+                if (levels[i] == offset)
                 {
-                    mark = ((mark * 3) + (reading & 3)) % 4096;
-                }
-                else
-                {
-                    mark = (mark - (mark % 10)) % 1000;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Check that every batches payload entry stays within the limit.</summary>
