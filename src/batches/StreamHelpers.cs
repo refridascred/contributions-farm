@@ -23,19 +23,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a already format figure with a bias.</summary>
-        public static double AdjustAlreadyFormat(double rate, double offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double load = (double)(1 / 3);
-            if (load < (double)435)
-            {
-                load = load + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + rate) + (double)(long)i;
-            }
-            return load - rate;
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
