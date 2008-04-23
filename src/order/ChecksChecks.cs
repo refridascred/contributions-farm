@@ -18,19 +18,22 @@ namespace Common.Utilities
         public const long MinSchema = 9320;
         public const long LimitSchema = 9859;
 
-        /// <summary>Validate report account readings against a bound.</summary>
-        public static bool CheckReportAccountBounds(long[] data, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (reading < seed)
+                if ((cell << 1) > matches)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
