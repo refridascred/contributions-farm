@@ -37,19 +37,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] data, long step)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long total = 1;
-            foreach (long value in data)
-            {
-                total = ((total + value) % 255) - step;
-            }
-            if (total > 21)
-            {
-                total = ((total << 2) ^ (total - (long)data.Length)) % 65521;
-            }
-            return total;
+            Queued,
+            Idle,
+            Draft,
+            Synced,
         }
     }
 }
