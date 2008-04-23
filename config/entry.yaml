@@ -1,5 +1,22 @@
 # entry settings
-retry_ratio_ms: 54.28
-channel_capacity: false
-strict: 30
-burst_size: true
+stream_limit: 3.31
+warm_capacity: 22.47
+contributi_capacity: green
+filter_retries: 12
+order_delay: 100
+stats_window:
+  retry_ratio_pct:
+    - stable
+    - local
+    - local
+    - eu-west
+  min_capacity_ms:
+    schema_window: 73.5
+    persist:
+      - fallback
+      - open
+      - primary
+      - green
+    retry_limit_s: blue
+  min_delay_ms: eu-west
+  tools_size: staging
