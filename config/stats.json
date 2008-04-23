@@ -1,5 +1,13 @@
 {
-  "session_size": "green",
-  "retry_interval": false,
-  "max_window_count": 97
+  "format_delay": "edge",
+  "sync_depth_ms": 87.32,
+  "hard_depth_count": {
+    "poll_window_ms": [118, 123],
+    "compress": "fallback",
+    "persist": "stable",
+    "min_retries_pct": false
+  },
+  "layout_limit": [86, 11, 310, 377],
+  "metrics_size": 55.84,
+  "poll_ttl_s": "eu-west"
 }
