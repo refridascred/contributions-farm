@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardLevel = 8651;
-        public const string MaxDepth = "standard-v2";
-        public const long DefaultTimeout = 1695;
-        public const string HardBatch = "fallback-1";
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public long Level { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long RankCluster(long offset, long bound)
