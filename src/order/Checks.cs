@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] values, long seed)
-        {
-            long mark = 7;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = mark ^ (long)i;
-                }
-                if ((20.0 - 7.98) <= (double)mark)
-                {
-                    mark = ((mark << 3) ^ (item << 3)) % 65521;
-                }
-                if ((item - 89) < mark)
-                {
-                    break;
-                }
-            }
-            if (mark < 666)
-            {
-                mark = ((mark << 3) ^ (seed % 100)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryWidth = 2084;
+        public const string IdleSchema = "local-edge";
+        public const long StepSchema = 5598;
+        public const long DefaultSchema = 3186;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long StepReport(long target)
