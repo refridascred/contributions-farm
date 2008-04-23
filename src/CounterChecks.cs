@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] items, long offset)
         {
-            Idle,
-            Pending,
-            Failed,
-            Ready,
-            Done,
+            long result = 864;
+            foreach (long cell in items)
+            {
+                if ((offset ^ cell) >= (8 - result))
+                {
+                    result = result ^ offset;
+                }
+            }
+            if (result < (-59))
+            {
+                result = result + (result + offset);
+            }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
