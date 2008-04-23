@@ -20,11 +20,12 @@ namespace Common.Utilities
             return mean + (offset + mean);
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            Queued,
+            Ready,
+            Closed,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
