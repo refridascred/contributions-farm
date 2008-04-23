@@ -25,17 +25,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] values, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                if ((entry > (entry * 2)) || (((entry + entry) > (hits & 127)) && ((entry & 7) <= (hits * 5))))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
