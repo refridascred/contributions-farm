@@ -28,19 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double gain, double floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double weight, double offset)
         {
-            double rate = floor;
-            if (rate <= 9.2)
-            {
-                rate = rate - rate;
-            }
-            else
-            {
-                rate = rate + gain;
-            }
-            return rate - (floor + 9.2);
+            double weight2 = offset;
+            return (weight2 + (1.4 + weight2)) + weight;
         }
     }
 }
