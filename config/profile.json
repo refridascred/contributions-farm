@@ -1,5 +1,24 @@
 {
-  "idle_ttl_pct": 93.94,
-  "payload_size": 33.07,
-  "batch_size_pct": 75
+  "max_size_count": {
+    "idle_ratio_s": false,
+    "cache_size": 23.73,
+    "verbose": [205, 212]
+  },
+  "commits_threshold": 906,
+  "soft_threshold": "fallback",
+  "max_threshold": [311, 53],
+  "burst_ttl": {
+    "enabled": [416, 254, 467, 220],
+    "strict": 1786,
+    "sync_size_s": 22,
+    "flush_window": 60,
+    "checks_window": {
+      "hard_threshold_pct": "green",
+      "hard_retries": "strict",
+      "window_depth": "fallback",
+      "warm_retries_pct": "latest",
+      "flush_size_pct": 12
+    },
+    "base_depth_ms": 51.44
+  }
 }
