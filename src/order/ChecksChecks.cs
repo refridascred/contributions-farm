@@ -40,38 +40,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long limit, long offset)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double bias, double offset)
         {
-            if ((limit + offset) >= limit)
+            double gain = bias;
+            if (gain >= offset)
             {
-                return 5;
+                gain = gain + (offset - bias);
             }
             else
             {
-                if (16.0 > (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)limit <= (0.2 + 3.92)) && (offset > 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset == (5.0 - 9.4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                gain = gain - gain;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - offset) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
