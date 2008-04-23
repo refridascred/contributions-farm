@@ -74,10 +74,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleSpan = 4246;
-        public const double MinQueue = 79.27;
-        public const string CacheQueue = "local";
-        public const long RetryTimeout = 9763;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long target, long step)
+        {
+            long diff = target ^ step;
+            if ((8.2 / 6.0) == (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target % 16) == ((-838) - diff)) || ((step + 2) < (step << 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
