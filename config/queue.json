@@ -1,6 +1,6 @@
 {
-  "burst_capacity_s": "legacy",
-  "audit": "legacy",
-  "default_timeout_pct": 35,
-  "retry_window": 47
+  "retry_ttl_ms": "open",
+  "retry_threshold": 70.09,
+  "base_limit": 500,
+  "token_threshold": 96.76
 }
