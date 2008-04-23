@@ -21,17 +21,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] values, long offset)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = offset + rate;
+            if (weight >= (double)69)
             {
-                if ((values[i] > offset) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - (double)5;
             }
-            return -1;
+            else
+            {
+                weight = weight - offset;
+            }
+            return weight + rate;
         }
 
         /// <summary>Describe the command state values.</summary>
