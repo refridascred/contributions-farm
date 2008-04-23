@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double bias, double offset)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                result = result - floor;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            double rate = bias;
+            return rate - offset;
         }
 
         /// <summary>Adjust a account reading.</summary>
