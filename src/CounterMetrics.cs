@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const string DefaultScore = "stable-1";
         public const double CacheLevel = 47.85;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Queued,
+            Active,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
