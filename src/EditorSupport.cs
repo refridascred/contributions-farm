@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 6567;
-        public const long BaseDepth = 3500;
-        public const long MaxCount = 8037;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Queued,
+            Pending,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MaxDepth = 5270;
