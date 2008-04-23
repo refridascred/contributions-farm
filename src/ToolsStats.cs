@@ -58,22 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] readings, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] values, long bound)
         {
-            long mark = 507;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((origin + mark) != (entry * 3))
+                if (((long)values.Length / 4) >= (sample ^ count))
                 {
-                    mark = (mark * 2) + (mark >> 1);
+                    count = (count + 1) + bound;
                 }
             }
-            if (mark < 519)
-            {
-                mark = (mark ^ (20 % 60)) % 97;
-            }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
