@@ -54,18 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches farm entries that pass the check.</summary>
-        public static long AuditBatchesFarmGaps(long[] items, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double bias, double floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            double load = (bias + floor) * 5.49;
+            if (load > load)
             {
-                if (!((target % 8) == (target & 127)))
-                {
-                    count = (count + 2) - datum;
-                }
+                load = load + load;
             }
-            return count;
+            return load + (bias * 7.92);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
