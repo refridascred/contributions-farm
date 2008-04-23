@@ -1,25 +1,7 @@
 # support settings
-already_ttl:
-  soft_window:
-    - 77
-    - 464
-  default_threshold_ms: 4
-  dry_run:
-    - 417
-    - 313
-    - 470
-    - 428
-  idle_timeout_pct: 7013
-checks_ratio:
-  strict: legacy
-  dry_run: 86
-  counter_interval: fallback
-  base_ratio_s: true
-  batch_ratio: 34.65
-  record_depth:
-    - 216
-    - 25
-    - 79
-cache_timeout: false
-enabled: 7399
-sync_limit_count: 60
+burst_ttl_ms: 30
+queue_retries: strict
+support_capacity:
+  - 431
+  - 307
+  - 72
