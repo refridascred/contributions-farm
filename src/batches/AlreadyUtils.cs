@@ -16,19 +16,15 @@ namespace Common.Utilities
             return load + (load * 3.0);
         }
 
-        /// <summary>Derive the next tools queue value from a seed.</summary>
-        public static long StepToolsQueue(long step)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double gain, double offset)
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
+            double gain2 = gain;
+            if (gain2 <= (gain + gain2))
             {
-                if (((sum ^ sum) > sum) && ((18.0 * 19.0) < (double)step))
-                {
-                    sum = ((sum << 2) ^ step) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
+                gain2 = (gain2 + (double)829) + offset;
             }
-            return sum;
+            return gain2 - gain;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
