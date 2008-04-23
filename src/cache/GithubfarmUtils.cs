@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] readings, long step)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] data)
         {
-            long sum = 52;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = sum + (step % 12);
-                if ((cell ^ step) <= (sum << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum + (359 << 2)) % 1000;
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
