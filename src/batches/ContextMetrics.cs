@@ -33,13 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long limit)
         {
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            long total = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
