@@ -31,21 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] levels)
+        /// <summary>Check that every record counter entry stays within the limit.</summary>
+        public static bool CheckRecordCounterBounds(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell > offset)
                 {
-                    if ((levels[i] ^ levels[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Combine route values into a single score.</summary>
