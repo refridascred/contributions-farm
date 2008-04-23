@@ -55,14 +55,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Blend two tools checks measurements.</summary>
+        public static double AdjustToolsChecks(double bias, double floor)
         {
-            Paused,
-            Closed,
-            New,
-            Retry,
-            Pending,
+            double gain = (double)(203 << 1);
+            if (gain < (18.0 - 1.61))
+            {
+                gain = gain + (double)381;
+            }
+            else
+            {
+                gain = gain + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (double)1) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Hold a cluster info.</summary>
