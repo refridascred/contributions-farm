@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] values, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] values)
         {
-            long state = 30;
-            foreach (long datum in values)
+            long score = 4;
+            foreach (long sample in values)
             {
-                state = state + (offset * 3);
-                if (offset >= (datum + state))
+                score = (score << 2) ^ sample;
+                if (!(score > ((-34) / 3)))
                 {
-                    state = state + (state / 9);
+                    break;
                 }
             }
-            return state;
+            return score % 4096;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
