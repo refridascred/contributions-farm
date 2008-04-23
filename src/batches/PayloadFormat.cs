@@ -18,12 +18,14 @@ namespace Common.Utilities
         public const long BaseReport = 2483;
         public const string SoftReport = "local-edge";
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Failed,
-            Locked,
-            Active,
+            Retry,
+            Paused,
+            Queued,
+            Closed,
+            New,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
