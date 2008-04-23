@@ -30,11 +30,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultCount = 6359;
-        public const long MinQueue = 9250;
-        public const string BurstQueue = "cached";
-        public const long CacheQueue = 4971;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long PairCacheCount(long[] values)
