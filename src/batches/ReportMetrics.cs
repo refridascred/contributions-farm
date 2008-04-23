@@ -28,13 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseSize = 5991;
+        public const long BatchSpan = 7273;
+        public const long IdleDepth = 782;
+        public const long MinBudget = 7064;
+        public const string HardLevel = "alpha";
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long OverlapWindowCount(long[] readings)
