@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Validate payload token readings against a bound.</summary>
+        public static bool CheckPayloadTokenLimits(long[] samples, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
