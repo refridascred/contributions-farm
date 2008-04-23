@@ -68,11 +68,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double bias, double floor)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double mean = bias;
-            return (mean + (double)18) + floor;
+            Dropped,
+            Active,
+            Paused,
+            New,
         }
     }
 }
