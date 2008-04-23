@@ -22,12 +22,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Failed,
-            Locked,
-            Ready,
+            Synced,
+            New,
+            Retry,
+            Pending,
+            Draft,
         }
     }
 }
