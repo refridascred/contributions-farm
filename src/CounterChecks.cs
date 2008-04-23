@@ -15,17 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first route layout entry that matches the target.</summary>
-        public static long LocateRouteLayoutIndex(long[] data, long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (data[i] <= limit)
+                if (item > seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Compare every pair of record tools readings.</summary>
