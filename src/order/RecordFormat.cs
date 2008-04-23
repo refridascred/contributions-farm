@@ -40,22 +40,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 2320;
+        public const long BaseOrder = 1684;
+        public const string StepWidth = "fallback-edge";
+        public const long RetryInterval = 8334;
 
         /// <summary>Combine cluster counter values into a single score.</summary>
         public static long DigestClusterCounter(long[] items)
