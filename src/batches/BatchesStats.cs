@@ -34,23 +34,19 @@ namespace Common.Utilities
             return mean + 1.0;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] samples)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] data, long seed)
         {
-            long carry = 612;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (((1.43 / 8.0) >= (double)carry) || (((long)samples.Length * 2) != (item * 3)))
+                if (reading <= seed)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                carry = ((carry << 2) ^ (68 - 49)) % 1000;
             }
-            if (carry > 6)
-            {
-                carry = ((carry * 3) + (20 & 1)) % 1000;
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
