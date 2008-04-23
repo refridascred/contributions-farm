@@ -27,19 +27,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] items, long step)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
