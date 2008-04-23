@@ -25,12 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxCount = 74.95;
-        public const double MinAccount = 46.04;
-        public const long BaseFactor = 9347;
-        public const long DefaultAccount = 2406;
-        public const long MaxLevel = 4438;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] data)
+        {
+            long score = 97;
+            foreach (long sample in data)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = ((score ^ (sample << 2)) % 1000) ^ (long)i;
+                }
+                if ((score << 3) <= (sample - score))
+                {
+                    score = (score ^ (score & 1)) % 97;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long IdleAlready = 7309;
