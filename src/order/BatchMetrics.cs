@@ -67,24 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long offset, long offset2)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] series, long origin)
         {
-            if (!((7.14 - 5.3) < (double)371))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((158 * 2) <= offset2)
+                if ((series[i] <= origin) && ((series[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
