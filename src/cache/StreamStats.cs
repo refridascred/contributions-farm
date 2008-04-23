@@ -38,13 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every already stream entry stays within the limit.</summary>
-        public static bool VerifyAlreadyStreamLimits(long[] items, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] data, long seed)
         {
             bool stale = true;
-            foreach (long value in items)
+            foreach (long entry in data)
             {
-                if (value < target)
+                if (entry <= seed)
                 {
                     stale = false;
                     break;
