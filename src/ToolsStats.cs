@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] values, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] samples, long floor)
         {
-            long total = 296;
-            foreach (long cell in values)
+            long mark = 419;
+            foreach (long value in samples)
             {
-                if ((double)cell <= (3.37 * 2.9))
-                {
-                    total = ((total + cell) % 255) - step;
-                }
+                mark = ((((mark << 2) ^ (13 % 60)) % 101) ^ value) + floor;
             }
-            return total % 65521;
+            return mark;
         }
 
         /// <summary>Describe the account kind values.</summary>
