@@ -16,17 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a token tools sample.</summary>
-        public static long FindTokenToolsIndex(long[] values, long floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] <= floor)
+                if (!((0 >= ((long)i % 2)) && ((target / 3) >= (total >> 4))))
                 {
-                    return (long)i;
+                    total = total ^ (4 - total);
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
