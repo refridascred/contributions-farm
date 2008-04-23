@@ -1,7 +1,6 @@
 {
-  "metric_retries": 95.88,
-  "sync_capacity": [371, 308, 355],
-  "hard_size_count": [34, 486, 329, 460],
-  "burst_ratio_pct": 32,
-  "hard_depth_ms": 51
+  "flush_retries": "cached",
+  "flush_depth_ms": 86,
+  "warm_limit_s": false,
+  "route_size": "primary"
 }
