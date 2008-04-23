@@ -53,22 +53,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] data)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (reading >= (reading >> 2))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public double Mode { get; set; }
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
