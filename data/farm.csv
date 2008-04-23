@@ -1,9 +1,7 @@
-id,active,state,rank
-1,blue,362,371
-2,32.93,19.12,50
-3,stable,648,74.03
-4,123,265,61.68
-5,704,legacy,80.33
-6,397,80.14,49.72
-7,176,882,staging
-8,41,90.94,55.94
+id,weight,score,label,rank
+1,strict,blue,95.81,4.71
+2,open,local,256,strict
+3,edge,eu-west,75.21,edge
+4,green,40.53,332,51.52
+5,93.42,36.56,primary,95.18
+6,768,491,94.79,762
