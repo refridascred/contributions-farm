@@ -36,11 +36,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 2865;
-        public const double BaseToken = 48.18;
-        public const long BurstToken = 246;
-        public const string BurstDepth = "open";
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long floor, long bound)
+        {
+            if ((bound + floor) <= floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((8.0 + 2.6) <= (double)floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Project the next buffer value.</summary>
         public static double AdjustBuffer(double weight, double offset)
