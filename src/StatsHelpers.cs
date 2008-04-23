@@ -69,13 +69,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Idle,
-            Closed,
-            Ready,
-            Paused,
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
