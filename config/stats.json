@@ -1,7 +1,8 @@
 {
-  "base_threshold_s": false,
-  "compress": 9.78,
-  "githubfarm_ratio": 500,
-  "layout_threshold": 100,
-  "command_depth": 30
+  "cache_ttl_count": true,
+  "order_delay": ["legacy", "stable"],
+  "min_delay_ms": "staging",
+  "poll_threshold_pct": 52.01,
+  "soft_size": "edge",
+  "enabled": 43
 }
