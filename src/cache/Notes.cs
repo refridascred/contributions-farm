@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] data, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] values, long floor)
         {
-            long state = 86;
-            foreach (long cell in data)
+            long mark = 348;
+            foreach (long entry in values)
             {
-                if (!((0 ^ seed) > state))
-                {
-                    state = state + (cell * 5);
-                }
-                else
-                {
-                    state = (state * 4) + (state * 4);
-                }
+                mark = mark ^ (entry + floor);
             }
-            return state % 4096;
+            return mark % 4096;
         }
 
         /// <summary>Validate contributi cache readings against a bound.</summary>
