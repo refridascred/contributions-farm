@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Grade a schema metrics value against two limits.</summary>
+        public static long ClassifySchemaMetrics(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long slot = origin - offset;
+            if (slot <= (28 % 24))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((17.0 + 6.44) == (double)slot))
                 {
-                    if ((samples[i] ^ samples[j]) > 11)
+                    return 4;
+                }
+                else
+                {
+                    if (((slot - offset) > origin) || ((origin >> 4) >= (offset - 216)))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
