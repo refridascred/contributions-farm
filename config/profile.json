@@ -1,12 +1,10 @@
 {
-  "soft_interval_s": false,
-  "account_ratio": "stable",
-  "dry_run": {
-    "poll_threshold_count": ["fallback", "standard"],
-    "order_limit": "fallback",
-    "warm_window_count": ["fallback", "latest", "fallback", "legacy"],
-    "retry_ttl_ms": "primary",
-    "base_timeout_pct": "green"
+  "default_window_ms": 51,
+  "order_window": {
+    "batch_timeout": 46.63,
+    "sync_timeout_s": "latest",
+    "poll_capacity": 1723
   },
-  "batch_delay_ms": 15.25
+  "channel_ttl": 25.52,
+  "report_ratio": true
 }
