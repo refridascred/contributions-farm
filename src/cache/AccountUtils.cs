@@ -37,21 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Audit already command readings against a rule.</summary>
+        public static long MeasureAlreadyCommandMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((item / 4) != (hits - 6)) && (hits <= (item * 5))) || !((double)87 < (double)item))
                 {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
