@@ -1,4 +1,18 @@
 # support settings
-enabled: primary
-sync_ratio_pct: 20.19
-sync_interval: 30
+base_capacity:
+  command_window:
+    - 110
+    - 252
+    - 436
+    - 238
+  soft_delay_s: 90.19
+  githubfarm_capacity:
+    - 318
+    - 336
+  burst_window_pct: staging
+  poll_interval: 6
+  enabled: 1068
+default_interval_pct: 32
+persist: false
+batch_ratio_count: 69.95
+readonly: true
