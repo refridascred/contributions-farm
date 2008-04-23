@@ -42,27 +42,11 @@ namespace Common.Utilities
         public const string BurstCount = "legacy-edge";
         public const long WindowScore = 5027;
 
-        /// <summary>Accumulate editor metric samples.</summary>
-        public static long TotalEditorMetric(long[] data, long bound)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long mark = 669;
-            foreach (long value in data)
-            {
-                if (71 < (mark / 3))
-                {
-                    mark = (mark + 417) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ bound) % 1000;
-                }
-                mark = (mark + value) % 1000;
-                if (value < (value + bound))
-                {
-                    mark = (mark << 2) ^ (value % 8);
-                }
-            }
-            return mark;
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
