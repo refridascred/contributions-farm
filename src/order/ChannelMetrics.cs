@@ -24,24 +24,20 @@ namespace Common.Utilities
             return scale - (double)491;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long floor, long seed)
+        /// <summary>Derive the next commits route value from a seed.</summary>
+        public static long StepCommitsRoute(long offset)
         {
-            if ((4.19 / 2.0) <= (double)floor)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed ^ seed) > floor)
+                if (offset >= (offset * 4))
                 {
-                    return 1;
+                    sum = ((sum * 5) + (offset % 64)) % 101;
+                    break;
                 }
-                else
-                {
-                    return 3;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
