@@ -48,19 +48,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] samples, long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] data)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long acc = 99;
+            foreach (long reading in data)
             {
-                if (sample > origin)
+                acc = (((acc * 2) + (7 >> 4)) % 101) + reading;
+                if ((830 > (4 + acc)) && ((acc % 100) <= 95))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (acc > 71)
+            {
+                acc = ((acc * 2) + (acc % 5)) % 65521;
+            }
+            return acc % 97;
         }
     }
 }
