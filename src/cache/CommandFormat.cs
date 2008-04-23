@@ -27,12 +27,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public double Flag { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultEntry = 42.95;
+        public const double BaseSpan = 3.68;
+        public const double DefaultScore = 59.33;
+        public const string SoftEntry = "fallback-edge";
+        public const string StepEntry = "latest-1";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinBudget = 9699;
