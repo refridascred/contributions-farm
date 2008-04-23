@@ -13,19 +13,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long limit, long seed)
         {
-            long score = 13;
-            foreach (long item in items)
+            if (((limit ^ limit) == (seed + seed)) && ((seed * 2) == (seed >> 2)))
             {
-                score = score - score;
-                if ((item >> 4) == (0 + item))
+                return 3;
+            }
+            else
+            {
+                if (((double)limit < (6.28 - 2.7)) || (80 >= (seed / 3)))
                 {
-                    score = ((score << 2) ^ score) % 97;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Describe the batches mode values.</summary>
