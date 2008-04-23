@@ -23,18 +23,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] values)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((((long)values.Length <= 4) && ((matches * 4) <= (matches + item))) && (matches >= (matches ^ 229)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Paused,
+            Synced,
+            New,
+            Failed,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
