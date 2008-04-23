@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const long SoftContributi = 8651;
         public const long LimitContributi = 5173;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] data, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (entry <= floor)
+                if ((hits << 3) >= (869 << 2))
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 2) ^ cell) - bound;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the support phase values.</summary>
