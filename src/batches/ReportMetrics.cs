@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long limit, long floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            if ((floor & 255) == (96 * 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (1.4 <= (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((0.98 + 6.47) != (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Pending,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the stats class values.</summary>
