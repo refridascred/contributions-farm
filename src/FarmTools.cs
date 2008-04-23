@@ -28,12 +28,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Ready,
-            New,
-            Active,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheNotes = "standard-1";
+        public const string HardSize = "strict-v2";
+        public const long DefaultNotes = 5533;
+        public const double IdleTimeout = 69.71;
+        public const double LimitNotes = 30.31;
     }
 }
