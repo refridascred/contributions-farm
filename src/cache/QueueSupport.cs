@@ -48,11 +48,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 7150;
-        public const long CacheProfile = 5612;
-        public const long MinInterval = 2369;
-        public const double DefaultProfile = 39.57;
-        public const long BatchProfile = 6601;
+        /// <summary>Check that every context graph entry stays within the limit.</summary>
+        public static bool CheckContextGraphBounds(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
