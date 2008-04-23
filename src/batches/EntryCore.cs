@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinRoute = 67.43;
-        public const long SoftRoute = 8505;
-        public const long DefaultRoute = 682;
-        public const string BurstCount = "standard-1";
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (floor <= sample)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next channel farm value.</summary>
         public static double ProjectChannelFarm(double bias, double bias2)
