@@ -27,10 +27,20 @@ namespace Common.Utilities
             return rate2 + (rate2 + bias);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultSpan = 3594;
-        public const double MaxScore = 95.99;
-        public const long WindowTimeout = 4945;
-        public const string DefaultTimeout = "local-v2";
+        /// <summary>Derive the next support metrics value from a seed.</summary>
+        public static long DeriveSupportMetrics(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state * 5) + (limit * 5);
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = ((state + 393) % 4096) + (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
