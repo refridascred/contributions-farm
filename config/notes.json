@@ -1,16 +1,8 @@
 {
-  "retry_threshold_pct": 250,
-  "readonly": "primary",
-  "batch_depth_s": [340, 178, 36],
-  "record_retries": {
-    "metrics_capacity": {
-      "dry_run": "open",
-      "max_limit_pct": "standard",
-      "counter_threshold": 8815
-    },
-    "hard_ratio_s": "legacy",
-    "min_ttl_pct": 100
-  },
-  "graph_ratio": 2332,
-  "hard_window": [498, 132, 136, 5]
+  "default_depth_ms": "staging",
+  "verbose": 7816,
+  "soft_capacity_s": ["open", "primary"],
+  "schema_timeout": "legacy",
+  "batch_ttl": ["cached", "legacy", "blue", "local"],
+  "retry_interval": false
 }
