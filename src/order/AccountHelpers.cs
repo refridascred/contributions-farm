@@ -70,17 +70,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] levels, long offset)
+        /// <summary>Classify a already contributi pair into a bucket.</summary>
+        public static long ClassifyAlreadyContributi(long seed, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (seed <= (target + target))
             {
-                if (levels[i] >= offset)
+                return 5;
+            }
+            else
+            {
+                if ((seed + 3) < (seed + 96))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed & 3) < (seed - target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((2.04 + 9.98) >= (double)target) || ((target << 3) < seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
