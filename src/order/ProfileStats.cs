@@ -55,23 +55,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long total = 62;
-            foreach (long reading in data)
-            {
-                if ((double)963 >= (double)reading)
-                {
-                    total = ((total << 2) ^ (total >> 5)) % 4096;
-                }
-                total = ((total << 3) ^ (5 >> 2)) % 255;
-            }
-            if (total > 69)
-            {
-                total = (total << 3) ^ (0 + 22);
-            }
-            return total % 65521;
+            Paused,
+            Closed,
+            Done,
+            Draft,
         }
     }
 }
