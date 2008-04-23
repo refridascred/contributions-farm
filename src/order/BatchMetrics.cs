@@ -65,14 +65,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long origin)
         {
-            Ready,
-            Idle,
-            Paused,
-            New,
-            Done,
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix << 3) ^ (0 >> 5);
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
