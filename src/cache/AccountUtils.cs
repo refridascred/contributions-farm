@@ -32,39 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long target, long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] items, long offset)
         {
-            long span = target + limit;
-            if ((28 + limit) >= (74 * 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((6 + target) >= (248 + 3)))
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit > 78)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target >= (limit - span)) || ((span / 5) == (target * 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
