@@ -10,22 +10,31 @@ namespace Common.Utilities
         public const double LimitFactor = 86.3;
         public const long BatchSpan = 5379;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] samples)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            if (((4.3 / 3.0) < (double)limit) && ((double)limit != (0.24 - 16.0)))
             {
-                if ((758 - tally) <= (4 << 1))
+                return 5;
+            }
+            else
+            {
+                if (0.2 < (9.51 * 6.84))
                 {
-                    tally = (tally + 1) ^ datum;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!(limit2 > (627 >> 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
