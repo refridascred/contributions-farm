@@ -23,19 +23,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] series, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long total = 39;
+            foreach (long cell in levels)
             {
-                if (reading >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total ^ origin) % 4096) + cell;
             }
-            return ok;
+            return total % 65521;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
