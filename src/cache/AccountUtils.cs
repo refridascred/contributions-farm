@@ -34,12 +34,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long target, long limit)
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public long Total { get; set; }
+            long span = target + limit;
+            if ((28 + limit) >= (74 * 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((6 + target) >= (248 + 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit > 78)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target >= (limit - span)) || ((span / 5) == (target * 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
