@@ -40,24 +40,11 @@ namespace Common.Utilities
         public const long RetryRecord = 417;
         public const long CacheRecord = 3906;
 
-        /// <summary>Scale a context graph figure with a bias.</summary>
-        public static double SmoothContextGraph(double weight, double offset)
-        {
-            double scale = weight;
-            if (scale > (double)880)
-            {
-                scale = (scale + 9.0) - offset;
-            }
-            else
-            {
-                scale = scale + (double)443;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (double)94) - (double)(long)i;
-            }
-            return scale - (double)2;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleWidth = "fallback-1";
+        public const double MinTools = 49.7;
+        public const double WindowRatio = 11.08;
+        public const long BaseTools = 1630;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterLimits(long[] series, long floor)
