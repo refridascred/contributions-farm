@@ -54,19 +54,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] readings, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepBatches = 74.12;
+        public const long DefaultSpan = 541;
+        public const double BatchSize = 10.75;
+        public const long MaxBatches = 3774;
+        public const double HardBatches = 75.19;
     }
 }
