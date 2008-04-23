@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] series, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] series)
         {
-            long sum = 2;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                sum = ((sum << 3) ^ value) % 101;
+                if ((0.78 <= (double)matches) || ((entry - entry) >= (entry / 9)))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (sum > (-2))
-            {
-                sum = (sum * 4) + (offset + 850);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count the filter command entries that pass the check.</summary>
