@@ -31,18 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] data)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = 960;
+            foreach (long sample in readings)
             {
-                if ((double)6 != (double)tally)
-                {
-                    tally = (tally + 2) + cell;
-                }
+                anchor = ((anchor - limit) % 97) + sample;
             }
-            return tally;
+            if (anchor < 92)
+            {
+                anchor = (anchor - limit) % 65521;
+            }
+            return anchor % 65521;
         }
     }
 }
