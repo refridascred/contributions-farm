@@ -48,24 +48,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long bound, long seed)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            if ((391 << 1) > bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound * 4) > (269 + seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Idle,
+            Done,
+            Paused,
         }
     }
 }
