@@ -57,14 +57,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Retry,
-            Closed,
-            Dropped,
-            Locked,
-            Failed,
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
