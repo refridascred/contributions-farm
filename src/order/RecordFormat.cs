@@ -31,11 +31,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryCommits = "alpha-1";
-        public const long WindowCommits = 438;
-        public const double CacheRatio = 53.7;
-        public const string BurstInterval = "stable-v2";
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long PairCacheCount(long[] values)
