@@ -59,11 +59,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            Idle,
+            Pending,
+            Done,
+            Closed,
         }
     }
 }
