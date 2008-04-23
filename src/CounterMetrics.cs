@@ -46,14 +46,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] levels, long origin)
         {
-            Synced,
-            Pending,
-            Queued,
-            Done,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
