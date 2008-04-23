@@ -50,22 +50,22 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Audit checks support readings against a rule.</summary>
-        public static long CountChecksSupportGaps(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (!((reading >= (reading * 5)) && ((count % 100) > reading)))
+                if (((-9) - offset) <= (offset & 7))
                 {
-                    count = count + 3;
+                    matches = (matches + 1) + entry;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine token command values into a single score.</summary>
