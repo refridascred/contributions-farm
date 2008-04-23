@@ -63,18 +63,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile farm entries that pass the check.</summary>
-        public static long AuditProfileFarmHits(long[] readings)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double rate, double bias)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double bias2 = bias;
+            if (bias2 > 5.3)
             {
-                if ((double)value >= (5.9 + 13.0))
-                {
-                    count = count + 1;
-                }
+                bias2 = bias2 + bias2;
             }
-            return count;
+            else
+            {
+                bias2 = bias2 + (rate / 2.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + rate) + (double)(long)i;
+            }
+            return bias2 - (2.1 + bias2);
         }
     }
 }
