@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long offset)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Idle,
+            Done,
+            Draft,
+            Queued,
+            Ready,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
