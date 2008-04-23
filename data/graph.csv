@@ -1,8 +1,6 @@
-id,region,label,score
-1,strict,312,11.36
-2,737,255,700
-3,94.38,911,eu-west
-4,20.46,568,38
-5,edge,strict,534
-6,954,8.75,fallback
-7,239,492,473
+id,weight,state
+1,504,36.69
+2,staging,open
+3,995,646
+4,7.57,76.64
+5,16,stable
