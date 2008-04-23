@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] readings, long origin)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long step, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((step * 4) > (floor - floor)) && ((step << 3) > (530 % 64)))
             {
-                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if (floor <= step)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
