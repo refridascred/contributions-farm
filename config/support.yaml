@@ -1,9 +1,15 @@
 # support settings
-poll_timeout_ms:
-  - standard
-  - stable
-  - cached
-default_interval_s: green
-metrics_ratio: 38.33
-soft_timeout: staging
-commits_interval: 7765
+retry_retries_ms: 9314
+sync_threshold: stable
+burst_interval: fallback
+burst_threshold_count:
+  dry_run: true
+  context_limit: staging
+  cluster_size:
+    verbose:
+      - 265
+      - 295
+      - 308
+    max_limit_pct: true
+    max_ratio: 61
+  idle_threshold: 1024
