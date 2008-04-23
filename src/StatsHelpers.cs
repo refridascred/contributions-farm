@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Retry,
-            Failed,
-            New,
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
