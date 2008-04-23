@@ -1,7 +1,18 @@
 {
-  "flush_limit": true,
-  "compress": 82.1,
-  "retry_interval_count": "blue",
-  "warm_depth_s": true,
-  "enabled": 100
+  "stats_ttl": false,
+  "audit": ["cached", "fallback"],
+  "min_retries_s": 8.68,
+  "sync_size_ms": "standard",
+  "cache_ratio": {
+    "max_depth_count": {
+      "sync_ttl": false,
+      "soft_ttl": false,
+      "sync_ttl_count": 3.99,
+      "base_depth_s": true
+    },
+    "persist": [27, 14, 138],
+    "base_ratio_s": "primary",
+    "hard_timeout_pct": 100
+  },
+  "compress": 250
 }
