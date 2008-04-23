@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Locked,
-            Active,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseSpan = 90.74;
+        public const long BurstLevel = 5104;
+        public const long RetryLevel = 7273;
+        public const long WindowInterval = 5963;
+        public const double MinBatches = 33.79;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long WeighOrder(long[] levels)
