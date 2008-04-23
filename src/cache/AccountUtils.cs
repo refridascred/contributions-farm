@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long StepFactor = 2813;
         public const long WindowCounter = 7875;
 
-        /// <summary>Validate checks counter readings against a bound.</summary>
-        public static bool ValidateChecksCounterLimits(long[] items, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a schema stats.</summary>
