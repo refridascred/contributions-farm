@@ -11,20 +11,15 @@ namespace Common.Utilities
         public const long DefaultRoute = 682;
         public const string BurstCount = "standard-1";
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] data)
+        /// <summary>Project the next channel farm value.</summary>
+        public static double ProjectChannelFarm(double bias, double bias2)
         {
-            long mark = 606;
-            foreach (long reading in data)
+            double rate = bias;
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark << 3) ^ (reading << 2)) % 65521;
-                mark = ((mark << 3) ^ (mark + reading)) % 255;
+                rate = (rate + bias2) + (double)(long)i;
             }
-            if (mark < 23)
-            {
-                mark = ((mark * 4) + ((-4) + mark)) % 4096;
-            }
-            return mark;
+            return rate + (rate + rate);
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
