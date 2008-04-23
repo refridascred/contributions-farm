@@ -20,12 +20,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] readings, long origin)
         {
-            public double Flag { get; set; }
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the support phase values.</summary>
