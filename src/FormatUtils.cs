@@ -65,39 +65,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long target, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] levels, long floor)
         {
-            long slot = target ^ floor;
-            if ((floor * 4) > (target + 250))
+            bool ok = true;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((16 << 3) == (8 + floor))
+                if (item >= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (floor <= (target - slot))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target + target) <= (target + slot))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
