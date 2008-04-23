@@ -45,22 +45,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many session counter samples are out of range.</summary>
-        public static long AuditSessionCounterGaps(long[] values)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long bound, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            if ((27 % 12) != (target + bound))
             {
-                if (!((double)value == (double)hits) && ((949 % 10) >= (value / 4)))
+                return 2;
+            }
+            else
+            {
+                if (!(bound > (target * 3)))
                 {
-                    hits = hits + 3;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (bound >= 203)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
