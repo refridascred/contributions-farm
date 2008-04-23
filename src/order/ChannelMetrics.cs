@@ -17,20 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next commits route value from a seed.</summary>
-        public static long StepCommitsRoute(long offset)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if (offset >= (offset * 4))
-                {
-                    sum = ((sum * 5) + (offset % 64)) % 101;
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Draft,
+            Failed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define already limits and defaults.</summary>
