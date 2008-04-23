@@ -25,13 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Derive the next notes support value from a seed.</summary>
+        public static long DeriveNotesSupport(long target)
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Match up entry samples.</summary>
