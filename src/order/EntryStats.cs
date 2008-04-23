@@ -65,11 +65,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitFormat = "strict";
-        public const string DefaultInterval = "open-edge";
-        public const long WindowCount = 7249;
-        public const long LimitWidth = 3385;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((origin >> 2) <= (9 & 1)) && ((count >> 2) > origin))
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiRange(long[] series, long step)
