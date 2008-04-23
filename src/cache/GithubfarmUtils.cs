@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] items)
+        /// <summary>Blend two filter payload measurements.</summary>
+        public static double BlendFilterPayload(double ratio, double span)
         {
-            long mark = 7;
-            foreach (long value in items)
+            double rate = ratio;
+            if (rate < (double)778)
             {
-                if ((double)value > 16.0)
-                {
-                    mark = mark ^ (value & 1);
-                }
+                rate = (rate + ratio) + span;
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (double)21;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
