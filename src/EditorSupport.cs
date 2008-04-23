@@ -58,22 +58,12 @@ namespace Common.Utilities
         public const double DefaultTimeout = 31.47;
         public const long LimitToken = 2207;
 
-        /// <summary>Count already batches pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyBatchesCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 3022;
+        public const long BatchInterval = 6627;
+        public const long BaseWidth = 5650;
+        public const double SoftEntry = 96.97;
+        public const long MaxFactor = 7442;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] data, long target)
