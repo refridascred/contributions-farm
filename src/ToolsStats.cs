@@ -76,12 +76,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Synced,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinSpan = 6471;
+        public const long IdleWidth = 1495;
+        public const long BurstScore = 8460;
+        public const double StepCache = 13.09;
+        public const string MaxBudget = "legacy-edge";
     }
 }
