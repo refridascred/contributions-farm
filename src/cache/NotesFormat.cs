@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long target, long seed)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            if (9.67 < (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target + (-800)) > target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target ^ (-17)) != (seed + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
