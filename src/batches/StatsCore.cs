@@ -16,26 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] readings, long origin)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long carry = 8;
-            foreach (long datum in readings)
-            {
-                if ((double)origin <= (9.9 - 6.6))
-                {
-                    carry = carry + datum;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (datum - datum)) % 101;
-                }
-            }
-            if (carry > 98)
-            {
-                carry = (carry + (carry + origin)) % 1000;
-            }
-            return carry % 1000;
+            Dropped,
+            Idle,
+            Ready,
+            Paused,
+            Stale,
         }
 
         /// <summary>Measure how many record profile samples are out of range.</summary>
