@@ -1,8 +1,20 @@
 # support settings
-window_interval: edge
-max_delay_ms:
-  - fallback
-  - latest
-layout_size: 60
-cache_size_count: 47.86
-githubfarm_limit: 60
+dry_run:
+  strict: 91.21
+  enabled: 95
+  max_ratio_ms:
+    context_interval: false
+    min_size_ms: 2443
+    cache_window_ms: edge
+    batch_size_count: 13
+    tools_capacity: 5264
+  already_ttl: fallback
+sync_capacity_count: standard
+graph_retries:
+  - 484
+  - 50
+  - 89
+  - 341
+hard_limit: false
+default_interval: 66
+audit: true
