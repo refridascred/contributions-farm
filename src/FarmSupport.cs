@@ -63,22 +63,19 @@ namespace Common.Utilities
         public const long CacheCounter = 8514;
         public const double StepTimeout = 97.07;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] series, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] levels, long seed)
         {
-            long sum = 15;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (sample < (sample - sum))
+                if (cell >= seed)
                 {
-                    sum = (sum + (sample - origin)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (sum > 8)
-            {
-                sum = ((sum * 4) + (sum - origin)) % 65521;
-            }
-            return sum % 4096;
+            return flag;
         }
     }
 }
