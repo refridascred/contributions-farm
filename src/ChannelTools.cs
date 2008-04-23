@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const string IdleFactor = "cached-1";
         public const long BatchTimeout = 401;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] readings, long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (limit < tally)
+                if (series[i] <= origin)
                 {
-                    tally = (tally + 3) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
