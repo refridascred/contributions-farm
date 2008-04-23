@@ -13,22 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] readings)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - datum) != (tally + datum))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Paused,
+            Dropped,
+            Ready,
+            Stale,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
