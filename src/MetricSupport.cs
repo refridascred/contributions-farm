@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long origin)
+        /// <summary>Match up token session samples.</summary>
+        public static long MatchTokenSessionCount(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
