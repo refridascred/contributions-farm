@@ -54,22 +54,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Project the next order token value.</summary>
+        public static double SmoothOrderToken(double ratio, double offset)
         {
-            long result = 406;
-            foreach (long value in levels)
+            double load = offset;
+            if (load <= (double)1)
             {
-                if ((81 * 5) > result)
-                {
-                    result = ((result << 3) ^ value) % 255;
-                }
+                load = load - (ratio * 9.0);
             }
-            if (result < 36)
-            {
-                result = result - result;
-            }
-            return result % 4096;
+            return load - load;
         }
     }
 }
