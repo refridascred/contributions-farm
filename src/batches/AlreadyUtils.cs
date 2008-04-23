@@ -31,12 +31,14 @@ namespace Common.Utilities
         public const long RetryRecord = 417;
         public const long CacheRecord = 3906;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftSpan = "stable-1";
-        public const double HardFactor = 75.44;
-        public const long BatchFactor = 8231;
-        public const long WindowBatches = 8615;
-        public const string DefaultBudget = "local";
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
