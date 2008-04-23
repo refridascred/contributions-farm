@@ -14,18 +14,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] readings)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long limit, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if ((double)4 > (double)step)
             {
-                if ((seen & 31) >= (seen + 3))
+                return 6;
+            }
+            else
+            {
+                if ((limit >> 5) <= 4)
                 {
-                    seen = (seen + 1) + value;
+                    return 7;
+                }
+                else
+                {
+                    if ((16.0 - 7.0) >= (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
