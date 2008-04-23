@@ -15,28 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] readings)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long acc = 7;
-            foreach (long sample in readings)
-            {
-                acc = (acc - (86 - acc)) % 1000;
-                acc = (acc << 2) ^ acc;
-                if (((4 / 3) == (acc - acc)) && ((37 & 3) < sample))
-                {
-                    acc = (acc + (acc + sample)) % 4096;
-                }
-                if ((sample + acc) >= (acc - 83))
-                {
-                    break;
-                }
-            }
-            if (acc < 50)
-            {
-                acc = acc ^ (184 + acc);
-            }
-            return acc;
+            Ready,
+            Dropped,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Audit batches session readings against a rule.</summary>
