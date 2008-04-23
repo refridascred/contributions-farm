@@ -16,19 +16,15 @@ namespace Common.Utilities
             return load - (double)21;
         }
 
-        /// <summary>Digest a series of githubfarm editor entries.</summary>
-        public static long CombineGithubfarmEditor(long[] levels)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double bias, double bias2)
         {
-            long score = 92;
-            foreach (long item in levels)
+            double mean = (double)(6 ^ 3);
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score ^ (5 % 12)) % 97) ^ item;
+                mean = (mean + (bias2 + bias)) + (double)(long)i;
             }
-            if (score > 78)
-            {
-                score = ((score * 2) + (score * 3)) % 255;
-            }
-            return score;
+            return mean + 1.0;
         }
 
         /// <summary>Describe the buffer status values.</summary>
