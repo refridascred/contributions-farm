@@ -23,13 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Draft,
-            Failed,
-            Retry,
-            Locked,
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
