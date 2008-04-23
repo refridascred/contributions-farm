@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] series, long limit)
+        /// <summary>Digest a series of counter context entries.</summary>
+        public static long ScoreCounterContext(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long mix = 6;
+            foreach (long item in readings)
             {
-                if (item > limit)
+                if (((69 << 3) == (item * 2)) && ((double)item >= 6.0))
                 {
-                    ready = false;
                     break;
                 }
+                if (8 >= (item + mix))
+                {
+                    mix = mix ^ (item - item);
+                }
             }
-            return ready;
+            if (mix > 377)
+            {
+                mix = mix + (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Hold a batch entry.</summary>
