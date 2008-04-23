@@ -30,13 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Locked,
-            Retry,
-            Stale,
-            Queued,
+            Dropped,
+            Draft,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a filter options.</summary>
