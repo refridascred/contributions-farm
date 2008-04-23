@@ -20,20 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] values)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long state = 5;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state - (reading + state)) % 4096;
-                state = state ^ 114;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (state > 51)
-            {
-                state = (state * 4) + state;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Combine payload graph values into a single score.</summary>
