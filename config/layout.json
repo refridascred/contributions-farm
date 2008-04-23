@@ -1,6 +1,27 @@
 {
-  "queue_limit": [45, 31, 457],
-  "min_ratio_pct": false,
-  "min_retries_pct": true,
-  "schema_retries": "fallback"
+  "tools_size": "legacy",
+  "hard_limit": {
+    "max_interval_ms": [382, 264, 493, 169],
+    "record_threshold": false,
+    "batch_retries": {
+      "compress": true,
+      "report_capacity": 23.99,
+      "readonly": 43,
+      "poll_delay_count": false
+    },
+    "graph_ttl": false
+  },
+  "poll_retries": 64,
+  "max_limit_pct": {
+    "batch_window": "stable",
+    "counter_depth": 5759,
+    "verbose": {
+      "sync_window": 84.57,
+      "audit": 51,
+      "soft_window": "blue",
+      "readonly": 7600,
+      "session_depth": 60.96
+    }
+  },
+  "compress": "cached"
 }
