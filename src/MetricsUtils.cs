@@ -82,13 +82,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Fold a list of buffer batches readings.</summary>
+        public static long FoldBufferBatches(long[] levels, long floor)
         {
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = 69;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = (mix + (sample + floor)) - (long)i;
+                }
+                if ((floor * 3) > (sample % 24))
+                {
+                    mix = (mix + ((-76) - mix)) % 255;
+                }
+            }
+            return mix;
         }
     }
 }
