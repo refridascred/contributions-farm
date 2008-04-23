@@ -1,8 +1,17 @@
 {
-  "batch_threshold": 9222,
-  "idle_depth": 7260,
-  "verbose": 26.62,
-  "burst_size_s": "eu-west",
-  "warm_limit_count": 1024,
-  "payload_timeout": 1253
+  "retry_depth_ms": false,
+  "sync_interval_s": 8236,
+  "audit": 66.58,
+  "editor_limit": {
+    "base_threshold": {
+      "max_threshold_count": 77.66,
+      "soft_window_s": "legacy",
+      "dry_run": true,
+      "poll_timeout": 4446,
+      "min_retries_count": 74
+    },
+    "buffer_retries": [12, 183],
+    "max_interval": 5.48
+  },
+  "sync_ttl_ms": "legacy"
 }
