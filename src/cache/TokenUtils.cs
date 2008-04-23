@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double gain, double span)
         {
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
+            double bias = (double)(995 + 4);
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (((bias - (bias * 11.0)) + (double)(long)i) + gain) - span;
+            }
+            return bias + (double)81;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
