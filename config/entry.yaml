@@ -1,19 +1,13 @@
 # entry settings
-audit:
-  dry_run:
-    - 268
-    - 371
-    - 134
-  graph_interval: 7327
-  burst_window_count:
-    base_capacity_pct: blue
-    soft_delay_s: 250
-    enabled: 12.89
-    verbose:
-      - 333
-      - 265
-      - 121
-  readonly: true
-  default_ratio_pct: open
-batch_timeout: blue
-retry_threshold_ms: strict
+idle_depth:
+  - 444
+  - 132
+flush_delay: true
+warm_limit_s: latest
+warm_depth_s:
+  hard_threshold_s: standard
+  soft_ratio_ms: fallback
+  burst_delay: 82
+  readonly: 5093
+  burst_window_count: cached
+schema_window: false
