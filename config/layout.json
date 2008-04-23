@@ -1,6 +1,14 @@
 {
-  "sync_interval": 0.97,
-  "schema_delay": "green",
-  "flush_delay_count": 72.15,
-  "dry_run": [141, 384]
+  "editor_window": false,
+  "profile_depth": 68.67,
+  "default_interval_pct": 965,
+  "persist": 3937,
+  "idle_capacity_pct": {
+    "readonly": "local",
+    "cache_delay_pct": true,
+    "persist": 6.24,
+    "min_threshold_ms": "latest",
+    "filter_window": false,
+    "warm_depth_pct": true
+  }
 }
