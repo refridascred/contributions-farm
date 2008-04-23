@@ -23,17 +23,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first buffer command entry that matches the target.</summary>
-        public static long LookupBufferCommandIndex(long[] samples, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((samples[i] == bound) && ((samples[i] % 2) == 0))
+                if (reading >= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the profile mode values.</summary>
