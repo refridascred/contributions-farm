@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] samples, long limit)
-        {
-            long result = 8;
-            foreach (long cell in samples)
-            {
-                result = ((result + cell) % 4096) - limit;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitRatio = 36.29;
+        public const string LimitTools = "staging-edge";
+        public const long MinTools = 5972;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long OverlapSchemaCount(long[] samples)
