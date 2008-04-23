@@ -52,25 +52,14 @@ namespace Common.Utilities
         public const long HardFactor = 4725;
         public const long LimitDepth = 510;
 
-        /// <summary>Rank order stream input into a small class.</summary>
-        public static long SortOrderStream(long limit, long floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long next = limit - floor;
-            if ((next & 7) > limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= 1.45)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Draft,
+            Paused,
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
