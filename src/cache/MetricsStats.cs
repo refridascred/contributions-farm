@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate counter stats readings against a bound.</summary>
-        public static bool CheckCounterStatsLimits(long[] readings, long limit)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= limit)
+                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
