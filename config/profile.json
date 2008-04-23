@@ -1,5 +1,7 @@
 {
-  "poll_limit": 13,
-  "readonly": 78.16,
-  "sync_ratio": 4.05
+  "base_capacity_ms": true,
+  "dry_run": "stable",
+  "strict": "eu-west",
+  "verbose": [197, 266, 100, 345],
+  "retry_delay_ms": false
 }
