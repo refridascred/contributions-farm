@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Classify a report stats pair into a bucket.</summary>
+        public static long RankReportStats(long limit, long bound)
         {
-            Locked,
-            New,
-            Queued,
+            long edge = limit ^ bound;
+            if ((3 % 16) < (edge + edge))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((358 - limit) >= (limit - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
