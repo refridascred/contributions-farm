@@ -30,11 +30,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 8451;
-        public const string BaseOrder = "open-edge";
-        public const double StepWidth = 90.56;
-        public const double MinInterval = 67.11;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Locked,
+            Retry,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
