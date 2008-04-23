@@ -20,11 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] data, long step)
         {
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
