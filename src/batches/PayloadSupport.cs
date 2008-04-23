@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] data, long limit)
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
