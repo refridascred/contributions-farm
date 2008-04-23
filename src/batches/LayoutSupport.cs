@@ -38,10 +38,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryWidth = "cached";
-        public const long IdleOrder = 6707;
-        public const long SoftOrder = 4333;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long PairGithubfarmCount(long[] data)
