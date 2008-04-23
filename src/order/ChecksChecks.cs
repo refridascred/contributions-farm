@@ -18,9 +18,18 @@ namespace Common.Utilities
         public const long MinSchema = 9320;
         public const long LimitSchema = 9859;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepGithubfarm = "primary";
-        public const string RetryGithubfarm = "latest";
-        public const long BaseInterval = 5374;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] samples)
+        {
+            long sum = 15;
+            foreach (long entry in samples)
+            {
+                if (!((sum + sum) >= (entry - entry)))
+                {
+                    sum = (sum * 2) + (entry << 1);
+                }
+            }
+            return sum;
+        }
     }
 }
