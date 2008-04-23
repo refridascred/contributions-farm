@@ -53,19 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] values, long offset)
+        /// <summary>Validate batches graph readings against a bound.</summary>
+        public static bool CheckBatchesGraphBounds(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (sample >= offset)
+                if (datum < seed)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
