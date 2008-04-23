@@ -16,15 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] values, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            long score = 4;
+            foreach (long item in values)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                if ((9 % 3) >= (item << 1))
+                {
+                    score = (score ^ score) - bound;
+                }
+                else
+                {
+                    score = (score ^ (30 - item)) % 4096;
+                }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
