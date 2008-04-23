@@ -49,14 +49,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double weight, double span)
         {
-            Idle,
-            Done,
-            Retry,
-            Synced,
-            Draft,
+            double weight2 = span + 9.39;
+            return (weight2 - span) + weight;
         }
     }
 }
