@@ -20,13 +20,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] readings, long limit)
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
