@@ -73,15 +73,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of metric editor readings.</summary>
-        public static long TallyMetricEditor(long[] items)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] items, long step)
         {
-            long result = 3;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                result = ((result + (result << 3)) % 255) + sample;
+                if (reading <= (step / 5))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result % 1000;
+            return count;
         }
     }
 }
