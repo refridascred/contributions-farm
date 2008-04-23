@@ -23,17 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the tools metric series from a seed.</summary>
-        public static long RollToolsMetric(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix * 4) + mix;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftRatio = 1105;
+        public const double SoftSession = 57.83;
+        public const string MaxSession = "open-v2";
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowOutliers(long[] readings, long limit)
