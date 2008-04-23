@@ -75,17 +75,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] data, long limit)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double rate, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)6 / 4.0;
+            if (drift < (0.2 / 2.0))
             {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + rate;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift - span;
         }
     }
 }
