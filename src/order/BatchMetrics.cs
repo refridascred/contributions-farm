@@ -45,18 +45,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the session account entries that pass the check.</summary>
-        public static long MeasureSessionAccountHits(long[] series, long target)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)hits == (double)entry)
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
+            Retry,
+            Done,
+            Draft,
+            Closed,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
