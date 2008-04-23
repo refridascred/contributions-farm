@@ -57,19 +57,19 @@ namespace Common.Utilities
         public const double WindowRatio = 11.08;
         public const long BaseTools = 1630;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] series, long floor)
+        /// <summary>Combine commits route values into a single score.</summary>
+        public static long FoldCommitsRoute(long[] samples)
         {
-            bool found = true;
-            foreach (long item in series)
+            long sum = 609;
+            foreach (long datum in samples)
             {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum ^ (-6)) % 101) ^ datum;
             }
-            return found;
+            if (sum < 752)
+            {
+                sum = ((sum << 3) ^ 36) % 255;
+            }
+            return sum % 1000;
         }
     }
 }
