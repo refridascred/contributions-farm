@@ -23,18 +23,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] levels)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long acc = 127;
+            foreach (long sample in readings)
             {
-                if (!((tally % 8) < (64 - 0)))
+                if (!((1.0 * 13.0) == (double)sample))
                 {
-                    tally = (tally + 3) + value;
+                    acc = ((acc << 3) ^ (acc % 60)) % 255;
+                }
+                else
+                {
+                    acc = (acc + (acc * 3)) % 101;
                 }
             }
-            return tally;
+            if (acc > 39)
+            {
+                acc = (acc + acc) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
