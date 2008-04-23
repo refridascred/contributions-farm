@@ -1,5 +1,6 @@
 {
-  "min_window_pct": 209,
-  "token_retries": 2.68,
-  "sync_delay_pct": ["staging", "stable"]
+  "verbose": 100,
+  "profile_delay": "local",
+  "window_ttl": 10.42,
+  "flush_timeout": false
 }
