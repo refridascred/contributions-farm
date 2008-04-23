@@ -33,11 +33,15 @@ namespace Common.Utilities
         public const string BurstQueue = "cached";
         public const long CacheQueue = 4971;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] readings, long limit)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            long result = -864;
+            foreach (long reading in readings)
+            {
+                result = (((result * 5) + (reading / 9)) % 1000) + limit;
+            }
+            return result % 65521;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
