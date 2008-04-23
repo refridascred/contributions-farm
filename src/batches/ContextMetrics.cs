@@ -19,11 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleSpan = 9653;
-        public const string StepMetric = "standard-v2";
-        public const double WindowRatio = 34.24;
-        public const string MaxMetric = "fallback-edge";
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Paused,
+            Ready,
+            Dropped,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long FindCommitsIndex(long[] levels, long floor)
