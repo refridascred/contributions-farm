@@ -23,19 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
-        public static long CountGithubfarmChannelHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + matches) >= matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 574;
+        public const long CacheCluster = 4233;
+        public const double DefaultCluster = 91.69;
+        public const double HardCluster = 61.05;
 
         /// <summary>Audit report session readings against a rule.</summary>
         public static long TallyReportSessionHits(long[] items)
