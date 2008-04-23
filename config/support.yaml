@@ -1,8 +1,15 @@
 # support settings
-strict: 6161
-counter_threshold:
-  min_size_s: fallback
-  compress: eu-west
-  soft_ratio_pct: staging
-  format_interval: true
-layout_window: 94.45
+githubfarm_window: green
+default_capacity: 30
+account_window:
+  default_limit_ms: 50
+  default_capacity_pct: 7659
+  retry_ratio_s:
+    - staging
+    - primary
+    - stable
+  sync_retries_count: 500
+  soft_window_count: 46
+strict: false
+dry_run: true
+sync_size_s: 60
