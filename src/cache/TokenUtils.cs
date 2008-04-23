@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Active,
             Idle,
-            Draft,
+            Dropped,
+            Done,
+            Synced,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
