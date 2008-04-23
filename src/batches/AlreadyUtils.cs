@@ -31,12 +31,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
             Synced,
+            Idle,
+            Draft,
             Active,
-            Closed,
+            Queued,
         }
 
         /// <summary>Blend two stream stats measurements.</summary>
