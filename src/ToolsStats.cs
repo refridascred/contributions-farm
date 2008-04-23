@@ -43,13 +43,30 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels, long bound)
         {
-            public bool Label { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            long acc = 557;
+            foreach (long sample in levels)
+            {
+                if (!((double)sample > (11.0 / 3.0)))
+                {
+                    acc = (((acc * 4) + (acc & 7)) % 101) - bound;
+                }
+                else
+                {
+                    acc = acc - (6 - sample);
+                }
+                if ((sample << 3) != (acc ^ acc))
+                {
+                    acc = acc ^ (sample - acc);
+                }
+                if (!(acc <= (9 + 69)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
