@@ -13,10 +13,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "staging-1";
-        public const long LimitStats = 9431;
-        public const string SoftStats = "legacy-v2";
+        /// <summary>Combine payload format values into a single score.</summary>
+        public static long DigestPayloadFormat(long[] items)
+        {
+            long state = 74;
+            foreach (long value in items)
+            {
+                if (96 > (state & 127))
+                {
+                    state = state - (value - value);
+                }
+                else
+                {
+                    state = (state + (state + value)) % 1000;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double BlendFarm(double scale, double floor)
