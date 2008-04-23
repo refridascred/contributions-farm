@@ -29,26 +29,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] items)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long step, long limit)
         {
-            long mix = 21;
-            foreach (long sample in items)
+            if (!((3.6 / 6.0) <= (double)limit))
             {
-                if ((8.7 / 8.0) >= (double)mix)
+                return 4;
+            }
+            else
+            {
+                if ((step % 10) < (128 + step))
                 {
-                    mix = (mix << 2) ^ sample;
+                    return 7;
                 }
                 else
                 {
-                    mix = (mix ^ (4 + sample)) % 4096;
-                }
-                if ((double)sample <= (double)mix)
-                {
-                    break;
+                    if (!(step > (step - limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Describe the window state values.</summary>
