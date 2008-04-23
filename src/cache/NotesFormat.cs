@@ -13,22 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit cluster batches readings against a rule.</summary>
-        public static long CountClusterBatchesMatches(long[] data)
+        /// <summary>Measure how many batch stream samples are out of range.</summary>
+        public static long TallyBatchStreamMatches(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (((sample + hits) >= (sample + sample)) || ((double)sample < 12.0))
+                if ((((double)(long)data.Length <= (double)6) && ((367 % 16) <= matches)) || ((9.5 - 3.0) >= (double)matches))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = ((matches + 1) - datum) - limit;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Combine token values into a single score.</summary>
