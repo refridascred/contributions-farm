@@ -13,38 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long target, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] data)
         {
-            if ((double)step < (9.69 + 3.0))
+            long carry = 7;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target % 8) > step)
+                if ((57 - carry) > cell)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((635 - target) == (target * 3)) || ((target + step) > (3 ^ target)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target + target) > (step - target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = carry ^ (carry + cell);
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Blend two cache measurements.</summary>
