@@ -20,17 +20,21 @@ namespace Common.Utilities
             return mean - (scale * 7.06);
         }
 
-        /// <summary>Locate a editor schema reading by value.</summary>
-        public static long LocateEditorSchemaIndex(long[] levels, long step)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] <= step) && ((levels[i] % 5) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
