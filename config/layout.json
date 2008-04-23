@@ -1,14 +1,24 @@
 {
-  "editor_window": false,
-  "profile_depth": 68.67,
-  "default_interval_pct": 965,
-  "persist": 3937,
-  "idle_capacity_pct": {
-    "readonly": "local",
-    "cache_delay_pct": true,
-    "persist": 6.24,
-    "min_threshold_ms": "latest",
-    "filter_window": false,
-    "warm_depth_pct": true
-  }
+  "soft_delay_ms": {
+    "farm_threshold": 7980,
+    "hard_retries": {
+      "dry_run": true,
+      "idle_timeout_pct": 9526,
+      "batch_ttl": "standard",
+      "compress": 82
+    },
+    "base_interval": 250,
+    "sync_delay": {
+      "max_limit": 42.19,
+      "cache_depth": 1024,
+      "idle_threshold_s": "latest",
+      "flush_timeout_pct": "legacy",
+      "min_retries": "legacy"
+    },
+    "idle_timeout": "latest"
+  },
+  "min_delay_pct": "primary",
+  "verbose": "staging",
+  "default_ttl": 6257,
+  "stream_interval": ["staging", "standard"]
 }
