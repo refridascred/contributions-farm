@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a report stats pair into a bucket.</summary>
-        public static long RankReportStats(long limit, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] readings, long target)
         {
-            long edge = limit ^ bound;
-            if ((3 % 16) < (edge + edge))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((358 - limit) >= (limit - bound))
+                if (item > target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
