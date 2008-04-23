@@ -16,18 +16,20 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] items, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] data)
         {
-            long mix = 7;
-            foreach (long value in items)
+            long mark = 606;
+            foreach (long reading in data)
             {
-                if (((98 - mix) == ((-993) & 31)) && ((80 / 3) > mix))
-                {
-                    mix = ((mix + (mix - mix)) - value) - target;
-                }
+                mark = ((mark << 3) ^ (reading << 2)) % 65521;
+                mark = ((mark << 3) ^ (mark + reading)) % 255;
             }
-            return mix;
+            if (mark < 23)
+            {
+                mark = ((mark * 4) + ((-4) + mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
