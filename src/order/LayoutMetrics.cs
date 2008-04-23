@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] samples, long bound)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)bound <= (2.1 / 2.0))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Paused,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
