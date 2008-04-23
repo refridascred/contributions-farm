@@ -1,7 +1,14 @@
 {
-  "verbose": 70.22,
-  "report_interval": 68.0,
-  "warm_capacity_s": 53,
-  "soft_threshold": "staging",
-  "sync_window_pct": 9
+  "min_limit_ms": "latest",
+  "cache_depth_pct": 60,
+  "burst_window": "fallback",
+  "max_ratio_pct": {
+    "batches_interval": false,
+    "compress": 57.73,
+    "cache_timeout": 84,
+    "strict": 1024,
+    "command_threshold": false
+  },
+  "persist": 250,
+  "idle_delay_pct": ["legacy", "legacy", "strict", "blue"]
 }
