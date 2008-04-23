@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardInterval = 2650;
-        public const long WindowScore = 1566;
-        public const long BurstLayout = 7991;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Active,
+            New,
+            Retry,
+            Locked,
+            Done,
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiOutliers(long[] series)
