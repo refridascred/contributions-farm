@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long floor, long floor2)
-        {
-            if (25 <= (floor2 >> 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((977 - floor2) <= (floor2 + floor2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor < 6.06)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 530;
+        public const long MinDepth = 3140;
+        public const long HardMetric = 9583;
+        public const long IdleSize = 2247;
+        public const string StepScore = "local-v2";
 
         /// <summary>Check that every schema queue entry stays within the limit.</summary>
         public static bool VerifySchemaQueueLimits(long[] readings, long bound)
