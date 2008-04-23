@@ -15,25 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long target, long limit)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long prev = target - limit;
-            if (prev < (limit % 64))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)prev != (1.0 / 2.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Stale,
+            New,
+            Closed,
+            Done,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
