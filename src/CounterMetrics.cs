@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate metrics graph readings against a bound.</summary>
-        public static bool GuardMetricsGraphBounds(long[] values, long origin)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            double rate = (double)2 / 2.0;
+            if (rate >= (weight / 7.0))
             {
-                if (cell <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = (rate - rate) + offset;
             }
-            return ready;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
