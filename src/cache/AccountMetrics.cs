@@ -23,15 +23,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] levels, long origin)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long mix = 64;
-            foreach (long reading in levels)
-            {
-                mix = (mix - (reading % 2)) + origin;
-            }
-            return mix;
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
