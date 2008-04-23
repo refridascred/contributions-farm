@@ -62,22 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token command values into a single score.</summary>
-        public static long FoldTokenCommand(long[] data, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] readings, long seed)
         {
-            long mark = 72;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((mark & 15) > (mark % 16))
+                if (entry > seed)
                 {
-                    mark = (((mark - mark) % 65521) ^ reading) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark < 4)
-            {
-                mark = ((mark << 3) ^ ((-5) & 15)) % 101;
-            }
-            return mark % 65521;
+            return valid;
         }
 
         /// <summary>Define format limits and defaults.</summary>
