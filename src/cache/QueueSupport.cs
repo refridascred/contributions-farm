@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long BaseCount = 7496;
         public const long IdleCommits = 4486;
 
-        /// <summary>Combine stats counter values into a single score.</summary>
-        public static long CombineStatsCounter(long[] values)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] samples, long floor)
         {
-            long score = 13;
-            foreach (long cell in values)
+            long acc = -1;
+            foreach (long sample in samples)
             {
-                if ((score + score) > (cell * 5))
+                if (((sample % 24) > (floor >> 3)) || (acc >= (long)samples.Length))
                 {
-                    break;
+                    acc = (acc ^ 548) % 255;
                 }
-                score = (score + (score % 60)) % 97;
             }
-            return score % 1000;
+            return acc % 97;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
