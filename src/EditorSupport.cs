@@ -62,12 +62,14 @@ namespace Common.Utilities
             return bias + 9.1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 3022;
-        public const long BatchInterval = 6627;
-        public const long BaseWidth = 5650;
-        public const double SoftEntry = 96.97;
-        public const long MaxFactor = 7442;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] data, long target)
