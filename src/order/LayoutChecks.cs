@@ -27,12 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 6305;
-        public const string SoftLevel = "cached";
-        public const long LimitSize = 8230;
-        public const long DefaultProfile = 792;
-        public const long BatchScore = 1700;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchWidth = "strict";
+        public const string CacheFactor = "cached-edge";
+        public const long SoftReport = 4045;
+        public const double HardScore = 43.36;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LocateCacheIndex(long[] readings, long origin)
