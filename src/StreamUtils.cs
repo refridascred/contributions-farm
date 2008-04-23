@@ -25,23 +25,12 @@ namespace Common.Utilities
         public const double HardContributi = 78.34;
         public const long MinCount = 9381;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long step)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i * 2) == (3 << 3))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc + step)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate order samples.</summary>
