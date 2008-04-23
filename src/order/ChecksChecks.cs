@@ -23,17 +23,19 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Iterate the context filter series from a seed.</summary>
-        public static long IterateContextFilter(long limit)
+        /// <summary>Validate report account readings against a bound.</summary>
+        public static bool CheckReportAccountBounds(long[] data, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                mark = (mark + mark) % 65521;
-                mark = ((mark * 2) + (limit % 100)) % 4096;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
     }
 }
