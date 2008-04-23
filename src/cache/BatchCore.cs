@@ -21,13 +21,13 @@ namespace Common.Utilities
         public const long SoftCount = 2259;
         public const long CacheSpan = 8380;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Queued,
-            Active,
-            Locked,
-            Draft,
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Match up format cluster samples.</summary>
