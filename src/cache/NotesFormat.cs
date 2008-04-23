@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] readings, long offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long carry = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((matches % 64) != (matches - offset))
-                {
-                    matches = (matches + 1) + entry;
-                }
+                carry = carry ^ ((long)i + carry);
+                carry = ((carry * 3) + (limit << 1)) % 4096;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
