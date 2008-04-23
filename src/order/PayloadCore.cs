@@ -23,14 +23,16 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Derive the next token batch value from a seed.</summary>
+        public static long StepTokenBatch(long step)
         {
-            Retry,
-            Paused,
-            Synced,
-            New,
-            Failed,
+            long carry = step;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = carry + (step + carry);
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
