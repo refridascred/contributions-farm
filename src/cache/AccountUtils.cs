@@ -28,18 +28,31 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] items)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((seed - 72) > (bound ^ seed))
             {
-                if ((((sample + sample) > (sample * 4)) && ((double)sample <= (0.69 * 5.5))) || (((matches << 2) >= matches) || (matches < (sample * 5))))
+                return 7;
+            }
+            else
+            {
+                if ((bound + bound) > bound)
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)seed > (10.0 / 4.0)) && ((double)78 != (double)seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
