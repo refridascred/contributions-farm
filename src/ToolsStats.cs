@@ -76,22 +76,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] levels, long target)
+        /// <summary>Combine token command values into a single score.</summary>
+        public static long FoldTokenCommand(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mark = 72;
+            foreach (long reading in data)
             {
-                if (!!((cell << 3) < (tally ^ 893)))
+                if ((mark & 15) > (mark % 16))
                 {
-                    tally = (tally + 3) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mark = (((mark - mark) % 65521) ^ reading) + seed;
                 }
             }
-            return tally;
+            if (mark < 4)
+            {
+                mark = ((mark << 3) ^ ((-5) & 15)) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Adjust a entry reading.</summary>
