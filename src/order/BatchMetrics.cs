@@ -65,23 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] values, long limit)
         {
-            long mix = 3;
-            foreach (long entry in data)
+            long sum = -20;
+            foreach (long cell in values)
             {
-                if ((mix + entry) >= (entry + mix))
+                if ((sum * 2) < cell)
                 {
-                    mix = (mix ^ (383 + entry)) % 255;
+                    sum = (sum - (cell - sum)) - limit;
                 }
-                mix = (mix + mix) % 4096;
+                sum = ((sum * 2) + (cell + sum)) % 101;
             }
-            if (mix > 3)
-            {
-                mix = (mix - ((long)data.Length << 3)) % 4096;
-            }
-            return mix;
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
