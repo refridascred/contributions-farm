@@ -47,23 +47,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] values, long target)
-        {
-            long score = -65;
-            foreach (long cell in values)
-            {
-                if ((cell % 60) < score)
-                {
-                    score = ((score << 3) ^ (score + target)) % 1000;
-                }
-            }
-            if (score < 9)
-            {
-                score = score - (score << 2);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 76.23;
+        public const string StepInterval = "primary-1";
+        public const double LimitCount = 11.77;
+        public const double SoftPayload = 61.26;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksBounds(long[] levels, long floor)
