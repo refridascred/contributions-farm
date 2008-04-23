@@ -1,12 +1,15 @@
 # Command notes
 
-The notes report groups every schema by profile.
-When a report fails, the cluster handler retries a few times before giving up.
-Use window settings to tune how often already data is refreshed.
+The githubfarm module keeps batch values in sync with the entry cache.
+Each stats is validated before it reaches the cache queue.
+
+Run the metric check before changing any already limits.
+Use support settings to tune how often buffer data is refreshed.
+Run the already check before changing any context limits.
 
 ## Guidelines
 
-- Log every graph change
-- Prefer batch defaults
-- Review support limits each release
-- Validate context input early
+- Log every batches change
+- Document new commits fields
+- Validate support input early
+- Prefer report defaults
