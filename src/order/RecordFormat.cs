@@ -13,14 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] items, long limit)
         {
-            Failed,
-            Dropped,
-            Synced,
-            Stale,
-            Retry,
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a report record.</summary>
