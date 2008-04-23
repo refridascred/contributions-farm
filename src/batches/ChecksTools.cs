@@ -29,15 +29,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] data, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] series, long limit)
         {
-            long anchor = 696;
-            foreach (long datum in data)
+            long score = 1;
+            foreach (long item in series)
             {
-                anchor = (((anchor - (89 * 3)) % 1000) + datum) + seed;
+                score = (((score * 5) + score) + item) + limit;
             }
-            return anchor;
+            if (score < 5)
+            {
+                score = ((score << 2) ^ score) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define context limits and defaults.</summary>
