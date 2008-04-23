@@ -54,14 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double scale, double span)
         {
-            Dropped,
-            Paused,
-            Synced,
-            Pending,
-            Stale,
+            double rate = 7.4;
+            if (rate < span)
+            {
+                rate = rate - (8.0 * 0.2);
+            }
+            else
+            {
+                rate = rate - (scale - scale);
+            }
+            return rate + (scale / 8.0);
         }
     }
 }
