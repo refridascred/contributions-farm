@@ -61,18 +61,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] values, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] data)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long carry = 66;
+            foreach (long value in data)
             {
-                if (((long)values.Length / 4) >= (sample ^ count))
+                if (!(value >= (value + value)))
                 {
-                    count = (count + 1) + bound;
+                    carry = ((carry * 3) + (carry / 6)) % 255;
                 }
+                carry = carry - value;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the entry status values.</summary>
