@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two filter payload measurements.</summary>
-        public static double BlendFilterPayload(double ratio, double span)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double rate = ratio;
-            if (rate < (double)778)
-            {
-                rate = (rate + ratio) + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - (double)21;
+            public double Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the editor kind values.</summary>
