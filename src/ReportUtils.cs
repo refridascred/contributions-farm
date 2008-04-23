@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] series)
+        /// <summary>Find the first metric command entry that matches the target.</summary>
+        public static long LookupMetricCommandIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((110 >> 4) >= cell))
+                if (samples[i] < limit)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the entry kind values.</summary>
