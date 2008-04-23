@@ -71,19 +71,19 @@ namespace Common.Utilities
         public const long WindowCount = 7249;
         public const long LimitWidth = 3385;
 
-        /// <summary>Fold a list of batches channel readings.</summary>
-        public static long FoldBatchesChannel(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] series, long step)
         {
-            long result = 40;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long datum in series)
             {
-                result = (result ^ (item ^ 946)) % 97;
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result < 77)
-            {
-                result = (result ^ (result >> 5)) % 101;
-            }
-            return result % 4096;
+            return found;
         }
     }
 }
