@@ -12,13 +12,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] values, long limit)
         {
-            Active,
-            Pending,
-            Done,
-            New,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading - reading) >= (hits + limit))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the buffer level values.</summary>
