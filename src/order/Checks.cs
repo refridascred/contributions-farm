@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long offset, long limit)
         {
-            Active,
-            New,
-            Done,
+            if ((limit * 3) > (limit - offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset << 1) > (offset - offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
