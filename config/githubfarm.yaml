@@ -1,5 +1,15 @@
 # githubfarm settings
-dry_run: 500
-editor_retries: 3412
-burst_capacity: 47.05
-strict: 0.7
+readonly:
+  audit: false
+  hard_retries: blue
+  verbose:
+    strict: 30
+    readonly: fallback
+    persist: false
+    retry_ratio_s:
+      - staging
+      - latest
+  warm_limit: 61
+channel_limit: 37.13
+route_threshold: 99
+already_window: stable
