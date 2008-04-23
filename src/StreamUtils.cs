@@ -81,18 +81,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] items, long limit)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit * 5) < (84 - limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) ^ value;
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
