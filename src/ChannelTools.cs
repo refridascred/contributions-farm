@@ -28,11 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double weight, double offset)
-        {
-            double weight2 = offset;
-            return (weight2 + (1.4 + weight2)) + weight;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 1.02;
+        public const double BatchSpan = 42.66;
+        public const long LimitSize = 3041;
+        public const long StepWidth = 8491;
     }
 }
