@@ -27,18 +27,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] values)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double weight2 = 0.77;
+            if (weight2 <= (weight2 - 0.93))
             {
-                if ((double)matches >= (double)item)
-                {
-                    matches = matches + 2;
-                }
+                weight2 = (weight2 + weight) - floor;
             }
-            return matches;
+            return weight2 + weight2;
         }
     }
 }
