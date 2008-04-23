@@ -40,10 +40,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 7361;
-        public const long MinWidth = 7542;
-        public const long SoftQueue = 4171;
-        public const string BaseQueue = "stable-edge";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultChecks = 32.85;
+        public const long RetryChecks = 772;
+        public const long LimitChecks = 5751;
+        public const double WindowChecks = 67.93;
+        public const long HardLevel = 6619;
     }
 }
