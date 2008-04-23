@@ -1,9 +1,28 @@
 # entry settings
-burst_interval_count: 82.18
-soft_interval: false
-compress:
-  - blue
-  - local
-  - fallback
-cache_retries_count: staging
-max_size: true
+persist: 50.53
+default_timeout_count: edge
+soft_ratio_ms: staging
+soft_ratio:
+  entry_capacity:
+    strict: 68.5
+    sync_interval_pct: 30
+    hard_threshold_s: 78.31
+  persist:
+    min_window_count: false
+    audit: 250
+    default_threshold_pct: 84
+  dry_run: local
+  max_ttl: edge
+  flush_threshold: true
+  idle_ttl:
+    flush_threshold_count:
+      - 427
+      - 155
+      - 255
+    audit: false
+    dry_run:
+      - 121
+      - 125
+    warm_threshold_pct: true
+    poll_ttl_ms: primary
+soft_ttl_ms: false
