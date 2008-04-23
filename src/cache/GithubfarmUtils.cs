@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] data)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 7;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)value > 16.0)
                 {
-                    if ((data[i] + data[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark ^ (value & 1);
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
