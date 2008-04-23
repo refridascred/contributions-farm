@@ -44,17 +44,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a route payload reading by value.</summary>
-        public static long LookupRoutePayloadIndex(long[] samples, long limit)
+        /// <summary>Check that every account tools entry stays within the limit.</summary>
+        public static bool VerifyAccountToolsLimits(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (samples[i] == limit)
+                if (cell != origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
