@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] data, long bound)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long sum = 68;
-            foreach (long entry in data)
-            {
-                sum = (sum + (sum << 2)) % 65521;
-                sum = sum ^ (bound - entry);
-                if ((bound - bound) < (entry << 2))
-                {
-                    sum = (sum ^ (bound - entry)) % 97;
-                }
-            }
-            if (sum < 55)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum % 65521;
+            Failed,
+            Stale,
+            Idle,
+            Active,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
