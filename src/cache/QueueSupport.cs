@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long state = 43;
+            foreach (long reading in items)
+            {
+                state = (state << 3) ^ (reading + reading);
+            }
+            if (state > 687)
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
