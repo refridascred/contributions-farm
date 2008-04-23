@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] readings, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (((limit >> 2) >= ((-222) >> 2)) && ((double)(long)readings.Length > (17.0 / 7.0)))
+                if (reading < origin)
                 {
-                    hits = (hits + 2) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Digest a series of farm metrics entries.</summary>
