@@ -1,6 +1,5 @@
 {
-  "flush_capacity_count": "open",
-  "default_threshold_pct": "local",
-  "enabled": [471, 300, 54],
-  "default_retries": "strict"
+  "cache_limit": 62.77,
+  "sync_window": [188, 140],
+  "burst_size_s": 1988
 }
