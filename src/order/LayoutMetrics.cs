@@ -35,11 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 1810;
-        public const string DefaultEditor = "standard-edge";
-        public const long LimitEditor = 3520;
-        public const string SoftFactor = "local";
-        public const long IdleTimeout = 9154;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (seed >= (matches % 5))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
+        }
     }
 }
