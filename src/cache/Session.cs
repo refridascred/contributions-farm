@@ -32,17 +32,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a schema githubfarm reading by value.</summary>
-        public static long LocateSchemaGithubfarmIndex(long[] items, long step)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] > step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
