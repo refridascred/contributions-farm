@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const long RetryOrder = 7246;
         public const long SoftOrder = 5044;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] values, long seed)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((3.0 + 10.0) <= (double)seed)
+                if (item <= bound)
                 {
-                    hits = (hits + 3) - cell;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
