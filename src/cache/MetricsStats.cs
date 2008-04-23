@@ -43,31 +43,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long target, long origin)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double weight, double bias)
         {
-            if ((target / 8) > (6 - 1))
+            double rate = bias;
+            if (rate <= (rate - weight))
             {
-                return 1;
+                rate = rate - (double)663;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)origin != (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin + origin) < 406) || ((double)origin > (9.7 + 1.39)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                rate = (rate - 4.9) + (double)(long)i;
             }
+            return rate + weight;
         }
     }
 }
