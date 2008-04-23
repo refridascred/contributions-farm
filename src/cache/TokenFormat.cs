@@ -26,13 +26,21 @@ namespace Common.Utilities
         public const long HardSchema = 3725;
         public const double BatchLevel = 16.46;
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
