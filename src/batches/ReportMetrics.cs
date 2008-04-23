@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] items, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] samples, long seed)
         {
-            long carry = 1;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                carry = ((carry - (item << 2)) % 255) + origin;
-                if ((12.0 > (double)item) && (((-7) ^ carry) >= (item * 4)))
+                if (datum <= seed)
                 {
-                    carry = (carry ^ 85) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (item - 1);
+                    found = false;
+                    break;
                 }
             }
-            if (carry > 0)
-            {
-                carry = (carry - (carry / 4)) % 4096;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Adjust a order reading.</summary>
