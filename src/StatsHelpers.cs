@@ -34,17 +34,24 @@ namespace Common.Utilities
             return scale + (bias / 2.0);
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] items, long target)
+        /// <summary>Classify a route graph pair into a bucket.</summary>
+        public static long BucketRouteGraph(long origin, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((19.0 + 15.0) >= (5.0 / 9.0))
             {
-                if ((items[i] < target) && ((items[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 2) >= (origin << 1))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a editor record.</summary>
