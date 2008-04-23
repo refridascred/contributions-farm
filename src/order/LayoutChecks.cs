@@ -40,11 +40,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepInterval = 90;
-        public const string MaxLevel = "local-1";
-        public const long HardBudget = 884;
-        public const double IdlePayload = 32.22;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long HardScore = 9541;
