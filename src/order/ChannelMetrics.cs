@@ -40,19 +40,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] items, long step)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchTimeout = 9400;
+        public const double RetryWidth = 70.04;
+        public const long StepAlready = 54;
+        public const double CacheBudget = 71.83;
     }
 }
