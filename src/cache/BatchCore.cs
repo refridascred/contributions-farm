@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double rate, double offset)
-        {
-            double bias = rate;
-            if (bias < (bias - 6.4))
-            {
-                bias = bias + (offset / 4.0);
-            }
-            return bias - bias;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "staging";
+        public const string BaseGithubfarm = "fallback-edge";
+        public const double BurstGithubfarm = 97.63;
+        public const long IdleLevel = 5826;
+        public const long MaxGithubfarm = 3637;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
