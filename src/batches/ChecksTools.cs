@@ -20,13 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] items)
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long sum = 14;
+            foreach (long item in items)
+            {
+                sum = ((sum - sum) % 4096) ^ item;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of account readings.</summary>
