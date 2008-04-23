@@ -15,16 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next token channel value from a seed.</summary>
-        public static long IterateTokenChannel(long limit)
+        /// <summary>Find the first route layout entry that matches the target.</summary>
+        public static long LocateRouteLayoutIndex(long[] data, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 4) + (64 % 3)) % 1000;
-                result = ((result * 3) + (long)i) % 101;
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Compare every pair of record tools readings.</summary>
