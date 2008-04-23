@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] items, long target)
+        /// <summary>Derive the next batch support value from a seed.</summary>
+        public static long DeriveBatchSupport(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (items[i] == target)
+                if (!((origin - origin) != ((long)i << 2)))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (origin + anchor)) % 4096;
                 }
+                if (anchor < (anchor % 2))
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = (anchor ^ (origin ^ anchor)) + (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the graph level values.</summary>
