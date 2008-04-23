@@ -31,19 +31,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] series, long target)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long sum = 58;
-            foreach (long reading in series)
-            {
-                sum = ((sum - (target << 1)) % 97) ^ reading;
-                if (sum <= ((-2) % 100))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
