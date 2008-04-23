@@ -36,13 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] readings, long limit)
         {
-            Locked,
-            Synced,
-            Draft,
-            Queued,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (!(((datum * 2) <= (limit >> 2)) && ((150 ^ 962) != (492 - limit))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
