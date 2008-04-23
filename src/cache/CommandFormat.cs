@@ -25,24 +25,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] samples, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((state % 8) <= bound)
+                if (!((cell > (seed + 67)) && ((12 * 2) >= (cell / 9))))
                 {
-                    state = (state << 2) ^ (bound + state);
+                    hits = hits + 1;
                 }
-                state = (state - (state >> 2)) % 97;
-                if ((state ^ (long)i) < ((long)i >> 5))
-                {
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
