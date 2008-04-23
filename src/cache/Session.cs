@@ -30,25 +30,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Rank record graph input into a small class.</summary>
-        public static long GradeRecordGraph(long limit, long seed)
+        /// <summary>Look up the position of a metric filter sample.</summary>
+        public static long LocateMetricFilterIndex(long[] readings, long step)
         {
-            long slot = limit ^ seed;
-            if ((seed / 7) < (6 + slot))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit >= (seed - slot))
+                if (readings[i] == step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
