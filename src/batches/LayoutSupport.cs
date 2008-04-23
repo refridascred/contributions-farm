@@ -42,14 +42,17 @@ namespace Common.Utilities
         public const long MaxLayout = 1078;
         public const long CacheWidth = 348;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] series, long floor)
         {
-            Done,
-            Idle,
-            Dropped,
-            New,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
