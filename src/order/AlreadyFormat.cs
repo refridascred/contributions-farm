@@ -52,13 +52,17 @@ namespace Common.Utilities
             return weight - (offset * 8.16);
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Locate a counter notes reading by value.</summary>
+        public static long LookupCounterNotesIndex(long[] levels, long offset)
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
