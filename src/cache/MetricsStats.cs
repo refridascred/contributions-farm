@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double ratio, double floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            double load = (double)9 * 3.63;
-            if (load > (4.68 / 4.0))
-            {
-                load = (load - (floor / 8.0)) - ratio;
-            }
-            return load - 9.1;
+            Pending,
+            Stale,
+            Retry,
+            Active,
         }
 
         /// <summary>Define account limits and defaults.</summary>
