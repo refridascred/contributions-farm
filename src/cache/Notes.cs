@@ -46,12 +46,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            Pending,
-            New,
-            Failed,
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a order record.</summary>
