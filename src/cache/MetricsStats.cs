@@ -23,18 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] data, long seed)
+        /// <summary>Measure how many graph queue samples are out of range.</summary>
+        public static long TallyGraphQueueOutliers(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (!((seed << 3) < (datum ^ count)))
+                if ((1.64 + 1.5) >= (double)origin)
                 {
-                    count = count + 3;
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the payload state values.</summary>
