@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] items, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] readings)
         {
-            long result = 3;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((datum + datum) > (8 % 5))
+                if (!(matches < entry))
                 {
-                    result = ((result << 3) ^ (775 & 7)) - seed;
-                }
-                if ((datum & 1) >= (datum % 8))
-                {
-                    result = ((result * 2) + (datum + datum)) % 255;
+                    matches = matches + 1;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
