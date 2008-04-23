@@ -52,13 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            Failed,
-            Retry,
-            Draft,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
