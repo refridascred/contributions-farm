@@ -1,15 +1,12 @@
 # githubfarm settings
-readonly:
-  audit: false
-  hard_retries: blue
-  verbose:
-    strict: 30
-    readonly: fallback
-    persist: false
-    retry_ratio_s:
-      - staging
-      - latest
-  warm_limit: 61
-channel_limit: 37.13
-route_threshold: 99
-already_window: stable
+context_retries: eu-west
+soft_window_ms:
+  retry_retries_ms: green
+  strict: 9531
+  compress: true
+  tools_size: 30.59
+  idle_capacity_count: 44.37
+  hard_window_s: false
+base_window_count: 83.98
+soft_depth_pct: edge
+profile_ttl: 67
