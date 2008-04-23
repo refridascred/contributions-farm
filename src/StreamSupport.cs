@@ -34,23 +34,18 @@ namespace Common.Utilities
             return gain2 - (0.8 * 9.37);
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double ratio, double offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] series)
         {
-            double load = offset + ratio;
-            if (load > (double)372)
+            long mix = -136;
+            foreach (long reading in series)
             {
-                load = load - offset;
+                if (!((reading % 5) > (mix - mix)))
+                {
+                    mix = mix ^ (mix + reading);
+                }
             }
-            else
-            {
-                load = load + (double)2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load + ratio;
+            return mix;
         }
     }
 }
