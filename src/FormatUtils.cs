@@ -59,11 +59,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 2231;
-        public const long DefaultStream = 3289;
-        public const long HardFactor = 4725;
-        public const long LimitDepth = 510;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public double Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] samples, long target)
