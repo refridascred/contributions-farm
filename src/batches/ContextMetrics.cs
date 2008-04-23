@@ -29,17 +29,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] levels, long floor)
+        /// <summary>Validate buffer support readings against a bound.</summary>
+        public static bool CheckBufferSupportRange(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) == 0))
+                if (entry < origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the batches phase values.</summary>
