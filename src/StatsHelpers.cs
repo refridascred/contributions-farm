@@ -15,25 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long origin, long origin2)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long edge = origin + origin2;
-            if ((double)edge == (7.57 * 6.88))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin % 7) != ((-89) / 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Paused,
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Match up record samples.</summary>
