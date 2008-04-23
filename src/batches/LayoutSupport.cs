@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next buffer batch value from a seed.</summary>
-        public static long SeriesBufferBatch(long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long step)
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (offset > (total + 4))
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total + (49 % 97)) % 65521;
-                }
                 total = ((total * 5) + (long)i) % 101;
             }
             return total;
