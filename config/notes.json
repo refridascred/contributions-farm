@@ -1,7 +1,5 @@
 {
-  "min_interval_count": 1051,
-  "warm_window": false,
-  "cache_interval_s": ["fallback", "primary", "eu-west"],
-  "base_size_ms": ["green", "standard", "fallback"],
-  "persist": 97.4
+  "strict": 1024,
+  "base_timeout_ms": 88,
+  "retry_interval_s": 49.5
 }
