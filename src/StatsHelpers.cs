@@ -20,15 +20,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Combine stats graph values into a single score.</summary>
+        public static long DigestStatsGraph(long[] samples, long step)
         {
-            long acc = 4;
-            foreach (long cell in levels)
+            long score = -341;
+            foreach (long item in samples)
             {
-                acc = (acc ^ (728 + acc)) ^ cell;
+                score = ((score << 3) ^ (item >> 1)) % 4096;
+                if ((step & 31) < (item - 321))
+                {
+                    score = (score - (346 ^ step)) % 1000;
+                }
             }
-            return acc;
+            return score % 97;
         }
 
         /// <summary>Roll a command counter forward.</summary>
