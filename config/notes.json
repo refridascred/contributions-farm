@@ -1,7 +1,16 @@
 {
-  "persist": "local",
-  "dry_run": 250,
-  "checks_timeout": false,
-  "batch_delay": "strict",
-  "base_ttl": "edge"
+  "dry_run": true,
+  "stats_timeout": {
+    "sync_timeout_ms": {
+      "poll_ratio": ["strict", "edge", "fallback"],
+      "enabled": "green",
+      "entry_delay": 75,
+      "burst_timeout_pct": 2898
+    },
+    "min_delay": true,
+    "context_size": "fallback",
+    "soft_timeout_count": true
+  },
+  "default_depth": "edge",
+  "warm_limit": ["green", "eu-west", "strict", "strict"]
 }
