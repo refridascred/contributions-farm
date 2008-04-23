@@ -23,19 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] values, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] values, long target)
         {
-            long carry = 56;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                carry = (((carry + carry) % 1000) + reading) + offset;
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (carry < 34)
-            {
-                carry = (carry + carry) % 65521;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Check that every already stream entry stays within the limit.</summary>
