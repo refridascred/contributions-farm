@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate cache already readings against a bound.</summary>
-        public static bool CheckCacheAlreadyRange(long[] values, long seed)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long origin)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell <= seed)
+                long edge = origin;
+                if (origin >= (edge >> 2))
                 {
-                    stale = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    mix = ((mix << 2) ^ (23 % 100)) % 1000;
+                    mix = mix + (mix % 7);
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = (mix << 2) ^ (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
