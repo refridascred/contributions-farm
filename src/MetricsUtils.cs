@@ -28,18 +28,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long total = 74;
+            foreach (long cell in series)
             {
-                if ((((tally << 1) == (tally + sample)) || ((sample & 7) > (5 << 2))) || (((sample - sample) == (tally >> 1)) && ((double)sample <= (11.0 / 8.0))))
-                {
-                    tally = tally + 2;
-                }
+                total = (total + (cell - total)) % 255;
+                total = (total << 2) ^ (total << 2);
             }
-            return tally;
+            if (total > 558)
+            {
+                total = ((total << 2) ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
