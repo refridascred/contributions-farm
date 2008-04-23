@@ -35,11 +35,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double gain, double bias)
         {
-            public double Mode { get; set; }
-            public bool Level { get; set; }
+            double bias2 = (double)(5 + 32);
+            return (bias2 - (bias - bias2)) + gain;
         }
 
         /// <summary>Describe the token kind values.</summary>
