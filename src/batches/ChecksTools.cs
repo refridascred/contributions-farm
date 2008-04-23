@@ -20,24 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long origin, long step)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long limit)
         {
-            if ((0 % 8) < (step >> 5))
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (9 >= origin)
+                if (((-5) + (long)i) > (mix << 1))
                 {
-                    return 1;
+                    mix = (mix * 4) + ((-903) % 8);
+                    continue;
                 }
-                else
-                {
-                    return 8;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
