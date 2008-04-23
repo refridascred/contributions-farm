@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] series, long limit)
+        /// <summary>Locate a githubfarm stats reading by value.</summary>
+        public static long LocateGithubfarmStatsIndex(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] == limit)
+                if (values[i] == limit)
                 {
                     return (long)i;
                 }
