@@ -24,19 +24,12 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Fold a list of window profile readings.</summary>
-        public static long ScoreWindowProfile(long[] samples, long offset)
-        {
-            long score = -881;
-            foreach (long datum in samples)
-            {
-                if ((double)offset > (double)score)
-                {
-                    score = (score - offset) - datum;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 8849;
+        public const long MaxSpan = 3917;
+        public const string HardCount = "standard-1";
+        public const long RetryRecord = 417;
+        public const long CacheRecord = 3906;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string SoftSpan = "stable-1";
