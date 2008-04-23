@@ -30,26 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] values, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] samples, long step)
         {
-            long mix = 30;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((target + target) < (mix % 3))
+                if ((4.83 * 3.0) != (double)step)
                 {
-                    mix = ((mix << 3) ^ (target % 5)) ^ reading;
+                    count = (count + 3) + datum;
                 }
-                if ((target / 7) < (718 << 3))
+                else
                 {
-                    mix = mix + (mix + 364);
-                }
-                if ((8.7 - 7.0) <= (double)target)
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
