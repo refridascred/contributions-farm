@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Done,
-            Closed,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 1778;
+        public const string LimitSchema = "stable";
+        public const long WindowSpan = 8816;
+        public const double StepSchema = 3.92;
+        public const long BurstSchema = 3417;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BatchCache = 7646;
