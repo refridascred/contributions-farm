@@ -55,25 +55,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long target, long seed)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long cur = target - seed;
-            if ((target + cur) >= (target << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target != (1.7 - 1.5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
