@@ -36,15 +36,16 @@ namespace Common.Utilities
         public const long SoftReport = 4045;
         public const double HardScore = 43.36;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] samples, long seed)
+        /// <summary>Roll a editor stream counter forward.</summary>
+        public static long RollEditorStream(long bound)
         {
-            long anchor = 955;
-            foreach (long cell in samples)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = (anchor ^ (seed % 7)) ^ cell;
+                result = result + result;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Describe the entry status values.</summary>
