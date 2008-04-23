@@ -23,11 +23,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheLayout = "legacy";
-        public const long IdleSpan = 1862;
-        public const double CacheSize = 80.39;
-        public const long MinTimeout = 5266;
-        public const long MinBudget = 591;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((63 + 72) > (sample + sample))
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
+        }
     }
 }
