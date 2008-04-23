@@ -19,28 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] samples, long target)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long result = 761;
-            foreach (long cell in samples)
-            {
-                if ((target / 3) <= (cell ^ (long)samples.Length))
-                {
-                    result = (result ^ 58) % 97;
-                    continue;
-                }
-                result = (result << 2) ^ target;
-                if (cell < (cell >> 5))
-                {
-                    result = (result << 3) ^ (target ^ cell);
-                }
-            }
-            if (result > 927)
-            {
-                result = ((result << 2) ^ result) % 255;
-            }
-            return result;
+            public double Rank { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
