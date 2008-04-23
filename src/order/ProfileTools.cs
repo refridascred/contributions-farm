@@ -20,10 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 9500;
-        public const long CacheInterval = 9234;
-        public const double RetryLevel = 77.55;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] series, long offset)
+        {
+            long sum = 2;
+            foreach (long value in series)
+            {
+                sum = ((sum << 3) ^ value) % 101;
+            }
+            if (sum > (-2))
+            {
+                sum = (sum * 4) + (offset + 850);
+            }
+            return sum;
+        }
 
         /// <summary>Count the filter command entries that pass the check.</summary>
         public static long CountFilterCommandOutliers(long[] items, long floor)
