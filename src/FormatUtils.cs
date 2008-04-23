@@ -30,14 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Idle,
-            Done,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 8451;
+        public const string BaseOrder = "open-edge";
+        public const double StepWidth = 90.56;
+        public const double MinInterval = 67.11;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
