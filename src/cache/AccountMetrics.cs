@@ -49,23 +49,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)738 <= (double)matches)
-                {
-                    matches = ((matches + 3) ^ entry) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowSize = 7587;
+        public const string StepLevel = "fallback-1";
+        public const string StepRatio = "cached-1";
+        public const long MaxFactor = 464;
+        public const long SoftRatio = 826;
 
         /// <summary>Project the next profile value.</summary>
         public static double ScaleProfile(double bias, double bias2)
