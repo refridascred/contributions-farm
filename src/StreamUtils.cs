@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double CacheSchema = 20.39;
         public const double StepSchema = 55.2;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Locked,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 5313;
+        public const long BatchContributi = 5030;
+        public const long CacheContributi = 4860;
+        public const double HardContributi = 78.34;
+        public const long MinCount = 9381;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long SeriesMetric(long origin)
