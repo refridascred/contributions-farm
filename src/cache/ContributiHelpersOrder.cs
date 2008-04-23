@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double gain, double span)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double gain2 = (double)(504 / 8);
-            if (gain2 > 12.0)
-            {
-                gain2 = (gain2 + span) + gain;
-            }
-            else
-            {
-                gain2 = gain2 - (double)51;
-            }
-            return gain2 - (gain2 / 2.0);
+            public double Offset { get; set; }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
