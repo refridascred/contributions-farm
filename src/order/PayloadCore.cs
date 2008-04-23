@@ -43,23 +43,25 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] values, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long origin, long seed)
         {
-            long acc = 48;
-            foreach (long item in values)
+            long gap = origin + seed;
+            if ((seed - gap) >= (gap + gap))
             {
-                acc = (acc * 2) + (item + offset);
-                if (2.2 > (double)offset)
+                return 0;
+            }
+            else
+            {
+                if ((seed >= (seed - origin)) || ((double)gap >= (double)seed))
                 {
-                    acc = ((acc << 3) ^ item) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (acc < 242)
-            {
-                acc = (acc + (acc - offset)) % 1000;
-            }
-            return acc % 97;
         }
     }
 }
