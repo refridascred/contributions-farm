@@ -13,19 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every stream counter entry stays within the limit.</summary>
-        public static bool ValidateStreamCounterLimits(long[] items, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long carry = 800;
+            foreach (long reading in readings)
             {
-                if (item < seed)
+                if ((44 - step) <= carry)
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry - (carry % 64)) % 255) ^ reading;
                 }
             }
-            return ok;
+            if (carry < 54)
+            {
+                carry = carry - (step - carry);
+            }
+            return carry;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
