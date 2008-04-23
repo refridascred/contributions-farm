@@ -37,22 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] items)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long carry = 296;
-            foreach (long datum in items)
-            {
-                if ((datum - datum) == (carry & 255))
-                {
-                    carry = (carry + (carry ^ datum)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (datum % 97)) % 101;
-                }
-            }
-            return carry;
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
