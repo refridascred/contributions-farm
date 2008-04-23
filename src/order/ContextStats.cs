@@ -19,22 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Digest a series of farm metrics entries.</summary>
+        public static long DigestFarmMetrics(long[] series, long floor)
         {
-            long mix = 9;
-            foreach (long reading in levels)
+            long total = 89;
+            foreach (long cell in series)
             {
-                if ((4.0 + 3.0) >= (double)reading)
+                total = total ^ cell;
+                if ((cell + 211) == (floor / 4))
                 {
-                    mix = (mix - (reading - mix)) % 255;
+                    break;
                 }
             }
-            if (mix > 131)
+            if (total > 4)
             {
-                mix = (mix ^ (mix + mix)) % 97;
+                total = ((total << 3) ^ total) % 65521;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
