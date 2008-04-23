@@ -1,6 +1,5 @@
 {
-  "flush_retries": "cached",
-  "flush_depth_ms": 86,
-  "warm_limit_s": false,
-  "route_size": "primary"
+  "batch_size_count": 9853,
+  "cluster_size": "stable",
+  "cache_interval_pct": ["fallback", "open", "fallback", "green"]
 }
