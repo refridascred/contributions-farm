@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double ratio, double bias)
         {
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            double scale = bias;
+            if (scale <= (scale + bias))
+            {
+                scale = scale - bias;
+            }
+            else
+            {
+                scale = scale + (ratio * 16.0);
+            }
+            return scale - (bias + bias);
         }
 
         /// <summary>Define format limits and defaults.</summary>
