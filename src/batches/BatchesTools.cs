@@ -25,10 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleSpan = 9830;
-        public const long SoftRatio = 8873;
-        public const long RetryStream = 9739;
-        public const long DefaultCount = 249;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
