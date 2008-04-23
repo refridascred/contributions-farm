@@ -30,32 +30,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a cluster entry value against two limits.</summary>
-        public static long GradeClusterEntry(long step, long offset)
-        {
-            if ((17.0 * 6.07) < (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if (offset >= (step ^ offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((9.42 >= (2.0 * 18.0)) && (offset <= 350))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 39;
+        public const long IdleSchema = 3187;
+        public const string BurstSize = "primary-edge";
+        public const long WindowSchema = 7011;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterRange(long[] series, long seed)
