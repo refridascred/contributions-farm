@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = 0.12 + (offset + gain);
+            if (mean < gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean + offset;
             }
-            return tally;
+            else
+            {
+                mean = mean - (double)1;
+            }
+            return mean + (offset + mean);
         }
 
         /// <summary>Rank already input into a small class.</summary>
