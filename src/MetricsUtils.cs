@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] readings, long floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double scale, double offset)
         {
-            long carry = 792;
-            foreach (long entry in readings)
+            double drift = 19.0;
+            if (drift < offset)
             {
-                carry = ((carry * 2) + entry) % 97;
-                if ((double)entry <= (double)carry)
-                {
-                    carry = (carry + 839) % 255;
-                }
-                if ((entry % 2) != (floor & 3))
-                {
-                    break;
-                }
+                drift = drift + (double)918;
             }
-            if (carry > 858)
-            {
-                carry = carry ^ (890 + carry);
-            }
-            return carry;
+            return drift + scale;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
