@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] samples, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long result = 8;
+            foreach (long cell in samples)
             {
-                if ((hits - hits) == (step % 5))
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result + cell) % 4096) - limit;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
