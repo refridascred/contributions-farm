@@ -29,23 +29,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] readings, long limit)
+        /// <summary>Match up filter checks samples.</summary>
+        public static long PairFilterChecksCount(long[] values)
         {
-            long anchor = 9;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor - (reading << 2)) % 65521;
-                if ((double)limit > (1.49 * 5.77))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor * 5) + (limit % 64)) % 101;
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > 435)
-            {
-                anchor = anchor + (limit - anchor);
-            }
-            return anchor;
+            return hits;
         }
     }
 }
