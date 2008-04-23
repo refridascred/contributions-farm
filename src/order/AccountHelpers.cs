@@ -48,22 +48,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] series)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long bound)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((matches >= (13 << 2)) && ((8 - cell) == (cell + matches)))
+                if (!((long)i > bound))
                 {
-                    matches = matches + 3;
+                    mix = mix + (mix + 1);
+                    mix = ((mix << 2) ^ (bound % 7)) % 97;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a context summary.</summary>
