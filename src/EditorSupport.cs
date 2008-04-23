@@ -85,17 +85,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] data, long target)
+        /// <summary>Fold a list of metric editor readings.</summary>
+        public static long TallyMetricEditor(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 3;
+            foreach (long sample in items)
             {
-                if ((data[i] <= target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result + (result << 3)) % 255) + sample;
             }
-            return -1;
+            return result % 1000;
         }
     }
 }
