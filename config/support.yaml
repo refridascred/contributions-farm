@@ -1,9 +1,18 @@
 # support settings
-entry_timeout: 2059
-hard_ratio_pct: 66.67
-retry_limit_ms: 46
-retry_size: 12
-format_threshold:
-  - stable
+idle_interval: 6100
+min_ratio_count: 1117
+persist:
+  readonly:
+    soft_timeout: 5
+    poll_size_count: 45
+    graph_ratio: 100
+    persist: false
+    flush_ttl: 250
+    batches_threshold: 75.64
+  poll_size_ms: 1024
+  verbose: 95.32
+  warm_retries_pct: strict
+format_retries: 85
+hard_delay:
   - staging
-  - staging
+  - open
