@@ -35,11 +35,23 @@ namespace Common.Utilities
         public const double SoftFactor = 51.02;
         public const double HardBudget = 92.61;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultLevel = 3899;
-        public const long LimitSize = 598;
-        public const string SoftInterval = "fallback-v2";
-        public const long BaseStats = 8422;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally <= floor) || ((6.0 / 3.0) <= (double)value))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the batches token entries that pass the check.</summary>
         public static long CountBatchesTokenHits(long[] series)
