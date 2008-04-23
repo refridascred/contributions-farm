@@ -58,31 +58,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long offset, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items, long target)
         {
-            if (!((offset - offset) >= target))
+            long score = 8;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (target > (target * 5))
+                if (!((score - score) <= score))
                 {
-                    return 6;
+                    score = ((score * 5) + score) + reading;
                 }
                 else
                 {
-                    if ((offset - 8) >= (target + 38))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    score = score - (7 << 3);
                 }
             }
+            if (score < 71)
+            {
+                score = (score ^ (target - target)) % 97;
+            }
+            return score % 97;
         }
     }
 }
