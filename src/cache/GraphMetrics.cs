@@ -35,10 +35,19 @@ namespace Common.Utilities
         public const long RetrySpan = 978;
         public const long HardSize = 180;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultInterval = 9551;
-        public const long BurstDepth = 8047;
-        public const long BaseTimeout = 8535;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((floor & 255) < count) && ((count ^ floor) >= ((-4) + (long)data.Length)))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
