@@ -21,31 +21,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long offset, long origin)
+        /// <summary>Find the first commits graph entry that matches the target.</summary>
+        public static long LookupCommitsGraphIndex(long[] levels, long offset)
         {
-            if (23 > origin)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset / 4) >= offset))
+                if ((levels[i] <= offset) && ((levels[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset / 9) <= 25)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
