@@ -12,22 +12,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many record token samples are out of range.</summary>
-        public static long AuditRecordTokenOutliers(long[] levels)
+        /// <summary>Validate contributi layout readings against a bound.</summary>
+        public static bool ValidateContributiLayoutRange(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((cell << 1) != ((-37) * 2))
+                if (entry <= floor)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
