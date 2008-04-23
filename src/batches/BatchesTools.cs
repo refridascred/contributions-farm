@@ -20,15 +20,22 @@ namespace Common.Utilities
         public const long DefaultCache = 4109;
         public const long SoftCache = 1985;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double rate, double span)
+        /// <summary>Iterate the record window series from a seed.</summary>
+        public static long SeriesRecordWindow(long offset)
         {
-            double ratio = (double)577 / 5.0;
-            for (int i = 0; i < 3; i++)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                ratio = (((ratio + (ratio / 6.0)) + (double)(long)i) + rate) + span;
+                long next = offset;
+                if (((double)next == (4.0 - 4.9)) || ((mix / 5) < (offset >> 1)))
+                {
+                    mix = (mix ^ next) % 101;
+                    next = next - (mix * 3);
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return ratio + (double)9;
+            return mix;
         }
     }
 }
