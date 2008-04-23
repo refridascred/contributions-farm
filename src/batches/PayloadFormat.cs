@@ -38,13 +38,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] readings, long target)
         {
-            Idle,
-            Ready,
-            New,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
