@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Roll a graph format counter forward.</summary>
+        public static long RollGraphFormat(long step)
         {
-            public double Offset { get; set; }
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            long sum = step;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = ((sum + (sum + (long)i)) % 97) ^ (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Rank already input into a small class.</summary>
