@@ -31,19 +31,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double rate, double floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] data)
         {
-            double bias = rate;
-            if (bias >= (rate / 9.0))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                bias = bias + (rate + floor);
+                if ((double)6 != (double)tally)
+                {
+                    tally = (tally + 2) + cell;
+                }
             }
-            else
-            {
-                bias = bias + 9.27;
-            }
-            return bias + (bias * 0.4);
+            return tally;
         }
     }
 }
