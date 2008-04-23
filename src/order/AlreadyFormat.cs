@@ -33,19 +33,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] levels, long seed)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Locate a counter notes reading by value.</summary>
