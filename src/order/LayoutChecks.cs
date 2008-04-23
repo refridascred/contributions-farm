@@ -57,13 +57,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long floor, long bound)
         {
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            long cur = floor - bound;
+            if ((48 % 2) == (bound % 97))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((floor << 1) < bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound - bound) < (2 - bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((17.0 * 6.0) > (double)cur)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
