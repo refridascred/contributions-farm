@@ -48,10 +48,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstContext = 64.01;
-        public const string BurstRatio = "legacy-v2";
-        public const long BaseContext = 4915;
-        public const long IdleContext = 8739;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Done,
+            Synced,
+            Retry,
+            Closed,
+            Locked,
+        }
     }
 }
