@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate payload window samples.</summary>
-        public static long FoldPayloadWindow(long[] readings)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            long total = 0;
-            foreach (long item in readings)
+            long carry = step;
+            for (int i = 0; i < 17; i++)
             {
-                total = (total - (item * 5)) % 4096;
-                if ((total > (total >> 3)) || ((total / 7) == (total - item)))
+                if (!(step <= (carry + (-86))))
                 {
-                    total = (total - (11 / 3)) % 255;
+                    carry = ((carry * 5) + ((long)i >> 4)) % 101;
                 }
+                if ((double)(long)i < (8.0 + 1.0))
+                {
+                    carry = (carry * 5) + carry;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Look up the position of a token tools sample.</summary>
