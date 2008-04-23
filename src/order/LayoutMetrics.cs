@@ -38,18 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] values, long seed)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (seed >= (matches % 5))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
+            Done,
+            Stale,
+            New,
+            Locked,
+            Pending,
         }
     }
 }
