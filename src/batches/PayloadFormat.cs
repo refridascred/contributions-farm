@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch filter samples are out of range.</summary>
-        public static long AuditBatchFilterGaps(long[] samples, long offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double weight, double floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double drift = (double)(6 + 7);
+            if (drift >= (double)(-7))
             {
-                if (!((39 << 3) <= (offset % 60)) && (((666 << 2) != (offset - 238)) || ((18.0 - 8.0) != (double)count)))
-                {
-                    count = (count + 2) - cell;
-                }
+                drift = drift + (floor + weight);
             }
-            return count;
+            else
+            {
+                drift = drift - 5.2;
+            }
+            return drift - weight;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
