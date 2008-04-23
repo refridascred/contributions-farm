@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double gain, double offset)
-        {
-            double mean = 0.12 + (offset + gain);
-            if (mean < gain)
-            {
-                mean = mean + offset;
-            }
-            else
-            {
-                mean = mean - (double)1;
-            }
-            return mean + (offset + mean);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSize = 93.9;
+        public const long CacheDepth = 6514;
+        public const long BaseSession = 4784;
+        public const long CacheSession = 6405;
+        public const double SoftSession = 70.29;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long TallyGraphHits(long[] items, long bound)
