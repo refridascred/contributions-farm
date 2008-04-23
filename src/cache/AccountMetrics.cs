@@ -23,19 +23,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate editor profile readings against a bound.</summary>
-        public static bool GuardEditorProfileRange(long[] levels, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (datum < offset)
+                if (tally > (43 / 6))
                 {
-                    ok = false;
-                    break;
+                    tally = ((tally + 1) + cell) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
