@@ -20,18 +20,15 @@ namespace Common.Utilities
             return bias - (span - span);
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] samples)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)value == (7.8 / 8.0))
-                {
-                    tally = tally + 3;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
