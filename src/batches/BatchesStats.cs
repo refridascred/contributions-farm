@@ -34,12 +34,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public bool Stamp { get; set; }
+            Draft,
+            Paused,
+            Retry,
         }
     }
 }
