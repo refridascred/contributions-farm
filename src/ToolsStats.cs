@@ -16,20 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] values, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxCount = 95.92;
+        public const string MaxSpan = "alpha-v2";
+        public const long SoftContributi = 8651;
+        public const long LimitContributi = 5173;
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double SmoothBatch(double weight, double floor)
