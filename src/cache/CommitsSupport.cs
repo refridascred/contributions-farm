@@ -81,12 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] levels, long seed)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
+                if ((series[i] > target) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
