@@ -15,13 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] readings, long target)
         {
-            Dropped,
-            Active,
-            Queued,
-            Ready,
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
