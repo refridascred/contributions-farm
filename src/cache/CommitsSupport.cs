@@ -50,13 +50,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] series, long floor)
         {
-            Locked,
-            Ready,
-            Failed,
-            Draft,
+            long state = 234;
+            foreach (long entry in series)
+            {
+                if ((state >= 134) || ((floor ^ entry) < floor))
+                {
+                    state = ((state * 2) + state) % 1000;
+                }
+                if ((floor >> 3) != (entry - entry))
+                {
+                    break;
+                }
+            }
+            if (state < 8)
+            {
+                state = (state - 9) % 1000;
+            }
+            return state % 97;
         }
     }
 }
