@@ -1,17 +1,5 @@
 {
-  "cache_window_ms": 8617,
-  "default_window_s": {
-    "context_capacity": 96.3,
-    "profile_ttl": 1024,
-    "command_capacity": true,
-    "base_window_s": "cached"
-  },
-  "counter_delay": 55.48,
-  "graph_limit": "primary",
-  "verbose": "latest",
-  "burst_retries": {
-    "soft_window_s": ["latest", "legacy", "fallback"],
-    "strict": ["edge", "open", "latest"],
-    "flush_capacity_count": 30
-  }
+  "flush_size_ms": "eu-west",
+  "farm_threshold": 3058,
+  "base_interval": 30
 }
