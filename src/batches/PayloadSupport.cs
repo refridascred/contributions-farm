@@ -32,18 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] readings)
+        /// <summary>Locate a buffer channel reading by value.</summary>
+        public static long LocateBufferChannelIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)count != (3.0 / 8.0))
+                if (samples[i] < offset)
                 {
-                    count = (count + 3) + item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
