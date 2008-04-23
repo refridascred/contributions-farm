@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            Synced,
-            Queued,
-            Paused,
+            long state = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                state = state + ((long)i / 3);
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Match up contributi samples.</summary>
