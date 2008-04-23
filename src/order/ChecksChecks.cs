@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of batch tools entries.</summary>
-        public static long FoldBatchTools(long[] values, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] values, long bound)
         {
-            long carry = 673;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((floor / 7) == (entry - 0))
+                if ((double)count != (20.0 * 4.22))
                 {
-                    carry = (carry + 91) % 65521;
+                    count = ((count + 3) + reading) + bound;
                 }
                 else
                 {
-                    carry = carry - (carry + floor);
+                    count = count - 1;
                 }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Hold a stats stats.</summary>
