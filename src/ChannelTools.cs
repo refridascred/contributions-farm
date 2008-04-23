@@ -23,10 +23,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxBudget = 658;
-        public const double CacheSpan = 36.21;
-        public const double DefaultScore = 88.52;
-        public const double MinGraph = 24.02;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long bound, long target)
+        {
+            long diff = bound - target;
+            if (((bound + bound) >= (bound + target)) && (diff >= bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound > (diff << 3)) && ((8 * 5) >= diff))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)target >= (2.45 - 12.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((9.54 + 3.4) < (double)diff)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
