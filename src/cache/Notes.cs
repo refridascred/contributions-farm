@@ -61,17 +61,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first payload githubfarm entry that matches the target.</summary>
-        public static long LocatePayloadGithubfarmIndex(long[] samples, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 661;
+            foreach (long reading in levels)
             {
-                if (samples[i] <= floor)
+                if ((reading + score) == (score + reading))
                 {
-                    return (long)i;
+                    score = score ^ (score + score);
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
