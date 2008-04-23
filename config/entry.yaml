@@ -1,6 +1,5 @@
 # entry settings
-persist: 30
-dry_run:
-  - 156
-  - 150
-flush_capacity_count: edge
+dry_run: true
+base_threshold: standard
+default_capacity_s: fallback
+enabled: standard
