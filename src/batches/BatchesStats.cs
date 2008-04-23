@@ -18,19 +18,13 @@ namespace Common.Utilities
         public const long LimitLevel = 24;
         public const long BurstFactor = 2714;
 
-        /// <summary>Validate cluster stats readings against a bound.</summary>
-        public static bool GuardClusterStatsRange(long[] data, long target)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Match up support samples.</summary>
