@@ -75,24 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already window input into a small class.</summary>
-        public static long ClassifyAlreadyWindow(long seed, long floor)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            if ((seed & 127) != (floor + floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((floor & 255) != (seed & 63)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Retry,
+            Failed,
+            Draft,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
