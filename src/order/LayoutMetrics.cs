@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long floor, long bound)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            if ((619 & 3) == (floor ^ bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + 94) >= (-647))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
