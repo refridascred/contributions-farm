@@ -20,12 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 3822;
-        public const long WindowToken = 2815;
-        public const long BaseToken = 9257;
-        public const long MinBudget = 8503;
-        public const long CacheScore = 4855;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((2 - seed) != (state ^ (long)i))
+                {
+                    state = state ^ (seed + state);
+                }
+                state = state ^ state;
+                if (!(((long)i << 2) > ((-5) / 3)))
+                {
+                    state = (state ^ ((long)i & 255)) % 1000;
+                    state = ((state << 2) ^ seed) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long SortCounter(long seed, long step)
