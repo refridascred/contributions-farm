@@ -36,17 +36,15 @@ namespace Common.Utilities
         public const long SoftReport = 4045;
         public const double HardScore = 43.36;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] readings, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 955;
+            foreach (long cell in samples)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ (seed % 7)) ^ cell;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the entry status values.</summary>
