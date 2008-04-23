@@ -23,11 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 574;
-        public const long CacheCluster = 4233;
-        public const double DefaultCluster = 91.69;
-        public const double HardCluster = 61.05;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Queued,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Audit report session readings against a rule.</summary>
         public static long TallyReportSessionHits(long[] items)
