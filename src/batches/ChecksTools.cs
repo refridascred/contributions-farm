@@ -38,15 +38,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double weight, double floor)
-        {
-            double weight2 = 0.77;
-            if (weight2 <= (weight2 - 0.93))
-            {
-                weight2 = (weight2 + weight) - floor;
-            }
-            return weight2 + weight2;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstContext = 64.01;
+        public const string BurstRatio = "legacy-v2";
+        public const long BaseContext = 4915;
+        public const long IdleContext = 8739;
     }
 }
