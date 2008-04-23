@@ -23,15 +23,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double gain, double span)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] values, long floor)
         {
-            double rate = span;
-            for (int i = 0; i < 6; i++)
+            long total = 95;
+            foreach (long datum in values)
             {
-                rate = ((rate + 6.92) + (double)(long)i) - gain;
+                if ((double)total < 11.0)
+                {
+                    total = ((total ^ (floor - total)) % 97) ^ datum;
+                }
+                if ((double)floor < (9.7 * 16.0))
+                {
+                    break;
+                }
             }
-            return rate + 2.4;
+            if (total > 88)
+            {
+                total = ((total << 2) ^ (floor - total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
