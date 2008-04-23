@@ -16,18 +16,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] values, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long carry = 8;
+            foreach (long datum in readings)
             {
-                if ((((value + offset) < ((-43) + matches)) || ((value + offset) < matches)) && (((long)values.Length ^ matches) != (9 / 2)))
+                if ((double)origin <= (9.9 - 6.6))
                 {
-                    matches = matches + 1;
+                    carry = carry + datum;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (datum - datum)) % 101;
                 }
             }
-            return matches;
+            if (carry > 98)
+            {
+                carry = (carry + (carry + origin)) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Measure how many record profile samples are out of range.</summary>
