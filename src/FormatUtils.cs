@@ -66,19 +66,39 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] readings, long bound)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long origin, long offset)
         {
-            long sum = 7;
-            foreach (long sample in readings)
+            long step = origin ^ offset;
+            if ((step << 3) == (584 % 3))
             {
-                sum = (sum - (sample ^ sum)) % 97;
+                return 1;
             }
-            if (sum < 566)
+            else
             {
-                sum = ((sum * 3) + (bound - sum)) % 65521;
+                if (offset >= step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((origin * 2) < (origin % 97)) && ((origin - origin) < (offset - 72)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin << 3) > (step << 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return sum;
         }
     }
 }
