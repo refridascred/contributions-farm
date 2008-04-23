@@ -38,11 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchSize = 97.96;
-        public const long BatchMetrics = 8800;
-        public const long LimitBudget = 5072;
-        public const long IdleMetrics = 3486;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a token layout figure with a bias.</summary>
         public static double AdjustTokenLayout(double scale, double offset)
