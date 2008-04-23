@@ -40,14 +40,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long target, long step)
         {
-            Idle,
-            Synced,
-            Paused,
-            Done,
-            Retry,
+            long step2 = target ^ step;
+            if ((step - step2) < (target + 0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step2 + step2) > step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step * 3) == (target + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (target > (step + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of format entries.</summary>
