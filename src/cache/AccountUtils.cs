@@ -34,31 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long seed, long bound)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            if ((seed - 72) > (bound ^ seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound) > bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)seed > (10.0 / 4.0)) && ((double)78 != (double)seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public long Total { get; set; }
         }
     }
 }
