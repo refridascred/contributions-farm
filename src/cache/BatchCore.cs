@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a tools entry pair into a bucket.</summary>
-        public static long ClassifyToolsEntry(long seed, long offset)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            if (12 <= (offset * 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed >= (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a context header.</summary>
