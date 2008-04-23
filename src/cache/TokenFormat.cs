@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] values, long floor)
+        /// <summary>Combine cache order values into a single score.</summary>
+        public static long TallyCacheOrder(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long result = 54;
+            foreach (long entry in items)
             {
-                if (!((matches % 7) != (cell * 2)) || (((matches << 1) >= 389) && ((cell + 965) >= (cell + matches))))
+                if ((result ^ entry) == (entry * 4))
                 {
-                    matches = (matches + 1) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = (result + 476) % 97;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
