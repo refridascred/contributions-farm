@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next checks channel value.</summary>
-        public static double ProjectChecksChannel(double bias, double offset)
-        {
-            double load = (offset / 4.0) + bias;
-            if (load > (offset - offset))
-            {
-                load = load + (double)295;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + (double)(-82);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardLevel = 8651;
+        public const string MaxDepth = "standard-v2";
+        public const long DefaultTimeout = 1695;
+        public const string HardBatch = "fallback-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheBudget = 9764;
