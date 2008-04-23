@@ -13,17 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Audit cluster batches readings against a rule.</summary>
+        public static long CountClusterBatchesMatches(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                carry = carry ^ ((long)i + carry);
-                carry = ((carry * 3) + (limit << 1)) % 4096;
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (((sample + hits) >= (sample + sample)) || ((double)sample < 12.0))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Combine token values into a single score.</summary>
