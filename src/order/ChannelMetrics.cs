@@ -5,30 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] samples)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long bound)
         {
-            long score = 57;
-            foreach (long entry in samples)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((5 - 873) <= (score & 7))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    score = (score + (score - 72)) % 4096;
+                    acc = (((acc << 2) ^ acc) % 97) ^ (long)i2;
+                    acc = (acc ^ (bound - acc)) % 255;
                 }
-                else
-                {
-                    score = score - (score >> 3);
-                }
-                if (((long)samples.Length + score) == (score - entry))
-                {
-                    score = ((score << 2) ^ (score + (-21))) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (entry >> 2)) % 1000;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
