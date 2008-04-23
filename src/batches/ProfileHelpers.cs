@@ -51,19 +51,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches graph readings against a bound.</summary>
-        public static bool CheckBatchesGraphBounds(long[] samples, long seed)
+        /// <summary>Rank githubfarm counter input into a small class.</summary>
+        public static long GradeGithubfarmCounter(long seed, long offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long slot = seed ^ offset;
+            if (((offset >> 1) < (slot ^ offset)) && (offset < (slot + 43)))
             {
-                if (datum < seed)
+                return 6;
+            }
+            else
+            {
+                if (!(offset <= (slot % 16)))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return found;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
