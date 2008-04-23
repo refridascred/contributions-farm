@@ -30,11 +30,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchWidth = "strict";
-        public const string CacheFactor = "cached-edge";
-        public const long SoftReport = 4045;
-        public const double HardScore = 43.36;
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double gain, double span)
+        {
+            double ratio = span;
+            if (ratio <= (3.95 + gain))
+            {
+                ratio = ratio - span;
+            }
+            return ratio - 4.83;
+        }
 
         /// <summary>Roll a editor stream counter forward.</summary>
         public static long RollEditorStream(long bound)
