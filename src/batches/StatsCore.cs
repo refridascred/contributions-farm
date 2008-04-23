@@ -48,15 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] levels, long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] items, long target)
         {
-            long acc = 29;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long value in items)
             {
-                acc = ((acc << 2) ^ (seed << 1)) + sample;
+                if (value > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Digest a series of editor channel entries.</summary>
