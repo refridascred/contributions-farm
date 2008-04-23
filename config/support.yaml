@@ -1,7 +1,7 @@
 # support settings
-burst_ttl_ms: 30
-queue_retries: strict
-support_capacity:
-  - 431
-  - 307
-  - 72
+flush_retries_s: true
+warm_delay_ms: 5.1
+session_size:
+  - 10
+  - 312
+metrics_interval: 47.87
