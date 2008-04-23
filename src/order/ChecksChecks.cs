@@ -23,21 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] < limit)
                 {
-                    if ((levels[i] - levels[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two checks measurements.</summary>
