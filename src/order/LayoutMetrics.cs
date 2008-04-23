@@ -24,15 +24,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] readings, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if (((9 - 30) > (offset % 2)) || ((datum + offset) < (datum * 4)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
