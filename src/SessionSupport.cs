@@ -17,18 +17,20 @@ namespace Common.Utilities
         public const long SoftMetric = 6797;
         public const string DefaultScore = "standard";
 
-        /// <summary>Measure how many notes commits samples are out of range.</summary>
-        public static long CountNotesCommitsOutliers(long[] items)
+        /// <summary>Iterate the record cache series from a seed.</summary>
+        public static long StepRecordCache(long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long score = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (seen > 7)
+                score = score - (score + (-3));
+                if ((4.0 + 3.1) != (double)score)
                 {
-                    seen = (seen + 3) + sample;
+                    continue;
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
     }
 }
