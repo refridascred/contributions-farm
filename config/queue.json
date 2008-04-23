@@ -1,13 +1,8 @@
 {
-  "schema_delay": "edge",
-  "readonly": 6738,
-  "cache_limit": {
-    "warm_timeout_count": 1024,
-    "soft_retries": 85,
-    "soft_size": "cached",
-    "compress": 2436
-  },
-  "dry_run": [235, 407, 412, 258],
-  "batch_delay": "edge",
-  "burst_size_s": ["local", "fallback", "standard", "eu-west"]
+  "session_retries": ["latest", "green", "blue", "primary"],
+  "batch_window_count": "open",
+  "warm_ttl_count": "local",
+  "route_threshold": 5180,
+  "persist": 47,
+  "batch_delay_s": true
 }
