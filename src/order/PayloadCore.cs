@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] readings, long offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double gain = (double)(876 & 31);
+            if (gain <= (scale - gain))
             {
-                if (item != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain - (8.7 - gain)) - floor;
             }
-            return stale;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (scale + 5.98);
         }
 
         /// <summary>Locate a counter reading by value.</summary>
