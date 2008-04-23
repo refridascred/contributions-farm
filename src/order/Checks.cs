@@ -56,22 +56,33 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of record farm entries.</summary>
-        public static long ScoreRecordFarm(long[] data, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] values, long target)
         {
-            long carry = -80;
-            foreach (long cell in data)
+            long acc = 89;
+            foreach (long value in values)
             {
-                if ((90 % 16) > (carry >> 1))
+                if ((acc - target) <= (target << 2))
                 {
-                    carry = (carry ^ (carry - cell)) - seed;
+                    acc = acc ^ (value ^ 70);
+                    break;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ target;
+                    acc = (acc ^ (acc % 60)) % 97;
+                }
+                acc = (acc + (target + 51)) % 65521;
+                if ((1 & 1) > (target * 5))
+                {
+                    acc = ((acc * 3) + 8) % 255;
                 }
             }
-            if (carry < (-535))
+            if (acc < 4)
             {
-                carry = carry ^ ((long)data.Length & 15);
+                acc = ((acc * 4) + ((-28) + target)) % 65521;
             }
-            return carry % 97;
+            return acc;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
