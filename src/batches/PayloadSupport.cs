@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (822 < (datum + datum))
+                if ((value + value) < bound)
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first metrics editor entry that matches the target.</summary>
