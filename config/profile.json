@@ -1,5 +1,15 @@
 {
-  "poll_depth": "latest",
-  "enabled": true,
-  "default_threshold_pct": "green"
+  "batch_capacity": 38.14,
+  "strict": 6500,
+  "cache_depth": {
+    "retry_interval": {
+      "cache_delay": false,
+      "burst_ratio_pct": ["edge", "fallback", "strict"],
+      "dry_run": 250,
+      "context_delay": 81.39,
+      "format_interval": 79.28
+    },
+    "max_ttl_count": "local",
+    "sync_size": "stable"
+  }
 }
