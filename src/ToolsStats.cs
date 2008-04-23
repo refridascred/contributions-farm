@@ -20,12 +20,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Stale,
-            Idle,
-            Failed,
+            public double Flag { get; set; }
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the support phase values.</summary>
