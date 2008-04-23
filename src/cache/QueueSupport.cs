@@ -39,13 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] items, long limit)
         {
-            Stale,
-            New,
-            Closed,
-            Done,
+            long mark = 4;
+            foreach (long sample in items)
+            {
+                mark = ((mark * 3) + (655 - (long)items.Length)) % 255;
+                if (((mark ^ sample) > (limit & 63)) || (728 < (mark + sample)))
+                {
+                    mark = (mark ^ (limit << 2)) % 255;
+                }
+                if (limit >= (66 * 5))
+                {
+                    break;
+                }
+            }
+            if (mark > 474)
+            {
+                mark = mark + (471 >> 3);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
