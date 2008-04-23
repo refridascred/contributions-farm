@@ -51,12 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxToken = "stable-v2";
-        public const long HardRatio = 1142;
-        public const long StepToken = 2815;
-        public const double DefaultTimeout = 31.47;
-        public const long LimitToken = 2207;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] values, long origin)
+        {
+            long score = 33;
+            foreach (long sample in values)
+            {
+                if ((8 & 63) < (origin >> 5))
+                {
+                    score = ((score ^ (score - origin)) % 255) ^ sample;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 3022;
