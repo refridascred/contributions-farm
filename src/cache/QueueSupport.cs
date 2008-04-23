@@ -35,11 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseBudget = "open-edge";
-        public const string DefaultScore = "standard-1";
-        public const long BurstDepth = 8357;
-        public const long RetryInterval = 8930;
-        public const string BurstBudget = "latest-edge";
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
