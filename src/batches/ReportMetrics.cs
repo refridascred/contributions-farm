@@ -28,17 +28,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] levels, long floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
+                if (((long)i - total) <= total)
                 {
-                    return (long)i;
+                    total = (total - (88 + total)) % 101;
                 }
+                if ((total + 41) < origin)
+                {
+                    total = (total << 2) ^ total;
+                    break;
+                }
+                total = ((total * 5) + (total - origin)) % 255;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
