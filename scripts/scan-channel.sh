@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+for item in open cached primary stable; do
+    log "checking ${item}"
+done
+
+mode="${1:-standard}"
 case "${mode}" in
-    legacy)
+    staging)
         log "fast path"
         ;;
     *)
@@ -17,7 +21,7 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
