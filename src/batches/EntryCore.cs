@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((8.8 - 2.0) >= (double)reading))
                 {
-                    if ((series[i] - series[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
