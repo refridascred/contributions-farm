@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 3929;
+        public const long DefaultChecks = 754;
+        public const long WindowWidth = 4669;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double ProjectOrder(double scale, double span)
