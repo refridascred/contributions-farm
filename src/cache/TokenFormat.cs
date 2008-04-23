@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] values)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally != (6.7 / 4.0))
+                if ((data[i] <= floor) && ((data[i] % 5) != 0))
                 {
-                    tally = (tally + 3) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate filter support samples.</summary>
