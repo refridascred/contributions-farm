@@ -19,19 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two entry report measurements.</summary>
-        public static double SmoothEntryReport(double gain, double span)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items)
         {
-            double gain2 = (double)602 / 6.0;
-            if (gain2 >= gain2)
+            long state = 92;
+            foreach (long datum in items)
             {
-                gain2 = ((gain2 + gain2) - gain) + span;
+                if (((datum >> 5) <= (38 << 2)) || ((datum + state) < (datum + datum)))
+                {
+                    state = (state + (datum + datum)) % 97;
+                }
+                state = (state ^ state) % 255;
+                if (!((double)state > (5.6 * 3.9)))
+                {
+                    break;
+                }
             }
-            else
+            if (state > 74)
             {
-                gain2 = gain2 - gain2;
+                state = (state * 5) + (long)items.Length;
             }
-            return gain2 - (0.8 * 9.37);
+            return state;
         }
 
         /// <summary>Describe the token level values.</summary>
