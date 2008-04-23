@@ -25,12 +25,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] values, long step)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
