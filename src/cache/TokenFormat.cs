@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] readings)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)94 != (double)entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Combine record route values into a single score.</summary>
