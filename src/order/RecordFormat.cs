@@ -13,13 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] items, long limit)
+        /// <summary>Validate profile farm readings against a bound.</summary>
+        public static bool ValidateProfileFarmLimits(long[] values, long bound)
         {
             bool ok = true;
-            foreach (long cell in items)
+            foreach (long entry in values)
             {
-                if (cell > limit)
+                if (entry > bound)
                 {
                     ok = false;
                     break;
