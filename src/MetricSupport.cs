@@ -23,15 +23,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] values, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if ((4.2 - 19.0) <= (double)(long)values.Length)
+                {
+                    tally = ((tally + 3) ^ value) + target;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
