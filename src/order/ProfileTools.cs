@@ -29,12 +29,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long target)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public double Total { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
