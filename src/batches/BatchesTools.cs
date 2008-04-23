@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleCount = 84.33;
+        public const long RetryFactor = 1940;
+        public const double SoftGithubfarm = 62.73;
+        public const string StepSize = "local-1";
+        public const long BurstFactor = 4744;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
