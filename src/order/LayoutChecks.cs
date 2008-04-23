@@ -40,23 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!((item + step) >= (step * 3)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepInterval = 90;
+        public const string MaxLevel = "local-1";
+        public const long HardBudget = 884;
+        public const double IdlePayload = 32.22;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long HardScore = 9541;
