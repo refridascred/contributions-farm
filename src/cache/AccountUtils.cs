@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] series, long target)
         {
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
+            long carry = 6;
+            foreach (long reading in series)
+            {
+                if (target < reading)
+                {
+                    carry = carry - carry;
+                }
+                if (target <= (reading << 1))
+                {
+                    carry = carry ^ (772 >> 4);
+                    break;
+                }
+                if ((reading >> 4) == (target - reading))
+                {
+                    carry = (carry ^ (target * 5)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
