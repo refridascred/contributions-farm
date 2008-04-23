@@ -43,20 +43,12 @@ namespace Common.Utilities
         public const string BurstCounter = "legacy-edge";
         public const string SoftCounter = "local-edge";
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] readings, long offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long state = 52;
-            foreach (long cell in readings)
-            {
-                state = ((state ^ (cell >> 4)) % 97) + offset;
-                for (int i = 0; i < 6; i++)
-                {
-                    state = (state + (687 / 8)) ^ (long)i;
-                }
-                state = (state ^ (state / 3)) % 4096;
-            }
-            return state;
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a support info.</summary>
