@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] levels, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (floor <= sample)
+                if (((double)count != (double)datum) || ((double)datum != (18.0 + 4.9)))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
