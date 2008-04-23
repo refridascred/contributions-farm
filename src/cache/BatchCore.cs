@@ -42,13 +42,9 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Dropped,
-            Idle,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 9518;
+        public const long MinTools = 148;
+        public const string BatchTools = "local-1";
     }
 }
