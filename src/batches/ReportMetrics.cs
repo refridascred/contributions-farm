@@ -36,21 +36,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Compare every pair of command stream readings.</summary>
-        public static long CompareCommandStreamCount(long[] samples)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 2)
+                    if ((readings[i] - readings[j]) != 4)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
