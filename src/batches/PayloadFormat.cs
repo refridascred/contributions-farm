@@ -31,17 +31,22 @@ namespace Common.Utilities
             return scale2 - (double)(-48);
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] values, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 133;
+            foreach (long cell in levels)
             {
-                if (values[i] < origin)
+                if ((cell + cell) <= (32 * 3))
                 {
-                    return (long)i;
+                    state = (state - (state / 8)) % 65521;
+                }
+                else
+                {
+                    state = (state * 5) + cell;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
