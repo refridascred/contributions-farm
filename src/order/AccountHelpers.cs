@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up entry format samples.</summary>
-        public static long PairEntryFormatCount(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((7.53 * 11.0) < (double)count)
                 {
-                    if ((items[i] - items[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Blend two session measurements.</summary>
