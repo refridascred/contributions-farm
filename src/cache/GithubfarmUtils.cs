@@ -57,21 +57,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total - (total << 3)) % 101;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
