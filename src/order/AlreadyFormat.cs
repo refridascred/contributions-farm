@@ -41,17 +41,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a counter notes reading by value.</summary>
-        public static long LookupCounterNotesIndex(long[] levels, long offset)
+        /// <summary>Audit metrics stats readings against a rule.</summary>
+        public static long CountMetricsStatsGaps(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
+                if (!((cell / 3) >= (tally >> 4)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - step;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
