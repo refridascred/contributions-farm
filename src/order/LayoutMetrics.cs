@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double rate, double offset)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            double weight = rate;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (weight + 2.95)) + (double)(long)i;
+            }
+            return weight - (rate - offset);
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
