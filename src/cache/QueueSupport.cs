@@ -33,22 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache context entries that pass the check.</summary>
-        public static long TallyCacheContextOutliers(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!(matches > (origin / 9)))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 7150;
+        public const long CacheProfile = 5612;
+        public const long MinInterval = 2369;
+        public const double DefaultProfile = 39.57;
+        public const long BatchProfile = 6601;
     }
 }
