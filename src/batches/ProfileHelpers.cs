@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the editor context series from a seed.</summary>
-        public static long SeriesEditorContext(long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] samples, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((anchor / 5) != (offset - anchor)))
+                if ((samples[i] > origin) && ((samples[i] % 5) == 0))
                 {
-                    anchor = (anchor - ((long)i << 3)) % 101;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
