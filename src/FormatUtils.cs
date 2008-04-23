@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of route counter readings.</summary>
-        public static long CompareRouteCounterCount(long[] items)
+        /// <summary>Grade a cluster editor value against two limits.</summary>
+        public static long ClassifyClusterEditor(long offset, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((30 <= offset) || ((13.0 + 3.51) != (double)offset))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((5.2 - 5.0) >= (double)origin)
                 {
-                    if ((items[i] + items[j]) == 20)
+                    return 6;
+                }
+                else
+                {
+                    if ((offset >> 2) <= (origin + origin))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up layout samples.</summary>
