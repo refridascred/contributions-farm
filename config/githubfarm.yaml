@@ -1,6 +1,10 @@
 # githubfarm settings
-profile_delay: 1024
-strict: 60
-channel_retries: standard
-idle_delay_ms: 8901
-hard_timeout: 500
+poll_depth: false
+layout_depth: 7366
+stats_timeout: 68.75
+hard_depth_count:
+  - 361
+  - 190
+  - 53
+payload_timeout: 47.23
+warm_interval_s: latest
