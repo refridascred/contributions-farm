@@ -1,8 +1,6 @@
 {
-  "session_retries": ["latest", "green", "blue", "primary"],
-  "batch_window_count": "open",
-  "warm_ttl_count": "local",
-  "route_threshold": 5180,
-  "persist": 47,
-  "batch_delay_s": true
+  "burst_capacity_s": "legacy",
+  "audit": "legacy",
+  "default_timeout_pct": 35,
+  "retry_window": 47
 }
