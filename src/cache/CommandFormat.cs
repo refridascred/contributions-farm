@@ -40,11 +40,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            Ready,
+            Active,
+            Synced,
         }
     }
 }
