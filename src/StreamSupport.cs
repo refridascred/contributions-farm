@@ -46,12 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultContext = 25.31;
+        public const long RetryContext = 9441;
+        public const string BaseContext = "standard-v2";
     }
 }
