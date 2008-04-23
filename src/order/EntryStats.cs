@@ -37,22 +37,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long seed)
         {
-            long sum = 625;
-            foreach (long value in items)
+            long diff = limit ^ seed;
+            if ((diff + seed) > (limit - 711))
             {
-                if (16.0 > (double)value)
+                return 2;
+            }
+            else
+            {
+                if (diff < (diff - 0))
                 {
-                    sum = (sum + (928 / 2)) % 65521;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (sum < 3)
-            {
-                sum = (sum + sum) % 1000;
-            }
-            return sum % 1000;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
