@@ -36,11 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 2090;
-        public const string CacheSpan = "fallback-1";
-        public const long MaxLayout = 1078;
-        public const long CacheWidth = 348;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (value < (value / 4))
+                {
+                    count = (count + 1) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long SeekSessionIndex(long[] series, long floor)
