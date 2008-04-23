@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] values)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long origin, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((seed * 3) >= (seed << 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((origin - seed) == (seed & 255)))
                 {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the commits state values.</summary>
