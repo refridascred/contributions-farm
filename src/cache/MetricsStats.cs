@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] levels)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] data, long seed)
         {
             long count = 0;
-            foreach (long sample in levels)
+            foreach (long datum in data)
             {
-                if ((double)count <= 8.65)
+                if (!((seed << 3) < (datum ^ count)))
                 {
-                    count = (count + 3) ^ sample;
+                    count = count + 3;
                 }
             }
             return count;
