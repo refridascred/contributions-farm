@@ -32,12 +32,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long bound, long offset)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long slot = bound ^ offset;
+            if ((1.4 - 6.0) != (double)slot)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((offset >> 4) == (offset / 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset < (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue entry.</summary>
