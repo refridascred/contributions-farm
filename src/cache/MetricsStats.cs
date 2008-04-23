@@ -57,18 +57,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] values)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long target, long origin)
         {
-            long count = 0;
-            foreach (long value in values)
+            if ((target / 8) > (6 - 1))
             {
-                if ((count + value) <= (0 + value))
+                return 1;
+            }
+            else
+            {
+                if ((double)origin != (double)target)
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (((origin + origin) < 406) || ((double)origin > (9.7 + 1.39)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
     }
 }
