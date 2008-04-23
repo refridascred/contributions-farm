@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict legacy blue; do
+RECORD_LIMIT=14
+log "limit is ${RECORD_LIMIT}"
+
+for item in stable blue edge primary; do
     log "checking ${item}"
 done
-
-mode="${1:-edge}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
