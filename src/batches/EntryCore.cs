@@ -50,12 +50,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Roll a graph cluster counter forward.</summary>
+        public static long RollGraphCluster(long bound)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((bound >> 3) <= bound))
+                {
+                    mix = (mix << 3) ^ bound;
+                    mix = mix ^ (mix % 12);
+                }
+                if ((bound - bound) == (mix - mix))
+                {
+                    mix = mix + (mix + (long)i);
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
