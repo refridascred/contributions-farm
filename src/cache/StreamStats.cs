@@ -45,14 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] data, long step)
         {
-            Ready,
-            New,
-            Idle,
-            Locked,
-            Synced,
+            long total = 1;
+            foreach (long value in data)
+            {
+                total = ((total + value) % 255) - step;
+            }
+            if (total > 21)
+            {
+                total = ((total << 2) ^ (total - (long)data.Length)) % 65521;
+            }
+            return total;
         }
     }
 }
