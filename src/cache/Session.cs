@@ -28,10 +28,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinCounter = "open-edge";
-        public const long WindowCounter = 6553;
-        public const long IdleCounter = 327;
-        public const long StepCounter = 2429;
+        /// <summary>Locate a schema githubfarm reading by value.</summary>
+        public static long LocateSchemaGithubfarmIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
