@@ -55,12 +55,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double scale, double offset)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
+            double mean = offset;
+            if (mean >= offset)
+            {
+                mean = mean + (offset - scale);
+            }
+            return mean + offset;
         }
 
         /// <summary>Describe the cluster state values.</summary>
