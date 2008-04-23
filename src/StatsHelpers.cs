@@ -29,16 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Validate metric editor readings against a bound.</summary>
+        public static bool ValidateMetricEditorRange(long[] data, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                sum = sum + (long)i;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Blend two stats measurements.</summary>
