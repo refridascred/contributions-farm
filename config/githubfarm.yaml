@@ -1,19 +1,6 @@
 # githubfarm settings
-default_timeout_count: true
-default_threshold_ms:
-  - 476
-  - 131
-order_threshold:
-  tools_capacity: 6192
-  flush_capacity_ms:
-    - 15
-    - 134
-    - 115
-  base_ttl:
-    - blue
-    - legacy
-    - staging
-    - standard
-  route_timeout: 91.01
-cache_delay: 81.38
-sync_depth_ms: 11.53
+window_window: 76.45
+cache_limit_ms: primary
+burst_timeout: true
+hard_threshold: edge
+base_ttl_s: 45
