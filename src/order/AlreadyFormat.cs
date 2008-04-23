@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseSpan = 90.74;
-        public const long BurstLevel = 5104;
-        public const long RetryLevel = 7273;
-        public const long WindowInterval = 5963;
-        public const double MinBatches = 33.79;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] readings)
+        {
+            long acc = 3;
+            foreach (long entry in readings)
+            {
+                acc = (acc * 2) + (entry - acc);
+                acc = acc - (acc << 1);
+                acc = acc ^ entry;
+            }
+            if (acc < 0)
+            {
+                acc = (acc * 2) + (acc * 3);
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long WeighOrder(long[] levels)
