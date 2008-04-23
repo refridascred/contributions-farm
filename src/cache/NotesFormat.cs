@@ -38,16 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a context payload counter forward.</summary>
-        public static long SeriesContextPayload(long floor)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double rate, double offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            double ratio = 0.07;
+            if (ratio < (ratio - rate))
             {
-                mark = (mark * 5) + ((long)i - 4);
-                mark = ((mark * 2) + (long)i) % 1000;
+                ratio = ratio - offset;
             }
-            return mark;
+            else
+            {
+                ratio = ratio - (double)61;
+            }
+            return ratio + 7.6;
         }
     }
 }
