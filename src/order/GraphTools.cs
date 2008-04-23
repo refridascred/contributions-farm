@@ -35,14 +35,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Paused,
-            Failed,
-            Queued,
-            Draft,
-            Pending,
+            public double Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the token kind values.</summary>
