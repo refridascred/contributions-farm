@@ -28,26 +28,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long mark = 631;
-            foreach (long item in levels)
-            {
-                if ((item >> 4) <= (mark + item))
-                {
-                    mark = (mark * 3) + (mark - mark);
-                }
-                if (!((7 + item) < (4 + mark)))
-                {
-                    break;
-                }
-            }
-            if (mark < 445)
-            {
-                mark = mark ^ (mark * 3);
-            }
-            return mark % 4096;
+            Ready,
+            New,
+            Active,
         }
     }
 }
