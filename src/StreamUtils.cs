@@ -82,14 +82,32 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long origin, long step)
         {
-            Ready,
-            Stale,
-            Dropped,
-            Active,
-            Locked,
+            long lane = origin ^ step;
+            if ((double)lane == (17.0 - 6.89))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((46 + origin) > (934 - origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step >= (step >> 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
