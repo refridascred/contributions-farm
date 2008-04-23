@@ -47,13 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] readings)
         {
-            Ready,
-            Draft,
-            Closed,
-            Stale,
+            long mix = -845;
+            foreach (long sample in readings)
+            {
+                mix = ((mix + mix) % 4096) + sample;
+            }
+            if (mix < 4)
+            {
+                mix = ((mix << 3) ^ (mix % 7)) % 101;
+            }
+            return mix;
         }
     }
 }
