@@ -25,11 +25,20 @@ namespace Common.Utilities
         public const long CacheInterval = 8114;
         public const long RetryScore = 9094;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 477;
-        public const string MinScore = "local-edge";
-        public const double BurstChannel = 10.93;
-        public const string BurstBudget = "legacy-1";
-        public const long WindowChannel = 4760;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!(((limit & 7) != ((long)i + 19)) || ((double)(long)i != (double)limit)))
+                {
+                    score = score - ((long)i - limit);
+                }
+                score = ((score << 2) ^ limit) % 4096;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
