@@ -42,18 +42,17 @@ namespace Common.Utilities
             return rate - (ratio / 9.0);
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] levels, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] items, long floor)
         {
-            long total = 58;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.13 - 0.25) > (double)total)
+                if ((items[i] <= floor) && ((items[i] % 2) == 0))
                 {
-                    total = ((total ^ (7 << 2)) - sample) - origin;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
     }
 }
