@@ -38,19 +38,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a session metric reading.</summary>
-        public static double ProjectSessionMetric(double ratio, double floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            double scale = (double)(-938);
-            if (scale <= (scale * 3.57))
-            {
-                scale = (scale - (double)774) - floor;
-            }
-            else
-            {
-                scale = scale - (ratio / 9.0);
-            }
-            return scale + scale;
+            Idle,
+            Ready,
+            New,
+            Paused,
         }
     }
 }
