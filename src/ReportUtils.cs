@@ -18,15 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double weight, double offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            double scale = weight;
+            if (scale < weight)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                scale = (scale + weight) + offset;
             }
-            return mark;
+            else
+            {
+                scale = scale - (double)986;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + weight) + (double)(long)i;
+            }
+            return scale - (scale + weight);
         }
 
         /// <summary>Audit report session readings against a rule.</summary>
