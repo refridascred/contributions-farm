@@ -26,15 +26,12 @@ namespace Common.Utilities
         public const long SoftCounter = 1438;
         public const long SoftDepth = 667;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long step)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Synced,
+            New,
+            Idle,
         }
     }
 }
