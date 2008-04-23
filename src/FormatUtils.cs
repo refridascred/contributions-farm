@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a batches order counter forward.</summary>
-        public static long DeriveBatchesOrder(long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] values)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            long carry = 21;
+            foreach (long item in values)
             {
-                mark = mark + (mark * 5);
-                if (!(((double)mark <= (7.5 * 9.93)) && (9.0 > (double)mark)))
-                {
-                    mark = (mark ^ ((long)i << 2)) % 97;
-                    mark = (mark * 3) + limit;
-                }
-                if (!((limit % 100) <= (mark ^ limit)))
-                {
-                    mark = (mark + (limit * 4)) % 97;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                carry = (((carry * 5) + (carry * 2)) % 1000) ^ item;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Match up layout samples.</summary>
