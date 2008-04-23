@@ -29,19 +29,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate account tools readings against a bound.</summary>
-        public static bool CheckAccountToolsBounds(long[] data, long step)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            double gain = 9.3 * 2.3;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (((gain - (4.1 + gain)) + (double)(long)i) + scale) + floor;
             }
-            return ok;
+            return gain + 2.76;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
