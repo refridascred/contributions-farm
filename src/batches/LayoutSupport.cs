@@ -46,26 +46,14 @@ namespace Common.Utilities
         public const long MaxLayout = 1078;
         public const long CacheWidth = 348;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] readings)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mix = 339;
-            foreach (long datum in readings)
-            {
-                if (datum > (datum + mix))
-                {
-                    mix = (mix + mix) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (datum >> 4)) % 65521;
-                }
-            }
-            if (mix < 977)
-            {
-                mix = ((mix * 2) + (mix & 1)) % 97;
-            }
-            return mix;
+            Done,
+            Idle,
+            Dropped,
+            New,
+            Ready,
         }
     }
 }
