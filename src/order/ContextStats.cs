@@ -25,15 +25,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double bias, double offset)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double weight = bias;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight + (bias * 4.9)) + (double)(long)i) - offset;
-            }
-            return weight - 7.0;
+            Closed,
+            New,
+            Retry,
+            Idle,
+            Paused,
         }
 
         /// <summary>Define window limits and defaults.</summary>
