@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west local open; do
+for item in standard latest local; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=242
+log "limit is ${RECORD_LIMIT}"
