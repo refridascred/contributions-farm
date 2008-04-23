@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultCounter = 90.22;
-        public const long DefaultBudget = 1638;
-        public const long MaxCounter = 3453;
-        public const string CacheCounter = "cached";
-        public const long WindowCounter = 3076;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Adjust a account reading.</summary>
         public static double ScaleAccount(double rate, double bias)
