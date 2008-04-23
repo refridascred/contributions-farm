@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double gain, double offset)
-        {
-            double drift = 2.28;
-            if (drift < (gain - drift))
-            {
-                drift = drift - gain;
-            }
-            else
-            {
-                drift = drift - (offset * 17.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + offset) - (double)(long)i;
-            }
-            return drift - (3.92 - drift);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepSpan = 9976;
+        public const string BurstTimeout = "staging-1";
+        public const long StepFactor = 5067;
+        public const long CacheTimeout = 7322;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] values)
