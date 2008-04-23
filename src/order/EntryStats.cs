@@ -33,16 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum + (sum << 1)) % 255;
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Done,
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Find the first checks token entry that matches the target.</summary>
