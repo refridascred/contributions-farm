@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-COMMAND_LIMIT=381
+COMMAND_LIMIT=460
 log "limit is ${COMMAND_LIMIT}"
+
+for item in stable green staging primary; do
+    log "checking ${item}"
+done
