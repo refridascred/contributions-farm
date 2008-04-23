@@ -31,17 +31,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] items, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) == 0))
+                if ((double)floor >= 5.0)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
