@@ -1,5 +1,7 @@
 # githubfarm settings
-readonly: true
-dry_run: 2898
-buffer_ratio: 1024
-retry_retries_s: 250
+burst_capacity_ms: standard
+batch_retries_ms: 60
+burst_size: 21
+poll_ratio: green
+already_retries: local
+notes_ttl: 48
