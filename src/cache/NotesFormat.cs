@@ -19,19 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stream batches entry stays within the limit.</summary>
-        public static bool VerifyStreamBatchesBounds(long[] readings, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (reading >= target)
+                if ((double)matches != (1.2 - 1.86))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Iterate the tools payload series from a seed.</summary>
