@@ -27,22 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] series)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!(((16 - item) > (233 << 3)) || ((item & 63) <= (item - item))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
