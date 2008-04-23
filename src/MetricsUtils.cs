@@ -89,32 +89,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long origin, long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long lane = origin + offset;
-            if ((812 / 3) <= (offset / 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin ^ origin) >= (lane + 47))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((194 + offset) <= (offset % 100))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Closed,
+            Paused,
+            Ready,
+            Draft,
+            Active,
         }
     }
 }
