@@ -18,14 +18,13 @@ namespace Common.Utilities
         public const long BaseReport = 2483;
         public const string SoftReport = "local-edge";
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
+            Locked,
             Retry,
-            Paused,
-            Queued,
-            Closed,
-            New,
+            Active,
+            Synced,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
