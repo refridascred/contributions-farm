@@ -16,19 +16,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate contributi cache readings against a bound.</summary>
-        public static bool ValidateContributiCacheBounds(long[] readings, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
