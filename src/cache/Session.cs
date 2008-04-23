@@ -29,21 +29,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up filter checks samples.</summary>
-        public static long PairFilterChecksCount(long[] values)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
