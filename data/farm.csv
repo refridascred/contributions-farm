@@ -1,6 +1,11 @@
-id,label,ratio
-1,193,local
-2,372,73.12
-3,open,standard
-4,legacy,green
-5,stable,638
+id,ratio,region,rank
+1,4.8,17.68,green
+2,5.72,29.43,22.74
+3,858,79.47,fallback
+4,92.02,736,primary
+5,92.57,260,833
+6,351,810,staging
+7,964,464,23.43
+8,58.93,681,661
+9,738,primary,primary
+10,eu-west,staging,197
