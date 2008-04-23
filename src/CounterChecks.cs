@@ -60,12 +60,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double weight, double floor)
         {
-            Locked,
-            Dropped,
-            New,
+            double rate = floor;
+            if (rate > floor)
+            {
+                rate = (rate + floor) - weight;
+            }
+            else
+            {
+                rate = rate - (double)3;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - (rate / 2.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
