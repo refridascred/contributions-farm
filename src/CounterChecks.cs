@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Validate support session readings against a bound.</summary>
+        public static bool VerifySupportSessionBounds(long[] levels, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                mark = (mark + (long)i) % 255;
-                mark = ((mark * 3) + (long)i) % 101;
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Audit cluster tools readings against a rule.</summary>
