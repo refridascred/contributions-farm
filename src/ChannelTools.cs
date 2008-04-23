@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Idle,
-            Retry,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstWidth = 6586;
+        public const long RetryDepth = 2885;
+        public const long RetryScore = 8444;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesMatches(long[] readings)
