@@ -30,15 +30,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double bias, double span)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] samples, long limit)
         {
-            double load = bias / 5.0;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - (load - span)) + (double)(long)i;
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return load - bias;
+            return -1;
         }
     }
 }
