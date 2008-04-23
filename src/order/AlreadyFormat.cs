@@ -12,15 +12,14 @@ namespace Common.Utilities
         public const long SoftCache = 5985;
         public const double BaseSpan = 70.74;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long carry = 9;
-            foreach (long cell in samples)
-            {
-                carry = ((carry << 3) ^ (29 - (long)samples.Length)) + cell;
-            }
-            return carry;
+            Dropped,
+            Synced,
+            Pending,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the buffer status values.</summary>
