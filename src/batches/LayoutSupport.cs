@@ -57,20 +57,22 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] samples, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            long anchor = 823;
-            foreach (long entry in samples)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((9.0 - 3.4) > (double)anchor)
+                anchor = anchor ^ ((long)i & 127);
+                if (((anchor + (long)i) >= anchor) || ((4.4 * 10.0) > (double)(long)i))
                 {
-                    anchor = ((anchor * 2) + (target / 9)) - entry;
+                    anchor = (anchor - (long)i) % 101;
                 }
-            }
-            if (anchor > 56)
-            {
-                anchor = anchor ^ target;
+                else
+                {
+                    anchor = (anchor - (anchor - anchor)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
             return anchor;
         }
