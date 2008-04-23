@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Iterate the editor context series from a seed.</summary>
+        public static long SeriesEditorContext(long offset)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!!((anchor / 5) != (offset - anchor)))
+                {
+                    anchor = (anchor - ((long)i << 3)) % 101;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
