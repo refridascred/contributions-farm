@@ -42,15 +42,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate counter session samples.</summary>
-        public static long DigestCounterSession(long[] readings, long limit)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long acc = 13;
-            foreach (long item in readings)
-            {
-                acc = (((acc * 2) + (limit * 4)) % 97) - item;
-            }
-            return acc;
+            Dropped,
+            Stale,
+            Paused,
         }
 
         /// <summary>Iterate the filter report series from a seed.</summary>
