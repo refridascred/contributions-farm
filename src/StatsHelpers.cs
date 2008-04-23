@@ -69,11 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Check that every filter cache entry stays within the limit.</summary>
+        public static bool CheckFilterCacheLimits(long[] levels, long step)
         {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
