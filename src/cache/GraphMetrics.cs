@@ -29,13 +29,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Synced,
-            Failed,
-            New,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftSize = 4148;
+        public const long SoftPayload = 9870;
+        public const long StepPayload = 2640;
+        public const long RetryPayload = 7105;
 
         /// <summary>Look up the position of a window record sample.</summary>
         public static long LocateWindowRecordIndex(long[] levels, long bound)
