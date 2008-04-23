@@ -54,17 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Rank already window input into a small class.</summary>
+        public static long ClassifyAlreadyWindow(long seed, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            if ((seed & 127) != (floor + floor))
             {
-                state = state + (floor + floor);
-                state = (state ^ (floor - floor)) % 101;
-                state = ((state * 2) + (long)i) % 101;
+                return 7;
             }
-            return state;
+            else
+            {
+                if (!((floor & 255) != (seed & 63)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
