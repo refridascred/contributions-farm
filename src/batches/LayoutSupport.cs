@@ -49,13 +49,15 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] levels)
         {
-            Synced,
-            Locked,
-            Stale,
-            Paused,
+            long acc = 670;
+            foreach (long sample in levels)
+            {
+                acc = acc - (sample - sample);
+            }
+            return acc % 65521;
         }
     }
 }
