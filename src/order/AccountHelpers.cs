@@ -65,32 +65,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long origin, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] series)
         {
-            long next = origin - target;
-            if (target <= (origin - next))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (next <= (next * 2))
+                if ((matches >= (13 << 2)) && ((8 - cell) == (cell + matches)))
                 {
-                    return 6;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((68 - next) > (target + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
