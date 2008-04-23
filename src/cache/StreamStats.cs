@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long bound)
         {
-            Queued,
-            Done,
-            Active,
-            Failed,
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
