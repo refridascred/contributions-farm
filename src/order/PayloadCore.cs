@@ -43,25 +43,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long origin, long seed)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] series, long step)
         {
-            long gap = origin + seed;
-            if ((seed - gap) >= (gap + gap))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed >= (seed - origin)) || ((double)gap >= (double)seed))
+                if (series[i] <= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
