@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] items, long bound)
+        /// <summary>Validate counter report readings against a bound.</summary>
+        public static bool CheckCounterReportBounds(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((double)tally < 7.8)
+                if (datum <= seed)
                 {
-                    tally = ((tally + 2) ^ item) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
