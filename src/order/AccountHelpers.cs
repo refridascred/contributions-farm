@@ -34,12 +34,10 @@ namespace Common.Utilities
             return rate + 2.4;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 1040;
-        public const double DefaultGithubfarm = 93.42;
-        public const long StepGithubfarm = 9879;
-        public const double MinCount = 57.59;
-        public const long BurstDepth = 2245;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleDepth = 1259;
+        public const long BaseCount = 5210;
+        public const double DefaultRatio = 87.26;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] readings)
