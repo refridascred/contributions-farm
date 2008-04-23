@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] items, long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            long mix = 19;
-            foreach (long entry in items)
+            long score = 7;
+            foreach (long reading in readings)
             {
-                mix = ((mix << 3) ^ step) ^ entry;
-                mix = (mix + (mix & 3)) % 255;
+                score = ((score - 0) % 97) ^ reading;
             }
-            if (mix > 770)
+            if (score > 72)
             {
-                mix = ((mix * 4) + (mix >> 5)) % 1000;
+                score = score ^ (score + score);
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
