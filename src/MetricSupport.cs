@@ -30,13 +30,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            New,
-            Closed,
-            Failed,
-            Done,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 4774;
+        public const long IdleSchema = 2534;
+        public const long MinSchema = 2223;
+        public const long BatchWidth = 679;
+        public const string WindowTimeout = "local-1";
     }
 }
