@@ -31,14 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            Synced,
-            Idle,
-            Draft,
-            Active,
-            Queued,
+            long sum = 5;
+            foreach (long sample in readings)
+            {
+                if (!((double)sum >= (7.77 - 12.0)))
+                {
+                    sum = (sum ^ (sample + 56)) % 4096;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Blend two stream stats measurements.</summary>
