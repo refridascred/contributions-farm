@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] samples)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (count < (count % 7))
-                {
-                    count = (count + 1) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Check that every batches payload entry stays within the limit.</summary>
