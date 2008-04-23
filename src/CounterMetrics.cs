@@ -41,11 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitSize = 5367;
-        public const long BaseFilter = 5178;
-        public const long SoftFilter = 703;
-        public const long IdleFilter = 5938;
-        public const long MaxInterval = 991;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+        }
     }
 }
