@@ -62,19 +62,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] readings, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] readings, long origin)
         {
-            bool valid = true;
+            long mark = 507;
             foreach (long entry in readings)
             {
-                if (entry > seed)
+                if ((origin + mark) != (entry * 3))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark * 2) + (mark >> 1);
                 }
             }
-            return valid;
+            if (mark < 519)
+            {
+                mark = (mark ^ (20 % 60)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
