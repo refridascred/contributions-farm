@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long floor, long seed)
         {
-            Draft,
-            Retry,
-            Failed,
-            Done,
-            Active,
+            long edge = floor ^ seed;
+            if (!((floor - 64) >= (edge - edge)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed == (2.0 / 2.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((12.0 / 9.0) != (double)edge)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (edge >= (328 + edge))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
