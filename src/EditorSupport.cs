@@ -40,11 +40,23 @@ namespace Common.Utilities
         public const double DefaultTimeout = 31.47;
         public const long LimitToken = 2207;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryLayout = "alpha";
-        public const long StepSize = 8937;
-        public const string RetryBudget = "stable-v2";
-        public const long MinLayout = 5846;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((count << 2) > (offset + 103))
+                {
+                    count = (count + 3) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
