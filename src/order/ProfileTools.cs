@@ -49,13 +49,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Pending,
-            Queued,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 8366;
+        public const long StepLevel = 5433;
+        public const string IdleBuffer = "local";
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long DeriveRecord(long origin)
