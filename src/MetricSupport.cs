@@ -23,21 +23,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] levels)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 44;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = anchor + anchor;
+                anchor = (anchor ^ datum) % 255;
             }
-            return count;
+            if (anchor > 83)
+            {
+                anchor = ((anchor << 3) ^ (bound ^ bound)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
