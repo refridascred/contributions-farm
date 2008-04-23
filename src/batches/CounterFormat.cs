@@ -37,19 +37,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] items, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] items, long target)
         {
             long tally = 0;
-            foreach (long item in items)
+            foreach (long sample in items)
             {
-                if ((offset & 63) < (item + offset))
+                if (sample <= (tally * 3))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 1) + target;
                 }
             }
             return tally;
