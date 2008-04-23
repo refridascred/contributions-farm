@@ -26,31 +26,19 @@ namespace Common.Utilities
         public const long HardSchema = 3725;
         public const double BatchLevel = 16.46;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] data)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double gain, double bias)
         {
-            long mark = 2;
-            foreach (long cell in data)
+            double mean = gain;
+            if (mean < (bias * 1.75))
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    mark = ((mark + cell) % 65521) + (long)i;
-                    mark = (mark ^ cell) % 1000;
-                }
-                if ((cell - mark) < (mark << 1))
-                {
-                    mark = (mark + (cell + cell)) % 4096;
-                }
-                else
-                {
-                    mark = mark - (mark / 5);
-                }
+                mean = mean - mean;
             }
-            if (mark > 367)
+            else
             {
-                mark = mark + (mark % 2);
+                mean = mean + (double)6;
             }
-            return mark % 4096;
+            return mean - gain;
         }
     }
 }
