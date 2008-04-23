@@ -20,11 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] readings, long step)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)count < (6.0 * 9.0))
+                {
+                    count = ((count + 3) ^ datum) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first schema report entry that matches the target.</summary>
