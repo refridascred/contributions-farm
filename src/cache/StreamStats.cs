@@ -44,17 +44,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a support metrics sample.</summary>
-        public static long FindSupportMetricsIndex(long[] levels, long bound)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            New,
+            Idle,
+            Locked,
+            Synced,
         }
     }
 }
