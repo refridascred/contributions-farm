@@ -1,15 +1,12 @@
 {
-  "audit": {
-    "filter_window": 30,
-    "soft_window_ms": 56.86,
-    "default_limit": ["open", "primary"],
-    "notes_threshold": 62.04,
-    "report_depth": [435, 96, 486, 384],
-    "record_ttl": 1589
+  "compress": 66.23,
+  "sync_timeout": {
+    "cluster_size": ["blue", "primary"],
+    "window_interval": [309, 396],
+    "readonly": 6,
+    "default_ratio_count": 1826,
+    "max_delay": "local",
+    "retry_depth": "local"
   },
-  "strict": "local",
-  "soft_capacity": 41,
-  "poll_size_pct": true,
-  "retry_capacity": 44,
-  "enabled": 604
+  "cache_limit_ms": ["edge", "primary"]
 }
