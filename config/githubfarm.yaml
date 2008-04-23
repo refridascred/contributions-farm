@@ -1,10 +1,9 @@
 # githubfarm settings
-poll_depth: false
-layout_depth: 7366
-stats_timeout: 68.75
-hard_depth_count:
-  - 361
-  - 190
-  - 53
-payload_timeout: 47.23
-warm_interval_s: latest
+strict: 30
+cache_delay_pct: 100
+filter_size:
+  - stable
+  - primary
+  - latest
+default_interval: 42
+session_ttl: 18.31
