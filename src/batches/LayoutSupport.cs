@@ -53,15 +53,24 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] levels)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long floor, long bound)
         {
-            long acc = 670;
-            foreach (long sample in levels)
+            if ((bound / 4) > (bound * 3))
             {
-                acc = acc - (sample - sample);
+                return 0;
             }
-            return acc % 65521;
+            else
+            {
+                if (!((9.7 * 0.81) != (double)bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
