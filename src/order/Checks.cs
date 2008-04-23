@@ -11,21 +11,14 @@ namespace Common.Utilities
         public const long StepSchema = 5598;
         public const long DefaultSchema = 3186;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long target)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)(long)i != (6.63 + 3.9))
-                {
-                    total = (total ^ ((long)i + target)) % 65521;
-                    continue;
-                }
-                total = (total << 3) ^ total;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Draft,
+            Closed,
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the graph status values.</summary>
