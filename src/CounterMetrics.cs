@@ -20,15 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] levels)
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Check that every record counter entry stays within the limit.</summary>
