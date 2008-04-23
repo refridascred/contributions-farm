@@ -16,15 +16,19 @@ namespace Common.Utilities
             return ratio - (double)58;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] samples, long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] samples, long seed)
         {
             long hits = 0;
-            foreach (long datum in samples)
+            foreach (long entry in samples)
             {
-                if (!((8.8 / 5.0) == (double)datum))
+                if ((9.6 * 2.5) < (double)hits)
                 {
-                    hits = (hits + 2) + limit;
+                    hits = ((hits + 3) + entry) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
