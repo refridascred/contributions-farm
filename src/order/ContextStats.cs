@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm metrics entries.</summary>
-        public static long DigestFarmMetrics(long[] series, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] levels)
         {
-            long total = 89;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                total = total ^ cell;
-                if ((cell + 211) == (floor / 4))
+                if ((cell >> 3) <= 75)
                 {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            if (total > 4)
-            {
-                total = ((total << 3) ^ total) % 65521;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
