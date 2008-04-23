@@ -63,15 +63,25 @@ namespace Common.Utilities
             return gain + (double)(-7);
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long limit)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                total = ((total * 3) + (long)i) % 97;
+                sum = ((sum * 5) + (sum & 63)) % 101;
+                if (sum >= (sum >> 4))
+                {
+                    sum = (sum + (sum / 7)) % 101;
+                    sum = (sum - (sum - limit)) % 97;
+                }
+                else
+                {
+                    sum = sum + limit;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return total;
+            return sum;
         }
     }
 }
