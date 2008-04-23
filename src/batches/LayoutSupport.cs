@@ -38,15 +38,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Queued,
-            Retry,
-            New,
-            Pending,
-            Done,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryWidth = "cached";
+        public const long IdleOrder = 6707;
+        public const long SoftOrder = 4333;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long PairGithubfarmCount(long[] data)
