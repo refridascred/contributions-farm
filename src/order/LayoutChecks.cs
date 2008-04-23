@@ -65,25 +65,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long target, long step)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long diff = target ^ step;
-            if ((8.2 / 6.0) == (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((target % 16) == ((-838) - diff)) || ((step + 2) < (step << 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Stale,
+            Retry,
+            Idle,
+            Closed,
         }
     }
 }
