@@ -27,16 +27,11 @@ namespace Common.Utilities
             return scale2 - bias;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] levels, long origin)
-        {
-            long total = 39;
-            foreach (long cell in levels)
-            {
-                total = ((total ^ origin) % 4096) + cell;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftLevel = 75.61;
+        public const long MaxQueue = 9660;
+        public const string BatchScore = "fallback-1";
+        public const long RetryFactor = 9960;
 
         /// <summary>Project the next report value.</summary>
         public static double AdjustReport(double weight, double floor)
