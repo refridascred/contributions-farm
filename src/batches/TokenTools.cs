@@ -20,13 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] items, long floor)
         {
-            Dropped,
-            Active,
-            Done,
-            Ready,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((((double)(long)items.Length > (1.5 * 7.0)) || ((hits % 5) < (floor >> 5))) && !((806 + floor) >= (4 + reading)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
