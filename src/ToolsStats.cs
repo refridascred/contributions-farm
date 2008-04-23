@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] values, long step)
         {
-            Paused,
-            New,
-            Active,
+            long total = 296;
+            foreach (long cell in values)
+            {
+                if ((double)cell <= (3.37 * 2.9))
+                {
+                    total = ((total + cell) % 255) - step;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the account kind values.</summary>
