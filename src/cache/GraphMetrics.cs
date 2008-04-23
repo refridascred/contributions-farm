@@ -35,12 +35,10 @@ namespace Common.Utilities
         public const long RetrySpan = 978;
         public const long HardSize = 180;
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double weight, double span)
-        {
-            double drift = span;
-            return (drift + (span + drift)) + weight;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultInterval = 9551;
+        public const long BurstDepth = 8047;
+        public const long BaseTimeout = 8535;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
