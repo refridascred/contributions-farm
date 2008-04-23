@@ -1,6 +1,7 @@
 {
-  "already_threshold": 6603,
-  "max_delay_pct": "primary",
-  "notes_limit": ["latest", "legacy", "edge", "edge"],
-  "persist": "strict"
+  "base_delay_count": 60,
+  "idle_limit": 13,
+  "default_size_ms": "legacy",
+  "channel_size": "eu-west",
+  "stats_timeout": "edge"
 }
