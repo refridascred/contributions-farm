@@ -67,19 +67,17 @@ namespace Common.Utilities
         public const double IdleLevel = 98.67;
         public const long BatchQueue = 7662;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] values, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((values[i] <= offset) && ((values[i] % 3) != 0))
                 {
-                    score = (score + (16 ^ origin)) - (long)i2;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
     }
 }
