@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Classify a tools editor pair into a bucket.</summary>
+        public static long SortToolsEditor(long seed, long offset)
         {
-            Synced,
-            Idle,
-            New,
-            Retry,
-            Pending,
+            if (offset <= (offset ^ offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed << 2) <= ((-36) ^ 814))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + seed) < ((-44) + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
