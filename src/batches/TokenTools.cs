@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] values, long target)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Queued,
+            Closed,
+            Locked,
         }
 
         /// <summary>Roll a session counter forward.</summary>
