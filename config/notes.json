@@ -1,6 +1,16 @@
 {
-  "retry_size_pct": "legacy",
-  "cache_threshold_s": "eu-west",
-  "queue_window": 250,
-  "payload_depth": [27, 207, 128, 122]
+  "retry_threshold_pct": 250,
+  "readonly": "primary",
+  "batch_depth_s": [340, 178, 36],
+  "record_retries": {
+    "metrics_capacity": {
+      "dry_run": "open",
+      "max_limit_pct": "standard",
+      "counter_threshold": 8815
+    },
+    "hard_ratio_s": "legacy",
+    "min_ttl_pct": 100
+  },
+  "graph_ratio": 2332,
+  "hard_window": [498, 132, 136, 5]
 }
