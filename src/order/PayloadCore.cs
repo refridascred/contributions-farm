@@ -32,15 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] series, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] readings, long offset)
         {
-            long acc = 46;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                acc = ((acc ^ reading) % 1000) - seed;
+                if (item != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc % 1000;
+            return stale;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
