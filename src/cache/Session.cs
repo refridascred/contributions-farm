@@ -23,24 +23,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long bound, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] data, long origin)
         {
-            if ((8.5 - 7.0) >= (10.0 / 9.0))
+            long anchor = 1;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound * 4) < bound)
+                anchor = ((anchor * 4) + anchor) ^ sample;
+                if ((324 >> 4) == (anchor + origin))
                 {
-                    return 5;
+                    anchor = ((anchor << 2) ^ origin) % 4096;
                 }
-                else
+                if ((anchor % 100) >= ((-25) ^ origin))
                 {
-                    return 2;
+                    break;
                 }
             }
+            if (anchor > 52)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
