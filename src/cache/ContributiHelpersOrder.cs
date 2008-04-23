@@ -26,23 +26,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double weight, double span)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            double load = weight;
-            if (load <= (span - load))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - (1.7 - load);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + 1.21;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - 0.91) + (double)(long)i;
-            }
-            return load - span;
+            return count;
         }
     }
 }
