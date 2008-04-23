@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] levels)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((cell >> 3) <= 75)
-                {
-                    hits = hits + 3;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
