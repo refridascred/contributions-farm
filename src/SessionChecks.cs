@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] samples)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 32;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sum >> 3) > (sum & 1))
                 {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum << 3) ^ (item + sum);
+                    sum = (sum * 5) + (392 >> 3);
+                    continue;
                 }
+                sum = (sum - (item >> 3)) % 4096;
+                sum = (sum + limit) % 255;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
