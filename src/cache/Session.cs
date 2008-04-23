@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double rate, double bias)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double mean = rate;
-            if (mean < bias)
-            {
-                mean = mean + (double)7;
-            }
-            return mean + bias;
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
