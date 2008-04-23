@@ -23,21 +23,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count githubfarm order pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmOrderCount(long[] data)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 1;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!!((value + 130) == (acc % 3)))
                 {
-                    if ((data[i] ^ data[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc << 2) ^ (value + acc);
+                }
+                acc = acc - (value + acc);
+                if (!((step + (-6)) < (acc - value)))
+                {
+                    acc = ((acc * 4) + (step - acc)) % 255;
+                }
+                if ((acc % 5) != (acc - acc))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
