@@ -1,21 +1,7 @@
 # entry settings
-retry_timeout_ms:
-  - blue
-  - standard
-  - eu-west
+support_interval:
+  - strict
+  - open
   - primary
-cache_timeout_pct: 80.95
-sync_ratio:
-  poll_size_ms: 5648
-  batch_ttl_s: 100
-  max_window:
-    - fallback
-    - open
-    - staging
-    - cached
-  enabled: strict
-sync_limit:
-  audit: true
-  soft_limit_s: stable
-  batches_window: primary
-notes_depth: 8272
+session_window: 72.41
+batches_timeout: 80.36
