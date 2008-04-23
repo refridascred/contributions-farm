@@ -62,13 +62,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Rank order stream input into a small class.</summary>
+        public static long SortOrderStream(long limit, long floor)
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
+            long next = limit - floor;
+            if ((next & 7) > limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)limit >= 1.45)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Rank support input into a small class.</summary>
