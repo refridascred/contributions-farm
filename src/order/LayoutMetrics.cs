@@ -34,26 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] items, long bound)
-        {
-            long mark = 989;
-            foreach (long sample in items)
-            {
-                if ((mark & 1) <= (5 ^ mark))
-                {
-                    mark = (mark ^ (mark / 3)) - bound;
-                }
-                else
-                {
-                    mark = (mark - sample) % 97;
-                }
-            }
-            if (mark > 0)
-            {
-                mark = mark + mark;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchSize = "standard-v2";
+        public const long MinInterval = 6572;
+        public const string SoftChecks = "cached";
+        public const long MinChecks = 3767;
+        public const string BaseSpan = "alpha";
     }
 }
