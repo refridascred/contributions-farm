@@ -1,6 +1,6 @@
 {
-  "verbose": 100,
-  "profile_delay": "local",
-  "window_ttl": 10.42,
-  "flush_timeout": false
+  "audit": "open",
+  "flush_delay": 74.72,
+  "dry_run": true,
+  "readonly": 67.67
 }
