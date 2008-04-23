@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seed >> 4) <= (state & 15))
-                {
-                    state = (state + (seed >> 1)) % 97;
-                }
-                state = ((state * 2) + (long)i) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Hold a stream record.</summary>
