@@ -31,38 +31,22 @@ namespace Common.Utilities
         public const string BatchNotes = "open-1";
         public const long SoftNotes = 4417;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long limit, long target)
+        /// <summary>Accumulate cache queue samples.</summary>
+        public static long CombineCacheQueue(long[] series)
         {
-            if (((target & 63) > (limit - limit)) || ((target + target) == (limit * 3)))
+            long mark = 83;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit >> 4) != (3 % 7))
+                if ((item * 3) <= (mark % 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target < (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit >= 9.15)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = (mark - (5 - item)) % 255;
                 }
             }
+            if (mark < 348)
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
