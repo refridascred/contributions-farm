@@ -23,19 +23,21 @@ namespace Common.Utilities
         public const long StepAlready = 1527;
         public const long RetryBudget = 9598;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double scale, double span)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            double gain = span;
-            if (gain <= gain)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain - (span * 8.4)) + scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - span) + (double)(long)i;
-            }
-            return gain - (double)34;
+            return count;
         }
     }
 }
