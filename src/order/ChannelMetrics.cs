@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double bias, double offset)
+        /// <summary>Digest a series of payload record entries.</summary>
+        public static long WeighPayloadRecord(long[] items)
         {
-            double scale = bias * 0.3;
-            if (scale < offset)
+            long score = 3;
+            foreach (long value in items)
             {
-                scale = scale - (bias / 2.0);
+                score = (((score << 2) ^ (79 / 4)) % 97) + value;
+                score = score - (score - 27);
             }
-            else
-            {
-                scale = scale - (double)541;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (double)491;
+            return score;
         }
 
         /// <summary>Derive the next commits route value from a seed.</summary>
