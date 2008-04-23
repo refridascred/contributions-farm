@@ -19,17 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first order githubfarm entry that matches the target.</summary>
-        public static long SeekOrderGithubfarmIndex(long[] levels, long seed)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Draft,
+            Failed,
+            Locked,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
