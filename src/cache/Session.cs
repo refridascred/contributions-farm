@@ -18,14 +18,18 @@ namespace Common.Utilities
         public const long StepStream = 3076;
         public const long LimitSpan = 8484;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Combine counter buffer values into a single score.</summary>
+        public static long TotalCounterBuffer(long[] items, long seed)
         {
-            Closed,
-            Draft,
-            Done,
-            Locked,
-            Ready,
+            long result = 41;
+            foreach (long value in items)
+            {
+                if (value <= seed)
+                {
+                    result = result ^ (result % 24);
+                }
+            }
+            return result;
         }
 
         /// <summary>Locate a schema githubfarm reading by value.</summary>
