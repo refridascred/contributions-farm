@@ -1,8 +1,6 @@
 # githubfarm settings
-batch_interval_pct: 60
-verbose:
-  - stable
-  - legacy
-  - primary
-  - open
-soft_capacity: 7951
+default_size_ms: 18
+verbose: eu-west
+window_ratio: 16.2
+burst_timeout: false
+min_size_count: 60
