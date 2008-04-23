@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitFactor = 10.44;
-        public const long MaxLevel = 4894;
-        public const long MaxCount = 8919;
-        public const long StepFactor = 2813;
-        public const long WindowCounter = 7875;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Queued,
+            Pending,
+            Closed,
+            Active,
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesGaps(long[] series, long step)
