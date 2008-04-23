@@ -1,10 +1,11 @@
 # Command notes
 
-Keep window and context names short and lowercase.
-Run the metric check before changing any order limits.
+The token helpers are pure functions, so they are safe to call from any thread.
+When a stats fails, the notes handler retries a few times before giving up.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate metrics input early
-- Keep graph values small
-- Review layout limits each release
+- Review checks limits each release
+- Keep batches values small
+- Prefer payload defaults
