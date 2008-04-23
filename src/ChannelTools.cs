@@ -31,15 +31,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double gain, double offset)
-        {
-            double weight = 2.0;
-            if (weight >= (weight / 6.0))
-            {
-                weight = (weight - (weight + weight)) + offset;
-            }
-            return weight - gain;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxBudget = 658;
+        public const double CacheSpan = 36.21;
+        public const double DefaultScore = 88.52;
+        public const double MinGraph = 24.02;
     }
 }
