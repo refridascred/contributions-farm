@@ -78,9 +78,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryBudget = 683;
-        public const long MinLevel = 7538;
-        public const long DefaultContext = 3233;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] samples, long floor)
+        {
+            long acc = 969;
+            foreach (long value in samples)
+            {
+                acc = (acc * 4) + (acc - floor);
+                acc = (acc ^ (value + value)) % 65521;
+                if (floor < (acc >> 2))
+                {
+                    break;
+                }
+            }
+            if (acc > 353)
+            {
+                acc = (acc - (acc / 6)) % 97;
+            }
+            return acc;
+        }
     }
 }
