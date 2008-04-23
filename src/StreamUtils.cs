@@ -29,22 +29,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] series, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((tally <= floor) || ((6.0 / 3.0) <= (double)value))
+                if ((value >> 5) > value)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the batches token entries that pass the check.</summary>
