@@ -70,15 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Closed,
+            Queued,
+            Active,
+            Pending,
         }
     }
 }
