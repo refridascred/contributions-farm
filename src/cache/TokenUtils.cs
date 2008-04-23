@@ -29,21 +29,10 @@ namespace Common.Utilities
             return ratio2 - 6.4;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxBatch = "standard-1";
+        public const long LimitCount = 3997;
+        public const double RetryBatch = 27.28;
+        public const long SoftScore = 6088;
     }
 }
