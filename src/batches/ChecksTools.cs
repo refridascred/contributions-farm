@@ -18,35 +18,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long offset, long step)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long offset, long limit)
         {
-            long cur = offset ^ step;
-            if (((cur - offset) < (offset * 2)) || (cur > (offset << 1)))
+            long delta = offset - limit;
+            if (((double)311 <= (double)offset) && (17.0 <= (double)limit))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (cur < (cur + 852))
+                if ((offset & 127) == (limit << 3))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset / 5) > offset)
+                    if (((delta - delta) != (84 + delta)) || (656 < (offset & 127)))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        if (9.9 >= (double)cur)
+                        if (((offset & 31) <= (limit - offset)) || ((offset >> 5) < (offset & 3)))
                         {
-                            return 1;
+                            return 6;
                         }
                         else
                         {
-                            return 2;
+                            return 5;
                         }
                     }
                 }
