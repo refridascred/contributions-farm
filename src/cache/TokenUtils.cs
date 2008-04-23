@@ -14,18 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] readings)
         {
-            long carry = 7;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((57 - carry) > cell)
+                if ((seen & 31) >= (seen + 3))
                 {
-                    carry = carry ^ (carry + cell);
+                    seen = (seen + 1) + value;
                 }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
