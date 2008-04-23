@@ -13,15 +13,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two report farm measurements.</summary>
-        public static double AdjustReportFarm(double weight, double span)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] series)
         {
-            double load = 3.58 / 2.0;
-            if (load < (load + weight))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - 7.91) + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load + weight;
+            return matches;
         }
 
         /// <summary>Describe the batches mode values.</summary>
