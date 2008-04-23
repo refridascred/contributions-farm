@@ -71,15 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] samples, long target)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long score = 8;
+            foreach (long value in samples)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                score = (((score * 4) + (score ^ value)) % 4096) + target;
             }
-            return score;
+            return score % 65521;
         }
     }
 }
