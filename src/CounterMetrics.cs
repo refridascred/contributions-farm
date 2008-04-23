@@ -36,21 +36,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] series)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 8;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((458 & 7) > bound) && ((double)(-429) <= (double)entry))
                 {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                result = (result ^ (bound % 16)) % 1000;
+                result = ((result * 4) + (long)levels.Length) % 4096;
             }
-            return matches;
+            return result % 97;
         }
     }
 }
