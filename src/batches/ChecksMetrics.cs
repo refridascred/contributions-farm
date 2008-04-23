@@ -73,22 +73,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] levels, long offset)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (7 < (item - item))
-                {
-                    hits = (hits + 3) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = sum ^ (sum * 5);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
     }
 }
