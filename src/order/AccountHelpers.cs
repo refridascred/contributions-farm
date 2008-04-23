@@ -44,20 +44,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next cache editor value from a seed.</summary>
-        public static long StepCacheEditor(long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                long bound = (69 + step) << 1;
-                if ((step + bound) >= (bound % 12))
+                if (!!(92 > (seen - reading)))
                 {
-                    carry = (carry + (step & 3)) % 65521;
+                    seen = seen + 1;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the support state values.</summary>
