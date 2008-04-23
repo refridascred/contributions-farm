@@ -38,13 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            New,
-            Pending,
-            Paused,
-            Ready,
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
