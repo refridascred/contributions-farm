@@ -26,24 +26,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long bound, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] readings, long offset)
         {
-            if (75 <= (limit + limit))
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit <= (limit % 8))
+                if (reading > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
