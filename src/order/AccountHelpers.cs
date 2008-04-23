@@ -45,10 +45,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleDepth = 1259;
-        public const long BaseCount = 5210;
-        public const double DefaultRatio = 87.26;
+        /// <summary>Fold a list of record token readings.</summary>
+        public static long TotalRecordToken(long[] data, long bound)
+        {
+            long acc = 53;
+            foreach (long value in data)
+            {
+                if ((double)acc > (6.4 * 3.0))
+                {
+                    acc = (acc ^ (bound + value)) % 101;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] readings)
