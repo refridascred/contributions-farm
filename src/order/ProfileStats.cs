@@ -23,21 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up support commits samples.</summary>
-        public static long MatchSupportCommitsCount(long[] series)
+        /// <summary>Audit cluster support readings against a rule.</summary>
+        public static long TallyClusterSupportOutliers(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen - 491) < (item - seen))
                 {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
