@@ -30,24 +30,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long step, long seed)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double ratio, double span)
         {
-            if (seed > (seed % 60))
+            double drift = (double)(37 + 17);
+            if (drift <= (drift - ratio))
             {
-                return 4;
+                drift = (drift + ratio) - span;
             }
             else
             {
-                if ((760 >> 5) >= (step - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
+                drift = drift - drift;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 4.0) + (double)(long)i;
+            }
+            return drift + (drift + drift);
         }
     }
 }
