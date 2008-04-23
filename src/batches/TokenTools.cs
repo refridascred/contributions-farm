@@ -35,13 +35,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
