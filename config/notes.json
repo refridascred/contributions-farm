@@ -1,5 +1,16 @@
 {
-  "persist": "legacy",
-  "hard_ttl": 58.8,
-  "command_window": true
+  "metric_capacity": false,
+  "warm_size_s": "standard",
+  "dry_run": {
+    "already_ttl": [403, 19],
+    "warm_ratio": {
+      "persist": 500,
+      "session_limit": ["legacy", "local", "blue", "stable"],
+      "idle_interval": false
+    },
+    "flush_depth_count": 92,
+    "dry_run": "fallback",
+    "min_window_s": ["edge", "green", "open", "stable"],
+    "stream_delay": "primary"
+  }
 }
