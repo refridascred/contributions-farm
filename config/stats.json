@@ -1,7 +1,14 @@
 {
-  "base_ratio": "open",
-  "payload_depth": ["green", "eu-west", "primary", "staging"],
-  "soft_window_count": "cached",
-  "default_retries": 3082,
-  "min_threshold": [189, 424]
+  "poll_limit_s": 60,
+  "retry_window": 44.69,
+  "batches_delay": 48.22,
+  "enabled": "green",
+  "dry_run": {
+    "enabled": 50,
+    "graph_ttl": 407,
+    "batch_limit_pct": false,
+    "channel_capacity": ["strict", "eu-west", "edge"],
+    "hard_retries_count": "fallback",
+    "retry_timeout": false
+  }
 }
