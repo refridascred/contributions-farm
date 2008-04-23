@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 245;
+        public const double HardCount = 34.45;
+        public const long WindowScore = 3034;
+        public const string CacheInterval = "primary-v2";
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
