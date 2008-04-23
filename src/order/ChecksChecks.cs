@@ -36,18 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order report samples.</summary>
-        public static long CombineOrderReport(long[] series)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long carry = 54;
-            foreach (long datum in series)
-            {
-                if ((3.34 - 10.0) != (double)datum)
-                {
-                    carry = (carry - (carry << 2)) % 97;
-                }
-            }
-            return carry % 65521;
+            Locked,
+            Synced,
+            Draft,
+            Queued,
         }
     }
 }
