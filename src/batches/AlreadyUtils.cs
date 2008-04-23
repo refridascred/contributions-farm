@@ -50,11 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitDepth = 39.14;
-        public const string CacheAlready = "primary-v2";
-        public const string CacheWidth = "open-v2";
-        public const double BaseAlready = 48.42;
-        public const double BurstAlready = 18.45;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Active,
+            Stale,
+            New,
+            Failed,
+        }
     }
 }
