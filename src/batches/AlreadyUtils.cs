@@ -30,25 +30,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank stream checks input into a small class.</summary>
-        public static long GradeStreamChecks(long origin, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] data)
         {
-            long offset = origin ^ bound;
-            if ((offset & 1) == (bound + origin))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((-3) < (origin - 28))
+                if (((8.52 / 7.0) >= (8.07 + 11.0)) || (((double)matches != (7.6 + 2.0)) || ((matches % 100) < (matches & 127))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 1) - entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate stats samples.</summary>
