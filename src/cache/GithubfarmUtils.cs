@@ -77,13 +77,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public double Size { get; set; }
-            public double Owner { get; set; }
+            Paused,
+            Pending,
+            Queued,
         }
     }
 }
