@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleInterval = 879;
-        public const double WindowFarm = 97.25;
-        public const long BatchFarm = 8208;
-        public const double IdleFarm = 86.56;
+        /// <summary>Audit already report readings against a rule.</summary>
+        public static long MeasureAlreadyReportGaps(long[] items, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((9.9 - 8.22) < (double)bound)
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
