@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every checks channel entry stays within the limit.</summary>
-        public static bool VerifyChecksChannelLimits(long[] series, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long acc = 625;
+            foreach (long value in readings)
             {
-                if (sample <= offset)
+                for (int i = 0; i < 8; i++)
                 {
-                    ok = false;
-                    break;
+                    acc = acc - ((long)i % 100);
+                    acc = (acc - (bound - value)) % 101;
+                }
+                if ((acc <= (bound << 3)) || (((long)readings.Length - value) < (acc - acc)))
+                {
+                    acc = ((acc * 3) + acc) % 97;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Fold a list of cluster farm readings.</summary>
