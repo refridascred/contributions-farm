@@ -37,14 +37,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Check that every command window entry stays within the limit.</summary>
+        public static bool VerifyCommandWindowRange(long[] values, long limit)
         {
-            Failed,
-            Locked,
-            Queued,
-            Draft,
-            Synced,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
