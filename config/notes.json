@@ -1,5 +1,5 @@
 {
-  "retry_limit_count": 7616,
-  "idle_limit_count": ["blue", "open"],
-  "farm_delay": 4746
+  "notes_retries": "green",
+  "flush_ratio_pct": [368, 470, 388, 142],
+  "compress": "standard"
 }
