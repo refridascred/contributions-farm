@@ -1,9 +1,8 @@
-id,state,weight,count,owner
-1,250,fallback,52.4,912
-2,9.68,open,480,primary
-3,940,30.93,open,893
-4,604,fallback,stable,85.03
-5,838,81.7,open,23.36
-6,689,legacy,9.55,737
-7,73.91,857,700,primary
-8,36.31,eu-west,54.98,873
+id,state,owner,token
+1,legacy,48.53,601
+2,555,stable,stable
+3,874,staging,staging
+4,408,77.11,601
+5,265,723,stable
+6,eu-west,275,64.0
+7,912,4.24,fallback
