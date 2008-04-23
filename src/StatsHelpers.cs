@@ -29,12 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 9214;
-        public const long MaxFilter = 808;
-        public const long BatchFilter = 9553;
-        public const long CacheFilter = 2896;
-        public const long IdleFilter = 8255;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < target) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
