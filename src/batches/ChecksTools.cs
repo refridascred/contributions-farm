@@ -20,20 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long offset, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            long cur = offset ^ step;
+            if (((cur - offset) < (offset * 2)) || (cur > (offset << 1)))
             {
-                if (((-5) + (long)i) > (mix << 1))
-                {
-                    mix = (mix * 4) + ((-903) % 8);
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if (cur < (cur + 852))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset / 5) > offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (9.9 >= (double)cur)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
