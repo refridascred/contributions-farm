@@ -23,16 +23,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Derive the next token batch value from a seed.</summary>
-        public static long StepTokenBatch(long step)
+        /// <summary>Locate a cluster entry reading by value.</summary>
+        public static long SeekClusterEntryIndex(long[] samples, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry + (step + carry);
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Classify a report commits pair into a bucket.</summary>
