@@ -25,18 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] readings, long offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (((9 - 30) > (offset % 2)) || ((datum + offset) < (datum * 4)))
+                if ((8.0 - 7.0) <= (double)carry)
                 {
-                    hits = hits + 1;
+                    carry = (carry + (step - 5)) % 101;
                 }
+                if ((step & 15) > carry)
+                {
+                    carry = (carry ^ ((long)i * 3)) % 101;
+                    carry = carry + (long)i;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Adjust a graph reading.</summary>
