@@ -32,22 +32,17 @@ namespace Common.Utilities
         public const long RetrySize = 2593;
         public const string WindowNotes = "legacy-edge";
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] samples, long step)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4.83 * 3.0) != (double)step)
+                if ((values[i] >= limit) && ((values[i] % 3) != 0))
                 {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
