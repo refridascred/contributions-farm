@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] data, long bound)
         {
-            Closed,
-            Active,
-            Idle,
-            Stale,
-            Ready,
+            long sum = 68;
+            foreach (long entry in data)
+            {
+                sum = (sum + (sum << 2)) % 65521;
+                sum = sum ^ (bound - entry);
+                if ((bound - bound) < (entry << 2))
+                {
+                    sum = (sum ^ (bound - entry)) % 97;
+                }
+            }
+            if (sum < 55)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a stream header.</summary>
