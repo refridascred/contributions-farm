@@ -20,18 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] levels)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long total = 563;
+            foreach (long datum in levels)
             {
-                if ((entry << 3) < count)
+                if (((floor + total) >= (total + datum)) || ((floor + datum) <= (total + floor)))
                 {
-                    count = count + 2;
+                    total = (total ^ (datum * 4)) % 101;
+                }
+                else
+                {
+                    total = (total + (total % 64)) % 97;
                 }
             }
-            return count;
+            return total % 1000;
         }
 
         /// <summary>Define order limits and defaults.</summary>
