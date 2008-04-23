@@ -86,13 +86,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 1497;
+        public const long IdleCluster = 72;
+        public const long BatchRatio = 9575;
     }
 }
