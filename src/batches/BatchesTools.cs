@@ -27,26 +27,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] items)
         {
-            long mix = 6;
-            foreach (long item in levels)
+            long carry = 296;
+            foreach (long datum in items)
             {
-                if (!!((5.5 + 0.66) >= (double)item))
+                if ((datum - datum) == (carry & 255))
                 {
-                    mix = (mix + (mix + item)) % 65521;
+                    carry = (carry + (carry ^ datum)) % 4096;
                 }
-                if (9 >= mix)
+                else
                 {
-                    mix = (mix + mix) % 1000;
+                    carry = ((carry * 2) + (datum % 97)) % 101;
                 }
             }
-            if (mix < 599)
-            {
-                mix = ((mix << 2) ^ mix) % 101;
-            }
-            return mix;
+            return carry;
         }
     }
 }
