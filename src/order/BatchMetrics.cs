@@ -73,11 +73,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            Ready,
+            Idle,
+            Paused,
+            New,
+            Done,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
