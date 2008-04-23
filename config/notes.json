@@ -1,13 +1,5 @@
 {
-  "idle_depth_pct": "strict",
-  "idle_delay_pct": 59,
-  "idle_window_ms": [323, 118, 66, 463],
-  "burst_size_ms": {
-    "stats_threshold": 60,
-    "enabled": true,
-    "base_size_ms": true,
-    "cache_ratio": 4.15,
-    "min_retries": 52.63
-  },
-  "persist": 78.12
+  "retry_limit_count": 7616,
+  "idle_limit_count": ["blue", "open"],
+  "farm_delay": 4746
 }
