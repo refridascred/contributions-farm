@@ -48,19 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double rate, double offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] series, long seed)
         {
-            double ratio = rate;
-            if (ratio <= ratio)
+            bool ready = true;
+            foreach (long item in series)
             {
-                ratio = ratio + ratio;
+                if (item < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio - (rate + offset);
+            return ready;
         }
 
         /// <summary>Describe the buffer level values.</summary>
