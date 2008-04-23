@@ -1,13 +1,16 @@
 # Command notes
 
-The report report groups every layout by batch.
-The filter report groups every editor by channel.
+The metrics report groups every channel by batch.
+Each graph is validated before it reaches the farm queue.
+Each context is validated before it reaches the record queue.
 
-Use stream settings to tune how often queue data is refreshed.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Run the buffer check before changing any token limits.
+Keep schema and context names short and lowercase.
+Use contributi settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Prefer window defaults
-- Validate profile input early
-- Document new buffer fields
+- Validate command input early
+- Review layout limits each release
+- Keep batch values small
+- Log every contributi change
