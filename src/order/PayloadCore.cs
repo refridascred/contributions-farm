@@ -32,19 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double scale, double floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            double gain = (double)(876 & 31);
-            if (gain <= (scale - gain))
-            {
-                gain = (gain - (8.7 - gain)) - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - (scale + 5.98);
+            Paused,
+            Draft,
+            Closed,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
