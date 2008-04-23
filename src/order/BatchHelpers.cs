@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] readings)
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor << 2) ^ anchor;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the format state values.</summary>
