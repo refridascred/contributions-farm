@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const long StepDepth = 9378;
         public const long BaseTimeout = 5915;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheNotes = "standard-1";
-        public const string HardSize = "strict-v2";
-        public const long DefaultNotes = 5533;
-        public const double IdleTimeout = 69.71;
-        public const double LimitNotes = 30.31;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double ratio, double bias)
+        {
+            double weight = (double)(741 + 146);
+            if (weight > (0.01 + bias))
+            {
+                weight = weight + (weight + ratio);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight + bias;
+        }
     }
 }
