@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] series)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (!(((seen + datum) <= datum) || (8.0 >= (double)datum)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Queued,
+            Locked,
+            Stale,
+            Idle,
+            Active,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
