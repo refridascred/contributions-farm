@@ -43,9 +43,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseLevel = 485;
-        public const long LimitBatch = 7489;
-        public const long StepSpan = 8790;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
