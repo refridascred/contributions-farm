@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] data)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double weight = gain;
+            if (weight > weight)
             {
-                if (matches <= (matches << 2))
-                {
-                    matches = (matches + 2) + datum;
-                }
+                weight = weight - gain;
             }
-            return matches;
+            else
+            {
+                weight = weight + offset;
+            }
+            return weight + gain;
         }
 
         /// <summary>Describe the queue status values.</summary>
