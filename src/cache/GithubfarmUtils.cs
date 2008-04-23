@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] levels, long target)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxFactor = 8020;
+        public const double StepScore = 4.79;
+        public const long LimitCommits = 4085;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long SortRoute(long floor, long step)
