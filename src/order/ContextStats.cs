@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] levels, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((sample >> 2) == (count + count))
+                if (((limit >> 2) >= ((-222) >> 2)) && ((double)(long)readings.Length > (17.0 / 7.0)))
                 {
-                    count = (count + 3) + seed;
+                    hits = (hits + 2) - datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate queue samples.</summary>
