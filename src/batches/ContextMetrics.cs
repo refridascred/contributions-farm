@@ -20,26 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long target, long seed)
-        {
-            long diff = target + seed;
-            if ((target <= (target >> 5)) && (target > (seed % 10)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((diff ^ target) > (target & 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleSpan = 9653;
+        public const string StepMetric = "standard-v2";
+        public const double WindowRatio = 34.24;
+        public const string MaxMetric = "fallback-edge";
 
         /// <summary>Rank graph support input into a small class.</summary>
         public static long GradeGraphSupport(long limit, long seed)
