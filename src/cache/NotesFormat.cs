@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Closed,
-            Ready,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 1071;
+        public const long LimitScore = 6860;
+        public const long BaseTimeout = 8316;
+        public const string SoftFactor = "latest-1";
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long TallyQueueGaps(long[] levels, long target)
