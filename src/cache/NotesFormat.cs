@@ -33,18 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] values)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long sum = 90;
+            foreach (long entry in levels)
             {
-                if ((entry > (hits + 99)) && (hits <= (entry & 255)))
+                if (((entry ^ entry) >= (sum + 545)) || ((entry + sum) != (sum + entry)))
                 {
-                    hits = hits + 1;
+                    sum = (sum ^ (0 - 90)) % 1000;
                 }
             }
-            return hits;
+            return sum % 97;
         }
     }
 }
