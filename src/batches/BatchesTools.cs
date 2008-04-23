@@ -27,19 +27,26 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] series, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            long anchor = 123;
-            foreach (long value in series)
+            long mix = 6;
+            foreach (long item in levels)
             {
-                anchor = ((anchor + (anchor + 51)) ^ value) - step;
+                if (!!((5.5 + 0.66) >= (double)item))
+                {
+                    mix = (mix + (mix + item)) % 65521;
+                }
+                if (9 >= mix)
+                {
+                    mix = (mix + mix) % 1000;
+                }
             }
-            if (anchor < (-452))
+            if (mix < 599)
             {
-                anchor = (anchor * 5) + (0 ^ 12);
+                mix = ((mix << 2) ^ mix) % 101;
             }
-            return anchor;
+            return mix;
         }
     }
 }
