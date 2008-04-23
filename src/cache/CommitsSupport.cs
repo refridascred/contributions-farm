@@ -31,17 +31,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] items, long bound)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
