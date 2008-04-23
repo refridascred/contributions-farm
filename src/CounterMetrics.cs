@@ -37,13 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] series)
         {
-            Ready,
-            Active,
-            Synced,
-            Stale,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((double)hits >= (6.0 / 9.0))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a command reading by value.</summary>
