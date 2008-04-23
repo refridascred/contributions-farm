@@ -16,11 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public bool Count { get; set; }
-            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit queue checks readings against a rule.</summary>
