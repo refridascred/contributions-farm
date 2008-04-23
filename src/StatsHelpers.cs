@@ -36,31 +36,11 @@ namespace Common.Utilities
         public const long CacheFilter = 2896;
         public const long IdleFilter = 8255;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long floor, long bound)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            if (!((floor - floor) <= (floor - bound)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound > (double)floor) || ((11.0 / 9.0) > (5.5 - 4.44)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-171) - bound) >= (bound + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Scale a account format figure with a bias.</summary>
