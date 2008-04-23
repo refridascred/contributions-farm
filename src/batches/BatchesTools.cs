@@ -22,12 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
+            Paused,
             Queued,
+            Dropped,
+            New,
             Idle,
-            Stale,
         }
 
         /// <summary>Hold a contributi stats.</summary>
