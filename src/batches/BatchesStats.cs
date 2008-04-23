@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long origin)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
+            long total = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 3) + total) % 101;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
