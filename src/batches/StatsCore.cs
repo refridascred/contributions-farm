@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitRatio = 36.29;
-        public const string LimitTools = "staging-edge";
-        public const long MinTools = 5972;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] items, long step)
+        {
+            long mix = 19;
+            foreach (long entry in items)
+            {
+                mix = ((mix << 3) ^ step) ^ entry;
+                mix = (mix + (mix & 3)) % 255;
+            }
+            if (mix > 770)
+            {
+                mix = ((mix * 4) + (mix >> 5)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long OverlapSchemaCount(long[] samples)
