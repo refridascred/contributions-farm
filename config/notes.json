@@ -1,6 +1,5 @@
 {
-  "audit": "open",
-  "flush_delay": 74.72,
-  "dry_run": true,
-  "readonly": 67.67
+  "editor_ttl": "stable",
+  "schema_depth": [409, 312],
+  "retry_ratio": 70.51
 }
