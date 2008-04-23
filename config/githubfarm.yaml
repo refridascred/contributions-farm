@@ -1,19 +1,5 @@
 # githubfarm settings
-metrics_interval: blue
-sync_ttl_s:
-  - 185
-  - 401
-idle_retries_pct:
-  payload_interval:
-    batch_delay: 500
-    cache_interval_pct: true
-    cache_window:
-      - 25
-      - 48
-      - 37
-    min_threshold_count: 8235
-  graph_limit: 44.32
-  enabled: cached
-base_capacity: latest
-schema_ratio: legacy
-buffer_interval: false
+dry_run: 500
+editor_retries: 3412
+burst_capacity: 47.05
+strict: 0.7
