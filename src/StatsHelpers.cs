@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] series)
         {
-            Idle,
-            Done,
-            Draft,
-            Queued,
-            Ready,
+            long mix = 0;
+            foreach (long value in series)
+            {
+                mix = mix + (value << 3);
+                if (((1.6 - 2.0) > (double)(long)series.Length) || ((20.0 + 5.07) != (double)value))
+                {
+                    mix = ((mix * 4) + (value + value)) % 97;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the already level values.</summary>
