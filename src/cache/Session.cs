@@ -22,19 +22,14 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 2992;
         public const string RetryGithubfarm = "local-1";
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] samples, long bound)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Draft,
+            Done,
+            Locked,
+            Ready,
         }
 
         /// <summary>Accumulate order samples.</summary>
