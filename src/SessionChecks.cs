@@ -14,32 +14,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long target, long target2)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long diff = target ^ target2;
-            if ((3.9 * 3.0) > (double)target2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target != (double)target2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)diff > (3.7 + 20.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a order header.</summary>
