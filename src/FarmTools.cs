@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Ready,
-            Idle,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardInterval = 2650;
+        public const long WindowScore = 1566;
+        public const long BurstLayout = 7991;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiOutliers(long[] series)
