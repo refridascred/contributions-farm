@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate contributi layout readings against a bound.</summary>
-        public static bool ValidateContributiLayoutRange(long[] series, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (entry <= floor)
+                if (!((8.8 / 5.0) == (double)datum))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) + limit;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
