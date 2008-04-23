@@ -1,5 +1,9 @@
 # githubfarm settings
-base_interval_count: 500
-sync_threshold: legacy
-route_threshold: green
-default_timeout_ms: 3639
+session_ratio: 638
+tools_ttl: 81.09
+metric_depth:
+  - 351
+  - 196
+  - 442
+default_size: fallback
+flush_size: true
