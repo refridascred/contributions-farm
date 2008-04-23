@@ -64,12 +64,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Digest a series of commits batch entries.</summary>
+        public static long TallyCommitsBatch(long[] items)
         {
-            Queued,
-            Failed,
-            Stale,
+            long acc = 968;
+            foreach (long value in items)
+            {
+                if ((double)value <= (9.9 - 1.2))
+                {
+                    acc = (acc - acc) % 1000;
+                }
+            }
+            return acc;
         }
     }
 }
