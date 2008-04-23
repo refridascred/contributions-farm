@@ -36,21 +36,10 @@ namespace Common.Utilities
         public const string StepWidth = "fallback-edge";
         public const long RetryInterval = 8334;
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitSpan = "fallback-edge";
+        public const string StepSpan = "staging-1";
+        public const long CacheDepth = 953;
+        public const long MaxFactor = 418;
     }
 }
