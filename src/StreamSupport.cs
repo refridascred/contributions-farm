@@ -34,21 +34,23 @@ namespace Common.Utilities
             return gain2 - (0.8 * 9.37);
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = offset + ratio;
+            if (load > (double)372)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load - offset;
             }
-            return tally;
+            else
+            {
+                load = load + (double)2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load + ratio;
         }
     }
 }
