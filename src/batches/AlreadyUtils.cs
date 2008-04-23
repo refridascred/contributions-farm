@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double gain, double offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] items, long floor)
         {
-            double gain2 = gain;
-            if (gain2 <= (gain + gain2))
+            bool found = true;
+            foreach (long cell in items)
             {
-                gain2 = (gain2 + (double)829) + offset;
+                if (cell >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain2 - gain;
+            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
