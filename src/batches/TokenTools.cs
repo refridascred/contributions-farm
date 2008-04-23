@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] samples, long target)
+        /// <summary>Compare every pair of batches format readings.</summary>
+        public static long PairBatchesFormatCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Adjust a account reading.</summary>
