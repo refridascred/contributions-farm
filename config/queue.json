@@ -1,6 +1,15 @@
 {
-  "max_ratio_count": "standard",
-  "max_timeout_s": [471, 467],
-  "soft_window": ["edge", "cached"],
-  "verbose": "legacy"
+  "retry_delay": "primary",
+  "max_timeout_s": "stable",
+  "persist": 39,
+  "cluster_interval": 79,
+  "burst_depth_pct": "fallback",
+  "cache_interval_ms": {
+    "farm_delay": [424, 233, 451, 27],
+    "verbose": "eu-west",
+    "sync_interval_s": "latest",
+    "idle_interval_s": 52,
+    "metrics_interval": 29.67,
+    "enabled": 63
+  }
 }
