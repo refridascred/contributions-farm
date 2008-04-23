@@ -44,24 +44,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a farm window value against two limits.</summary>
-        public static long BucketFarmWindow(long limit, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] data)
         {
-            if (((double)limit > (0.53 * 3.92)) || ((limit & 7) >= (limit + 8)))
+            long total = 83;
+            foreach (long datum in data)
             {
-                return 0;
+                if (!((datum % 3) > (total + total)))
+                {
+                    total = (total ^ (datum - datum)) % 97;
+                    total = (total * 2) + (61 * 4);
+                }
+                total = (total << 2) ^ (43 + total);
+                if (((-623) % 3) <= datum)
+                {
+                    total = (total + (total & 63)) % 65521;
+                }
             }
-            else
+            if (total > 184)
             {
-                if ((limit - limit) < 1)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                total = (total * 4) + 25;
             }
+            return total % 97;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
