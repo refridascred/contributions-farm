@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the format route entries that pass the check.</summary>
-        public static long AuditFormatRouteGaps(long[] readings, long step)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((double)tally != (10.0 / 2.0))
-                {
-                    tally = ((tally + 3) - item) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Retry,
+            Draft,
+            Paused,
+            Failed,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
