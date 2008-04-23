@@ -29,11 +29,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 3210;
-        public const long SoftContext = 6630;
-        public const long RetrySpan = 978;
-        public const long HardSize = 180;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Synced,
+            Failed,
+            New,
+        }
 
         /// <summary>Look up the position of a window record sample.</summary>
         public static long LocateWindowRecordIndex(long[] levels, long bound)
