@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the format tools series from a seed.</summary>
-        public static long DeriveFormatTools(long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] samples, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((double)bound <= (2.1 / 2.0))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
