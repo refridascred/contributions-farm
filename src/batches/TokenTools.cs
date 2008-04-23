@@ -15,11 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public bool Size { get; set; }
             public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next support metrics value from a seed.</summary>
