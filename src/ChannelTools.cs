@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 1392;
-        public const long BatchRoute = 2720;
-        public const long StepRoute = 5363;
-        public const string IdleFactor = "cached-1";
-        public const long BatchTimeout = 401;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long SeekChecksIndex(long[] series, long origin)
