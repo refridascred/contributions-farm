@@ -24,10 +24,16 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseMetric = "strict-1";
-        public const double CacheSize = 13.48;
-        public const long DefaultMetric = 1785;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long MaxEditor = 1810;
