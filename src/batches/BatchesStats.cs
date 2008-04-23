@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a cache cluster figure with a bias.</summary>
-        public static double BlendCacheCluster(double rate, double offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] items)
         {
-            double load = (offset - offset) / 2.0;
-            if (load < 4.68)
+            long result = 9;
+            foreach (long item in items)
             {
-                load = (load + offset) - rate;
+                if ((item >> 1) != (result ^ result))
+                {
+                    result = ((result << 2) ^ (item + item)) % 65521;
+                }
             }
-            return load - (double)21;
+            if (result > 75)
+            {
+                result = ((result << 3) ^ result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Project the next command value.</summary>
