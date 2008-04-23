@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
+            Closed,
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
