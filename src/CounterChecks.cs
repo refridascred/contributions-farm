@@ -36,21 +36,20 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Compare every pair of record tools readings.</summary>
-        public static long MatchRecordToolsCount(long[] values)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 8;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                anchor = (anchor << 3) ^ (sample << 2);
+                anchor = anchor - (step + step);
+                if ((step ^ 9) != (anchor >> 1))
                 {
-                    if ((values[i] - values[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor + (sample - 335);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Blend two checks measurements.</summary>
