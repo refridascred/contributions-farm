@@ -23,19 +23,12 @@ namespace Common.Utilities
         public const double MaxWidth = 13.75;
         public const long BurstSize = 920;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] data, long seed)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Locked,
+            Pending,
         }
 
         /// <summary>Locate a report reading by value.</summary>
