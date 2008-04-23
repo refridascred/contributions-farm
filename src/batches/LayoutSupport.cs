@@ -23,21 +23,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Compare every pair of batches notes readings.</summary>
+        public static long MatchBatchesNotesCount(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)(long)i != (7.5 - 4.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score + (limit - score)) % 255;
-                    break;
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = (score - score) % 4096;
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
