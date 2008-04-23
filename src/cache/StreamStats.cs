@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (!(matches < entry))
+                if ((floor + cell) == (cell + count))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
