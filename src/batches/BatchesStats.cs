@@ -14,22 +14,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] samples, long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((9.6 * 2.5) < (double)hits)
-                {
-                    hits = ((hits + 3) + entry) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
