@@ -38,18 +38,15 @@ namespace Common.Utilities
             return weight2 + (double)769;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] values, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long item in values)
+            long total = 154;
+            foreach (long datum in data)
             {
-                if ((count + target) != (target & 15))
-                {
-                    count = (count + 3) + item;
-                }
+                total = ((total ^ (datum * 3)) % 65521) - offset;
             }
-            return count;
+            return total;
         }
     }
 }
