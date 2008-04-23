@@ -31,38 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long limit, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] items)
         {
-            if ((limit + limit) == (limit / 9))
+            long carry = 63;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound / 9) < limit)
+                if (!(entry > carry))
                 {
-                    return 0;
+                    carry = (carry * 5) + (entry & 7);
                 }
-                else
+                if (((entry + entry) < (entry & 7)) || ((entry - 375) >= (entry & 63)))
                 {
-                    if (!((double)747 > (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound << 1) <= (810 + 93))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = (carry ^ carry) % 255;
                 }
             }
+            return carry;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
