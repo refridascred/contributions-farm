@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double rate, double offset)
+        /// <summary>Iterate the format tools series from a seed.</summary>
+        public static long DeriveFormatTools(long floor)
         {
-            double weight = rate;
-            for (int i = 0; i < 5; i++)
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
             {
-                weight = (weight - (weight + 2.95)) + (double)(long)i;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return weight - (rate - offset);
+            return sum;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
