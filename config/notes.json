@@ -1,16 +1,8 @@
 {
-  "min_interval": true,
-  "context_retries": {
-    "retry_delay_pct": "latest",
-    "cache_ratio_count": "open",
-    "hard_depth_pct": false,
-    "counter_depth": false,
-    "flush_interval": "primary",
-    "sync_interval_s": "fallback"
-  },
-  "route_limit": {
-    "warm_interval_ms": true,
-    "already_timeout": 1640,
-    "max_depth": [174, 210, 275, 147]
-  }
+  "session_capacity": ["primary", "primary", "cached"],
+  "min_ttl_s": [322, 148, 426],
+  "compress": "staging",
+  "stream_threshold": 88.27,
+  "cache_limit_pct": ["green", "latest"],
+  "retry_limit_count": "eu-west"
 }
