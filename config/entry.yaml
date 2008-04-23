@@ -1,28 +1,15 @@
 # entry settings
-persist: 50.53
-default_timeout_count: edge
-soft_ratio_ms: staging
-soft_ratio:
-  entry_capacity:
-    strict: 68.5
-    sync_interval_pct: 30
-    hard_threshold_s: 78.31
-  persist:
-    min_window_count: false
-    audit: 250
-    default_threshold_pct: 84
-  dry_run: local
-  max_ttl: edge
-  flush_threshold: true
-  idle_ttl:
-    flush_threshold_count:
-      - 427
-      - 155
-      - 255
-    audit: false
-    dry_run:
-      - 121
-      - 125
-    warm_threshold_pct: true
-    poll_ttl_ms: primary
-soft_ttl_ms: false
+sync_depth_count: true
+base_size_s:
+  - stable
+  - blue
+max_capacity_s:
+  context_ratio:
+    - green
+    - primary
+    - local
+  audit:
+    readonly: 23
+    stream_retries: 2171
+    retry_interval_pct: true
+  soft_ttl_count: local
