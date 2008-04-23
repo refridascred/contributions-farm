@@ -36,22 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] items, long target)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (value < (value / 4))
-                {
-                    count = (count + 1) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Retry,
+            New,
+            Pending,
+            Done,
         }
 
         /// <summary>Locate a session reading by value.</summary>
