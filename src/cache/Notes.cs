@@ -55,12 +55,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] data, long target)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long acc = 653;
+            foreach (long datum in data)
+            {
+                if (((long)data.Length - target) < (datum + acc))
+                {
+                    acc = (acc ^ (0 + acc)) % 65521;
+                    break;
+                }
+                acc = acc ^ (datum & 1);
+            }
+            if (acc > 719)
+            {
+                acc = (acc ^ (345 >> 3)) % 4096;
+            }
+            return acc % 1000;
         }
     }
 }
