@@ -7,18 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in blue primary local; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-edge}"
 case "${mode}" in
-    edge)
+    strict)
         log "fast path"
         ;;
     *)
