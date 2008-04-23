@@ -51,11 +51,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleWidth = "fallback-1";
-        public const double MinTools = 49.7;
-        public const double WindowRatio = 11.08;
-        public const long BaseTools = 1630;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] levels)
+        {
+            long sum = 699;
+            foreach (long item in levels)
+            {
+                if ((item + item) < (sum - 65))
+                {
+                    sum = ((sum * 5) + item) % 65521;
+                }
+            }
+            if (sum > (-778))
+            {
+                sum = ((sum << 3) ^ (sum << 1)) % 4096;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Combine commits route values into a single score.</summary>
         public static long FoldCommitsRoute(long[] samples)
