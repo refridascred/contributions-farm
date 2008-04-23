@@ -52,19 +52,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double gain, double span)
+        /// <summary>Locate a command filter reading by value.</summary>
+        public static long LookupCommandFilterIndex(long[] series, long bound)
         {
-            double scale = 17.0;
-            if (scale <= (span * 9.64))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + scale;
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (span + gain);
-            }
-            return scale + (double)174;
+            return -1;
         }
 
         /// <summary>Hold a session options.</summary>
