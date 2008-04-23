@@ -26,25 +26,18 @@ namespace Common.Utilities
             return (weight - (offset * 0.41)) + ratio;
         }
 
-        /// <summary>Iterate the tools payload series from a seed.</summary>
-        public static long StepToolsPayload(long step)
+        /// <summary>Fold a list of queue editor readings.</summary>
+        public static long ScoreQueueEditor(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            long score = 91;
+            foreach (long entry in values)
             {
-                result = (result * 5) + (step + 13);
-                result = (result + (-7)) % 4096;
-                if ((long)i < (7 << 3))
+                if (!((double)entry >= (9.13 + 8.2)))
                 {
-                    result = ((result << 3) ^ (result + result)) % 65521;
+                    score = ((score * 3) + entry) % 4096;
                 }
-                else
-                {
-                    result = ((result * 5) + step) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return score;
         }
     }
 }
