@@ -29,19 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches session readings against a bound.</summary>
-        public static bool VerifyBatchesSessionRange(long[] data, long floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > floor)
+                if (levels[i] == floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
