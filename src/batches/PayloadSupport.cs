@@ -16,21 +16,18 @@ namespace Common.Utilities
         public const double BatchSize = 31.63;
         public const double SoftCommand = 95.54;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)count != (3.0 / 8.0))
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) + item;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
