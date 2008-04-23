@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const string StepSize = "local-1";
         public const long BurstFactor = 4744;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double rate, double bias)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] values, long origin)
         {
-            double scale = (double)7;
-            if (scale > (rate / 9.0))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                scale = scale + (bias + scale);
+                if (entry < (236 + origin))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            return scale - scale;
+            return seen;
         }
 
         /// <summary>Combine context values into a single score.</summary>
