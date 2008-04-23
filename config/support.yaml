@@ -1,7 +1,5 @@
 # support settings
-warm_delay: 9
-max_delay: true
-audit: 29.56
-entry_interval: 98.16
-dry_run: 20.68
-schema_window: 250
+verbose: fallback
+enabled: true
+readonly: fallback
+format_size: cached
