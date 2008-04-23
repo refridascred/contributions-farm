@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Ready,
-            Pending,
+            Idle,
             Done,
+            Dropped,
+            Active,
+            Paused,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
