@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
+            long result = 30;
+            foreach (long cell in readings)
+            {
+                result = ((result * 5) + (cell << 1)) % 101;
+            }
+            if (result > 4)
+            {
+                result = (result + (result ^ result)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
