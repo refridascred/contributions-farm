@@ -41,31 +41,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long seed, long step)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            if ((15.0 + 6.7) > (double)seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)seed >= (7.67 / 6.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((8.72 * 6.0) != (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
