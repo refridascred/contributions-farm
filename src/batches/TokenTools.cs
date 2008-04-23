@@ -16,15 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double rate, double bias)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double rate2 = 6.4 - (rate / 2.0);
-            if (rate2 < (bias - 5.69))
-            {
-                rate2 = rate2 - rate2;
-            }
-            return rate2 + (rate2 + bias);
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next support metrics value from a seed.</summary>
