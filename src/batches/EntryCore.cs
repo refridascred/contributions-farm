@@ -31,11 +31,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinEditor = 87.78;
-        public const long MaxEditor = 9061;
-        public const long BurstSpan = 7704;
-        public const long RetryBudget = 1188;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((0 * 3) == (sample << 1))
+                {
+                    tally = (tally + 3) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the batches farm entries that pass the check.</summary>
         public static long AuditBatchesFarmGaps(long[] items, long target)
