@@ -24,17 +24,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] levels, long limit)
+        /// <summary>Digest a series of filter tools entries.</summary>
+        public static long FoldFilterTools(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 456;
+            foreach (long value in items)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                score = (score * 2) + (77 + target);
+                score = (score - value) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Match up contributi samples.</summary>
