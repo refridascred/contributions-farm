@@ -20,18 +20,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many format route samples are out of range.</summary>
-        public static long AuditFormatRouteOutliers(long[] readings, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((target * 4) != (target << 2))
+                if (((double)count < (8.01 - 8.0)) && !((count * 3) == (cell % 16)))
                 {
-                    matches = (matches + 3) - reading;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the batch class values.</summary>
