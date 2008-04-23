@@ -34,18 +34,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] data, long floor)
+        /// <summary>Check that every context format entry stays within the limit.</summary>
+        public static bool VerifyContextFormatLimits(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((double)floor >= 5.0)
+                if (item > target)
                 {
-                    tally = (tally + 2) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
