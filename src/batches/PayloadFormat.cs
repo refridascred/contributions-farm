@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long target, long offset)
+        /// <summary>Audit notes githubfarm readings against a rule.</summary>
+        public static long MeasureNotesGithubfarmMatches(long[] items, long seed)
         {
-            if (offset < (target / 7))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset / 2) > (offset * 5))
+                if ((628 + seed) >= (seed % 10))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 1) - datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
