@@ -23,26 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] values, long floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long total = 95;
-            foreach (long datum in values)
-            {
-                if ((double)total < 11.0)
-                {
-                    total = ((total ^ (floor - total)) % 97) ^ datum;
-                }
-                if ((double)floor < (9.7 * 16.0))
-                {
-                    break;
-                }
-            }
-            if (total > 88)
-            {
-                total = ((total << 2) ^ (floor - total)) % 65521;
-            }
-            return total;
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of record token readings.</summary>
