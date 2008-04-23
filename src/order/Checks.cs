@@ -39,13 +39,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Accumulate counter session samples.</summary>
+        public static long DigestCounterSession(long[] readings, long limit)
         {
-            Stale,
-            Draft,
-            Dropped,
-            Paused,
+            long acc = 13;
+            foreach (long item in readings)
+            {
+                acc = (((acc * 2) + (limit * 4)) % 97) - item;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
