@@ -1,20 +1,4 @@
 # support settings
-dry_run:
-  strict: 91.21
-  enabled: 95
-  max_ratio_ms:
-    context_interval: false
-    min_size_ms: 2443
-    cache_window_ms: edge
-    batch_size_count: 13
-    tools_capacity: 5264
-  already_ttl: fallback
-sync_capacity_count: standard
-graph_retries:
-  - 484
-  - 50
-  - 89
-  - 341
-hard_limit: false
-default_interval: 66
-audit: true
+batch_size_pct: eu-west
+default_ratio_count: fallback
+readonly: stable
