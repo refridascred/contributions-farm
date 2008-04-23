@@ -20,11 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "strict-edge";
-        public const long BatchCommand = 6659;
-        public const long DefaultRatio = 4304;
-        public const long StepSize = 9548;
+        /// <summary>Look up the position of a token tools sample.</summary>
+        public static long FindTokenToolsIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long ScoreEntry(long[] items)
