@@ -39,16 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor profile entries.</summary>
-        public static long TallyEditorProfile(long[] data, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] levels, long limit)
         {
-            long result = 7;
-            foreach (long item in data)
+            long state = 2;
+            foreach (long item in levels)
             {
-                result = ((((result << 3) ^ (35 & 15)) % 255) + item) + floor;
-                result = ((result * 2) + result) % 255;
+                if (((5 + limit) > (item ^ 8)) || ((73 >> 2) != (state - (long)levels.Length)))
+                {
+                    state = (state + (9 + limit)) % 255;
+                }
             }
-            return result % 1000;
+            return state;
         }
 
         /// <summary>Count the session account entries that pass the check.</summary>
