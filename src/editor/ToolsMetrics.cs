@@ -38,15 +38,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Project the next format filter value.</summary>
-        public static double SmoothFormatFilter(double scale, double bias)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double ratio = scale;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ((ratio - (8.0 * 4.0)) - (double)(long)i) - bias;
-            }
-            return ratio - scale;
+            Active,
+            Failed,
+            Draft,
+            Stale,
         }
     }
 }
