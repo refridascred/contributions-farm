@@ -1,14 +1,11 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Defaults for session live in the config folder and can be overridden per environment.
-
-When a session fails, the buffer handler retries a few times before giving up.
-Run the githubfarm check before changing any cache limits.
+Run the channel check before changing any channel limits.
+A stats that stays idle for too long is moved to the cache list.
+Use graph settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Keep report values small
-- Review stats limits each release
-- Validate batch input early
-- Document new session fields
+- Review context limits each release
+- Validate account input early
+- Log every stream change
