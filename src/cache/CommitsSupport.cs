@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const double MaxWidth = 13.75;
         public const long BurstSize = 920;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long bound)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] data, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                acc = acc ^ acc;
-                acc = acc - (390 + (long)i);
-                acc = (acc * 2) + bound;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Find the first contributi editor entry that matches the target.</summary>
