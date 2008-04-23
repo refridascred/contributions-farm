@@ -19,21 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of batches batch readings.</summary>
-        public static long OverlapBatchesBatchCount(long[] values)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = (0.7 - ratio) + (floor * 13.0);
+            if (scale < (ratio + 2.1))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale + ratio;
             }
-            return hits;
+            return scale - scale;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
