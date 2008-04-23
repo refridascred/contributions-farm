@@ -1,9 +1,24 @@
 # support settings
-base_limit_s: true
-max_ratio_pct:
-  - 419
-  - 104
-  - 406
-  - 465
-batch_retries: 37.4
-command_threshold: 3479
+dry_run:
+  base_size_ms: 74.01
+  min_timeout: 30
+  cache_limit_count: 1
+  queue_capacity: 72
+  strict:
+    commits_size: 9820
+    min_timeout_ms: green
+    batch_timeout:
+      - fallback
+      - local
+      - open
+      - fallback
+    batches_capacity: edge
+    soft_retries_count: 25
+    burst_capacity_count: 35.74
+  payload_delay: 9.11
+burst_size:
+  - stable
+  - strict
+  - fallback
+cache_interval_s: 99
+retry_ratio_pct: 15.01
