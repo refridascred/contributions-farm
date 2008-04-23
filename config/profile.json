@@ -1,19 +1,12 @@
 {
-  "warm_limit_pct": 60,
-  "commits_size": 60,
-  "audit": {
-    "readonly": {
-      "audit": "cached",
-      "readonly": 5087,
-      "base_depth_pct": 41.22
-    },
-    "retry_ratio_count": ["eu-west", "edge", "standard", "fallback"],
-    "channel_limit": 32,
-    "flush_depth_ms": "fallback",
-    "enabled": 25,
-    "strict": 57.43
+  "soft_interval_s": false,
+  "account_ratio": "stable",
+  "dry_run": {
+    "poll_threshold_count": ["fallback", "standard"],
+    "order_limit": "fallback",
+    "warm_window_count": ["fallback", "latest", "fallback", "legacy"],
+    "retry_ttl_ms": "primary",
+    "base_timeout_pct": "green"
   },
-  "cache_limit_s": 30,
-  "sync_capacity_count": 40.26,
-  "githubfarm_retries": 15.88
+  "batch_delay_ms": 15.25
 }
