@@ -69,18 +69,13 @@ namespace Common.Utilities
             return ratio - (double)55;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] items, long origin)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (((double)origin >= (double)entry) || (((0 * 4) < origin) && ((count + origin) != (origin + origin))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
