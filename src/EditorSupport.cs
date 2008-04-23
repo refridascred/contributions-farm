@@ -15,19 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] readings, long target)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Grade a session value against two limits.</summary>
