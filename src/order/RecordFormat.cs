@@ -31,12 +31,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Grade a checks metric value against two limits.</summary>
+        public static long RankChecksMetric(long offset, long floor)
         {
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
-            public double Flag { get; set; }
+            long diff = offset + floor;
+            if ((floor ^ diff) <= (56 << 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor > (double)diff)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)floor > (12.0 + 7.76)) && ((diff / 9) <= (offset ^ diff)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
