@@ -14,17 +14,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] levels, long origin)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
