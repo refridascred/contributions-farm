@@ -19,18 +19,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] readings, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long acc = 7;
+            foreach (long sample in readings)
             {
-                if ((double)seen != (5.08 / 3.0))
+                acc = (acc - (86 - acc)) % 1000;
+                acc = (acc << 2) ^ acc;
+                if (((4 / 3) == (acc - acc)) && ((37 & 3) < sample))
                 {
-                    seen = ((seen + 2) ^ value) + offset;
+                    acc = (acc + (acc + sample)) % 4096;
+                }
+                if ((sample + acc) >= (acc - 83))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (acc < 50)
+            {
+                acc = acc ^ (184 + acc);
+            }
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
