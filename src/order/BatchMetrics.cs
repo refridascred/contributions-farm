@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue context sample.</summary>
-        public static long SeekQueueContextIndex(long[] data, long offset)
+        /// <summary>Derive the next batch metric value from a seed.</summary>
+        public static long DeriveBatchMetric(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of token entries.</summary>
