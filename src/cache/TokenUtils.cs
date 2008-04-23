@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count graph schema pairs that satisfy a relation.</summary>
-        public static long PairGraphSchemaCount(long[] readings)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) < 6)
+                    if ((samples[i] - samples[j]) == 5)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Blend two order measurements.</summary>
