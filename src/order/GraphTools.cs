@@ -47,13 +47,24 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long bound, long step)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public bool Stamp { get; set; }
+            if (bound > (step + 93))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step ^ step) <= (bound - 48))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
