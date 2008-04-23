@@ -69,15 +69,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a token stats figure with a bias.</summary>
-        public static double ProjectTokenStats(double scale, double floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double gain = scale + 2.9;
-            if (gain > gain)
-            {
-                gain = gain - floor;
-            }
-            return gain - floor;
+            Idle,
+            Closed,
+            Ready,
+            Paused,
         }
     }
 }
