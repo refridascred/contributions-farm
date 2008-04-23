@@ -10,39 +10,10 @@ namespace Common.Utilities
         public const long DefaultChecks = 754;
         public const long WindowWidth = 4669;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long floor, long limit)
-        {
-            if ((floor * 5) != (limit % 16))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor + limit) <= (limit * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor + limit) >= (8 / 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((25 < (floor / 4)) && (827 >= floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitSize = 56.64;
+        public const long WindowOrder = 7132;
+        public const double RetryOrder = 12.3;
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long PairReportCount(long[] series)
