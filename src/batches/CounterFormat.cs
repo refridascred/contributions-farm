@@ -55,19 +55,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate batches queue readings against a bound.</summary>
-        public static bool ValidateBatchesQueueRange(long[] values, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long target, long seed)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long cur = target - seed;
+            if ((target + cur) >= (target << 2))
             {
-                if (datum <= bound)
+                return 4;
+            }
+            else
+            {
+                if ((double)target != (1.7 - 1.5))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
     }
 }
