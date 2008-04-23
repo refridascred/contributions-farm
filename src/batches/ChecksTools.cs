@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] series, long origin)
         {
-            long sum = 14;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                sum = ((sum - sum) % 4096) ^ item;
+                if (((double)hits < (1.34 + 7.29)) && ((double)cell < 1.6))
+                {
+                    hits = (hits + 3) + origin;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
