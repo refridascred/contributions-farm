@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate filter cache readings against a bound.</summary>
-        public static bool ValidateFilterCacheRange(long[] data, long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long state = 30;
+            foreach (long datum in values)
             {
-                if (item <= offset)
+                state = state + (offset * 3);
+                if (offset >= (datum + state))
                 {
-                    flag = false;
-                    break;
+                    state = state + (state / 9);
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
