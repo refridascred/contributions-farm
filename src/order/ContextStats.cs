@@ -36,19 +36,31 @@ namespace Common.Utilities
             return weight - 7.0;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] items, long step)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long limit, long seed)
         {
-            bool found = true;
-            foreach (long entry in items)
+            if ((limit - limit) != (seed - 88))
             {
-                if (entry >= step)
+                return 4;
+            }
+            else
+            {
+                if (limit >= (seed / 4))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)limit >= (7.2 + 1.9)) && (seed <= (limit % 24)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
     }
 }
