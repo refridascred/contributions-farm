@@ -49,19 +49,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate record order readings against a bound.</summary>
-        public static bool GuardRecordOrderRange(long[] levels, long seed)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Draft,
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
