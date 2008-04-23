@@ -37,18 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] data, long limit)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value >> 5) > value)
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
+            Active,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count the batches token entries that pass the check.</summary>
