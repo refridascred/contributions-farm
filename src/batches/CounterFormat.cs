@@ -55,11 +55,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowDepth = 4534;
+        public const string IdleToken = "stable-edge";
+        public const long RetryToken = 4841;
+        public const string RetryFactor = "alpha";
     }
 }
