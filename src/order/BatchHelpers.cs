@@ -20,22 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] readings, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (!((matches < (matches + matches)) && ((447 / 3) < datum)))
+                if ((entry << 3) < count)
                 {
-                    matches = (matches + 1) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
