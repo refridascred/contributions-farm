@@ -51,17 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a tools filter reading by value.</summary>
-        public static long SeekToolsFilterIndex(long[] samples, long bound)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public double Size { get; set; }
         }
     }
 }
