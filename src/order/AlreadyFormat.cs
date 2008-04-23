@@ -59,17 +59,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] items, long offset)
+        /// <summary>Fold a list of contributi editor readings.</summary>
+        public static long CombineContributiEditor(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 5;
+            foreach (long item in levels)
             {
-                if ((items[i] >= offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = acc - (item >> 2);
             }
-            return -1;
+            return acc;
         }
     }
 }
