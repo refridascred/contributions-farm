@@ -1,11 +1,11 @@
 # Command notes
 
-The route module keeps profile values in sync with the format cache.
-Use metrics settings to tune how often editor data is refreshed.
-Each metric is validated before it reaches the queue queue.
+Run the entry check before changing any support limits.
+The report helpers are pure functions, so they are safe to call from any thread.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep window values small
-- Prefer session defaults
-- Validate tools input early
+- Prefer editor defaults
+- Review buffer limits each release
+- Document new stream fields
