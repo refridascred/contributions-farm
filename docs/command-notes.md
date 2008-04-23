@@ -1,11 +1,10 @@
 # Command notes
 
-Each route is validated before it reaches the order queue.
-Keep window and githubfarm names short and lowercase.
+Defaults for stats live in the config folder and can be overridden per environment.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review batches limits each release
-- Document new stream fields
-- Validate graph input early
-- Log every context change
+- Document new payload fields
+- Validate farm input early
+- Keep githubfarm values small
