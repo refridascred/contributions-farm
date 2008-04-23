@@ -13,12 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] items)
         {
-            Queued,
-            Paused,
-            Idle,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (2 > reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a already format figure with a bias.</summary>
