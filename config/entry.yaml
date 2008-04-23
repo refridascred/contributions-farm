@@ -1,7 +1,9 @@
 # entry settings
-burst_depth_s: 93
-default_timeout_s: 7272
-strict: 65
-flush_timeout: true
-order_threshold: 500
-context_threshold: standard
+burst_interval_count: 82.18
+soft_interval: false
+compress:
+  - blue
+  - local
+  - fallback
+cache_retries_count: staging
+max_size: true
