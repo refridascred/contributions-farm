@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 23.82;
-        public const double HardStream = 68.75;
-        public const long StepStream = 185;
-        public const double DefaultInterval = 42.48;
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long TotalStream(long[] values, long bound)
