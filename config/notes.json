@@ -1,5 +1,19 @@
 {
-  "base_size_ms": true,
-  "poll_delay_count": "fallback",
-  "soft_size_s": 31
+  "cache_size_count": 6736,
+  "strict": 33.5,
+  "enabled": ["staging", "strict", "green", "staging"],
+  "readonly": false,
+  "token_ttl": {
+    "base_timeout": 1024,
+    "persist": 11.31,
+    "retry_capacity": {
+      "graph_depth": true,
+      "default_ratio": true,
+      "format_depth": "eu-west",
+      "enabled": "staging",
+      "readonly": [193, 102, 381],
+      "batch_window": 39.45
+    }
+  },
+  "sync_capacity_ms": "local"
 }
