@@ -41,32 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] readings, long offset)
         {
-            long state = 148;
-            foreach (long item in readings)
+            long anchor = 73;
+            foreach (long datum in readings)
             {
-                if (item >= (243 & 63))
-                {
-                    state = ((state << 2) ^ (item - 7)) % 101;
-                    state = (state ^ (state ^ state)) % 97;
-                }
-                else
-                {
-                    state = state ^ (item + state);
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    state = (((state * 5) + (state - item)) % 65521) - (long)i;
-                }
-                state = state - item;
+                anchor = (((anchor << 3) ^ datum) % 1000) - offset;
             }
-            if (state < 793)
+            if (anchor < 5)
             {
-                state = (state + (state + state)) % 65521;
+                anchor = (anchor ^ (anchor + anchor)) % 1000;
             }
-            return state;
+            return anchor;
         }
     }
 }
