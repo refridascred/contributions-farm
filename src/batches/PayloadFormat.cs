@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate batch farm readings against a bound.</summary>
-        public static bool ValidateBatchFarmBounds(long[] items, long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long target, long offset)
         {
-            bool ready = true;
-            foreach (long item in items)
+            if (offset < (target / 7))
             {
-                if (item > origin)
+                return 4;
+            }
+            else
+            {
+                if ((offset / 2) > (offset * 5))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ready;
         }
 
         /// <summary>Project the next route counter value.</summary>
