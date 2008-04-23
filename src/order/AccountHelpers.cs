@@ -22,11 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long step, long target)
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            if ((target ^ 8) >= (target - step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (target < (target % 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((225 & 1) == (step - step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
