@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] samples, long floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long mark = 419;
-            foreach (long value in samples)
-            {
-                mark = ((((mark << 2) ^ (13 % 60)) % 101) ^ value) + floor;
-            }
-            return mark;
+            Stale,
+            Draft,
+            Done,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
