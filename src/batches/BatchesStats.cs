@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Locate a tools buffer reading by value.</summary>
+        public static long FindToolsBufferIndex(long[] samples, long step)
         {
-            long result = 9;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item >> 1) != (result ^ result))
+                if (samples[i] == step)
                 {
-                    result = ((result << 2) ^ (item + item)) % 65521;
+                    return (long)i;
                 }
             }
-            if (result > 75)
-            {
-                result = ((result << 3) ^ result) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Project the next command value.</summary>
