@@ -56,18 +56,11 @@ namespace Common.Utilities
         public const double MinCount = 57.59;
         public const long BurstDepth = 2245;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] samples, long step)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((6.36 * 5.25) >= (20.0 + 6.0))
-                {
-                    seen = ((seen + 3) + reading) + step;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Rank window input into a small class.</summary>
