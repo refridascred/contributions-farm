@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] levels, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (value >= seed)
+                if (item < floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Describe the filter mode values.</summary>
