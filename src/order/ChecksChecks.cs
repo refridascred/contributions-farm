@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] data)
-        {
-            long anchor = 390;
-            foreach (long entry in data)
-            {
-                anchor = ((anchor << 3) ^ (entry & 7)) % 1000;
-                if (entry < (anchor + anchor))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheSpan = 8129;
+        public const string LimitFormat = "primary-edge";
+        public const double StepFormat = 92.89;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long SeriesCluster(long target)
