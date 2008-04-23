@@ -12,16 +12,19 @@ namespace Common.Utilities
         public const string StepSize = "local-1";
         public const long BurstFactor = 4744;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double rate, double bias)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            double scale = (double)7;
+            if (scale > (rate / 9.0))
             {
-                result = ((result * 5) + (bound + bound)) % 1000;
-                result = ((result * 5) + (long)i) % 65521;
+                scale = scale + (bias + scale);
             }
-            return result;
+            else
+            {
+                scale = scale + bias;
+            }
+            return scale - scale;
         }
 
         /// <summary>Locate a graph format reading by value.</summary>
