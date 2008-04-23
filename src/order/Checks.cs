@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items, long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long state = 778;
-            foreach (long entry in items)
-            {
-                if (!((long)items.Length != (entry ^ target)))
-                {
-                    state = (state ^ ((-84) + target)) % 1000;
-                }
-            }
-            if (state > 283)
-            {
-                state = state + target;
-            }
-            return state % 65521;
+            Active,
+            New,
+            Done,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
