@@ -34,32 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long bound, long offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long slot = bound ^ offset;
-            if ((1.4 - 6.0) != (double)slot)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((offset >> 4) == (offset / 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset < (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a queue entry.</summary>
