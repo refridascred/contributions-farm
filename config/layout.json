@@ -1,26 +1,19 @@
 {
-  "verbose": "primary",
-  "session_timeout": {
-    "cluster_window": "local",
-    "base_ratio": 14.63,
-    "notes_retries": {
-      "soft_threshold_count": "open",
-      "buffer_ttl": ["blue", "latest", "stable", "latest"],
-      "poll_window_s": ["latest", "cached", "standard"],
-      "batches_limit": 12,
-      "batch_delay_ms": false
-    },
-    "dry_run": "blue"
+  "window_window": 49,
+  "editor_window": {
+    "soft_window": [82, 323, 307],
+    "burst_limit_s": 22.98,
+    "cluster_window": "primary",
+    "record_retries": [126, 246, 35, 263],
+    "route_depth": ["green", "green", "fallback"],
+    "warm_delay": [302, 318, 126]
   },
-  "command_delay": ["latest", "strict", "local", "stable"],
-  "batch_ratio": {
-    "poll_ttl": ["latest", "cached", "strict", "green"],
-    "min_limit": "edge",
-    "sync_size_count": "legacy",
-    "retry_delay_pct": 94.23,
-    "base_depth_ms": "latest",
-    "contributi_ttl": 6758
+  "idle_window": {
+    "readonly": false,
+    "enabled": "open",
+    "cache_retries_count": ["green", "stable", "stable", "open"],
+    "max_capacity_ms": "eu-west"
   },
-  "batch_depth_pct": 39.66,
-  "context_ttl": true
+  "hard_size_count": 30,
+  "burst_retries_s": false
 }
