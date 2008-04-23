@@ -68,22 +68,20 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] readings)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long target)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((tally + tally) > (tally ^ (long)readings.Length))
+                if ((3.0 / 4.0) == (double)(long)i)
                 {
-                    tally = (tally + 1) - datum;
+                    total = total + (total * 2);
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total ^ (long)i) % 1000;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
     }
 }
