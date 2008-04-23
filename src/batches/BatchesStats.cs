@@ -12,15 +12,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double bias, double bias2)
+        /// <summary>Measure how many record token samples are out of range.</summary>
+        public static long AuditRecordTokenOutliers(long[] levels)
         {
-            double mean = (double)(6 ^ 3);
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                mean = (mean + (bias2 + bias)) + (double)(long)i;
+                if ((cell << 1) != ((-37) * 2))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mean + 1.0;
+            return seen;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
