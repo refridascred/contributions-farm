@@ -1,7 +1,8 @@
 # githubfarm settings
-dry_run:
+batch_interval_pct: 60
+verbose:
+  - stable
+  - legacy
+  - primary
   - open
-  - latest
-warm_depth: cached
-soft_timeout_ms: 40
-default_timeout: true
+soft_capacity: 7951
