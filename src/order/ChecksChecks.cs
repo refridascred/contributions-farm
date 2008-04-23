@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const double RetryCount = 9.32;
         public const long BurstInterval = 4482;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] readings, long step)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long bound)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample >= step)
+                if (!((result + bound) != (bound * 4)))
                 {
-                    ready = false;
-                    break;
+                    result = (result * 3) + ((long)i + bound);
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Accumulate tools schema samples.</summary>
