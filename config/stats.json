@@ -1,7 +1,5 @@
 {
-  "base_threshold_pct": 12,
-  "strict": [162, 121],
-  "poll_retries_count": 100,
-  "metrics_size": ["local", "standard", "green", "strict"],
-  "sync_depth_ms": false
+  "flush_timeout": "cached",
+  "entry_capacity": false,
+  "warm_size_s": "open"
 }
