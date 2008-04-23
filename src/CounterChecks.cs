@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            Ready,
-            Idle,
-            Queued,
-            Draft,
-            Stale,
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = (mark + (long)i) % 255;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Blend two record measurements.</summary>
