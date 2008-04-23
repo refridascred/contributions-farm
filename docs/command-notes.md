@@ -1,14 +1,12 @@
 # Command notes
 
-Use layout settings to tune how often buffer data is refreshed.
-Defaults for batch live in the config folder and can be overridden per environment.
-Use cluster settings to tune how often githubfarm data is refreshed.
-
-A batch that stays idle for too long is moved to the filter list.
-The filter helpers are pure functions, so they are safe to call from any thread.
+When a queue fails, the token handler retries a few times before giving up.
+The stats module keeps queue values in sync with the stats cache.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every session change
-- Prefer batch defaults
-- Keep stats values small
+- Keep metrics values small
+- Validate batch input early
+- Document new contributi fields
+- Review token limits each release
