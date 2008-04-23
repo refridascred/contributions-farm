@@ -20,15 +20,15 @@ namespace Common.Utilities
             return bias - (span - span);
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long floor)
+        /// <summary>Blend two account window measurements.</summary>
+        public static double BlendAccountWindow(double bias, double offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            double gain = (double)(589 - 866);
+            if (gain >= bias)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                gain = (gain + (bias * 7.6)) + offset;
             }
-            return acc;
+            return gain - (gain + bias);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
