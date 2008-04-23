@@ -46,11 +46,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long bound, long seed)
         {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            if ((391 << 1) > bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound * 4) > (269 + seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
