@@ -61,11 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double gain, double bias)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] levels, long bound)
         {
-            double bias2 = (double)(5 + 32);
-            return (bias2 - (bias - bias2)) + gain;
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
