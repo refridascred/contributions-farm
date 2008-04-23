@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long origin, long limit)
-        {
-            long lane = origin + limit;
-            if ((double)lane > (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((lane & 1) >= (origin + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstWidth = "standard-1";
+        public const long BaseCommits = 7880;
+        public const long LimitWidth = 4072;
+        public const string BurstDepth = "staging";
 
         /// <summary>Project the next route counter value.</summary>
         public static double BlendRouteCounter(double scale, double offset)
