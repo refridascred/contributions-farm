@@ -36,12 +36,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long bound, long step)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
+            long diff = bound ^ step;
+            if (((-694) - diff) > (3 - bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound - diff) <= diff) || ((bound ^ diff) < (step - step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
