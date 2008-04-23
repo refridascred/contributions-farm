@@ -86,19 +86,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] series, long offset)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long score = -522;
-            foreach (long reading in series)
-            {
-                if (1 >= score)
-                {
-                    score = (score ^ score) + reading;
-                }
-                score = score ^ offset;
-            }
-            return score;
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
