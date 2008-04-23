@@ -1,16 +1,6 @@
 {
-  "dry_run": true,
-  "stats_timeout": {
-    "sync_timeout_ms": {
-      "poll_ratio": ["strict", "edge", "fallback"],
-      "enabled": "green",
-      "entry_delay": 75,
-      "burst_timeout_pct": 2898
-    },
-    "min_delay": true,
-    "context_size": "fallback",
-    "soft_timeout_count": true
-  },
-  "default_depth": "edge",
-  "warm_limit": ["green", "eu-west", "strict", "strict"]
+  "retry_size_pct": "legacy",
+  "cache_threshold_s": "eu-west",
+  "queue_window": 250,
+  "payload_depth": [27, 207, 128, 122]
 }
