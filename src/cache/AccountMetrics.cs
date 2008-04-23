@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitTimeout = 5002;
-        public const string BaseWindow = "strict-edge";
-        public const string StepWindow = "standard";
-        public const long SoftWindow = 2669;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] data)
+        {
+            long carry = 6;
+            foreach (long reading in data)
+            {
+                if ((7.0 - 11.0) == (double)carry)
+                {
+                    carry = ((carry << 3) ^ 4) % 101;
+                }
+                if ((carry & 15) >= reading)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Validate editor profile readings against a bound.</summary>
         public static bool GuardEditorProfileRange(long[] levels, long offset)
