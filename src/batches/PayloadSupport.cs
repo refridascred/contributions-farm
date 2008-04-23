@@ -20,14 +20,10 @@ namespace Common.Utilities
             return load + (double)(-82);
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheBudget = 9764;
+        public const double BatchSize = 31.63;
+        public const double SoftCommand = 95.54;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] series)
