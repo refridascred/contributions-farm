@@ -1,10 +1,6 @@
-id,ratio,rank
-1,fallback,766
-2,eu-west,open
-3,35.76,primary
-4,blue,5.06
-5,369,cached
-6,38.93,898
-7,103,eu-west
-8,75.73,green
-9,fallback,edge
+id,label,score,level,active
+1,open,900,426,37.28
+2,263,stable,cached,71.15
+3,92,87.47,47.88,213
+4,blue,edge,10.82,59.0
+5,44,54.64,local,cached
