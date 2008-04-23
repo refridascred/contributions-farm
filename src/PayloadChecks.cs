@@ -41,31 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long seed, long limit)
+        /// <summary>Audit filter buffer readings against a rule.</summary>
+        public static long TallyFilterBufferOutliers(long[] items)
         {
-            if ((0.4 / 2.0) == (double)limit)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed >= (seed / 9))
+                if (((long)items.Length + seen) < (-123))
                 {
-                    return 3;
+                    seen = (seen + 2) ^ datum;
                 }
                 else
                 {
-                    if (((89 + limit) > (limit % 100)) && (seed <= 593))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
