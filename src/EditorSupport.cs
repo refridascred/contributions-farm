@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Validate githubfarm stats readings against a bound.</summary>
+        public static bool ValidateGithubfarmStatsBounds(long[] samples, long target)
         {
-            Failed,
-            Stale,
-            Idle,
-            Active,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
