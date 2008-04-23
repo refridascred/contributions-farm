@@ -43,13 +43,12 @@ namespace Common.Utilities
         public const string BurstCounter = "legacy-edge";
         public const string SoftCounter = "local-edge";
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 1741;
+        public const double BurstDepth = 59.14;
+        public const string HardEntry = "latest-edge";
+        public const long CacheEntry = 6647;
+        public const long BaseEntry = 2253;
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
