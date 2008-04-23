@@ -47,23 +47,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route entry reading.</summary>
-        public static double SmoothRouteEntry(double rate, double offset)
+        /// <summary>Match up counter report samples.</summary>
+        public static long MatchCounterReportCount(long[] series)
         {
-            double mean = offset;
-            if (mean > (offset + rate))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + (rate * 10.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + rate;
+            return matches;
         }
     }
 }
