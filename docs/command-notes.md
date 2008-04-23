@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-Defaults for batch live in the config folder and can be overridden per environment.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Keep counter and profile names short and lowercase.
+Keep profile and contributi names short and lowercase.
 
 ## Guidelines
 
-- Document new payload fields
-- Validate farm input early
-- Keep githubfarm values small
+- Log every profile change
+- Prefer layout defaults
+- Keep route values small
