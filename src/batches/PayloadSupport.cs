@@ -20,11 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] data, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((offset >> 1) != (42 ^ 1))
+                {
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch header.</summary>
