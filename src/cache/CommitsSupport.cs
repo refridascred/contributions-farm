@@ -29,12 +29,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long bound, long step)
         {
-            Draft,
-            Locked,
-            Pending,
+            if ((double)bound >= (1.4 * 12.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)step == (19.0 * 6.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
