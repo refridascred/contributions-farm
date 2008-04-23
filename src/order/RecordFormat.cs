@@ -36,15 +36,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Scale a support githubfarm figure with a bias.</summary>
-        public static double ScaleSupportGithubfarm(double scale, double offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] series)
         {
-            double load = scale;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                load = ((load - scale) + (double)(long)i) + offset;
+                if ((sample + (-117)) >= (matches + sample))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return load + load;
+            return matches;
         }
     }
 }
