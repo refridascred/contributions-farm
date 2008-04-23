@@ -19,13 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
+            long result = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)result == (8.8 + 8.08))
+                {
+                    result = ((result << 3) ^ ((long)i << 1)) % 101;
+                }
+                result = result ^ (result / 9);
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
