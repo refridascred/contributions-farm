@@ -1,10 +1,8 @@
 # entry settings
-batch_window:
-  - 396
-  - 343
-  - 352
-readonly: 88.11
-audit: staging
-record_depth: 9036
-warm_threshold_s: 70.88
-warm_depth: 57
+max_delay_s:
+  - 302
+  - 233
+cache_ratio: cached
+dry_run: eu-west
+window_size: edge
+enabled: 1316
