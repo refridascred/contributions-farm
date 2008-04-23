@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] values)
+        /// <summary>Fold a list of queue route readings.</summary>
+        public static long TotalQueueRoute(long[] items)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long result = 803;
+            foreach (long sample in items)
             {
-                if ((double)datum >= (19.0 + 2.31))
+                if (!(((double)sample <= (double)result) && ((double)result == (double)sample)))
                 {
-                    count = count + 3;
+                    result = result ^ (result + 7);
+                }
+                if (((result % 3) < (sample >> 4)) && ((sample - 9) <= (sample - result)))
+                {
+                    result = result - result;
                 }
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Hold a batch entry.</summary>
