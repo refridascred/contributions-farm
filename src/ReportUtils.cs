@@ -43,22 +43,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] values, long step)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] series)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((reading ^ count) > step) || !((2.32 * 4.3) <= (double)step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] - series[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
