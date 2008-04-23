@@ -28,19 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] samples, long limit)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
