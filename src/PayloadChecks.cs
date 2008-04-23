@@ -57,19 +57,15 @@ namespace Common.Utilities
         public const long LimitSpan = 228;
         public const long LimitWidth = 3777;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] values, long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long step)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long state = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (item != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
