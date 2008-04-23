@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinScore = 14.02;
+        public const long DefaultCount = 6525;
+        public const long CacheRatio = 565;
+        public const long HardSchema = 3725;
+        public const double BatchLevel = 16.46;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long FoldFarm(long[] data)
