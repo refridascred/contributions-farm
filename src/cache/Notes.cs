@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] values, long floor)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long mark = 348;
-            foreach (long entry in values)
-            {
-                mark = mark ^ (entry + floor);
-            }
-            return mark % 4096;
+            Active,
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
