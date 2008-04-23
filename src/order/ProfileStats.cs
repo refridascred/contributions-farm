@@ -45,15 +45,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long origin)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            New,
+            Failed,
+            Paused,
+            Ready,
         }
     }
 }
