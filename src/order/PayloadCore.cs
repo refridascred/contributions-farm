@@ -32,24 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report commits pair into a bucket.</summary>
-        public static long SortReportCommits(long limit, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] series, long seed)
         {
-            if ((6.86 - 6.09) > (double)limit)
+            long acc = 46;
+            foreach (long reading in series)
             {
-                return 7;
+                acc = ((acc ^ reading) % 1000) - seed;
             }
-            else
-            {
-                if (76 > (limit >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of account readings.</summary>
