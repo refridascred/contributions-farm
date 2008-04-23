@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] values, long seed)
+        /// <summary>Combine graph batches values into a single score.</summary>
+        public static long FoldGraphBatches(long[] data, long floor)
         {
-            long result = 464;
-            foreach (long value in values)
+            long mark = 4;
+            foreach (long entry in data)
             {
-                result = ((result * 2) + (value >> 4)) - seed;
-                if (((double)value >= (9.0 - 3.6)) || ((value + value) == (result ^ result)))
+                if (((entry << 1) <= (mark & 15)) || ((3 + floor) < floor))
                 {
-                    result = (result ^ value) % 4096;
+                    mark = (mark - (mark % 8)) % 1000;
                 }
             }
-            return result;
+            if (mark < 36)
+            {
+                mark = ((mark << 3) ^ floor) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
