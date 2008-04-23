@@ -32,14 +32,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Done,
-            Retry,
-            Closed,
-            Failed,
-            Pending,
+            Synced,
+            Paused,
+            New,
+            Active,
+            Locked,
         }
     }
 }
