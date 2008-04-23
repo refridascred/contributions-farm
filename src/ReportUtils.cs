@@ -71,18 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] data, long origin)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((tally / 6) == (origin ^ cell))
+                if (cell > seed)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
