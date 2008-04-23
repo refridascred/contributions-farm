@@ -1,6 +1,5 @@
 # githubfarm settings
-flush_delay_count: primary
-batch_capacity_pct: 1024
-schema_size: true
-min_size_ms: open
-burst_retries_count: standard
+readonly: true
+dry_run: 2898
+buffer_ratio: 1024
+retry_retries_s: 250
