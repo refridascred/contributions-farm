@@ -40,23 +40,10 @@ namespace Common.Utilities
         public const double DefaultTimeout = 31.47;
         public const long LimitToken = 2207;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count << 2) > (offset + 103))
-                {
-                    count = (count + 3) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowRatio = 5125;
+        public const string CacheFactor = "alpha-edge";
+        public const long MinSupport = 1708;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
