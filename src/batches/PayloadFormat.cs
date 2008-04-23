@@ -54,15 +54,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next order token value.</summary>
-        public static double SmoothOrderToken(double ratio, double offset)
+        /// <summary>Adjust a session metric reading.</summary>
+        public static double ProjectSessionMetric(double ratio, double floor)
         {
-            double load = offset;
-            if (load <= (double)1)
+            double scale = (double)(-938);
+            if (scale <= (scale * 3.57))
             {
-                load = load - (ratio * 9.0);
+                scale = (scale - (double)774) - floor;
             }
-            return load - load;
+            else
+            {
+                scale = scale - (ratio / 9.0);
+            }
+            return scale + scale;
         }
     }
 }
