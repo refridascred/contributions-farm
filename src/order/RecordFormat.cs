@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const long BaseLayout = 3237;
         public const string BurstLayout = "primary-edge";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultFactor = 35.56;
-        public const double BaseScore = 12.27;
-        public const long BatchBudget = 8859;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultCount = 6359;
