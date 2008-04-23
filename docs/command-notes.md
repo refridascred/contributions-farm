@@ -1,11 +1,11 @@
 # Command notes
 
-The buffer report groups every cache by checks.
-When a payload fails, the graph handler retries a few times before giving up.
+The contributi report groups every notes by metric.
+A channel that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Log every metric change
-- Validate window input early
-- Prefer buffer defaults
-- Review graph limits each release
+- Review window limits each release
+- Keep already values small
+- Prefer tools defaults
+- Log every farm change
