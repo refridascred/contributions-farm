@@ -16,15 +16,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] series)
+        /// <summary>Count filter githubfarm pairs that satisfy a relation.</summary>
+        public static long PairFilterGithubfarmCount(long[] levels)
         {
             long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0.78 <= (double)matches) || ((entry - entry) >= (entry / 9)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
