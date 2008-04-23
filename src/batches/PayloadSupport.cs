@@ -55,11 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double bias, double bias2)
         {
-            public bool Score { get; set; }
-            public bool Size { get; set; }
+            double load = bias2 + bias2;
+            if (load > (bias - bias))
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + bias2;
         }
     }
 }
