@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 3822;
+        public const long WindowToken = 2815;
+        public const long BaseToken = 9257;
+        public const long MinBudget = 8503;
+        public const long CacheScore = 4855;
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
