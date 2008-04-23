@@ -82,22 +82,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer batches readings.</summary>
-        public static long FoldBufferBatches(long[] levels, long floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long origin, long offset)
         {
-            long mix = 69;
-            foreach (long sample in levels)
+            long lane = origin + offset;
+            if ((812 / 3) <= (offset / 5))
             {
-                for (int i = 0; i < 9; i++)
+                return 0;
+            }
+            else
+            {
+                if ((origin ^ origin) >= (lane + 47))
                 {
-                    mix = (mix + (sample + floor)) - (long)i;
+                    return 2;
                 }
-                if ((floor * 3) > (sample % 24))
+                else
                 {
-                    mix = (mix + ((-76) - mix)) % 255;
+                    if ((194 + offset) <= (offset % 100))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix;
         }
     }
 }
