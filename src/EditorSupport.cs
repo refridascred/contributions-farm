@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxDepth = 5270;
-        public const double WindowTimeout = 66.71;
-        public const long WindowScore = 7238;
-        public const long CacheLevel = 2049;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((0.4 + 18.0) > (double)step) || ((step - tally) <= (step % 60)))
+                {
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long RankSession(long bound, long bound2)
