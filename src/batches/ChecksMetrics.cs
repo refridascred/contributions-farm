@@ -65,11 +65,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] values)
         {
-            public bool Size { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((matches + matches) < (item << 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the context status values.</summary>
