@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] values, long seed)
         {
-            long mark = 8;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in values)
             {
-                mark = ((mark << 3) ^ (reading % 16)) % 65521;
+                if ((double)count < (double)cell)
+                {
+                    count = (count + 3) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Describe the channel kind values.</summary>
