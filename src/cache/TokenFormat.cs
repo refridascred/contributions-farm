@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const long HardSchema = 3725;
         public const double BatchLevel = 16.46;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double gain, double bias)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            double mean = gain;
-            if (mean < (bias * 1.75))
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + (double)6;
-            }
-            return mean - gain;
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
     }
 }
