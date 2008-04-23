@@ -25,19 +25,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] samples, long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long bound)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading > bound)
+                if ((state % 8) <= bound)
                 {
-                    ready = false;
-                    break;
+                    state = (state << 2) ^ (bound + state);
                 }
+                state = (state - (state >> 2)) % 97;
+                if ((state ^ (long)i) < ((long)i >> 5))
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Hold a metrics info.</summary>
