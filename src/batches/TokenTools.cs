@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Stale,
+            Synced,
+            Draft,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a window info.</summary>
