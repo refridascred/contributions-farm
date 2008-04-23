@@ -33,11 +33,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Grade a batches tools value against two limits.</summary>
+        public static long GradeBatchesTools(long origin, long seed)
         {
-            public double Size { get; set; }
-            public bool Count { get; set; }
+            if (!(origin <= (seed - origin)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)seed > 7.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(origin >= (origin - seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
