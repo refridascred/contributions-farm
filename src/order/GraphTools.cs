@@ -35,19 +35,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] levels, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long mix = -45;
+            foreach (long entry in data)
             {
-                if (reading <= bound)
+                if ((mix >> 2) != (limit + limit))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix ^ (entry + 1)) % 1000;
                 }
             }
-            return valid;
+            return mix % 1000;
         }
 
         /// <summary>Hold a commits info.</summary>
