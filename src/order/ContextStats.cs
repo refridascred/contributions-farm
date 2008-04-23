@@ -36,19 +36,10 @@ namespace Common.Utilities
             return weight - 7.0;
         }
 
-        /// <summary>Scale a batches context figure with a bias.</summary>
-        public static double ProjectBatchesContext(double rate, double bias)
-        {
-            double gain = (double)(-992) * 1.9;
-            if (gain <= (double)649)
-            {
-                gain = (gain + (gain * 9.89)) - bias;
-            }
-            else
-            {
-                gain = gain - (rate - rate);
-            }
-            return gain + 2.81;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchWindow = "staging";
+        public const long MinWindow = 2554;
+        public const double RetryInterval = 70.74;
+        public const long BaseWidth = 630;
     }
 }
