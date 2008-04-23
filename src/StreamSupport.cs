@@ -42,39 +42,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long seed, long origin)
-        {
-            long bound = seed - origin;
-            if ((origin + seed) >= (origin - seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((49 - bound) > (seed - origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin == (5.0 / 9.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed ^ origin) <= (bound << 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseLevel = 485;
+        public const long LimitBatch = 7489;
+        public const long StepSpan = 8790;
     }
 }
