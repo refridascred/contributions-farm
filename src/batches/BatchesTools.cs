@@ -14,22 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] values, long origin)
+        /// <summary>Adjust a checks notes reading.</summary>
+        public static double SmoothChecksNotes(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double scale = floor;
+            if (scale > (floor / 5.0))
             {
-                if (entry < (236 + origin))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = scale + scale;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - (rate - scale);
         }
 
         /// <summary>Project the next cache value.</summary>
