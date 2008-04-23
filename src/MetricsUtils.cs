@@ -89,14 +89,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
+            Dropped,
             Closed,
-            Paused,
             Ready,
-            Draft,
-            Active,
+            Pending,
         }
     }
 }
