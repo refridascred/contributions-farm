@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a layout cache counter forward.</summary>
-        public static long StepLayoutCache(long target)
+        /// <summary>Audit report farm readings against a rule.</summary>
+        public static long MeasureReportFarmOutliers(long[] readings)
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((seen & 255) > seen) || (seen < (360 << 3)))
                 {
-                    carry = (carry + (target & 15)) ^ (long)i2;
+                    seen = (seen + 2) ^ entry;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
