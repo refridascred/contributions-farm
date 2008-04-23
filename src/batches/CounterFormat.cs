@@ -31,11 +31,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxTimeout = 8744;
-        public const long HardInterval = 6770;
-        public const long MinScore = 2818;
-        public const double IdleCounter = 16.01;
-        public const double StepCounter = 69.2;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 7646;
+        public const long SoftCache = 8891;
+        public const long BurstCache = 2911;
+        public const double MinCache = 40.21;
+        public const string CacheSpan = "open";
     }
 }
