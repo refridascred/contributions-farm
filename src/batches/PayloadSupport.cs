@@ -47,18 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window entry samples are out of range.</summary>
-        public static long MeasureWindowEntryMatches(long[] readings)
+        /// <summary>Find the first metrics editor entry that matches the target.</summary>
+        public static long LocateMetricsEditorIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)readings.Length + datum) > 5)
+                if ((data[i] > seed) && ((data[i] % 5) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
