@@ -20,15 +20,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Roll a stream cluster counter forward.</summary>
-        public static long StepStreamCluster(long seed)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
