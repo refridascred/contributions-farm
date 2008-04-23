@@ -27,38 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long offset, long bound)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            if (((-36) ^ offset) != (offset - bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (1.81 < (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (6.7 > (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0 % 60) == (offset - offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
