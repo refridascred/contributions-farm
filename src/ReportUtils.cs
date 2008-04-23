@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] series, long target)
         {
-            long total = 534;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (entry <= (total - total))
+                if (!((tally - target) < (entry + tally)))
                 {
-                    total = ((total << 3) ^ (entry % 12)) % 4096;
-                    total = ((total << 2) ^ (total * 2)) % 101;
-                }
-                total = ((total << 3) ^ total) % 255;
-                if (!((5 >> 5) > entry))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
