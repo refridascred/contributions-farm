@@ -47,19 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] values)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.44 / 5.0) <= (double)seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix + (seed ^ (-565))) % 101;
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return count;
         }
     }
 }
