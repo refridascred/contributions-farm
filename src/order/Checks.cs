@@ -75,19 +75,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] series, long floor)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Dropped,
+            Synced,
+            Ready,
         }
     }
 }
