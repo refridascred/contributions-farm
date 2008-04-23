@@ -13,20 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] series, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxBuffer = 56.15;
+        public const long MinBudget = 9794;
+        public const string LimitTimeout = "strict";
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
