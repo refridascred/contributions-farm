@@ -1,11 +1,10 @@
 # Command notes
 
-Run the tools check before changing any tools limits.
-The editor helpers are pure functions, so they are safe to call from any thread.
-When a tools fails, the command handler retries a few times before giving up.
+The session report groups every support by window.
+Each graph is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Review batches limits each release
-- Log every order change
-- Validate queue input early
+- Validate window input early
+- Review queue limits each release
+- Document new command fields
