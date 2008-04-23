@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] values, long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long floor, long seed)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            if (((seed - seed) < (seed << 3)) || ((seed + seed) <= (seed / 2)))
             {
-                if (((target << 1) >= (8 + hits)) && (((4.3 * 2.66) == (double)target) && ((7.14 + 3.61) <= (double)hits)))
+                return 7;
+            }
+            else
+            {
+                if ((floor * 4) == (floor * 5))
                 {
-                    hits = (hits + 2) - sample;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the cluster status values.</summary>
