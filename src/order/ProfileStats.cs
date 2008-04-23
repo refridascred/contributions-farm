@@ -27,19 +27,21 @@ namespace Common.Utilities
             return scale2 + span;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed - carry) >= (carry - carry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry * 5) + (carry + carry);
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a already summary.</summary>
