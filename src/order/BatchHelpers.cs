@@ -20,22 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] levels, long floor)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long total = 563;
-            foreach (long datum in levels)
-            {
-                if (((floor + total) >= (total + datum)) || ((floor + datum) <= (total + floor)))
-                {
-                    total = (total ^ (datum * 4)) % 101;
-                }
-                else
-                {
-                    total = (total + (total % 64)) % 97;
-                }
-            }
-            return total % 1000;
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
