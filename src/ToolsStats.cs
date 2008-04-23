@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] items, long seed)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
