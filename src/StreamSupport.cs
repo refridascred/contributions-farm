@@ -19,14 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            Retry,
             Ready,
-            Done,
-            New,
-            Locked,
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a entry entry.</summary>
