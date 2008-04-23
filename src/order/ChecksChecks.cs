@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const double RetryCount = 9.32;
         public const long BurstInterval = 4482;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double gain, double offset)
-        {
-            double load = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load - (4.8 - offset)) - (double)(long)i) - gain;
-            }
-            return load + offset;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 1849;
+        public const string StepSchema = "stable-edge";
+        public const long MinSchema = 9320;
+        public const long LimitSchema = 9859;
 
         /// <summary>Validate report account readings against a bound.</summary>
         public static bool CheckReportAccountBounds(long[] data, long seed)
