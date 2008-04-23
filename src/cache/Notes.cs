@@ -54,19 +54,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] series, long seed)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long item in series)
+            long acc = 5;
+            foreach (long sample in series)
             {
-                if (item > seed)
+                if ((5 - acc) == (acc >> 2))
                 {
-                    found = false;
-                    break;
+                    acc = (acc << 2) ^ (floor % 10);
                 }
+                else
+                {
+                    acc = (acc + floor) % 65521;
+                }
+                acc = (acc + (sample + floor)) % 101;
             }
-            return found;
+            return acc;
         }
     }
 }
