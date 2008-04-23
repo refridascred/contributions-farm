@@ -1,6 +1,5 @@
 {
-  "metrics_ratio": 250,
-  "metrics_threshold": "staging",
-  "base_ttl_count": "edge",
-  "max_limit": 42.59
+  "flush_ttl_count": 90.78,
+  "burst_depth_pct": "eu-west",
+  "default_size_pct": true
 }
