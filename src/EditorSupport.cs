@@ -28,25 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long bound, long bound2)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] readings, long step)
         {
-            long gap = bound - bound2;
-            if ((gap / 5) <= 3)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound < (60 % 2))
+                if (readings[i] >= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
