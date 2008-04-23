@@ -20,11 +20,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "strict-1";
-        public const double SoftSize = 65.22;
-        public const long IdleLevel = 275;
-        public const string CachePayload = "staging-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryBudget = 7610;
+        public const long WindowInterval = 2380;
+        public const string RetryWidth = "local-1";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long CacheSession = 8346;
