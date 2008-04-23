@@ -29,15 +29,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double gain, double span)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] levels, long step)
         {
-            double ratio = span;
-            if (ratio <= (3.95 + gain))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                ratio = ratio - span;
+                if (!((item + step) >= (step * 3)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio - 4.83;
+            return hits;
         }
 
         /// <summary>Hold a tools header.</summary>
