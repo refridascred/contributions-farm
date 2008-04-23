@@ -27,39 +27,10 @@ namespace Common.Utilities
         public const long StepAlready = 1527;
         public const long RetryBudget = 9598;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long offset, long limit)
-        {
-            long diff = offset ^ limit;
-            if ((limit - offset) >= offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((diff / 4) == (offset ^ diff))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (200 > (limit / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((diff + limit) >= offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 2633;
+        public const long SoftSpan = 5510;
+        public const long DefaultInterval = 5368;
+        public const long HardCount = 6249;
     }
 }
