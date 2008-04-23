@@ -1,8 +1,8 @@
-id,token,ratio
-1,957,95.22
-2,eu-west,blue
-3,stable,918
-4,green,744
-5,edge,250
-6,staging,725
-7,staging,942
+id,state,token,score
+1,strict,22.97,primary
+2,392,964,39.12
+3,694,blue,174
+4,green,6.72,92.49
+5,73.18,staging,legacy
+6,932,527,staging
+7,70.0,66,latest
