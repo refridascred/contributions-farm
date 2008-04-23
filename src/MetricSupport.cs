@@ -16,17 +16,11 @@ namespace Common.Utilities
             return bias2 - (4.74 + 7.61);
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] levels, long offset)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = floor;
+            return (drift + drift) + ratio;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
