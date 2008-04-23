@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] readings, long step)
-        {
-            long result = 146;
-            foreach (long sample in readings)
-            {
-                if (step > (4 + result))
-                {
-                    result = ((result ^ (step + step)) % 255) ^ sample;
-                }
-            }
-            if (result < 978)
-            {
-                result = (result + (64 >> 1)) % 4096;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitTimeout = 5002;
+        public const string BaseWindow = "strict-edge";
+        public const string StepWindow = "standard";
+        public const long SoftWindow = 2669;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
