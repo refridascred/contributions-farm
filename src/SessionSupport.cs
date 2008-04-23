@@ -32,24 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long floor, long bound)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double scale, double span)
         {
-            if ((floor ^ bound) <= bound)
+            double gain = scale / 2.0;
+            if (gain > (gain * 1.0))
             {
-                return 1;
+                gain = gain - (9.0 + span);
             }
             else
             {
-                if (bound >= (bound + floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                gain = gain - scale;
             }
+            return gain + (span / 6.0);
         }
 
         /// <summary>Describe the checks level values.</summary>
