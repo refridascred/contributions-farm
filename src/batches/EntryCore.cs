@@ -19,22 +19,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long target, long offset)
+        /// <summary>Rank report session input into a small class.</summary>
+        public static long GradeReportSession(long offset, long limit)
         {
-            if (((8.9 + 13.0) <= (double)offset) || ((double)offset < (9.0 + 9.5)))
+            long slot = offset + limit;
+            if (!(offset > (limit + 45)))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((1.0 * 2.5) == (double)target)
+                if (!((limit << 2) > slot))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    return 2;
+                    if ((double)offset > 5.7)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
