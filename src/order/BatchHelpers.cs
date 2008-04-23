@@ -38,10 +38,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 2633;
-        public const long SoftSpan = 5510;
-        public const long DefaultInterval = 5368;
-        public const long HardCount = 6249;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
