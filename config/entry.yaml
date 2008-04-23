@@ -1,18 +1,12 @@
 # entry settings
-retry_capacity_s: 31.97
-base_depth: false
-soft_ttl: 20
-poll_capacity_ms: cached
-dry_run:
-  burst_ratio_count:
-    - standard
-    - strict
-    - open
-  sync_delay: 71
-  audit:
-    - local
-    - green
-    - open
-  default_window: 1024
-  retry_interval_pct: local
-soft_timeout: stable
+stream_threshold:
+  cache_ratio:
+    - 165
+    - 394
+    - 254
+    - 188
+  token_size: 18.03
+  command_retries: 500
+warm_ttl: 2651
+base_depth_s: 60
+warm_limit_s: 9375
