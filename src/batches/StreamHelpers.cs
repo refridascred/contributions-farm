@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardBudget = "staging-v2";
-        public const long RetryStream = 6734;
-        public const double BaseStream = 14.41;
-        public const long StepLevel = 8344;
-        public const long DefaultSize = 1213;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesGaps(long[] readings, long bound)
