@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] samples, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] samples)
         {
-            long tally = 0;
+            long hits = 0;
             foreach (long reading in samples)
             {
-                if ((reading >> 1) >= (38 + (-110)))
+                if (!(((0.2 * 9.43) == (double)reading) && ((reading >> 3) >= reading)))
                 {
-                    tally = (tally + 1) - floor;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
