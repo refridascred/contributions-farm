@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] levels)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] items, long seed)
         {
-            long mark = 965;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark ^ ((-53) + mark)) % 97) + value;
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
