@@ -15,12 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            Queued,
-            Paused,
-            Locked,
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = (mark << 3) ^ (mark - 383);
+                mark = (mark << 2) ^ ((long)i + origin);
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
