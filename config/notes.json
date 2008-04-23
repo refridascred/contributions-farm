@@ -1,8 +1,7 @@
 {
-  "default_depth_ms": "staging",
-  "verbose": 7816,
-  "soft_capacity_s": ["open", "primary"],
-  "schema_timeout": "legacy",
-  "batch_ttl": ["cached", "legacy", "blue", "local"],
-  "retry_interval": false
+  "default_ratio_ms": 2621,
+  "hard_threshold": "blue",
+  "readonly": 45.49,
+  "audit": true,
+  "batch_delay_ms": "cached"
 }
