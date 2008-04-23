@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryDepth = 3532;
+        public const long MaxTimeout = 142;
+        public const string DefaultScore = "stable-1";
+        public const double CacheLevel = 47.85;
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] levels)
