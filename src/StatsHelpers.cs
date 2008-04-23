@@ -16,20 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double weight, double bias)
-        {
-            double bias2 = weight;
-            if (bias2 < bias2)
-            {
-                bias2 = bias2 - weight;
-            }
-            else
-            {
-                bias2 = bias2 - (8.2 - bias);
-            }
-            return bias2 - (double)110;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryScore = 6707;
+        public const long BurstRatio = 6283;
+        public const long BatchLevel = 8281;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchTimeout = 6153;
