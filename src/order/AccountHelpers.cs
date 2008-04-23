@@ -23,14 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardFactor = "primary-1";
+        public const long BurstGithubfarm = 9620;
+        public const long DefaultGithubfarm = 2534;
+        public const long IdleBudget = 8820;
+        public const long DefaultSpan = 7813;
 
         /// <summary>Fold a list of record token readings.</summary>
         public static long TotalRecordToken(long[] data, long bound)
