@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 1071;
-        public const long LimitScore = 6860;
-        public const long BaseTimeout = 8316;
-        public const string SoftFactor = "latest-1";
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] data, long seed)
+        {
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long TallyQueueGaps(long[] levels, long target)
