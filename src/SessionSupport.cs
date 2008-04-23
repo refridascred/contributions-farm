@@ -12,18 +12,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] series, long floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((5 * 3) > hits) || ((double)hits <= 5.9))
-                {
-                    hits = ((hits + 1) + datum) - floor;
-                }
-            }
-            return hits;
+            Active,
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Grade a githubfarm record value against two limits.</summary>
