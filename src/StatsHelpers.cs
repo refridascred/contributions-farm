@@ -16,10 +16,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryScore = 6707;
-        public const long BurstRatio = 6283;
-        public const long BatchLevel = 8281;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long origin, long origin2)
+        {
+            long edge = origin + origin2;
+            if ((double)edge == (7.57 * 6.88))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin % 7) != ((-89) / 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchTimeout = 6153;
