@@ -43,22 +43,13 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] values, long bound)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (((bound / 8) == (967 % 7)) && ((7.0 + 3.1) != (double)matches))
-                {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
