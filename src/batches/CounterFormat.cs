@@ -19,14 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] levels, long floor)
         {
-            Closed,
-            Stale,
-            Paused,
-            Active,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
