@@ -34,12 +34,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] items, long bound)
         {
-            Active,
-            Stale,
-            Synced,
+            long mark = 989;
+            foreach (long sample in items)
+            {
+                if ((mark & 1) <= (5 ^ mark))
+                {
+                    mark = (mark ^ (mark / 3)) - bound;
+                }
+                else
+                {
+                    mark = (mark - sample) % 97;
+                }
+            }
+            if (mark > 0)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
     }
 }
