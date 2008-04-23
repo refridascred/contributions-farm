@@ -77,18 +77,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of commits batch entries.</summary>
-        public static long TallyCommitsBatch(long[] items)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            long acc = 968;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value <= (9.9 - 1.2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc - acc) % 1000;
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
