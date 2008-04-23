@@ -42,19 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a token layout figure with a bias.</summary>
-        public static double AdjustTokenLayout(double scale, double offset)
+        /// <summary>Look up the position of a payload token sample.</summary>
+        public static long LocatePayloadTokenIndex(long[] items, long limit)
         {
-            double bias = offset;
-            if (bias <= (8.0 + 3.82))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias - (double)2) + scale;
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - offset;
-            }
-            return bias - (double)326;
+            return -1;
         }
     }
 }
