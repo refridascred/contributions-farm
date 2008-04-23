@@ -38,12 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first contributi editor entry that matches the target.</summary>
-        public static long LocateContributiEditorIndex(long[] series, long step)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] <= step)
+                if (items[i] < bound)
                 {
                     return (long)i;
                 }
