@@ -33,15 +33,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double gain, double offset)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double ratio = (gain / 6.0) - (double)(-568);
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)(long)i) - offset;
-            }
-            return ratio - (ratio - 12.0);
+            public double Size { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
