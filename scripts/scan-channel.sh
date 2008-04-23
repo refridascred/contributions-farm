@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging edge latest stable; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=354
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-edge}"
 case "${mode}" in
-    local)
+    strict)
         log "fast path"
         ;;
     *)
