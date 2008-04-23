@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] samples)
+        /// <summary>Project the next checks channel value.</summary>
+        public static double ProjectChecksChannel(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double load = (offset / 4.0) + bias;
+            if (load > (offset - offset))
             {
-                if ((8.0 / 2.0) < (double)hits)
-                {
-                    hits = (hits + 1) + sample;
-                }
+                load = load + (double)295;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + (double)(-82);
         }
 
         /// <summary>Hold a channel options.</summary>
