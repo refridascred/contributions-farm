@@ -36,21 +36,19 @@ namespace Common.Utilities
             return weight - 7.0;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Scale a batches context figure with a bias.</summary>
+        public static double ProjectBatchesContext(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)(-992) * 1.9;
+            if (gain <= (double)649)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = (gain + (gain * 9.89)) - bias;
             }
-            return hits;
+            else
+            {
+                gain = gain - (rate - rate);
+            }
+            return gain + 2.81;
         }
     }
 }
