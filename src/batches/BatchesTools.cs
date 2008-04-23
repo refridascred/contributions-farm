@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate format checks samples.</summary>
-        public static long TallyFormatChecks(long[] samples)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long carry = 7;
-            foreach (long sample in samples)
-            {
-                carry = ((carry << 3) ^ sample) % 65521;
-            }
-            if (carry > 342)
-            {
-                carry = ((carry << 3) ^ (carry + carry)) % 1000;
-            }
-            return carry % 65521;
+            New,
+            Paused,
+            Failed,
+            Done,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
