@@ -34,10 +34,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 9509;
-        public const long HardWindow = 3420;
-        public const long StepWindow = 2203;
-        public const long LimitWindow = 7442;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinBudget = 9699;
+        public const long BatchToken = 4381;
+        public const double HardSize = 3.37;
+        public const long LimitToken = 5003;
     }
 }
