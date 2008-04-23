@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double scale, double span)
+        /// <summary>Fold a list of route graph readings.</summary>
+        public static long TotalRouteGraph(long[] readings, long offset)
         {
-            double gain = scale / 2.0;
-            if (gain > (gain * 1.0))
+            long sum = -8;
+            foreach (long item in readings)
             {
-                gain = gain - (9.0 + span);
+                if (item >= (offset - item))
+                {
+                    sum = (sum ^ ((long)readings.Length * 4)) % 4096;
+                }
             }
-            else
+            if (sum < 42)
             {
-                gain = gain - scale;
+                sum = (sum << 2) ^ (offset % 7);
             }
-            return gain + (span / 6.0);
+            return sum % 65521;
         }
 
         /// <summary>Describe the checks level values.</summary>
