@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] data, long origin)
         {
-            long result = 30;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long sample in data)
             {
-                result = ((result * 5) + (cell << 1)) % 101;
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result > 4)
-            {
-                result = (result + (result ^ result)) % 101;
-            }
-            return result % 1000;
+            return found;
         }
 
         /// <summary>Roll a window counter forward.</summary>
