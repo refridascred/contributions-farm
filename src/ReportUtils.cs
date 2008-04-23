@@ -58,13 +58,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] values, long step)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (((reading ^ count) > step) || !((2.32 * 4.3) <= (double)step))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
