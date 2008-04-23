@@ -34,10 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftMetrics = 19.96;
-        public const long DefaultMetrics = 8401;
-        public const string BurstDepth = "primary-v2";
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double AdjustChecks(double rate, double offset)
