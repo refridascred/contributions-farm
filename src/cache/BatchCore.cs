@@ -30,21 +30,9 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Match up format cluster samples.</summary>
-        public static long MatchFormatClusterCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheScore = 19.94;
+        public const long WindowRecord = 4657;
+        public const long CacheRatio = 8998;
     }
 }
