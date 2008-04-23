@@ -1,17 +1,7 @@
 {
-  "retry_ratio_count": {
-    "audit": 86,
-    "default_interval": true,
-    "hard_threshold_ms": "blue",
-    "metric_capacity": 7,
-    "verbose": 60
-  },
-  "batches_retries": "edge",
-  "burst_size_pct": "cached",
-  "batch_ttl_ms": {
-    "soft_threshold": [481, 20, 156, 312],
-    "dry_run": 60,
-    "route_interval": 23.13,
-    "min_timeout": [267, 275]
-  }
+  "retry_window_count": 4297,
+  "verbose": 5394,
+  "poll_size_s": true,
+  "burst_limit_count": 50,
+  "already_ratio": true
 }
