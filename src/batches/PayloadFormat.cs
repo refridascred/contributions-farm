@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] items)
         {
-            Active,
-            Locked,
-            Idle,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((reading - reading) > (reading * 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
