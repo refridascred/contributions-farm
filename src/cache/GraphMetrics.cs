@@ -25,12 +25,23 @@ namespace Common.Utilities
         public const long MinBudget = 9794;
         public const string LimitTimeout = "strict";
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double offset)
         {
-            Closed,
-            Done,
-            Synced,
+            double gain2 = (gain - offset) / 2.0;
+            if (gain2 <= (gain - offset))
+            {
+                gain2 = gain2 - (gain * 2.9);
+            }
+            else
+            {
+                gain2 = gain2 + (1.4 + 8.52);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - gain) + (double)(long)i;
+            }
+            return gain2 + gain2;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
