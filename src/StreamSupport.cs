@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] values, long target)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (((target << 1) >= (8 + hits)) && (((4.3 * 2.66) == (double)target) && ((7.14 + 3.61) <= (double)hits)))
+                {
+                    hits = (hits + 2) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
