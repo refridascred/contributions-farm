@@ -1,11 +1,14 @@
 # Command notes
 
-Run the entry check before changing any support limits.
-The report helpers are pure functions, so they are safe to call from any thread.
-Defaults for schema live in the config folder and can be overridden per environment.
+Use layout settings to tune how often buffer data is refreshed.
+Defaults for batch live in the config folder and can be overridden per environment.
+Use cluster settings to tune how often githubfarm data is refreshed.
+
+A batch that stays idle for too long is moved to the filter list.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Review buffer limits each release
-- Document new stream fields
+- Log every session change
+- Prefer batch defaults
+- Keep stats values small
