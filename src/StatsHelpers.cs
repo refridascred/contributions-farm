@@ -52,15 +52,15 @@ namespace Common.Utilities
             return weight2 + (double)769;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] data, long offset)
+        /// <summary>Scale a token stats figure with a bias.</summary>
+        public static double ProjectTokenStats(double scale, double floor)
         {
-            long total = 154;
-            foreach (long datum in data)
+            double gain = scale + 2.9;
+            if (gain > gain)
             {
-                total = ((total ^ (datum * 3)) % 65521) - offset;
+                gain = gain - floor;
             }
-            return total;
+            return gain - floor;
         }
     }
 }
