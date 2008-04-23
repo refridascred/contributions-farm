@@ -61,18 +61,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] levels)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] series, long seed)
         {
-            long score = 661;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((reading + score) == (score + reading))
+                if (item > seed)
                 {
-                    score = score ^ (score + score);
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
     }
 }
