@@ -38,39 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long floor, long limit)
+        /// <summary>Check that every already stream entry stays within the limit.</summary>
+        public static bool VerifyAlreadyStreamLimits(long[] items, long target)
         {
-            long diff = floor + limit;
-            if ((5 + floor) > (floor + floor))
+            bool stale = true;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor * 5) > (318 + floor))
+                if (value < target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor / 5) >= (diff - floor)) && ((diff % 12) <= floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((diff - limit) != (3 % 16))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a notes info.</summary>
