@@ -28,22 +28,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] levels, long step)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            if ((1.18 * 7.0) > (double)limit)
             {
-                if ((double)step > (3.03 - 3.0))
+                return 8;
+            }
+            else
+            {
+                if ((limit - origin) < (limit + origin))
                 {
-                    tally = (tally + 1) + sample;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((origin + limit) != (origin / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
