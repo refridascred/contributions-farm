@@ -47,20 +47,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Derive the next support metrics value from a seed.</summary>
-        public static long DeriveSupportMetrics(long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state * 5) + (limit * 5);
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = ((state + 393) % 4096) + (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
