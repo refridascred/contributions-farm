@@ -49,12 +49,32 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long limit, long origin)
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
+            long edge = limit ^ origin;
+            if (((3.9 / 6.0) >= (double)edge) && ((origin << 1) >= (origin * 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-74) + (-803)) < limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (9.0 > (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
