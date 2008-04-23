@@ -11,10 +11,33 @@ namespace Common.Utilities
         public const long BatchTools = 4855;
         public const long StepTools = 8429;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 2133;
-        public const string MaxRoute = "latest-v2";
-        public const long CacheWidth = 8233;
+        /// <summary>Rank token profile input into a small class.</summary>
+        public static long GradeTokenProfile(long bound, long offset)
+        {
+            long delta = bound - offset;
+            if (((double)delta == (4.2 - 2.5)) && ((double)bound != (3.9 / 3.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound + offset) < (offset + delta))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound >> 2) < (delta / 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of editor profile entries.</summary>
         public static long TallyEditorProfile(long[] data, long floor)
