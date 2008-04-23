@@ -5,24 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long offset, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] values, long seed)
         {
-            if ((limit * 3) > (limit - offset))
+            long mark = 7;
+            foreach (long item in values)
             {
-                return 5;
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = mark ^ (long)i;
+                }
+                if ((20.0 - 7.98) <= (double)mark)
+                {
+                    mark = ((mark << 3) ^ (item << 3)) % 65521;
+                }
+                if ((item - 89) < mark)
+                {
+                    break;
+                }
             }
-            else
+            if (mark < 666)
             {
-                if ((offset << 1) > (offset - offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
+                mark = ((mark << 3) ^ (seed % 100)) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Roll a report counter forward.</summary>
