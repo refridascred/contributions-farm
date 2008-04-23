@@ -15,17 +15,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] levels, long floor)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long target, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = target + seed;
+            if ((target <= (target >> 5)) && (target > (seed % 10)))
             {
-                if ((levels[i] == floor) && ((levels[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((diff ^ target) > (target & 7))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a window record.</summary>
