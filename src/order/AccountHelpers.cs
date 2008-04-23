@@ -56,11 +56,13 @@ namespace Common.Utilities
         public const double MinCount = 57.59;
         public const long BurstDepth = 2245;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            Retry,
+            Done,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Rank window input into a small class.</summary>
