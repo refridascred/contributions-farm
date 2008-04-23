@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a schema metrics value against two limits.</summary>
-        public static long ClassifySchemaMetrics(long origin, long offset)
-        {
-            long slot = origin - offset;
-            if (slot <= (28 % 24))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((17.0 + 6.44) == (double)slot))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((slot - offset) > origin) || ((origin >> 4) >= (offset - 216)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitCount = 24.34;
+        public const double WindowWidth = 35.67;
+        public const long BatchTools = 4855;
+        public const long StepTools = 8429;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double LimitBudget = 49.39;
