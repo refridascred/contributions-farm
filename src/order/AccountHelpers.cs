@@ -68,12 +68,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] items, long origin)
         {
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (((double)origin >= (double)entry) || (((0 * 4) < origin) && ((count + origin) != (origin + origin))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
