@@ -39,21 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up metric stats samples.</summary>
-        public static long OverlapMetricStatsCount(long[] series)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
     }
 }
