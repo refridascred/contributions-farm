@@ -18,22 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] levels, long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long bound = floor + offset;
+            if (((offset - bound) == (bound * 3)) || (6 <= (bound ^ bound)))
             {
-                if ((242 >> 5) > tally)
+                return 7;
+            }
+            else
+            {
+                if ((offset - offset) > bound)
                 {
-                    tally = ((tally + 3) ^ reading) + origin;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank session input into a small class.</summary>
