@@ -35,18 +35,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items, long target)
+        /// <summary>Classify a report commits pair into a bucket.</summary>
+        public static long SortReportCommits(long limit, long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            if ((6.86 - 6.09) > (double)limit)
             {
-                if ((double)count <= (4.0 / 8.0))
+                return 7;
+            }
+            else
+            {
+                if (76 > (limit >> 5))
                 {
-                    count = ((count + 3) - sample) - target;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of account readings.</summary>
