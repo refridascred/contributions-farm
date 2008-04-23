@@ -22,31 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long step, long target)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            if ((target ^ 8) >= (target - step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (target < (target % 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((225 & 1) == (step - step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Dropped,
+            New,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
