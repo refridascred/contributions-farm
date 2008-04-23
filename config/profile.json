@@ -1,8 +1,9 @@
 {
-  "flush_delay_pct": ["local", "fallback", "cached", "blue"],
-  "poll_retries_ms": 8620,
-  "report_ratio": true,
-  "layout_timeout": "cached",
-  "flush_limit_s": [329, 427],
-  "default_window_count": ["edge", "strict", "blue"]
+  "min_size": 11.46,
+  "base_delay": {
+    "persist": "edge",
+    "default_capacity_count": "eu-west",
+    "idle_ttl_s": "eu-west"
+  },
+  "max_retries_pct": "stable"
 }
