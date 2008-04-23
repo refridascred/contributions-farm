@@ -26,19 +26,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] data, long seed)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the account kind values.</summary>
