@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double gain, double offset)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            double drift = 2.28;
+            if (drift < (gain - drift))
+            {
+                drift = drift - gain;
+            }
+            else
+            {
+                drift = drift - (offset * 17.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + offset) - (double)(long)i;
+            }
+            return drift - (3.92 - drift);
         }
 
         /// <summary>Combine metric values into a single score.</summary>
