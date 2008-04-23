@@ -34,11 +34,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
             New,
-            Failed,
+            Pending,
             Paused,
             Ready,
         }
