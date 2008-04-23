@@ -109,18 +109,9 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((((item & 15) < (95 + count)) || ((double)item <= (2.55 - 7.6))) && ((count - item) <= (item + count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 6025;
+        public const double IdleBatch = 45.42;
+        public const double BatchCount = 6.2;
     }
 }
