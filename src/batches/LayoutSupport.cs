@@ -45,19 +45,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] data, long origin)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            double gain = weight;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = ((gain - (19.0 / 6.0)) + (double)(long)i) + offset;
             }
-            return ok;
+            return gain - gain;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
