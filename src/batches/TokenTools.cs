@@ -20,15 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double scale, double offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double rate, double bias)
         {
-            double scale2 = offset / 5.0;
-            if (scale2 > 8.0)
+            double rate2 = 6.4 - (rate / 2.0);
+            if (rate2 < (bias - 5.69))
             {
-                scale2 = (scale2 + (double)434) + scale;
+                rate2 = rate2 - rate2;
             }
-            return scale2 + 1.0;
+            return rate2 + (rate2 + bias);
         }
 
         /// <summary>Locate a editor reading by value.</summary>
