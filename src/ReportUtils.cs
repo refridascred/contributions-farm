@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] samples, long step)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = offset;
+            if (scale > (double)0)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                scale = (scale + scale) + weight;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (scale / 5.0)) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Project the next buffer value.</summary>
