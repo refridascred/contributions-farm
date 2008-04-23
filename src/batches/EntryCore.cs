@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Retry,
-            Locked,
-            Paused,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinRoute = 67.43;
+        public const long SoftRoute = 8505;
+        public const long DefaultRoute = 682;
+        public const string BurstCount = "standard-1";
 
         /// <summary>Accumulate profile samples.</summary>
         public static long TotalProfile(long[] data)
