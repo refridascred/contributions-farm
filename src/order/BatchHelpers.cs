@@ -23,18 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] levels)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((long)levels.Length * 4) < (hits << 1))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            Closed,
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
