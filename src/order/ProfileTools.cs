@@ -68,24 +68,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] samples, long floor)
+        /// <summary>Count the editor context entries that pass the check.</summary>
+        public static long CountEditorContextGaps(long[] items)
         {
-            long acc = 969;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in items)
             {
-                acc = (acc * 4) + (acc - floor);
-                acc = (acc ^ (value + value)) % 65521;
-                if (floor < (acc >> 2))
+                if (((75 ^ item) <= (80 - seen)) && (((-96) >> 3) >= (item - item)))
                 {
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (acc > 353)
-            {
-                acc = (acc - (acc / 6)) % 97;
-            }
-            return acc;
+            return seen;
         }
     }
 }
