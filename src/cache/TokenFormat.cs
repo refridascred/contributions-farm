@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] items, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long mix = 19;
+            foreach (long cell in readings)
             {
-                if (item != bound)
+                mix = mix + (cell % 97);
+                if ((double)mix < 2.01)
                 {
-                    ready = false;
-                    break;
+                    mix = mix - 402;
                 }
+                mix = (mix ^ (412 + (-891))) % 4096;
             }
-            return ready;
+            return mix % 97;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
