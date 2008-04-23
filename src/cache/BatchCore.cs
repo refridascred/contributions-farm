@@ -25,15 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next notes support value from a seed.</summary>
-        public static long DeriveNotesSupport(long target)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up entry samples.</summary>
