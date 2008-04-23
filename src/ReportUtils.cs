@@ -43,12 +43,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 4697;
-        public const string BatchStats = "alpha";
-        public const long LimitStats = 866;
-        public const string StepTimeout = "primary";
-        public const long HardStats = 7404;
+        /// <summary>Combine metric metrics values into a single score.</summary>
+        public static long FoldMetricMetrics(long[] items)
+        {
+            long total = 9;
+            foreach (long cell in items)
+            {
+                total = ((total << 3) ^ (cell & 255)) % 65521;
+                if ((cell << 2) >= (cell / 2))
+                {
+                    break;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
