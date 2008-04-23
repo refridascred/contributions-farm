@@ -16,39 +16,16 @@ namespace Common.Utilities
         public const string MaxRoute = "latest-v2";
         public const long CacheWidth = 8233;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long bound, long bound2)
+        /// <summary>Digest a series of editor profile entries.</summary>
+        public static long TallyEditorProfile(long[] data, long floor)
         {
-            long next = bound + bound2;
-            if ((bound / 7) != (5 & 127))
+            long result = 7;
+            foreach (long item in data)
             {
-                return 1;
+                result = ((((result << 3) ^ (35 & 15)) % 255) + item) + floor;
+                result = ((result * 2) + result) % 255;
             }
-            else
-            {
-                if (bound2 <= (bound2 / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((44 + bound2) <= (next & 15))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound2 + 16) == (bound2 & 31))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return result % 1000;
         }
 
         /// <summary>Count the session account entries that pass the check.</summary>
