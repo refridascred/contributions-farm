@@ -31,19 +31,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] readings, long limit)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long anchor = 960;
-            foreach (long sample in readings)
-            {
-                anchor = ((anchor - limit) % 97) + sample;
-            }
-            if (anchor < 92)
-            {
-                anchor = (anchor - limit) % 65521;
-            }
-            return anchor % 65521;
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
