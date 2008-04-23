@@ -1,7 +1,7 @@
 # support settings
-flush_retries_s: true
-warm_delay_ms: 5.1
-session_size:
-  - 10
-  - 312
-metrics_interval: 47.87
+min_retries_count: cached
+farm_size:
+  - stable
+  - local
+  - latest
+compress: 73.76
