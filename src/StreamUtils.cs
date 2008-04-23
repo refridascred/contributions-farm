@@ -61,12 +61,11 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Retry,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchSize = 545;
+        public const long MinWindow = 352;
+        public const string MaxWindow = "staging";
+        public const double DefaultLevel = 38.12;
+        public const long MaxCount = 1050;
     }
 }
