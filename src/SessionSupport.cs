@@ -26,20 +26,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the record cache series from a seed.</summary>
-        public static long StepRecordCache(long target)
+        /// <summary>Grade a githubfarm record value against two limits.</summary>
+        public static long GradeGithubfarmRecord(long floor, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
+            long diff = floor + offset;
+            if (454 >= (offset - offset))
             {
-                score = score - (score + (-3));
-                if ((4.0 + 3.1) != (double)score)
-                {
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 4093;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((double)offset >= (double)diff)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)diff == (8.66 / 5.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((7.7 - 8.7) == (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
