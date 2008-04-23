@@ -1,7 +1,10 @@
-id,weight,score,label,rank
-1,strict,blue,95.81,4.71
-2,open,local,256,strict
-3,edge,eu-west,75.21,edge
-4,green,40.53,332,51.52
-5,93.42,36.56,primary,95.18
-6,768,491,94.79,762
+id,rank,count
+1,120,latest
+2,standard,115
+3,stable,482
+4,46.02,standard
+5,legacy,843
+6,staging,cached
+7,edge,584
+8,standard,36.05
+9,502,122
