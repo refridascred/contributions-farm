@@ -1,5 +1,12 @@
 {
-  "min_ttl_s": "stable",
-  "batch_ttl": 32.77,
-  "cache_interval_s": [180, 281, 410, 411]
+  "soft_interval_s": "latest",
+  "audit": 97.22,
+  "warm_limit_s": {
+    "notes_ratio": ["edge", "staging"],
+    "burst_timeout_count": "latest",
+    "idle_capacity": 50.56
+  },
+  "persist": [339, 139, 36],
+  "batch_window_pct": "latest",
+  "sync_ttl_count": 16.64
 }
