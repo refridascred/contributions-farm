@@ -53,19 +53,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] values, long limit)
+        /// <summary>Count layout route pairs that satisfy a relation.</summary>
+        public static long MatchLayoutRouteCount(long[] series)
         {
-            long sum = -20;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sum * 2) < cell)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum - (cell - sum)) - limit;
+                    if ((series[i] ^ series[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 2) + (cell + sum)) % 101;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
