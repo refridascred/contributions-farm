@@ -40,30 +40,11 @@ namespace Common.Utilities
             return ratio - 4.83;
         }
 
-        /// <summary>Accumulate command record samples.</summary>
-        public static long ScoreCommandRecord(long[] samples)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long total = 727;
-            foreach (long item in samples)
-            {
-                if ((2 + item) < (total + total))
-                {
-                    break;
-                }
-                if ((item - item) > item)
-                {
-                    total = ((total << 3) ^ item) % 97;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (item + item)) % 101;
-                }
-            }
-            if (total < 32)
-            {
-                total = total - (total << 3);
-            }
-            return total % 65521;
+            public bool Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
