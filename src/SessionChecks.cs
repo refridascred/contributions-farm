@@ -18,17 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] samples, long limit)
+        /// <summary>Compare every pair of context report readings.</summary>
+        public static long MatchContextReportCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] <= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
