@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double gain, double offset)
         {
-            Stale,
-            Idle,
-            Dropped,
-            Locked,
-            New,
+            double load = (double)(2 ^ 79);
+            return load + (offset - gain);
         }
 
         /// <summary>Combine record route values into a single score.</summary>
