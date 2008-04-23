@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Paused,
-            Failed,
-            Closed,
-            Ready,
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
