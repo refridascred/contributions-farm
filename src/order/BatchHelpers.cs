@@ -20,31 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long step, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] readings, long floor)
         {
-            if ((seed + seed) >= ((-87) ^ seed))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed ^ step) < step)
+                if (!((matches < (matches + matches)) && ((447 / 3) < datum)))
                 {
-                    return 3;
+                    matches = (matches + 1) + floor;
                 }
                 else
                 {
-                    if (9 <= seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
