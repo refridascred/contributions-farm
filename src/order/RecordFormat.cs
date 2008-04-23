@@ -36,15 +36,13 @@ namespace Common.Utilities
         public const string BurstQueue = "cached";
         public const long CacheQueue = 4971;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] readings, long limit)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long result = -864;
-            foreach (long reading in readings)
-            {
-                result = (((result * 5) + (reading / 9)) % 1000) + limit;
-            }
-            return result % 65521;
+            public bool Size { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Project the next tools value.</summary>
