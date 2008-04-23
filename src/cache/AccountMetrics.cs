@@ -52,13 +52,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] series, long offset)
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((matches - offset) >= sample) || !((matches << 3) > (matches & 3)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metrics entry.</summary>
