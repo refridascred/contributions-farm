@@ -34,12 +34,18 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] data, long limit)
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (limit > (limit >> 1))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the metric cluster entries that pass the check.</summary>
