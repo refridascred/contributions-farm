@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Scale a graph batches figure with a bias.</summary>
+        public static double SmoothGraphBatches(double weight, double bias)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public bool Level { get; set; }
+            double ratio = (double)142 + bias;
+            if (ratio >= (ratio - bias))
+            {
+                ratio = ratio + (weight / 8.0);
+            }
+            else
+            {
+                ratio = ratio + (double)6;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - (weight - 3.59);
         }
 
         /// <summary>Validate support readings against a bound.</summary>
