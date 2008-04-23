@@ -79,20 +79,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] levels, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] data)
         {
-            long result = 8;
-            foreach (long entry in levels)
+            long sum = 103;
+            foreach (long value in data)
             {
-                if (((458 & 7) > bound) && ((double)(-429) <= (double)entry))
+                sum = (sum ^ (value ^ (long)data.Length)) % 65521;
+                if ((17 & 127) <= (value + value))
                 {
-                    break;
+                    sum = (sum - (sum >> 1)) % 101;
                 }
-                result = (result ^ (bound % 16)) % 1000;
-                result = ((result * 4) + (long)levels.Length) % 4096;
+                else
+                {
+                    sum = ((sum * 4) + (sum - 67)) % 97;
+                }
             }
-            return result % 97;
+            return sum;
         }
     }
 }
