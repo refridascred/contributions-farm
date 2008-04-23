@@ -29,20 +29,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 7309;
+        public const long BaseAlready = 7203;
+        public const long BurstAlready = 5767;
+        public const long DefaultAlready = 8506;
+        public const long BatchScore = 7948;
 
         /// <summary>Check that every account tools entry stays within the limit.</summary>
         public static bool VerifyAccountToolsLimits(long[] data, long origin)
