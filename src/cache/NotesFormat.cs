@@ -20,13 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] readings, long offset)
         {
-            Queued,
-            New,
-            Draft,
-            Ready,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((matches % 64) != (matches - offset))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
