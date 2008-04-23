@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] items, long seed)
+        /// <summary>Combine channel profile values into a single score.</summary>
+        public static long CombineChannelProfile(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 736;
+            foreach (long item in items)
             {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
+                total = (total - (long)items.Length) ^ item;
             }
-            return -1;
+            if (total < 3)
+            {
+                total = (total * 5) + (total + total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
