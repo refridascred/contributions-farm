@@ -34,22 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] samples)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (((cell >> 3) >= cell) || ((cell + 931) < (matches ^ cell)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
