@@ -29,11 +29,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxRatio = 70.18;
-        public const double BurstReport = 85.89;
-        public const long RetryLevel = 9622;
-        public const long CacheFactor = 1481;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] data, long seed)
+        {
+            long anchor = 696;
+            foreach (long datum in data)
+            {
+                anchor = (((anchor - (89 * 3)) % 1000) + datum) + seed;
+            }
+            return anchor;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double BurstContext = 64.01;
