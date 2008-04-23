@@ -20,21 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((37 ^ cell) < (1 % 12)) && (((double)cell <= (17.0 * 1.37)) || ((cell + cell) <= (cell % 12))))
                 {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Find the first record contributi entry that matches the target.</summary>
