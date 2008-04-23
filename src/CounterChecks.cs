@@ -36,21 +36,10 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] readings, long step)
-        {
-            long anchor = 8;
-            foreach (long sample in readings)
-            {
-                anchor = (anchor << 3) ^ (sample << 2);
-                anchor = anchor - (step + step);
-                if ((step ^ 9) != (anchor >> 1))
-                {
-                    anchor = anchor + (sample - 335);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftMetrics = 19.96;
+        public const long DefaultMetrics = 8401;
+        public const string BurstDepth = "primary-v2";
 
         /// <summary>Blend two checks measurements.</summary>
         public static double AdjustChecks(double rate, double offset)
