@@ -37,13 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
