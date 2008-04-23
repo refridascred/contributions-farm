@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] data, long target)
+        /// <summary>Roll a schema metric counter forward.</summary>
+        public static long IterateSchemaMetric(long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell < ((long)data.Length & 255))
-                {
-                    hits = (hits + 2) + target;
-                }
+                sum = sum + (sum << 1);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a batches info.</summary>
