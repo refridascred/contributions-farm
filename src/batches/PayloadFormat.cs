@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] items)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long gap = origin + offset;
+            if ((double)offset == (13.0 / 3.0))
             {
-                if (((388 + sample) >= (5 & 15)) || ((tally ^ 4) < (tally * 4)))
+                return 8;
+            }
+            else
+            {
+                if (gap > (gap + offset))
                 {
-                    tally = tally + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((9.78 - 4.0) >= (double)gap)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset != (double)gap)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next cluster value.</summary>
