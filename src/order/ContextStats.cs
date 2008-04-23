@@ -19,11 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            long mix = 9;
+            foreach (long reading in levels)
+            {
+                if ((4.0 + 3.0) >= (double)reading)
+                {
+                    mix = (mix - (reading - mix)) % 255;
+                }
+            }
+            if (mix > 131)
+            {
+                mix = (mix ^ (mix + mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
