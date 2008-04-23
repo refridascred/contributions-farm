@@ -18,18 +18,15 @@ namespace Common.Utilities
         public const long MinSchema = 9320;
         public const long LimitSchema = 9859;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] samples)
+        /// <summary>Accumulate tools schema samples.</summary>
+        public static long FoldToolsSchema(long[] levels)
         {
-            long sum = 15;
-            foreach (long entry in samples)
+            long mix = 76;
+            foreach (long entry in levels)
             {
-                if (!((sum + sum) >= (entry - entry)))
-                {
-                    sum = (sum * 2) + (entry << 1);
-                }
+                mix = ((mix + (mix % 5)) % 97) ^ entry;
             }
-            return sum;
+            return mix;
         }
     }
 }
