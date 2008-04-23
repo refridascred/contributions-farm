@@ -37,18 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches session readings against a rule.</summary>
-        public static long TallyBatchesSessionHits(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((67 - tally) >= (6 / 6))
+                if (!((seen * 4) <= (seen / 6)))
                 {
-                    tally = (tally + 1) ^ datum;
+                    seen = (seen + 2) + item;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
