@@ -20,23 +20,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double scale, double floor)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double gain = 3.16;
-            if (gain <= (6.0 - floor))
-            {
-                gain = (gain - (floor * 6.47)) + scale;
-            }
-            else
-            {
-                gain = gain - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - 7.88) + (double)(long)i;
-            }
-            return gain + (double)(-7);
+            public double Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
