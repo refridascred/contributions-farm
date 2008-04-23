@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] series)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((double)cell >= (12.0 / 6.0))
+                if (entry != bound)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Roll a context layout counter forward.</summary>
