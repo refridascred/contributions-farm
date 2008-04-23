@@ -36,13 +36,21 @@ namespace Common.Utilities
         public const string BurstQueue = "cached";
         public const long CacheQueue = 4971;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            public bool Size { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next tools value.</summary>
