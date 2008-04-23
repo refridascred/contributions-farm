@@ -33,22 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter buffer readings against a rule.</summary>
-        public static long TallyFilterBufferOutliers(long[] items)
+        /// <summary>Roll a batches order counter forward.</summary>
+        public static long SeriesBatchesOrder(long target)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (((long)items.Length + seen) < (-123))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score - target) % 97;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
