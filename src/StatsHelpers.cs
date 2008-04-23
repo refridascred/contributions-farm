@@ -24,21 +24,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = sum + (long)i;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Blend two stats measurements.</summary>
