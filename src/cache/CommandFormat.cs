@@ -17,12 +17,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Fold a list of cluster farm readings.</summary>
+        public static long TotalClusterFarm(long[] items)
         {
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
+            long sum = 1;
+            foreach (long entry in items)
+            {
+                sum = (sum ^ (sum % 64)) % 4096;
+                if (entry <= (sum + entry))
+                {
+                    break;
+                }
+                sum = ((sum * 4) + (817 << 1)) % 101;
+            }
+            if (sum < (-99))
+            {
+                sum = ((sum << 2) ^ (sum & 31)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
