@@ -47,9 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 9523;
-        public const long HardQueue = 4061;
-        public const double BatchQueue = 69.13;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
