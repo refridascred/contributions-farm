@@ -34,11 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value >> 5) <= (value * 2))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two checks measurements.</summary>
