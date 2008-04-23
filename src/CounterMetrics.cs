@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] series, long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (datum > offset)
+                if (entry > seed)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
