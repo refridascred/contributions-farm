@@ -20,14 +20,11 @@ namespace Common.Utilities
             return mean + (offset + mean);
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Idle,
-            Paused,
-            Synced,
-            Draft,
-            Locked,
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
