@@ -23,39 +23,21 @@ namespace Common.Utilities
         public const long BaseBudget = 3429;
         public const long SoftCommits = 8606;
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long target, long offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            long gap = target - offset;
-            if (!((gap & 63) == (offset >> 2)))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((gap % 5) > (gap << 1)) || (offset > target))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)gap < (7.6 / 6.0))
+                    if ((readings[i] + readings[j]) == 13)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((gap + 21) < (target + target)) && ((offset & 15) == (gap - target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
