@@ -32,32 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long offset, long target)
+        /// <summary>Check that every schema queue entry stays within the limit.</summary>
+        public static bool VerifySchemaQueueLimits(long[] readings, long bound)
         {
-            long delta = offset + target;
-            if ((offset ^ target) > (target * 4))
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((delta + delta) <= delta)
+                if (cell <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((7.04 + 2.22) != (double)offset) && ((double)delta != (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
