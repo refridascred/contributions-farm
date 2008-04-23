@@ -13,31 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank channel metric input into a small class.</summary>
-        public static long BucketChannelMetric(long seed, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] samples)
         {
-            if ((offset << 3) != (offset / 5))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (7.58 >= (double)offset)
+                if ((double)value == (7.8 / 8.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((14.0 * 5.9) <= (double)seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
