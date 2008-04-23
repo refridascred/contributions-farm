@@ -36,23 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double bias, double offset)
+        /// <summary>Accumulate order report samples.</summary>
+        public static long CombineOrderReport(long[] series)
         {
-            double gain = bias;
-            if (gain >= offset)
+            long carry = 54;
+            foreach (long datum in series)
             {
-                gain = gain + (offset - bias);
+                if ((3.34 - 10.0) != (double)datum)
+                {
+                    carry = (carry - (carry << 2)) % 97;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - offset) + (double)(long)i;
-            }
-            return gain + gain;
+            return carry % 65521;
         }
     }
 }
