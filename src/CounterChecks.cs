@@ -30,22 +30,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] values)
+        /// <summary>Grade a cluster entry value against two limits.</summary>
+        public static long GradeClusterEntry(long step, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            if ((17.0 * 6.07) < (double)step)
             {
-                if ((value >> 5) <= (value * 2))
+                return 3;
+            }
+            else
+            {
+                if (offset >= (step ^ offset))
                 {
-                    tally = tally + 1;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((9.42 >= (2.0 * 18.0)) && (offset <= 350))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
