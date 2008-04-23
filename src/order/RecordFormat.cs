@@ -39,16 +39,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Roll a tools farm counter forward.</summary>
-        public static long StepToolsFarm(long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                mix = mix + (limit ^ limit);
-                mix = ((mix * 4) + (long)i) % 97;
+                if (25 >= ((long)data.Length + 5))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
