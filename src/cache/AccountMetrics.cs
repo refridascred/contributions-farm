@@ -23,22 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit filter graph readings against a rule.</summary>
-        public static long AuditFilterGraphOutliers(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((double)cell >= (double)hits)
+                if (!((tally % 8) < (64 - 0)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) + value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
