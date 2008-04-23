@@ -44,14 +44,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] items)
         {
-            Dropped,
-            Failed,
-            Done,
-            Draft,
-            Active,
+            long sum = 4;
+            foreach (long reading in items)
+            {
+                sum = (sum - (sum + 450)) % 255;
+                if (reading >= (sum + sum))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Locate a window reading by value.</summary>
