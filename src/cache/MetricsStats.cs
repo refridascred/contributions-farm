@@ -33,19 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema queue entry stays within the limit.</summary>
-        public static bool VerifySchemaQueueLimits(long[] readings, long bound)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
