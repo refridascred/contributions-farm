@@ -53,13 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Weight { get; set; }
+            public bool Score { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
