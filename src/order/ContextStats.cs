@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long limit, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] levels, long seed)
         {
-            long slot = limit ^ offset;
-            if ((offset - limit) >= (offset % 3))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((82 * 5) < limit)
+                if ((sample >> 2) == (count + count))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit < slot) && ((double)limit < (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 3) + seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a channel options.</summary>
