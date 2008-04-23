@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long origin, long offset)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long gap = origin + offset;
-            if ((double)offset == (13.0 / 3.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (gap > (gap + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.78 - 4.0) >= (double)gap)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset != (double)gap)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Project the next cluster value.</summary>
