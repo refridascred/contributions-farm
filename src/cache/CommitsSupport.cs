@@ -28,12 +28,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryWidth = 8825;
-        public const long CacheLevel = 2308;
-        public const double BaseTools = 90.67;
-        public const string MaxLevel = "alpha";
-        public const long IdleDepth = 1380;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
