@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double gain, double span)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            double bias = (double)(995 + 4);
-            for (int i = 0; i < 2; i++)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                bias = (((bias - (bias * 11.0)) + (double)(long)i) + gain) - span;
+                state = ((state << 2) ^ target) % 101;
+                state = state - (target & 1);
+                state = ((state * 5) + (long)i) % 101;
             }
-            return bias + (double)81;
+            return state;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
