@@ -23,15 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double weight, double span)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long bound, long limit)
         {
-            double load = (double)(384 + 863);
-            if (load >= load)
+            if ((8.5 - 7.0) >= (10.0 / 9.0))
             {
-                load = (load - 2.0) - weight;
+                return 0;
             }
-            return load - span;
+            else
+            {
+                if ((bound * 4) < bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
