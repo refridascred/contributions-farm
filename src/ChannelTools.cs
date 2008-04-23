@@ -24,17 +24,22 @@ namespace Common.Utilities
         public const long BaseFactor = 851;
         public const string RetryFilter = "latest";
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] series, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (series[i] <= origin)
+                if ((double)step > (3.03 - 3.0))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
