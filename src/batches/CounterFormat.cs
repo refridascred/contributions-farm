@@ -19,17 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] levels, long floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long seed, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = seed ^ step;
+            if ((894 & 3) == (seed * 5))
             {
-                if (levels[i] == floor)
+                return 4;
+            }
+            else
+            {
+                if (14.0 <= (double)step)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed >> 5) >= prev)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate batches queue readings against a bound.</summary>
