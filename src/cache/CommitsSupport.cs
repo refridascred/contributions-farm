@@ -20,11 +20,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Roll a stream cluster counter forward.</summary>
+        public static long StepStreamCluster(long seed)
         {
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
