@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((floor % 10) == (floor - 1))
-                {
-                    mark = mark + (mark + mark);
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mark = (((mark << 3) ^ (45 + floor)) % 255) - (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public double Level { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the context level values.</summary>
