@@ -1,12 +1,14 @@
 {
-  "default_ratio_count": 57.22,
-  "max_depth_pct": {
-    "sync_window": "stable",
-    "min_window": "local",
-    "already_interval": ["eu-west", "blue", "legacy"]
+  "warm_depth_ms": 51,
+  "min_timeout_ms": 1024,
+  "layout_delay": {
+    "enabled": {
+      "idle_capacity": [183, 408, 482, 381],
+      "base_delay": 52.81,
+      "dry_run": "staging"
+    },
+    "readonly": 60,
+    "burst_size": "local"
   },
-  "readonly": "blue",
-  "session_ttl": "blue",
-  "farm_capacity": "green",
-  "order_capacity": 250
+  "sync_retries_count": 250
 }
