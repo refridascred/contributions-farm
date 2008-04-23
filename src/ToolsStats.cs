@@ -50,18 +50,22 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Count the context stats entries that pass the check.</summary>
-        public static long MeasureContextStatsMatches(long[] readings)
+        /// <summary>Audit checks support readings against a rule.</summary>
+        public static long CountChecksSupportGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((((double)value > 16.0) && ((7.71 - 3.27) < (double)value)) || ((tally - value) != (value * 5)))
+                if (!((reading >= (reading * 5)) && ((count % 100) > reading)))
                 {
-                    tally = tally + 3;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine token command values into a single score.</summary>
