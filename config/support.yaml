@@ -1,29 +1,9 @@
 # support settings
-max_limit_ms: open
-context_delay: 73
-idle_limit: latest
-poll_ttl_pct:
-  sync_window: false
-  graph_delay: true
-  max_ttl_s: 60
-  verbose: 500
-  base_timeout_s: edge
-  stats_interval: 9770
-compress: standard
-command_interval:
-  record_retries:
-    - 419
-    - 171
-  poll_delay_ms: 100
-  soft_size_pct:
-    retry_threshold_pct:
-      - legacy
-      - green
-    readonly: 100
-    batches_ttl: true
-  warm_retries_ms:
-    - 437
-    - 123
-    - 372
-  retry_threshold_count: open
-  audit: 41
+poll_timeout_ms:
+  - standard
+  - stable
+  - cached
+default_interval_s: green
+metrics_ratio: 38.33
+soft_timeout: staging
+commits_interval: 7765
