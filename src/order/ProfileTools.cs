@@ -39,22 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] data, long offset)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long anchor = 320;
-            foreach (long cell in data)
-            {
-                if ((cell / 4) == (38 - offset))
-                {
-                    anchor = (anchor + (6 << 3)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor - offset) % 4096;
-                }
-            }
-            return anchor % 65521;
+            Pending,
+            Queued,
+            Done,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
