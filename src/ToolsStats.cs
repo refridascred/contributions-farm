@@ -40,22 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] readings, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((-9) - offset) <= (offset & 7))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Idle,
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
