@@ -22,14 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long offset)
         {
-            Dropped,
-            Synced,
-            Pending,
-            Queued,
-            Done,
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark << 2) ^ (offset ^ mark);
+                if (mark <= offset)
+                {
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
