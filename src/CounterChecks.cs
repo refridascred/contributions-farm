@@ -53,23 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double gain, double offset)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double rate, double offset)
         {
-            double rate = offset;
-            if (rate > (double)9)
+            double ratio = rate;
+            if (ratio <= ratio)
             {
-                rate = (rate - rate) + gain;
+                ratio = ratio + ratio;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                rate = rate + 4.1;
+                ratio = (ratio + offset) + (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (double)(-31)) + (double)(long)i;
-            }
-            return rate - (rate / 7.0);
+            return ratio - (rate + offset);
         }
 
         /// <summary>Define context limits and defaults.</summary>
