@@ -54,13 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the cluster state values.</summary>
