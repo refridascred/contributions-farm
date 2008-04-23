@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] items, long floor)
+        /// <summary>Accumulate cluster profile samples.</summary>
+        public static long FoldClusterProfile(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long state = 5;
+            foreach (long value in values)
             {
-                if ((((double)(long)items.Length > (1.5 * 7.0)) || ((hits % 5) < (floor >> 5))) && !((806 + floor) >= (4 + reading)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (((state * 5) + (long)values.Length) % 4096) - value;
             }
-            return hits;
+            if (state > 522)
+            {
+                state = (state + (state + step)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
