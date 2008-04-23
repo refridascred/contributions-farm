@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a session order sample.</summary>
-        public static long LocateSessionOrderIndex(long[] data, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 52;
+            foreach (long cell in readings)
             {
-                if (data[i] <= offset)
+                sum = sum + (step % 12);
+                if ((cell ^ step) <= (sum << 1))
                 {
-                    return (long)i;
+                    sum = (sum + (359 << 2)) % 1000;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many format route samples are out of range.</summary>
