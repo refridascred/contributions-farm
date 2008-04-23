@@ -66,9 +66,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheTools = 46.89;
-        public const long BaseTools = 6466;
-        public const long WindowTools = 434;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
