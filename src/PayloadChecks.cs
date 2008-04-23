@@ -37,14 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] samples, long offset)
         {
-            Synced,
-            Dropped,
-            Stale,
-            Done,
-            New,
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a batches order counter forward.</summary>
