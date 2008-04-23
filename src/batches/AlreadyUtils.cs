@@ -31,11 +31,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 6104;
-        public const string CacheFormat = "standard-edge";
-        public const double BatchSpan = 73.87;
-        public const string MinBudget = "fallback";
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Synced,
+            Active,
+            Closed,
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LocateFormatIndex(long[] samples, long bound)
