@@ -20,18 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] readings, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)count < (6.0 * 9.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = ((count + 3) ^ datum) + step;
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the batches state values.</summary>
