@@ -38,12 +38,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long floor, long limit)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            long diff = floor + limit;
+            if ((5 + floor) > (floor + floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor * 5) > (318 + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor / 5) >= (diff - floor)) && ((diff % 12) <= floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((diff - limit) != (3 % 16))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes info.</summary>
