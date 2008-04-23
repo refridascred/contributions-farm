@@ -25,12 +25,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            Draft,
-            Active,
-            Ready,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
