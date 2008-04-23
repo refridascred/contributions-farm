@@ -51,12 +51,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 1741;
-        public const double BurstDepth = 59.14;
-        public const string HardEntry = "latest-edge";
-        public const long CacheEntry = 6647;
-        public const long BaseEntry = 2253;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = ((mark * 5) + ((long)i2 + 47)) % 4096;
+                    mark = (mark + ((long)i2 & 255)) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
