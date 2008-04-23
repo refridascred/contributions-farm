@@ -22,13 +22,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] values, long offset)
         {
-            Active,
-            Ready,
-            Failed,
-            Retry,
+            long mix = -478;
+            foreach (long item in values)
+            {
+                mix = ((mix - (792 + item)) % 97) - offset;
+            }
+            return mix % 97;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
