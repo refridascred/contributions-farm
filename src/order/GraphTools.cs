@@ -76,21 +76,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate schema token readings against a bound.</summary>
