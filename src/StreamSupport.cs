@@ -43,19 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] samples, long offset)
+        /// <summary>Audit batches session readings against a rule.</summary>
+        public static long TallyBatchesSessionHits(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (sample >= offset)
+                if ((67 - tally) >= (6 / 6))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
