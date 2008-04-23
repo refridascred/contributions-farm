@@ -36,19 +36,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every queue editor entry stays within the limit.</summary>
-        public static bool ValidateQueueEditorLimits(long[] levels, long target)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            double drift = (floor / 6.0) - (rate + floor);
+            if (drift < drift)
             {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + (double)931;
             }
-            return flag;
+            else
+            {
+                drift = drift + (double)46;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (floor / 7.0)) + (double)(long)i;
+            }
+            return drift - rate;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
