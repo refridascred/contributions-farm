@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((((37 + count) == (count - count)) || ((long)levels.Length < count)) && ((count & 7) < (4 + 54)))
+                {
+                    count = (count + 1) ^ item;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the channel kind values.</summary>
