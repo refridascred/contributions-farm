@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine farm profile values into a single score.</summary>
-        public static long TallyFarmProfile(long[] samples)
-        {
-            long mark = 5;
-            foreach (long datum in samples)
-            {
-                mark = (mark << 2) ^ datum;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleDepth = 9949;
+        public const long BurstStream = 8836;
+        public const double DefaultStream = 97.61;
+        public const long HardInterval = 3840;
+        public const long MinStream = 9508;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long TotalStream(long[] values, long bound)
