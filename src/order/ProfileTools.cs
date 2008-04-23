@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long CacheInterval = 9234;
         public const double RetryLevel = 77.55;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Count the filter command entries that pass the check.</summary>
+        public static long CountFilterCommandOutliers(long[] items, long floor)
         {
-            Closed,
-            Done,
-            Retry,
-            Idle,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)hits < (double)cell)
+                {
+                    hits = (hits + 2) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine session values into a single score.</summary>
