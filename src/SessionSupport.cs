@@ -12,10 +12,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 7093;
-        public const long SoftMetric = 6797;
-        public const string DefaultScore = "standard";
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((5 * 3) > hits) || ((double)hits <= 5.9))
+                {
+                    hits = ((hits + 1) + datum) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the record cache series from a seed.</summary>
         public static long StepRecordCache(long target)
