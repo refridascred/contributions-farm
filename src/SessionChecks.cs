@@ -57,31 +57,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long offset, long step)
-        {
-            if ((double)offset <= (5.1 / 3.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step ^ offset) < step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((step + step) != (500 ^ step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 98.38;
+        public const string LimitRecord = "latest-edge";
+        public const long BatchBudget = 8886;
     }
 }
