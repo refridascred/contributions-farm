@@ -30,38 +30,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long seed, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] values, long target)
         {
-            if ((seed + seed) <= origin)
+            long mix = 30;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed * 5) <= seed)
+                if ((target + target) < (mix % 3))
                 {
-                    return 3;
+                    mix = ((mix << 3) ^ (target % 5)) ^ reading;
                 }
-                else
+                if ((target / 7) < (718 << 3))
                 {
-                    if ((origin * 3) <= (seed % 24))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((333 - seed) == (seed + origin)) && (995 < (seed ^ origin)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mix = mix + (mix + 364);
+                }
+                if ((8.7 - 7.0) <= (double)target)
+                {
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
