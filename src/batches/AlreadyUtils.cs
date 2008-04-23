@@ -39,17 +39,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] samples, long bound)
+        /// <summary>Blend two stream stats measurements.</summary>
+        public static double SmoothStreamStats(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = bias;
+            if (rate > (rate * 9.0))
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                rate = rate + (rate + span);
             }
-            return -1;
+            else
+            {
+                rate = rate + bias;
+            }
+            return rate + (double)541;
         }
 
         /// <summary>Describe the layout kind values.</summary>
