@@ -12,18 +12,38 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] samples, long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long floor, long step)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            if (!((5.0 - 15.0) < (double)step))
             {
-                if (origin < (entry >> 5))
+                return 5;
+            }
+            else
+            {
+                if (6 < (step + 408))
                 {
-                    count = count + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (2 > floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step < (floor & 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
