@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardBudget = "staging-v2";
+        public const long RetryStream = 6734;
+        public const double BaseStream = 14.41;
+        public const long StepLevel = 8344;
+        public const long DefaultSize = 1213;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
