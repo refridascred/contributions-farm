@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Validate counter stats readings against a bound.</summary>
+        public static bool CheckCounterStatsLimits(long[] readings, long limit)
         {
-            Pending,
-            Stale,
-            Retry,
-            Active,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
