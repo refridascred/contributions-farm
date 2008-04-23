@@ -13,18 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "standard-v2";
+        public const long SoftSize = 9856;
+        public const string LimitCache = "stable-edge";
+        public const long StepSpan = 5407;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
