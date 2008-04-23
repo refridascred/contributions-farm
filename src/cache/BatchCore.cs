@@ -21,13 +21,19 @@ namespace Common.Utilities
         public const long SoftCount = 2259;
         public const long CacheSpan = 8380;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Validate command session readings against a bound.</summary>
+        public static bool CheckCommandSessionBounds(long[] data, long target)
         {
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define record limits and defaults.</summary>
