@@ -12,14 +12,15 @@ namespace Common.Utilities
         public const long StepLevel = 8344;
         public const long DefaultSize = 1213;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            Idle,
-            Failed,
-            Ready,
-            Locked,
-            New,
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
