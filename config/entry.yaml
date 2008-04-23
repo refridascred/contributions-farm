@@ -1,5 +1,5 @@
 # entry settings
-dry_run: true
-base_threshold: standard
-default_capacity_s: fallback
-enabled: standard
+retry_interval: eu-west
+cache_window_count: 78.14
+farm_size: true
+cache_ttl: 500
