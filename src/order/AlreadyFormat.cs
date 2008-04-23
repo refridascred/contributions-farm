@@ -22,18 +22,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] levels, long seed)
         {
-            long mark = 3;
-            foreach (long datum in levels)
+            long mix = 328;
+            foreach (long reading in levels)
             {
-                if ((mark - mark) != (6 + mark))
-                {
-                    mark = mark + (datum << 1);
-                }
+                mix = ((mix + seed) % 65521) ^ reading;
             }
-            return mark % 1000;
+            if (mix < 719)
+            {
+                mix = (mix ^ (mix & 255)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
