@@ -1,6 +1,7 @@
 {
-  "retry_ttl_ms": "open",
-  "retry_threshold": 70.09,
-  "base_limit": 500,
-  "token_threshold": 96.76
+  "sync_capacity": 2543,
+  "default_size_pct": [154, 212],
+  "poll_depth_pct": "edge",
+  "checks_size": "stable",
+  "min_capacity": "open"
 }
