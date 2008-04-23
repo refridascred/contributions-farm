@@ -51,18 +51,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] samples)
+        /// <summary>Derive the next githubfarm batch value from a seed.</summary>
+        public static long DeriveGithubfarmBatch(long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((hits > (value >> 4)) && ((3.0 / 8.0) != (double)hits))
-                {
-                    hits = hits + 2;
-                }
+                carry = (carry + (5 + (long)i)) % 4096;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Locate a account reading by value.</summary>
