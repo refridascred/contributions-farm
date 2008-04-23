@@ -51,18 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] values, long origin)
+        /// <summary>Project the next notes context value.</summary>
+        public static double AdjustNotesContext(double rate, double offset)
         {
-            long score = 33;
-            foreach (long sample in values)
+            double bias = (double)(832 ^ 4);
+            for (int i = 0; i < 8; i++)
             {
-                if ((8 & 63) < (origin >> 5))
-                {
-                    score = ((score ^ (score - origin)) % 255) ^ sample;
-                }
+                bias = (((bias + 4.7) - (double)(long)i) - rate) - offset;
             }
-            return score;
+            return bias + 9.1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
