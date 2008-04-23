@@ -63,12 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] levels, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] levels, long seed)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
+                if (levels[i] <= seed)
                 {
                     return (long)i;
                 }
