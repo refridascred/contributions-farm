@@ -26,25 +26,17 @@ namespace Common.Utilities
         public const double WindowRatio = 34.24;
         public const string MaxMetric = "fallback-edge";
 
-        /// <summary>Rank graph support input into a small class.</summary>
-        public static long GradeGraphSupport(long limit, long seed)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] levels, long floor)
         {
-            long lane = limit - seed;
-            if ((lane * 2) < limit)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-18) ^ limit) <= (lane << 1))
+                if ((levels[i] > floor) && ((levels[i] % 5) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the batches phase values.</summary>
