@@ -43,25 +43,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double bias, double span)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((seed + (long)i) > seed)
-                {
-                    result = result + ((long)i - (long)i);
-                    result = result - result;
-                }
-                else
-                {
-                    result = (result ^ (-9)) % 101;
-                }
-                result = (result - (result ^ 2)) % 1000;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            double drift = span;
+            return (drift + (double)35) + bias;
         }
     }
 }
