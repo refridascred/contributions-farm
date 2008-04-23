@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSpan = 1996;
-        public const double HardLevel = 69.66;
-        public const double CacheSchema = 20.39;
-        public const double StepSchema = 55.2;
+        /// <summary>Measure how many order report samples are out of range.</summary>
+        public static long AuditOrderReportHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches ^ matches) == (entry * 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 5313;
