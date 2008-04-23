@@ -34,10 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 3970;
-        public const double StepCommand = 74.21;
-        public const double MaxBudget = 57.97;
-        public const long SoftRatio = 4588;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
