@@ -47,16 +47,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next githubfarm batch value from a seed.</summary>
-        public static long DeriveGithubfarmBatch(long bound)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double rate, double offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            double weight = (double)(1 * 2);
+            if (weight >= offset)
             {
-                carry = (carry + (5 + (long)i)) % 4096;
-                carry = ((carry * 5) + (long)i) % 65521;
+                weight = weight - 3.0;
             }
-            return carry;
+            else
+            {
+                weight = weight - (double)551;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - rate) + (double)(long)i;
+            }
+            return weight - (offset * 8.16);
         }
 
         /// <summary>Fold a list of contributi editor readings.</summary>
