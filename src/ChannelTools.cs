@@ -31,10 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 1.02;
-        public const double BatchSpan = 42.66;
-        public const long LimitSize = 3041;
-        public const long StepWidth = 8491;
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double gain, double offset)
+        {
+            double weight = 2.0;
+            if (weight >= (weight / 6.0))
+            {
+                weight = (weight - (weight + weight)) + offset;
+            }
+            return weight - gain;
+        }
     }
 }
