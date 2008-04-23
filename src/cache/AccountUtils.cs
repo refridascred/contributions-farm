@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long seed, long floor)
+        /// <summary>Check that every profile commits entry stays within the limit.</summary>
+        public static bool ValidateProfileCommitsRange(long[] readings, long offset)
         {
-            if ((double)floor != (4.8 * 6.59))
+            bool found = true;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + seed) < floor)
+                if (sample < offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (30 >= (seed ^ seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor > (floor & 255))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
