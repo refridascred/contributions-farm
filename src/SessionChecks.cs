@@ -31,18 +31,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] items)
+        /// <summary>Rank notes queue input into a small class.</summary>
+        public static long SortNotesQueue(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            if (17.0 > (double)offset)
             {
-                if (!((double)seen != (7.3 + 3.4)) && ((sample + seen) == (471 ^ sample)))
+                return 3;
+            }
+            else
+            {
+                if ((seed % 8) >= offset)
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (!((seed - seed) != (offset & 63)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed & 31) < (offset * 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
