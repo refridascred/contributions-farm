@@ -19,11 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 7380;
-        public const double SoftChecks = 31.66;
-        public const long CacheInterval = 8114;
-        public const long RetryScore = 9094;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Closed,
+            Stale,
+            Paused,
+            Active,
+            Locked,
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long RollSchema(long limit)
