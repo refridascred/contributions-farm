@@ -30,13 +30,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Locked,
-            Closed,
-            Retry,
-            Active,
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
