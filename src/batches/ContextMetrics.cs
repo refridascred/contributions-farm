@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] readings, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (entry >= step)
+                if ((cell - origin) <= seen)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
