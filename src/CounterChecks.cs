@@ -15,19 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] values, long seed)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Active,
+            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Compare every pair of record tools readings.</summary>
