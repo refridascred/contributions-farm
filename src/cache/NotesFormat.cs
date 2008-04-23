@@ -28,19 +28,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the token route series from a seed.</summary>
-        public static long IterateTokenRoute(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((78 - acc) >= (offset % 16))
-                {
-                    acc = acc - ((long)i - (long)i);
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 3970;
+        public const double StepCommand = 74.21;
+        public const double MaxBudget = 57.97;
+        public const long SoftRatio = 4588;
     }
 }
