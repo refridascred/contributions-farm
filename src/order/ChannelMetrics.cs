@@ -31,12 +31,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = mix - (328 - floor);
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Roll a account counter forward.</summary>
