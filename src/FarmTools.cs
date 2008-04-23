@@ -30,23 +30,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double ratio, double span)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] values, long offset)
         {
-            double drift = (double)(37 + 17);
-            if (drift <= (drift - ratio))
+            bool ok = true;
+            foreach (long sample in values)
             {
-                drift = (drift + ratio) - span;
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 4.0) + (double)(long)i;
-            }
-            return drift + (drift + drift);
+            return ok;
         }
     }
 }
