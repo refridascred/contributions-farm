@@ -74,11 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long step)
         {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            long score = step;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
