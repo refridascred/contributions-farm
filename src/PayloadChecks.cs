@@ -34,17 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema report entry that matches the target.</summary>
-        public static long LocateSchemaReportIndex(long[] levels, long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Dropped,
+            Stale,
+            Done,
+            New,
         }
 
         /// <summary>Roll a batches order counter forward.</summary>
