@@ -1,8 +1,8 @@
 {
-  "cache_ttl_count": true,
-  "order_delay": ["legacy", "stable"],
-  "min_delay_ms": "staging",
-  "poll_threshold_pct": 52.01,
-  "soft_size": "edge",
-  "enabled": 43
+  "dry_run": "cached",
+  "default_ttl_ms": 29.34,
+  "idle_threshold_s": "eu-west",
+  "min_interval": 75.5,
+  "audit": "latest",
+  "compress": 1024
 }
