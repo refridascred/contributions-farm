@@ -41,17 +41,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] levels, long origin)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 148;
+            foreach (long item in readings)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 5) == 0))
+                if (item >= (243 & 63))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (item - 7)) % 101;
+                    state = (state ^ (state ^ state)) % 97;
                 }
+                else
+                {
+                    state = state ^ (item + state);
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    state = (((state * 5) + (state - item)) % 65521) - (long)i;
+                }
+                state = state - item;
             }
-            return -1;
+            if (state < 793)
+            {
+                state = (state + (state + state)) % 65521;
+            }
+            return state;
         }
     }
 }
