@@ -1,8 +1,21 @@
 # githubfarm settings
-persist: 60
-retry_window_ms:
-  - staging
-  - standard
-  - open
-  - legacy
-graph_ratio: false
+sync_delay: 37.89
+profile_retries: local
+base_threshold: stable
+sync_size_pct:
+  idle_size_ms: 60
+  dry_run: local
+  max_delay:
+    - 446
+    - 76
+    - 436
+    - 180
+  sync_limit_s:
+    default_threshold_s: latest
+    persist: 500
+    command_size:
+      - open
+      - legacy
+    context_interval: false
+    graph_limit: edge
+    min_threshold: legacy
