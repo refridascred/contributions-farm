@@ -23,10 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryStream = "alpha-1";
-        public const long StepStream = 3076;
-        public const long LimitSpan = 8484;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank record graph input into a small class.</summary>
         public static long GradeRecordGraph(long limit, long seed)
