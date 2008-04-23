@@ -1,18 +1,9 @@
 # support settings
-idle_interval: 6100
-min_ratio_count: 1117
-persist:
-  readonly:
-    soft_timeout: 5
-    poll_size_count: 45
-    graph_ratio: 100
-    persist: false
-    flush_ttl: 250
-    batches_threshold: 75.64
-  poll_size_ms: 1024
-  verbose: 95.32
-  warm_retries_pct: strict
-format_retries: 85
-hard_delay:
-  - staging
-  - open
+batch_interval:
+  - local
+  - blue
+  - edge
+soft_ttl: 100
+batch_depth_ms: green
+session_threshold: false
+persist: 3990
