@@ -1,13 +1,10 @@
 # entry settings
-idle_depth:
-  - 444
-  - 132
-flush_delay: true
-warm_limit_s: latest
-warm_depth_s:
-  hard_threshold_s: standard
-  soft_ratio_ms: fallback
-  burst_delay: 82
-  readonly: 5093
-  burst_window_count: cached
-schema_window: false
+min_ratio_count: staging
+support_limit: blue
+enabled: 100
+idle_threshold_pct: 25.28
+soft_window_pct:
+  - 432
+  - 26
+  - 178
+order_interval: 62
