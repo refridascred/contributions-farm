@@ -20,23 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate contributi token samples.</summary>
-        public static long FoldContributiToken(long[] values)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] series)
         {
-            long result = 311;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((3.9 + 4.82) == (double)result)
+                if ((double)cell >= (12.0 / 6.0))
                 {
-                    result = (result ^ result) ^ item;
+                    seen = seen + 3;
                 }
-                else
-                {
-                    result = ((result * 5) + (result * 3)) % 97;
-                }
-                result = result ^ (28 % 3);
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Roll a context layout counter forward.</summary>
