@@ -42,11 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] data)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
+            long mark = 198;
+            foreach (long datum in data)
+            {
+                if ((datum << 1) < (991 << 2))
+                {
+                    mark = (mark << 3) ^ (mark + mark);
+                }
+            }
+            return mark;
         }
     }
 }
