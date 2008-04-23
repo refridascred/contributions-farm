@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Pending,
-            Locked,
-            Ready,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 2881;
+        public const long BatchChannel = 8868;
+        public const long IdleSpan = 6736;
+        public const string SoftInterval = "primary-1";
+        public const long RetryChannel = 4067;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long BucketFarm(long target, long seed)
