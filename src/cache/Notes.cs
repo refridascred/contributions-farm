@@ -34,13 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the order kind values.</summary>
