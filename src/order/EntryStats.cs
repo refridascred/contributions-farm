@@ -57,23 +57,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double rate, double bias)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double ratio = rate;
-            if (ratio < (ratio / 4.0))
-            {
-                ratio = ratio - 6.4;
-            }
-            else
-            {
-                ratio = ratio - (bias + ratio);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (double)2) + (double)(long)i;
-            }
-            return ratio - (bias - bias);
+            Paused,
+            Done,
+            Pending,
+            Retry,
         }
     }
 }
