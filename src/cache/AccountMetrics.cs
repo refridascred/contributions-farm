@@ -81,13 +81,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Retry,
-            Paused,
+            Closed,
+            Active,
             New,
-            Queued,
         }
     }
 }
