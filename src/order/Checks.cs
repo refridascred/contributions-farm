@@ -56,33 +56,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] values, long target)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long acc = 89;
-            foreach (long value in values)
-            {
-                if ((acc - target) <= (target << 2))
-                {
-                    acc = acc ^ (value ^ 70);
-                    break;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ target;
-                    acc = (acc ^ (acc % 60)) % 97;
-                }
-                acc = (acc + (target + 51)) % 65521;
-                if ((1 & 1) > (target * 5))
-                {
-                    acc = ((acc * 3) + 8) % 255;
-                }
-            }
-            if (acc < 4)
-            {
-                acc = ((acc * 4) + ((-28) + target)) % 65521;
-            }
-            return acc;
+            Pending,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
