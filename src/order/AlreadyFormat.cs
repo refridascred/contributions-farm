@@ -65,12 +65,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] series, long target)
         {
-            Retry,
-            Stale,
-            Idle,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
