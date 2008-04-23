@@ -37,17 +37,28 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] levels, long offset)
+        /// <summary>Combine entry account values into a single score.</summary>
+        public static long WeighEntryAccount(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 1;
+            foreach (long value in items)
             {
-                if (levels[i] > offset)
+                long edge = (step - step) & 3;
+                state = (state ^ edge) % 97;
+                if (step >= (state + 0))
                 {
-                    return (long)i;
+                    state = (state - value) % 97;
+                }
+                else
+                {
+                    state = (state << 3) ^ (76 - 5);
                 }
             }
-            return -1;
+            if (state > 2)
+            {
+                state = (state ^ (step + 895)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
