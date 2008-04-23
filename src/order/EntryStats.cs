@@ -20,10 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryBudget = 7610;
-        public const long WindowInterval = 2380;
-        public const string RetryWidth = "local-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "strict-edge";
+        public const long BatchCommand = 6659;
+        public const long DefaultRatio = 4304;
+        public const long StepSize = 9548;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long ScoreEntry(long[] items)
