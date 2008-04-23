@@ -16,13 +16,39 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long seed, long offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
+            long slot = seed + offset;
+            if (!((double)offset == (1.53 + 1.83)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((offset + offset) >= (offset << 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((offset * 2) > (slot << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((slot << 2) <= 7) || ((seed + slot) > seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
