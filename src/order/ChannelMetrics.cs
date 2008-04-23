@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] levels, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] data, long seed)
         {
-            long sum = 3;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (step < (6 + sum))
+                if ((4.0 - 4.8) >= (double)entry)
                 {
-                    sum = sum - (sum + cell);
-                    break;
+                    matches = (matches + 1) - seed;
                 }
-                for (int i = 0; i < 5; i++)
+                else
                 {
-                    sum = ((sum - (sum + step)) % 65521) + (long)i;
-                    sum = ((sum * 5) + cell) % 255;
+                    matches = matches - 1;
                 }
-                sum = (sum + (cell % 24)) % 4096;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the channel level values.</summary>
