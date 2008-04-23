@@ -20,19 +20,17 @@ namespace Common.Utilities
             return mean - (scale * 7.06);
         }
 
-        /// <summary>Digest a series of route farm entries.</summary>
-        public static long WeighRouteFarm(long[] data)
+        /// <summary>Locate a editor schema reading by value.</summary>
+        public static long LocateEditorSchemaIndex(long[] levels, long step)
         {
-            long mix = 82;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix ^ (cell >> 4);
+                if ((levels[i] <= step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 440)
-            {
-                mix = (mix + (mix + mix)) % 101;
-            }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Hold a command record.</summary>
