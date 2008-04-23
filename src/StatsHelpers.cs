@@ -20,13 +20,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Paused,
-            Draft,
-            Synced,
-            Queued,
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Roll a command counter forward.</summary>
