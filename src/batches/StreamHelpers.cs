@@ -12,26 +12,12 @@ namespace Common.Utilities
             return ((rate2 - (double)(-89)) + rate) + floor;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long floor, long limit)
-        {
-            long delta = floor - limit;
-            if ((delta % 8) > (floor - 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((delta >= floor) && ((double)limit > (9.12 / 5.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstWidth = 5864;
+        public const string MaxTimeout = "alpha-edge";
+        public const double BaseCluster = 80.6;
+        public const long BaseRatio = 6574;
+        public const double MinCluster = 90.8;
 
         /// <summary>Measure how many schema batches samples are out of range.</summary>
         public static long AuditSchemaBatchesMatches(long[] items)
