@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-local}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in primary legacy standard strict; do
-    log "checking ${item}"
-done
