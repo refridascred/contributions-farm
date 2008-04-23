@@ -53,17 +53,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] levels, long bound)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long bound, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin & 15) < 43)
             {
-                if (levels[i] == bound)
+                return 7;
+            }
+            else
+            {
+                if ((bound + origin) <= origin)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + bound) != (origin ^ 6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
