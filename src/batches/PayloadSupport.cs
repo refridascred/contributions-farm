@@ -19,22 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] data, long offset)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((offset >> 1) != (42 ^ 1))
-                {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
