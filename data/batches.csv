@@ -1,6 +1,10 @@
-id,label,score,level,active
-1,open,900,426,37.28
-2,263,stable,cached,71.15
-3,92,87.47,47.88,213
-4,blue,edge,10.82,59.0
-5,44,54.64,local,cached
+id,ratio,region
+1,open,stable
+2,838,759
+3,456,9.13
+4,96,17.42
+5,fallback,open
+6,288,standard
+7,0.86,44.91
+8,stable,strict
+9,940,481
