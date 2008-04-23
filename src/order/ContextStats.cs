@@ -25,22 +25,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the stats graph entries that pass the check.</summary>
-        public static long TallyStatsGraphGaps(long[] items, long origin)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double weight = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if ((9 << 2) >= (origin - seen))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = ((weight + (bias * 4.9)) + (double)(long)i) - offset;
             }
-            return seen;
+            return weight - 7.0;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
