@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long seed)
         {
-            Idle,
-            Dropped,
-            Done,
-            Synced,
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark - mark) % 97;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
