@@ -32,14 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long offset, long target)
         {
-            Done,
-            Synced,
-            Locked,
-            New,
-            Queued,
+            long delta = offset + target;
+            if ((offset ^ target) > (target * 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((delta + delta) <= delta)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((7.04 + 2.22) != (double)offset) && ((double)delta != (double)offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
