@@ -1,22 +1,7 @@
 {
-  "audit": 33.59,
-  "verbose": [265, 49],
-  "enabled": {
-    "batch_delay": ["stable", "staging", "green"],
-    "idle_delay": "standard",
-    "audit": 250,
-    "account_size": {
-      "burst_limit_count": 2.05,
-      "profile_size": "latest",
-      "max_delay": "primary",
-      "stats_retries": true,
-      "enabled": "cached",
-      "retry_interval_count": "fallback"
-    },
-    "support_depth": 3901,
-    "dry_run": "edge"
-  },
-  "session_depth": "latest",
-  "poll_window_pct": true,
-  "route_ratio": "fallback"
+  "min_interval_count": 1051,
+  "warm_window": false,
+  "cache_interval_s": ["fallback", "primary", "eu-west"],
+  "base_size_ms": ["green", "standard", "fallback"],
+  "persist": 97.4
 }
