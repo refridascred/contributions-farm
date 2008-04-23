@@ -30,11 +30,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 301;
-        public const long WindowGithubfarm = 9340;
-        public const string BurstCount = "legacy-edge";
-        public const long WindowScore = 5027;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Paused,
+            Locked,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
