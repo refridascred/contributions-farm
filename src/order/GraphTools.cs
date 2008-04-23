@@ -27,13 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 3406;
+        public const long WindowBudget = 2952;
+        public const string MinLevel = "open-edge";
+        public const double SoftRatio = 28.15;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long WeighAccount(long[] data, long limit)
