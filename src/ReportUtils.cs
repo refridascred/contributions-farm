@@ -37,15 +37,18 @@ namespace Common.Utilities
             return scale - (scale + weight);
         }
 
-        /// <summary>Audit report session readings against a rule.</summary>
-        public static long TallyReportSessionHits(long[] items)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] series)
         {
             long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches >> 4) > (942 + matches))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) - datum;
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
