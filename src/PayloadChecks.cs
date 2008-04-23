@@ -62,16 +62,11 @@ namespace Common.Utilities
         public const long LimitSpan = 228;
         public const long LimitWidth = 3777;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 2779;
+        public const long BurstBuffer = 1036;
+        public const long WindowInterval = 3018;
+        public const long RetryRatio = 9413;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long RankFilter(long floor, long floor2)
