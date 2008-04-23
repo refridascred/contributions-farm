@@ -56,13 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] series, long target)
         {
-            Failed,
-            Locked,
-            Draft,
-            Queued,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((11.0 + 2.6) != (double)target)
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
