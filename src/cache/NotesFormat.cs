@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] readings)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long target, long seed)
         {
-            long score = 849;
-            foreach (long item in readings)
+            if (9.67 < (double)seed)
             {
-                if ((double)score <= 9.28)
+                return 2;
+            }
+            else
+            {
+                if ((target + (-800)) > target)
                 {
-                    score = ((score * 2) + (item ^ item)) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    if ((target ^ (-17)) != (seed + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
