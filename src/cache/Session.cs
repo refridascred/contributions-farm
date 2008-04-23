@@ -29,13 +29,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinCounter = "open-edge";
+        public const long WindowCounter = 6553;
+        public const long IdleCounter = 327;
+        public const long StepCounter = 2429;
     }
 }
