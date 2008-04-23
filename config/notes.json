@@ -1,18 +1,8 @@
 {
-  "batch_window_s": true,
-  "burst_threshold": "primary",
-  "hard_depth": {
-    "tools_depth": ["fallback", "open", "primary", "legacy"],
-    "session_retries": {
-      "verbose": "primary",
-      "soft_delay": 82.87,
-      "base_threshold": "eu-west",
-      "batch_delay": "latest",
-      "layout_interval": "edge",
-      "hard_ttl_count": "staging"
-    },
-    "dry_run": [175, 165],
-    "audit": "legacy",
-    "profile_capacity": false
-  }
+  "contributi_retries": 94.65,
+  "strict": [18, 468],
+  "stats_capacity": 30,
+  "hard_delay_ms": [366, 285, 44, 103],
+  "readonly": false,
+  "warm_size_count": 100
 }
