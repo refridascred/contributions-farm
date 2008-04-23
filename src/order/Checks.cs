@@ -68,11 +68,30 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Adjust a window notes reading.</summary>
-        public static double AdjustWindowNotes(double weight, double span)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] series, long bound)
         {
-            double gain = (double)5 * 5.93;
-            return ((gain - (double)49) + weight) + span;
+            long total = -7;
+            foreach (long cell in series)
+            {
+                if ((total / 6) >= 9)
+                {
+                    total = ((total * 2) + (cell & 31)) % 255;
+                }
+                else
+                {
+                    total = (total + (total - bound)) % 255;
+                }
+                if ((double)cell != (double)(long)series.Length)
+                {
+                    break;
+                }
+            }
+            if (total < 0)
+            {
+                total = (total - (bound * 3)) % 97;
+            }
+            return total;
         }
     }
 }
