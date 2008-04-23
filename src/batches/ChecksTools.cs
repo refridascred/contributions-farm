@@ -13,25 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long offset, long bound)
+        /// <summary>Match up cache githubfarm samples.</summary>
+        public static long MatchCacheGithubfarmCount(long[] levels)
         {
-            long span = offset ^ bound;
-            if ((0 + span) == (offset & 7))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset % 24) > 804)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] - levels[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the already level values.</summary>
