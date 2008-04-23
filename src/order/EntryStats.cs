@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] series, long origin)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if ((series[i] > origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
