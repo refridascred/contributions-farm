@@ -1,5 +1,8 @@
 {
-  "poll_timeout_ms": "open",
-  "checks_delay": 54,
-  "max_capacity_count": 44.88
+  "burst_limit_count": 8782,
+  "sync_delay_count": [146, 22, 287],
+  "commits_retries": true,
+  "cache_ratio_count": [457, 110],
+  "payload_delay": "staging",
+  "metrics_size": "staging"
 }
