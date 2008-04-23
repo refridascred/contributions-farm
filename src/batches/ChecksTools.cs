@@ -13,14 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Synced,
-            Closed,
-            Active,
-            Locked,
-            Stale,
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
