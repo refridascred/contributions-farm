@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] readings, long floor)
-        {
-            long anchor = 645;
-            foreach (long sample in readings)
-            {
-                if ((11 - anchor) != (floor + floor))
-                {
-                    anchor = (anchor - (anchor & 15)) + sample;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 5053;
+        public const double IdleFilter = 70.2;
+        public const long BaseFactor = 851;
+        public const string RetryFilter = "latest";
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long SeekChecksIndex(long[] series, long origin)
