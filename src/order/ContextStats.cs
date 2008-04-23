@@ -18,24 +18,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((target + 611) > (state * 5)) || ((10.0 * 7.7) < (double)state))
-                {
-                    state = state + (target - target);
-                    state = (state - (target ^ state)) % 101;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (495 - state)) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
