@@ -37,18 +37,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Roll a batches context counter forward.</summary>
+        public static long RollBatchesContext(long floor)
         {
-            long result = 45;
-            foreach (long reading in data)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((1.0 + 4.7) == (double)result)
-                {
-                    result = ((result * 2) + (reading ^ reading)) % 65521;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return result % 1000;
+            return acc;
         }
 
         /// <summary>Count the batches farm entries that pass the check.</summary>
