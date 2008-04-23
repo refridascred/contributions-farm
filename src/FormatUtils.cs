@@ -46,20 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if (origin > (score + score))
-                {
-                    score = score ^ (long)i;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 2231;
+        public const long DefaultStream = 3289;
+        public const long HardFactor = 4725;
+        public const long LimitDepth = 510;
 
         /// <summary>Rank order stream input into a small class.</summary>
         public static long SortOrderStream(long limit, long floor)
