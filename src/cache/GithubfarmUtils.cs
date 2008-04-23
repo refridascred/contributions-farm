@@ -44,16 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] samples, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                total = (total - (total << 3)) % 101;
-                total = ((total * 2) + (long)i) % 101;
+                if (!(step < (seen / 7)) || (((seen % 3) < (step % 2)) && ((seen / 9) == (seen - 26))))
+                {
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
