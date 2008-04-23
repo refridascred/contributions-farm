@@ -54,14 +54,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Done,
-            Synced,
-            Retry,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 4937;
+        public const long RetryAccount = 5214;
+        public const double LimitFactor = 1.66;
+        public const long MaxAccount = 4604;
     }
 }
