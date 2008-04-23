@@ -31,17 +31,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a metric filter sample.</summary>
-        public static long LocateMetricFilterIndex(long[] readings, long step)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Locked,
+            Draft,
+            Active,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
