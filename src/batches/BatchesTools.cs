@@ -32,12 +32,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Locate a graph format reading by value.</summary>
+        public static long LookupGraphFormatIndex(long[] data, long origin)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
