@@ -85,14 +85,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Validate schema token readings against a bound.</summary>
+        public static bool VerifySchemaTokenBounds(long[] items, long target)
         {
-            Draft,
-            Active,
-            Synced,
-            Ready,
-            Stale,
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
