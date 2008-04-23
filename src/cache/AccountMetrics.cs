@@ -40,27 +40,19 @@ namespace Common.Utilities
         public const long CachePayload = 1388;
         public const long CacheInterval = 2344;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] series, long seed)
         {
-            long carry = 80;
-            foreach (long cell in readings)
+            long result = 64;
+            foreach (long item in series)
             {
-                carry = (carry - carry) % 1000;
-                if ((29 - carry) == (carry / 4))
-                {
-                    carry = ((carry * 3) + (cell >> 4)) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (carry - carry)) % 1000;
-                }
+                result = (((result * 3) + (seed + 7)) % 1000) - item;
             }
-            if (carry < 21)
+            if (result < 7)
             {
-                carry = ((carry << 3) ^ (carry + 318)) % 97;
+                result = (result << 2) ^ (seed << 3);
             }
-            return carry;
+            return result % 97;
         }
 
         /// <summary>Hold a editor info.</summary>
