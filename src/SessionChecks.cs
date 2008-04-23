@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long limit, long step)
+        /// <summary>Look up the position of a already report sample.</summary>
+        public static long LocateAlreadyReportIndex(long[] data, long offset)
         {
-            long step2 = limit - step;
-            if ((8.33 + 20.0) < (double)limit)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (776 < step2)
+                if (data[i] <= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
