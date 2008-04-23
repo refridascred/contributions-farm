@@ -51,25 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm counter input into a small class.</summary>
-        public static long GradeGithubfarmCounter(long seed, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] items, long limit)
         {
-            long slot = seed ^ offset;
-            if (((offset >> 1) < (slot ^ offset)) && (offset < (slot + 43)))
+            bool ok = true;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(offset <= (slot % 16)))
+                if (datum <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
