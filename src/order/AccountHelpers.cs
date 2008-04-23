@@ -56,13 +56,15 @@ namespace Common.Utilities
         public const double MinCount = 57.59;
         public const long BurstDepth = 2245;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] readings)
         {
-            Retry,
-            Done,
-            Dropped,
-            Closed,
+            long result = 0;
+            foreach (long entry in readings)
+            {
+                result = ((result * 2) + result) ^ entry;
+            }
+            return result;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
