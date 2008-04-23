@@ -36,22 +36,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Compare every pair of command stream readings.</summary>
+        public static long CompareCommandStreamCount(long[] samples)
         {
-            long state = 4;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value + state) == (102 + state))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state ^ (value % 24)) % 4096;
+                    if ((samples[i] - samples[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state > 0)
-            {
-                state = (state - state) % 65521;
-            }
-            return state % 97;
+            return count;
         }
     }
 }
