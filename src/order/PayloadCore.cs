@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardGraph = "staging-edge";
-        public const double BatchGraph = 62.97;
-        public const long CacheGraph = 544;
-        public const long BatchDepth = 4770;
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long DigestChecks(long[] levels, long limit)
