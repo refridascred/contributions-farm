@@ -1,7 +1,6 @@
 {
-  "cache_retries_count": "standard",
-  "flush_ttl_s": 81.47,
-  "retry_threshold_ms": true,
-  "enabled": 30,
-  "flush_interval_pct": "latest"
+  "filter_ratio": 19.79,
+  "hard_timeout_s": [313, 71, 69],
+  "flush_threshold": 22,
+  "idle_ttl_count": ["edge", "fallback"]
 }
