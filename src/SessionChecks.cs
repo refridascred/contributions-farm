@@ -65,13 +65,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long offset, long step)
         {
-            Closed,
-            Queued,
-            Active,
-            Pending,
+            if ((double)offset <= (5.1 / 3.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step ^ offset) < step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((step + step) != (500 ^ step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
