@@ -40,12 +40,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Ready,
-            Active,
-            Synced,
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
