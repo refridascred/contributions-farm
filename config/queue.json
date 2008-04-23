@@ -1,6 +1,7 @@
 {
-  "burst_threshold_pct": [19, 41, 230, 448],
-  "soft_capacity_ms": "edge",
-  "verbose": [287, 298, 275, 257],
-  "poll_interval_pct": "staging"
+  "profile_limit": "latest",
+  "dry_run": "green",
+  "filter_interval": 68.3,
+  "cache_ttl": 5091,
+  "retry_delay_ms": [341, 285, 298]
 }
