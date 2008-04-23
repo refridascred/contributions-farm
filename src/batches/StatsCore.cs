@@ -16,12 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitSize = 8371;
-        public const double CacheBuffer = 56.09;
-        public const long MaxBuffer = 9099;
-        public const string StepBuffer = "standard";
-        public const long BatchLevel = 9039;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((((value + offset) < ((-43) + matches)) || ((value + offset) < matches)) && (((long)values.Length ^ matches) != (9 / 2)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many record profile samples are out of range.</summary>
         public static long CountRecordProfileOutliers(long[] levels, long step)
