@@ -64,10 +64,12 @@ namespace Common.Utilities
         public const string StepWidth = "fallback-edge";
         public const long RetryInterval = 8334;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitSpan = "fallback-edge";
-        public const string StepSpan = "staging-1";
-        public const long CacheDepth = 953;
-        public const long MaxFactor = 418;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Stale,
+            Active,
+            Pending,
+        }
     }
 }
