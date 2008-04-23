@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] levels, long offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long offset, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((-600) & 31) <= (offset + origin))
             {
-                if (levels[i] == offset)
+                return 3;
+            }
+            else
+            {
+                if (((origin << 3) != (0 - offset)) && (origin < (origin & 7)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every batches payload entry stays within the limit.</summary>
