@@ -31,32 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a checks metric value against two limits.</summary>
-        public static long RankChecksMetric(long offset, long floor)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long diff = offset + floor;
-            if ((floor ^ diff) <= (56 << 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor > (double)diff)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)floor > (12.0 + 7.76)) && ((diff / 9) <= (offset ^ diff)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
