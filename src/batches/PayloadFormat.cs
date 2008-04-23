@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstWidth = "standard-1";
-        public const long BaseCommits = 7880;
-        public const long LimitWidth = 4072;
-        public const string BurstDepth = "staging";
+        /// <summary>Validate batch farm readings against a bound.</summary>
+        public static bool ValidateBatchFarmBounds(long[] items, long origin)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next route counter value.</summary>
         public static double BlendRouteCounter(double scale, double offset)
