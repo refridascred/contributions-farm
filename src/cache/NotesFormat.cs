@@ -34,19 +34,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] values, long target)
+        /// <summary>Iterate the tools payload series from a seed.</summary>
+        public static long StepToolsPayload(long step)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading != target)
+                result = (result * 5) + (step + 13);
+                result = (result + (-7)) % 4096;
+                if ((long)i < (7 << 3))
                 {
-                    ready = false;
-                    break;
+                    result = ((result << 3) ^ (result + result)) % 65521;
                 }
+                else
+                {
+                    result = ((result * 5) + step) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return ready;
+            return result;
         }
     }
 }
