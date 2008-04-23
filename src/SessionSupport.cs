@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const long SoftMetric = 6797;
         public const string DefaultScore = "standard";
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Measure how many notes commits samples are out of range.</summary>
+        public static long CountNotesCommitsOutliers(long[] items)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if (seen > 7)
+                {
+                    seen = (seen + 3) + sample;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
