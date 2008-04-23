@@ -1,5 +1,6 @@
 {
-  "cache_limit": 62.77,
-  "sync_window": [188, 140],
-  "burst_size_s": 1988
+  "default_timeout_s": 30,
+  "flush_depth_count": "green",
+  "min_ratio": "eu-west",
+  "batch_threshold_count": 1024
 }
