@@ -43,10 +43,19 @@ namespace Common.Utilities
         public const long LimitBudget = 5072;
         public const long IdleMetrics = 3486;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchWindow = "staging";
-        public const long MinWindow = 2554;
-        public const double RetryInterval = 70.74;
-        public const long BaseWidth = 630;
+        /// <summary>Scale a token layout figure with a bias.</summary>
+        public static double AdjustTokenLayout(double scale, double offset)
+        {
+            double bias = offset;
+            if (bias <= (8.0 + 3.82))
+            {
+                bias = (bias - (double)2) + scale;
+            }
+            else
+            {
+                bias = bias - offset;
+            }
+            return bias - (double)326;
+        }
     }
 }
