@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long seed)
+        /// <summary>Count graph schema pairs that satisfy a relation.</summary>
+        public static long PairGraphSchemaCount(long[] readings)
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark - mark) % 97;
-                mark = ((mark * 5) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Blend two order measurements.</summary>
