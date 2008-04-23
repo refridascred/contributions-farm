@@ -17,32 +17,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long limit, long step)
-        {
-            if ((double)4 > (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit >> 5) <= 4)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((16.0 - 7.0) >= (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "legacy-1";
+        public const long HardSize = 7611;
+        public const double BaseReport = 5.89;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long DeriveMetrics(long seed)
