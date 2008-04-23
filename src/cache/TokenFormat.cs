@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] values, long floor)
         {
             long matches = 0;
-            foreach (long reading in readings)
+            foreach (long cell in values)
             {
-                if ((double)(long)readings.Length == (11.0 - 8.23))
+                if (!((matches % 7) != (cell * 2)) || (((matches << 1) >= 389) && ((cell + 965) >= (cell + matches))))
                 {
-                    matches = ((matches + 1) - reading) - offset;
+                    matches = (matches + 1) - floor;
                 }
                 else
                 {
