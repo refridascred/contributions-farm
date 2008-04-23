@@ -28,12 +28,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardBatches = "staging";
-        public const string SoftBatches = "cached-v2";
-        public const long StepBudget = 5098;
-        public const double SoftFactor = 51.02;
-        public const double HardBudget = 92.61;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelHits(long[] series, long floor)
