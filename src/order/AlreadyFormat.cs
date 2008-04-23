@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double gain, double bias)
-        {
-            double bias2 = gain;
-            if (bias2 < (double)21)
-            {
-                bias2 = (bias2 + 0.8) - bias;
-            }
-            return bias2 + (gain + gain);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCount = 8071;
+        public const double WindowCache = 85.1;
+        public const double LimitCache = 31.91;
+        public const long SoftCache = 5985;
+        public const double BaseSpan = 70.74;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long DigestEditor(long[] samples)
