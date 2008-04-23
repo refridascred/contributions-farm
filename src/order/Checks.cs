@@ -56,12 +56,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every queue editor entry stays within the limit.</summary>
+        public static bool ValidateQueueEditorLimits(long[] levels, long target)
         {
-            Pending,
-            Idle,
-            Dropped,
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
