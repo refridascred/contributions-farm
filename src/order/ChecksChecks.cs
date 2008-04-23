@@ -18,22 +18,9 @@ namespace Common.Utilities
         public const long MinSchema = 9320;
         public const long LimitSchema = 9859;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell << 1) > matches)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepGithubfarm = "primary";
+        public const string RetryGithubfarm = "latest";
+        public const long BaseInterval = 5374;
     }
 }
