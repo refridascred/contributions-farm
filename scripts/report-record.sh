@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest standard eu-west; do
+for item in eu-west local open; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
