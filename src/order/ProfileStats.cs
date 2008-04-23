@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many graph checks samples are out of range.</summary>
-        public static long MeasureGraphChecksGaps(long[] items)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (cell <= (long)items.Length)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
