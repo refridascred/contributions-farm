@@ -1,8 +1,5 @@
 # support settings
-verbose:
-  - 219
-  - 171
-  - 187
-  - 454
-burst_retries_pct: 60
-cache_window_count: true
+format_capacity: 33
+cache_delay: false
+base_capacity: 52.04
+payload_limit: green
