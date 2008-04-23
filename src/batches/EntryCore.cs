@@ -52,24 +52,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a graph cluster counter forward.</summary>
-        public static long RollGraphCluster(long bound)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] readings, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((bound >> 3) <= bound))
+                if (readings[i] == floor)
                 {
-                    mix = (mix << 3) ^ bound;
-                    mix = mix ^ (mix % 12);
+                    return (long)i;
                 }
-                if ((bound - bound) == (mix - mix))
-                {
-                    mix = mix + (mix + (long)i);
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
     }
 }
