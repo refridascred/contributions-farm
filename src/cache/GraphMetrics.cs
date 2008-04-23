@@ -35,18 +35,14 @@ namespace Common.Utilities
         public const long RetrySpan = 978;
         public const long HardSize = 180;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] data, long floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((floor & 255) < count) && ((count ^ floor) >= ((-4) + (long)data.Length)))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            Draft,
+            Retry,
+            Dropped,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the context state values.</summary>
