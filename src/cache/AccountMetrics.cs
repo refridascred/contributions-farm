@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] levels)
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long result = -1;
+            foreach (long entry in levels)
+            {
+                if (((result * 5) <= 4) || ((entry % 3) <= (35 / 8)))
+                {
+                    result = result ^ (86 * 5);
+                }
+                if ((result - entry) == (result + entry))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit filter graph readings against a rule.</summary>
