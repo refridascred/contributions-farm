@@ -13,17 +13,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] samples, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long step, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!(bound <= step))
             {
-                if (samples[i] > seed)
+                return 1;
+            }
+            else
+            {
+                if ((3.0 / 5.0) <= (double)bound)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the report mode values.</summary>
