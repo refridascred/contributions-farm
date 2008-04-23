@@ -68,17 +68,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] series, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (series[i] >= seed)
+                if (!((matches & 255) > 3))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + entry) - origin;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
