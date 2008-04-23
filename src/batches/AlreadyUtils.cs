@@ -54,10 +54,12 @@ namespace Common.Utilities
             return rate + (double)541;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxSpan = 692;
-        public const double BurstFactor = 98.84;
-        public const long WindowTools = 939;
-        public const long MaxTools = 7123;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Pending,
+            Idle,
+            Closed,
+        }
     }
 }
