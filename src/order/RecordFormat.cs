@@ -51,21 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] items)
+        /// <summary>Combine cluster counter values into a single score.</summary>
+        public static long DigestClusterCounter(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 2;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((4.87 - 9.6) <= (double)anchor)
                 {
-                    if ((items[i] - items[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor * 2) + (value << 3)) % 255;
                 }
             }
-            return hits;
+            return anchor % 4096;
         }
     }
 }
