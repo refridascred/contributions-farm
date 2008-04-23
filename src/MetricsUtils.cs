@@ -48,12 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] levels, long seed)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] levels, long floor)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] <= seed)
+                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
