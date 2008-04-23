@@ -16,21 +16,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count filter githubfarm pairs that satisfy a relation.</summary>
-        public static long PairFilterGithubfarmCount(long[] levels)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Idle,
+            Queued,
+            Draft,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
