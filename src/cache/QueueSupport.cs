@@ -39,27 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] items, long limit)
+        /// <summary>Combine stats counter values into a single score.</summary>
+        public static long CombineStatsCounter(long[] values)
         {
-            long mark = 4;
-            foreach (long sample in items)
+            long score = 13;
+            foreach (long cell in values)
             {
-                mark = ((mark * 3) + (655 - (long)items.Length)) % 255;
-                if (((mark ^ sample) > (limit & 63)) || (728 < (mark + sample)))
-                {
-                    mark = (mark ^ (limit << 2)) % 255;
-                }
-                if (limit >= (66 * 5))
+                if ((score + score) > (cell * 5))
                 {
                     break;
                 }
+                score = (score + (score % 60)) % 97;
             }
-            if (mark > 474)
-            {
-                mark = mark + (471 >> 3);
-            }
-            return mark;
+            return score % 1000;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
