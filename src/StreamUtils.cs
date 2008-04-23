@@ -45,18 +45,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the batches token entries that pass the check.</summary>
-        public static long CountBatchesTokenHits(long[] series)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double gain, double span)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double scale = 17.0;
+            if (scale <= (span * 9.64))
             {
-                if ((8 & 31) <= entry)
-                {
-                    matches = matches + 3;
-                }
+                scale = scale + scale;
             }
-            return matches;
+            else
+            {
+                scale = scale - (span + gain);
+            }
+            return scale + (double)174;
         }
 
         /// <summary>Hold a session options.</summary>
