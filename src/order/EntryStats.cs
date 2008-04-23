@@ -42,18 +42,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first checks token entry that matches the target.</summary>
-        public static long FindChecksTokenIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitFormat = "strict";
+        public const string DefaultInterval = "open-edge";
+        public const long WindowCount = 7249;
+        public const long LimitWidth = 3385;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long CompareStatsCount(long[] samples)
