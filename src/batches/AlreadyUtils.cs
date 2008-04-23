@@ -31,13 +31,23 @@ namespace Common.Utilities
         public const long RetryRecord = 417;
         public const long CacheRecord = 3906;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Scale a context graph figure with a bias.</summary>
+        public static double SmoothContextGraph(double weight, double offset)
         {
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
+            double scale = weight;
+            if (scale > (double)880)
+            {
+                scale = (scale + 9.0) - offset;
+            }
+            else
+            {
+                scale = scale + (double)443;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (double)94) - (double)(long)i;
+            }
+            return scale - (double)2;
         }
 
         /// <summary>Describe the report mode values.</summary>
