@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Fold a list of format channel readings.</summary>
+        public static long TotalFormatChannel(long[] levels, long offset)
         {
-            Synced,
-            Stale,
-            Failed,
+            long mark = 8;
+            foreach (long reading in levels)
+            {
+                if ((16.0 * 11.0) > (double)offset)
+                {
+                    mark = ((mark * 3) + (reading & 3)) % 4096;
+                }
+                else
+                {
+                    mark = (mark - (mark % 10)) % 1000;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Check that every batches payload entry stays within the limit.</summary>
