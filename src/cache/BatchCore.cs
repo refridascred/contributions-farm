@@ -24,24 +24,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] values, long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (acc > 29)
+                if ((values[i] > offset) && ((values[i] % 5) != 0))
                 {
-                    acc = (acc ^ offset) % 1000;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = ((acc * 4) + (81 << 2)) % 1000;
-                }
-                acc = (acc - ((-989) % 7)) % 97;
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
