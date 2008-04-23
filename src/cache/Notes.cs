@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitSpan = 6104;
-        public const long HardQueue = 9285;
-        public const long RetryQueue = 9698;
-        public const long MaxLevel = 1792;
-        public const long DefaultLevel = 3415;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] data, long seed)
+        {
+            long state = 86;
+            foreach (long cell in data)
+            {
+                if (!((0 ^ seed) > state))
+                {
+                    state = state + (cell * 5);
+                }
+                else
+                {
+                    state = (state * 4) + (state * 4);
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Validate contributi cache readings against a bound.</summary>
         public static bool ValidateContributiCacheBounds(long[] readings, long seed)
