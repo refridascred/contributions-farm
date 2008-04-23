@@ -15,14 +15,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double gain, double bias)
         {
-            Locked,
-            Active,
-            New,
-            Closed,
-            Paused,
+            double scale = bias;
+            if (scale < (8.7 * 19.0))
+            {
+                scale = scale + (gain / 9.0);
+            }
+            else
+            {
+                scale = scale + (17.0 + 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale + gain;
         }
 
         /// <summary>Compare every pair of record tools readings.</summary>
