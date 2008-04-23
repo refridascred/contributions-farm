@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] items)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (((double)count != (double)datum) || ((double)datum != (18.0 + 4.9)))
+                if ((seen >> 5) <= (seen >> 4))
                 {
-                    count = count + 1;
+                    seen = (seen + 1) + item;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
