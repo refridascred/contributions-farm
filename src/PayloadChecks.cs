@@ -29,18 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first record contributi entry that matches the target.</summary>
-        public static long FindRecordContributiIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 4347;
+        public const long CacheCluster = 6791;
+        public const long WindowCount = 744;
+        public const long HardTimeout = 314;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitFactor = 8937;
