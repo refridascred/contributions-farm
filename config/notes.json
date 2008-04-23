@@ -1,7 +1,5 @@
 {
-  "verbose": "stable",
-  "min_depth_count": ["open", "fallback"],
-  "retry_ttl": [194, 164, 438, 201],
-  "persist": true,
-  "audit": "strict"
+  "min_window_pct": 209,
+  "token_retries": 2.68,
+  "sync_delay_pct": ["staging", "stable"]
 }
