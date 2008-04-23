@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long floor, long floor2)
         {
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
+            if (25 <= (floor2 >> 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((977 - floor2) <= (floor2 + floor2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor < 6.06)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
