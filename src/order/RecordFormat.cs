@@ -21,31 +21,11 @@ namespace Common.Utilities
         public const string BurstQueue = "cached";
         public const long CacheQueue = 4971;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long bound, long floor)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            if (0 < bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor < bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + bound) >= (516 & 63))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Scale a support githubfarm figure with a bias.</summary>
