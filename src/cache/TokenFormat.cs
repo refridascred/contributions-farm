@@ -19,12 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinScore = 14.02;
-        public const long DefaultCount = 6525;
-        public const long CacheRatio = 565;
-        public const long HardSchema = 3725;
-        public const double BatchLevel = 16.46;
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] levels)
