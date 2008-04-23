@@ -33,22 +33,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm tools readings.</summary>
-        public static long TotalFarmTools(long[] series, long offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long limit, long bound)
         {
-            long sum = 52;
-            foreach (long datum in series)
+            long step = limit + bound;
+            if (38 <= step)
             {
-                if ((sum - 67) <= (datum >> 4))
+                return 2;
+            }
+            else
+            {
+                if (((double)bound <= (7.4 / 3.0)) && ((bound / 3) >= (step - limit)))
                 {
-                    sum = (sum << 2) ^ (sum + sum);
+                    return 3;
+                }
+                else
+                {
+                    if ((9.0 + 8.4) >= (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (sum > 599)
-            {
-                sum = (sum * 4) + offset;
-            }
-            return sum % 1000;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
