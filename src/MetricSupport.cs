@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double ratio, double floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double drift = floor;
-            return (drift + drift) + ratio;
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the window level values.</summary>
