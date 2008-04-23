@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 5053;
-        public const double IdleFilter = 70.2;
-        public const long BaseFactor = 851;
-        public const string RetryFilter = "latest";
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - datum) != (tally + datum))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileHits(long[] levels, long step)
