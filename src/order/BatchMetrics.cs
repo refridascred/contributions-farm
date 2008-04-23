@@ -51,31 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long step, long limit)
+        /// <summary>Count the session account entries that pass the check.</summary>
+        public static long MeasureSessionAccountHits(long[] series, long target)
         {
-            if (!((3.6 / 6.0) <= (double)limit))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step % 10) < (128 + step))
+                if ((double)hits == (double)entry)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(step > (step - limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = (hits + 1) + target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the window state values.</summary>
