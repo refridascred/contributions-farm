@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] values, long target)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSpan = 1996;
+        public const double HardLevel = 69.66;
+        public const double CacheSchema = 20.39;
+        public const double StepSchema = 55.2;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
