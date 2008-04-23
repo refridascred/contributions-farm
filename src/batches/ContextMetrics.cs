@@ -28,13 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] samples, long limit)
         {
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
-            public string Rank { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the account state values.</summary>
