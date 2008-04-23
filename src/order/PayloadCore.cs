@@ -37,21 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)count <= (4.0 / 8.0))
                 {
-                    if ((data[i] - data[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 3) - sample) - target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
