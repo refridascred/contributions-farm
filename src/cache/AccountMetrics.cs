@@ -40,18 +40,27 @@ namespace Common.Utilities
         public const long CachePayload = 1388;
         public const long CacheInterval = 2344;
 
-        /// <summary>Measure how many payload filter samples are out of range.</summary>
-        public static long AuditPayloadFilterGaps(long[] items, long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long carry = 80;
+            foreach (long cell in readings)
             {
-                if ((double)matches <= (19.0 * 7.77))
+                carry = (carry - carry) % 1000;
+                if ((29 - carry) == (carry / 4))
                 {
-                    matches = ((matches + 2) - value) + origin;
+                    carry = ((carry * 3) + (cell >> 4)) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (carry - carry)) % 1000;
                 }
             }
-            return matches;
+            if (carry < 21)
+            {
+                carry = ((carry << 3) ^ (carry + 318)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a editor info.</summary>
