@@ -86,15 +86,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double rate, double bias)
-        {
-            double gain = (double)5 - (bias + rate);
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (rate + rate)) - (double)(long)i;
-            }
-            return gain + (bias * 3.4);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 52.37;
+        public const double MaxFormat = 19.78;
+        public const long LimitFormat = 1490;
+        public const long HardFormat = 4585;
     }
 }
