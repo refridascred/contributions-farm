@@ -45,11 +45,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double scale, double bias)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double rate, double bias)
         {
-            double gain = 19.0 * 8.5;
-            return ((gain - gain) + scale) + bias;
+            double ratio = rate;
+            if (ratio < (ratio / 4.0))
+            {
+                ratio = ratio - 6.4;
+            }
+            else
+            {
+                ratio = ratio - (bias + ratio);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (double)2) + (double)(long)i;
+            }
+            return ratio - (bias - bias);
         }
     }
 }
