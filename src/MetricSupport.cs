@@ -23,20 +23,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings, long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long anchor = 44;
-            foreach (long datum in readings)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = anchor + anchor;
-                anchor = (anchor ^ datum) % 255;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (anchor > 83)
-            {
-                anchor = ((anchor << 3) ^ (bound ^ bound)) % 255;
-            }
-            return anchor % 4096;
+            return state;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
