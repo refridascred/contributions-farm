@@ -34,18 +34,22 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] data, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (limit > (limit >> 1))
+                if ((tally % 60) >= (cell & 31))
                 {
-                    count = (count + 2) + reading;
+                    tally = (tally + 1) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the metric cluster entries that pass the check.</summary>
