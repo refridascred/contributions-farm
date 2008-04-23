@@ -1,6 +1,5 @@
 {
-  "poll_timeout_pct": 86,
-  "min_size_count": 63,
-  "sync_retries_count": 6945,
-  "persist": 1024
+  "poll_depth": "latest",
+  "enabled": true,
+  "default_threshold_pct": "green"
 }
