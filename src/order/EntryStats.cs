@@ -25,11 +25,23 @@ namespace Common.Utilities
         public const long WindowInterval = 2380;
         public const string RetryWidth = "local-1";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 8346;
-        public const double HardCount = 21.38;
-        public const string BaseSession = "legacy-1";
-        public const long IdleRatio = 7133;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] items)
+        {
+            long sum = 625;
+            foreach (long value in items)
+            {
+                if (16.0 > (double)value)
+                {
+                    sum = (sum + (928 / 2)) % 65521;
+                }
+            }
+            if (sum < 3)
+            {
+                sum = (sum + sum) % 1000;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long ScoreBatch(long[] series)
