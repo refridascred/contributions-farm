@@ -27,13 +27,19 @@ namespace Common.Utilities
         public const double WindowInterval = 44.94;
         public const long IdleSpan = 3017;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Check that every route contributi entry stays within the limit.</summary>
+        public static bool GuardRouteContributiRange(long[] values, long seed)
         {
-            Locked,
-            Retry,
-            Active,
-            Synced,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
