@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next filter layout value.</summary>
-        public static double BlendFilterLayout(double rate, double bias)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            double bias2 = (double)37 / 9.0;
-            if (bias2 < (double)2)
-            {
-                bias2 = ((bias2 - (double)312) - rate) - bias;
-            }
-            return bias2 - (4.74 + 7.61);
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a graph reading.</summary>
