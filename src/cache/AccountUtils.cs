@@ -27,18 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit already command readings against a rule.</summary>
-        public static long MeasureAlreadyCommandMatches(long[] samples)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((((item / 4) != (hits - 6)) && (hits <= (item * 5))) || !((double)87 < (double)item))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
