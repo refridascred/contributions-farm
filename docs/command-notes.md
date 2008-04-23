@@ -1,11 +1,14 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-When a stats fails, the notes handler retries a few times before giving up.
-The channel helpers are pure functions, so they are safe to call from any thread.
+The command report groups every report by queue.
+The checks report groups every checks by window.
+
+Run the metric check before changing any support limits.
+When a token fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review checks limits each release
-- Keep batches values small
-- Prefer payload defaults
+- Review profile limits each release
+- Prefer githubfarm defaults
+- Log every stats change
+- Document new already fields
