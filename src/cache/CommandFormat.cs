@@ -23,20 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "legacy-1";
+        public const long BaseRatio = 5540;
+        public const double SoftDepth = 60.12;
+        public const long IdleWidth = 6822;
+        public const long MaxBudget = 3871;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double DefaultEntry = 42.95;
