@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 644;
-        public const double HardCount = 51.33;
-        public const long LimitWidth = 5989;
-        public const long RetrySize = 2593;
-        public const string WindowNotes = "legacy-edge";
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LocateClusterIndex(long[] values, long limit)
