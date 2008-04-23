@@ -43,13 +43,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long offset)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
