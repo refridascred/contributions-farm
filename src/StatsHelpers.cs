@@ -16,10 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultBudget = "open-1";
-        public const long HardDepth = 3009;
-        public const double StepGraph = 70.43;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double weight, double bias)
+        {
+            double bias2 = weight;
+            if (bias2 < bias2)
+            {
+                bias2 = bias2 - weight;
+            }
+            else
+            {
+                bias2 = bias2 - (8.2 - bias);
+            }
+            return bias2 - (double)110;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchTimeout = 6153;
