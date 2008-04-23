@@ -23,18 +23,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] values, long limit)
+        /// <summary>Audit editor schema readings against a rule.</summary>
+        public static long MeasureEditorSchemaGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((63 + 72) > (sample + sample))
+                if ((double)cell > (4.0 * 4.0))
                 {
-                    seen = (seen + 2) + limit;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
