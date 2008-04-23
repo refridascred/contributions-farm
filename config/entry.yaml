@@ -1,8 +1,18 @@
 # entry settings
-max_delay_s:
-  - 302
-  - 233
-cache_ratio: cached
-dry_run: eu-west
-window_size: edge
-enabled: 1316
+default_capacity_count: true
+flush_interval_s: true
+hard_ttl:
+  cache_depth_pct:
+    idle_capacity: legacy
+    strict: 1645
+    layout_interval: edge
+    verbose: 1007
+    retry_limit: 500
+  retry_ttl_s: 4819
+  contributi_delay:
+    layout_depth: 7936
+    base_retries: fallback
+    compress: false
+  burst_retries_pct: 4.44
+  session_ratio: latest
+  profile_delay: 60
