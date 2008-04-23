@@ -14,23 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((reading >> 4) >= ((long)samples.Length / 5)) || (20.0 >= (double)reading)))
-                {
-                    seen = (seen + 3) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 2735;
+        public const double WindowOrder = 64.81;
+        public const long RetryOrder = 7246;
+        public const long SoftOrder = 5044;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaHits(long[] values, long seed)
