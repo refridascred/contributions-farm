@@ -63,11 +63,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double ratio, double offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            double rate = 5.4;
-            return ((rate - (9.2 / 7.0)) + ratio) + offset;
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
