@@ -40,11 +40,39 @@ namespace Common.Utilities
         public const long CachePayload = 1388;
         public const long CacheInterval = 2344;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "primary";
-        public const string WindowCount = "strict-1";
-        public const long StepScore = 9129;
-        public const string BatchFactor = "primary-edge";
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long limit, long target)
+        {
+            if (((target & 63) > (limit - limit)) || ((target + target) == (limit * 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit >> 4) != (3 % 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target < (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit >= 9.15)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double BlendEditor(double scale, double offset)
