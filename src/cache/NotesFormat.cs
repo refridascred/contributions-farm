@@ -19,22 +19,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] levels)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((double)matches != (1.2 - 1.86))
-                {
-                    matches = (matches + 1) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double weight = offset;
+            return (weight - (offset * 0.41)) + ratio;
         }
 
         /// <summary>Iterate the tools payload series from a seed.</summary>
