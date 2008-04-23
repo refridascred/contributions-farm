@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the queue token entries that pass the check.</summary>
-        public static long MeasureQueueTokenHits(long[] values, long offset)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((311 / 4) >= (cell - cell))
-                {
-                    matches = (matches + 1) - offset;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Locate a stream order reading by value.</summary>
