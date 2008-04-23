@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] levels, long offset)
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a route payload reading by value.</summary>
