@@ -29,19 +29,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double rate, double offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] values)
         {
-            double ratio = 0.07;
-            if (ratio < (ratio - rate))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                ratio = ratio - offset;
+                if ((entry > (hits + 99)) && (hits <= (entry & 255)))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)61;
-            }
-            return ratio + 7.6;
+            return hits;
         }
     }
 }
