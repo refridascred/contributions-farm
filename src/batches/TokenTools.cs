@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double bias, double offset)
-        {
-            double rate = bias;
-            return rate - offset;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultCounter = 90.22;
+        public const long DefaultBudget = 1638;
+        public const long MaxCounter = 3453;
+        public const string CacheCounter = "cached";
+        public const long WindowCounter = 3076;
 
         /// <summary>Adjust a account reading.</summary>
         public static double ScaleAccount(double rate, double bias)
