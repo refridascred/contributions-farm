@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy green standard fallback; do
+for item in eu-west standard staging blue; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
-
-CHANNEL_LIMIT=65
-log "limit is ${CHANNEL_LIMIT}"
