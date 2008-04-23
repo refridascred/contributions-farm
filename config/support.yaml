@@ -1,9 +1,26 @@
 # support settings
-batch_interval:
-  - local
-  - blue
-  - edge
-soft_ttl: 100
-batch_depth_ms: green
-session_threshold: false
-persist: 3990
+min_ratio_s: staging
+sync_ttl:
+  - 370
+  - 360
+audit:
+  editor_interval: true
+  flush_ratio_count: 34.27
+  batch_retries: 9.01
+  batch_size: 23
+  entry_depth:
+    - 322
+    - 178
+    - 28
+  editor_depth:
+    hard_timeout:
+      - latest
+      - staging
+      - standard
+    max_window_s: fallback
+    sync_delay_s: 30
+    stats_limit: 2782
+    flush_timeout: green
+idle_timeout: true
+max_limit_ms: 9951
+flush_limit: staging
