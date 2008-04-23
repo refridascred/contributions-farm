@@ -1,12 +1,11 @@
 # Command notes
 
-When a queue fails, the token handler retries a few times before giving up.
-The stats module keeps queue values in sync with the stats cache.
-Defaults for payload live in the config folder and can be overridden per environment.
+The buffer report groups every cache by checks.
+When a payload fails, the graph handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep metrics values small
-- Validate batch input early
-- Document new contributi fields
-- Review token limits each release
+- Log every metric change
+- Validate window input early
+- Prefer buffer defaults
+- Review graph limits each release
