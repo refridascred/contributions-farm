@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate counter report readings against a bound.</summary>
-        public static bool CheckCounterReportBounds(long[] readings, long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Idle,
+            Draft,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
