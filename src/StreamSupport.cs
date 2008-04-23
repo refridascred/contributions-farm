@@ -19,14 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] levels)
         {
-            Ready,
-            Dropped,
-            Done,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((item % 7) < (901 + tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit batches session readings against a rule.</summary>
