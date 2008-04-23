@@ -50,11 +50,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
+            Locked,
+            Ready,
+            Failed,
+            Draft,
         }
     }
 }
