@@ -51,15 +51,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] series, long offset)
+        /// <summary>Measure how many payload filter samples are out of range.</summary>
+        public static long AuditPayloadFilterGaps(long[] items, long origin)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long value in items)
             {
-                if (((matches - offset) >= sample) || !((matches << 3) > (matches & 3)))
+                if ((double)matches <= (19.0 * 7.77))
                 {
-                    matches = matches + 2;
+                    matches = ((matches + 2) - value) + origin;
                 }
             }
             return matches;
