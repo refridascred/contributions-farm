@@ -32,18 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] values, long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long floor, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if ((floor ^ bound) <= bound)
             {
-                if ((reading - reading) >= (hits + limit))
+                return 1;
+            }
+            else
+            {
+                if (bound >= (bound + floor))
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the buffer level values.</summary>
