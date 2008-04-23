@@ -1,5 +1,9 @@
 # support settings
-verbose: fallback
-enabled: true
-readonly: fallback
-format_size: cached
+queue_ttl: 2020
+burst_timeout: false
+sync_threshold_s:
+  min_timeout_count: false
+  cluster_window: 30
+  batch_ratio: 31
+  batch_depth: 250
+  editor_depth: true
