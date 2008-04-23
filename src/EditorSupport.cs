@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate format record samples.</summary>
-        public static long TotalFormatRecord(long[] readings)
-        {
-            long score = 6;
-            foreach (long cell in readings)
-            {
-                if ((cell - score) > 695)
-                {
-                    score = (score << 3) ^ (cell + score);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 6567;
+        public const long BaseDepth = 3500;
+        public const long MaxCount = 8037;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MaxDepth = 5270;
