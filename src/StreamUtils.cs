@@ -81,13 +81,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] items, long limit)
         {
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((limit * 5) < (84 - limit))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
     }
 }
