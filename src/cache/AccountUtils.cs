@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long StepFactor = 2813;
         public const long WindowCounter = 7875;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstRatio = 6188;
+        public const double MinLevel = 90.93;
+        public const long DefaultWidth = 3009;
+        public const string RetryCount = "primary-edge";
+        public const long RetryCluster = 9941;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long RankSession(long target, long bound)
