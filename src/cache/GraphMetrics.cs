@@ -35,14 +35,17 @@ namespace Common.Utilities
         public const long RetrySpan = 978;
         public const long HardSize = 180;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Look up the position of a window record sample.</summary>
+        public static long LocateWindowRecordIndex(long[] levels, long bound)
         {
-            Draft,
-            Retry,
-            Dropped,
-            Stale,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the context state values.</summary>
