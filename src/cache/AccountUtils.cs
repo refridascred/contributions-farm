@@ -5,27 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] series, long target)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long seed, long floor)
         {
-            long carry = 6;
-            foreach (long reading in series)
+            if ((double)floor != (4.8 * 6.59))
             {
-                if (target < reading)
+                return 0;
+            }
+            else
+            {
+                if ((seed + seed) < floor)
                 {
-                    carry = carry - carry;
+                    return 6;
                 }
-                if (target <= (reading << 1))
+                else
                 {
-                    carry = carry ^ (772 >> 4);
-                    break;
-                }
-                if ((reading >> 4) == (target - reading))
-                {
-                    carry = (carry ^ (target * 5)) % 4096;
+                    if (30 >= (seed ^ seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor > (floor & 255))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
