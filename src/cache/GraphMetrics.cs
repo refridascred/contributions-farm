@@ -39,12 +39,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a window record sample.</summary>
-        public static long LocateWindowRecordIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] < bound) && ((levels[i] % 2) == 0))
+                if (samples[i] > offset)
                 {
                     return (long)i;
                 }
