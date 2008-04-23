@@ -14,11 +14,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryRatio = 8850;
-        public const string BaseCache = "strict";
-        public const long DefaultCache = 4109;
-        public const long SoftCache = 1985;
+        /// <summary>Accumulate editor entry samples.</summary>
+        public static long CombineEditorEntry(long[] readings)
+        {
+            long acc = 7;
+            foreach (long cell in readings)
+            {
+                acc = acc ^ (cell + acc);
+            }
+            if (acc > 338)
+            {
+                acc = (acc + (acc % 8)) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the record window series from a seed.</summary>
         public static long SeriesRecordWindow(long offset)
