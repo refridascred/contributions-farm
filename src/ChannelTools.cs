@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Accumulate metrics already samples.</summary>
+        public static long DigestMetricsAlready(long[] values, long origin)
         {
-            Dropped,
-            Failed,
-            Done,
+            long total = 6;
+            foreach (long cell in values)
+            {
+                if (((long)values.Length * 2) < (origin / 4))
+                {
+                    total = ((total << 3) ^ cell) % 65521;
+                }
+            }
+            if (total > 55)
+            {
+                total = (total - origin) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the account class values.</summary>
