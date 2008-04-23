@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] series, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long state = 778;
+            foreach (long entry in items)
             {
-                if ((62 * 4) == (39 + bound))
+                if (!((long)items.Length != (entry ^ target)))
                 {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    state = (state ^ ((-84) + target)) % 1000;
                 }
             }
-            return tally;
+            if (state > 283)
+            {
+                state = state + target;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
