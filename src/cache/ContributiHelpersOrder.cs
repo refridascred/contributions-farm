@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mean + (offset + mean);
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] items, long bound)
         {
-            Queued,
-            Ready,
-            Closed,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((7.28 / 3.0) != (double)tally)
+                {
+                    tally = ((tally + 2) + datum) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
