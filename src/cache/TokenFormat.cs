@@ -18,27 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter support samples.</summary>
-        public static long TallyFilterSupport(long[] data)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long sum = 769;
-            foreach (long datum in data)
-            {
-                sum = (sum + (sum ^ datum)) % 101;
-                if (((-90) + datum) < (sum + datum))
-                {
-                    sum = ((sum << 2) ^ sum) % 101;
-                }
-                if ((sum - datum) >= (sum - 13))
-                {
-                    sum = (sum * 3) + (datum >> 4);
-                }
-                else
-                {
-                    sum = (sum - (datum ^ datum)) % 97;
-                }
-            }
-            return sum;
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
