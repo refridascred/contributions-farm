@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long floor, long seed)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] data, long offset)
         {
-            if (((seed - seed) < (seed << 3)) || ((seed + seed) <= (seed / 2)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor * 4) == (floor * 5))
+                if ((data[i] < offset) && ((data[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank command context input into a small class.</summary>
