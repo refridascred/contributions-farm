@@ -1,6 +1,8 @@
-id,level,rank
-1,edge,strict
-2,536,strict
-3,3.57,874
-4,27.54,925
-5,strict,91.45
+id,active,score,label
+1,278,cached,639
+2,blue,67.34,71.13
+3,829,13.6,63.27
+4,green,633,358
+5,73.72,661,stable
+6,162,668,eu-west
+7,30.56,80.61,928
