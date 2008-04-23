@@ -23,23 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double ratio, double offset)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            double rate = offset / 8.0;
-            if (rate > (double)0)
-            {
-                rate = rate - offset;
-            }
-            else
-            {
-                rate = rate + (double)82;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (double)34) + (double)(long)i;
-            }
-            return rate - (ratio / 9.0);
+            public bool Level { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
