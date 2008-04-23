@@ -1,8 +1,8 @@
-id,level,label
-1,144,187
-2,latest,812
-3,staging,17.57
-4,primary,primary
-5,683,137
-6,480,stable
-7,603,14.62
+id,region,label,score
+1,strict,312,11.36
+2,737,255,700
+3,94.38,911,eu-west
+4,20.46,568,38
+5,edge,strict,534
+6,954,8.75,fallback
+7,239,492,473
