@@ -22,19 +22,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] levels, long seed)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long mix = 328;
-            foreach (long reading in levels)
-            {
-                mix = ((mix + seed) % 65521) ^ reading;
-            }
-            if (mix < 719)
-            {
-                mix = (mix ^ (mix & 255)) % 1000;
-            }
-            return mix % 4096;
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine entry account values into a single score.</summary>
