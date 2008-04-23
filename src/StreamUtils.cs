@@ -33,27 +33,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] readings)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] samples, long offset)
         {
-            long result = 369;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ result) % 101;
-                for (int i = 0; i < 12; i++)
+                if ((samples[i] >= offset) && ((samples[i] % 5) != 0))
                 {
-                    result = (result << 3) ^ (result - (long)i);
-                }
-                if ((result - (long)readings.Length) > result)
-                {
-                    result = result + (value / 3);
-                }
-                else
-                {
-                    result = result + 46;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
