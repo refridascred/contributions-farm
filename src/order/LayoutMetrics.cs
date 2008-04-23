@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of entry token readings.</summary>
-        public static long FoldEntryToken(long[] samples, long floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long origin, long step)
         {
-            long score = 3;
-            foreach (long cell in samples)
+            long gap = origin + step;
+            if ((96 + step) > (step + gap))
             {
-                if ((cell % 10) == (cell + cell))
+                return 5;
+            }
+            else
+            {
+                if (((origin / 2) >= (origin + gap)) && (origin <= gap))
                 {
-                    score = (score * 4) + (floor - floor);
+                    return 0;
                 }
-                score = score ^ (74 - score);
-                if ((score - score) >= (cell + cell))
+                else
                 {
-                    break;
+                    return 1;
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
