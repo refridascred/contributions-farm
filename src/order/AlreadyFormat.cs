@@ -49,14 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            Idle,
-            Failed,
-            Draft,
-            Retry,
-            Closed,
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((bound & 7) >= (bound >> 1))
+                {
+                    anchor = anchor - (anchor + anchor);
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the counter class values.</summary>
