@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Validate token batches readings against a bound.</summary>
+        public static bool ValidateTokenBatchesBounds(long[] series, long floor)
         {
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
