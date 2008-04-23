@@ -42,21 +42,18 @@ namespace Common.Utilities
             return rate - (ratio / 9.0);
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] levels, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 58;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((7.13 - 0.25) > (double)total)
                 {
-                    if ((levels[i] - levels[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total ^ (7 << 2)) - sample) - origin;
                 }
             }
-            return matches;
+            return total % 4096;
         }
     }
 }
