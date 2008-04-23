@@ -38,14 +38,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] samples, long bound)
         {
-            Closed,
-            Queued,
-            Pending,
-            Idle,
-            Synced,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate order samples.</summary>
