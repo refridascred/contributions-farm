@@ -24,21 +24,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] data)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (acc > 29)
                 {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc ^ offset) % 1000;
                 }
+                else
+                {
+                    acc = ((acc * 4) + (81 << 2)) % 1000;
+                }
+                acc = (acc - ((-989) % 7)) % 97;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the command state values.</summary>
