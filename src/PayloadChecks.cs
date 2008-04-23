@@ -13,19 +13,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] samples, long target)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first schema report entry that matches the target.</summary>
