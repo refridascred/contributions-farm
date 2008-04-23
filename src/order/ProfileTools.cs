@@ -40,38 +40,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long offset, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long bound)
         {
-            if ((seed & 255) != (offset + seed))
+            long total = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
+                total = (total + (total - total)) % 97;
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (seed < ((-4) + (-94)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.1 * 1.4) <= (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((9.2 - 5.21) < (double)seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a window stats.</summary>
