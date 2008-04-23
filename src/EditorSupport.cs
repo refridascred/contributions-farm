@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] values, long offset)
+        /// <summary>Accumulate format record samples.</summary>
+        public static long TotalFormatRecord(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long score = 6;
+            foreach (long cell in readings)
             {
-                if (!(((count + offset) >= (cell & 3)) && (cell > offset)))
+                if ((cell - score) > 695)
                 {
-                    count = count + 1;
+                    score = (score << 3) ^ (cell + score);
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
