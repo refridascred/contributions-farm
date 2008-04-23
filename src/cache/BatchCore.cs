@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 245;
-        public const double HardCount = 34.45;
-        public const long WindowScore = 3034;
-        public const string CacheInterval = "primary-v2";
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double rate, double offset)
+        {
+            double bias = rate;
+            if (bias < (bias - 6.4))
+            {
+                bias = bias + (offset / 4.0);
+            }
+            return bias - bias;
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
