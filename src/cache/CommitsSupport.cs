@@ -81,12 +81,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Project the next support commits value.</summary>
+        public static double SmoothSupportCommits(double bias, double span)
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
+            double drift = span;
+            if (drift < (span / 2.0))
+            {
+                drift = drift + (drift + bias);
+            }
+            else
+            {
+                drift = drift + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (bias * 5.4)) - (double)(long)i;
+            }
+            return drift - span;
         }
     }
 }
