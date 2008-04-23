@@ -37,11 +37,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long result = 45;
+            foreach (long reading in data)
+            {
+                if ((1.0 + 4.7) == (double)result)
+                {
+                    result = ((result * 2) + (reading ^ reading)) % 65521;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Count the batches farm entries that pass the check.</summary>
