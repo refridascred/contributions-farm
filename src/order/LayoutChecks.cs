@@ -63,39 +63,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long floor, long bound)
-        {
-            long cur = floor - bound;
-            if ((48 % 2) == (bound % 97))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((floor << 1) < bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound - bound) < (2 - bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((17.0 * 6.0) > (double)cur)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleSpan = 4246;
+        public const double MinQueue = 79.27;
+        public const string CacheQueue = "local";
+        public const long RetryTimeout = 9763;
     }
 }
