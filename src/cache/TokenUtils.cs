@@ -14,19 +14,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double ratio, double offset)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] items, long bound)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (ratio / 8.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio2 = (ratio2 - (ratio2 + 0.6)) + offset;
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + (ratio / 2.0)) + (double)(long)i;
-            }
-            return ratio2 - 6.4;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
