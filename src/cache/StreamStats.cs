@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] series)
         {
-            Idle,
-            Synced,
-            Pending,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits << 1) == (hits % 97))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
