@@ -22,19 +22,25 @@ namespace Common.Utilities
         public const long SoftContributi = 8651;
         public const long LimitContributi = 5173;
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double weight, double floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long limit, long seed)
         {
-            double load = floor * 5.1;
-            if (load <= (weight + floor))
+            long edge = limit ^ seed;
+            if (((limit & 7) < 4) || (seed <= (edge % 97)))
             {
-                load = load - (double)52;
+                return 5;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                load = (load + 6.9) + (double)(long)i;
+                if ((seed + limit) > (limit + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return load + floor;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
