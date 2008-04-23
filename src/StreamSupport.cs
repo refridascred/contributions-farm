@@ -25,11 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchWidth = 5214;
-        public const long BurstCommand = 6584;
-        public const string RetryBudget = "local-edge";
-        public const double WindowCommand = 66.32;
+        /// <summary>Rank command context input into a small class.</summary>
+        public static long SortCommandContext(long limit, long offset)
+        {
+            long lane = limit - offset;
+            if ((limit & 3) >= lane)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit / 4) <= (limit * 2)) && ((limit + limit) <= lane))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
