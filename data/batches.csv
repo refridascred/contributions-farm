@@ -1,9 +1,7 @@
-id,label,level,state
-1,80.06,2.4,467
-2,primary,307,810
-3,244,64.05,green
-4,252,797,383
-5,13.31,31.21,42.21
-6,staging,open,894
-7,961,55.73,staging
-8,stable,94.4,edge
+id,owner,level
+1,78.53,stable
+2,288,18.48
+3,green,fallback
+4,61,88.5
+5,eu-west,179
+6,734,fallback
