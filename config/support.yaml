@@ -1,15 +1,9 @@
 # support settings
-retry_retries_ms: 9314
-sync_threshold: stable
-burst_interval: fallback
-burst_threshold_count:
-  dry_run: true
-  context_limit: staging
-  cluster_size:
-    verbose:
-      - 265
-      - 295
-      - 308
-    max_limit_pct: true
-    max_ratio: 61
-  idle_threshold: 1024
+entry_timeout: 2059
+hard_ratio_pct: 66.67
+retry_limit_ms: 46
+retry_size: 12
+format_threshold:
+  - stable
+  - staging
+  - staging
