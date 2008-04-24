@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] data, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] items, long limit)
         {
-            long acc = -96;
-            foreach (long datum in data)
+            long score = 9;
+            foreach (long cell in items)
             {
-                acc = ((((acc << 2) ^ 8) % 4096) ^ datum) - origin;
+                for (int i = 0; i < 2; i++)
+                {
+                    score = (score - (score ^ score)) + (long)i;
+                }
+                if ((limit ^ cell) <= cell)
+                {
+                    score = score - (3 * 2);
+                }
+                if (score < (score & 127))
+                {
+                    score = (score + (limit >> 5)) % 4096;
+                }
             }
-            return acc;
+            if (score > 0)
+            {
+                score = (score * 4) + (score + limit);
+            }
+            return score % 65521;
         }
 
         /// <summary>Combine order values into a single score.</summary>
