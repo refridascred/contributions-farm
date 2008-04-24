@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public bool Limit { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            Dropped,
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
