@@ -39,13 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] values, long limit)
         {
-            Paused,
-            Locked,
-            Pending,
-            Idle,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every schema profile entry stays within the limit.</summary>
