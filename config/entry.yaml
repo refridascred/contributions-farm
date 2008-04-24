@@ -1,5 +1,5 @@
 # entry settings
-poll_threshold_ms: legacy
-format_capacity: 42.58
-stats_delay: stable
-min_threshold: 8517
+max_retries: staging
+channel_threshold: primary
+verbose: eu-west
+batch_interval_s: false
