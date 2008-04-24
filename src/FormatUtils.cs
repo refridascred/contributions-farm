@@ -48,17 +48,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Iterate the account order series from a seed.</summary>
-        public static long SeriesAccountOrder(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = (mix + (target + mix)) % 97;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitLevel = 7571;
+        public const long IdleBudget = 7006;
+        public const long MaxQueue = 6364;
+        public const long CacheQueue = 2078;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] series)
