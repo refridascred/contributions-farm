@@ -25,38 +25,13 @@ namespace Common.Utilities
         public const long IdleWidth = 6822;
         public const long MaxBudget = 3871;
 
-        /// <summary>Classify a profile contributi pair into a bucket.</summary>
-        public static long SortProfileContributi(long origin, long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            if (step > (origin >> 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step ^ step) > (step ^ origin)) || ((origin << 2) <= origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + origin) == (step - step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step >= (step >> 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the profile phase values.</summary>
