@@ -27,18 +27,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] readings, long origin)
+        /// <summary>Fold a list of batch checks readings.</summary>
+        public static long CombineBatchChecks(long[] items)
         {
-            long anchor = 0;
-            foreach (long datum in readings)
+            long total = 774;
+            foreach (long cell in items)
             {
-                if ((-85) > (anchor & 3))
+                if ((7.72 + 1.91) < (double)total)
                 {
-                    anchor = ((anchor * 5) + origin) - datum;
+                    total = total + (cell << 2);
                 }
             }
-            return anchor;
+            if (total < 3)
+            {
+                total = total + (total - total);
+            }
+            return total;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
