@@ -1,7 +1,4 @@
 # support settings
-batch_ratio_s: 100
-support_window:
-  warm_capacity: 60
-  sync_depth_s: eu-west
-  warm_ttl_s: 250
-audit: 500
+poll_retries_ms: 71.14
+warm_interval_ms: strict
+warm_depth_count: edge
