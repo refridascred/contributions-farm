@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] items)
+        /// <summary>Match up editor metrics samples.</summary>
+        public static long CompareEditorMetricsCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= (hits + datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the schema state values.</summary>
