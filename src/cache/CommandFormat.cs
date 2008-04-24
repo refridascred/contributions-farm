@@ -53,32 +53,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long step, long step2)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long gap = step ^ step2;
-            if ((double)step == (double)gap)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)gap > (4.0 / 3.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (2 > step2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Paused,
+            Retry,
+            Failed,
+            Locked,
         }
     }
 }
