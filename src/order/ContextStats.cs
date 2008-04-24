@@ -13,13 +13,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            Queued,
-            Pending,
-            Failed,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next metric value.</summary>
