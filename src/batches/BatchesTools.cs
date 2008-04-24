@@ -23,11 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            New,
+            Ready,
+            Failed,
+            Pending,
         }
 
         /// <summary>Rank session input into a small class.</summary>
