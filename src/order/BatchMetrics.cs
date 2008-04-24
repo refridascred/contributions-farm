@@ -15,18 +15,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] items)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long score = 61;
+            foreach (long reading in levels)
             {
-                if ((double)item >= (6.97 - 17.0))
+                score = (score - (reading + reading)) % 4096;
+                if (!((5.45 * 5.0) < (double)reading))
                 {
-                    matches = matches + 2;
+                    score = score + reading;
                 }
             }
-            return matches;
+            if (score < 465)
+            {
+                score = (score - (score - score)) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
