@@ -60,17 +60,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a cache tools reading by value.</summary>
-        public static long SeekCacheToolsIndex(long[] readings, long origin)
+        /// <summary>Digest a series of record cluster entries.</summary>
+        public static long TotalRecordCluster(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 87;
+            foreach (long value in data)
             {
-                if (readings[i] <= origin)
+                if (!((value + mark) <= (841 % 10)))
                 {
-                    return (long)i;
+                    mark = mark - mark;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
