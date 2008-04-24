@@ -13,15 +13,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next entry metric value.</summary>
-        public static double SmoothEntryMetric(double scale, double floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] samples, long step)
         {
-            double weight = 5.96;
-            if (weight >= floor)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - (scale / 2.0);
+                if ((samples[i] == step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + (scale * 8.0);
+            return -1;
         }
 
         /// <summary>Measure how many schema batches samples are out of range.</summary>
