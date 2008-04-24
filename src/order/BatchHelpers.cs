@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 6040;
-        public const long LimitBuffer = 5900;
-        public const long HardBuffer = 3472;
-        public const double CacheBudget = 39.41;
-        public const long BaseSpan = 9077;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Pending,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LookupClusterIndex(long[] levels, long step)
