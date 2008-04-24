@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] series, long origin)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long floor, long target)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long slot = floor - target;
+            if (floor < (8 + target))
             {
-                if ((7.39 + 1.94) < (double)origin)
+                return 1;
+            }
+            else
+            {
+                if ((4.13 + 9.77) == (double)target)
                 {
-                    matches = (matches + 3) + item;
+                    return 6;
+                }
+                else
+                {
+                    if (((floor / 6) <= (target + floor)) && ((floor & 255) > 99))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor > (slot / 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
