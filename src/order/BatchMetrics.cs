@@ -15,15 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next batch metric value from a seed.</summary>
-        public static long DeriveBatchMetric(long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((double)item >= (6.97 - 17.0))
+                {
+                    matches = matches + 2;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
