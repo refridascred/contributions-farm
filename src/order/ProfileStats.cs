@@ -37,17 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] data, long step)
+        /// <summary>Rank batches route input into a small class.</summary>
+        public static long RankBatchesRoute(long bound, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((bound + 453) < (352 + bound)) && ((82 & 255) > (limit - bound)))
             {
-                if ((data[i] <= step) && ((data[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)limit >= (0.3 / 9.0))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
