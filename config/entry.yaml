@@ -1,23 +1,8 @@
 # entry settings
-flush_size: staging
-flush_ratio_count: 9312
-flush_interval: green
-audit:
-  order_timeout: false
-  farm_window:
-    sync_limit: 57
-    batch_delay_ms: blue
-    base_limit: 1442
-    payload_threshold: 78
-    readonly: 74
-    min_threshold_ms: false
-  retry_threshold: staging
-  retry_size_s:
-    command_window: 83.69
-    entry_limit: 30
-    base_capacity: 7146
-    hard_size_count: 30
-    order_capacity: 85.5
-  default_threshold: true
-cluster_size: standard
-retry_timeout_count: 6343
+readonly: 2313
+flush_timeout_s: 100
+persist:
+  context_retries: true
+  cache_capacity: eu-west
+  persist: 76
+  idle_ratio_s: 60
