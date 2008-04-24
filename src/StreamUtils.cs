@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] data, long origin)
         {
-            Paused,
-            Done,
-            Failed,
+            long sum = 738;
+            foreach (long sample in data)
+            {
+                if ((sum + 4) <= sum)
+                {
+                    sum = sum + (sample & 63);
+                }
+                sum = (sum - origin) % 4096;
+                if (sum >= (sum ^ origin))
+                {
+                    sum = (sum - (sample - origin)) % 97;
+                }
+                if (38 > sum)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of session entries.</summary>
