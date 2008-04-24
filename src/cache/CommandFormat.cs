@@ -25,11 +25,15 @@ namespace Common.Utilities
         public const long IdleWidth = 6822;
         public const long MaxBudget = 3871;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 4495;
-        public const long WindowOrder = 4073;
-        public const long HardOrder = 3037;
-        public const long HardFactor = 2257;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Done,
+            Idle,
+            Dropped,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
