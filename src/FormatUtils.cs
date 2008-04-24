@@ -34,27 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine report metrics values into a single score.</summary>
-        public static long CombineReportMetrics(long[] values, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] series, long seed)
         {
-            long carry = 4;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                carry = (carry ^ (floor + carry)) % 1000;
-                if (((carry >> 4) != (floor - item)) || ((double)carry != (2.6 - 6.0)))
+                if (cell > seed)
                 {
-                    carry = carry + item;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ ((long)values.Length - item);
+                    stale = false;
+                    break;
                 }
             }
-            if (carry < (-37))
-            {
-                carry = (carry ^ (floor >> 1)) % 1000;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Hold a commits stats.</summary>
