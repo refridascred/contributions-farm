@@ -1,27 +1,6 @@
 # entry settings
-schema_interval: standard
-cache_threshold: standard
-max_ttl_s: 15.95
-burst_depth:
-  - 291
-  - 470
-default_threshold_pct:
-  enabled:
-    - blue
-    - eu-west
-  sync_ttl_pct:
-    hard_interval_ms: 16
-    verbose: false
-    max_window:
-      - 107
-      - 356
-      - 61
-      - 446
-  batches_window: 64
-  soft_ratio: 45
-  max_ratio_s: blue
-  burst_threshold_s: 24.29
-cluster_size:
-  - fallback
-  - primary
-  - fallback
+verbose: false
+burst_delay_s: 70.16
+sync_depth_count: strict
+retry_size_s: legacy
+batch_size: 83
