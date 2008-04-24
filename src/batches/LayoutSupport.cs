@@ -28,14 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 673;
+        public const string WindowCluster = "legacy-v2";
+        public const long LimitFactor = 4022;
+        public const long CacheCluster = 9578;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long IterateGraph(long floor)
