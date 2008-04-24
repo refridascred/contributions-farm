@@ -1,13 +1,11 @@
 # Command notes
 
-A command that stays idle for too long is moved to the entry list.
-When a entry fails, the already handler retries a few times before giving up.
-
-Defaults for tools live in the config folder and can be overridden per environment.
-Use buffer settings to tune how often metric data is refreshed.
+Use tools settings to tune how often editor data is refreshed.
+A tools that stays idle for too long is moved to the tools list.
+When a token fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every cluster change
-- Document new context fields
-- Validate window input early
+- Prefer stream defaults
+- Keep window values small
+- Review layout limits each release
