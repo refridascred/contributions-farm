@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] values, long bound)
+        /// <summary>Count account tools pairs that satisfy a relation.</summary>
+        public static long OverlapAccountToolsCount(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (4.4 >= (double)bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 2) ^ datum;
+                    if ((data[i] ^ data[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
