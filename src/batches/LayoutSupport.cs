@@ -55,23 +55,16 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] data)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            long sum = -5;
-            foreach (long datum in data)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = ((sum * 2) + (datum + datum)) ^ (long)i;
-                }
-                sum = sum - (80 + sum);
-                if (!((0 + sum) <= (sum - sum)))
-                {
-                    break;
-                }
+                state = (state << 2) ^ 23;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
