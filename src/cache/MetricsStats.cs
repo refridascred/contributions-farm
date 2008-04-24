@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many graph cache samples are out of range.</summary>
-        public static long TallyGraphCacheOutliers(long[] items, long step)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long bound)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((step - (-2)) > (sample - (long)items.Length))
+                sum = (sum + (long)i) % 65521;
+                sum = sum ^ (sum / 6);
+                if (((bound / 2) < bound) && ((long)i == (bound + 11)))
                 {
-                    matches = matches + 1;
+                    sum = sum ^ (136 - (-6));
                 }
+                else
+                {
+                    sum = ((sum << 3) ^ (bound * 3)) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
