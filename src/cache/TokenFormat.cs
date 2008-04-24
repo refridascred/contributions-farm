@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] readings)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
-            long mix = 19;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = mix + (cell % 97);
-                if ((double)mix < 2.01)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix - 402;
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mix = (mix ^ (412 + (-891))) % 4096;
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
