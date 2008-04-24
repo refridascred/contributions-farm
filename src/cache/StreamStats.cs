@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Accumulate notes format samples.</summary>
+        public static long TallyNotesFormat(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            long state = 43;
+            foreach (long value in values)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (state < value)
+                {
+                    state = state - (state * 4);
+                }
+                state = (state - (0 >> 5)) % 65521;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
