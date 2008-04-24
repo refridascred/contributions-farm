@@ -1,18 +1,14 @@
 {
-  "enabled": {
-    "burst_interval_pct": {
-      "channel_size": true,
-      "audit": 60,
-      "min_window": false,
-      "batch_capacity": 60
-    },
-    "enabled": 35.54,
-    "readonly": true,
-    "hard_ttl_count": 6389
-  },
-  "compress": 65,
-  "cluster_retries": ["open", "blue"],
-  "session_depth": "edge",
-  "retry_threshold": ["latest", "fallback"],
-  "strict": true
+  "burst_interval_ms": 30,
+  "burst_limit_pct": 1845,
+  "soft_interval_s": true,
+  "buffer_capacity": 20.8,
+  "verbose": [240, 115],
+  "batch_interval_s": {
+    "retry_size": 56,
+    "base_timeout_ms": "staging",
+    "soft_size_count": 57.08,
+    "layout_depth": "fallback",
+    "idle_capacity_s": "staging"
+  }
 }
