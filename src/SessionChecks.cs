@@ -30,11 +30,21 @@ namespace Common.Utilities
         public const double HardQueue = 38.91;
         public const string MinQueue = "stable-1";
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double weight, double floor)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] values)
         {
-            double bias = (2.25 - weight) * 7.39;
-            return (bias - (weight * 8.0)) + floor;
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
