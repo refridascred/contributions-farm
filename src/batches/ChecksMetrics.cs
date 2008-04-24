@@ -25,15 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next route support value.</summary>
-        public static double ScaleRouteSupport(double scale, double bias)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long bound, long step)
         {
-            double ratio = bias;
-            for (int i = 0; i < 8; i++)
+            if (((bound & 31) >= (0 + bound)) && ((696 << 2) >= bound))
             {
-                ratio = (ratio - (double)(long)i) - scale;
+                return 0;
             }
-            return ratio + ratio;
+            else
+            {
+                if ((double)step <= (6.0 / 9.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound + step) <= bound) && ((6.01 / 8.0) == (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((bound + bound) == (bound * 5)) && ((step + step) > bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate token samples.</summary>
