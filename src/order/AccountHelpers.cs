@@ -25,13 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            New,
+            Pending,
+            Closed,
+            Ready,
         }
 
         /// <summary>Match up contributi samples.</summary>
