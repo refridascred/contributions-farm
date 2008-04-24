@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a payload tools sample.</summary>
-        public static long FindPayloadToolsIndex(long[] items, long seed)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] == seed)
+                if (((long)i + anchor) < (long)i)
                 {
-                    return (long)i;
+                    anchor = anchor ^ anchor;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Blend two counter measurements.</summary>
