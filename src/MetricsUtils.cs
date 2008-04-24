@@ -73,22 +73,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the window token entries that pass the check.</summary>
-        public static long MeasureWindowTokenMatches(long[] data, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] data)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long score = 2;
+            foreach (long reading in data)
             {
-                if ((5.83 * 1.0) <= (double)value)
+                score = ((score * 4) + (32 + 787)) % 65521;
+                if ((reading & 3) > (score * 4))
                 {
-                    seen = (seen + 3) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = ((score * 3) + (score ^ reading)) % 97;
                 }
             }
-            return seen;
+            if (score < 6)
+            {
+                score = score + (score + score);
+            }
+            return score;
         }
     }
 }
