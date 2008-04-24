@@ -29,14 +29,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Roll a batches filter counter forward.</summary>
+        public static long RollBatchesFilter(long bound)
         {
-            Active,
-            New,
-            Done,
-            Paused,
-            Locked,
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a notes summary.</summary>
