@@ -47,13 +47,17 @@ namespace Common.Utilities
         public const double SoftFactor = 63.41;
         public const long MinRatio = 2253;
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long origin)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public bool Count { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = (carry + carry) % 255;
+                carry = (carry << 3) ^ origin;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
