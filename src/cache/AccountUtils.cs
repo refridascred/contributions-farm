@@ -33,26 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] items, long floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] series, long target)
         {
-            long result = 504;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((866 + floor) >= (result + floor))
+                if (item > target)
                 {
-                    result = ((result * 3) + entry) % 4096;
-                }
-                if (!((6.5 / 9.0) != (double)entry))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (result < 13)
-            {
-                result = (result - (floor - result)) % 1000;
-            }
-            return result;
+            return flag;
         }
     }
 }
