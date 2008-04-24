@@ -103,23 +103,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double weight, double floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] data, long seed)
         {
-            double rate = floor;
-            if (rate > floor)
+            bool found = true;
+            foreach (long cell in data)
             {
-                rate = (rate + floor) - weight;
+                if (cell < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (double)3;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - (rate / 2.0);
+            return found;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
