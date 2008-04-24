@@ -14,13 +14,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public bool Size { get; set; }
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 4540;
+        public const string MaxContext = "open-edge";
+        public const string DefaultRatio = "strict";
+        public const long DefaultContext = 8279;
 
         /// <summary>Blend two route schema measurements.</summary>
         public static double AdjustRouteSchema(double rate, double span)
