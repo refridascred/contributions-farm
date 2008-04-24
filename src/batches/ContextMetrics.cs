@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 493;
+        public const double DefaultWidth = 59.64;
+        public const long DefaultCounter = 5580;
+        public const string MaxCounter = "stable-v2";
+        public const long StepCounter = 5735;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
