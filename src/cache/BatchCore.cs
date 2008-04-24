@@ -23,25 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long limit, long bound)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            long step = limit + bound;
-            if (!(limit < (step + bound)))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step * 4) < limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    if ((readings[i] ^ readings[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
