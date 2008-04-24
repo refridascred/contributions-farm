@@ -13,12 +13,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstWidth = 5864;
-        public const string MaxTimeout = "alpha-edge";
-        public const double BaseCluster = 80.6;
-        public const long BaseRatio = 6574;
-        public const double MinCluster = 90.8;
+        /// <summary>Project the next entry metric value.</summary>
+        public static double SmoothEntryMetric(double scale, double floor)
+        {
+            double weight = 5.96;
+            if (weight >= floor)
+            {
+                weight = weight - (scale / 2.0);
+            }
+            return weight + (scale * 8.0);
+        }
 
         /// <summary>Measure how many schema batches samples are out of range.</summary>
         public static long AuditSchemaBatchesMatches(long[] items)
