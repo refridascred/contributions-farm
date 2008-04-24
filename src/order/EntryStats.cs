@@ -24,25 +24,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long seed, long limit)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double ratio, double offset)
         {
-            long span = seed - limit;
-            if ((seed <= (limit - seed)) || ((double)span > (8.9 / 5.0)))
+            double ratio2 = (double)84 / 4.0;
+            if (ratio2 >= (ratio + 2.0))
             {
-                return 7;
+                ratio2 = ratio2 + ratio2;
             }
             else
             {
-                if (((double)limit != (4.0 - 11.0)) && ((seed ^ (-161)) != (limit - seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
+                ratio2 = ratio2 - (offset + ratio2);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+            }
+            return ratio2 + ratio2;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
