@@ -31,19 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] levels, long origin)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum != origin)
+                total = total - (long)i;
+                if ((double)4 >= (double)total)
                 {
-                    found = false;
+                    total = (total * 2) + (seed ^ (long)i);
                     break;
                 }
+                else
+                {
+                    total = (total - ((long)i % 97)) % 65521;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Match up batches samples.</summary>
