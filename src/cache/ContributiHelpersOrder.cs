@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (samples[i] >= bound)
+                if (6.4 <= (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
