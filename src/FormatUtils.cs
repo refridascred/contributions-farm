@@ -48,10 +48,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseInterval = 9891;
-        public const string BaseRecord = "standard-v2";
-        public const string WindowTimeout = "fallback-1";
+        /// <summary>Iterate the account order series from a seed.</summary>
+        public static long SeriesAccountOrder(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix + (target + mix)) % 97;
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MaxNotes = 7661;
