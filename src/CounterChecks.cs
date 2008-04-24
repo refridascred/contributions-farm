@@ -72,19 +72,24 @@ namespace Common.Utilities
             return rate - (rate / 2.0);
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] items, long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long limit, long seed)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            if ((limit ^ seed) <= seed)
             {
-                if (cell >= step)
+                return 1;
+            }
+            else
+            {
+                if ((double)limit == (10.0 / 6.0))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
     }
 }
