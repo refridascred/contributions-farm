@@ -67,15 +67,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double gain, double span)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double mean = 9.6 - (double)(-85);
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean - (gain * 3.16)) + (double)(long)i) - span;
-            }
-            return mean - (8.0 + mean);
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
