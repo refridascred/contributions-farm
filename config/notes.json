@@ -1,17 +1,5 @@
 {
-  "payload_threshold": "staging",
-  "warm_interval_count": {
-    "batches_threshold": ["green", "blue", "open", "legacy"],
-    "queue_timeout": "legacy",
-    "notes_limit": true,
-    "editor_size": [36, 120, 327]
-  },
-  "sync_capacity_ms": 78.63,
-  "min_timeout": {
-    "idle_size_count": true,
-    "buffer_interval": true,
-    "warm_depth_pct": "stable",
-    "enabled": "latest",
-    "max_interval": 74.97
-  }
+  "max_timeout_ms": 1858,
+  "burst_limit_count": true,
+  "readonly": "strict"
 }
