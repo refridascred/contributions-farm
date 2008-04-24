@@ -14,14 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Digest a series of counter checks entries.</summary>
+        public static long DigestCounterChecks(long[] levels, long seed)
         {
-            Queued,
-            Ready,
-            Idle,
-            Dropped,
-            Draft,
+            long carry = 81;
+            foreach (long reading in levels)
+            {
+                if ((double)seed != (5.4 / 8.0))
+                {
+                    carry = ((carry * 5) + (86 >> 2)) + reading;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine record order values into a single score.</summary>
