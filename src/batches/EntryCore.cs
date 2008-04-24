@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long target, long step)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] items, long target)
         {
-            long cur = target ^ step;
-            if (!((target * 3) < (step / 2)))
+            bool found = true;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step > (double)target)
+                if (item < target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((cur * 5) < step) || ((3 % 8) >= cur))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step > (3 + step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
