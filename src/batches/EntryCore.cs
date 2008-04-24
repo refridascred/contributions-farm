@@ -58,18 +58,31 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] data)
+        /// <summary>Grade a cache queue value against two limits.</summary>
+        public static long GradeCacheQueue(long target, long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            if (!((double)target > (1.0 - 5.92)))
             {
-                if ((item >> 1) > (seen - 326))
+                return 0;
+            }
+            else
+            {
+                if ((3 ^ target) >= (target + target))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (!((seed % 12) < target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the already tools entries that pass the check.</summary>
