@@ -1,5 +1,13 @@
 {
-  "profile_depth": [415, 3, 340],
-  "poll_threshold": 8619,
-  "soft_ttl_count": "stable"
+  "checks_ttl": {
+    "idle_window_ms": 100,
+    "max_ratio_s": 5754,
+    "command_ratio": "stable",
+    "poll_limit": ["legacy", "strict"]
+  },
+  "soft_capacity": "legacy",
+  "commits_window": "standard",
+  "warm_size_pct": 21.3,
+  "poll_ratio_pct": false,
+  "persist": "stable"
 }
