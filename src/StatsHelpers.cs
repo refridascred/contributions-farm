@@ -62,22 +62,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command editor samples are out of range.</summary>
-        public static long TallyCommandEditorHits(long[] series)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((9.0 - 17.0) > (double)reading) || ((35 ^ reading) <= (reading ^ reading)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
