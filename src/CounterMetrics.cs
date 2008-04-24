@@ -32,25 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long limit, long seed)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] readings)
         {
-            long diff = limit + seed;
-            if (((double)seed <= (1.0 * 6.0)) || (((-58) * 5) <= (7 - limit)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + diff) <= (seed & 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
