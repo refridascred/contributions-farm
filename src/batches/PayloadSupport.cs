@@ -45,15 +45,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double scale, double floor)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double gain = scale * 6.0;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = ((gain + 4.78) + (double)(long)i) - floor;
-            }
-            return gain - (scale - scale);
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
