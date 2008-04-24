@@ -1,18 +1,8 @@
 {
-  "graph_capacity": 42.43,
-  "metrics_timeout": false,
-  "default_ttl_s": 77.43,
-  "token_capacity": {
-    "batch_ratio_count": 500,
-    "report_ratio": "green",
-    "cache_window_ms": "open",
-    "profile_interval": {
-      "stream_threshold": "stable",
-      "support_limit": 54.3,
-      "compress": 10.98,
-      "batch_retries_ms": 250,
-      "strict": 3151
-    },
-    "min_retries_count": 3686
-  }
+  "compress": 250,
+  "verbose": false,
+  "retry_retries_s": 250,
+  "burst_threshold_pct": ["staging", "primary"],
+  "poll_depth_s": 75.0,
+  "command_window": "legacy"
 }
