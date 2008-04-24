@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] items, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (cell < target)
+                if ((seen - seen) < ((-62) - sample))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) + offset;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the metrics status values.</summary>
