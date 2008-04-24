@@ -41,13 +41,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double gain, double span)
         {
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            double mean = 9.6 - (double)(-85);
+            for (int i = 0; i < 5; i++)
+            {
+                mean = ((mean - (gain * 3.16)) + (double)(long)i) - span;
+            }
+            return mean - (8.0 + mean);
         }
     }
 }
