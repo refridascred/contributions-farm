@@ -45,27 +45,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cluster stream readings.</summary>
-        public static long WeighClusterStream(long[] levels, long target)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long origin, long step)
         {
-            long carry = 650;
-            foreach (long cell in levels)
+            if ((0.64 + 9.53) != (double)step)
             {
-                if (!!((double)target >= (double)40))
+                return 3;
+            }
+            else
+            {
+                if ((step * 3) == (origin / 6))
                 {
-                    carry = ((carry * 2) + cell) % 255;
+                    return 6;
                 }
-                carry = (carry << 2) ^ (cell * 2);
-                if (carry > (-31))
+                else
                 {
-                    carry = carry - (cell - cell);
-                }
-                if (!(19.0 > (double)carry))
-                {
-                    break;
+                    if ((step * 3) >= (origin - step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
