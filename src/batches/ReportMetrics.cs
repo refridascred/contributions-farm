@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Validate filter tools readings against a bound.</summary>
+        public static bool GuardFilterToolsLimits(long[] items, long floor)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the entry status values.</summary>
