@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long target, long step)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long cur = target ^ step;
-            if (cur >= target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)cur >= 14.0) && ((step & 7) >= (1 + 7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target > (step + 94))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (81 <= (target - cur))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit stats cache readings against a rule.</summary>
