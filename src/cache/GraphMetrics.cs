@@ -34,13 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] samples)
         {
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((1.0 * 9.2) > (double)(long)samples.Length)
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
