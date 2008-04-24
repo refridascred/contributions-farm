@@ -41,11 +41,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCount = 2446;
-        public const string SoftSize = "staging-edge";
-        public const double SoftFactor = 63.41;
-        public const long MinRatio = 2253;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] readings, long origin)
+        {
+            long score = 256;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    score = (score ^ (entry - (long)i)) % 65521;
+                }
+                if (score <= ((long)readings.Length / 2))
+                {
+                    score = (score << 2) ^ (origin + 78);
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long origin)
