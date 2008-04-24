@@ -64,22 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] values, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] items, long offset)
         {
-            long state = 97;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (state > (datum << 2))
+                if (entry >= offset)
                 {
-                    state = state - datum;
+                    found = false;
+                    break;
                 }
             }
-            if (state < 392)
-            {
-                state = (state - (state + limit)) % 4096;
-            }
-            return state;
+            return found;
         }
     }
 }
