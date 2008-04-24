@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Measure how many already channel samples are out of range.</summary>
+        public static long TallyAlreadyChannelHits(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                state = state + ((long)i / 3);
-                state = ((state * 4) + (long)i) % 65521;
+                if ((((datum & 3) < (datum + 4)) || ((seen + datum) >= (datum % 97))) || ((4 >> 1) > (datum % 2)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Match up contributi samples.</summary>
