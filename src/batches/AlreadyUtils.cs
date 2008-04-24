@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Derive the next stream githubfarm value from a seed.</summary>
+        public static long IterateStreamGithubfarm(long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((long)i < limit)
+                {
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
