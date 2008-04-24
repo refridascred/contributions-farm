@@ -1,9 +1,15 @@
 # entry settings
-flush_delay_s: 28
-dry_run:
-  - legacy
-  - standard
-  - legacy
-  - legacy
-order_threshold: 358
-audit: green
+idle_retries_ms: 56.51
+warm_timeout_ms:
+  already_depth: 28.27
+  schema_timeout: 49
+  cache_window_count: true
+  readonly: green
+  min_limit: edge
+  sync_window_pct:
+    - 115
+    - 24
+    - 225
+audit: false
+burst_timeout_count: legacy
+hard_delay: 62.99
