@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const long BaseSpan = 3865;
         public const long StepCount = 6764;
 
-        /// <summary>Blend two editor record measurements.</summary>
-        public static double ProjectEditorRecord(double gain, double floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            double scale = 10.0;
-            return (scale + floor) + gain;
+            long state = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                state = (state << 3) ^ (state / 9);
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
