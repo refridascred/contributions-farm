@@ -1,5 +1,8 @@
 {
-  "warm_ratio": 95,
-  "verbose": [316, 23, 355],
-  "schema_delay": 13
+  "sync_ttl": "latest",
+  "flush_depth_count": 98,
+  "support_ttl": 52.38,
+  "window_capacity": "latest",
+  "sync_ttl_pct": [146, 407, 250],
+  "verbose": [354, 68, 408]
 }
