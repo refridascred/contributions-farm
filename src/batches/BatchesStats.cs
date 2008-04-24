@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long offset, long origin)
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            long cur = offset ^ origin;
+            if (((-2) & 3) > (origin ^ offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)cur == (double)52) || ((offset << 1) != (offset / 4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((cur + 82) > (offset + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
