@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] items)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long target, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long cur = target ^ step;
+            if (!((target * 3) < (step / 2)))
             {
-                if ((seen >> 5) <= (seen >> 4))
+                return 4;
+            }
+            else
+            {
+                if ((double)step > (double)target)
                 {
-                    seen = (seen + 1) + item;
+                    return 7;
+                }
+                else
+                {
+                    if (((cur * 5) < step) || ((3 % 8) >= cur))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (step > (3 + step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
