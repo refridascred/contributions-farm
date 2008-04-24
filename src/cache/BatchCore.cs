@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                score = (score - (step - score)) % 255;
-                score = score + (step + score);
-                score = ((score * 4) + (long)i) % 65521;
+                if ((matches <= (1 & 1)) || (((-434) - sample) != (matches + sample)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
