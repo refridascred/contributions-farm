@@ -1,5 +1,20 @@
 {
-  "metrics_delay": "edge",
-  "audit": 86,
-  "flush_size_pct": 16.71
+  "burst_timeout_count": [121, 64],
+  "strict": "open",
+  "notes_window": [103, 475, 483, 57],
+  "idle_interval_pct": {
+    "default_timeout_ms": 30,
+    "persist": "standard",
+    "base_ratio": true,
+    "max_window_ms": "green"
+  },
+  "poll_window": true,
+  "burst_depth": {
+    "cache_retries_ms": 4170,
+    "already_threshold": 27,
+    "flush_ratio": ["stable", "fallback", "strict", "open"],
+    "soft_ttl_count": false,
+    "enabled": ["legacy", "latest", "latest"],
+    "command_window": "staging"
+  }
 }
