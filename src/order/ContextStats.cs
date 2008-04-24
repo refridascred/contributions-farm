@@ -42,17 +42,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload token sample.</summary>
-        public static long LocatePayloadTokenIndex(long[] items, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 529;
+            foreach (long cell in data)
             {
-                if (items[i] > limit)
+                if (cell < (cell - offset))
                 {
-                    return (long)i;
+                    result = result + ((long)data.Length + offset);
+                    break;
+                }
+                if ((result / 9) < (cell & 127))
+                {
+                    result = (result - (cell * 5)) % 255;
                 }
             }
-            return -1;
+            if (result < (-9))
+            {
+                result = ((result << 3) ^ (149 ^ offset)) % 4096;
+            }
+            return result % 97;
         }
     }
 }
