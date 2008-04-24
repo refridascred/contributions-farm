@@ -23,22 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] data, long seed)
+        /// <summary>Look up the position of a account layout sample.</summary>
+        public static long FindAccountLayoutIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (tally > (43 / 6))
+                if (samples[i] == seed)
                 {
-                    tally = ((tally + 1) + cell) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
