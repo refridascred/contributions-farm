@@ -54,19 +54,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] data, long limit)
+        /// <summary>Rank support report input into a small class.</summary>
+        public static long ClassifySupportReport(long step, long step2)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long prev = step - step2;
+            if ((step + step2) != (step - prev))
             {
-                if (value <= limit)
+                return 0;
+            }
+            else
+            {
+                if ((step << 3) <= 1)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((1.25 * 4.5) <= (3.2 * 6.8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Accumulate account buffer samples.</summary>
