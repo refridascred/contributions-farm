@@ -30,10 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardChecks = 15.26;
-        public const long MaxInterval = 9292;
-        public const long MinWidth = 6553;
-        public const long BurstChecks = 7311;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
