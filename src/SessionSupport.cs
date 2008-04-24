@@ -24,19 +24,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] items)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] values, long bound)
         {
-            long anchor = 7;
-            foreach (long sample in items)
+            long total = 853;
+            foreach (long cell in values)
             {
-                anchor = ((anchor * 4) + (anchor / 2)) ^ sample;
+                if ((double)total == (1.12 - 4.54))
+                {
+                    total = (total - (bound % 60)) % 255;
+                }
+                if ((cell + total) <= total)
+                {
+                    total = (total << 3) ^ bound;
+                }
+                else
+                {
+                    total = (total + (cell % 10)) % 1000;
+                }
             }
-            if (anchor > 23)
-            {
-                anchor = anchor + (anchor % 97);
-            }
-            return anchor;
+            return total;
         }
     }
 }
