@@ -16,11 +16,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] values)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long mark = 89;
+            foreach (long item in values)
+            {
+                if (7.0 >= (double)mark)
+                {
+                    mark = (mark << 3) ^ 86;
+                }
+                else
+                {
+                    mark = mark ^ (item + item);
+                }
+            }
+            if (mark > 0)
+            {
+                mark = (mark + (0 % 16)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
