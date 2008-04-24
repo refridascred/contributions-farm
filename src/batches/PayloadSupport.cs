@@ -12,24 +12,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long offset, long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            if (!((58 * 4) == (bound ^ 843)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (6.8 < (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Queued,
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the editor status values.</summary>
