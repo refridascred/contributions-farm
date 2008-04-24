@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] samples, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((double)target == (8.0 / 6.0))
+                if ((8 % 100) <= (value + (-455)))
                 {
-                    matches = (matches + 2) + value;
+                    tally = (tally + 1) + origin;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
