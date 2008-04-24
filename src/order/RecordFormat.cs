@@ -47,18 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] data, long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((double)seen == (14.0 * 2.48))
+                if (86 > (origin + origin))
                 {
-                    seen = ((seen + 1) ^ reading) + bound;
+                    tally = (tally + 2) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the contributi level values.</summary>
