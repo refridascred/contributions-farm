@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitScore = 7484;
+        public const double RetryLayout = 76.33;
+        public const double MaxWidth = 60.63;
+        public const long WindowLayout = 2970;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesRange(long[] data, long target)
