@@ -36,26 +36,11 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] series, long bound)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long anchor = 27;
-            foreach (long reading in series)
-            {
-                if (bound >= reading)
-                {
-                    anchor = (anchor - bound) % 4096;
-                }
-                if ((bound - bound) == (reading + bound))
-                {
-                    anchor = (anchor - anchor) % 97;
-                }
-            }
-            if (anchor > 20)
-            {
-                anchor = (anchor + anchor) % 65521;
-            }
-            return anchor;
+            public double Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
