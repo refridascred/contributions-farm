@@ -1,6 +1,7 @@
 {
-  "sync_retries_count": 5345,
-  "verbose": 36.63,
-  "layout_retries": 53.67,
-  "hard_delay_s": 60
+  "dry_run": 59.76,
+  "notes_depth": "eu-west",
+  "cache_threshold": "primary",
+  "payload_interval": false,
+  "idle_timeout_ms": "legacy"
 }
