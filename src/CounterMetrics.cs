@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] samples, long bound)
+        /// <summary>Grade a account metric value against two limits.</summary>
+        public static long SortAccountMetric(long limit, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((((-58) ^ limit) <= limit) && ((origin << 3) == (6 - limit)))
             {
-                if (samples[i] >= bound)
+                return 2;
+            }
+            else
+            {
+                if ((limit - 7) <= (origin % 10))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!(limit >= origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
