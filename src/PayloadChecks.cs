@@ -76,17 +76,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long floor, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            if (((66 % 97) >= bound) || (floor > (floor % 24)))
             {
-                result = result - (result + (long)i);
-                result = ((result * 5) + result) % 255;
-                result = ((result * 2) + (long)i) % 65521;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((bound <= (bound + bound)) && ((double)33 >= (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
