@@ -17,18 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] items)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double gain = 10.0;
+            if (gain >= gain)
             {
-                if ((value & 3) <= (value % 3))
-                {
-                    seen = seen + 2;
-                }
+                gain = gain - rate;
             }
-            return seen;
+            else
+            {
+                gain = gain - bias;
+            }
+            return gain + gain;
         }
 
         /// <summary>Project the next record value.</summary>
