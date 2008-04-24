@@ -35,22 +35,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] samples, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((value << 3) > bound)
+                if ((reading - offset) != (offset << 2))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
