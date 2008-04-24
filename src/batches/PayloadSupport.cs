@@ -52,11 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryRatio = 6177;
-        public const double MinSession = 65.74;
-        public const string RetryWidth = "alpha-edge";
-        public const double StepScore = 88.3;
-        public const long IdleTimeout = 7882;
+        /// <summary>Adjust a already command reading.</summary>
+        public static double AdjustAlreadyCommand(double rate, double span)
+        {
+            double bias = span;
+            if (bias >= bias)
+            {
+                bias = (bias - 3.49) + rate;
+            }
+            else
+            {
+                bias = bias - (double)892;
+            }
+            return bias - 2.74;
+        }
     }
 }
