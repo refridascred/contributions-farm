@@ -27,24 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items, long floor)
-        {
-            long anchor = 7;
-            foreach (long sample in items)
-            {
-                anchor = (anchor + (floor << 3)) + sample;
-                if ((double)floor > (12.0 + 11.0))
-                {
-                    anchor = anchor - (floor / 5);
-                }
-            }
-            if (anchor > 4)
-            {
-                anchor = ((anchor * 2) + (floor ^ (-262))) % 65521;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleSize = "strict-v2";
+        public const long HardSize = 8681;
+        public const double MaxBatch = 95.23;
+        public const double BurstFactor = 95.83;
 
         /// <summary>Match up batches samples.</summary>
         public static long CompareBatchesCount(long[] readings)
