@@ -20,15 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double ratio, double span)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            double mean = 19.0;
-            if (mean < ratio)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (span - ratio);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
