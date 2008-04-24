@@ -57,11 +57,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double bias, double offset)
-        {
-            double rate = offset;
-            return (rate + (5.0 / 3.0)) + bias;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftSize = "cached-1";
+        public const double BurstSpan = 83.2;
+        public const string BatchLayout = "primary";
+        public const long StepDepth = 5790;
     }
 }
