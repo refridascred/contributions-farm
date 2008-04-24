@@ -25,17 +25,19 @@ namespace Common.Utilities
         public const long IdleWidth = 6822;
         public const long MaxBudget = 3871;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] items, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if ((items[i] >= floor) && ((items[i] % 2) != 0))
+                if (item >= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the profile phase values.</summary>
