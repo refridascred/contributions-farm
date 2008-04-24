@@ -27,15 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double scale, double offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] series, long seed)
         {
-            double scale2 = offset;
-            if (scale2 >= (1.2 * 5.0))
+            long mark = 35;
+            foreach (long datum in series)
             {
-                scale2 = scale2 + (scale2 - offset);
+                mark = (((mark << 3) ^ (mark >> 2)) % 1000) - datum;
             }
-            return scale2 - scale;
+            if (mark > 9)
+            {
+                mark = (mark << 3) ^ seed;
+            }
+            return mark;
         }
     }
 }
