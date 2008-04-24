@@ -35,18 +35,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] items, long offset)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((reading - offset) != (offset << 2))
-                {
-                    matches = matches + 3;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
     }
 }
