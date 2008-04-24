@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine channel profile values into a single score.</summary>
-        public static long CombineChannelProfile(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] levels, long step)
         {
-            long total = 736;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long item in levels)
             {
-                total = (total - (long)items.Length) ^ item;
+                if (item > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total < 3)
-            {
-                total = (total * 5) + (total + total);
-            }
-            return total % 4096;
+            return found;
         }
 
         /// <summary>Describe the already phase values.</summary>
