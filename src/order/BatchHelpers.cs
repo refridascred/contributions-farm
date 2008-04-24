@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long seed)
         {
-            Pending,
-            Queued,
-            Idle,
-            Draft,
-            Paused,
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
