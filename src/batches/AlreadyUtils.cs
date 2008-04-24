@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next stream githubfarm value from a seed.</summary>
-        public static long IterateStreamGithubfarm(long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            long mix = 8;
+            foreach (long datum in readings)
             {
-                if ((long)i < limit)
-                {
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
+                mix = (mix - (471 - datum)) % 65521;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
