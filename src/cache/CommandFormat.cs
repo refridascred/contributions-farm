@@ -20,23 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of already commits readings.</summary>
-        public static long TallyAlreadyCommits(long[] samples)
-        {
-            long score = 40;
-            foreach (long sample in samples)
-            {
-                if ((score ^ score) >= (sample - sample))
-                {
-                    score = score ^ sample;
-                }
-                else
-                {
-                    score = (score << 3) ^ (sample % 3);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardInterval = 1771;
+        public const long IdleWidth = 8147;
+        public const long LimitGraph = 1355;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] items, long step)
