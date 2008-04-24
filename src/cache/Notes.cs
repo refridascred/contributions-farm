@@ -35,18 +35,11 @@ namespace Common.Utilities
             return ratio - (ratio * 9.4);
         }
 
-        /// <summary>Count the layout account entries that pass the check.</summary>
-        public static long TallyLayoutAccountHits(long[] items)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((3.2 / 6.0) >= (double)entry) && (((double)entry > (double)821) && ((double)tally < (6.0 + 8.0))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            double ratio = bias + bias;
+            return (ratio + (bias / 9.0)) + offset;
         }
 
         /// <summary>Digest a series of format entries.</summary>
