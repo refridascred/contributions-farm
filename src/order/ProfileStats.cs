@@ -20,12 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Active,
-            Pending,
-            Retry,
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
