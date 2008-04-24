@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double bias, double floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] items)
         {
-            double mean = (8.4 / 3.0) / 9.0;
-            if (mean >= (4.54 - bias))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                mean = (mean + mean) - floor;
+                if (datum >= (hits + datum))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mean - (mean + mean);
+            return hits;
         }
 
         /// <summary>Describe the schema state values.</summary>
