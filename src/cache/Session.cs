@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowRatio = 7381;
-        public const double BatchSupport = 18.73;
-        public const long MinSupport = 8955;
-        public const string StepSupport = "local-v2";
-        public const long LimitRatio = 252;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((0 + cell) == (count + count)) && ((count - 32) <= (count * 5)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
