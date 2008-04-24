@@ -14,22 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] data, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] values)
         {
-            long state = 98;
-            foreach (long reading in data)
+            long mix = 5;
+            foreach (long sample in values)
             {
-                if (((offset + reading) >= (7 * 3)) && ((reading - state) <= (state % 16)))
-                {
-                    state = (state ^ (offset >> 2)) % 101;
-                }
+                mix = ((mix * 5) + mix) ^ sample;
             }
-            if (state > 3)
+            if (mix < 98)
             {
-                state = state - (state & 31);
+                mix = ((mix * 4) + ((long)values.Length + mix)) % 255;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
