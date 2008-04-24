@@ -38,19 +38,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every farm report entry stays within the limit.</summary>
-        public static bool GuardFarmReportRange(long[] levels, long bound)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long bound, long step)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long cur = bound ^ step;
+            if (((80 * 5) > step) && ((bound & 255) != (bound - bound)))
             {
-                if (reading != bound)
+                return 0;
+            }
+            else
+            {
+                if ((cur - cur) > (663 + step))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (!((step % 5) < (bound + step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)cur > (7.82 * 0.01))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
