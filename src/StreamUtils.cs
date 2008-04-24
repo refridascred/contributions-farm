@@ -49,22 +49,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] readings, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long anchor = 85;
+            foreach (long cell in values)
             {
-                if ((sample & 15) == (step + step))
+                if ((anchor + cell) <= (cell % 64))
                 {
-                    hits = hits + 2;
+                    anchor = (anchor - anchor) % 65521;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    anchor = anchor - (cell + 527);
                 }
             }
-            return hits;
+            if (anchor < 47)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every farm report entry stays within the limit.</summary>
