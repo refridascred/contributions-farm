@@ -81,18 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] readings)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((hits * 3) >= reading)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Dropped,
+            Queued,
+            Draft,
         }
     }
 }
