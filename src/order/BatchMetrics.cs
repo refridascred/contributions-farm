@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheWidth = 73.62;
-        public const double BaseBudget = 81.84;
-        public const long StepToken = 7950;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Active,
+            Ready,
+            Dropped,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Derive the next batch metric value from a seed.</summary>
         public static long DeriveBatchMetric(long limit)
