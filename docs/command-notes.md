@@ -1,14 +1,10 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the queue list.
-A token that stays idle for too long is moved to the schema list.
-
-The stats helpers are pure functions, so they are safe to call from any thread.
-The payload module keeps payload values in sync with the contributi cache.
+Run the account check before changing any checks limits.
+A channel that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Document new layout fields
-- Keep cache values small
-- Validate buffer input early
-- Prefer token defaults
+- Log every context change
+- Keep queue values small
+- Validate tools input early
