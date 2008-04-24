@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] readings, long floor)
+        /// <summary>Look up the position of a metrics filter sample.</summary>
+        public static long SeekMetricsFilterIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)item <= 8.0)
+                if (values[i] >= seed)
                 {
-                    hits = (hits + 2) - floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Look up the position of a report session sample.</summary>
