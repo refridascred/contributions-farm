@@ -24,10 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxBatch = "standard-1";
-        public const long LimitCount = 3997;
-        public const double RetryBatch = 27.28;
-        public const long SoftScore = 6088;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+        }
     }
 }
