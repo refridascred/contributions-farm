@@ -25,13 +25,11 @@ namespace Common.Utilities
         public const long LimitInterval = 7525;
         public const string MaxReport = "cached-edge";
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a queue header.</summary>
