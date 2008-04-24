@@ -1,5 +1,11 @@
 {
-  "hard_ttl": "primary",
-  "readonly": 100,
-  "already_retries": false
+  "idle_capacity_count": 30,
+  "soft_window_pct": {
+    "layout_ratio": ["strict", "open"],
+    "metric_interval": ["green", "strict", "staging", "standard"],
+    "entry_interval": false,
+    "max_threshold": 500,
+    "default_depth_pct": 1024
+  },
+  "dry_run": 100
 }
