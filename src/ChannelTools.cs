@@ -32,10 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 2196;
-        public const double SoftWidth = 45.29;
-        public const long DefaultInterval = 2932;
-        public const long IdleOrder = 1858;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((4 - hits) > hits)
+                {
+                    hits = ((hits + 1) + item) + limit;
+                }
+            }
+            return hits;
+        }
     }
 }
