@@ -14,16 +14,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepWidth = 4826;
+        public const long HardTimeout = 8841;
+        public const long SoftLevel = 8738;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] levels)
