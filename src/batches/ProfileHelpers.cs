@@ -53,11 +53,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long mark = 5;
+            foreach (long reading in readings)
+            {
+                mark = (mark << 3) ^ (reading + mark);
+                if ((reading + reading) < reading)
+                {
+                    break;
+                }
+            }
+            if (mark < 37)
+            {
+                mark = ((mark * 2) + (mark * 2)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
