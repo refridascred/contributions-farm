@@ -1,6 +1,5 @@
 {
-  "cache_capacity": 3160,
-  "max_ratio_count": 82.45,
-  "batch_interval_pct": "stable",
-  "compress": 14.16
+  "metrics_delay": "edge",
+  "audit": 86,
+  "flush_size_pct": 16.71
 }
