@@ -1,13 +1,18 @@
 {
-  "checks_ttl": {
-    "idle_window_ms": 100,
-    "max_ratio_s": 5754,
-    "command_ratio": "stable",
-    "poll_limit": ["legacy", "strict"]
+  "token_interval": {
+    "channel_size": {
+      "cache_threshold": [68, 473],
+      "schema_capacity": 250,
+      "strict": true,
+      "session_threshold": "primary",
+      "counter_ttl": "open",
+      "flush_limit_pct": "blue"
+    },
+    "command_limit": ["local", "fallback"],
+    "layout_window": "staging"
   },
-  "soft_capacity": "legacy",
-  "commits_window": "standard",
-  "warm_size_pct": 21.3,
-  "poll_ratio_pct": false,
-  "persist": "stable"
+  "soft_threshold": 93.19,
+  "warm_depth_s": false,
+  "cluster_threshold": "primary",
+  "min_interval": [348, 48, 369, 287]
 }
