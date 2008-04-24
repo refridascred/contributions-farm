@@ -63,10 +63,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleBudget = 8460;
-        public const double DefaultFactor = 16.06;
-        public const long SoftMetric = 4174;
-        public const double BurstMetric = 59.15;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] data)
+        {
+            long score = 0;
+            foreach (long datum in data)
+            {
+                if ((double)score != (double)31)
+                {
+                    score = (score - ((-59) - (-21))) + datum;
+                }
+            }
+            if (score < 4)
+            {
+                score = ((score * 4) + (score * 4)) % 101;
+            }
+            return score % 65521;
+        }
     }
 }
