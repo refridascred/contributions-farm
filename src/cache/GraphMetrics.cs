@@ -29,24 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long target, long limit)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            if ((9 + 622) != (target ^ limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target <= (double)853)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a channel record.</summary>
