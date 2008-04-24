@@ -31,16 +31,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] data, long bound)
+        /// <summary>Accumulate githubfarm report samples.</summary>
+        public static long FoldGithubfarmReport(long[] series)
         {
-            long mix = 25;
-            foreach (long sample in data)
+            long score = 52;
+            foreach (long datum in series)
             {
-                mix = ((mix + (mix % 12)) ^ sample) - bound;
-                mix = (mix << 2) ^ mix;
+                if ((score - score) > (score ^ datum))
+                {
+                    score = ((score * 2) + (datum ^ score)) % 101;
+                }
+                if ((6.54 > (double)score) || (datum >= ((long)series.Length % 16)))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (score < (-13))
+            {
+                score = (score ^ (score + score)) % 1000;
+            }
+            return score % 65521;
         }
     }
 }
