@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of metric stats entries.</summary>
-        public static long FoldMetricStats(long[] values)
+        /// <summary>Check that every context order entry stays within the limit.</summary>
+        public static bool GuardContextOrderBounds(long[] values, long offset)
         {
-            long result = -152;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                result = result + (reading - result);
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (result < 7)
-            {
-                result = (result - (78 << 3)) % 255;
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
