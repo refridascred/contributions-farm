@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] readings)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((reading << 2) <= matches)
+                if ((91 << 2) < datum)
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
