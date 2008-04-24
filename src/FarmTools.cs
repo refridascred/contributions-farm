@@ -49,10 +49,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 8258;
-        public const long SoftMetric = 9257;
-        public const long MinTimeout = 928;
-        public const long MinMetric = 3840;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
