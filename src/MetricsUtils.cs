@@ -63,18 +63,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session format entries.</summary>
-        public static long TotalSessionFormat(long[] data)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long total = 51;
-            foreach (long sample in data)
-            {
-                if ((sample * 5) == (sample + total))
-                {
-                    total = (total - (sample % 7)) % 1000;
-                }
-            }
-            return total;
+            New,
+            Failed,
+            Dropped,
         }
     }
 }
