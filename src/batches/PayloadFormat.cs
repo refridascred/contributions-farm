@@ -38,13 +38,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Validate stream support readings against a bound.</summary>
+        public static bool CheckStreamSupportLimits(long[] readings, long bound)
         {
-            Pending,
-            Stale,
-            Locked,
-            Idle,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
