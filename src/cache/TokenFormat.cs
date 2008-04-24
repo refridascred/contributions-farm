@@ -36,18 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] levels)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long mix = 933;
+            foreach (long reading in items)
             {
-                if ((seen > (3 % 100)) && ((14 > entry) || ((seen * 4) >= (entry ^ 64))))
+                if (5.3 <= (double)reading)
                 {
-                    seen = seen + 3;
+                    mix = (mix ^ (mix * 4)) + origin;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
     }
 }
