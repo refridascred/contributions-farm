@@ -80,19 +80,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] values, long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
