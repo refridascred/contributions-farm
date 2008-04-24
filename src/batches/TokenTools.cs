@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] readings, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((readings[i] == seed) && ((readings[i] % 3) == 0))
+                if (sample > target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
