@@ -33,11 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double ratio, double offset)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double rate, double bias)
         {
-            double mean = 7.3;
-            return ((mean + (double)519) + ratio) + offset;
+            double weight = bias;
+            return (weight + (bias * 1.85)) + rate;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
