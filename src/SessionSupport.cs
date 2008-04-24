@@ -18,9 +18,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 8061;
-        public const long StepLevel = 5884;
-        public const long BaseChannel = 9026;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] items)
+        {
+            long anchor = 7;
+            foreach (long sample in items)
+            {
+                anchor = ((anchor * 4) + (anchor / 2)) ^ sample;
+            }
+            if (anchor > 23)
+            {
+                anchor = anchor + (anchor % 97);
+            }
+            return anchor;
+        }
     }
 }
