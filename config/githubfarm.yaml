@@ -1,17 +1,26 @@
 # githubfarm settings
-burst_timeout_pct:
-  poll_retries_ms:
-    - primary
-    - legacy
-    - green
-    - open
-  order_timeout: 3434
-  max_window_ms:
-    - 108
-    - 440
-    - 129
-  persist: true
-burst_capacity: 95.15
-soft_capacity_count: standard
-max_depth_count: local
-format_ratio: edge
+flush_depth_count:
+  hard_ttl_count: green
+  metric_depth: 3555
+  sync_delay: 250
+min_delay_pct:
+  soft_ratio_s:
+    flush_capacity: standard
+    persist: latest
+    hard_window_ms:
+      - latest
+      - fallback
+      - eu-west
+      - stable
+    soft_timeout: stable
+  batch_interval: 59.94
+  strict: false
+  verbose: 81
+  commits_ratio: 250
+  entry_ratio: 1447
+farm_interval:
+  - 203
+  - 349
+  - 302
+  - 191
+min_timeout: 7522
