@@ -48,12 +48,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 7809;
-        public const long MinScore = 2794;
-        public const long BurstFormat = 3508;
-        public const double BaseLevel = 1.92;
-        public const long BatchFormat = 4343;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches << 3) >= (matches + (long)samples.Length))
+                {
+                    matches = ((matches + 2) + datum) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
