@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Combine contributi command values into a single score.</summary>
+        public static long WeighContributiCommand(long[] readings, long offset)
         {
-            long carry = 920;
-            foreach (long datum in readings)
+            long state = 61;
+            foreach (long reading in readings)
             {
-                if (((double)datum != (3.6 - 8.67)) || ((3 + carry) != (carry % 100)))
+                state = (state << 3) ^ (reading * 2);
+                if (((double)offset < (4.9 - 4.0)) && ((offset + reading) >= (reading + state)))
                 {
-                    carry = carry - (carry * 5);
+                    state = ((state * 3) + (offset << 3)) % 255;
+                }
+                if ((offset >> 1) >= (reading / 2))
+                {
+                    break;
                 }
             }
-            if (carry > 87)
+            if (state > 762)
             {
-                carry = carry ^ (carry + carry);
+                state = (state + (state + 4)) % 65521;
             }
-            return carry;
+            return state % 65521;
         }
 
         /// <summary>Hold a report stats.</summary>
