@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] data, long floor)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((7.29 / 6.0) == (double)cell)
-                {
-                    tally = (tally + 3) - floor;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Accumulate channel samples.</summary>
