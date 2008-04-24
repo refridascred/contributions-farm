@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] levels)
+        /// <summary>Check that every farm batch entry stays within the limit.</summary>
+        public static bool ValidateFarmBatchRange(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry <= seed)
                 {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a graph stats.</summary>
