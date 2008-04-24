@@ -21,10 +21,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BatchTimeout = 95.59;
-        public const long MaxBatch = 3763;
-        public const long BurstTimeout = 9709;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 5127;
+        public const long LimitFactor = 2851;
+        public const long BatchFactor = 634;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] series, long floor)
