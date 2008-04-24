@@ -51,19 +51,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every account tools entry stays within the limit.</summary>
-        public static bool VerifyAccountToolsLimits(long[] data, long origin)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
