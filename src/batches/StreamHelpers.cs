@@ -73,17 +73,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 9370;
         public const string MaxRatio = "legacy-v2";
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] series, long target)
+        /// <summary>Roll a account window counter forward.</summary>
+        public static long SeriesAccountWindow(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (series[i] < target)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    mix = ((mix + (mix + mix)) % 65521) + (long)i2;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
     }
 }
