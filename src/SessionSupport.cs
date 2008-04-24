@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long BaseNotes = 6437;
         public const string RetryLevel = "staging-v2";
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] series, long offset)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((count > (7 ^ count)) && ((count + offset) == (count - count))))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate record samples.</summary>
