@@ -40,31 +40,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry filter value against two limits.</summary>
-        public static long RankEntryFilter(long seed, long bound)
-        {
-            if (((seed & 127) >= (seed - seed)) || ((seed - bound) > (7 / 7)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)seed != (6.0 / 7.0)) || ((seed + bound) != (bound + seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed & 7) == (6 & 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitScore = "latest";
+        public const long HardAlready = 3783;
+        public const long WindowAlready = 4066;
     }
 }
