@@ -19,22 +19,12 @@ namespace Common.Utilities
         public const long MaxSpan = 4808;
         public const string SoftFactor = "primary-v2";
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] readings, long origin)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long score = 256;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    score = (score ^ (entry - (long)i)) % 65521;
-                }
-                if (score <= ((long)readings.Length / 2))
-                {
-                    score = (score << 2) ^ (origin + 78);
-                }
-            }
-            return score % 97;
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
