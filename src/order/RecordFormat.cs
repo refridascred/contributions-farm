@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Measure how many buffer editor samples are out of range.</summary>
+        public static long TallyBufferEditorGaps(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading >= (8.82 - 8.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
