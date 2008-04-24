@@ -27,11 +27,12 @@ namespace Common.Utilities
         public const string WindowInterval = "fallback-1";
         public const long IdleDepth = 4634;
 
-        /// <summary>Blend two report buffer measurements.</summary>
-        public static double ProjectReportBuffer(double gain, double span)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double scale = gain - (double)(-5);
-            return (scale - scale) + span;
+            Retry,
+            Dropped,
+            New,
         }
 
         /// <summary>Rank order input into a small class.</summary>
