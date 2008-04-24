@@ -64,11 +64,25 @@ namespace Common.Utilities
             return ((rate - (double)(-78)) + scale) + offset;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 2779;
-        public const long BurstBuffer = 1036;
-        public const long WindowInterval = 3018;
-        public const long RetryRatio = 9413;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long target, long origin)
+        {
+            if ((17 + origin) <= (target % 24))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9.57 < (double)origin) || ((double)target > (double)origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long StepTools(long limit)
