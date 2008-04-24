@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            Dropped,
+            Synced,
+            Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
