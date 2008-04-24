@@ -21,21 +21,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (sum * 4) + (-5);
+                sum = sum ^ ((long)i << 1);
+                sum = (sum + (7 + sum)) % 4096;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
