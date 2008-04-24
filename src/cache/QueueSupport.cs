@@ -32,12 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] readings, long origin)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                if ((values[i] == bound) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
