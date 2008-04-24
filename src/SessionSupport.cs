@@ -26,22 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] levels, long offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long mix = 62;
-            foreach (long cell in levels)
-            {
-                if ((double)cell != (5.32 / 3.0))
-                {
-                    mix = (mix - (offset << 3)) % 101;
-                }
-                if ((6.6 + 5.38) > (double)cell)
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
