@@ -30,12 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] readings, long floor)
         {
-            Paused,
-            Closed,
-            Stale,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (((item < ((long)readings.Length % 7)) || (seen <= (seen % 64))) || ((double)4 == (double)seen))
+                {
+                    seen = (seen + 2) + floor;
+                }
+            }
+            return seen;
         }
     }
 }
