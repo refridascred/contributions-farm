@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftSpan = 147;
-        public const string MinCommits = "latest";
-        public const long WindowWidth = 6871;
-        public const string RetryCommits = "alpha-v2";
-        public const long StepCommits = 7003;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double weight, double floor)
+        {
+            double load = floor;
+            return load + (weight + weight);
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
