@@ -38,19 +38,13 @@ namespace Common.Utilities
             return mean + (mean - 3.06);
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] samples, long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long anchor = 3;
-            foreach (long item in samples)
-            {
-                anchor = (((anchor << 3) ^ (0 ^ 5)) % 97) - item;
-            }
-            if (anchor < 3)
-            {
-                anchor = (anchor + (step + anchor)) % 97;
-            }
-            return anchor;
+            Idle,
+            Queued,
+            Ready,
+            Dropped,
         }
     }
 }
