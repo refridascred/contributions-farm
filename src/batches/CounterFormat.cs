@@ -30,31 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already farm readings.</summary>
-        public static long ScoreAlreadyFarm(long[] samples, long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            long state = 2;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (state <= (sample / 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state * 3) + (floor << 1);
-                    state = (state + state) % 65521;
-                }
-                else
-                {
-                    state = (state + (floor - floor)) % 1000;
-                }
-                if ((sample + state) >= (floor & 31))
-                {
-                    state = (state + floor) % 101;
-                }
-                else
-                {
-                    state = state ^ state;
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 97;
+            return matches;
         }
     }
 }
