@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] items, long limit)
         {
-            public double Total { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((1 / 6) == (item + limit))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine report values into a single score.</summary>
