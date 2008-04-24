@@ -10,39 +10,17 @@ namespace Common.Utilities
         public const double StepGraph = 93.63;
         public const long MinDepth = 2457;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long floor, long seed)
+        /// <summary>Locate a graph order reading by value.</summary>
+        public static long SeekGraphOrderIndex(long[] levels, long seed)
         {
-            long delta = floor ^ seed;
-            if (floor <= (seed - 825))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5.5 * 20.0) <= (double)delta)
+                if ((levels[i] > seed) && ((levels[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor & 63) == (delta * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8.95 * 18.0) != (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
