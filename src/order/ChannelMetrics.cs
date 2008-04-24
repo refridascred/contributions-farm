@@ -22,18 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] samples, long offset)
+        /// <summary>Classify a githubfarm context pair into a bucket.</summary>
+        public static long GradeGithubfarmContext(long bound, long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if ((step << 2) != (step - step))
             {
-                if ((seen - seen) < ((-62) - sample))
+                return 7;
+            }
+            else
+            {
+                if (0 > (step & 15))
                 {
-                    seen = (seen + 2) + offset;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a session record.</summary>
