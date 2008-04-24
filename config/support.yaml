@@ -1,14 +1,6 @@
 # support settings
-githubfarm_threshold: true
-format_ratio: local
-persist:
-  - 489
-  - 133
-  - 254
-audit: true
-sync_ttl_ms: 16.95
-hard_delay:
-  - stable
+min_retries:
+  - open
   - local
-  - eu-west
-  - primary
+sync_threshold_s: 9356
+sync_capacity_count: 49
