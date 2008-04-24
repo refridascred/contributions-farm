@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string RetryCommits = "alpha-v2";
         public const long StepCommits = 7003;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 4899;
-        public const double RetrySession = 16.46;
-        public const string CacheSession = "stable-edge";
-        public const long WindowSession = 5270;
-        public const string RetryFactor = "open";
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] readings, long seed)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + 81) != (4 ^ seed))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next contributi route value.</summary>
         public static double BlendContributiRoute(double gain, double offset)
