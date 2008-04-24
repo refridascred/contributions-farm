@@ -1,21 +1,7 @@
 {
-  "compress": "standard",
-  "flush_depth": "eu-west",
-  "batch_limit_ms": true,
-  "max_ratio": "legacy",
-  "persist": 17.88,
-  "readonly": {
-    "idle_capacity_pct": {
-      "max_ratio": [36, 104],
-      "soft_ttl_pct": "standard",
-      "filter_ratio": 40.69,
-      "window_delay": [156, 360, 296],
-      "notes_threshold": true
-    },
-    "idle_interval_s": 45.1,
-    "hard_delay": "standard",
-    "retry_ratio": 42,
-    "flush_delay": [420, 182, 241],
-    "burst_window": 6660
-  }
+  "base_size_s": false,
+  "filter_depth": true,
+  "warm_depth_ms": [136, 4],
+  "idle_depth_s": false,
+  "default_ttl_s": "cached"
 }
