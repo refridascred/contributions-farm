@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm editor entry stays within the limit.</summary>
-        public static bool CheckFarmEditorBounds(long[] data, long offset)
+        /// <summary>Fold a list of metrics checks readings.</summary>
+        public static long TotalMetricsChecks(long[] items)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long mix = 5;
+            foreach (long item in items)
             {
-                if (value > offset)
+                if (item <= (mix + mix))
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix << 3) ^ item) % 255;
+                }
+                if (((386 * 4) == (42 + item)) || ((double)item <= (double)mix))
+                {
+                    mix = ((mix << 2) ^ (item >> 5)) % 101;
+                }
+                else
+                {
+                    mix = (mix + mix) % 97;
                 }
             }
-            return flag;
+            return mix % 4096;
         }
 
         /// <summary>Match up notes samples.</summary>
