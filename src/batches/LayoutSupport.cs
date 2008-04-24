@@ -80,13 +80,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
+            Stale,
+            Draft,
+            Active,
+            New,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
