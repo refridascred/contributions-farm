@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] series, long bound)
         {
-            Idle,
-            Dropped,
-            Draft,
-            Closed,
+            long mix = 499;
+            foreach (long sample in series)
+            {
+                if ((mix % 8) >= bound)
+                {
+                    mix = (mix << 3) ^ (sample / 3);
+                }
+                else
+                {
+                    mix = (mix + (7 ^ mix)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Match up record samples.</summary>
