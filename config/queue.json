@@ -1,5 +1,5 @@
 {
-  "notes_window": [368, 107],
-  "audit": 100,
-  "retry_depth_pct": [210, 342, 231]
+  "cache_size_ms": 7534,
+  "sync_ttl_pct": "stable",
+  "default_size": ["local", "cached"]
 }
