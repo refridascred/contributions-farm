@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] levels, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (sample < seed)
+                if (value <= limit)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
