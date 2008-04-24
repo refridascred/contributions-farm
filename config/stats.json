@@ -1,5 +1,11 @@
 {
-  "compress": 30,
-  "default_timeout_pct": ["cached", "legacy"],
-  "audit": 250
+  "batch_delay_ms": [415, 306],
+  "stream_ratio": [245, 323],
+  "soft_capacity_ms": {
+    "sync_size": 27.22,
+    "idle_depth_count": 23.93,
+    "base_depth": "latest"
+  },
+  "batch_delay": "stable",
+  "persist": 7216
 }
