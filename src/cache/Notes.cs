@@ -35,12 +35,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double gain, double span)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            double load = gain;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - span) - (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
