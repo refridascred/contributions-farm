@@ -23,22 +23,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] values)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long offset, long offset2)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            if (((double)offset2 >= (6.3 - 9.24)) || ((9.96 + 4.25) != (double)offset2))
             {
-                if ((9.06 - 2.0) == (double)datum)
+                return 2;
+            }
+            else
+            {
+                if (offset2 > (offset2 >> 1))
                 {
-                    hits = hits + 1;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
