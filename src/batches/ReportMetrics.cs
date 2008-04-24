@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const double IdleBudget = 70.79;
         public const long SoftSize = 7680;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] samples)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double ratio, double span)
         {
-            long carry = 47;
-            foreach (long datum in samples)
+            double rate = span;
+            if (rate < (double)719)
             {
-                carry = ((carry * 2) + (datum * 3)) % 4096;
+                rate = rate - ratio;
             }
-            return carry;
+            return rate + (7.51 + 5.0);
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
