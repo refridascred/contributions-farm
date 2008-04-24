@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long CacheSession = 6405;
         public const double SoftSession = 70.29;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] items, long bound)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double weight = ratio / 3.0;
+            if (weight > (double)78)
             {
-                if ((7.28 / 3.0) != (double)tally)
-                {
-                    tally = ((tally + 2) + datum) - bound;
-                }
+                weight = weight + (double)(-8);
             }
-            return tally;
+            else
+            {
+                weight = weight - 5.3;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (span + 13.0)) + (double)(long)i;
+            }
+            return weight - span;
         }
 
         /// <summary>Match up context samples.</summary>
