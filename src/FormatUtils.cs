@@ -73,21 +73,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Adjust a cache buffer reading.</summary>
+        public static double BlendCacheBuffer(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = (span / 3.0) - gain;
+            if (load <= (span - gain))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load + load;
             }
-            return hits;
+            return load + (span / 4.0);
         }
     }
 }
