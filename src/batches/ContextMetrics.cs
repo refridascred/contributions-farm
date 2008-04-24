@@ -16,12 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowSpan = "open-edge";
+        public const string MinSize = "fallback-v2";
+        public const long LimitInterval = 7525;
+        public const string MaxReport = "cached-edge";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BurstDepth = 6882;
