@@ -34,12 +34,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Validate channel batch readings against a bound.</summary>
+        public static bool CheckChannelBatchBounds(long[] values, long offset)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
