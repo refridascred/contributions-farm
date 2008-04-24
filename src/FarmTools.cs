@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] items, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] values, long limit)
         {
-            long anchor = 61;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long reading in values)
             {
-                anchor = (anchor ^ sample) % 97;
-                if (!((sample ^ 54) >= (floor << 3)))
+                if (reading > limit)
                 {
-                    anchor = (anchor * 5) + sample;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 65521;
-                }
-                if ((7.7 * 5.9) < (double)anchor)
-                {
+                    found = false;
                     break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
