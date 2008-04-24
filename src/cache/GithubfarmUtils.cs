@@ -28,22 +28,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] samples, long step)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!(step < (seen / 7)) || (((seen % 3) < (step % 2)) && ((seen / 9) == (seen - 26))))
-                {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Paused,
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define record limits and defaults.</summary>
