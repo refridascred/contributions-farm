@@ -1,13 +1,4 @@
 # githubfarm settings
-compress:
-  soft_threshold: primary
-  cache_delay_ms: fallback
-  max_delay:
-    - green
-    - fallback
-    - fallback
-idle_size_count: 250
-min_interval_count: false
-batch_ttl: 30
-farm_retries: stable
-batch_ratio_count: 99
+enabled: edge
+warm_ttl: 9
+persist: latest
