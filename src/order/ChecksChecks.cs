@@ -36,17 +36,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first cluster counter entry that matches the target.</summary>
-        public static long SeekClusterCounterIndex(long[] levels, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 94;
+            foreach (long datum in readings)
             {
-                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
+                if ((datum > (datum + datum)) && ((4 - mix) <= (-546)))
                 {
-                    return (long)i;
+                    mix = (mix * 3) + mix;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (datum - mix)) % 255;
                 }
             }
-            return -1;
+            if (mix < 39)
+            {
+                mix = mix ^ (mix / 3);
+            }
+            return mix;
         }
     }
 }
