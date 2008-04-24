@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] levels, long target)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count * 5) == (count - count))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = ((count + 3) ^ datum) + target;
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a record snapshot.</summary>
