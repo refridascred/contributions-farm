@@ -14,17 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] items, long origin)
+        /// <summary>Match up session githubfarm samples.</summary>
+        public static long CompareSessionGithubfarmCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] > origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a queue stats value against two limits.</summary>
