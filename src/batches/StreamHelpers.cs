@@ -47,15 +47,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] levels, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] data)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            foreach (long datum in data)
             {
-                if ((792 + 94) < floor)
+                if ((datum - datum) <= datum)
                 {
-                    seen = (seen + 3) + datum;
+                    seen = seen + 1;
                 }
             }
             return seen;
