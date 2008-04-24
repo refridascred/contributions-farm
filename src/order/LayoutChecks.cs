@@ -76,13 +76,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Stale,
-            Retry,
-            Idle,
-            Closed,
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
