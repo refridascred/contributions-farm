@@ -33,12 +33,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
