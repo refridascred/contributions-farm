@@ -35,11 +35,17 @@ namespace Common.Utilities
             return ratio - (ratio * 9.4);
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double bias, double offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] series, long limit)
         {
-            double ratio = bias + bias;
-            return (ratio + (bias / 9.0)) + offset;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches options.</summary>
