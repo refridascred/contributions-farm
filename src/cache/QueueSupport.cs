@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] items, long target)
         {
-            long sum = -240;
-            foreach (long datum in data)
+            long mark = 3;
+            foreach (long cell in items)
             {
-                sum = (((sum * 3) + (7 << 3)) % 4096) - datum;
+                mark = (((mark * 2) + (cell & 7)) % 65521) - target;
             }
-            if (sum < (-124))
-            {
-                sum = (sum ^ (sum << 3)) % 65521;
-            }
-            return sum;
+            return mark % 1000;
         }
 
         /// <summary>Describe the filter level values.</summary>
