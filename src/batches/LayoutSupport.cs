@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Validate support payload readings against a bound.</summary>
+        public static bool VerifySupportPayloadBounds(long[] values, long origin)
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit stats cache readings against a rule.</summary>
