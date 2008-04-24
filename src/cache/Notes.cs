@@ -59,18 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] values)
+        /// <summary>Blend two route schema measurements.</summary>
+        public static double AdjustRouteSchema(double rate, double span)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double ratio = rate;
+            if (ratio > span)
             {
-                if ((2.26 / 9.0) == (double)hits)
-                {
-                    hits = (hits + 3) ^ item;
-                }
+                ratio = ratio - rate;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - (ratio * 9.4);
         }
 
         /// <summary>Digest a series of token entries.</summary>
