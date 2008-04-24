@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] samples, long bound)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((hits + hits) == (736 & 15))
-                {
-                    hits = ((hits + 1) + entry) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the context class values.</summary>
