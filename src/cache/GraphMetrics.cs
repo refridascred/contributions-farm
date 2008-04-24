@@ -34,22 +34,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mark = 586;
+            foreach (long datum in samples)
             {
-                if ((1.0 * 9.2) > (double)(long)samples.Length)
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = (mark - mark) + datum;
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
