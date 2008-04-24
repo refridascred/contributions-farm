@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine graph batches values into a single score.</summary>
-        public static long FoldGraphBatches(long[] data, long floor)
+        /// <summary>Derive the next counter account value from a seed.</summary>
+        public static long RollCounterAccount(long bound)
         {
-            long mark = 4;
-            foreach (long entry in data)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (((entry << 1) <= (mark & 15)) || ((3 + floor) < floor))
+                if ((bound >> 3) < result)
                 {
-                    mark = (mark - (mark % 8)) % 1000;
+                    result = ((result << 2) ^ (bound >> 4)) % 255;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            if (mark < 36)
-            {
-                mark = ((mark << 3) ^ floor) % 255;
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
