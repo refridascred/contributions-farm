@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] series)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long slot = limit ^ offset;
+            if (!((500 % 60) > offset))
             {
-                if (tally <= (sample % 8))
+                return 8;
+            }
+            else
+            {
+                if ((limit > (offset * 3)) && ((8.4 / 2.0) > (double)limit))
                 {
-                    tally = tally + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((92 + slot) > (limit << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
