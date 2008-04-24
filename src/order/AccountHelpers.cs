@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardFactor = "primary-1";
-        public const long BurstGithubfarm = 9620;
-        public const long DefaultGithubfarm = 2534;
-        public const long IdleBudget = 8820;
-        public const long DefaultSpan = 7813;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Ready,
+            New,
+            Locked,
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordOutliers(long[] data, long limit)
