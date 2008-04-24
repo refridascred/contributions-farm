@@ -1,6 +1,8 @@
-id,active,rank,token
-1,15.07,150,0.64
-2,9.92,126,blue
-3,primary,6.3,616
-4,latest,854,73.15
-5,355,legacy,76.77
+id,score,weight,ratio
+1,31.2,13.25,95.45
+2,803,open,primary
+3,422,67,legacy
+4,690,10.65,82.04
+5,62.06,45.84,cached
+6,latest,legacy,26
+7,latest,29.73,78
