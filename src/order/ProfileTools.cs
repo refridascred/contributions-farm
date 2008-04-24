@@ -40,12 +40,16 @@ namespace Common.Utilities
             return (weight + (bias * 1.85)) + rate;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepSize = 4542;
-        public const string HardSize = "strict-1";
-        public const double IdleLayout = 85.12;
-        public const double SoftLayout = 66.66;
-        public const long BatchLayout = 8900;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] levels)
+        {
+            long anchor = 481;
+            foreach (long cell in levels)
+            {
+                anchor = ((anchor * 3) + anchor) ^ cell;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of layout session entries.</summary>
         public static long DigestLayoutSession(long[] data)
