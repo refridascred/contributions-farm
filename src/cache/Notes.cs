@@ -41,15 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] series)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] values)
         {
-            long carry = 261;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                carry = (carry - (-5)) ^ item;
+                if ((2.26 / 9.0) == (double)hits)
+                {
+                    hits = (hits + 3) ^ item;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
