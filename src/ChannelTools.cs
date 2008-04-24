@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long limit, long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] levels, long offset)
         {
-            if ((bound * 3) >= (bound % 10))
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9.5 - 2.7) >= (double)bound)
+                if (datum >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (bound >= (bound * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count counter cluster pairs that satisfy a relation.</summary>
