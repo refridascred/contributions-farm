@@ -42,13 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
+            Ready,
+            Done,
+            Pending,
         }
     }
 }
