@@ -23,13 +23,12 @@ namespace Common.Utilities
         public const long SoftCommits = 1626;
         public const string SoftInterval = "standard-1";
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Draft,
-            Failed,
+            Active,
+            Done,
             Retry,
-            Locked,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
