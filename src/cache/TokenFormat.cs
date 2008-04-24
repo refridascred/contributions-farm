@@ -21,22 +21,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] values, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                carry = (carry + (offset * 2)) % 97;
-                if ((carry - (long)i) <= carry)
+                if ((datum - bound) < (matches - bound))
                 {
-                    carry = (carry + (carry ^ carry)) % 101;
-                    carry = (carry + (21 << 2)) % 255;
-                    continue;
+                    matches = matches + 1;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a profile info.</summary>
