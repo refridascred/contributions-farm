@@ -20,10 +20,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleScore = 8303;
-        public const double BurstCache = 21.28;
-        public const long WindowCount = 7608;
-        public const long StepCache = 6451;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
