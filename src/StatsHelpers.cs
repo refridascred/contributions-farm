@@ -23,11 +23,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] values)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long score = 590;
+            foreach (long cell in values)
+            {
+                score = ((score << 2) ^ (48 - score)) - cell;
+            }
+            if (score > 90)
+            {
+                score = (score + (score << 3)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
