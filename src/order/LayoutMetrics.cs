@@ -18,23 +18,13 @@ namespace Common.Utilities
         public const long MaxTimeout = 4957;
         public const long HardStream = 6759;
 
-        /// <summary>Iterate the commits queue series from a seed.</summary>
-        public static long RollCommitsQueue(long origin)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = (mark + (origin << 2)) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    mark = ((mark << 3) ^ origin) ^ (long)i3;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Closed,
+            Pending,
+            Stale,
+            Done,
         }
     }
 }
