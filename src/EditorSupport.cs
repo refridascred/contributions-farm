@@ -34,11 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Ready,
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
