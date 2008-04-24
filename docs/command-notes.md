@@ -1,11 +1,14 @@
 # Command notes
 
-Run the token check before changing any support limits.
-Keep record and tools names short and lowercase.
+The account report groups every entry by editor.
+The layout report groups every entry by commits.
+
+Use queue settings to tune how often cache data is refreshed.
+A layout that stays idle for too long is moved to the cluster list.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Document new stats fields
-- Log every account change
-- Validate format input early
+- Keep profile values small
+- Prefer queue defaults
+- Validate context input early
