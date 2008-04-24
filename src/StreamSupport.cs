@@ -25,25 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command context input into a small class.</summary>
-        public static long SortCommandContext(long limit, long offset)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long lane = limit - offset;
-            if ((limit & 3) >= lane)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((limit / 4) <= (limit * 2)) && ((limit + limit) <= lane))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
