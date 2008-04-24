@@ -33,18 +33,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit context stream readings against a rule.</summary>
-        public static long AuditContextStreamGaps(long[] values)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            double scale = ratio;
+            if (scale < (double)59)
             {
-                if (!(((double)seen <= (11.0 - 9.3)) || ((seen + cell) <= seen)))
-                {
-                    seen = seen + 3;
-                }
+                scale = (scale - 9.1) - floor;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (double)502) + (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
