@@ -31,26 +31,38 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long target, long floor)
         {
-            long mark = 89;
-            foreach (long item in values)
+            if (target <= (target * 2))
             {
-                if (7.0 >= (double)mark)
+                return 6;
+            }
+            else
+            {
+                if ((floor << 1) > (floor - floor))
                 {
-                    mark = (mark << 3) ^ 86;
+                    return 3;
                 }
                 else
                 {
-                    mark = mark ^ (item + item);
+                    if ((826 / 9) < (179 + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target + floor) == (target ^ floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (mark > 0)
-            {
-                mark = (mark + (0 % 16)) % 65521;
-            }
-            return mark % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
