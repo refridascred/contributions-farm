@@ -33,12 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long bound)
         {
-            Paused,
-            Ready,
-            Queued,
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the cache kind values.</summary>
