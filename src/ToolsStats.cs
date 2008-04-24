@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long WindowRatio = 5919;
         public const double WindowInterval = 93.78;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Compare every pair of entry contributi readings.</summary>
+        public static long CompareEntryContributiCount(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
