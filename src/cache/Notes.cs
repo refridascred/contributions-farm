@@ -51,19 +51,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double weight, double bias)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] data, long seed)
         {
-            double load = bias;
-            if (load <= weight)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - (load + 9.0);
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load + (14.0 / 7.0);
+            return -1;
         }
     }
 }
