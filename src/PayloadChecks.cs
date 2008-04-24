@@ -20,22 +20,30 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long seed, long seed2)
+        /// <summary>Grade a record tools value against two limits.</summary>
+        public static long BucketRecordTools(long seed, long origin)
         {
-            if ((seed << 1) > 15)
+            long lane = seed - origin;
+            if ((origin % 2) <= (lane & 255))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if (!((seed2 & 63) > (601 + seed2)))
+                if ((1.0 / 3.0) > (double)origin)
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    return 6;
+                    if (lane <= (seed + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
