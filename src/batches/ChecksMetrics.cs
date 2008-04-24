@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] series, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxCount = 36.04;
+        public const string DefaultRecord = "standard-1";
+        public const long WindowRecord = 16;
 
         /// <summary>Accumulate token samples.</summary>
         public static long TotalToken(long[] data)
