@@ -40,18 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes commits values into a single score.</summary>
-        public static long TotalNotesCommits(long[] data)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long result = 33;
-            foreach (long reading in data)
-            {
-                if ((double)reading >= (4.03 * 6.1))
-                {
-                    result = (result ^ (result % 7)) % 101;
-                }
-            }
-            return result;
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
