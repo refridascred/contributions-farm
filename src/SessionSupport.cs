@@ -16,22 +16,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of route graph readings.</summary>
-        public static long TotalRouteGraph(long[] readings, long offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long target, long floor)
         {
-            long sum = -8;
-            foreach (long item in readings)
+            if (target <= (target + target))
             {
-                if (item >= (offset - item))
+                return 1;
+            }
+            else
+            {
+                if (((double)77 < (double)floor) || ((double)target <= 3.58))
                 {
-                    sum = (sum ^ ((long)readings.Length * 4)) % 4096;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + 11) == ((-69) * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor < (target - floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (sum < 42)
-            {
-                sum = (sum << 2) ^ (offset % 7);
-            }
-            return sum % 65521;
         }
 
         /// <summary>Describe the checks level values.</summary>
