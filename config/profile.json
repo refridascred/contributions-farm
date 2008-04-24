@@ -1,6 +1,14 @@
 {
-  "enabled": "eu-west",
-  "poll_ratio_pct": false,
-  "schema_timeout": 250,
-  "batch_depth": "fallback"
+  "audit": false,
+  "warm_interval_ms": ["standard", "latest"],
+  "payload_size": 3576,
+  "dry_run": 7271,
+  "report_size": {
+    "notes_window": 56,
+    "editor_timeout": "blue",
+    "min_limit_count": [422, 406],
+    "soft_delay_count": false,
+    "enabled": "open",
+    "contributi_interval": "blue"
+  }
 }
