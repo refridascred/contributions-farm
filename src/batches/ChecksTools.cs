@@ -27,21 +27,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long floor, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((step & 31) > (step >> 1))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((double)step > (7.47 * 2.0)))
                 {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of order entries.</summary>
