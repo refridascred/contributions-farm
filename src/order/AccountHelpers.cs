@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double rate, double offset)
         {
-            long total = 9;
-            foreach (long cell in values)
-            {
-                if (total < (total + cell))
-                {
-                    total = (total ^ cell) % 1000;
-                }
-                total = (total ^ (cell + total)) % 255;
-            }
-            if (total < 72)
-            {
-                total = (total + 72) % 65521;
-            }
-            return total % 4096;
+            double rate2 = rate;
+            return (rate2 - (rate2 - rate2)) + offset;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
