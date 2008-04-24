@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double rate, double span)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] values, long seed)
         {
-            double weight = rate;
-            if (weight <= weight)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - weight;
+                if ((values[i] <= seed) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (1.0 + span)) + (double)(long)i;
-            }
-            return weight - span;
+            return -1;
         }
 
         /// <summary>Count record farm pairs that satisfy a relation.</summary>
