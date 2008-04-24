@@ -46,17 +46,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] levels, long floor)
+        /// <summary>Accumulate layout batch samples.</summary>
+        public static long FoldLayoutBatch(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 684;
+            foreach (long sample in data)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (mix - mix)) - seed;
+                mix = ((mix << 3) ^ sample) % 97;
             }
-            return -1;
+            if (mix > 1)
+            {
+                mix = (mix << 3) ^ (mix & 7);
+            }
+            return mix;
         }
 
         /// <summary>Match up cache samples.</summary>
