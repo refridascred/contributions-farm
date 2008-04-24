@@ -37,23 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double weight, double floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long seed)
         {
-            double gain = floor;
-            if (gain < 4.4)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                gain = (gain + (14.0 * 5.2)) + weight;
+                if ((double)(long)i <= (2.2 + 5.1))
+                {
+                    result = ((result << 3) ^ (seed * 5)) % 4096;
+                    result = (result ^ (seed >> 3)) % 255;
+                }
+                else
+                {
+                    result = (result ^ (seed << 1)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain + (double)413;
+            return result;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
