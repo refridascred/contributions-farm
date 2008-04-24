@@ -1,6 +1,5 @@
 {
-  "farm_ratio": false,
-  "strict": 44,
-  "idle_retries_ms": "fallback",
-  "cache_ttl_ms": 1024
+  "batch_depth_pct": "legacy",
+  "queue_timeout": 46,
+  "dry_run": false
 }
