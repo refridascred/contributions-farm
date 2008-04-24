@@ -75,15 +75,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] series, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                if ((series[i] < bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
