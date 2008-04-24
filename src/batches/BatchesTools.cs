@@ -27,12 +27,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Queued,
-            New,
-            Retry,
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
