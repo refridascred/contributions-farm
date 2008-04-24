@@ -43,17 +43,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] samples, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 5) != 0))
+                if ((sample & 15) == (step + step))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
