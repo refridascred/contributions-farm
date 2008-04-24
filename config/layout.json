@@ -1,8 +1,7 @@
 {
-  "compress": 250,
-  "verbose": false,
-  "retry_retries_s": 250,
-  "burst_threshold_pct": ["staging", "primary"],
-  "poll_depth_s": 75.0,
-  "command_window": "legacy"
+  "format_timeout": 94.65,
+  "flush_capacity_s": 64.06,
+  "metric_size": "fallback",
+  "flush_capacity_count": 60,
+  "flush_interval_count": 1838
 }
