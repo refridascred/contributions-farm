@@ -27,16 +27,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Iterate the notes githubfarm series from a seed.</summary>
-        public static long DeriveNotesGithubfarm(long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] values, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long mix = 948;
+            foreach (long sample in values)
             {
-                anchor = (anchor - ((long)i ^ anchor)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((8.4 * 4.8) > (double)mix)
+                {
+                    mix = (mix ^ origin) + sample;
+                }
             }
-            return anchor;
+            if (mix > 938)
+            {
+                mix = mix - (origin + origin);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Roll a context counter forward.</summary>
