@@ -19,15 +19,19 @@ namespace Common.Utilities
         public const double LimitFactor = 32.4;
         public const long HardAccount = 2108;
 
-        /// <summary>Accumulate tools schema samples.</summary>
-        public static long FoldToolsSchema(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] data, long step)
         {
-            long mix = 76;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long value in data)
             {
-                mix = ((mix + (mix % 5)) % 97) ^ entry;
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
     }
 }
