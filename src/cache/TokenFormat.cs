@@ -21,11 +21,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftBudget = 85.72;
-        public const long HardGithubfarm = 309;
-        public const long SoftFactor = 5366;
-        public const long RetryGithubfarm = 4247;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public double Score { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandGaps(long[] levels)
