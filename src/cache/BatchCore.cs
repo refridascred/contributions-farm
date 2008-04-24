@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Fold a list of command entry readings.</summary>
+        public static long CombineCommandEntry(long[] items, long origin)
         {
-            Idle,
-            Paused,
-            Draft,
-            Pending,
+            long acc = 350;
+            foreach (long value in items)
+            {
+                acc = (acc + origin) + value;
+            }
+            return acc;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
