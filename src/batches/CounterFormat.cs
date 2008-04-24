@@ -19,9 +19,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheLevel = 5943;
-        public const long BurstWidth = 5796;
-        public const long CacheDepth = 9836;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (4 > (datum % 60))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
