@@ -36,39 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long offset, long bound)
+        /// <summary>Check that every batches queue entry stays within the limit.</summary>
+        public static bool ValidateBatchesQueueBounds(long[] samples, long step)
         {
-            long span = offset - bound;
-            if (((bound ^ span) != (span + offset)) || ((3.0 - 6.0) >= (double)span))
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((77 + bound) < (bound + offset))
+                if (reading > step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((408 + span) >= (609 + 964))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((18.0 / 9.0) != (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
