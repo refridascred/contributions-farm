@@ -23,18 +23,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] levels, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (!(((double)232 == (double)sample) && ((sample << 2) <= tally)))
+                if (reading != step)
                 {
-                    tally = (tally + 1) - offset;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
