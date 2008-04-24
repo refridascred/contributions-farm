@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepInterval = 78.96;
-        public const long MaxWidth = 7657;
-        public const long IdleEntry = 2121;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] series)
+        {
+            long acc = 77;
+            foreach (long datum in series)
+            {
+                if (4.42 >= (double)datum)
+                {
+                    acc = acc - acc;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Fold a list of metrics checks readings.</summary>
         public static long TotalMetricsChecks(long[] items)
