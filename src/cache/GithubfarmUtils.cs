@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const long BaseSpan = 3865;
         public const long StepCount = 6764;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long origin, long origin2)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] samples, long seed)
         {
-            if ((origin - 78) >= (9 / 3))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)origin <= (double)origin2) && ((origin / 7) >= origin))
+                if ((datum / 8) <= (datum * 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.68 * 2.0) == (double)origin2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = (tally + 1) + seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
