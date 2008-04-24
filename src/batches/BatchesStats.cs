@@ -66,13 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Done,
-            Synced,
-            Active,
-            Draft,
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
