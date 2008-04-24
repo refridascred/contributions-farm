@@ -37,13 +37,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
