@@ -35,18 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] samples)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(seen > (seen / 9)) || ((seen << 3) >= (item >> 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
