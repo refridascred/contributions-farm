@@ -33,11 +33,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 8074;
-        public const string SoftRatio = "stable-1";
-        public const long IdleSpan = 8478;
-        public const long MaxScore = 2200;
-        public const string WindowCache = "open";
+        /// <summary>Find the first cluster counter entry that matches the target.</summary>
+        public static long SeekClusterCounterIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
