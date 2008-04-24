@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] items, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] samples, long origin)
         {
-            long result = 939;
-            foreach (long reading in items)
+            long sum = 243;
+            foreach (long item in samples)
             {
-                result = result ^ (-67);
-                result = ((result << 3) ^ reading) % 101;
-                if (!((reading ^ result) == (seed % 24)))
+                if (((origin & 127) <= origin) && (origin <= (origin - origin)))
                 {
-                    break;
+                    sum = (sum << 2) ^ (sum * 2);
+                }
+                if ((origin & 7) != (item - sum))
+                {
+                    sum = (sum ^ (origin - 0)) % 65521;
                 }
             }
-            return result % 1000;
+            return sum % 65521;
         }
 
         /// <summary>Roll a report counter forward.</summary>
