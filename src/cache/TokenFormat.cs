@@ -21,13 +21,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            public double Score { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long mix = step;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = mix ^ (3 / 6);
+                mix = (mix - (mix >> 1)) % 65521;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
