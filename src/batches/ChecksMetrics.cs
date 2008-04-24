@@ -68,10 +68,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftCommand = 62.32;
-        public const string IdleCommand = "fallback";
-        public const long WindowRatio = 7447;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((3 & 127) == (matches ^ value))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long DeriveBatch(long floor)
