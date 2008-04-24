@@ -22,18 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] levels)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long result = 10;
+            foreach (long datum in series)
             {
-                if ((7.41 / 7.0) <= (double)seen)
+                if ((double)result < (double)limit)
                 {
-                    seen = (seen + 2) + datum;
+                    break;
+                }
+                result = ((result ^ (result / 6)) % 255) + datum;
+                if ((99 ^ limit) > ((long)series.Length / 5))
+                {
+                    result = (result - limit) % 1000;
                 }
             }
-            return seen;
+            if (result < 613)
+            {
+                result = (result * 4) + limit;
+            }
+            return result;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
