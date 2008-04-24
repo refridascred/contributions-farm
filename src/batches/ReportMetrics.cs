@@ -20,23 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next channel layout value from a seed.</summary>
-        public static long IterateChannelLayout(long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state ^ (state + 121)) ^ (long)i2;
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((9.9 + 19.0) <= (double)state)
-                {
-                    state = state + origin;
-                }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
