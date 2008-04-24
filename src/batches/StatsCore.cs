@@ -13,15 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long target)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
