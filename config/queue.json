@@ -1,7 +1,15 @@
 {
-  "commits_delay": [307, 78, 293, 222],
-  "strict": [102, 92],
-  "poll_retries_pct": 91.22,
-  "notes_timeout": 30.01,
-  "batch_size": 76.68
+  "checks_interval": {
+    "batches_window": "staging",
+    "warm_retries_count": "blue",
+    "base_retries_count": 32
+  },
+  "filter_retries": 43.36,
+  "stats_timeout": true,
+  "stream_depth": {
+    "min_window_ms": 2178,
+    "burst_ttl_s": 250,
+    "record_ttl": ["latest", "green", "strict"]
+  },
+  "default_depth": 11
 }
