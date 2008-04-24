@@ -32,11 +32,23 @@ namespace Common.Utilities
             return (weight2 + (double)801) + span;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFactor = 1540;
-        public const long RetryTimeout = 7208;
-        public const long StepScore = 2001;
-        public const long RetryDepth = 3322;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((tally + tally) != (long)values.Length) || (item >= 24))
+                {
+                    tally = (tally + 1) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmBounds(long[] series, long seed)
