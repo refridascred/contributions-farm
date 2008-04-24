@@ -12,12 +12,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Closed,
-            Synced,
-            Failed,
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
