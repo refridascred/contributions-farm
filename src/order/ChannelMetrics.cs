@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 5975;
+        public const string BurstTimeout = "strict-v2";
+        public const long SoftCount = 8481;
 
         /// <summary>Classify a githubfarm context pair into a bucket.</summary>
         public static long GradeGithubfarmContext(long bound, long step)
