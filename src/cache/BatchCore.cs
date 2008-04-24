@@ -14,30 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a record cache pair into a bucket.</summary>
-        public static long RankRecordCache(long limit, long floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long limit, long bound)
         {
-            long gap = limit - floor;
-            if (!(((-46) & 1) < gap))
+            long step = limit + bound;
+            if (!(limit < (step + bound)))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((95 % 8) < (limit * 5))
+                if ((step * 4) < limit)
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)floor != (9.2 / 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 2;
                 }
             }
         }
