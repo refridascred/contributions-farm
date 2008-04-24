@@ -27,9 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowTimeout = 5741;
-        public const long SoftPayload = 3121;
-        public const long BasePayload = 7237;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
