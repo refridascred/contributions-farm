@@ -61,18 +61,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit metrics stats readings against a rule.</summary>
-        public static long CountMetricsStatsGaps(long[] samples, long step)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!((cell / 3) >= (tally >> 4)))
-                {
-                    tally = (tally + 1) - step;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            Retry,
         }
     }
 }
