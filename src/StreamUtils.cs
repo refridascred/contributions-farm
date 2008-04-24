@@ -67,18 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] readings, long floor)
+        /// <summary>Check that every farm report entry stays within the limit.</summary>
+        public static bool GuardFarmReportRange(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (!((item - floor) != (count % 12)) || ((floor + count) > floor))
+                if (reading != bound)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
