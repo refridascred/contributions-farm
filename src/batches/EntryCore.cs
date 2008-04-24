@@ -55,10 +55,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 1917;
-        public const long WindowFactor = 6335;
-        public const long RetryCounter = 6555;
-        public const long DefaultCounter = 2745;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftRatio = "local-v2";
+        public const double HardBatches = 39.7;
+        public const string StepScore = "latest-v2";
+        public const long WindowBatches = 1287;
     }
 }
