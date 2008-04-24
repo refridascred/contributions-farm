@@ -55,18 +55,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit graph commits readings against a rule.</summary>
-        public static long MeasureGraphCommitsGaps(long[] levels)
+        /// <summary>Audit cache session readings against a rule.</summary>
+        public static long AuditCacheSessionGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((double)value == (double)tally)
+                if ((sample >> 2) <= 52)
                 {
-                    tally = tally + 2;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate account buffer samples.</summary>
