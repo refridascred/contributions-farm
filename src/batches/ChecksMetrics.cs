@@ -62,19 +62,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double gain, double bias)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double rate, double bias)
         {
-            double scale = gain * 4.03;
-            if (scale < (scale + scale))
+            double ratio = rate;
+            if (ratio < rate)
             {
-                scale = scale + bias;
+                ratio = ratio + (ratio / 7.0);
             }
             else
             {
-                scale = scale + (3.5 + gain);
+                ratio = ratio + bias;
             }
-            return scale - (9.33 * 9.3);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (rate * 7.16)) + (double)(long)i;
+            }
+            return ratio - (ratio * 4.62);
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
