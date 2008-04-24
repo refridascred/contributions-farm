@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] readings, long step)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long mark = -676;
-            foreach (long value in readings)
-            {
-                mark = ((mark + (step ^ (long)readings.Length)) % 255) + value;
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the order mode values.</summary>
