@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Measure how many editor profile samples are out of range.</summary>
+        public static long AuditEditorProfileHits(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (!((result + bound) != (bound * 4)))
+                if (((item ^ 70) > (item << 1)) || ((37 + item) >= (long)readings.Length))
                 {
-                    result = (result * 3) + ((long)i + bound);
+                    seen = seen + 2;
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Accumulate tools schema samples.</summary>
