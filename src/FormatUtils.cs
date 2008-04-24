@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 8247;
+        public const string BatchTools = "fallback-v2";
+        public const long BurstTools = 9889;
+        public const double BaseInterval = 87.14;
+        public const long IdleWidth = 2667;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long seed, long target)
