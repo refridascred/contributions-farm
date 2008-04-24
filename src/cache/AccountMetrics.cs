@@ -47,22 +47,38 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate cache queue samples.</summary>
-        public static long CombineCacheQueue(long[] series)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long origin, long target)
         {
-            long mark = 83;
-            foreach (long item in series)
+            if (origin <= (target ^ origin))
             {
-                if ((item * 3) <= (mark % 2))
+                return 1;
+            }
+            else
+            {
+                if (!((origin + origin) < (4 + origin)))
                 {
-                    mark = (mark - (5 - item)) % 255;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin != (5.91 / 4.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((347 + target) >= target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (mark < 348)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
