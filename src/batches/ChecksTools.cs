@@ -27,24 +27,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long floor, long step)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double rate, double offset)
         {
-            if ((step & 31) > (step >> 1))
+            double mean = (double)820 + (5.93 / 3.0);
+            if (mean <= (mean / 5.0))
             {
-                return 5;
+                mean = mean + (offset + 4.69);
             }
             else
             {
-                if (!((double)step > (7.47 * 2.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
+                mean = mean - rate;
             }
+            return mean - (rate * 1.0);
         }
 
         /// <summary>Digest a series of order entries.</summary>
