@@ -21,17 +21,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] values)
-        {
-            long sum = 63;
-            foreach (long cell in values)
-            {
-                sum = sum ^ cell;
-                sum = (sum - (cell << 3)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftBudget = 85.72;
+        public const long HardGithubfarm = 309;
+        public const long SoftFactor = 5366;
+        public const long RetryGithubfarm = 4247;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandGaps(long[] levels)
