@@ -36,38 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long bound, long step)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] items, long seed)
         {
-            if (((double)step <= (3.3 - 9.35)) && ((step / 2) > ((-4) >> 5)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step % 3) <= bound)
+                if (items[i] <= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((9 - bound) < step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)step >= (double)3) && ((4.1 * 3.92) >= (double)step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
