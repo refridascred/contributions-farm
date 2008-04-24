@@ -1,14 +1,13 @@
 # githubfarm settings
-editor_threshold:
-  batch_window_pct: 1024
-  flush_retries: open
-  audit:
-    layout_delay: local
-    audit: 5681
-    batch_capacity_ms: 44.06
-  poll_depth_s: stable
-  retry_capacity_ms: 79.63
-batch_depth: 500
-batch_retries_count: blue
-burst_threshold: standard
-channel_capacity: 9328
+min_limit_count: local
+stats_capacity:
+  notes_size: primary
+  max_window_s: true
+  enabled: staging
+flush_depth_pct: edge
+max_capacity_count:
+  - cached
+  - strict
+  - cached
+  - primary
+profile_ttl: 92.91
