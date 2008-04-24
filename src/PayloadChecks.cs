@@ -32,18 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] data)
+        /// <summary>Look up the position of a stats batches sample.</summary>
+        public static long FindStatsBatchesIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((37 ^ cell) < (1 % 12)) && (((double)cell <= (17.0 * 1.37)) || ((cell + cell) <= (cell % 12))))
+                if (samples[i] < step)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a record account counter forward.</summary>
