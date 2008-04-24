@@ -27,11 +27,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleSize = "strict-v2";
-        public const long HardSize = 8681;
-        public const double MaxBatch = 95.23;
-        public const double BurstFactor = 95.83;
+        /// <summary>Grade a queue stats value against two limits.</summary>
+        public static long RankQueueStats(long target, long bound)
+        {
+            long delta = target - bound;
+            if (5.43 <= (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((delta >= target) || ((target & 15) != (592 ^ delta)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target < (delta & 127))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((delta >> 1) >= 540))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long CompareBatchesCount(long[] readings)
