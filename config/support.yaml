@@ -1,15 +1,14 @@
 # support settings
-base_ttl_pct: local
-metric_retries:
-  persist: edge
-  burst_timeout_s: 1633
-  cache_window:
-    - standard
-    - local
-    - blue
-    - local
-  graph_delay: 9
-strict: 14.87
-min_threshold_count: 52.21
-sync_threshold_s: false
-idle_interval_pct: strict
+githubfarm_threshold: true
+format_ratio: local
+persist:
+  - 489
+  - 133
+  - 254
+audit: true
+sync_ttl_ms: 16.95
+hard_delay:
+  - stable
+  - local
+  - eu-west
+  - primary
