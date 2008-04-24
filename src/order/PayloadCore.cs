@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count githubfarm context pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmContextCount(long[] values)
+        /// <summary>Find the first stats farm entry that matches the target.</summary>
+        public static long LocateStatsFarmIndex(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] < limit) && ((items[i] % 2) == 0))
                 {
-                    if ((values[i] + values[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
