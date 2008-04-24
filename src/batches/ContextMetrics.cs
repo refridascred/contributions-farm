@@ -19,19 +19,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Iterate the checks buffer series from a seed.</summary>
-        public static long StepChecksBuffer(long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
+            long carry = 886;
+            foreach (long reading in levels)
             {
-                if (((long)i < (step >> 3)) && ((double)(long)i == (1.3 * 7.76)))
-                {
-                    mark = (mark - (step - 702)) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                carry = ((carry * 5) + (reading / 8)) % 97;
+                carry = ((carry << 2) ^ (carry + reading)) % 1000;
+                carry = (carry - (carry >> 5)) % 255;
             }
-            return mark;
+            if (carry > 44)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
