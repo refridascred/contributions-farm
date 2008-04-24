@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long floor, long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long slot = floor - target;
-            if (floor < (8 + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((4.13 + 9.77) == (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor / 6) <= (target + floor)) && ((floor & 255) > 99))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor > (slot / 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Stale,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the tools kind values.</summary>
