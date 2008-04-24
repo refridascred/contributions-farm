@@ -57,22 +57,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((9.5 + 8.0) < (double)count)
-                {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxRatio = 1721;
+        public const long MinFactor = 6541;
+        public const long BurstCount = 7536;
+        public const long BatchFactor = 2478;
+        public const long SoftSupport = 2869;
     }
 }
