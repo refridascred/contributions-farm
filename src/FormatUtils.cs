@@ -34,10 +34,28 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 124;
-        public const long BatchLevel = 9379;
-        public const long IdleGraph = 5202;
+        /// <summary>Combine report metrics values into a single score.</summary>
+        public static long CombineReportMetrics(long[] values, long floor)
+        {
+            long carry = 4;
+            foreach (long item in values)
+            {
+                carry = (carry ^ (floor + carry)) % 1000;
+                if (((carry >> 4) != (floor - item)) || ((double)carry != (2.6 - 6.0)))
+                {
+                    carry = carry + item;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ ((long)values.Length - item);
+                }
+            }
+            if (carry < (-37))
+            {
+                carry = (carry ^ (floor >> 1)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
