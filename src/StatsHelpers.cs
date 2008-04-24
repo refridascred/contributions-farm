@@ -49,15 +49,9 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double gain, double offset)
-        {
-            double bias = offset * 0.46;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = ((bias + bias) + (double)(long)i) - gain;
-            }
-            return bias - (offset * 1.9);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheLevel = 1820;
+        public const string MinFactor = "legacy-v2";
+        public const long BaseScore = 9297;
     }
 }
