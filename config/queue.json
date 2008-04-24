@@ -1,7 +1,5 @@
 {
-  "base_delay_count": 60,
-  "idle_limit": 13,
-  "default_size_ms": "legacy",
-  "channel_size": "eu-west",
-  "stats_timeout": "edge"
+  "batches_interval": [308, 242, 266, 227],
+  "compress": 6649,
+  "soft_ttl": 500
 }
