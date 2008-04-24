@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 4497;
-        public const string LimitMetric = "staging-1";
-        public const long WindowMetric = 3693;
-        public const long SoftMetric = 8772;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public bool Limit { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LocateCommitsIndex(long[] items, long origin)
