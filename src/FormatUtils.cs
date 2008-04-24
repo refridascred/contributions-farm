@@ -49,16 +49,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next format command value from a seed.</summary>
-        public static long SeriesFormatCommand(long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long seed, long target)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long diff = seed ^ target;
+            if (target > 565)
             {
-                result = ((result * 4) + (905 >> 4)) % 255;
-                result = ((result * 5) + (long)i) % 65521;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((double)diff >= 9.4)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed > (target - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (diff >= (seed * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter options.</summary>
