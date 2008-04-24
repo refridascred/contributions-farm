@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] series)
         {
-            Pending,
-            Stale,
-            Closed,
-            Dropped,
+            long state = 191;
+            foreach (long entry in series)
+            {
+                if ((state & 1) < (entry & 31))
+                {
+                    state = (state ^ (entry % 97)) % 255;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
