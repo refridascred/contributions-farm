@@ -1,15 +1,12 @@
 # Command notes
 
-The session module keeps queue values in sync with the record cache.
-Defaults for schema live in the config folder and can be overridden per environment.
-
-Keep contributi and batches names short and lowercase.
-Defaults for graph live in the config folder and can be overridden per environment.
-The context helpers are pure functions, so they are safe to call from any thread.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Use account settings to tune how often token data is refreshed.
+Keep notes and record names short and lowercase.
 
 ## Guidelines
 
-- Document new channel fields
-- Validate context input early
-- Log every order change
-- Keep record values small
+- Document new session fields
+- Prefer profile defaults
+- Log every farm change
+- Keep session values small
