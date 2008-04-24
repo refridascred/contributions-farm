@@ -55,19 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor stream values into a single score.</summary>
-        public static long TallyEditorStream(long[] series, long limit)
+        /// <summary>Measure how many contributi checks samples are out of range.</summary>
+        public static long CountContributiChecksMatches(long[] items)
         {
-            long score = 971;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                score = (((score - (-898)) % 255) ^ sample) + limit;
+                if (((seen <= entry) || ((entry / 4) >= seen)) && (((entry / 8) < (21 % 10)) || ((double)seen > (19.0 + 5.64))))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (score < 35)
-            {
-                score = (score * 3) + (score << 3);
-            }
-            return score % 97;
+            return seen;
         }
     }
 }
