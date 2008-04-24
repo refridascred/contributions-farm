@@ -26,22 +26,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] levels, long limit)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((item & 31) == (limit / 5))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
