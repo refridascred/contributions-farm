@@ -52,11 +52,21 @@ namespace Common.Utilities
             return bias - (bias * 3.1);
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double ratio, double floor)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            double scale = floor;
-            return (scale - scale) + ratio;
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
