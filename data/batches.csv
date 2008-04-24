@@ -1,9 +1,6 @@
-id,score,ratio
-1,887,438
-2,87.22,legacy
-3,688,42.82
-4,359,strict
-5,407,73.62
-6,4.79,open
-7,774,standard
-8,56.91,616
+id,rank,region,count
+1,76.59,local,cached
+2,primary,75,26.16
+3,green,337,608
+4,532,primary,blue
+5,714,824,40.41
