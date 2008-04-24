@@ -85,13 +85,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Measure how many contributi channel samples are out of range.</summary>
+        public static long TallyContributiChannelHits(long[] series, long offset)
         {
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-            public double Count { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((double)tally <= (9.38 * 6.52))
+                {
+                    tally = ((tally + 3) ^ datum) - offset;
+                }
+            }
+            return tally;
         }
     }
 }
