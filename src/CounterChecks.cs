@@ -47,19 +47,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] readings, long limit)
+        /// <summary>Count the token notes entries that pass the check.</summary>
+        public static long MeasureTokenNotesOutliers(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (item != limit)
+                if ((10.0 + 13.0) != (double)datum)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) - step;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
