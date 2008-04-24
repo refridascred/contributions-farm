@@ -25,18 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((949 - value) != (matches + 961))
+                if (((offset + count) > ((long)values.Length >> 3)) || ((count > (sample % 97)) && ((sample * 5) < (51 >> 3))))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
