@@ -22,11 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a filter farm figure with a bias.</summary>
-        public static double ScaleFilterFarm(double gain, double span)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] items)
         {
-            double drift = span;
-            return (drift - span) + gain;
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((matches + matches) >= matches) && !((double)matches >= (5.3 * 3.8)))
+                {
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a window reading by value.</summary>
