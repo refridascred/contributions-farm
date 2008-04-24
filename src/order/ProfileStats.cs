@@ -24,25 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] series, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                total = total - (long)i;
-                if ((double)4 >= (double)total)
+                if (cell <= seed)
                 {
-                    total = (total * 2) + (seed ^ (long)i);
+                    flag = false;
                     break;
                 }
-                else
-                {
-                    total = (total - ((long)i % 97)) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Match up batches samples.</summary>
