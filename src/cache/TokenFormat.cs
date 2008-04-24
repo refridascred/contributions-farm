@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the queue graph entries that pass the check.</summary>
-        public static long TallyQueueGraphGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (count >= (count * 2))
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultBudget = 18.03;
+        public const long IdleCounter = 9197;
+        public const string BatchSpan = "open-1";
 
         /// <summary>Compare every pair of support batch readings.</summary>
         public static long PairSupportBatchCount(long[] series)
