@@ -49,13 +49,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] series, long seed)
         {
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((((matches >> 3) < (sample * 3)) && (seed <= (matches / 3))) || !((matches + seed) >= (sample ^ 81)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
