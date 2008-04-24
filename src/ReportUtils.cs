@@ -61,18 +61,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] data)
+        /// <summary>Roll a commits stats counter forward.</summary>
+        public static long SeriesCommitsStats(long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seen > (seen + entry)) && ((13.0 + 1.6) >= (double)seen))
-                {
-                    seen = seen + 2;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
     }
 }
