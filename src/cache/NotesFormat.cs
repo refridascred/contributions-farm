@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 94.28;
-        public const long LimitBatches = 7389;
-        public const long StepRatio = 2723;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double BlendCounter(double gain, double floor)
