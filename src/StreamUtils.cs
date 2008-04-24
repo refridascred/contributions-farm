@@ -23,10 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 8876;
-        public const long HardCount = 632;
-        public const double BaseCount = 63.84;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] levels)
+        {
+            long carry = 0;
+            foreach (long datum in levels)
+            {
+                carry = ((carry * 3) + (carry * 5)) ^ datum;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Check that every format cluster entry stays within the limit.</summary>
         public static bool CheckFormatClusterLimits(long[] items, long step)
