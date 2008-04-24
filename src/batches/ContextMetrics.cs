@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 493;
-        public const double DefaultWidth = 59.64;
-        public const long DefaultCounter = 5580;
-        public const string MaxCounter = "stable-v2";
-        public const long StepCounter = 5735;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
