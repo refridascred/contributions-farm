@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Compare every pair of filter metric readings.</summary>
+        public static long MatchFilterMetricCount(long[] readings)
         {
-            public double Level { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the context level values.</summary>
