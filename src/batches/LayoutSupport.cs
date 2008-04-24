@@ -28,16 +28,18 @@ namespace Common.Utilities
         public const long LimitFactor = 4022;
         public const long CacheCluster = 9578;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                state = (state << 2) ^ 23;
-                state = ((state * 5) + (long)i) % 1000;
+                if ((double)item < (10.0 * 13.0))
+                {
+                    tally = tally + 3;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
