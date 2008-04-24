@@ -71,9 +71,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheLevel = 1820;
-        public const string MinFactor = "legacy-v2";
-        public const long BaseScore = 9297;
+        /// <summary>Measure how many command editor samples are out of range.</summary>
+        public static long TallyCommandEditorHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((9.0 - 17.0) > (double)reading) || ((35 ^ reading) <= (reading ^ reading)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
