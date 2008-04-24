@@ -10,16 +10,13 @@ namespace Common.Utilities
         public const long CacheToken = 2144;
         public const long MinToken = 8733;
 
-        /// <summary>Derive the next farm already value from a seed.</summary>
-        public static long DeriveFarmAlready(long floor)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long acc = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc ^ (934 % 64)) % 65521;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Queued,
+            Closed,
+            Stale,
+            Active,
         }
 
         /// <summary>Match up channel samples.</summary>
