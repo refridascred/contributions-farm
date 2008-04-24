@@ -1,16 +1,11 @@
 {
-  "soft_depth_s": true,
-  "readonly": "stable",
-  "retry_retries": "edge",
-  "soft_size_count": {
-    "cache_interval_ms": "cached",
-    "soft_retries_count": {
-      "warm_window_ms": false,
-      "strict": ["fallback", "latest", "fallback"],
-      "payload_size": "standard"
-    },
-    "flush_capacity": 93
-  },
-  "default_delay": "legacy",
-  "min_delay_pct": 10
+  "min_interval_pct": 86.99,
+  "warm_ratio": 60,
+  "flush_depth_count": {
+    "batch_retries": "fallback",
+    "flush_interval_count": 8997,
+    "idle_interval": [483, 316],
+    "soft_ttl_count": 48.66,
+    "format_retries": 250
+  }
 }
