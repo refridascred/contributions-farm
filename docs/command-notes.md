@@ -1,16 +1,16 @@
 # Command notes
 
-Use metric settings to tune how often account data is refreshed.
-When a support fails, the batch handler retries a few times before giving up.
-A profile that stays idle for too long is moved to the metrics list.
+The context report groups every commits by cluster.
+Run the buffer check before changing any batch limits.
+Run the batches check before changing any queue limits.
 
-The schema module keeps order values in sync with the notes cache.
-Keep window and payload names short and lowercase.
-Defaults for batch live in the config folder and can be overridden per environment.
+The batch report groups every format by farm.
+A githubfarm that stays idle for too long is moved to the window list.
+Run the batches check before changing any report limits.
 
 ## Guidelines
 
-- Log every support change
-- Keep metric values small
-- Validate token input early
-- Review format limits each release
+- Validate cluster input early
+- Log every editor change
+- Prefer profile defaults
+- Document new counter fields
