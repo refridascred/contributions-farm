@@ -25,22 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format metric entries.</summary>
-        public static long ScoreFormatMetric(long[] series, long floor)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long seed, long seed2)
         {
-            long mark = 18;
-            foreach (long datum in series)
+            long cur = seed - seed2;
+            if (!((cur >> 2) > (cur % 16)))
             {
-                if ((9.63 - 5.34) == (double)datum)
+                return 0;
+            }
+            else
+            {
+                if (!((cur % 2) == (seed2 % 24)))
                 {
-                    mark = ((mark << 3) ^ (floor ^ datum)) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    if ((19.0 + 3.69) != (double)cur)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (mark > 33)
-            {
-                mark = (mark - floor) % 4096;
-            }
-            return mark % 1000;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
