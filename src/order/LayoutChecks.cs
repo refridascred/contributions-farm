@@ -49,13 +49,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public double Offset { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
+            Stale,
+            New,
+            Done,
+            Draft,
+            Queued,
         }
 
         /// <summary>Project the next channel value.</summary>
