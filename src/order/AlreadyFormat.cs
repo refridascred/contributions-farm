@@ -12,12 +12,18 @@ namespace Common.Utilities
             return load + (weight + weight);
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] samples, long bound)
         {
-            Idle,
-            Retry,
-            Failed,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((bound - count) > ((-705) - sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next contributi route value.</summary>
