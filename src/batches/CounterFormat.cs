@@ -39,18 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] readings)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long edge = seed ^ origin;
+            if ((7.5 - 2.95) <= (double)edge)
             {
-                if (4 > (datum % 60))
+                return 0;
+            }
+            else
+            {
+                if ((origin % 10) == (edge >> 3))
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + edge) < 8)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin - seed) < 97)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
