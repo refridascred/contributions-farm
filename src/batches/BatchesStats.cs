@@ -41,19 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] readings, long step)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Synced,
+            Active,
+            Draft,
         }
     }
 }
