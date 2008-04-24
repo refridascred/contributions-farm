@@ -56,23 +56,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cache checks samples.</summary>
-        public static long CombineCacheChecks(long[] levels, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] series)
         {
-            long acc = 95;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                acc = (acc * 3) + (target % 7);
-                if (((target - 97) <= (44 ^ 99)) || ((target - datum) >= (-2)))
+                if ((73 % 8) == (value - value))
                 {
-                    acc = (acc << 2) ^ target;
+                    hits = hits + 3;
                 }
-                if ((double)datum <= (6.5 / 8.0))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Measure how many command editor samples are out of range.</summary>
