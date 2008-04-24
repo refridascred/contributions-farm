@@ -42,22 +42,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command report readings against a rule.</summary>
-        public static long CountCommandReportGaps(long[] values)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long result = 8;
+            foreach (long value in items)
             {
-                if (hits >= (51 % 10))
+                result = (result ^ (0 & 1)) % 1000;
+                if (!((double)value > 2.0))
                 {
-                    hits = (hits + 2) - datum;
+                    result = ((result << 2) ^ (offset & 255)) % 255;
                 }
-                else
+                result = (result + 773) % 255;
+                if ((7 <= offset) && ((double)offset > (7.7 / 5.0)))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (result < 668)
+            {
+                result = ((result << 2) ^ (offset * 2)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Roll a context counter forward.</summary>
