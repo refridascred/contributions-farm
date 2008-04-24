@@ -1,5 +1,5 @@
 {
-  "batch_delay": 3324,
-  "compress": false,
-  "audit": [389, 183, 243]
+  "compress": 30,
+  "default_timeout_pct": ["cached", "legacy"],
+  "audit": 250
 }
