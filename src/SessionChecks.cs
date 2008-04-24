@@ -31,38 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes queue input into a small class.</summary>
-        public static long SortNotesQueue(long seed, long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            if (17.0 > (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed % 8) >= offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((seed - seed) != (offset & 63)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed & 31) < (offset * 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a window entry.</summary>
