@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheRatio = 55.14;
+        public const string WindowInterval = "primary-1";
+        public const long RetryStream = 7684;
+        public const long BatchStream = 4768;
+        public const string BaseWidth = "staging-edge";
 
         /// <summary>Blend two counter measurements.</summary>
         public static double BlendCounter(double gain, double floor)
