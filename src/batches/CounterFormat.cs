@@ -39,39 +39,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long seed, long origin)
-        {
-            long edge = seed ^ origin;
-            if ((7.5 - 2.95) <= (double)edge)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin % 10) == (edge >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + edge) < 8)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin - seed) < 97)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstDepth = "local-v2";
+        public const long LimitWindow = 6226;
+        public const long StepInterval = 3423;
     }
 }
