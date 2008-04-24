@@ -38,28 +38,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] series, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((20.0 <= (double)anchor) && (anchor <= (limit << 2)))
+                if (entry != offset)
                 {
-                    anchor = anchor + (limit + anchor);
-                    anchor = anchor + (limit << 3);
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor - anchor)) % 1000;
-                }
-                if ((long)i == ((long)i + (long)i))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return found;
         }
     }
 }
