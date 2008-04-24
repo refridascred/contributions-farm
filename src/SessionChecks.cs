@@ -43,15 +43,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double rate, double span)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] items, long target)
         {
-            double scale = span * 8.9;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = ((scale - (scale * 7.4)) + (double)(long)i) - rate;
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (double)16;
+            return -1;
         }
     }
 }
