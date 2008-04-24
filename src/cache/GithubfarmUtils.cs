@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Idle,
-            Failed,
-            Ready,
-            Synced,
-            Draft,
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
