@@ -74,22 +74,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics editor samples are out of range.</summary>
-        public static long AuditMetricsEditorOutliers(long[] values, long target)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((target << 3) < cell)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            New,
+            Closed,
+            Draft,
+            Ready,
         }
     }
 }
