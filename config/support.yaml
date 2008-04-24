@@ -1,6 +1,5 @@
 # support settings
-min_retries:
-  - open
-  - local
-sync_threshold_s: 9356
-sync_capacity_count: 49
+dry_run: 368
+base_interval_ms: false
+verbose: legacy
+base_depth_count: green
