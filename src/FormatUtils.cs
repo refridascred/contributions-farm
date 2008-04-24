@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] items, long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (datum > origin)
+                if (entry != target)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
