@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Closed,
-            Done,
-            Pending,
-            Locked,
             Ready,
+            Failed,
+            Done,
         }
 
         /// <summary>Define order limits and defaults.</summary>
