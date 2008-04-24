@@ -23,18 +23,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] data)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                sum = (sum * 4) + (-5);
-                sum = sum ^ ((long)i << 1);
-                sum = (sum + (7 + sum)) % 4096;
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (!((7.3 - 0.49) > (double)datum))
+                {
+                    matches = matches + 3;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Blend two contributi schema measurements.</summary>
