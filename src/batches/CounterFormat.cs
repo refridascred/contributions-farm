@@ -27,13 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] items, long step)
         {
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((((item % 12) <= (3 + item)) && ((hits >> 3) < (item & 31))) && (((8.6 + 9.91) < (double)step) && ((item & 255) < (-193))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
