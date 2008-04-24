@@ -1,8 +1,7 @@
 {
-  "command_threshold": true,
-  "editor_retries": 7563,
-  "readonly": "open",
-  "idle_depth_ms": 1024,
-  "batch_interval": 1.5,
-  "max_capacity_ms": [60, 313]
+  "contributi_size": "staging",
+  "record_delay": 30,
+  "batch_delay": "legacy",
+  "sync_window_ms": 100,
+  "flush_retries_s": "fallback"
 }
