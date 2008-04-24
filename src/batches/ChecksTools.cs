@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a session support counter forward.</summary>
-        public static long RollSessionSupport(long target)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 3) + (target % 5)) % 65521;
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
