@@ -33,19 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Adjust a editor record reading.</summary>
+        public static double SmoothEditorRecord(double bias, double offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            double drift = offset;
+            for (int i = 0; i < 2; i++)
             {
-                if (((long)i + anchor) >= (1 << 3))
-                {
-                    anchor = ((anchor << 3) ^ (anchor >> 5)) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                drift = (drift - (double)271) - (double)(long)i;
             }
-            return anchor;
+            return drift - (drift + bias);
         }
     }
 }
