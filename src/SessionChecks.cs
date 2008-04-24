@@ -43,13 +43,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double rate, double span)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            double scale = span * 8.9;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = ((scale - (scale * 7.4)) + (double)(long)i) - rate;
+            }
+            return scale + (double)16;
         }
     }
 }
