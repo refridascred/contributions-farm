@@ -78,12 +78,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultSpan = 43.76;
-        public const long IdleRatio = 3190;
-        public const long StepSpan = 8598;
-        public const double BurstTools = 23.63;
-        public const long SoftLevel = 1777;
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long RollRoute(long limit)
