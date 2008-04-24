@@ -1,4 +1,7 @@
 # githubfarm settings
-poll_window_count: eu-west
-readonly: 55.85
-default_interval: local
+batch_capacity: 1024
+cache_size_count: stable
+cache_window_count:
+  - 84
+  - 11
+  - 251
