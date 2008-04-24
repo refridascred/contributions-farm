@@ -12,11 +12,31 @@ namespace Common.Utilities
         public const long StepCount = 4636;
         public const long StepBatches = 6153;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long step, long floor)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            if ((50 - floor) <= (step & 255))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4.33 / 7.0) != (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((7 & 7) <= (1 + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
