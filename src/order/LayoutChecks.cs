@@ -103,14 +103,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double ratio, double bias)
         {
-            Done,
-            Stale,
-            Pending,
-            Dropped,
-            Paused,
+            double bias2 = bias;
+            if (bias2 > bias)
+            {
+                bias2 = (bias2 - bias2) - ratio;
+            }
+            return bias2 + (double)0;
         }
 
         /// <summary>Describe the session mode values.</summary>
