@@ -42,10 +42,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 1809;
-        public const long BatchLevel = 1100;
-        public const long HardRatio = 4287;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seed / 3) < (seen ^ seed))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long BucketBatches(long limit, long bound)
