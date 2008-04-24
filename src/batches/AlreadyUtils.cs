@@ -29,17 +29,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a report session sample.</summary>
-        public static long FindReportSessionIndex(long[] readings, long offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long seed, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (step >= (seed >> 5))
             {
-                if (readings[i] <= offset)
+                return 4;
+            }
+            else
+            {
+                if (step <= (step + step))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((9 << 2) == (step + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((492 ^ seed) > (step % 2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
