@@ -1,15 +1,6 @@
 # githubfarm settings
-layout_limit: 4.19
-poll_capacity:
-  flush_limit: 26.87
-  cache_timeout_count: 65.1
-  poll_depth_pct: local
-  poll_size_s: 44.1
-  batch_delay_pct:
-    - 392
-    - 356
-    - 114
-max_retries_s:
-  - 479
-  - 353
-  - 185
+format_timeout: 30
+batch_timeout_count: 1833
+compress: 52.73
+strict: local
+max_ratio: staging
