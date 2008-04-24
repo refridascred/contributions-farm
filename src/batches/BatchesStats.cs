@@ -16,18 +16,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] series)
+        /// <summary>Rank batches profile input into a small class.</summary>
+        public static long BucketBatchesProfile(long floor, long floor2)
         {
-            long state = 191;
-            foreach (long entry in series)
+            long cur = floor ^ floor2;
+            if (((floor - floor2) < cur) && ((14 & 127) == (floor2 - floor2)))
             {
-                if ((state & 1) < (entry & 31))
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) > (floor ^ floor))
                 {
-                    state = (state ^ (entry % 97)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    if ((2.9 * 2.62) == (double)cur)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return state % 1000;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
