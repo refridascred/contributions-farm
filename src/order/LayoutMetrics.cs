@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next batches notes value.</summary>
-        public static double AdjustBatchesNotes(double scale, double bias)
-        {
-            double gain = (double)17 / 7.0;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (double)(long)i) - scale;
-            }
-            return gain - bias;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitSpan = "stable-edge";
+        public const long DefaultBudget = 267;
+        public const long SoftToken = 5142;
+        public const double RetryScore = 78.39;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double BurstFactor = 71.72;
