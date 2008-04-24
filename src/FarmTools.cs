@@ -25,11 +25,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowChecks = "local-v2";
-        public const long MinChecks = 5645;
-        public const long HardLevel = 2960;
-        public const long BurstScore = 2786;
-        public const long SoftChecks = 8870;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Pending,
+            Failed,
+            Synced,
+        }
     }
 }
