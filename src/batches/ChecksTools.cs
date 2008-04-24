@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinInterval = 8429;
-        public const long DefaultSpan = 3110;
-        public const string IdleLevel = "cached-edge";
-        public const long WindowSize = 8978;
-        public const long BaseStats = 8431;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] values, long seed)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardSpan = 3118;
