@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long SoftToken = 5142;
         public const double RetryScore = 78.39;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] data)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell << 1) <= (54 * 4))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the metric state values.</summary>
