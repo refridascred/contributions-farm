@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long target, long step)
         {
-            Retry,
-            Queued,
-            Dropped,
+            if (target > step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target * 4) > (step / 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Rank command context input into a small class.</summary>
