@@ -1,10 +1,9 @@
 # githubfarm settings
-readonly: eu-west
-persist: 3772
-sync_limit_s: primary
-soft_capacity:
-  - 78
-  - 150
-  - 315
-  - 132
-poll_depth_count: false
+default_retries: 60
+batch_delay_ms: 49.39
+batch_timeout_s: open
+soft_ttl_s:
+  - local
+  - staging
+min_window_pct: 22.6
+soft_ratio_ms: 54.2
