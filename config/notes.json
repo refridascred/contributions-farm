@@ -1,8 +1,6 @@
 {
-  "strict": [284, 172, 220, 390],
-  "stream_size": 1387,
-  "poll_depth_s": 65,
-  "enabled": "open",
-  "notes_ratio": ["local", "eu-west", "open", "legacy"],
-  "soft_limit": true
+  "poll_depth_ms": "fallback",
+  "idle_limit_ms": 60.31,
+  "max_interval_s": "latest",
+  "batch_interval_ms": 4351
 }
