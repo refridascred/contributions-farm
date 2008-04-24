@@ -23,23 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] readings, long seed)
         {
-            long score = 12;
-            foreach (long datum in items)
+            long state = 7;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 5; i++)
+                if ((double)seed == (6.1 + 9.23))
                 {
-                    score = ((score * 5) + ((long)i % 100)) ^ datum;
+                    state = ((state << 2) ^ (9 - seed)) % 255;
                 }
-                score = (score ^ (score << 1)) % 101;
+                else
+                {
+                    state = state ^ (value * 2);
+                }
             }
-            if (score < 68)
-            {
-                score = score + (score + 0);
-            }
-            return score % 97;
+            return state;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
