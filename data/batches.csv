@@ -1,7 +1,6 @@
-id,count,weight
-1,556,863
-2,825,standard
-3,593,615
-4,723,30
-5,560,72.49
-6,blue,cached
+id,region,label,level,rank
+1,strict,435,green,513
+2,98.91,edge,72.65,91.9
+3,801,428,76.85,89
+4,edge,936,401,411
+5,local,731,legacy,581
