@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Audit counter order readings against a rule.</summary>
+        public static long MeasureCounterOrderHits(long[] data, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if ((2 % 8) >= (count * 5))
+                {
+                    count = ((count + 3) ^ item) - offset;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Grade a queue already value against two limits.</summary>
