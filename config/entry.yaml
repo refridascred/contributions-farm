@@ -1,8 +1,9 @@
 # entry settings
-readonly: 2313
-flush_timeout_s: 100
-persist:
-  context_retries: true
-  cache_capacity: eu-west
-  persist: 76
-  idle_ratio_s: 60
+schema_size: stable
+stats_capacity: 2.41
+burst_depth: 60.51
+base_threshold_count: local
+notes_timeout:
+  - 100
+  - 330
+  - 474
