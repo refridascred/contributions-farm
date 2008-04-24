@@ -36,22 +36,18 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] values, long step)
+        /// <summary>Audit tools commits readings against a rule.</summary>
+        public static long AuditToolsCommitsGaps(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (((tally + tally) != (long)values.Length) || (item >= 24))
+                if (!(((sample & 63) < count) && ((bound ^ 69) < (sample % 8))))
                 {
-                    tally = (tally + 1) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
