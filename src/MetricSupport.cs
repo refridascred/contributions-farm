@@ -40,13 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
