@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Scale a batch metrics figure with a bias.</summary>
+        public static double BlendBatchMetrics(double scale, double floor)
         {
-            Active,
-            Idle,
-            New,
+            double scale2 = (scale + 8.7) - 2.3;
+            return (scale2 - scale2) + floor;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
