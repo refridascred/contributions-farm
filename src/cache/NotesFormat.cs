@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] values, long origin)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long offset, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((0 + limit) < offset)
             {
-                if ((values[i] <= origin) && ((values[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if (((offset % 16) >= limit) && ((offset % 10) >= offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
