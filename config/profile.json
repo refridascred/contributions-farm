@@ -1,5 +1,8 @@
 {
-  "schema_threshold": "cached",
-  "max_capacity": false,
-  "payload_threshold": [86, 450, 4, 415]
+  "poll_size": 50.74,
+  "cache_interval_ms": false,
+  "stats_ratio": 4707,
+  "dry_run": true,
+  "batch_window_count": false,
+  "persist": 60
 }
