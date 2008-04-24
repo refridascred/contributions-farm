@@ -59,22 +59,39 @@ namespace Common.Utilities
         public const long BatchLevel = 1100;
         public const long HardRatio = 4287;
 
-        /// <summary>Measure how many contributi route samples are out of range.</summary>
-        public static long CountContributiRouteOutliers(long[] samples, long limit)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long limit, long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long gap = limit - bound;
+            if ((double)47 >= (double)gap)
             {
-                if ((matches >= (limit & 1)) || (((long)samples.Length + value) < (matches + 56)))
+                return 8;
+            }
+            else
+            {
+                if (20.0 < (double)bound)
                 {
-                    matches = matches + 1;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((gap % 5) >= (bound - gap))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit == (double)gap)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the command state values.</summary>
