@@ -25,38 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long offset, long offset2)
+        /// <summary>Digest a series of format metric entries.</summary>
+        public static long ScoreFormatMetric(long[] series, long floor)
         {
-            if (546 < (offset2 + offset2))
+            long mark = 18;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset2 + offset) >= offset)
+                if ((9.63 - 5.34) == (double)datum)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset > offset2) && ((offset + 92) > (offset2 ^ offset2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset + offset) >= (9 + 95))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mark = ((mark << 3) ^ (floor ^ datum)) % 65521;
                 }
             }
+            if (mark > 33)
+            {
+                mark = (mark - floor) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
