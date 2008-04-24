@@ -44,9 +44,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitScore = "latest";
-        public const long HardAlready = 3783;
-        public const long WindowAlready = 4066;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
