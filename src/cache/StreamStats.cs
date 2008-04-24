@@ -32,21 +32,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Rank payload order input into a small class.</summary>
+        public static long RankPayloadOrder(long limit, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset = limit ^ bound;
+            if ((limit * 5) <= (bound << 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((double)offset < (3.8 + 6.94)))
                 {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
