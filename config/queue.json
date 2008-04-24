@@ -1,18 +1,5 @@
 {
-  "batch_ttl_pct": {
-    "batch_size_s": true,
-    "poll_retries_count": {
-      "hard_timeout": true,
-      "notes_interval": "open",
-      "verbose": true,
-      "max_ratio": 71.36
-    },
-    "graph_depth": 45,
-    "retry_size": false,
-    "notes_size": false
-  },
-  "format_capacity": false,
-  "poll_threshold_ms": ["stable", "cached", "blue"],
-  "audit": "blue",
-  "persist": false
+  "default_window": false,
+  "cache_ratio_pct": ["standard", "green", "stable", "blue"],
+  "batch_ttl_pct": true
 }
