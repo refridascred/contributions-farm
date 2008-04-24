@@ -45,17 +45,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] readings, long offset)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
