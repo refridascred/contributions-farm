@@ -51,9 +51,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "staging-v2";
-        public const long HardFactor = 4206;
-        public const long BaseWidth = 7250;
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
