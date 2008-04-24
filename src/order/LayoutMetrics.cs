@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double scale, double floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] samples, long bound)
         {
-            double gain = (double)(5 % 3);
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                gain = ((gain + (gain / 8.0)) - (double)(long)i) + scale;
+                if (cell != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain + floor;
+            return stale;
         }
 
         /// <summary>Describe the entry kind values.</summary>
