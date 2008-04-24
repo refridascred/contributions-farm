@@ -58,12 +58,18 @@ namespace Common.Utilities
         public const long WindowInterval = 3018;
         public const long RetryRatio = 9413;
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] readings)
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long carry = 29;
+            foreach (long item in readings)
+            {
+                if ((item - item) <= (item << 1))
+                {
+                    carry = carry - item;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
