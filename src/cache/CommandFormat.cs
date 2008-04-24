@@ -25,13 +25,17 @@ namespace Common.Utilities
         public const long IdleWidth = 6822;
         public const long MaxBudget = 3871;
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] items, long floor)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the profile phase values.</summary>
