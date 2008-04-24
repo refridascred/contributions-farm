@@ -1,5 +1,6 @@
 {
-  "strict": 22.12,
-  "route_interval": 7717,
-  "window_window": "local"
+  "max_size_count": "latest",
+  "base_interval_ms": false,
+  "hard_delay_ms": "primary",
+  "graph_ttl": false
 }
