@@ -23,18 +23,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] levels)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (6.4 <= (double)seen)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 2) + reading;
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
