@@ -1,6 +1,14 @@
 # githubfarm settings
-flush_depth_count: primary
-command_retries: 500
-verbose:
-  - stable
-  - green
+token_ttl:
+  - cached
+  - strict
+cache_interval_count:
+  - 302
+  - 373
+hard_window: 8259
+account_capacity: 46
+route_size: 6986
+cache_window:
+  - open
+  - edge
+  - open
