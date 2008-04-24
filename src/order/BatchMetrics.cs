@@ -55,32 +55,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank support report input into a small class.</summary>
-        public static long ClassifySupportReport(long step, long step2)
+        /// <summary>Audit graph commits readings against a rule.</summary>
+        public static long MeasureGraphCommitsGaps(long[] levels)
         {
-            long prev = step - step2;
-            if ((step + step2) != (step - prev))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step << 3) <= 1)
+                if ((double)value == (double)tally)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.25 * 4.5) <= (3.2 * 6.8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate account buffer samples.</summary>
