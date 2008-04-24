@@ -1,16 +1,16 @@
 # Command notes
 
-Use counter settings to tune how often cluster data is refreshed.
-Each payload is validated before it reaches the checks queue.
-Defaults for graph live in the config folder and can be overridden per environment.
+Use metric settings to tune how often account data is refreshed.
+When a support fails, the batch handler retries a few times before giving up.
+A profile that stays idle for too long is moved to the metrics list.
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-The window report groups every metric by stream.
-The context helpers are pure functions, so they are safe to call from any thread.
+The schema module keeps order values in sync with the notes cache.
+Keep window and payload names short and lowercase.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review order limits each release
-- Validate context input early
-- Document new account fields
-- Prefer schema defaults
+- Log every support change
+- Keep metric values small
+- Validate token input early
+- Review format limits each release
