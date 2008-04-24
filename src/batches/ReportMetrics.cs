@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double scale, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            double scale2 = scale;
+            if (scale2 <= scale2)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                scale2 = scale2 - (double)4;
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - floor) + (double)(long)i;
+            }
+            return scale2 - (scale2 - floor);
         }
 
         /// <summary>Locate a window reading by value.</summary>
