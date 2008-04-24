@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 7251;
-        public const double BaseWidth = 84.03;
-        public const long BaseRatio = 4694;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long origin, long seed)
+        {
+            long prev = origin + seed;
+            if ((33 - origin) < (seed >> 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed - 24) <= (origin * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + 205) != (seed ^ prev))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a counter profile reading.</summary>
         public static double ProjectCounterProfile(double scale, double span)
