@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long limit)
         {
-            Ready,
-            Failed,
-            Done,
+            long score = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(limit >= ((long)i & 1)))
+                {
+                    score = score + limit;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Accumulate githubfarm contributi samples.</summary>
