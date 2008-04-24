@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long seed)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
