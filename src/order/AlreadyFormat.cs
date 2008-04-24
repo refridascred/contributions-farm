@@ -21,19 +21,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] samples, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (value < step)
+                if (item < offset)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Match up cache samples.</summary>
