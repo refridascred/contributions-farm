@@ -44,12 +44,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
