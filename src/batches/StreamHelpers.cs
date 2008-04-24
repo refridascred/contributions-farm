@@ -44,31 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] levels)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] readings)
         {
-            long anchor = -5;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor * 4) + ((long)i / 9);
-                }
-                anchor = (anchor ^ (anchor % 60)) % 255;
-                if ((double)sample < (7.21 / 8.0))
-                {
-                    anchor = (anchor + (sample + sample)) % 101;
-                }
-                else
-                {
-                    anchor = anchor - (sample - sample);
+                    if ((readings[i] - readings[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor < 18)
-            {
-                anchor = (anchor ^ (4 & 7)) % 65521;
-            }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
