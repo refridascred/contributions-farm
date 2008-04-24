@@ -21,15 +21,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double gain, double bias)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double bias, double span)
         {
-            double drift = gain;
-            if (drift > (double)840)
+            double rate = (double)(8 ^ 2);
+            if (rate >= (bias * 7.0))
             {
-                drift = (drift + (double)58) + bias;
+                rate = rate + span;
             }
-            return drift + 11.0;
+            else
+            {
+                rate = rate + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - (span + span);
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
