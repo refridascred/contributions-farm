@@ -101,18 +101,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] levels)
+        /// <summary>Count window batches pairs that satisfy a relation.</summary>
+        public static long MatchWindowBatchesCount(long[] data)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((value >> 2) > (value - value)) && ((count + value) != (value % 100)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
