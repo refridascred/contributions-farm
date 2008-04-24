@@ -22,25 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long step, long seed)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            long lane = step ^ seed;
-            if (((seed + 42) != (lane << 2)) || ((seed + lane) > seed))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((lane + step) >= (lane - 447))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] + items[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a notes info.</summary>
