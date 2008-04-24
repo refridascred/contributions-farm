@@ -64,11 +64,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepBatches = 74.12;
-        public const long DefaultSpan = 541;
-        public const double BatchSize = 10.75;
-        public const long MaxBatches = 3774;
-        public const double HardBatches = 75.19;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] data, long target)
+        {
+            long mix = 41;
+            foreach (long cell in data)
+            {
+                mix = (((mix * 3) + (target * 5)) % 101) ^ cell;
+            }
+            if (mix < 5)
+            {
+                mix = ((mix << 3) ^ mix) % 255;
+            }
+            return mix % 97;
+        }
     }
 }
