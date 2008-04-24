@@ -50,23 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double gain, double span)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double bias, double floor)
         {
-            double scale = (gain + gain) - (double)268;
-            if (scale >= (2.1 / 7.0))
+            double load = (double)(35 & 3);
+            for (int i = 0; i < 2; i++)
             {
-                scale = scale + (double)4;
+                load = ((load + bias) + (double)(long)i) - floor;
             }
-            else
-            {
-                scale = scale + 8.8;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (double)80) - (double)(long)i;
-            }
-            return scale + (span * 0.05);
+            return load - load;
         }
 
         /// <summary>Adjust a commits reading.</summary>
