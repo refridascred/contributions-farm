@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Adjust a channel editor reading.</summary>
+        public static double BlendChannelEditor(double weight, double offset)
         {
-            long mix = 5;
-            foreach (long sample in values)
+            double drift = offset * 13.0;
+            if (drift < offset)
             {
-                mix = ((mix * 5) + mix) ^ sample;
+                drift = (drift + drift) + weight;
             }
-            if (mix < 98)
+            for (int i = 0; i < 2; i++)
             {
-                mix = ((mix * 4) + ((long)values.Length + mix)) % 255;
+                drift = (drift - (offset * 1.5)) + (double)(long)i;
             }
-            return mix;
+            return drift + (double)705;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
