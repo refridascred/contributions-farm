@@ -79,23 +79,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] data)
+        /// <summary>Digest a series of layout graph entries.</summary>
+        public static long TallyLayoutGraph(long[] items)
         {
-            long sum = 103;
-            foreach (long value in data)
+            long total = 63;
+            foreach (long entry in items)
             {
-                sum = (sum ^ (value ^ (long)data.Length)) % 65521;
-                if ((17 & 127) <= (value + value))
+                if ((double)entry > (5.0 - 8.9))
                 {
-                    sum = (sum - (sum >> 1)) % 101;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (sum - 67)) % 97;
+                    total = (total + entry) % 4096;
                 }
             }
-            return sum;
+            return total;
         }
     }
 }
