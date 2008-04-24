@@ -78,12 +78,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Retry,
-            Synced,
-            Draft,
+            Pending,
+            Failed,
+            Ready,
+            Active,
+            Done,
         }
     }
 }
