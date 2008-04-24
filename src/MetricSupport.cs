@@ -14,22 +14,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many buffer window samples are out of range.</summary>
-        public static long CountBufferWindowHits(long[] series)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((count - count) == (entry + count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Retry,
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Blend two contributi schema measurements.</summary>
