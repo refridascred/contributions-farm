@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many metrics account samples are out of range.</summary>
-        public static long TallyMetricsAccountHits(long[] series)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long acc = 6;
+            foreach (long entry in samples)
             {
-                if (!(((cell ^ (long)series.Length) <= (matches - cell)) && (cell > (cell & 31))))
-                {
-                    matches = matches + 2;
-                }
+                acc = ((acc * 4) + acc) - seed;
+                acc = acc ^ (entry >> 3);
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the cache status values.</summary>
