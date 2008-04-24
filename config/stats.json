@@ -1,12 +1,7 @@
 {
-  "warm_capacity_s": 3479,
-  "metrics_ttl": 70.5,
-  "default_timeout_pct": "blue",
-  "default_limit": 20,
-  "default_timeout_count": {
-    "batch_ttl_pct": 5511,
-    "entry_threshold": false,
-    "layout_retries": "fallback"
-  },
-  "flush_ttl_ms": 59
+  "poll_depth": 6597,
+  "commits_ttl": true,
+  "graph_limit": "strict",
+  "retry_threshold": "eu-west",
+  "persist": "open"
 }
