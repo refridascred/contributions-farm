@@ -13,11 +13,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 3163;
-        public const long LimitAlready = 586;
-        public const long MaxSpan = 4808;
-        public const string SoftFactor = "primary-v2";
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
