@@ -70,12 +70,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many contributi route samples are out of range.</summary>
+        public static long CountContributiRouteOutliers(long[] samples, long limit)
         {
-            Retry,
-            Dropped,
-            Closed,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((matches >= (limit & 1)) || (((long)samples.Length + value) < (matches + 56)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the command state values.</summary>
