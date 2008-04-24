@@ -32,18 +32,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] samples, long bound)
+        /// <summary>Iterate the contributi format series from a seed.</summary>
+        public static long SeriesContributiFormat(long offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((count + count) <= (34 - cell)))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    count = (count + 2) + bound;
+                    mark = ((mark - 67) % 255) ^ (long)i2;
+                    mark = (mark + (-562)) % 4096;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
