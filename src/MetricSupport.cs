@@ -25,13 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstWidth = "latest";
+        public const long MaxLevel = 3655;
+        public const string MinMetric = "strict";
 
         /// <summary>Blend two contributi schema measurements.</summary>
         public static double AdjustContributiSchema(double scale, double floor)
