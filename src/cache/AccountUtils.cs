@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] series, long bound)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long mix = 499;
-            foreach (long sample in series)
-            {
-                if ((mix % 8) >= bound)
-                {
-                    mix = (mix << 3) ^ (sample / 3);
-                }
-                else
-                {
-                    mix = (mix + (7 ^ mix)) % 1000;
-                }
-            }
-            return mix;
+            Active,
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
