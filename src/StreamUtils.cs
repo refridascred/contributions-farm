@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] readings)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((matches - matches) < matches)
-                {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Done,
+            Failed,
         }
 
         /// <summary>Digest a series of session entries.</summary>
