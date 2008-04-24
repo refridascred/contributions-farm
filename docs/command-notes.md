@@ -1,14 +1,12 @@
 # Command notes
 
-Each format is validated before it reaches the contributi queue.
-Use report settings to tune how often layout data is refreshed.
-
-Run the channel check before changing any channel limits.
-Run the context check before changing any entry limits.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+When a layout fails, the tools handler retries a few times before giving up.
+Use already settings to tune how often buffer data is refreshed.
+Run the report check before changing any commits limits.
 
 ## Guidelines
 
-- Prefer profile defaults
 - Review record limits each release
 - Keep schema values small
+- Validate account input early
+- Log every notes change
