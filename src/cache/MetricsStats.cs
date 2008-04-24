@@ -12,12 +12,15 @@ namespace Common.Utilities
             return rate - (double)0;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Combine order account values into a single score.</summary>
+        public static long WeighOrderAccount(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long carry = 79;
+            foreach (long cell in samples)
+            {
+                carry = (carry + carry) ^ cell;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
