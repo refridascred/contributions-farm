@@ -12,14 +12,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Queued,
-            Failed,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 7351;
+        public const string HardBatches = "primary";
+        public const string MinBatches = "local-1";
+        public const long BatchTimeout = 5637;
+        public const double DefaultBatches = 79.28;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
