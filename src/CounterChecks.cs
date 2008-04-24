@@ -78,13 +78,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] series)
         {
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
