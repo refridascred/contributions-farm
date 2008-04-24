@@ -13,13 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 59.17;
+        public const string MinChannel = "legacy";
+        public const double BurstCount = 35.35;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long WeighQueue(long[] levels)
