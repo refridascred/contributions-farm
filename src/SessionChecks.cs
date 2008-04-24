@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Look up the position of a editor queue sample.</summary>
+        public static long LookupEditorQueueIndex(long[] data, long target)
         {
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate channel samples.</summary>
