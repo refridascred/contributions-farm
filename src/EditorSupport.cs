@@ -43,22 +43,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            long carry = 6;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.4 + 2.4) <= (double)carry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry - ((-183) / 3)) % 4096) ^ value;
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > 71)
-            {
-                carry = ((carry << 2) ^ (carry % 3)) % 97;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a session stats.</summary>
