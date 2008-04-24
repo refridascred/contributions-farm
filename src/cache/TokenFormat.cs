@@ -23,17 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] series, long target)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                mix = mix ^ (3 / 6);
-                mix = (mix - (mix >> 1)) % 65521;
-                mix = ((mix * 3) + (long)i) % 101;
+                if (sample != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
