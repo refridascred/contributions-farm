@@ -1,13 +1,6 @@
 {
-  "metrics_depth": 250,
-  "min_capacity_s": {
-    "route_ttl": false,
-    "dry_run": 73.53,
-    "compress": 83,
-    "burst_window_s": 2115
-  },
-  "readonly": 43.01,
-  "base_delay": 7618,
-  "profile_window": "latest",
-  "format_timeout": "latest"
+  "farm_ratio": false,
+  "strict": 44,
+  "idle_retries_ms": "fallback",
+  "cache_ttl_ms": 1024
 }
