@@ -33,13 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseTimeout = 35.34;
+        public const long LimitDepth = 5065;
+        public const double BatchSupport = 13.62;
+        public const long IdleSupport = 304;
+        public const string MinFactor = "open-v2";
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricRange(long[] series, long limit)
