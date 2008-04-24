@@ -1,8 +1,10 @@
 {
-  "payload_ratio": "stable",
-  "verbose": 46.67,
-  "sync_capacity": "legacy",
-  "notes_size": 500,
-  "farm_ttl": "stable",
-  "idle_ratio": true
+  "default_ratio_count": "local",
+  "min_window_s": [375, 85, 199, 291],
+  "sync_retries_s": {
+    "hard_interval_count": ["edge", "staging"],
+    "sync_timeout": 46.41,
+    "soft_ratio_count": 10,
+    "farm_capacity": ["staging", "standard", "local"]
+  }
 }
