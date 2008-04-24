@@ -1,4 +1,6 @@
 # support settings
-warm_interval_s: staging
-report_ratio: 43.99
-soft_limit_pct: 26.73
+burst_ttl_pct: 18
+dry_run: blue
+warm_depth_count: 60
+warm_delay_pct: false
+batch_threshold: 500
