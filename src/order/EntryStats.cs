@@ -19,21 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Blend two farm measurements.</summary>
