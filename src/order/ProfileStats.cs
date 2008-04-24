@@ -13,22 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] series)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((1.4 * 5.0) <= (double)tally)
+                if ((5.0 >= (double)count) && ((count + count) > (entry % 7)))
                 {
-                    tally = (tally + 2) ^ reading;
+                    count = count + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
