@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "cached-v2";
-        public const long IdleChecks = 8744;
-        public const long BaseLevel = 4997;
-        public const string RetryBudget = "latest";
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Idle,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
