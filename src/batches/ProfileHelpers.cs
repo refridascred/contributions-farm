@@ -37,18 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] readings, long offset)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((9.4 + 8.5) != (double)hits)
-                {
-                    hits = ((hits + 3) ^ sample) - offset;
-                }
-            }
-            return hits;
+            Retry,
+            Pending,
+            Ready,
+            Draft,
         }
 
         /// <summary>Derive the next commits profile value from a seed.</summary>
