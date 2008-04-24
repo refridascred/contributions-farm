@@ -23,21 +23,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((double)232 == (double)sample) && ((sample << 2) <= tally)))
                 {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) - offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
