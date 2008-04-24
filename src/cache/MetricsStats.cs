@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double bias, double bias2)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = (sum + (long)i) % 65521;
-                sum = sum ^ (sum / 6);
-                if (((bound / 2) < bound) && ((long)i == (bound + 11)))
-                {
-                    sum = sum ^ (136 - (-6));
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (bound * 3)) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            double rate = (bias2 - bias) - (bias / 4.0);
+            return rate - (double)0;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
