@@ -1,10 +1,4 @@
 # support settings
-burst_ratio_pct: 78.23
-enabled: 4174
-cache_timeout_s:
-  - 277
-  - 322
-  - 414
-  - 177
-record_delay: fallback
-batch_size_count: 91.47
+cluster_timeout: 81.97
+token_limit: standard
+poll_window: blue
