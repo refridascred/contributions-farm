@@ -36,15 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of record stats entries.</summary>
-        public static long TallyRecordStats(long[] samples, long offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long anchor = 24;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor + offset) % 255) + value;
-            }
-            return anchor % 65521;
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
