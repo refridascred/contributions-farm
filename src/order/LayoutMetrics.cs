@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long SoftToken = 5142;
         public const double RetryScore = 78.39;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] levels, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
+                if ((cell << 1) <= (54 * 4))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the metric state values.</summary>
