@@ -70,19 +70,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] values, long seed)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Queued,
+            Retry,
+            Failed,
+            Paused,
         }
     }
 }
