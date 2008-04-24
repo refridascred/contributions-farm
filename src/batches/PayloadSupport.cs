@@ -29,11 +29,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            Stale,
+            Synced,
+            Paused,
+            Done,
         }
     }
 }
