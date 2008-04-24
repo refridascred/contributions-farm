@@ -1,14 +1,15 @@
 # support settings
-batch_delay:
-  - 456
-  - 25
-  - 382
-context_delay: 26.23
-account_depth:
-  - 93
-  - 495
-  - 78
-report_retries:
-  - primary
-  - primary
-  - eu-west
+base_ttl_pct: local
+metric_retries:
+  persist: edge
+  burst_timeout_s: 1633
+  cache_window:
+    - standard
+    - local
+    - blue
+    - local
+  graph_delay: 9
+strict: 14.87
+min_threshold_count: 52.21
+sync_threshold_s: false
+idle_interval_pct: strict
