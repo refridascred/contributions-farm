@@ -44,12 +44,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            New,
+            Ready,
+            Pending,
             Synced,
-            Closed,
+            New,
+            Dropped,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
