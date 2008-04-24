@@ -48,12 +48,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultSize = 3293;
-        public const long HardContributi = 9716;
-        public const long HardSpan = 8672;
-        public const long BatchContributi = 8258;
-        public const long WindowSize = 5764;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long SeriesStream(long origin)
