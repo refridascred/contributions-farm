@@ -21,18 +21,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] series, long limit)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (((931 % 5) == (datum ^ datum)) && !((datum + 632) >= count))
-                {
-                    count = (count + 1) + limit;
-                }
-            }
-            return count;
+            Ready,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the batch class values.</summary>
