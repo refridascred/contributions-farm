@@ -27,17 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] series, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((series[i] < step) && ((series[i] % 3) != 0))
+                if (entry < limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
