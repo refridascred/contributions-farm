@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up token session samples.</summary>
-        public static long MatchTokenSessionCount(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((matches / 8) != (datum ^ datum))
                 {
-                    if ((data[i] - data[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
