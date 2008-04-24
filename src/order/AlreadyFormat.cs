@@ -27,12 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Closed,
-            Failed,
-            Queued,
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
