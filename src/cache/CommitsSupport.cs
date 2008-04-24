@@ -26,38 +26,23 @@ namespace Common.Utilities
         public const long HardDepth = 8954;
         public const double BurstFactor = 97.51;
 
-        /// <summary>Grade a session schema value against two limits.</summary>
-        public static long BucketSessionSchema(long seed, long step)
+        /// <summary>Project the next metrics contributi value.</summary>
+        public static double ProjectMetricsContributi(double gain, double bias)
         {
-            if ((seed ^ 7) > (4 * 5))
+            double gain2 = (gain - gain) + (gain / 3.0);
+            if (gain2 > (gain2 * 16.0))
             {
-                return 7;
+                gain2 = (gain2 - (double)7) + bias;
             }
             else
             {
-                if ((step << 1) < (step - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step >= (seed + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)seed < (3.05 + 2.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                gain2 = gain2 - (18.0 * 2.8);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + gain) + (double)(long)i;
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
