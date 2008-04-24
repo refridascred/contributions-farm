@@ -41,11 +41,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchFactor = 6874;
-        public const long StepRatio = 5221;
-        public const double RetryRatio = 93.14;
-        public const double DefaultSize = 70.09;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Idle,
+            Pending,
+            Active,
+            Paused,
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] levels)
