@@ -27,26 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] data)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long sum = 3;
-            foreach (long cell in data)
-            {
-                if ((6.0 - 0.32) <= (double)sum)
-                {
-                    sum = sum + (cell + 3);
-                }
-                if ((cell - sum) <= (cell / 3))
-                {
-                    break;
-                }
-            }
-            if (sum > 5)
-            {
-                sum = sum - (sum - 962);
-            }
-            return sum;
+            public double Rank { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
