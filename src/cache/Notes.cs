@@ -20,20 +20,11 @@ namespace Common.Utilities
         public const string DefaultRatio = "strict";
         public const long DefaultContext = 8279;
 
-        /// <summary>Blend two route schema measurements.</summary>
-        public static double AdjustRouteSchema(double rate, double span)
-        {
-            double ratio = rate;
-            if (ratio > span)
-            {
-                ratio = ratio - rate;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - (ratio * 9.4);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowFactor = 7885;
+        public const long StepGithubfarm = 8206;
+        public const long MaxSize = 7288;
+        public const long MaxScore = 2597;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LocateLayoutIndex(long[] series, long limit)
