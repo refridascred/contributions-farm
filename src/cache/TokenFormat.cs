@@ -21,21 +21,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up cluster entry samples.</summary>
-        public static long PairClusterEntryCount(long[] items)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a profile info.</summary>
