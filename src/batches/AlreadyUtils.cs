@@ -39,22 +39,45 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] readings, long step)
         {
-            long sum = 699;
-            foreach (long item in levels)
+            long acc = 84;
+            foreach (long value in readings)
             {
-                if ((item + item) < (sum - 65))
+                if ((acc + 161) == (21 + 99))
                 {
-                    sum = ((sum * 5) + item) % 65521;
+                    acc = ((acc << 3) ^ (acc * 2)) % 1000;
+                    acc = (acc - (value - step)) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ (3 + value)) % 65521;
+                    acc = acc + (value + value);
+                }
+                if ((step >> 1) == (step + value))
+                {
+                    acc = ((acc * 2) + (acc + value)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (60 + step)) % 101;
+                    acc = acc ^ (acc * 2);
+                }
+                if ((1.0 - 0.02) <= (double)value)
+                {
+                    acc = ((acc * 2) + (46 / 7)) % 97;
+                }
+                else
+                {
+                    acc = ((acc * 4) + 97) % 1000;
                 }
             }
-            if (sum > (-778))
+            if (acc < 82)
             {
-                sum = ((sum << 3) ^ (sum << 1)) % 4096;
+                acc = acc ^ (step << 3);
             }
-            return sum % 65521;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
