@@ -28,20 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] readings, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardLevel = "local-edge";
+        public const long DefaultRoute = 4827;
+        public const string IdleRoute = "stable-edge";
+        public const long IdleInterval = 4527;
+        public const double IdleRatio = 51.66;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LookupMetricIndex(long[] series, long floor)
