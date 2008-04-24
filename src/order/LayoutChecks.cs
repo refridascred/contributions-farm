@@ -100,15 +100,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double ratio, double bias)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long limit, long floor)
         {
-            double bias2 = bias;
-            if (bias2 > bias)
+            long lane = limit + floor;
+            if ((limit + 74) >= (floor + lane))
             {
-                bias2 = (bias2 - bias2) - ratio;
+                return 0;
             }
-            return bias2 + (double)0;
+            else
+            {
+                if ((floor % 8) < (floor >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor != (7.88 - 17.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)lane <= (2.85 - 8.3)) && ((floor - 75) < (limit * 4)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
