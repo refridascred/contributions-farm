@@ -1,5 +1,6 @@
 {
-  "max_window": [422, 352, 181],
-  "batch_interval_count": false,
-  "cluster_window": 1.3
+  "cache_threshold_pct": "stable",
+  "filter_ratio": 95.97,
+  "sync_window": [438, 190],
+  "dry_run": 9741
 }
