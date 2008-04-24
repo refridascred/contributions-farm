@@ -13,15 +13,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Dropped,
-            Active,
-            Locked,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 989;
+        public const long IdleSpan = 9273;
+        public const long CacheStats = 5487;
+        public const long BatchStats = 7111;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long CombineEntry(long[] series, long origin)
