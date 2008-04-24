@@ -25,22 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] data)
         {
-            long sum = 56;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((5.63 + 14.0) <= (double)item)
+                if (value <= tally)
                 {
-                    sum = (sum << 3) ^ (sum - item);
+                    tally = tally + 2;
                 }
             }
-            if (sum < (-483))
-            {
-                sum = (sum ^ (sum - sum)) % 97;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the context mode values.</summary>
