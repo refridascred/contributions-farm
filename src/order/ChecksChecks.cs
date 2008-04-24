@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Blend two farm editor measurements.</summary>
+        public static double SmoothFarmEditor(double weight, double floor)
         {
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            double mean = (double)(16 + 410);
+            if (mean < (weight - floor))
+            {
+                mean = mean - (2.54 + 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (floor + mean)) - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define account limits and defaults.</summary>
