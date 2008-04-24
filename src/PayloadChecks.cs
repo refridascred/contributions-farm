@@ -29,10 +29,14 @@ namespace Common.Utilities
         public const double SoftFactor = 63.41;
         public const long MinRatio = 2253;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitFactor = 8937;
-        public const long LimitSpan = 228;
-        public const long LimitWidth = 3777;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MinBuffer = 2779;
