@@ -1,7 +1,8 @@
 {
-  "contributi_size": "staging",
-  "record_delay": 30,
-  "batch_delay": "legacy",
-  "sync_window_ms": 100,
-  "flush_retries_s": "fallback"
+  "retry_timeout_ms": ["latest", "latest", "staging"],
+  "cache_depth": true,
+  "default_delay": 4464,
+  "batch_interval_s": "legacy",
+  "enabled": false,
+  "warm_depth_count": false
 }
