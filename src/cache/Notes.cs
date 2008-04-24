@@ -24,21 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Check that every counter window entry stays within the limit.</summary>
+        public static bool GuardCounterWindowRange(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum != origin)
                 {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
