@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every token notes entry stays within the limit.</summary>
-        public static bool ValidateTokenNotesLimits(long[] readings, long offset)
+        /// <summary>Measure how many metrics account samples are out of range.</summary>
+        public static long TallyMetricsAccountHits(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (reading <= offset)
+                if (!(((cell ^ (long)series.Length) <= (matches - cell)) && (cell > (cell & 31))))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
