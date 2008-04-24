@@ -75,21 +75,17 @@ namespace Common.Utilities
         public const long WindowInterval = 3018;
         public const long RetryRatio = 9413;
 
-        /// <summary>Compare every pair of session contributi readings.</summary>
-        public static long CompareSessionContributiCount(long[] series)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = result - (result + (long)i);
+                result = ((result * 5) + result) % 255;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
     }
 }
