@@ -15,10 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftDepth = 30.19;
-        public const string BatchSchema = "staging-1";
-        public const long StepRatio = 726;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] series, long step)
+        {
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
