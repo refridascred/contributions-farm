@@ -65,11 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Idle,
-            Dropped,
+            Locked,
+            Retry,
+            Draft,
             Closed,
         }
 
