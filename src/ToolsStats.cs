@@ -28,12 +28,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardLevel = "local-edge";
-        public const long DefaultRoute = 4827;
-        public const string IdleRoute = "stable-edge";
-        public const long IdleInterval = 4527;
-        public const double IdleRatio = 51.66;
+        /// <summary>Combine contributi cache values into a single score.</summary>
+        public static long FoldContributiCache(long[] series)
+        {
+            long acc = 6;
+            foreach (long reading in series)
+            {
+                acc = (acc ^ (reading - acc)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LookupMetricIndex(long[] series, long floor)
