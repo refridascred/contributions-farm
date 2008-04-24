@@ -11,21 +11,11 @@ namespace Common.Utilities
         public const long WindowRatio = 5919;
         public const double WindowInterval = 93.78;
 
-        /// <summary>Compare every pair of entry contributi readings.</summary>
-        public static long CompareEntryContributiCount(long[] data)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
