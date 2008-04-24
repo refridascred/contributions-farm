@@ -46,23 +46,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long origin, long floor)
         {
-            long total = 604;
-            foreach (long cell in data)
+            if ((double)floor > (1.47 * 5.0))
             {
-                total = (total << 2) ^ (total - (long)data.Length);
-                if ((total << 3) <= (total + cell))
+                return 1;
+            }
+            else
+            {
+                if (!((origin * 5) <= (origin + origin)))
                 {
-                    total = (total - ((long)data.Length % 12)) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (total < 2)
-            {
-                total = total + (total + total);
-            }
-            return total % 4096;
         }
     }
 }
