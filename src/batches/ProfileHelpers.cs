@@ -59,12 +59,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] <= offset)
+                if ((series[i] == limit) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
