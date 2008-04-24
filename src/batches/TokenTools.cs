@@ -31,15 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = ((mix << 3) ^ (mix / 7)) ^ (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return acc;
+            return mix;
         }
     }
 }
