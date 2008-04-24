@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate notes format samples.</summary>
-        public static long TallyNotesFormat(long[] values)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] levels, long step)
         {
-            long state = 43;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (state < value)
+                if (reading != step)
                 {
-                    state = state - (state * 4);
+                    found = false;
+                    break;
                 }
-                state = (state - (0 >> 5)) % 65521;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
