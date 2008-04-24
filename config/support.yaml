@@ -1,7 +1,6 @@
 # support settings
-record_retries: 6061
-sync_ratio: 3912
-sync_interval_pct: 22
-readonly: 59.42
-burst_depth: 100
-min_ttl: 30.63
+commits_ttl: staging
+compress: staging
+commits_interval:
+  - 425
+  - 443
