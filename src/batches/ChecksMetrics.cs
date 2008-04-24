@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double ratio, double offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] series, long seed)
         {
-            double rate = offset;
-            if (rate <= (offset / 9.0))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                rate = rate - ratio;
+                if (entry > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate - rate;
+            return valid;
         }
 
         /// <summary>Accumulate token samples.</summary>
