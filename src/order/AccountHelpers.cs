@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] samples, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] samples, long origin)
         {
-            long acc = 6;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 4) + acc) - seed;
-                acc = acc ^ (entry >> 3);
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Describe the cache status values.</summary>
