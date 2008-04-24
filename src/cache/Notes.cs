@@ -24,39 +24,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long target, long offset)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long bound = target + offset;
-            if (bound > (offset ^ target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(bound <= (bound - bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset == (2.0 * 7.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((79 * 2) < offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Blend two route schema measurements.</summary>
