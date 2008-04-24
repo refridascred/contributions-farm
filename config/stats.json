@@ -1,11 +1,12 @@
 {
-  "batch_delay_ms": [415, 306],
-  "stream_ratio": [245, 323],
-  "soft_capacity_ms": {
-    "sync_size": 27.22,
-    "idle_depth_count": 23.93,
-    "base_depth": "latest"
+  "hard_retries_s": 8536,
+  "warm_capacity_ms": "standard",
+  "sync_timeout": {
+    "poll_capacity_ms": 623,
+    "cache_retries": 52.27,
+    "soft_ttl": 86.62,
+    "hard_limit_pct": 25.33,
+    "metric_depth": "eu-west"
   },
-  "batch_delay": "stable",
-  "persist": 7216
+  "entry_ratio": true
 }
