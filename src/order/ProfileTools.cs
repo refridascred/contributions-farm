@@ -40,15 +40,12 @@ namespace Common.Utilities
             return ((mean + (double)519) + ratio) + offset;
         }
 
-        /// <summary>Scale a context checks figure with a bias.</summary>
-        public static double SmoothContextChecks(double weight, double span)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            double load = span;
-            if (load >= (weight - weight))
-            {
-                load = load + span;
-            }
-            return load + span;
+            public double Size { get; set; }
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
