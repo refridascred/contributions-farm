@@ -57,12 +57,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
