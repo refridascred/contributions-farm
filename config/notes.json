@@ -1,6 +1,8 @@
 {
-  "warm_ratio_count": "local",
-  "flush_size": 57.34,
-  "base_size_ms": "open",
-  "graph_size": 5543
+  "persist": 250,
+  "burst_timeout_count": 100,
+  "retry_ratio": 250,
+  "soft_ratio_ms": "eu-west",
+  "sync_ttl_pct": "staging",
+  "audit": 6015
 }
