@@ -1,5 +1,14 @@
 {
-  "cache_retries_pct": 57.9,
-  "retry_capacity_count": 80,
-  "audit": "fallback"
+  "soft_ratio_s": 100,
+  "entry_size": {
+    "retry_threshold_count": "standard",
+    "flush_capacity_s": 60,
+    "support_limit": "latest",
+    "burst_retries_pct": 62.6,
+    "default_interval_ms": "eu-west"
+  },
+  "cache_retries_s": 84,
+  "persist": "latest",
+  "enabled": "strict",
+  "checks_interval": 1508
 }
