@@ -23,11 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double scale, double offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            double scale2 = (double)683 * 5.0;
-            return (scale2 + (scale + scale)) + offset;
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
