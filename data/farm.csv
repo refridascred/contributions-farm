@@ -1,7 +1,8 @@
-id,owner,label,state,region
-1,51.96,245,primary,staging
-2,primary,954,55.87,30.36
-3,staging,582,39.23,917
-4,0,47.04,58.36,25.15
-5,274,944,17.81,530
-6,stable,30.92,15,open
+id,level,token
+1,21,53.02
+2,open,80.3
+3,572,55.2
+4,196,fallback
+5,local,982
+6,878,882
+7,499,primary
