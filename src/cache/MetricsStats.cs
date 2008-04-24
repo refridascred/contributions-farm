@@ -56,19 +56,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] items, long limit)
+        /// <summary>Combine profile command values into a single score.</summary>
+        public static long TallyProfileCommand(long[] items, long limit)
         {
-            bool flag = true;
+            long result = 5;
             foreach (long item in items)
             {
-                if (item < limit)
+                result = ((result ^ (result << 1)) % 1000) ^ item;
+                if (!(result < (limit - limit)))
                 {
-                    flag = false;
-                    break;
+                    result = (result * 3) + (result % 60);
                 }
             }
-            return flag;
+            return result;
         }
     }
 }
