@@ -24,19 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] series, long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long result = 3;
+            foreach (long datum in data)
             {
-                if (cell <= seed)
+                if ((double)floor > 8.9)
                 {
-                    flag = false;
-                    break;
+                    result = ((result * 4) + (968 + floor)) + datum;
                 }
             }
-            return flag;
+            if (result > 6)
+            {
+                result = result - (floor & 127);
+            }
+            return result % 65521;
         }
 
         /// <summary>Match up batches samples.</summary>
