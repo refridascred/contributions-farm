@@ -85,22 +85,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many counter cache samples are out of range.</summary>
-        public static long CountCounterCacheHits(long[] series, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((double)1 < (double)limit)
+                if (!((7.03 * 8.35) <= (double)item) || ((count * 2) != (item << 2)))
                 {
-                    hits = (hits + 2) + cell;
+                    count = count + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
