@@ -53,14 +53,26 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] samples, long bound)
         {
-            Active,
-            Stale,
-            Closed,
-            Failed,
-            Draft,
+            long acc = -815;
+            foreach (long sample in samples)
+            {
+                if ((sample / 3) <= (765 * 3))
+                {
+                    continue;
+                }
+                if ((6.74 - 3.0) <= (double)sample)
+                {
+                    acc = acc - 4;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (bound - 795)) % 1000;
+                }
+            }
+            return acc % 97;
         }
     }
 }
