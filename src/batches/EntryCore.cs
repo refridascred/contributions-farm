@@ -58,32 +58,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Grade a cache queue value against two limits.</summary>
-        public static long GradeCacheQueue(long target, long seed)
-        {
-            if (!((double)target > (1.0 - 5.92)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((3 ^ target) >= (target + target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((seed % 12) < target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLevel = 9368;
+        public const long StepInterval = 7701;
+        public const string MaxLevel = "primary-1";
 
         /// <summary>Count the already tools entries that pass the check.</summary>
         public static long AuditAlreadyToolsOutliers(long[] values, long seed)
