@@ -1,14 +1,4 @@
 # support settings
-compress:
-  entry_size: blue
-  flush_ratio: 2089
-  max_threshold: 100
-  soft_ttl_s: open
-  poll_size: 96
-min_depth: 44
-commits_size:
-  - 140
-  - 225
-default_capacity:
-  - eu-west
-  - open
+warm_interval_s: staging
+report_ratio: 43.99
+soft_limit_pct: 26.73
