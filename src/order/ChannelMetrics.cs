@@ -35,18 +35,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((count - entry) > (entry * 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "open";
+        public const long HardOrder = 7717;
+        public const string IdleOrder = "primary-edge";
     }
 }
