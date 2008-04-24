@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 4180;
-        public const long HardMetric = 8827;
-        public const long IdleMetric = 9794;
-        public const long BaseLevel = 6780;
-        public const string CacheLevel = "latest-edge";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftSpan = 147;
+        public const string MinCommits = "latest";
+        public const long WindowWidth = 6871;
+        public const string RetryCommits = "alpha-v2";
+        public const long StepCommits = 7003;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
