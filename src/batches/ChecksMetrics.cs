@@ -70,11 +70,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double rate, double bias)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] levels, long bound)
         {
-            double ratio = rate;
-            return (ratio - (ratio + ratio)) + bias;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
