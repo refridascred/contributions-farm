@@ -65,19 +65,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every schema profile entry stays within the limit.</summary>
-        public static bool ValidateSchemaProfileLimits(long[] levels, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (value > origin)
+                if ((seen >> 4) == (seen + value))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count the graph context entries that pass the check.</summary>
