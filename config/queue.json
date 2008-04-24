@@ -1,5 +1,5 @@
 {
-  "default_window": false,
-  "cache_ratio_pct": ["standard", "green", "stable", "blue"],
-  "batch_ttl_pct": true
+  "poll_timeout": 63,
+  "batch_delay_count": 15.23,
+  "max_ratio_s": ["eu-west", "staging"]
 }
