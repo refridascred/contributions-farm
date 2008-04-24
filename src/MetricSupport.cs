@@ -19,22 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] data, long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)step >= 3.8)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] + readings[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of record stats entries.</summary>
