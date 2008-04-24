@@ -40,13 +40,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Grade a command format value against two limits.</summary>
+        public static long GradeCommandFormat(long seed, long target)
         {
-            Draft,
-            Active,
-            Pending,
-            Queued,
+            if ((double)seed > (7.82 + 6.82))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target % 97) > (68 + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
