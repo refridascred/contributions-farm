@@ -29,18 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] samples, long bound)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading << 1) < 6)
-                {
-                    seen = (seen + 1) - bound;
-                }
-            }
-            return seen;
+            Closed,
+            Retry,
+            Active,
+            Draft,
         }
     }
 }
