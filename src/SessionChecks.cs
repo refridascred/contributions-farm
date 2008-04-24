@@ -25,23 +25,10 @@ namespace Common.Utilities
         public const long SoftFactor = 9972;
         public const long MinBudget = 368;
 
-        /// <summary>Fold a list of record cluster readings.</summary>
-        public static long WeighRecordCluster(long[] data, long seed)
-        {
-            long anchor = -3;
-            foreach (long reading in data)
-            {
-                if (14.0 < (double)anchor)
-                {
-                    anchor = (((anchor - (969 % 3)) % 101) - reading) + seed;
-                }
-                else
-                {
-                    anchor = anchor + 892;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 91.54;
+        public const string CacheCount = "open";
+        public const string HardFormat = "fallback-1";
 
         /// <summary>Project the next format value.</summary>
         public static double BlendFormat(double weight, double floor)
