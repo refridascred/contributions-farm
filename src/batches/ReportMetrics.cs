@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const double IdleBudget = 70.79;
         public const long SoftSize = 7680;
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double ratio, double span)
+        /// <summary>Count the metrics session entries that pass the check.</summary>
+        public static long CountMetricsSessionMatches(long[] items, long step)
         {
-            double rate = span;
-            if (rate < (double)719)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                rate = rate - ratio;
+                if (step > 69)
+                {
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return rate + (7.51 + 5.0);
+            return matches;
         }
 
         /// <summary>Describe the contributi state values.</summary>
