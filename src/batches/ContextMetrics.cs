@@ -22,12 +22,14 @@ namespace Common.Utilities
         public const long LimitInterval = 7525;
         public const string MaxReport = "cached-edge";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstDepth = 6882;
-        public const long WindowSupport = 8127;
-        public const string BurstSupport = "standard";
-        public const string MinRatio = "latest";
-        public const long HardRatio = 8145;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
