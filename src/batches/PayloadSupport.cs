@@ -14,27 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] series, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            long result = 10;
-            foreach (long datum in series)
+            long acc = 622;
+            foreach (long value in series)
             {
-                if ((double)result < (double)limit)
-                {
-                    break;
-                }
-                result = ((result ^ (result / 6)) % 255) + datum;
-                if ((99 ^ limit) > ((long)series.Length / 5))
-                {
-                    result = (result - limit) % 1000;
-                }
+                acc = ((acc << 2) ^ (acc / 4)) - value;
             }
-            if (result < 613)
+            if (acc < 80)
             {
-                result = (result * 4) + limit;
+                acc = ((acc * 5) + ((long)series.Length + acc)) % 255;
             }
-            return result;
+            return acc % 97;
         }
 
         /// <summary>Hold a order options.</summary>
