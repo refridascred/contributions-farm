@@ -26,22 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long offset, long floor)
+        /// <summary>Rank account format input into a small class.</summary>
+        public static long BucketAccountFormat(long offset, long limit)
         {
-            if (81 <= (floor & 255))
+            if (((offset ^ 486) < (908 ^ offset)) && ((double)offset < (4.23 / 7.0)))
             {
                 return 5;
             }
             else
             {
-                if ((offset >> 3) <= offset)
+                if (((-38) + limit) != (offset & 1))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    return 1;
                 }
             }
         }
