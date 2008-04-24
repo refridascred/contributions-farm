@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (count < 40)
-                {
-                    count = ((count + 2) + datum) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 2371;
+        public const string DefaultCount = "latest";
+        public const long BatchCount = 3633;
+        public const long SoftFarm = 981;
+        public const long BaseRatio = 2135;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double BlendGraph(double ratio, double span)
