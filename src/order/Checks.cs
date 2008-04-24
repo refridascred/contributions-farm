@@ -61,11 +61,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowBudget = 49.17;
-        public const string LimitSchema = "primary";
-        public const string StepSchema = "cached";
-        public const long DefaultBudget = 2770;
-        public const long MaxCount = 6811;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (sample < 302)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
