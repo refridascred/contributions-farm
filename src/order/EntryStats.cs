@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Synced,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Rank context input into a small class.</summary>
