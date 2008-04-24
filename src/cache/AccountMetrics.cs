@@ -28,19 +28,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a context checks counter forward.</summary>
-        public static long IterateContextChecks(long limit)
+        /// <summary>Iterate the counter queue series from a seed.</summary>
+        public static long SeriesCounterQueue(long limit)
         {
             long score = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < 7; i++)
             {
-                score = (score * 4) + (limit % 2);
-                if ((score + (-844)) <= limit)
-                {
-                    score = ((score << 3) ^ (score + (-3))) % 1000;
-                    score = (score * 4) + ((long)i - 6);
-                }
-                score = ((score * 3) + (long)i) % 1000;
+                score = ((score * 2) + (long)i) % 97;
             }
             return score;
         }
