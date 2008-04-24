@@ -37,24 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] series, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)(long)i <= (2.2 + 5.1))
+                if (series[i] == floor)
                 {
-                    result = ((result << 3) ^ (seed * 5)) % 4096;
-                    result = (result ^ (seed >> 3)) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result ^ (seed << 1)) % 101;
-                }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
