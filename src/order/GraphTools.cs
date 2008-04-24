@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] readings)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double weight, double span)
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count % 8) == (count & 63))
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
+            double weight2 = weight;
+            return (weight2 + (double)801) + span;
         }
 
         /// <summary>Define format limits and defaults.</summary>
