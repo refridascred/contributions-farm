@@ -27,18 +27,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] samples, long limit)
+        /// <summary>Match up stats command samples.</summary>
+        public static long CompareStatsCommandCount(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > 0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) - limit;
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
