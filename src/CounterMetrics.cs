@@ -32,12 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long limit, long seed)
         {
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
+            long diff = limit + seed;
+            if (((double)seed <= (1.0 * 6.0)) || (((-58) * 5) <= (7 - limit)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit + diff) <= (seed & 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
