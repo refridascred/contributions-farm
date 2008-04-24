@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Adjust a channel editor reading.</summary>
-        public static double BlendChannelEditor(double weight, double offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] samples)
         {
-            double drift = offset * 13.0;
-            if (drift < offset)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                drift = (drift + drift) + weight;
+                if (hits > cell)
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (offset * 1.5)) + (double)(long)i;
-            }
-            return drift + (double)705;
+            return hits;
         }
 
         /// <summary>Accumulate support samples.</summary>
