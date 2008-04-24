@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double ratio, double offset)
         {
-            Stale,
-            Idle,
-            Queued,
-            Draft,
+            double mean = 7.3;
+            return ((mean + (double)519) + ratio) + offset;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
