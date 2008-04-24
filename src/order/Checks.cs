@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate format support readings against a bound.</summary>
-        public static bool GuardFormatSupportLimits(long[] items, long step)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
