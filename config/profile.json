@@ -1,7 +1,7 @@
 {
-  "dry_run": 59.76,
-  "notes_depth": "eu-west",
-  "cache_threshold": "primary",
-  "payload_interval": false,
-  "idle_timeout_ms": "legacy"
+  "dry_run": "standard",
+  "cache_capacity_ms": 84.37,
+  "default_delay": ["green", "fallback"],
+  "burst_limit_count": 60,
+  "persist": true
 }
