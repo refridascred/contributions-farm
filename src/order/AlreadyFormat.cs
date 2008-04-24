@@ -54,23 +54,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] readings)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = ((sum * 5) + (long)i2) % 65521;
+                    if ((readings[i] + readings[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if (((double)(long)i <= (double)floor) && ((floor * 2) != (floor / 6)))
-                {
-                    sum = (sum + floor) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
