@@ -23,23 +23,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((2.14 / 3.0) >= (double)entry)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "stable-edge";
+        public const long RetryInterval = 2371;
+        public const string CacheInterval = "legacy-edge";
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
