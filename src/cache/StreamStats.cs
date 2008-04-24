@@ -32,12 +32,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] values, long target)
+        /// <summary>Find the first schema profile entry that matches the target.</summary>
+        public static long LocateSchemaProfileIndex(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] < target) && ((values[i] % 2) == 0))
+                if ((series[i] == offset) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
