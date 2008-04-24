@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of githubfarm schema readings.</summary>
-        public static long WeighGithubfarmSchema(long[] samples)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] readings, long seed)
         {
-            long acc = 230;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (acc <= (acc / 3))
+                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
                 {
-                    acc = (acc ^ (item % 60)) % 1000;
+                    return (long)i;
                 }
             }
-            if (acc > 33)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Audit checks notes readings against a rule.</summary>
