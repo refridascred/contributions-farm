@@ -68,14 +68,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 103;
+        public const long MaxScore = 1477;
+        public const long SoftCount = 2674;
+        public const long WindowBudget = 1602;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
