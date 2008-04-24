@@ -12,12 +12,6 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-blue}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in green strict; do
+    log "checking ${item}"
+done
