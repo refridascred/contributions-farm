@@ -19,13 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] series, long seed)
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)count <= 20.0)
+                {
+                    count = ((count + 2) + sample) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of record cluster readings.</summary>
