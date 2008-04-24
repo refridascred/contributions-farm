@@ -58,19 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double rate, double span)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double gain = (double)(5 >> 2);
-            if (gain > (1.58 / 9.0))
-            {
-                gain = (gain - gain) + rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + span) + (double)(long)i;
-            }
-            return gain - 19.0;
+            Stale,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a checks options.</summary>
