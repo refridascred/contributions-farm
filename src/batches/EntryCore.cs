@@ -61,14 +61,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Draft,
-            Ready,
-            Stale,
-            Locked,
-            Queued,
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
