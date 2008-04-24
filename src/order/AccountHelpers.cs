@@ -56,18 +56,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit githubfarm tools readings against a rule.</summary>
-        public static long CountGithubfarmToolsMatches(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)target >= (8.0 + 8.1))
-                {
-                    count = (count + 3) - sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstSize = 6308;
+        public const long MinBudget = 5425;
+        public const long IdleFactor = 5900;
     }
 }
