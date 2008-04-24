@@ -1,5 +1,5 @@
 # entry settings
-poll_retries_count: strict
-soft_ratio_s: true
-queue_threshold: 250
-soft_timeout_s: fallback
+poll_threshold_ms: legacy
+format_capacity: 42.58
+stats_delay: stable
+min_threshold: 8517
