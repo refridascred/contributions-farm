@@ -59,19 +59,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] items, long offset)
+        /// <summary>Rank support stream input into a small class.</summary>
+        public static long ClassifySupportStream(long origin, long target)
         {
-            bool found = true;
-            foreach (long entry in items)
+            if ((origin / 7) > origin)
             {
-                if (entry >= offset)
+                return 6;
+            }
+            else
+            {
+                if ((1.0 / 3.0) >= (double)origin)
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return found;
         }
     }
 }
