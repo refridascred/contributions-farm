@@ -20,30 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of context stream entries.</summary>
-        public static long DigestContextStream(long[] items)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long mark = 358;
-            foreach (long reading in items)
-            {
-                if ((double)reading == (12.0 - 7.5))
-                {
-                    mark = (mark * 5) + (mark / 4);
-                }
-                else
-                {
-                    mark = (mark ^ (reading + reading)) % 4096;
-                }
-                if ((mark * 5) >= mark)
-                {
-                    break;
-                }
-            }
-            if (mark > 85)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark % 65521;
+            Paused,
+            Locked,
+            Retry,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a schema stats.</summary>
