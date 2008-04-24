@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long step)
         {
-            Dropped,
-            Closed,
-            Locked,
+            long carry = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((carry ^ 2) < step) || (2 <= (long)i))
+                {
+                    carry = carry + (step * 2);
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
