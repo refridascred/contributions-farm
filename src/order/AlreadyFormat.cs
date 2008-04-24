@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up filter payload samples.</summary>
-        public static long CompareFilterPayloadCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 4180;
+        public const long HardMetric = 8827;
+        public const long IdleMetric = 9794;
+        public const long BaseLevel = 6780;
+        public const string CacheLevel = "latest-edge";
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
