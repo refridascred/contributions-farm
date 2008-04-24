@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double gain, double floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] series, long target)
         {
-            double scale = gain;
-            if (scale >= (double)770)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + floor;
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (floor - gain);
-            }
-            return scale - gain;
+            return -1;
         }
 
         /// <summary>Hold a farm options.</summary>
