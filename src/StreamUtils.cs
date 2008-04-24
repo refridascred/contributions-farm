@@ -27,13 +27,11 @@ namespace Common.Utilities
         public const string WindowInterval = "fallback-1";
         public const long IdleDepth = 4634;
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftContext = 29.96;
+        public const string SoftDepth = "staging-v2";
+        public const long StepContext = 9077;
+        public const long BurstContext = 6635;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long bound, long step)
