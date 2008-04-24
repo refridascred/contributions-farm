@@ -21,13 +21,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Ready,
-            Synced,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepInterval = 4299;
+        public const long BatchInterval = 4884;
+        public const double BaseProfile = 57.25;
+        public const long BatchCount = 4364;
+        public const long LimitBudget = 7057;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long IterateGraph(long offset)
