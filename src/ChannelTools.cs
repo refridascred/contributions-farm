@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double bias, double bias2)
-        {
-            double load = bias;
-            if (load > (bias2 + 1.3))
-            {
-                load = load + (bias2 * 8.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + bias2) + (double)(long)i;
-            }
-            return load + 1.0;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultTimeout = "standard";
+        public const long RetrySchema = 4195;
+        public const long LimitWidth = 4939;
 
         /// <summary>Compare every pair of filter command readings.</summary>
         public static long PairFilterCommandCount(long[] samples)
