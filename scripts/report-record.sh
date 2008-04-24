@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback local staging; do
+mode="${1:-green}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=497
+log "limit is ${RECORD_LIMIT}"
+
+for item in primary legacy; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=365
-log "limit is ${RECORD_LIMIT}"
