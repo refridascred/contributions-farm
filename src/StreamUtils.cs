@@ -23,12 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 5313;
-        public const long BatchContributi = 5030;
-        public const long CacheContributi = 4860;
-        public const double HardContributi = 78.34;
-        public const long MinCount = 9381;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 8876;
+        public const long HardCount = 632;
+        public const double BaseCount = 63.84;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderHits(long[] values)
