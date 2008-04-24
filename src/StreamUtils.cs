@@ -29,13 +29,11 @@ namespace Common.Utilities
         public const string WindowInterval = "fallback-1";
         public const long IdleDepth = 4634;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Blend two report buffer measurements.</summary>
+        public static double ProjectReportBuffer(double gain, double span)
         {
-            Draft,
-            Idle,
-            Done,
-            Synced,
+            double scale = gain - (double)(-5);
+            return (scale - scale) + span;
         }
 
         /// <summary>Rank order input into a small class.</summary>
