@@ -12,12 +12,19 @@ namespace Common.Utilities
             return ((gain2 + (double)7) + gain) + floor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 4799;
-        public const double MaxChannel = 6.63;
-        public const double IdleChannel = 9.22;
-        public const double BurstSpan = 62.5;
-        public const string RetryBudget = "primary-v2";
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] series, long floor)
+        {
+            long mark = -350;
+            foreach (long value in series)
+            {
+                if ((value / 5) == (3 - mark))
+                {
+                    mark = (mark ^ (value ^ floor)) % 255;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordOutliers(long[] data)
