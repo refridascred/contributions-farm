@@ -73,19 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitLevel = 56;
+        public const long RetryBatch = 1061;
+        public const string LimitSize = "stable-1";
+        public const string BaseBatch = "staging-edge";
+        public const long LimitBatch = 7062;
     }
 }
