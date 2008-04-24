@@ -54,18 +54,34 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] items)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long mark = 9;
+            foreach (long item in levels)
             {
-                if ((double)item < (10.0 * 13.0))
+                if (((10.0 / 4.0) < (double)item) && ((double)mark > (0.3 * 9.32)))
                 {
-                    tally = tally + 3;
+                    mark = ((mark * 4) + (item ^ item)) % 101;
+                }
+                if (((item & 63) < mark) && ((double)item > (double)mark))
+                {
+                    mark = mark - (mark - 531);
+                }
+                if (!((45 - mark) < 683))
+                {
+                    mark = (mark ^ (mark ^ item)) % 1000;
+                }
+                else
+                {
+                    mark = (mark + (item >> 5)) % 255;
                 }
             }
-            return tally;
+            if (mark < 84)
+            {
+                mark = (mark ^ (mark + mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
