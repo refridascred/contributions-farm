@@ -1,4 +1,11 @@
 # githubfarm settings
-enabled: edge
-warm_ttl: 9
-persist: latest
+base_size_s: standard
+channel_ratio:
+  base_interval_count: 3862
+  soft_window_pct: 24
+  idle_depth: 9449
+  retry_timeout_pct:
+    - 24
+    - 384
+  sync_interval_count: 18.94
+compress: eu-west
