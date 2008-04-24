@@ -20,19 +20,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every checks editor entry stays within the limit.</summary>
-        public static bool VerifyChecksEditorBounds(long[] series, long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long mix = 2;
+            foreach (long sample in samples)
             {
-                if (cell < target)
+                if ((double)offset < 7.3)
                 {
-                    valid = false;
-                    break;
+                    mix = (mix ^ mix) ^ sample;
                 }
             }
-            return valid;
+            if (mix > 88)
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
