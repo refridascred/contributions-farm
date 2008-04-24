@@ -33,39 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long offset, long step)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long next = offset + step;
-            if ((offset << 2) < (next + offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((next + next) > (300 << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.5 + 0.6) >= (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset - 69) < (offset % 16))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the cache kind values.</summary>
