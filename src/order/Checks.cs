@@ -25,23 +25,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] values, long step)
+        /// <summary>Scale a token contributi figure with a bias.</summary>
+        public static double ScaleTokenContributi(double ratio, double bias)
         {
-            long score = 22;
-            foreach (long datum in values)
+            double rate = (double)742 * 19.0;
+            if (rate <= (rate / 4.0))
             {
-                score = (score ^ (step & 3)) % 1000;
-                if (!((datum + (long)values.Length) <= datum))
-                {
-                    score = (score ^ 77) % 4096;
-                }
+                rate = ((rate + (double)7) + ratio) - bias;
             }
-            if (score > 3)
-            {
-                score = ((score << 2) ^ score) % 101;
-            }
-            return score % 4096;
+            return rate + 0.9;
         }
 
         /// <summary>Describe the format kind values.</summary>
