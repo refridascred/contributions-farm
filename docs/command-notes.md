@@ -1,14 +1,10 @@
 # Command notes
 
-Run the graph check before changing any context limits.
-Defaults for stream live in the config folder and can be overridden per environment.
-Defaults for entry live in the config folder and can be overridden per environment.
-
-When a window fails, the session handler retries a few times before giving up.
-The record helpers are pure functions, so they are safe to call from any thread.
+Keep checks and support names short and lowercase.
+The metrics report groups every route by context.
 
 ## Guidelines
 
-- Document new token fields
-- Prefer session defaults
-- Validate tools input early
+- Log every profile change
+- Review filter limits each release
+- Validate batch input early
