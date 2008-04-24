@@ -135,23 +135,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double rate, double span)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long target, long origin)
         {
-            double load = (double)(47 >> 2);
-            if (load > load)
+            if ((4.1 + 7.16) >= (double)target)
             {
-                load = load - (span / 8.0);
+                return 3;
             }
             else
             {
-                load = load - (double)4;
+                if ((double)origin != (9.6 * 2.1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (rate * 4.91)) + (double)(long)i;
-            }
-            return load - (double)(-805);
         }
     }
 }
