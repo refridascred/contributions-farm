@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Idle,
-            Paused,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSpan = "open-v2";
+        public const long CacheSession = 5172;
+        public const long SoftSession = 3783;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsHits(long[] samples)
