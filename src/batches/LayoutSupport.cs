@@ -40,18 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats stream samples are out of range.</summary>
-        public static long CountStatsStreamMatches(long[] values)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((seen / 2) > seen)
-                {
-                    seen = (seen + 1) - sample;
-                }
-            }
-            return seen;
+            Idle,
+            Retry,
+            Locked,
+            Failed,
+            Paused,
         }
 
         /// <summary>Accumulate token filter samples.</summary>
