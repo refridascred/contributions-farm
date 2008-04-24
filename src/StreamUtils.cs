@@ -56,19 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double bias)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] readings, long floor)
         {
-            double drift = bias;
-            if (drift <= (drift / 2.0))
+            long count = 0;
+            foreach (long item in readings)
             {
-                drift = drift - drift;
+                if (!((item - floor) != (count % 12)) || ((floor + count) > floor))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - ratio) + (double)(long)i;
-            }
-            return drift + (ratio - ratio);
+            return count;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
