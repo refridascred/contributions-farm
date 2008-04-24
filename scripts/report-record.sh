@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy blue strict eu-west; do
+for item in fallback local staging; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=365
+log "limit is ${RECORD_LIMIT}"
