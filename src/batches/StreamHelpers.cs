@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Paused,
-            Synced,
-            Locked,
+            Dropped,
+            Closed,
+            Ready,
         }
 
         /// <summary>Look up the position of a order sample.</summary>
