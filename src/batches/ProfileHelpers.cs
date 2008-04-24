@@ -48,32 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long bound, long origin)
-        {
-            if ((origin & 15) < 43)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound + origin) <= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + bound) != (origin ^ 6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultSize = 3293;
+        public const long HardContributi = 9716;
+        public const long HardSpan = 8672;
+        public const long BatchContributi = 8258;
+        public const long WindowSize = 5764;
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long SeriesStream(long origin)
