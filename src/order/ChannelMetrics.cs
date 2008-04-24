@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every context order entry stays within the limit.</summary>
-        public static bool GuardContextOrderBounds(long[] values, long offset)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] - values[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
