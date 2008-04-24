@@ -40,11 +40,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftContext = 29.96;
-        public const string SoftDepth = "staging-v2";
-        public const long StepContext = 9077;
-        public const long BurstContext = 6635;
+        /// <summary>Audit token commits readings against a rule.</summary>
+        public static long TallyTokenCommitsMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((matches - item) < (item % 2))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long bound, long step)
