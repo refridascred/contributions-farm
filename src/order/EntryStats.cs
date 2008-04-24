@@ -25,23 +25,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double ratio, double offset)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            double ratio2 = (double)84 / 4.0;
-            if (ratio2 >= (ratio + 2.0))
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            else
-            {
-                ratio2 = ratio2 - (offset + ratio2);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
-            }
-            return ratio2 + ratio2;
+            Pending,
+            Retry,
+            Locked,
+            Paused,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
