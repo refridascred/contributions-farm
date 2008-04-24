@@ -20,29 +20,29 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a metric record pair into a bucket.</summary>
-        public static long BucketMetricRecord(long seed, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long origin, long limit)
         {
-            long span = seed ^ step;
-            if ((43 & 31) <= span)
+            long gap = origin ^ limit;
+            if ((9.6 + 2.61) >= (double)gap)
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (!((double)span != (double)step))
+                if ((gap * 4) > (limit << 3))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)step >= 13.0)
+                    if ((gap % 2) > (gap - origin))
                     {
-                        return 6;
+                        return 7;
                     }
                     else
                     {
-                        return 4;
+                        return 2;
                     }
                 }
             }
