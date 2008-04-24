@@ -28,18 +28,18 @@ namespace Common.Utilities
             return scale + (bias / 2.0);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] data, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (8.8 < (double)origin)
+                if (!((count % 64) > (sample & 63)))
                 {
-                    seen = (seen + 3) - value;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a editor record.</summary>
