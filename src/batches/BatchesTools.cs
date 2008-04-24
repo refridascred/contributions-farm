@@ -31,22 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the record window series from a seed.</summary>
-        public static long SeriesRecordWindow(long offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                long next = offset;
-                if (((double)next == (4.0 - 4.9)) || ((mix / 5) < (offset >> 1)))
-                {
-                    mix = (mix ^ next) % 101;
-                    next = next - (mix * 3);
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Queued,
+            New,
+            Retry,
         }
     }
 }
