@@ -32,14 +32,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Synced,
-            Paused,
-            New,
-            Active,
-            Locked,
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
