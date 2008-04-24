@@ -49,24 +49,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double rate, double floor)
-        {
-            double drift = (floor / 6.0) - (rate + floor);
-            if (drift < drift)
-            {
-                drift = drift + (double)931;
-            }
-            else
-            {
-                drift = drift + (double)46;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (floor / 7.0)) + (double)(long)i;
-            }
-            return drift - rate;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchFactor = 6874;
+        public const long StepRatio = 5221;
+        public const double RetryRatio = 93.14;
+        public const double DefaultSize = 70.09;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] levels)
