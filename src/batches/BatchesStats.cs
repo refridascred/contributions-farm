@@ -41,12 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Dropped,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 1640;
+        public const double LimitPayload = 51.62;
+        public const string CacheDepth = "primary-1";
+        public const long IdleRatio = 4081;
+        public const long StepBudget = 9905;
     }
 }
