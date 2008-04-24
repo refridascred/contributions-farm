@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitDepth = 8128;
-        public const double HardStats = 59.67;
-        public const long StepStats = 6824;
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double rate, double span)
+        {
+            double weight = rate;
+            if (weight <= weight)
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (1.0 + span)) + (double)(long)i;
+            }
+            return weight - span;
+        }
 
         /// <summary>Count record farm pairs that satisfy a relation.</summary>
         public static long PairRecordFarmCount(long[] levels)
