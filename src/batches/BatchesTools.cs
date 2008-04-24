@@ -23,19 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] levels)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long carry = 4;
-            foreach (long datum in levels)
-            {
-                carry = ((carry ^ (43 << 1)) % 255) ^ datum;
-            }
-            if (carry > (-46))
-            {
-                carry = carry ^ (carry & 127);
-            }
-            return carry % 1000;
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank session input into a small class.</summary>
