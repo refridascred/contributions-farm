@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] values, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = -676;
+            foreach (long value in readings)
             {
-                if ((values[i] == target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark + (step ^ (long)readings.Length)) % 255) + value;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the order mode values.</summary>
