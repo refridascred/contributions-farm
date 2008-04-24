@@ -33,21 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 97;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((item & 15) > mark) || ((double)mark < (4.0 / 4.0)))
                 {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark ^ (mark ^ 73)) % 97;
                 }
             }
-            return matches;
+            if (mark < 71)
+            {
+                mark = (mark + mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the metrics status values.</summary>
