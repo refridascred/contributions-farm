@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] levels)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long mark = 9;
-            foreach (long entry in levels)
-            {
-                if ((mark + entry) >= entry)
-                {
-                    mark = ((mark << 3) ^ entry) % 101;
-                }
-            }
-            if (mark < (-970))
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            Draft,
+            Closed,
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the session phase values.</summary>
