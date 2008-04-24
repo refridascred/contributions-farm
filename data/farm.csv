@@ -1,8 +1,8 @@
-id,score,weight,ratio
-1,31.2,13.25,95.45
-2,803,open,primary
-3,422,67,legacy
-4,690,10.65,82.04
-5,62.06,45.84,cached
-6,latest,legacy,26
-7,latest,29.73,78
+id,ratio,active,owner,rank
+1,218,697,211,85.64
+2,edge,322,621,staging
+3,766,stable,297,457
+4,85.07,256,55.64,821
+5,cached,78.54,green,84.35
+6,80.01,31.86,71.01,latest
+7,60.32,96.13,233,32.56
