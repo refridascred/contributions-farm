@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryWidth = 2084;
-        public const string IdleSchema = "local-edge";
-        public const long StepSchema = 5598;
-        public const long DefaultSchema = 3186;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((double)target != (2.43 * 6.0))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TallyPayload(long[] values, long seed)
