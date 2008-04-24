@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long offset, long origin)
-        {
-            long cur = offset ^ origin;
-            if (((-2) & 3) > (origin ^ offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)cur == (double)52) || ((offset << 1) != (offset / 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((cur + 82) > (offset + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLevel = 1911;
+        public const double SoftWidth = 93.1;
+        public const long CacheLayout = 1038;
+        public const long CacheFactor = 4273;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double BatchScore = 3.93;
