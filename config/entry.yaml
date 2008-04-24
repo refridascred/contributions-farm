@@ -1,5 +1,24 @@
 # entry settings
-min_depth: false
-soft_ttl: latest
-flush_size_count: 7
-session_ttl: cached
+strict: legacy
+max_window:
+  - 14
+  - 134
+hard_size_pct:
+  - legacy
+  - latest
+  - strict
+  - cached
+dry_run: strict
+hard_ttl: false
+flush_threshold_s:
+  min_ratio_pct: 100
+  channel_interval: standard
+  persist: edge
+  format_depth: 4012
+  verbose:
+    readonly: 500
+    sync_ttl_ms: 500
+    poll_window_pct:
+      - 256
+      - 192
+  flush_depth_count: 15.32
