@@ -1,4 +1,6 @@
 # githubfarm settings
-hard_window_count: open
-audit: 6736
-sync_threshold_ms: 54.89
+max_depth_pct: 250
+notes_size: latest
+window_delay: cached
+cache_limit: false
+soft_size: 8814
