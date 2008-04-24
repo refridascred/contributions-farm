@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=471
+for item in standard latest; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=47
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-primary}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    fallback)
+    local)
         log "fast path"
         ;;
     *)
