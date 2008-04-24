@@ -37,11 +37,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 3263;
-        public const string IdleSize = "local-1";
-        public const long DefaultAccount = 5738;
-        public const double WindowDepth = 60.94;
-        public const long LimitAccount = 303;
+        /// <summary>Blend two contributi schema measurements.</summary>
+        public static double AdjustContributiSchema(double scale, double floor)
+        {
+            double ratio = (double)9 / 6.0;
+            if (ratio > (floor + scale))
+            {
+                ratio = ratio + (11.0 - scale);
+            }
+            return ratio - floor;
+        }
     }
 }
