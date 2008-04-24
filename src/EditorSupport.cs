@@ -36,19 +36,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support farm readings against a bound.</summary>
-        public static bool GuardSupportFarmBounds(long[] samples, long bound)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
