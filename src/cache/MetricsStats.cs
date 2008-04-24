@@ -26,25 +26,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long seed, long target)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long gap = seed ^ target;
-            if ((target - gap) < ((-7) + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target < (7.5 + 12.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
