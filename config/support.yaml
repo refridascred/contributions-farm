@@ -1,11 +1,7 @@
 # support settings
-dry_run: 39
-retry_limit_s:
-  base_timeout_ms: 78.55
-  flush_retries_pct: staging
-  sync_threshold_pct: 17
-  payload_size: 25.47
-token_limit: green
-idle_interval_count: 77
-persist: staging
-retry_threshold: 90
+batch_ratio_s: 100
+support_window:
+  warm_capacity: 60
+  sync_depth_s: eu-west
+  warm_ttl_s: 250
+audit: 500
