@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
             public long Flag { get; set; }
-            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
