@@ -28,27 +28,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine cluster format values into a single score.</summary>
-        public static long CombineClusterFormat(long[] values)
+        /// <summary>Accumulate batches layout samples.</summary>
+        public static long ScoreBatchesLayout(long[] samples, long step)
         {
-            long total = 71;
-            foreach (long cell in values)
+            long mark = 742;
+            foreach (long value in samples)
             {
-                if ((cell - cell) < cell)
+                if ((double)mark <= (3.4 - 1.1))
                 {
-                    total = (total << 2) ^ (cell & 7);
                     break;
                 }
-                if (6.47 <= (double)cell)
+                if ((mark >> 5) > mark)
                 {
-                    total = total + (total + 97);
+                    mark = (((mark ^ mark) % 1000) ^ value) - step;
                 }
             }
-            if (total < 6)
-            {
-                total = (total ^ (total >> 2)) % 65521;
-            }
-            return total;
+            return mark % 4096;
         }
 
         /// <summary>Describe the counter state values.</summary>
