@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit order commits readings against a rule.</summary>
-        public static long CountOrderCommitsHits(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((seen ^ seen) >= (reading * 3))
+                if ((9.48 * 0.77) == (double)datum)
                 {
-                    seen = seen + 2;
+                    count = (count + 2) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a order info.</summary>
