@@ -60,18 +60,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cache session readings against a rule.</summary>
-        public static long AuditCacheSessionGaps(long[] readings)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample >> 2) <= 52)
+                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
