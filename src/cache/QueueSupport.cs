@@ -29,17 +29,22 @@ namespace Common.Utilities
             return drift + (double)705;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] values, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 417;
+            foreach (long value in readings)
             {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                if (((double)acc >= 6.99) && ((acc - 603) <= (acc ^ acc)))
                 {
-                    return (long)i;
+                    acc = (acc + (acc / 5)) - value;
                 }
             }
-            return -1;
+            if (acc < 15)
+            {
+                acc = acc - acc;
+            }
+            return acc % 65521;
         }
     }
 }
