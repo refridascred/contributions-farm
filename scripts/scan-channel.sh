@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=478
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in staging fallback latest; do
-    log "checking ${item}"
-done
-
-mode="${1:-legacy}"
+mode="${1:-latest}"
 case "${mode}" in
-    latest)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in legacy primary; do
+    log "checking ${item}"
+done
