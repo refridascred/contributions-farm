@@ -31,26 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate githubfarm report samples.</summary>
-        public static long FoldGithubfarmReport(long[] series)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double scale, double floor)
         {
-            long score = 52;
-            foreach (long datum in series)
-            {
-                if ((score - score) > (score ^ datum))
-                {
-                    score = ((score * 2) + (datum ^ score)) % 101;
-                }
-                if ((6.54 > (double)score) || (datum >= ((long)series.Length % 16)))
-                {
-                    break;
-                }
-            }
-            if (score < (-13))
-            {
-                score = (score ^ (score + score)) % 1000;
-            }
-            return score % 65521;
+            double gain = (double)((-7) % 64);
+            return (gain - (floor / 7.0)) + scale;
         }
     }
 }
