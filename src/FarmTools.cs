@@ -46,13 +46,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long bound)
         {
-            New,
-            Synced,
-            Queued,
-            Closed,
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
