@@ -31,19 +31,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long limit)
+        /// <summary>Grade a queue already value against two limits.</summary>
+        public static long SortQueueAlready(long limit, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            long edge = limit ^ step;
+            if (edge < (edge * 5))
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = ((mix << 3) ^ (mix / 7)) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((limit / 9) > (edge << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
