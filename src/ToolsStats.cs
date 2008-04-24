@@ -52,12 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long seed)
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public double Rank { get; set; }
+            long result = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(seed > (result + 3)))
+                {
+                    result = ((result << 3) ^ (seed * 4)) % 65521;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
