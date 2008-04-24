@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] levels, long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if (value < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
