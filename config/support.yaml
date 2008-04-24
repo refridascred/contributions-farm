@@ -1,27 +1,21 @@
 # support settings
-base_limit:
-  - 13
-  - 288
-  - 252
-hard_delay:
-  editor_interval:
-    default_ttl_s: 60
-    poll_limit_ms: 8778
-    burst_ratio_count: staging
-    cache_size: true
-  base_threshold_s: true
-  queue_size:
-    - open
-    - open
-    - legacy
-    - legacy
-  readonly: 5940
-  default_delay: 72
-audit: edge
-hard_capacity:
-  - open
-  - strict
-retry_timeout_s:
-  - 204
-  - 50
-  - 27
+flush_size_pct:
+  - 476
+  - 19
+  - 337
+  - 103
+idle_delay: 250
+burst_size_s: strict
+poll_delay_count:
+  support_depth: 5
+  cache_timeout: 47
+  schema_timeout: 34.66
+  metric_window:
+    - cached
+    - stable
+  base_depth: eu-west
+  support_capacity: 100
+enabled:
+  - green
+  - cached
+  - green
