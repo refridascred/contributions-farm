@@ -40,10 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 20.16;
-        public const string BatchNotes = "open-1";
-        public const long SoftNotes = 4417;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Accumulate cache queue samples.</summary>
         public static long CombineCacheQueue(long[] series)
