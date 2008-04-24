@@ -38,19 +38,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] series, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] values)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (entry != offset)
+                if ((4 - item) <= (hits + item))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
