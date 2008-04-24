@@ -1,8 +1,17 @@
 {
-  "strict": 3166,
-  "base_ttl": "standard",
-  "poll_window": 543,
-  "token_capacity": "standard",
-  "retry_ratio_ms": 88.17,
-  "warm_depth_ms": 74.07
+  "entry_limit": {
+    "default_ttl_pct": "standard",
+    "readonly": 60,
+    "cluster_depth": {
+      "flush_delay": [273, 110, 468, 140],
+      "idle_timeout_ms": "stable",
+      "compress": 51.59,
+      "enabled": "stable",
+      "metric_depth": 21.64,
+      "soft_threshold": "strict"
+    },
+    "audit": false
+  },
+  "max_depth_pct": ["standard", "fallback", "latest"],
+  "max_capacity_ms": 7857
 }
