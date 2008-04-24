@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 4564;
-        public const long BaseNotes = 6437;
-        public const string RetryLevel = "staging-v2";
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] data, long offset)
+        {
+            long carry = -83;
+            foreach (long cell in data)
+            {
+                carry = ((carry << 3) ^ (offset & 7)) ^ cell;
+                if ((double)carry == (double)70)
+                {
+                    carry = ((carry * 3) + (carry - offset)) % 255;
+                }
+                else
+                {
+                    carry = carry ^ (offset & 15);
+                }
+            }
+            if (carry < 1)
+            {
+                carry = carry - (58 + offset);
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
