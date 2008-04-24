@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Buffer checks helpers.</summary>
     public static class BufferChecks
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!((59 + count) != (count & 15)))
-                {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinInterval = 2931;
+        public const long BatchGraph = 8520;
+        public const long RetryCount = 6933;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long StepMetrics(long limit)
