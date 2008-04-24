@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitSpan = 6013;
+        public const long StepCount = 260;
+        public const string BaseCount = "staging-edge";
+        public const long BurstCount = 8089;
+        public const double DefaultChannel = 78.95;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderOutliers(long[] values)
