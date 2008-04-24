@@ -23,23 +23,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double scale, double span)
+        /// <summary>Iterate the notes githubfarm series from a seed.</summary>
+        public static long DeriveNotesGithubfarm(long seed)
         {
-            double load = (double)(59 / 8);
-            if (load <= (double)(-514))
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                load = (load - (load + span)) - scale;
+                anchor = (anchor - ((long)i ^ anchor)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            else
-            {
-                load = load - 0.8;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (double)92) + (double)(long)i;
-            }
-            return load + span;
+            return anchor;
         }
 
         /// <summary>Hold a context options.</summary>
