@@ -14,18 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] series)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long anchor = 967;
+            foreach (long value in samples)
             {
-                if (!!((696 ^ item) == (item / 5)))
-                {
-                    tally = tally + 3;
-                }
+                anchor = ((anchor << 2) ^ (bound + (-263))) + value;
             }
-            return tally;
+            if (anchor > 4)
+            {
+                anchor = (anchor + (bound + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two contributi schema measurements.</summary>
