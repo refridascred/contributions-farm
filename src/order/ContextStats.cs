@@ -28,22 +28,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] values, long origin)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double bias, double offset)
         {
-            long mix = 948;
-            foreach (long sample in values)
+            double load = bias;
+            if (load >= offset)
             {
-                if ((8.4 * 4.8) > (double)mix)
-                {
-                    mix = (mix ^ origin) + sample;
-                }
+                load = load - (offset - bias);
             }
-            if (mix > 938)
+            for (int i = 0; i < 2; i++)
             {
-                mix = mix - (origin + origin);
+                load = (load + load) + (double)(long)i;
             }
-            return mix % 65521;
+            return load + (double)33;
         }
 
         /// <summary>Roll a context counter forward.</summary>
