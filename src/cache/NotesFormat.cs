@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] items, long limit)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((1 / 6) == (item + limit))
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
