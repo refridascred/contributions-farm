@@ -35,38 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long limit, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] samples)
         {
-            if (limit > (seed - limit))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed >= 11.0)
+                if (!(seen > (seen / 9)) || ((seen << 3) >= (item >> 2)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + seed) >= (limit * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit * 3) <= limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
