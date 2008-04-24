@@ -23,11 +23,20 @@ namespace Common.Utilities
         public const long SoftCommits = 1626;
         public const string SoftInterval = "standard-1";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultBudget = "latest-1";
-        public const long IdleWidth = 3761;
-        public const long BatchSpan = 1519;
-        public const double StepSession = 42.68;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] readings, long limit)
+        {
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterRange(long[] series, long seed)
