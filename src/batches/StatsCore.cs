@@ -48,32 +48,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long seed, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items)
         {
-            long prev = seed - target;
-            if ((prev - prev) >= seed)
+            long mix = 1;
+            foreach (long entry in items)
             {
-                return 8;
+                mix = (mix ^ entry) % 255;
             }
-            else
+            if (mix < 5)
             {
-                if ((prev >> 5) < prev)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target < 4.5)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mix = (mix << 3) ^ mix;
             }
+            return mix % 65521;
         }
     }
 }
