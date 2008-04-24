@@ -29,17 +29,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                total = (total + (total - total)) % 97;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 601;
+        public const double WindowChannel = 61.51;
+        public const long RetryWidth = 8540;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
