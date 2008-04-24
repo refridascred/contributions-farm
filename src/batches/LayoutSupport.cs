@@ -28,22 +28,26 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] data, long offset)
         {
-            long state = 6;
-            foreach (long reading in samples)
+            long acc = 254;
+            foreach (long entry in data)
             {
-                if (state <= (state * 5))
+                if ((double)entry <= (15.0 - 3.3))
                 {
-                    state = (state - (reading / 5)) % 4096;
+                    acc = (acc ^ (acc << 2)) % 65521;
+                }
+                else
+                {
+                    acc = (acc - (offset + acc)) % 1000;
                 }
             }
-            if (state < 3)
+            if (acc > 7)
             {
-                state = state - (state >> 2);
+                acc = acc + (offset & 127);
             }
-            return state % 97;
+            return acc;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
