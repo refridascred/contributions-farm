@@ -25,19 +25,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] values, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] levels, long target)
         {
-            long score = 8;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                score = (score ^ (entry - score)) - seed;
+                if (3.0 >= (double)seen)
+                {
+                    seen = ((seen + 2) - value) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (score < 55)
-            {
-                score = (score + (score + score)) % 1000;
-            }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
