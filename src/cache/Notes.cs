@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 2138;
-        public const double SoftGraph = 53.96;
-        public const long WindowGraph = 335;
-        public const double StepGraph = 38.02;
-        public const long RetryWidth = 6676;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFactor = 4740;
+        public const long BurstFilter = 1621;
+        public const string StepSize = "primary-v2";
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ScaleChecks(double gain, double span)
