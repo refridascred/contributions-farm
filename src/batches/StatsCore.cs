@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            long score = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)score > (3.0 * 3.0))
+                {
+                    score = (score + (bound + (-503))) % 65521;
+                }
+                else
+                {
+                    score = score ^ (score ^ score);
+                }
+                score = (score << 2) ^ score;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Find the first batch payload entry that matches the target.</summary>
