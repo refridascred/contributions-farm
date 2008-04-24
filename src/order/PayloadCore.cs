@@ -23,21 +23,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Look up the position of a report stats sample.</summary>
+        public static long SeekReportStatsIndex(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] > limit)
                 {
-                    if ((data[i] + data[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
