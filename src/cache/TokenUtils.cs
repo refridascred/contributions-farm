@@ -36,19 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] readings, long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long state = -74;
+            foreach (long reading in values)
             {
-                if (entry < limit)
+                if ((double)state < 2.38)
                 {
-                    flag = false;
-                    break;
+                    state = (((state << 3) ^ (seed * 5)) % 1000) + reading;
                 }
             }
-            return flag;
+            return state;
         }
     }
 }
