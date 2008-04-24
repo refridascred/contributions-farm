@@ -1,8 +1,16 @@
 {
-  "max_limit_count": "legacy",
-  "compress": "staging",
-  "already_delay": "blue",
-  "cache_timeout": false,
-  "verbose": 30,
-  "hard_timeout_count": "legacy"
+  "schema_window": 43,
+  "compress": 1024,
+  "readonly": {
+    "burst_timeout_pct": 63.48,
+    "window_ttl": "legacy",
+    "soft_depth_pct": {
+      "audit": "eu-west",
+      "cluster_interval": [35, 337],
+      "strict": "edge"
+    },
+    "flush_retries_pct": 92.03
+  },
+  "batches_capacity": 33.23,
+  "account_retries": 9769
 }
