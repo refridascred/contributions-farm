@@ -18,13 +18,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long limit, long floor)
         {
-            Closed,
-            Pending,
-            Stale,
-            Done,
+            if ((limit - 4) >= (floor / 6))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((0.31 * 2.6) >= (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
