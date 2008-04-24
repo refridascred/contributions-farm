@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] values, long offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double scale = 3.9;
+            return (scale + (offset / 7.0)) + weight;
         }
 
         /// <summary>Describe the queue level values.</summary>
