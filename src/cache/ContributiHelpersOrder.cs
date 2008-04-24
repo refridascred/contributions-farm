@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine contributi command values into a single score.</summary>
-        public static long WeighContributiCommand(long[] readings, long offset)
+        /// <summary>Compare every pair of githubfarm token readings.</summary>
+        public static long OverlapGithubfarmTokenCount(long[] readings)
         {
-            long state = 61;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state << 3) ^ (reading * 2);
-                if (((double)offset < (4.9 - 4.0)) && ((offset + reading) >= (reading + state)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state * 3) + (offset << 3)) % 255;
-                }
-                if ((offset >> 1) >= (reading / 2))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state > 762)
-            {
-                state = (state + (state + 4)) % 65521;
-            }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Hold a report stats.</summary>
