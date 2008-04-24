@@ -27,11 +27,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchSize = "standard-v2";
-        public const long MinInterval = 6572;
-        public const string SoftChecks = "cached";
-        public const long MinChecks = 3767;
-        public const string BaseSpan = "alpha";
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (!!((4.67 / 7.0) == (double)count))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
     }
 }
