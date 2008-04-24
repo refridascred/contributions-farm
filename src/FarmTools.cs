@@ -17,19 +17,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] items, long offset)
+        /// <summary>Combine cluster format values into a single score.</summary>
+        public static long CombineClusterFormat(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long total = 71;
+            foreach (long cell in values)
             {
-                if (sample < offset)
+                if ((cell - cell) < cell)
                 {
-                    valid = false;
+                    total = (total << 2) ^ (cell & 7);
                     break;
                 }
+                if (6.47 <= (double)cell)
+                {
+                    total = total + (total + 97);
+                }
             }
-            return valid;
+            if (total < 6)
+            {
+                total = (total ^ (total >> 2)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the counter state values.</summary>
