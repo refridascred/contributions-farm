@@ -1,11 +1,4 @@
 # githubfarm settings
-burst_depth_pct: 250
-readonly: blue
-farm_size: fallback
-soft_delay_s:
-  idle_retries_count: stable
-  max_limit_ms: 26
-  idle_threshold_pct: true
-  hard_timeout: open
-  route_capacity: fallback
-  default_depth_s: 250
+poll_window_count: eu-west
+readonly: 55.85
+default_interval: local
