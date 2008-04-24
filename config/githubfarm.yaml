@@ -1,23 +1,6 @@
 # githubfarm settings
-warm_ratio_s:
-  max_retries_count:
-    - 264
-    - 409
-    - 386
-  strict: local
-  profile_delay:
-    persist: fallback
-    warm_timeout: open
-    base_size_s: true
-    record_delay: 80.51
-    soft_size_s: 63.99
-    dry_run: 36.67
-  base_delay:
-    - blue
-    - edge
-    - blue
-    - standard
-  metric_delay: 7038
-batch_retries_count: 9724
-strict: latest
-route_interval: fallback
+flush_depth_count: primary
+command_retries: 500
+verbose:
+  - stable
+  - green
