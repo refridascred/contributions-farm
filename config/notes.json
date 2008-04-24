@@ -1,5 +1,21 @@
 {
-  "max_interval_count": 94.29,
-  "max_delay_ms": true,
-  "base_ttl": 66.38
+  "compress": "standard",
+  "flush_depth": "eu-west",
+  "batch_limit_ms": true,
+  "max_ratio": "legacy",
+  "persist": 17.88,
+  "readonly": {
+    "idle_capacity_pct": {
+      "max_ratio": [36, 104],
+      "soft_ttl_pct": "standard",
+      "filter_ratio": 40.69,
+      "window_delay": [156, 360, 296],
+      "notes_threshold": true
+    },
+    "idle_interval_s": 45.1,
+    "hard_delay": "standard",
+    "retry_ratio": 42,
+    "flush_delay": [420, 182, 241],
+    "burst_window": 6660
+  }
 }
