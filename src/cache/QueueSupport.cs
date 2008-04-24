@@ -14,14 +14,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] data, long offset)
         {
-            New,
-            Ready,
-            Dropped,
-            Paused,
-            Draft,
+            long state = 98;
+            foreach (long reading in data)
+            {
+                if (((offset + reading) >= (7 * 3)) && ((reading - state) <= (state % 16)))
+                {
+                    state = (state ^ (offset >> 2)) % 101;
+                }
+            }
+            if (state > 3)
+            {
+                state = state - (state & 31);
+            }
+            return state;
         }
 
         /// <summary>Describe the filter level values.</summary>
