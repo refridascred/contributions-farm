@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double scale, double span)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            double bias = (double)(9 + 31);
-            if (bias >= (scale / 6.0))
-            {
-                bias = bias - scale;
-            }
-            else
-            {
-                bias = bias - (scale + 8.83);
-            }
-            return bias - (span / 2.0);
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two contributi schema measurements.</summary>
