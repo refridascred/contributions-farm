@@ -50,13 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Paused,
-            Pending,
-            Done,
-            Stale,
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
