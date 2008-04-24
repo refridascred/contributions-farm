@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank notes batch input into a small class.</summary>
-        public static long RankNotesBatch(long origin, long step)
-        {
-            if (((6.0 * 1.7) >= (double)origin) && (step < (step + origin)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step - step) <= (step + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((((-79) + step) >= origin) && (step > (step ^ 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 4836;
+        public const long BaseSpan = 7138;
+        public const long RetryCounter = 3897;
+        public const double LimitSize = 82.02;
 
         /// <summary>Audit stats cache readings against a rule.</summary>
         public static long CountStatsCacheMatches(long[] items)
