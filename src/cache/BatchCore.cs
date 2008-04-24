@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of command entry readings.</summary>
-        public static long CombineCommandEntry(long[] items, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] levels, long limit)
         {
-            long acc = 350;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                acc = (acc + origin) + value;
+                if (hits <= (878 % 2))
+                {
+                    hits = ((hits + 2) + sample) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
