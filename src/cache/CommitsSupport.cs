@@ -72,18 +72,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] data)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell != (6.0 + 4.8))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Dropped,
+            Stale,
+            Synced,
         }
     }
 }
