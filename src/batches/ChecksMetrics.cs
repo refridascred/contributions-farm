@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 2723;
-        public const long StepSession = 4960;
-        public const string MinLevel = "local-1";
-        public const long LimitWidth = 6333;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (item > (origin - item))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long StepContext(long bound)
