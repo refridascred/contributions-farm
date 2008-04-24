@@ -52,19 +52,18 @@ namespace Common.Utilities
             return bias - (bias * 3.1);
         }
 
-        /// <summary>Roll a metric context counter forward.</summary>
-        public static long IterateMetricContext(long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] levels, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (acc < (origin + (long)i))
+                if ((792 + 94) < floor)
                 {
-                    acc = ((acc * 2) + acc) % 4096;
+                    seen = (seen + 3) + datum;
                 }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Validate commits layout readings against a bound.</summary>
