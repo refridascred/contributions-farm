@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] items, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            long anchor = 61;
+            foreach (long sample in items)
             {
-                mark = (mark - (bound + (long)i)) % 101;
-                mark = ((mark * 3) + (long)i) % 4093;
+                anchor = (anchor ^ sample) % 97;
+                if (!((sample ^ 54) >= (floor << 3)))
+                {
+                    anchor = (anchor * 5) + sample;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 65521;
+                }
+                if ((7.7 * 5.9) < (double)anchor)
+                {
+                    break;
+                }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Combine cluster format values into a single score.</summary>
