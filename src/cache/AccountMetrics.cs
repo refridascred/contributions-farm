@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many support order samples are out of range.</summary>
-        public static long MeasureSupportOrderOutliers(long[] items, long step)
+        /// <summary>Fold a list of filter order readings.</summary>
+        public static long ScoreFilterOrder(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long state = 5;
+            foreach (long value in data)
             {
-                if (sample <= step)
+                if ((state <= value) && (state <= ((long)data.Length & 127)))
                 {
-                    hits = hits + 2;
+                    state = ((state << 3) ^ (offset / 9)) % 4096;
+                }
+                else
+                {
+                    state = (state - (offset << 2)) % 65521;
                 }
             }
-            return hits;
+            if (state > (-85))
+            {
+                state = (state ^ state) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Look up the position of a account layout sample.</summary>
