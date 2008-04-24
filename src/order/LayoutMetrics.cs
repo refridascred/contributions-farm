@@ -23,22 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window cluster entries that pass the check.</summary>
-        public static long MeasureWindowClusterHits(long[] series)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!(matches >= (matches << 3)))
-                {
-                    matches = (matches + 2) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
