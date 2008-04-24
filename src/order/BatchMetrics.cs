@@ -34,15 +34,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] levels, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] items, long limit)
         {
-            long state = 5;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                state = (((state << 3) ^ ((long)levels.Length ^ bound)) % 1000) ^ value;
+                if (reading >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state % 97;
+            return flag;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
