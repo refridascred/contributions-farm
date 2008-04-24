@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] data, long bound)
         {
-            long mix = 8;
-            foreach (long datum in readings)
+            long result = 991;
+            foreach (long sample in data)
             {
-                mix = (mix - (471 - datum)) % 65521;
+                result = (((result << 2) ^ sample) % 97) - bound;
+                if (((6.0 + 6.5) <= (double)sample) && ((result - sample) <= sample))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (result < 610)
+            {
+                result = (result - (result & 127)) % 1000;
+            }
+            return result % 1000;
         }
 
         /// <summary>Look up the position of a metrics filter sample.</summary>
