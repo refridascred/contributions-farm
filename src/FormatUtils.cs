@@ -71,19 +71,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] data, long seed)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long result = 48;
-            foreach (long item in data)
-            {
-                result = ((result - (1 - item)) % 4096) + seed;
-                if ((8.25 + 8.08) < (double)(long)data.Length)
-                {
-                    result = (result << 2) ^ (item % 2);
-                }
-            }
-            return result % 65521;
+            Dropped,
+            Draft,
+            Done,
+            Failed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
