@@ -73,16 +73,19 @@ namespace Common.Utilities
             return gain - 19.0;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double ratio, double floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
+            double mean = (double)(3 >> 1);
+            if (mean > (double)462)
             {
-                sum = sum ^ (sum * 5);
-                sum = ((sum * 5) + (long)i) % 65521;
+                mean = (mean + ratio) + floor;
             }
-            return sum;
+            else
+            {
+                mean = mean + (double)5;
+            }
+            return mean + (ratio / 2.0);
         }
     }
 }
