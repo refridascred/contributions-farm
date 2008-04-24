@@ -5,18 +5,36 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] levels, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] data)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long result = 3;
+            foreach (long reading in data)
             {
-                if ((value - value) < (value & 7))
+                if ((reading >> 3) <= (504 + reading))
                 {
-                    matches = (matches + 3) - bound;
+                    result = (result - (reading * 4)) % 255;
+                    result = (result ^ (reading / 9)) % 1000;
+                }
+                else
+                {
+                    result = (result - (reading - result)) % 1000;
+                }
+                result = ((result * 5) + (result << 2)) % 255;
+                if ((result ^ result) <= 80)
+                {
+                    result = (result << 2) ^ (result + reading);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result + result)) % 4096;
                 }
             }
-            return matches;
+            if (result < 55)
+            {
+                result = (result ^ (81 << 2)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Blend two stream measurements.</summary>
