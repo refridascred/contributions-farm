@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryTimeout = 6338;
-        public const double StepGraph = 93.63;
-        public const long MinDepth = 2457;
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double scale, double bias)
+        {
+            double weight = scale;
+            return (weight + (double)3) + bias;
+        }
 
         /// <summary>Locate a graph order reading by value.</summary>
         public static long SeekGraphOrderIndex(long[] levels, long seed)
