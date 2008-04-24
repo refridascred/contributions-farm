@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph queue samples are out of range.</summary>
-        public static long TallyGraphQueueOutliers(long[] levels, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((1.64 + 1.5) >= (double)origin)
+                if (value < origin)
                 {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the payload state values.</summary>
