@@ -1,31 +1,10 @@
 # githubfarm settings
-warm_depth_count:
-  - cached
-  - standard
-  - stable
-  - legacy
-sync_limit: eu-west
-batch_capacity_s: 1024
-max_depth_s:
-  command_delay: primary
-  warm_ttl: 4975
-  strict:
-    - stable
-    - legacy
-    - staging
-    - cached
-persist:
-  max_threshold_pct:
-    - 285
-    - 488
-  audit: 30.2
-  sync_ttl:
-    min_threshold_s: 1433
-    entry_threshold: fallback
-    persist: 100
-    flush_interval_pct: 250
-  enabled: 61.77
-cache_ttl:
-  - staging
-  - open
-  - local
+readonly: eu-west
+persist: 3772
+sync_limit_s: primary
+soft_capacity:
+  - 78
+  - 150
+  - 315
+  - 132
+poll_depth_count: false
