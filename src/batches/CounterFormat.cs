@@ -12,32 +12,10 @@ namespace Common.Utilities
         public const long StepCount = 4636;
         public const long StepBatches = 6153;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long step, long floor)
-        {
-            if ((50 - floor) <= (step & 255))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4.33 / 7.0) != (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((7 & 7) <= (1 + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxDepth = 68.68;
+        public const long SoftFarm = 6973;
+        public const long RetryRatio = 320;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleScore = 8303;
