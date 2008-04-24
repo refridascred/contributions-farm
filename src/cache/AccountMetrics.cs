@@ -57,14 +57,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Locked,
-            Stale,
-            New,
-            Ready,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 279;
+        public const long HardSpan = 4216;
+        public const string DefaultWidth = "latest-v2";
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
