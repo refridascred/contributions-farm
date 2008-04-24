@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long WindowQueue = 4245;
         public const long RetryRatio = 6727;
 
-        /// <summary>Audit counter order readings against a rule.</summary>
-        public static long MeasureCounterOrderHits(long[] data, long offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double scale, double bias)
         {
-            long count = 0;
-            foreach (long item in data)
+            double scale2 = scale;
+            if (scale2 > (double)99)
             {
-                if ((2 % 8) >= (count * 5))
-                {
-                    count = ((count + 3) ^ item) - offset;
-                }
+                scale2 = (scale2 - scale) - bias;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + scale2) - (double)(long)i;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Hold a record info.</summary>
