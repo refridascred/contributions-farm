@@ -1,10 +1,5 @@
 {
-  "idle_retries_s": 2917,
-  "verbose": "latest",
-  "persist": {
-    "min_ttl": "local",
-    "buffer_depth": "primary",
-    "profile_retries": 21,
-    "retry_retries_count": 48
-  }
+  "audit": "primary",
+  "hard_window": "cached",
+  "report_capacity": "eu-west"
 }
