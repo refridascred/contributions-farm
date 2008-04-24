@@ -57,27 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] levels, long seed)
+        /// <summary>Measure how many farm stream samples are out of range.</summary>
+        public static long TallyFarmStreamGaps(long[] items, long bound)
         {
-            long state = -2;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 7; i++)
+                if ((value >> 5) < 2)
                 {
-                    state = ((state - state) % 255) ^ (long)i;
-                    state = ((state << 2) ^ datum) % 97;
-                }
-                if (datum > 5)
-                {
-                    state = state - (state - datum);
-                }
-                if ((state + datum) == (seed * 2))
-                {
-                    break;
+                    tally = (tally + 3) + bound;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Roll a commits stats counter forward.</summary>
