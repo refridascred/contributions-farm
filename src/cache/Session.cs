@@ -36,11 +36,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultChecks = 32.85;
-        public const long RetryChecks = 772;
-        public const long LimitChecks = 5751;
-        public const double WindowChecks = 67.93;
-        public const long HardLevel = 6619;
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double bias, double floor)
+        {
+            double drift = bias - (floor + 4.4);
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (drift / 5.0)) + (double)(long)i;
+            }
+            return drift + bias;
+        }
     }
 }
