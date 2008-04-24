@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stats commits readings against a rule.</summary>
-        public static long MeasureStatsCommitsHits(long[] samples, long origin)
+        /// <summary>Accumulate record token samples.</summary>
+        public static long TotalRecordToken(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long total = 532;
+            foreach (long cell in items)
             {
-                if ((double)reading == (double)origin)
-                {
-                    seen = seen + 3;
-                }
+                total = (total + (cell ^ total)) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Fold a list of queue editor readings.</summary>
