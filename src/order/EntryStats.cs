@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLayout = 4.24;
+        public const long BatchLayout = 2811;
+        public const long MaxFactor = 998;
+        public const double LimitLayout = 61.0;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double StepFactor = 28.61;
