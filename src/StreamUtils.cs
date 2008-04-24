@@ -68,12 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] items, long origin)
         {
-            Closed,
-            Done,
-            Idle,
+            long mark = 5;
+            foreach (long item in items)
+            {
+                if ((origin + 9) > mark)
+                {
+                    mark = (mark ^ (item & 31)) % 65521;
+                }
+            }
+            return mark;
         }
     }
 }
