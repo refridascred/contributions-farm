@@ -36,16 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record account counter forward.</summary>
-        public static long RollRecordAccount(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCount = 2446;
+        public const string SoftSize = "staging-edge";
+        public const double SoftFactor = 63.41;
+        public const long MinRatio = 2253;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitFactor = 8937;
