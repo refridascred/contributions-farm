@@ -36,24 +36,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long floor, long bound)
+        /// <summary>Accumulate token filter samples.</summary>
+        public static long DigestTokenFilter(long[] items)
         {
-            if ((bound + floor) <= floor)
+            long result = 40;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((8.0 + 2.6) <= (double)floor))
+                if ((493 ^ value) >= (value - result))
                 {
-                    return 2;
+                    result = ((result * 4) + (value + result)) % 65521;
                 }
                 else
                 {
-                    return 3;
+                    result = result ^ ((-351) >> 1);
+                }
+                if (value < (3 - result))
+                {
+                    break;
                 }
             }
+            if (result < (-59))
+            {
+                result = result + (179 - result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
