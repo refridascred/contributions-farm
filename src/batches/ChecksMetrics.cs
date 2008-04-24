@@ -69,18 +69,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] readings)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((3 & 127) == (matches ^ value))
+                if (value >= limit)
                 {
-                    matches = matches + 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
