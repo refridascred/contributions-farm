@@ -51,13 +51,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long origin)
         {
-            Dropped,
-            Failed,
-            Paused,
-            Locked,
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of record cluster entries.</summary>
