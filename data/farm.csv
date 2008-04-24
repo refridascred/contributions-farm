@@ -1,6 +1,6 @@
-id,token,weight
-1,307,40.18
-2,fallback,standard
-3,927,58.48
-4,71.49,30.8
-5,legacy,9
+id,active,rank,token
+1,15.07,150,0.64
+2,9.92,126,blue
+3,primary,6.3,616
+4,latest,854,73.15
+5,355,legacy,76.77
