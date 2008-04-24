@@ -20,12 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitCluster = "primary";
-        public const long LimitSize = 2046;
-        public const long SoftInterval = 8019;
-        public const string IdleCluster = "strict-1";
-        public const long DefaultCluster = 7849;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Active,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesMatches(long[] values, long bound)
