@@ -60,13 +60,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Validate command profile readings against a bound.</summary>
+        public static bool CheckCommandProfileLimits(long[] data, long bound)
         {
-            Ready,
-            Idle,
-            Closed,
-            Paused,
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the tools level values.</summary>
