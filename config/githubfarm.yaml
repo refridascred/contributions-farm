@@ -1,28 +1,31 @@
 # githubfarm settings
-default_window_pct:
-  - fallback
-  - legacy
-  - edge
-batch_size_s:
-  idle_delay:
-    hard_ttl_count: staging
-    base_limit: 4161
-    filter_limit: 100
-  soft_capacity_count: 58
-  burst_ttl_ms: 71.26
-  layout_capacity: 16.65
-  account_size:
-    verbose: 70.37
-    warm_size_pct: 10.69
-    strict: cached
-    compress: legacy
-profile_timeout:
-  - strict
-  - fallback
+warm_depth_count:
+  - cached
   - standard
-account_size: legacy
-verbose: 500
-idle_threshold:
-  default_threshold_s: true
-  persist: 1762
-  poll_limit: 1024
+  - stable
+  - legacy
+sync_limit: eu-west
+batch_capacity_s: 1024
+max_depth_s:
+  command_delay: primary
+  warm_ttl: 4975
+  strict:
+    - stable
+    - legacy
+    - staging
+    - cached
+persist:
+  max_threshold_pct:
+    - 285
+    - 488
+  audit: 30.2
+  sync_ttl:
+    min_threshold_s: 1433
+    entry_threshold: fallback
+    persist: 100
+    flush_interval_pct: 250
+  enabled: 61.77
+cache_ttl:
+  - staging
+  - open
+  - local
