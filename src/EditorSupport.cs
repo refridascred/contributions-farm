@@ -91,14 +91,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] levels)
         {
-            Pending,
-            Failed,
-            Ready,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((1.56 > (double)seen) || ((double)cell > (3.79 / 9.0)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
