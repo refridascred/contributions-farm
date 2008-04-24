@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] series)
-        {
-            long acc = 6;
-            foreach (long sample in series)
-            {
-                if ((71 % 16) < acc)
-                {
-                    acc = (acc - 18) % 101;
-                }
-                if (((0.22 + 4.0) < (double)sample) || ((double)sample <= (12.0 * 3.2)))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchScore = 2089;
+        public const string BaseRecord = "stable-1";
+        public const string DefaultRatio = "fallback-v2";
+        public const long LimitDepth = 2313;
+        public const long BatchFactor = 1373;
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ScaleChecks(double gain, double span)
