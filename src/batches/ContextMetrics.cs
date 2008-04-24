@@ -57,14 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Look up the position of a route cluster sample.</summary>
+        public static long LocateRouteClusterIndex(long[] series, long seed)
         {
-            Dropped,
-            Idle,
-            Synced,
-            Locked,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
