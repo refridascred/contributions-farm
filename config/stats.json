@@ -1,17 +1,10 @@
 {
-  "cache_ratio_s": "local",
-  "command_interval": "fallback",
-  "cache_retries": {
-    "enabled": [371, 432, 328, 261],
-    "base_capacity_pct": 66,
-    "cluster_ttl": "local",
-    "dry_run": 80.01
+  "max_threshold_count": 3077,
+  "profile_capacity": {
+    "sync_interval_count": "strict",
+    "compress": 88,
+    "poll_ttl": 61.81
   },
-  "farm_delay": {
-    "flush_retries": 38,
-    "dry_run": "green",
-    "tools_window": 5760
-  },
-  "default_limit_ms": "open",
-  "min_timeout_s": false
+  "strict": 41,
+  "audit": "strict"
 }
