@@ -34,22 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the token context entries that pass the check.</summary>
-        public static long AuditTokenContextOutliers(long[] values, long floor)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((floor + 23) >= (seen / 9))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
