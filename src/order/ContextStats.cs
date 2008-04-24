@@ -34,16 +34,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long floor)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ (result - floor)) % 255;
-                result = ((result * 3) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
