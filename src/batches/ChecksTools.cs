@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((hits + origin) == (origin >> 3))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinInterval = 8429;
+        public const long DefaultSpan = 3110;
+        public const string IdleLevel = "cached-edge";
+        public const long WindowSize = 8978;
+        public const long BaseStats = 8431;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long ClassifyBuffer(long offset, long limit)
