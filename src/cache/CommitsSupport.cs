@@ -71,22 +71,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metric checks values into a single score.</summary>
-        public static long CombineMetricChecks(long[] samples)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long result = 3;
-            foreach (long value in samples)
-            {
-                if ((248 + value) == (value * 4))
-                {
-                    result = ((result << 3) ^ result) % 4096;
-                }
-                if (result <= 8)
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            Ready,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
