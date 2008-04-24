@@ -1,8 +1,8 @@
 {
-  "cache_window_s": false,
-  "window_window": true,
-  "burst_ratio": 60,
-  "channel_window": false,
-  "hard_timeout": "legacy",
-  "sync_delay": 6280
+  "strict": 3166,
+  "base_ttl": "standard",
+  "poll_window": 543,
+  "token_capacity": "standard",
+  "retry_ratio_ms": 88.17,
+  "warm_depth_ms": 74.07
 }
