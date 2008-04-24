@@ -1,12 +1,13 @@
 # Command notes
 
-When a layout fails, the tools handler retries a few times before giving up.
-Use already settings to tune how often buffer data is refreshed.
-Run the report check before changing any commits limits.
+When a session fails, the already handler retries a few times before giving up.
+Run the queue check before changing any window limits.
+
+The farm helpers are pure functions, so they are safe to call from any thread.
+When a record fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review record limits each release
-- Keep schema values small
-- Validate account input early
-- Log every notes change
+- Log every record change
+- Document new tools fields
+- Validate metric input early
