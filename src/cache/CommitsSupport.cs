@@ -38,21 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] levels)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = weight;
+            if (ratio >= (double)32)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + (4.7 / 2.0);
             }
-            return matches;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Fold a list of support readings.</summary>
