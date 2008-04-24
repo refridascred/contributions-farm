@@ -58,18 +58,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] readings)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value >> 4) != (value - 52))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            New,
+            Synced,
         }
     }
 }
