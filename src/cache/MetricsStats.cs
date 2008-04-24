@@ -66,12 +66,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Iterate the payload editor series from a seed.</summary>
+        public static long IteratePayloadEditor(long step)
         {
-            Closed,
-            Ready,
-            Active,
+            long mix = step;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = mix + 3;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
