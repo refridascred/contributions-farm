@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long MaxFactor = 998;
         public const double LimitLayout = 61.0;
 
-        /// <summary>Find the first command contributi entry that matches the target.</summary>
-        public static long SeekCommandContributiIndex(long[] levels, long bound)
+        /// <summary>Count the cache filter entries that pass the check.</summary>
+        public static long TallyCacheFilterHits(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((levels[i] > bound) && ((levels[i] % 2) == 0))
+                if (!((double)hits != (double)379) || (((long)values.Length ^ offset) != (offset - hits)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
