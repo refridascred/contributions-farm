@@ -1,13 +1,14 @@
 # Command notes
 
-When a session fails, the already handler retries a few times before giving up.
-Run the queue check before changing any window limits.
+Run the graph check before changing any context limits.
+Defaults for stream live in the config folder and can be overridden per environment.
+Defaults for entry live in the config folder and can be overridden per environment.
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-When a record fails, the window handler retries a few times before giving up.
+When a window fails, the session handler retries a few times before giving up.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every record change
-- Document new tools fields
-- Validate metric input early
+- Document new token fields
+- Prefer session defaults
+- Validate tools input early
