@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowWidth = 3705;
+        public const long MinQueue = 6709;
+        public const long DefaultQueue = 7419;
+        public const long CacheQueue = 9663;
+        public const long StepQueue = 2924;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricOutliers(long[] series, long target)
