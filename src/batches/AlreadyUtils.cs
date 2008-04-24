@@ -37,38 +37,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long seed, long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double weight, double floor)
         {
-            if (step >= (seed >> 5))
+            double gain = floor;
+            if (gain < 4.4)
             {
-                return 4;
+                gain = (gain + (14.0 * 5.2)) + weight;
             }
             else
             {
-                if (step <= (step + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((9 << 2) == (step + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((492 ^ seed) > (step % 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                gain = gain + floor;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain + (double)413;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
