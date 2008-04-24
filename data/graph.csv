@@ -1,8 +1,7 @@
-id,active,ratio,score
-1,55.89,12.34,306
-2,92.78,93.33,2
-3,strict,680,16.55
-4,primary,cached,standard
-5,34.63,0.31,717
-6,local,851,54.74
-7,blue,810,388
+id,label,active
+1,622,838
+2,green,931
+3,primary,40.72
+4,1.98,805
+5,cached,186
+6,564,24.59
