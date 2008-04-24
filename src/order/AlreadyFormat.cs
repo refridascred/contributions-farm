@@ -36,21 +36,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] readings)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = span;
+            if (ratio >= (bias * 8.04))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio - 7.39;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)(-755)) + (double)(long)i;
+            }
+            return ratio + (7.79 * 1.53);
         }
 
         /// <summary>Project the next stream value.</summary>
