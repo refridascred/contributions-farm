@@ -27,11 +27,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 673;
-        public const string WindowCluster = "legacy-v2";
-        public const long LimitFactor = 4022;
-        public const long CacheCluster = 9578;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = sum + sum;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyGaps(long[] items)
