@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            Dropped,
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
