@@ -1,6 +1,11 @@
 # entry settings
-verbose: false
-burst_delay_s: 70.16
-sync_depth_count: strict
-retry_size_s: legacy
-batch_size: 83
+counter_limit: 89
+idle_retries:
+  - edge
+  - eu-west
+schema_threshold: stable
+idle_window_ms:
+  - fallback
+  - standard
+  - edge
+  - staging
