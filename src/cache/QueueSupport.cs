@@ -22,24 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long seed, long floor)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] values, long bound)
         {
-            if (seed < (2 / 4))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor <= (6.4 / 8.0)) && ((floor - floor) != (seed - 216)))
+                if ((values[i] >= bound) && ((values[i] % 5) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
