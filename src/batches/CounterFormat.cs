@@ -39,9 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstDepth = "local-v2";
-        public const long LimitWindow = 6226;
-        public const long StepInterval = 3423;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleScore = 8303;
+        public const double BurstCache = 21.28;
+        public const long WindowCount = 7608;
+        public const long StepCache = 6451;
     }
 }
