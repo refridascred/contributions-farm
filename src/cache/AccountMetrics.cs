@@ -19,13 +19,18 @@ namespace Common.Utilities
         public const double BurstSpan = 62.5;
         public const string RetryBudget = "primary-v2";
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] data)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + matches) < ((long)data.Length + entry))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the counter queue series from a seed.</summary>
