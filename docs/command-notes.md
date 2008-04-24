@@ -1,11 +1,14 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the order list.
-The farm module keeps githubfarm values in sync with the metric cache.
-The contributi report groups every batch by token.
+Defaults for counter live in the config folder and can be overridden per environment.
+Run the schema check before changing any queue limits.
+
+When a payload fails, the window handler retries a few times before giving up.
+Use schema settings to tune how often counter data is refreshed.
+Use githubfarm settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Keep cache values small
-- Validate batch input early
-- Prefer stats defaults
+- Validate counter input early
+- Log every graph change
+- Prefer checks defaults
