@@ -1,13 +1,5 @@
 {
-  "dry_run": {
-    "cluster_timeout": "strict",
-    "default_capacity_s": "primary",
-    "hard_timeout": 1385,
-    "checks_ratio": [64, 298, 470, 448]
-  },
-  "max_limit_count": "local",
-  "poll_window": 234,
-  "soft_timeout_ms": [498, 5, 296],
-  "hard_ttl_s": 2969,
-  "sync_depth": "strict"
+  "schema_window": "stable",
+  "hard_ratio_count": "open",
+  "soft_delay_ms": 5536
 }
