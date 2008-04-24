@@ -60,18 +60,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] levels, long origin)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((origin >> 2) <= (9 & 1)) && ((count >> 2) > origin))
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public double Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
