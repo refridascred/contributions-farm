@@ -49,15 +49,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] items)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] data, long limit)
         {
-            long anchor = 89;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor - (item - anchor)) % 101;
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a already reading by value.</summary>
