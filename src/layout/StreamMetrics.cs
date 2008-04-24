@@ -27,12 +27,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            Locked,
-            Closed,
-            Done,
+            Queued,
+            New,
+            Paused,
+            Pending,
+            Failed,
         }
 
         /// <summary>Describe the batch class values.</summary>
