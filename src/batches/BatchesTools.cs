@@ -27,13 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] samples, long limit)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (reading > 0)
+                {
+                    count = (count + 3) - limit;
+                }
+            }
+            return count;
         }
     }
 }
