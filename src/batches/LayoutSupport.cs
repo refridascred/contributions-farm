@@ -40,14 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit stats cache readings against a rule.</summary>
+        public static long CountStatsCacheMatches(long[] items)
         {
-            Idle,
-            Retry,
-            Locked,
-            Failed,
-            Paused,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((-9) >= (tally + tally))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate token filter samples.</summary>
