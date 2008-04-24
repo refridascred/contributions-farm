@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] samples, long bound)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((hits & 63) >= (hits + 31)) && ((6.0 * 1.12) > (double)item))
-                {
-                    hits = (hits + 3) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Roll a window counter forward.</summary>
