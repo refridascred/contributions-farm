@@ -20,16 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate githubfarm contributi samples.</summary>
-        public static long TallyGithubfarmContributi(long[] readings)
-        {
-            long anchor = -70;
-            foreach (long entry in readings)
-            {
-                anchor = ((anchor + (47 / 2)) % 65521) - entry;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitCluster = "primary";
+        public const long LimitSize = 2046;
+        public const long SoftInterval = 8019;
+        public const string IdleCluster = "strict-1";
+        public const long DefaultCluster = 7849;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long SortRecord(long floor, long step)
