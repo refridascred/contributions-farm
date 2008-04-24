@@ -23,17 +23,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] readings, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 1;
+            foreach (long datum in samples)
             {
-                if (readings[i] == floor)
+                if ((double)offset < 8.5)
                 {
-                    return (long)i;
+                    total = ((total ^ (offset & 127)) % 65521) ^ datum;
                 }
             }
-            return -1;
+            if (total > 787)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
     }
 }
