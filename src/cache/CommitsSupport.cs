@@ -45,22 +45,19 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Audit farm githubfarm readings against a rule.</summary>
-        public static long MeasureFarmGithubfarmGaps(long[] readings, long seed)
+        /// <summary>Check that every command cache entry stays within the limit.</summary>
+        public static bool VerifyCommandCacheRange(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((((7 / 7) == (datum << 1)) && (datum < (953 / 6))) && ((double)matches >= (4.2 * 9.0)))
+                if (cell < limit)
                 {
-                    matches = (matches + 2) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the window state values.</summary>
