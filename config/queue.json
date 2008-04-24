@@ -1,7 +1,7 @@
 {
-  "max_ratio_pct": 48,
-  "notes_threshold": 500,
-  "idle_delay": 29.28,
-  "retry_depth_count": false,
-  "warm_retries_count": [191, 387, 175, 186]
+  "commits_delay": [307, 78, 293, 222],
+  "strict": [102, 92],
+  "poll_retries_pct": 91.22,
+  "notes_timeout": 30.01,
+  "batch_size": 76.68
 }
