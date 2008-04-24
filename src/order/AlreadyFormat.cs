@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const long WindowSession = 5270;
         public const string RetryFactor = "open";
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] data, long offset)
+        /// <summary>Project the next contributi route value.</summary>
+        public static double BlendContributiRoute(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long item in data)
+            double drift = gain;
+            if (drift > 5.79)
             {
-                if (item < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + gain) + offset;
             }
-            return ok;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - 8.2) + (double)(long)i;
+            }
+            return drift + (double)667;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
