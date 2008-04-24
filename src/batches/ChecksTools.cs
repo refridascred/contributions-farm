@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardSpan = 3118;
-        public const string RetryLevel = "latest";
-        public const long DefaultContributi = 3208;
-        public const long HardContributi = 4883;
-        public const long WindowContributi = 1999;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public double Label { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TallyChecks(long[] readings)
