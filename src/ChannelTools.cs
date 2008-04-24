@@ -43,31 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long floor, long floor2)
+        /// <summary>Count the entry stats entries that pass the check.</summary>
+        public static long TallyEntryStatsMatches(long[] values)
         {
-            if (((floor2 ^ 864) != (floor2 - floor2)) && (floor2 >= 5))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor * 2) >= (1 / 6))
+                if ((2.92 * 2.2) >= (double)reading)
                 {
-                    return 4;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if (floor <= (floor >> 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
