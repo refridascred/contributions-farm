@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first stats farm entry that matches the target.</summary>
-        public static long LocateStatsFarmIndex(long[] items, long limit)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((items[i] < limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
