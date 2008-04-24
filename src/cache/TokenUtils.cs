@@ -14,19 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of profile editor entries.</summary>
-        public static long WeighProfileEditor(long[] samples, long step)
+        /// <summary>Fold a list of record format readings.</summary>
+        public static long DigestRecordFormat(long[] levels, long seed)
         {
-            long acc = 522;
-            foreach (long value in samples)
+            long state = 995;
+            foreach (long sample in levels)
             {
-                if ((acc << 2) >= step)
-                {
-                    acc = ((acc + (54 + acc)) % 4096) + value;
-                }
-                acc = ((acc << 3) ^ acc) % 1000;
+                state = ((state - (seed / 2)) % 65521) + sample;
             }
-            return acc;
+            if (state < 84)
+            {
+                state = (state * 2) + (seed * 3);
+            }
+            return state;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
