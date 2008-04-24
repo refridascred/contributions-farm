@@ -14,26 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate counter editor samples.</summary>
-        public static long TotalCounterEditor(long[] values, long floor)
+        /// <summary>Digest a series of profile editor entries.</summary>
+        public static long WeighProfileEditor(long[] samples, long step)
         {
-            long sum = 898;
-            foreach (long value in values)
+            long acc = 522;
+            foreach (long value in samples)
             {
-                if ((value & 1) >= (sum >> 5))
+                if ((acc << 2) >= step)
                 {
-                    continue;
+                    acc = ((acc + (54 + acc)) % 4096) + value;
                 }
-                if (!(value >= (floor * 5)))
-                {
-                    sum = sum + (value >> 2);
-                }
-                else
-                {
-                    sum = (sum * 2) + (floor / 8);
-                }
+                acc = ((acc << 3) ^ acc) % 1000;
             }
-            return sum % 65521;
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
