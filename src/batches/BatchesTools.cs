@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] samples, long offset)
+        /// <summary>Count the profile entry entries that pass the check.</summary>
+        public static long MeasureProfileEntryGaps(long[] series, long origin)
         {
             long matches = 0;
-            foreach (long item in samples)
+            foreach (long item in series)
             {
-                if ((6.0 - 12.0) >= (double)item)
+                if (!(4.8 < (double)item))
                 {
-                    matches = (matches + 1) + offset;
+                    matches = (matches + 3) - origin;
                 }
                 else
                 {
