@@ -1,5 +1,18 @@
 {
-  "batches_interval": [308, 242, 266, 227],
-  "compress": 6649,
-  "soft_ttl": 500
+  "enabled": {
+    "burst_interval_pct": {
+      "channel_size": true,
+      "audit": 60,
+      "min_window": false,
+      "batch_capacity": 60
+    },
+    "enabled": 35.54,
+    "readonly": true,
+    "hard_ttl_count": 6389
+  },
+  "compress": 65,
+  "cluster_retries": ["open", "blue"],
+  "session_depth": "edge",
+  "retry_threshold": ["latest", "fallback"],
+  "strict": true
 }
