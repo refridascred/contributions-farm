@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] data, long origin)
-        {
-            long sum = 738;
-            foreach (long sample in data)
-            {
-                if ((sum + 4) <= sum)
-                {
-                    sum = sum + (sample & 63);
-                }
-                sum = (sum - origin) % 4096;
-                if (sum >= (sum ^ origin))
-                {
-                    sum = (sum - (sample - origin)) % 97;
-                }
-                if (38 > sum)
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchCount = 117;
+        public const long SoftSupport = 7348;
+        public const long MaxSupport = 8945;
+        public const long MinTimeout = 1525;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TotalSession(long[] levels)
