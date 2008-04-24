@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command schema counter forward.</summary>
-        public static long IterateCommandSchema(long offset)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((acc - offset) <= (24 << 1)))
-                {
-                    acc = ((acc * 2) + (long)i) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
