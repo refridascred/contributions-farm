@@ -66,11 +66,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitLevel = 7571;
-        public const long IdleBudget = 7006;
-        public const long MaxQueue = 6364;
-        public const long CacheQueue = 2078;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] series)
