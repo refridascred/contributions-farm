@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] levels, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((value - value) < (value & 7))
+                {
+                    matches = (matches + 3) - bound;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Blend two stream measurements.</summary>
