@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] data, long limit)
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((((double)tally >= (double)item) && ((350 % 97) <= (limit % 8))) || ((5.2 - 4.5) > (double)item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up command samples.</summary>
