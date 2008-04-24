@@ -1,12 +1,13 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-Use account settings to tune how often token data is refreshed.
-Keep notes and record names short and lowercase.
+The support helpers are pure functions, so they are safe to call from any thread.
+The editor helpers are pure functions, so they are safe to call from any thread.
+
+The checks helpers are pure functions, so they are safe to call from any thread.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new session fields
-- Prefer profile defaults
-- Log every farm change
+- Review payload limits each release
+- Validate graph input early
 - Keep session values small
