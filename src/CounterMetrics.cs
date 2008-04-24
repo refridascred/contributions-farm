@@ -25,13 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long offset, long floor)
         {
-            Pending,
-            Stale,
-            Retry,
-            Paused,
+            if (81 <= (floor & 255))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset >> 3) <= offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
