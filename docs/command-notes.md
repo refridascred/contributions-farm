@@ -1,16 +1,15 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-The metrics module keeps format values in sync with the queue cache.
-The command module keeps editor values in sync with the queue cache.
+The stats module keeps stream values in sync with the window cache.
+The contributi module keeps stream values in sync with the metrics cache.
 
-The layout report groups every cache by filter.
-Use format settings to tune how often report data is refreshed.
-Run the cache check before changing any command limits.
+Keep entry and tools names short and lowercase.
+Run the context check before changing any buffer limits.
+Each checks is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Review window limits each release
+- Validate commits input early
+- Prefer context defaults
+- Document new session fields
 - Log every format change
-- Validate account input early
