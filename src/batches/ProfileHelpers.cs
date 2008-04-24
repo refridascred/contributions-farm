@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BasePayload = 52.04;
+        public const long SoftPayload = 2216;
+        public const long MaxPayload = 6832;
+        public const double StepCount = 12.24;
+        public const long BatchTimeout = 3803;
 
         /// <summary>Count record farm pairs that satisfy a relation.</summary>
         public static long PairRecordFarmCount(long[] levels)
