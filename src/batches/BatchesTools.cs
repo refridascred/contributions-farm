@@ -23,22 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] values, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long score = 1;
-            foreach (long reading in values)
-            {
-                if (reading >= (reading / 9))
-                {
-                    score = ((score - reading) % 65521) - offset;
-                }
-                if ((reading << 2) <= (85 % 16))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Rank session input into a small class.</summary>
