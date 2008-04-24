@@ -78,24 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support stream input into a small class.</summary>
-        public static long ClassifySupportStream(long origin, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] readings)
         {
-            if ((origin / 7) > origin)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1.0 / 3.0) >= (double)origin)
+                if ((hits * 3) >= reading)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
