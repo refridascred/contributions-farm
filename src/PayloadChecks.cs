@@ -26,21 +26,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((-31) < (anchor << 3)) || (61 > (1 + anchor)))
                 {
-                    if ((items[i] - items[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (reading + anchor)) % 101;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
