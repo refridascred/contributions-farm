@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a format githubfarm reading by value.</summary>
-        public static long SeekFormatGithubfarmIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 3724;
+        public const long CacheToken = 9529;
+        public const string HardWidth = "stable-edge";
+        public const string WindowCount = "stable-edge";
+        public const long BurstWidth = 9849;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandHits(long[] items)
