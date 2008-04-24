@@ -28,15 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi cache values into a single score.</summary>
-        public static long FoldContributiCache(long[] series)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] data, long target)
         {
-            long acc = 6;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long value in data)
             {
-                acc = (acc ^ (reading - acc)) % 101;
+                if (value >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
