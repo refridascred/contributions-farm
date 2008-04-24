@@ -35,24 +35,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of layout session entries.</summary>
-        public static long DigestLayoutSession(long[] data)
+        /// <summary>Find the first account stream entry that matches the target.</summary>
+        public static long LocateAccountStreamIndex(long[] readings, long target)
         {
-            long acc = 343;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc ^ (datum + datum)) % 97;
-                acc = (acc ^ acc) % 97;
-                if ((datum & 31) > (datum ^ datum))
+                if ((readings[i] < target) && ((readings[i] % 3) != 0))
                 {
-                    acc = (acc ^ (acc % 100)) % 97;
+                    return (long)i;
                 }
             }
-            if (acc > 43)
-            {
-                acc = ((acc << 2) ^ (acc / 3)) % 65521;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
