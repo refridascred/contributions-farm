@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] samples, long origin)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (item > (origin - item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
