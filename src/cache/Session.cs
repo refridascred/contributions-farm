@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 5897;
-        public const long BaseTimeout = 4493;
-        public const string RetryBuffer = "alpha-1";
-        public const string SoftWidth = "legacy-v2";
-        public const long BurstBuffer = 1128;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchWidth = 5734;
+        public const string LimitFormat = "legacy-1";
+        public const long MinFormat = 7819;
+        public const long IdleDepth = 8467;
+        public const double MaxBudget = 72.01;
 
         /// <summary>Project the next support githubfarm value.</summary>
         public static double BlendSupportGithubfarm(double scale, double offset)
