@@ -39,12 +39,13 @@ namespace Common.Utilities
         public const long BatchLevel = 9379;
         public const long IdleGraph = 5202;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public double Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a cache options.</summary>
