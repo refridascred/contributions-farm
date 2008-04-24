@@ -15,22 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] items, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((seen > (seen - seen)) && (seen < (291 & 255)))
+                if (!!((696 ^ item) == (item / 5)))
                 {
-                    seen = ((seen + 2) - item) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Blend two contributi schema measurements.</summary>
