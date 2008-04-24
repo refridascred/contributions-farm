@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowWidth = 3705;
-        public const long MinQueue = 6709;
-        public const long DefaultQueue = 7419;
-        public const long CacheQueue = 9663;
-        public const long StepQueue = 2924;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public string Ratio { get; set; } = "";
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricOutliers(long[] series, long target)
