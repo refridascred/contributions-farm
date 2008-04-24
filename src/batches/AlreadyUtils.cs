@@ -16,22 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit githubfarm counter readings against a rule.</summary>
-        public static long TallyGithubfarmCounterMatches(long[] series, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((matches - matches) == (offset >> 2))
+                if ((double)item <= 8.0)
                 {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 2) - floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of support readings.</summary>
