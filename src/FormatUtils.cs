@@ -100,21 +100,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count window batches pairs that satisfy a relation.</summary>
-        public static long MatchWindowBatchesCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 7661;
+        public const double WindowWidth = 42.24;
+        public const string MaxLevel = "alpha";
+        public const long SoftNotes = 8552;
+        public const long LimitNotes = 1403;
     }
 }
