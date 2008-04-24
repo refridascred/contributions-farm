@@ -57,17 +57,18 @@ namespace Common.Utilities
         public const long MaxPayload = 8597;
         public const long SoftPayload = 6417;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] samples, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (samples[i] > offset)
+                if ((15 - seen) <= (68 >> 4))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the queue status values.</summary>
