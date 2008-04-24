@@ -40,21 +40,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((bound & 15) < bound) && ((bound - anchor) <= (486 * 4)))
                 {
-                    if ((data[i] ^ data[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor + (bound + anchor)) % 255;
                 }
+                anchor = (anchor - (anchor << 3)) % 97;
+                anchor = (anchor + (bound + anchor)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
