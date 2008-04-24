@@ -54,12 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] samples, long limit)
         {
-            Dropped,
-            Stale,
-            Idle,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)matches >= (1.9 - 5.68))
+                {
+                    matches = ((matches + 2) - cell) - limit;
+                }
+            }
+            return matches;
         }
     }
 }
