@@ -26,19 +26,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] series, long origin)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long seed, long target)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long gap = seed ^ target;
+            if ((target - gap) < ((-7) + target))
             {
-                if (value < origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)target < (7.5 + 12.0))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the payload state values.</summary>
