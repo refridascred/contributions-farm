@@ -39,17 +39,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] data, long limit)
+        /// <summary>Count the route metric entries that pass the check.</summary>
+        public static long CountRouteMetricHits(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (data[i] > limit)
+                if (!((hits * 2) < bound))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a already reading by value.</summary>
