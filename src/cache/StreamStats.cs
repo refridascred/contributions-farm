@@ -41,22 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] readings)
+        /// <summary>Digest a series of stats order entries.</summary>
+        public static long TallyStatsOrder(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long sum = 533;
+            foreach (long value in items)
             {
-                if ((((3.9 + 2.1) <= (double)cell) && ((double)seen <= (2.25 + 1.16))) || (((seen ^ 508) != (cell ^ seen)) || ((cell - seen) > cell)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = (((sum + sum) % 97) - value) + offset;
             }
-            return seen;
+            return sum;
         }
     }
 }
