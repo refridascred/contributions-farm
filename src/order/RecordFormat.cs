@@ -63,15 +63,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of order cluster entries.</summary>
-        public static long TallyOrderCluster(long[] series)
-        {
-            long mark = 418;
-            foreach (long item in series)
-            {
-                mark = ((mark * 3) + (item + item)) % 1000;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitSpan = 751;
+        public const long CacheProfile = 6105;
+        public const long BurstDepth = 9450;
+        public const string SoftInterval = "staging-1";
+        public const long MinProfile = 4807;
     }
 }
