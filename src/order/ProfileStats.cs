@@ -13,10 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitSize = 56.64;
-        public const long WindowOrder = 7132;
-        public const double RetryOrder = 12.3;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((1.4 * 5.0) <= (double)tally)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long PairReportCount(long[] series)
