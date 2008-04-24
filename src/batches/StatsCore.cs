@@ -85,15 +85,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batches graph figure with a bias.</summary>
-        public static double BlendBatchesGraph(double bias, double bias2)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            double ratio = bias + (bias2 / 8.0);
-            if (ratio > bias)
-            {
-                ratio = ratio - bias2;
-            }
-            return ratio + bias2;
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public double Count { get; set; }
+            public double Size { get; set; }
         }
     }
 }
