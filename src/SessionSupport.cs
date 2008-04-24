@@ -33,18 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] readings)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mix = 62;
+            foreach (long cell in levels)
             {
-                if (!((0.15 - 6.09) < (double)count))
+                if ((double)cell != (5.32 / 3.0))
                 {
-                    count = (count + 3) + cell;
+                    mix = (mix - (offset << 3)) % 101;
+                }
+                if ((6.6 + 5.38) > (double)cell)
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
