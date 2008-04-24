@@ -65,19 +65,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine commits route values into a single score.</summary>
-        public static long FoldCommitsRoute(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] data)
         {
-            long sum = 609;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                sum = ((sum ^ (-6)) % 101) ^ datum;
+                if ((9.5 + 8.0) < (double)count)
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (sum < 752)
-            {
-                sum = ((sum << 3) ^ 36) % 255;
-            }
-            return sum % 1000;
+            return count;
         }
     }
 }
