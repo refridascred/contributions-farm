@@ -27,18 +27,15 @@ namespace Common.Utilities
         public const string SoftWidth = "legacy-v2";
         public const long BurstBuffer = 1128;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] readings, long seed)
+        /// <summary>Project the next support githubfarm value.</summary>
+        public static double BlendSupportGithubfarm(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double weight = (offset / 4.0) * 3.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)seed != (0.11 * 1.74))
-                {
-                    seen = (seen + 2) + datum;
-                }
+                weight = ((weight + weight) + (double)(long)i) + scale;
             }
-            return seen;
+            return weight + (double)34;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
