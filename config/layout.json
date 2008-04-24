@@ -1,10 +1,10 @@
 {
-  "default_ratio_count": "local",
-  "min_window_s": [375, 85, 199, 291],
-  "sync_retries_s": {
-    "hard_interval_count": ["edge", "staging"],
-    "sync_timeout": 46.41,
-    "soft_ratio_count": 10,
-    "farm_capacity": ["staging", "standard", "local"]
-  }
+  "batch_depth": "blue",
+  "checks_interval": "green",
+  "idle_ttl_pct": {
+    "idle_capacity_ms": "edge",
+    "hard_retries_ms": [45, 238, 412],
+    "window_ratio": 80
+  },
+  "max_limit_s": 5056
 }
