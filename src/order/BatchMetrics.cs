@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a route commits sample.</summary>
-        public static long SeekRouteCommitsIndex(long[] levels, long floor)
+        /// <summary>Measure how many filter route samples are out of range.</summary>
+        public static long CountFilterRouteMatches(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (levels[i] > floor)
+                if ((sample / 7) == (6 - sample))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next batch metric value from a seed.</summary>
