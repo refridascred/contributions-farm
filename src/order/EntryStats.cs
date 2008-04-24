@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double weight, double offset)
+        /// <summary>Fold a list of githubfarm schema readings.</summary>
+        public static long WeighGithubfarmSchema(long[] samples)
         {
-            double rate = 3.39 - (double)62;
-            return ((rate + 10.0) + weight) + offset;
+            long acc = 230;
+            foreach (long item in samples)
+            {
+                if (acc <= (acc / 3))
+                {
+                    acc = (acc ^ (item % 60)) % 1000;
+                }
+            }
+            if (acc > 33)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Rank context input into a small class.</summary>
