@@ -36,21 +36,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Audit cluster contributi readings against a rule.</summary>
+        public static long MeasureClusterContributiGaps(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((7 - entry) <= count)
                 {
-                    if ((items[i] + items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
