@@ -33,23 +33,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double ratio, double bias)
-        {
-            double gain = (double)(479 * 4);
-            if (gain >= (double)535)
-            {
-                gain = (gain + gain) - ratio;
-            }
-            else
-            {
-                gain = gain - 6.97;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - (6.0 / 5.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 8074;
+        public const string SoftRatio = "stable-1";
+        public const long IdleSpan = 8478;
+        public const long MaxScore = 2200;
+        public const string WindowCache = "open";
     }
 }
