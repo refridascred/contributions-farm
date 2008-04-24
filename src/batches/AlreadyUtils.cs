@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] data, long bound)
+        /// <summary>Check that every graph buffer entry stays within the limit.</summary>
+        public static bool ValidateGraphBufferBounds(long[] values, long limit)
         {
-            long result = 991;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                result = (((result << 2) ^ sample) % 97) - bound;
-                if (((6.0 + 6.5) <= (double)sample) && ((result - sample) <= sample))
+                if (reading >= limit)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (result < 610)
-            {
-                result = (result - (result & 127)) % 1000;
-            }
-            return result % 1000;
+            return valid;
         }
 
         /// <summary>Match up batch route samples.</summary>
