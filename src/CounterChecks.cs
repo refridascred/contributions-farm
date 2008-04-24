@@ -72,9 +72,19 @@ namespace Common.Utilities
             return rate - (rate / 2.0);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepTimeout = 7388;
-        public const long SoftChecks = 7161;
-        public const double HardFactor = 29.49;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsLimits(long[] items, long step)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
