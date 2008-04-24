@@ -42,19 +42,13 @@ namespace Common.Utilities
         public const long SoftEntry = 8692;
         public const long BatchEntry = 4169;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] samples, long offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Offset { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Project the next channel value.</summary>
