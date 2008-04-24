@@ -57,17 +57,35 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] values, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 52;
+            foreach (long datum in values)
             {
-                if ((values[i] == floor) && ((values[i] % 3) == 0))
+                state = (state + ((-263) / 2)) % 65521;
+                if ((datum << 3) < (datum + 273))
                 {
-                    return (long)i;
+                    state = ((state * 3) + (datum ^ 68)) % 255;
+                }
+                if ((datum >> 1) < (datum >> 4))
+                {
+                    state = (state ^ (datum + state)) % 97;
+                }
+                else
+                {
+                    state = (state ^ (datum / 6)) % 255;
+                }
+                if ((state + datum) > (84 - state))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state > 1)
+            {
+                state = (state - (state - state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
