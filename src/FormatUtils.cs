@@ -34,20 +34,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double bias, double span)
-        {
-            double gain = span;
-            if (gain >= (span / 7.0))
-            {
-                gain = gain + bias;
-            }
-            else
-            {
-                gain = gain + (span - gain);
-            }
-            return gain - bias;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 124;
+        public const long BatchLevel = 9379;
+        public const long IdleGraph = 5202;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
