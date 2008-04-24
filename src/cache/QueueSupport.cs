@@ -28,22 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            long acc = 417;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)acc >= 6.99) && ((acc - 603) <= (acc ^ acc)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc + (acc / 5)) - value;
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < 15)
-            {
-                acc = acc - acc;
-            }
-            return acc % 65521;
+            return hits;
         }
     }
 }
