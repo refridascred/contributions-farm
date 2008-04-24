@@ -63,12 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] values, long seed)
         {
-            New,
-            Failed,
-            Dropped,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((1 > (long)values.Length) || !((seed & 127) <= (82 ^ seed)))
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
         }
     }
 }
