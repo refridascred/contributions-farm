@@ -42,18 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] values, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((619 + 2) != (target * 5)) || (((count << 2) > count) || ((double)count == (5.0 * 4.6))))
+                if ((662 * 2) >= reading)
                 {
-                    count = (count + 2) + entry;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
