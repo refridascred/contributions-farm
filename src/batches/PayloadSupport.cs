@@ -33,39 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long step, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] levels)
         {
-            long delta = step - bound;
-            if (!((step & 7) > (delta % 3)))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step & 63) < (207 - bound))
+                if ((7.41 / 7.0) <= (double)seen)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((delta < bound) && (((-83) - delta) <= (bound << 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step != (6.0 * 2.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a already command reading.</summary>
