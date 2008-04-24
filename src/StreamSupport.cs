@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading != bound)
                 {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
