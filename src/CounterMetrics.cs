@@ -24,18 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] data, long bound)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!(349 <= (78 - cell)))
-                {
-                    tally = (tally + 1) + bound;
-                }
-            }
-            return tally;
+            Synced,
+            Stale,
+            Queued,
         }
 
         /// <summary>Fold a list of token readings.</summary>
