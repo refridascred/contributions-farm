@@ -32,18 +32,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many format contributi samples are out of range.</summary>
-        public static long MeasureFormatContributiHits(long[] samples)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell - seen) < 9)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
