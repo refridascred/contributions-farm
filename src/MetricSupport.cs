@@ -14,14 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Idle,
+            Stale,
             Retry,
-            Done,
             Draft,
-            Ready,
         }
 
         /// <summary>Define format limits and defaults.</summary>
