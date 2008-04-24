@@ -36,13 +36,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            Failed,
+            New,
+            Idle,
         }
     }
 }
