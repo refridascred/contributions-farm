@@ -25,24 +25,19 @@ namespace Common.Utilities
         public const long SoftFactor = 9972;
         public const long MinBudget = 368;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long offset, long step)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double ratio, double offset)
         {
-            if ((step + 68) <= (step + offset))
+            double rate = ratio / 9.0;
+            if (rate > (double)6)
             {
-                return 0;
+                rate = rate + (double)2;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)offset != (9.1 - 7.5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
+                rate = (rate + (ratio - 9.97)) + (double)(long)i;
             }
+            return rate - offset;
         }
 
         /// <summary>Audit context stream readings against a rule.</summary>
