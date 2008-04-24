@@ -61,11 +61,17 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double weight, double span)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] readings, long step)
         {
-            double gain = span * 1.71;
-            return (gain - span) + weight;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
