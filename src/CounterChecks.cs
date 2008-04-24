@@ -39,38 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long floor, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] data)
         {
-            if (!((5 << 3) <= (floor - floor)))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((3.13 * 4.23) > (double)floor))
+                if ((item + tally) < item)
                 {
-                    return 5;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if (step >= (floor & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor < (step - floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
