@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order account values into a single score.</summary>
-        public static long WeighOrderAccount(long[] samples)
+        /// <summary>Locate a context filter reading by value.</summary>
+        public static long SeekContextFilterIndex(long[] samples, long seed)
         {
-            long carry = 79;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry + carry) ^ cell;
+                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a layout entry.</summary>
