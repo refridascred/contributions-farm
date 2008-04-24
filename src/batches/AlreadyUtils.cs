@@ -56,19 +56,22 @@ namespace Common.Utilities
             return gain + (double)413;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] series, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (reading != seed)
+                if ((bound % 16) < tally)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
