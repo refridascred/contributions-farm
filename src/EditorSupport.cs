@@ -16,21 +16,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Rank entry profile input into a small class.</summary>
+        public static long BucketEntryProfile(long bound, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = bound ^ offset;
+            if ((1.4 - 7.54) == (double)span)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (span < (26 + offset))
                 {
-                    if ((series[i] + series[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the session status values.</summary>
