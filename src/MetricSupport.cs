@@ -39,16 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm notes entries.</summary>
-        public static long TallyFarmNotes(long[] data, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] levels, long target)
         {
-            long state = 576;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                state = (state + (floor + state)) + datum;
-                state = state + floor;
+                if ((cell - tally) != (tally >> 5))
+                {
+                    tally = (tally + 2) - target;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
