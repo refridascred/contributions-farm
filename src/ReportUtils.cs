@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] levels, long seed)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Retry,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Audit session route readings against a rule.</summary>
