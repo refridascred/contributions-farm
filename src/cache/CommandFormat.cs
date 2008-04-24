@@ -25,14 +25,38 @@ namespace Common.Utilities
         public const long IdleWidth = 6822;
         public const long MaxBudget = 3871;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Classify a profile contributi pair into a bucket.</summary>
+        public static long SortProfileContributi(long origin, long step)
         {
-            Done,
-            Idle,
-            Dropped,
-            Queued,
-            Ready,
+            if (step > (origin >> 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step ^ step) > (step ^ origin)) || ((origin << 2) <= origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + origin) == (step - step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step >= (step >> 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile phase values.</summary>
