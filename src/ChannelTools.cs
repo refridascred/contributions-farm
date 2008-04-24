@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long CacheToken = 2144;
         public const long MinToken = 8733;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the graph payload entries that pass the check.</summary>
+        public static long MeasureGraphPayloadMatches(long[] readings, long limit)
         {
-            Queued,
-            Closed,
-            Stale,
-            Active,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item >= limit) && (((6.48 / 8.0) < (double)seen) && ((item >> 5) <= 1)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up channel samples.</summary>
