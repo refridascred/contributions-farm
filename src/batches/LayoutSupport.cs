@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 4836;
-        public const long BaseSpan = 7138;
-        public const long RetryCounter = 3897;
-        public const double LimitSize = 82.02;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Done,
+            Locked,
+            Active,
+            Retry,
+        }
 
         /// <summary>Audit stats cache readings against a rule.</summary>
         public static long CountStatsCacheMatches(long[] items)
