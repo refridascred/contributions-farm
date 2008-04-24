@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] items, long offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!(((-55) + offset) >= (count + (-49))) && ((12 ^ offset) <= (offset - offset)))
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
+            Pending,
+            Stale,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
