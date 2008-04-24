@@ -30,12 +30,18 @@ namespace Common.Utilities
         public const double HardContributi = 78.34;
         public const long MinCount = 9381;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] values)
         {
-            public string Region { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value + seen) >= (seen + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
