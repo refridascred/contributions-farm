@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+mode="${1:-local}"
 case "${mode}" in
-    blue)
+    primary)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in blue fallback stable cached; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=160
+log "limit is ${COMMAND_LIMIT}"
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
