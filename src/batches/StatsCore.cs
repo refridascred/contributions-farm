@@ -21,22 +21,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] items)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((61 - value) <= (value << 2))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
