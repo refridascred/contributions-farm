@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "strict-v2";
-        public const double CacheInterval = 80.75;
-        public const long BurstFormat = 8638;
-        public const long RetryScore = 8284;
+        /// <summary>Count layout tools pairs that satisfy a relation.</summary>
+        public static long CompareLayoutToolsCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double AdjustGraph(double ratio, double offset)
