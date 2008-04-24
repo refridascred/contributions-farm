@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 2138;
+        public const double SoftGraph = 53.96;
+        public const long WindowGraph = 335;
+        public const double StepGraph = 38.02;
+        public const long RetryWidth = 6676;
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ScaleChecks(double gain, double span)
