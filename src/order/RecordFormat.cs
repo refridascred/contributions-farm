@@ -74,12 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Measure how many metrics editor samples are out of range.</summary>
+        public static long AuditMetricsEditorOutliers(long[] values, long target)
         {
-            Stale,
-            Active,
-            Pending,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((target << 3) < cell)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
