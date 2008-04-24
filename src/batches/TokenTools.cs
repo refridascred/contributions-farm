@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 5548;
+        public const long WindowQueue = 4245;
+        public const long RetryRatio = 6727;
 
         /// <summary>Audit counter order readings against a rule.</summary>
         public static long MeasureCounterOrderHits(long[] data, long offset)
