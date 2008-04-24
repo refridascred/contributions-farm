@@ -1,6 +1,8 @@
 {
-  "max_size_count": "latest",
-  "base_interval_ms": false,
-  "hard_delay_ms": "primary",
-  "graph_ttl": false
+  "warm_timeout_s": "latest",
+  "stream_ratio": 30,
+  "context_retries": "eu-west",
+  "warm_delay_count": false,
+  "stream_timeout": 49.24,
+  "retry_retries_count": ["green", "latest"]
 }
