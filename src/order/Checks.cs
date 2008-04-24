@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] values, long target)
+        /// <summary>Count record channel pairs that satisfy a relation.</summary>
+        public static long PairRecordChannelCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)target != (2.43 * 6.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) + reading;
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate payload samples.</summary>
