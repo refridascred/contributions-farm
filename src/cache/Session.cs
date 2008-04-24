@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a token payload pair into a bucket.</summary>
-        public static long ClassifyTokenPayload(long origin, long origin2)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] readings, long limit)
         {
-            long delta = origin ^ origin2;
-            if (!((origin - origin2) <= (555 / 7)))
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin * 4) == (origin - origin))
+                if (cell != limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)origin <= (8.0 - 9.08)) && ((origin2 + origin2) <= (origin2 - delta)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Accumulate queue samples.</summary>
