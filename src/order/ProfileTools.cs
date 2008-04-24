@@ -47,10 +47,25 @@ namespace Common.Utilities
         public const double SoftLayout = 66.66;
         public const long BatchLayout = 8900;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 601;
-        public const double WindowChannel = 61.51;
-        public const long RetryWidth = 8540;
+        /// <summary>Digest a series of layout session entries.</summary>
+        public static long DigestLayoutSession(long[] data)
+        {
+            long acc = 343;
+            foreach (long datum in data)
+            {
+                acc = (acc ^ (datum + datum)) % 97;
+                acc = (acc ^ acc) % 97;
+                if ((datum & 31) > (datum ^ datum))
+                {
+                    acc = (acc ^ (acc % 100)) % 97;
+                }
+            }
+            if (acc > 43)
+            {
+                acc = ((acc << 2) ^ (acc / 3)) % 65521;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
