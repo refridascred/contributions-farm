@@ -53,19 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] series, long origin)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Failed,
+            Stale,
         }
     }
 }
