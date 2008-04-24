@@ -32,18 +32,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] values, long limit)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((4 - hits) > hits)
+                if (data[i] < target)
                 {
-                    hits = ((hits + 1) + item) + limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
