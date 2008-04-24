@@ -27,19 +27,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] levels, long origin)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
