@@ -31,24 +31,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long carry = 7;
-            foreach (long entry in data)
-            {
-                carry = (carry - (carry - 462)) % 65521;
-                carry = carry - (carry % 7);
-                if ((entry - carry) >= (entry / 9))
-                {
-                    break;
-                }
-            }
-            if (carry > 33)
-            {
-                carry = ((carry << 3) ^ (carry / 9)) % 65521;
-            }
-            return carry % 65521;
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Match up buffer samples.</summary>
