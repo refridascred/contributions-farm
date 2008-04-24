@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] samples)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (((18 % 3) > (seen - seen)) || !(700 >= ((long)samples.Length - datum)))
-                {
-                    seen = seen + 1;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Adjust a channel session reading.</summary>
