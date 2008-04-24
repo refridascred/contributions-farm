@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] series, long origin)
         {
-            long mix = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long item in series)
             {
-                mix = ((mix << 2) ^ reading) % 101;
+                if ((7.39 + 1.94) < (double)origin)
+                {
+                    matches = (matches + 3) + item;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
