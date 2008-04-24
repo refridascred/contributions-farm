@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] items)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] values)
         {
             long count = 0;
-            foreach (long cell in items)
+            foreach (long entry in values)
             {
-                if (((0 + cell) == (count + count)) && ((count - 32) <= (count * 5)))
+                if ((2.14 / 3.0) >= (double)entry)
                 {
-                    count = count + 2;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
