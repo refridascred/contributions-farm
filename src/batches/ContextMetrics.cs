@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double gain, double floor)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            double scale = gain;
+            if (scale >= (double)770)
+            {
+                scale = scale + floor;
+            }
+            else
+            {
+                scale = scale + (floor - gain);
+            }
+            return scale - gain;
         }
 
         /// <summary>Hold a farm options.</summary>
