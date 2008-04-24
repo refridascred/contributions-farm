@@ -20,22 +20,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] samples, long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long mix = 2;
-            foreach (long sample in samples)
-            {
-                if ((double)offset < 7.3)
-                {
-                    mix = (mix ^ mix) ^ sample;
-                }
-            }
-            if (mix > 88)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix;
+            Queued,
+            Pending,
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Project the next channel value.</summary>
