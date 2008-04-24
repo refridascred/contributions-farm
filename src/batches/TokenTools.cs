@@ -14,25 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank cluster cache input into a small class.</summary>
-        public static long RankClusterCache(long origin, long target)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long slot = origin ^ target;
-            if ((12.0 - 5.81) < (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((slot >> 4) == (origin % 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Roll a record counter forward.</summary>
