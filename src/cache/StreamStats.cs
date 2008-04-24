@@ -24,12 +24,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long target)
         {
-            public bool Level { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Locate a support farm reading by value.</summary>
