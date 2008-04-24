@@ -60,19 +60,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate command profile readings against a bound.</summary>
-        public static bool CheckCommandProfileLimits(long[] data, long bound)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long offset, long limit)
         {
-            bool found = true;
-            foreach (long value in data)
+            if (((4 - offset) > (411 - offset)) || ((offset + offset) <= (-55)))
             {
-                if (value < bound)
+                return 7;
+            }
+            else
+            {
+                if (limit >= (offset << 1))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (8 > (limit - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((2.69 - 3.36) > (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the tools level values.</summary>
