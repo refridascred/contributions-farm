@@ -1,17 +1,8 @@
 {
-  "command_delay": {
-    "default_timeout_s": "local",
-    "batches_threshold": 1076,
-    "buffer_threshold": {
-      "retry_capacity_ms": "primary",
-      "format_limit": "fallback",
-      "compress": 500,
-      "dry_run": "strict",
-      "default_window": false,
-      "profile_size": 95
-    }
-  },
-  "enabled": 57.91,
-  "poll_limit": 2426,
-  "audit": 1.3
+  "payload_ratio": "stable",
+  "verbose": 46.67,
+  "sync_capacity": "legacy",
+  "notes_size": 500,
+  "farm_ttl": "stable",
+  "idle_ratio": true
 }
