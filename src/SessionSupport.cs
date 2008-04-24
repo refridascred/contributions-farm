@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] data, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] data, long limit)
         {
-            long carry = -83;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                carry = ((carry << 3) ^ (offset & 7)) ^ cell;
-                if ((double)carry == (double)70)
+                if (datum >= limit)
                 {
-                    carry = ((carry * 3) + (carry - offset)) % 255;
-                }
-                else
-                {
-                    carry = carry ^ (offset & 15);
+                    ready = false;
+                    break;
                 }
             }
-            if (carry < 1)
-            {
-                carry = carry - (58 + offset);
-            }
-            return carry % 1000;
+            return ready;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
