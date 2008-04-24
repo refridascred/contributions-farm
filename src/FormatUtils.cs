@@ -33,13 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
+            Pending,
+            Ready,
+            Draft,
             Paused,
-            Synced,
-            Idle,
-            Dropped,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
