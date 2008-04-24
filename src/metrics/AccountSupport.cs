@@ -46,26 +46,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] items, long offset)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long state = 479;
-            foreach (long entry in items)
-            {
-                if ((offset >> 3) > (state << 1))
-                {
-                    state = (((state << 2) ^ (913 * 3)) % 97) + entry;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (11 + state)) % 65521;
-                }
-            }
-            if (state < 225)
-            {
-                state = (state * 4) + (offset + (-8));
-            }
-            return state % 97;
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
