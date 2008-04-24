@@ -41,31 +41,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long step)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            if ((limit / 6) != (9 - 25))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + 992) >= (step % 100))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + limit) == (8 * 5))
+                    if ((levels[i] + levels[j]) == 7)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next checks layout value.</summary>
