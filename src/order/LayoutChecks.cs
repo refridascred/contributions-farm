@@ -35,12 +35,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "local";
-        public const string BurstBudget = "stable-1";
-        public const long WindowEntry = 3392;
-        public const long SoftEntry = 8692;
-        public const long BatchEntry = 4169;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((long)data.Length == (cell ^ 6))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
