@@ -23,18 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already route samples are out of range.</summary>
-        public static long AuditAlreadyRouteHits(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] items)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (!(6.4 < (double)cell))
+                if (datum < (datum / 9))
                 {
-                    count = count + 2;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many schema batches samples are out of range.</summary>
