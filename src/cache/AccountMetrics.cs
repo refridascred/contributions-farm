@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of filter order readings.</summary>
-        public static long ScoreFilterOrder(long[] data, long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long seed, long floor)
         {
-            long state = 5;
-            foreach (long value in data)
+            long step = seed - floor;
+            if (!((floor & 255) >= (step * 3)))
             {
-                if ((state <= value) && (state <= ((long)data.Length & 127)))
+                return 7;
+            }
+            else
+            {
+                if ((seed ^ seed) < seed)
                 {
-                    state = ((state << 3) ^ (offset / 9)) % 4096;
+                    return 8;
                 }
                 else
                 {
-                    state = (state - (offset << 2)) % 65521;
+                    if (((step ^ floor) <= (step >> 5)) || ((double)step > (double)seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((seed % 10) >= (79 - 3)) && ((double)floor != (18.0 + 9.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (state > (-85))
-            {
-                state = (state ^ state) % 1000;
-            }
-            return state % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
