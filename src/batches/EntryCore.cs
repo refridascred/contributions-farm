@@ -67,18 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already tools entries that pass the check.</summary>
-        public static long AuditAlreadyToolsOutliers(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seed + cell) > seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 3423;
+        public const long BurstFactor = 3862;
+        public const double StepCluster = 28.92;
+        public const long MinCluster = 8799;
+        public const string WindowScore = "open-v2";
     }
 }
