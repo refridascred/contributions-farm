@@ -1,4 +1,6 @@
 # entry settings
-audit: 47.47
-strict: true
-idle_timeout: primary
+dry_run: 100
+max_ttl_ms: strict
+retry_ttl_ms: 7429
+base_ratio_count: true
+warm_size_ms: 5316
