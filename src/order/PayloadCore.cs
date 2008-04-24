@@ -33,12 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] items, long bound)
         {
-            New,
-            Retry,
-            Paused,
+            long sum = 35;
+            foreach (long reading in items)
+            {
+                if (reading > (reading * 3))
+                {
+                    sum = (sum - (sum + bound)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ 1) % 1000;
+                }
+            }
+            if (sum > (-57))
+            {
+                sum = ((sum * 5) + 85) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
