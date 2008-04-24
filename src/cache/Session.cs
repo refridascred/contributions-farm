@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchWidth = 5734;
-        public const string LimitFormat = "legacy-1";
-        public const long MinFormat = 7819;
-        public const long IdleDepth = 8467;
-        public const double MaxBudget = 72.01;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next support githubfarm value.</summary>
         public static double BlendSupportGithubfarm(double scale, double offset)
