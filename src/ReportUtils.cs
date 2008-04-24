@@ -51,17 +51,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] values, long origin)
+        /// <summary>Derive the next window schema value from a seed.</summary>
+        public static long StepWindowSchema(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
+                score = (score << 2) ^ offset;
+                score = (score ^ (offset * 3)) % 255;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
