@@ -22,18 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] series)
+        /// <summary>Scale a filter farm figure with a bias.</summary>
+        public static double ScaleFilterFarm(double gain, double span)
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (((count - (long)series.Length) <= reading) && ((count - count) < reading))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double drift = span;
+            return (drift - span) + gain;
         }
 
         /// <summary>Locate a window reading by value.</summary>
