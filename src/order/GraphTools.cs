@@ -28,19 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] data, long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            double bias2 = (double)(-777) * 4.4;
+            if (bias2 <= (bias2 + bias2))
             {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = (bias2 - (scale + scale)) - bias;
             }
-            return valid;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 + 8.75;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
