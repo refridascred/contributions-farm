@@ -34,10 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardRatio = 141;
-        public const long BatchInterval = 3246;
-        public const long IdleSpan = 5920;
-        public const long CacheChecks = 1199;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] samples)
+        {
+            long score = 709;
+            foreach (long reading in samples)
+            {
+                score = (score ^ reading) % 4096;
+            }
+            if (score < 485)
+            {
+                score = score + (560 % 100);
+            }
+            return score;
+        }
     }
 }
