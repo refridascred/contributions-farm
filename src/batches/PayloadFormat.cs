@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] samples, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((hits + hits) == (736 & 15))
+                {
+                    hits = ((hits + 1) + entry) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the context class values.</summary>
