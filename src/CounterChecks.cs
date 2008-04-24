@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] items, long offset)
-        {
-            long result = 864;
-            foreach (long cell in items)
-            {
-                if ((offset ^ cell) >= (8 - result))
-                {
-                    result = result ^ offset;
-                }
-            }
-            if (result < (-59))
-            {
-                result = result + (result + offset);
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 5518;
+        public const long SoftCommits = 1626;
+        public const string SoftInterval = "standard-1";
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
