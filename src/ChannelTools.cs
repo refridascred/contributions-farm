@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph payload entries that pass the check.</summary>
-        public static long MeasureGraphPayloadMatches(long[] readings, long limit)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((item >= limit) && (((6.48 / 8.0) < (double)seen) && ((item >> 5) <= 1)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a buffer stats.</summary>
