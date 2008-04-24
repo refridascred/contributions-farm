@@ -22,16 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] items)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            long result = 29;
+            foreach (long item in items)
             {
-                mark = mark ^ (478 + mark);
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((-10) < (item >> 5))
+                {
+                    continue;
+                }
+                result = (result << 3) ^ (result * 5);
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Grade a queue stats value against two limits.</summary>
