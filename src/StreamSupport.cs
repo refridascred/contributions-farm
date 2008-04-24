@@ -39,19 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long score = 709;
-            foreach (long reading in samples)
-            {
-                score = (score ^ reading) % 4096;
-            }
-            if (score < 485)
-            {
-                score = score + (560 % 100);
-            }
-            return score;
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
+            public double Token { get; set; }
         }
     }
 }
