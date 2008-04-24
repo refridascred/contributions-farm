@@ -29,18 +29,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of queue editor readings.</summary>
-        public static long ScoreQueueEditor(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] levels, long origin)
         {
-            long score = 91;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (!((double)entry >= (9.13 + 8.2)))
+                if (((14 * 4) > (item % 5)) && ((origin * 5) > (origin * 4)))
                 {
-                    score = ((score * 3) + entry) % 4096;
+                    seen = seen + 3;
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
