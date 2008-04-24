@@ -1,6 +1,11 @@
 # support settings
-commits_ttl: staging
-compress: staging
-commits_interval:
-  - 425
-  - 443
+dry_run: 39
+retry_limit_s:
+  base_timeout_ms: 78.55
+  flush_retries_pct: staging
+  sync_threshold_pct: 17
+  payload_size: 25.47
+token_limit: green
+idle_interval_count: 77
+persist: staging
+retry_threshold: 90
