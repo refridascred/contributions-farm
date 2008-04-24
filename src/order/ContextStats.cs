@@ -34,12 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Dropped,
-            Locked,
-            Paused,
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
