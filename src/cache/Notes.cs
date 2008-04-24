@@ -24,11 +24,40 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 1485;
-        public const string RetryInterval = "strict-v2";
-        public const long MaxRoute = 6293;
-        public const long MinSpan = 3258;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long target, long offset)
+        {
+            long bound = target + offset;
+            if (bound > (offset ^ target))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(bound <= (bound - bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset == (2.0 * 7.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((79 * 2) < offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksOutliers(long[] values)
