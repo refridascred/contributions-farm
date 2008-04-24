@@ -74,11 +74,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinSpan = 6471;
-        public const long IdleWidth = 1495;
-        public const long BurstScore = 8460;
-        public const double StepCache = 13.09;
-        public const string MaxBudget = "legacy-edge";
+        /// <summary>Validate metrics counter readings against a bound.</summary>
+        public static bool GuardMetricsCounterRange(long[] samples, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
