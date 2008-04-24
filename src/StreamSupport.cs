@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSpan = "open-v2";
-        public const long CacheSession = 5172;
-        public const long SoftSession = 3783;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsHits(long[] samples)
