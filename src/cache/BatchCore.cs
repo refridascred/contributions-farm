@@ -61,13 +61,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] values, long offset)
         {
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((sample & 127) != (sample << 1))
+                {
+                    hits = (hits + 3) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
