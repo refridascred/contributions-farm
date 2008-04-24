@@ -29,19 +29,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate format tools readings against a bound.</summary>
-        public static bool CheckFormatToolsRange(long[] readings, long offset)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            New,
+            Done,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a notes summary.</summary>
