@@ -1,10 +1,10 @@
 # entry settings
-enabled: 62.34
-graph_size:
-  - 150
-  - 444
-  - 271
-  - 69
-max_limit_pct: false
-default_limit: green
-commits_window: false
+verbose:
+  - 495
+  - 107
+  - 324
+  - 21
+min_depth_s: false
+retry_ratio_s: 58.96
+soft_capacity: 3041
+idle_interval_ms: 3465
