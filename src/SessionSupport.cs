@@ -14,12 +14,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleDepth = 5296;
-        public const double CacheBatch = 72.23;
-        public const double RetryBatch = 11.34;
-        public const double SoftBatch = 84.78;
-        public const long CacheRatio = 1250;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Active,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultChannel = 8061;
