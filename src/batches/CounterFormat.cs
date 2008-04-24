@@ -13,19 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every metric batch entry stays within the limit.</summary>
-        public static bool CheckMetricBatchBounds(long[] data, long bound)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Ready,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
