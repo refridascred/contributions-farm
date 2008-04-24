@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long target, long limit)
         {
-            long total = 1;
-            foreach (long item in readings)
+            long slot = target + limit;
+            if ((double)limit > (7.3 + 0.68))
             {
-                total = (total + (total - item)) % 97;
+                return 1;
             }
-            return total % 97;
+            else
+            {
+                if (((double)target > (6.81 + 4.4)) && ((double)760 < (double)target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (slot > limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine format values into a single score.</summary>
