@@ -1,14 +1,5 @@
 {
-  "burst_interval_ms": 30,
-  "burst_limit_pct": 1845,
-  "soft_interval_s": true,
-  "buffer_capacity": 20.8,
-  "verbose": [240, 115],
-  "batch_interval_s": {
-    "retry_size": 56,
-    "base_timeout_ms": "staging",
-    "soft_size_count": 57.08,
-    "layout_depth": "fallback",
-    "idle_capacity_s": "staging"
-  }
+  "notes_window": [368, 107],
+  "audit": 100,
+  "retry_depth_pct": [210, 342, 231]
 }
