@@ -61,17 +61,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] values, long step)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
