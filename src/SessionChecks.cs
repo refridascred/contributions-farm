@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a queue commits counter forward.</summary>
-        public static long IterateQueueCommits(long floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long step, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
+            long slot = step ^ limit;
+            if ((slot > ((-194) - 458)) || ((limit % 64) < (step & 3)))
             {
-                state = state ^ (534 - floor);
-                state = ((state << 2) ^ (floor & 3)) % 1000;
-                state = ((state * 3) + (long)i) % 1000;
+                return 6;
             }
-            return state;
+            else
+            {
+                if (!((921 % 100) > (limit - limit)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)limit != (2.0 - 0.03)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((double)step == (double)8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of context report readings.</summary>
