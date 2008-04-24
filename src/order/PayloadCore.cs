@@ -44,13 +44,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
+            Synced,
             Ready,
+            Paused,
             Queued,
             Idle,
-            Failed,
         }
     }
 }
