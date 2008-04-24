@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] items, long target)
         {
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
