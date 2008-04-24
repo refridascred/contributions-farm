@@ -35,13 +35,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Validate channel already readings against a bound.</summary>
+        public static bool VerifyChannelAlreadyLimits(long[] levels, long step)
         {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public double Offset { get; set; }
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
