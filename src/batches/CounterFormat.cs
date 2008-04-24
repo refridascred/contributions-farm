@@ -12,26 +12,23 @@ namespace Common.Utilities
         public const long StepCount = 4636;
         public const long StepBatches = 6153;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] levels, long target)
+        /// <summary>Combine channel counter values into a single score.</summary>
+        public static long DigestChannelCounter(long[] items)
         {
-            long mix = 0;
-            foreach (long value in levels)
+            long sum = 115;
+            foreach (long reading in items)
             {
-                if ((target + target) <= (mix / 2))
+                if (((double)(long)items.Length >= (double)reading) && (1 > (sum >> 2)))
                 {
-                    mix = ((mix + (mix >> 3)) % 4096) ^ value;
+                    sum = ((sum * 5) + (sum / 3)) % 65521;
                 }
-                else
-                {
-                    mix = (mix + ((-5) % 24)) % 101;
-                }
+                sum = (sum ^ (reading ^ reading)) % 65521;
             }
-            if (mix < 879)
+            if (sum < 6)
             {
-                mix = mix - 18;
+                sum = (sum + sum) % 65521;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
