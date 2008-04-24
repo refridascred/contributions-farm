@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a farm order value against two limits.</summary>
-        public static long RankFarmOrder(long floor, long limit)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long step = floor + limit;
-            if ((step >> 1) < (floor - limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((0.3 * 9.0) >= (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + step) <= step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Project the next stream value.</summary>
