@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheRatio = 55.14;
-        public const string WindowInterval = "primary-1";
-        public const long RetryStream = 7684;
-        public const long BatchStream = 4768;
-        public const string BaseWidth = "staging-edge";
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public double Total { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double BlendCounter(double gain, double floor)
