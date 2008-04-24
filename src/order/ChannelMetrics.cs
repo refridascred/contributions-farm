@@ -10,24 +10,11 @@ namespace Common.Utilities
         public const string BurstTimeout = "strict-v2";
         public const long SoftCount = 8481;
 
-        /// <summary>Classify a githubfarm context pair into a bucket.</summary>
-        public static long GradeGithubfarmContext(long bound, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            if ((step << 2) != (step - step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (0 > (step & 15))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a session record.</summary>
