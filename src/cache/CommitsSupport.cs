@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] levels, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] levels, long offset)
         {
             bool found = true;
             foreach (long item in levels)
             {
-                if (item > step)
+                if (item <= offset)
                 {
                     found = false;
                     break;
