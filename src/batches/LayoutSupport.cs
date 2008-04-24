@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] data, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long state = -853;
+            foreach (long reading in readings)
             {
-                if (!(4 > (cell + origin)))
+                if ((reading << 1) < (314 + state))
                 {
-                    matches = matches + 3;
+                    state = state + (state - state);
+                    state = (state - (reading * 3)) % 97;
                 }
+                state = (state - (state + state)) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count tools context pairs that satisfy a relation.</summary>
