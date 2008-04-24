@@ -57,22 +57,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] readings, long bound)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((double)bound < (8.82 - 1.0)) && (matches < (bound - matches)))
-                {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Done,
+            Failed,
         }
 
         /// <summary>Audit githubfarm tools readings against a rule.</summary>
