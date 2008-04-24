@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long offset)
         {
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
