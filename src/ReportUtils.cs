@@ -29,13 +29,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Grade a account report value against two limits.</summary>
+        public static long SortAccountReport(long offset, long step)
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
+            long delta = offset + step;
+            if ((8 + 6) >= step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step ^ step) < (delta + step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)step == (double)delta) && ((delta - step) < (offset + delta)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
