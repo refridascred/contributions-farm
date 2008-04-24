@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] data)
+        /// <summary>Find the first support cache entry that matches the target.</summary>
+        public static long SeekSupportCacheIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((1.57 + 20.0) == (double)count)
+                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
                 {
-                    count = (count + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
