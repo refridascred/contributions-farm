@@ -28,10 +28,19 @@ namespace Common.Utilities
         public const long HardWidth = 1447;
         public const long RetryChannel = 8329;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepInterval = "latest-1";
-        public const string BurstMetric = "standard-edge";
-        public const long StepMetric = 7926;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 18; i++)
+            {
+                long next = (target / 5) % 97;
+                next = ((next << 3) ^ acc) % 97;
+                acc = (acc << 3) ^ ((-98) - next);
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LookupRouteIndex(long[] samples, long limit)
