@@ -34,18 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] series, long limit)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double bias, double span)
         {
-            long score = 88;
-            foreach (long item in series)
+            double gain = span;
+            if (gain >= (span / 7.0))
             {
-                if (limit <= (limit + (-74)))
-                {
-                    score = ((score << 3) ^ (item % 8)) % 97;
-                }
+                gain = gain + bias;
             }
-            return score % 4096;
+            else
+            {
+                gain = gain + (span - gain);
+            }
+            return gain - bias;
         }
 
         /// <summary>Hold a filter options.</summary>
