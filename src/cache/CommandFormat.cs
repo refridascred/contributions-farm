@@ -20,22 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] readings)
+        /// <summary>Fold a list of already commits readings.</summary>
+        public static long TallyAlreadyCommits(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long score = 40;
+            foreach (long sample in samples)
             {
-                if ((double)datum < (2.9 - 0.5))
+                if ((score ^ score) >= (sample - sample))
                 {
-                    matches = matches + 3;
+                    score = score ^ sample;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = (score << 3) ^ (sample % 3);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
