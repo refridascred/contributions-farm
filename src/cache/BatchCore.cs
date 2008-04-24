@@ -29,18 +29,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] levels)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double bias, double span)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double weight = (double)(940 >> 3);
+            if (weight < (bias + 8.99))
             {
-                if ((seen << 2) != (sample + seen))
-                {
-                    seen = seen + 1;
-                }
+                weight = (weight - bias) - span;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (bias / 2.0)) + (double)(long)i;
+            }
+            return weight + (double)82;
         }
 
         /// <summary>Hold a channel header.</summary>
