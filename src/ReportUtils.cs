@@ -47,13 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] samples)
         {
-            New,
-            Synced,
-            Failed,
-            Active,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((1 - tally) < (tally + (long)samples.Length))
+                {
+                    tally = (tally + 3) - reading;
+                }
+            }
+            return tally;
         }
     }
 }
