@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] levels)
+        /// <summary>Find the first batch payload entry that matches the target.</summary>
+        public static long SeekBatchPayloadIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= (count - reading))
+                if (data[i] >= seed)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
