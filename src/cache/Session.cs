@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinInterval = 7425;
+        public const long HardWidth = 8456;
+        public const double CacheToken = 24.92;
+        public const long RetryFactor = 2063;
+        public const long StepToken = 973;
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
