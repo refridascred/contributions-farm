@@ -19,24 +19,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long offset, long offset2)
+        /// <summary>Compare every pair of filter command readings.</summary>
+        public static long PairFilterCommandCount(long[] samples)
         {
-            if (((double)offset2 >= (6.3 - 9.24)) || ((9.96 + 4.25) != (double)offset2))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset2 > (offset2 >> 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
