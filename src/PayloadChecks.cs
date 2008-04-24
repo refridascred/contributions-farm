@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 4521;
-        public const double RetryTimeout = 34.23;
-        public const double CacheStats = 97.67;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long SortRecord(long seed, long seed2)
