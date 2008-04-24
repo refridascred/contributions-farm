@@ -21,13 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Blend two profile session measurements.</summary>
+        public static double SmoothProfileSession(double gain, double offset)
         {
-            public bool Count { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
-            public double Weight { get; set; }
+            double bias = 1.01;
+            if (bias < bias)
+            {
+                bias = (bias + (double)5) + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (0.2 + gain)) - (double)(long)i;
+            }
+            return bias - (bias * 6.0);
         }
 
         /// <summary>Describe the notes state values.</summary>
