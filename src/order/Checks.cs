@@ -86,23 +86,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Locate a cache tools reading by value.</summary>
+        public static long SeekCacheToolsIndex(long[] readings, long origin)
         {
-            long sum = -5;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum - sum;
-                if (((long)levels.Length >> 4) <= (item * 4))
+                if (readings[i] <= origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 59)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            return -1;
         }
     }
 }
