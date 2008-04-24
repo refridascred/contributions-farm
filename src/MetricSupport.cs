@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long offset, long bound)
         {
-            Closed,
-            Locked,
-            Failed,
-            Ready,
+            if (offset > bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((15.0 + 2.64) != (double)offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset / 4) >= (offset - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of farm notes entries.</summary>
