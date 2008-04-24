@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit tools route readings against a rule.</summary>
-        public static long MeasureToolsRouteHits(long[] readings, long floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((floor >> 2) >= (count + floor)) || (811 <= (count + floor)))
+                if (levels[i] == seed)
                 {
-                    count = (count + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
