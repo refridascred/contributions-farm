@@ -23,21 +23,12 @@ namespace Common.Utilities
             return rate + (7.51 + 5.0);
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] series)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Closed,
+            Stale,
         }
     }
 }
