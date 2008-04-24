@@ -39,19 +39,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] values, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long anchor = -5;
+            foreach (long sample in levels)
             {
-                if (sample <= limit)
+                for (int i = 0; i < 12; i++)
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor * 4) + ((long)i / 9);
+                }
+                anchor = (anchor ^ (anchor % 60)) % 255;
+                if ((double)sample < (7.21 / 8.0))
+                {
+                    anchor = (anchor + (sample + sample)) % 101;
+                }
+                else
+                {
+                    anchor = anchor - (sample - sample);
                 }
             }
-            return valid;
+            if (anchor < 18)
+            {
+                anchor = (anchor ^ (4 & 7)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Check that every schema profile entry stays within the limit.</summary>
