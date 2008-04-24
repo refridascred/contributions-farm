@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] samples, long offset)
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((6.0 - 12.0) >= (double)item)
+                {
+                    matches = (matches + 1) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a command snapshot.</summary>
