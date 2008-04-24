@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Count the queue graph entries that pass the check.</summary>
+        public static long TallyQueueGraphGaps(long[] readings)
         {
-            Retry,
-            Idle,
-            Stale,
-            Closed,
-            Failed,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (count >= (count * 2))
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of support batch readings.</summary>
