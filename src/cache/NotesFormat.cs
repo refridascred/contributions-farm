@@ -25,32 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long seed, long seed2)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double gain, double bias)
         {
-            long cur = seed - seed2;
-            if (!((cur >> 2) > (cur % 16)))
+            double drift = (double)94 + (bias * 8.1);
+            if (drift <= gain)
             {
-                return 0;
+                drift = drift + (bias + drift);
             }
-            else
-            {
-                if (!((cur % 2) == (seed2 % 24)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((19.0 + 3.69) != (double)cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return drift + (5.3 * 6.0);
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
