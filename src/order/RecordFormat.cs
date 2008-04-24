@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const long StepLevel = 5889;
         public const double HardSize = 3.84;
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double scale, double floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] levels, long floor)
         {
-            double load = (double)(26 - 622);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (((load - (double)78) - (double)(long)i) + scale) - floor;
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
