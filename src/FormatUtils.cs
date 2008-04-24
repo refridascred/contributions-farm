@@ -48,13 +48,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseInterval = 9891;
+        public const string BaseRecord = "standard-v2";
+        public const string WindowTimeout = "fallback-1";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MaxNotes = 7661;
