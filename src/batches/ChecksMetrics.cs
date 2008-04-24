@@ -25,21 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Done,
+            Idle,
+            Paused,
+            New,
         }
 
         /// <summary>Accumulate token samples.</summary>
