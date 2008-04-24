@@ -31,17 +31,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] readings, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
+                if (5 <= (entry / 8))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
