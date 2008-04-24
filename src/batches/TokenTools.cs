@@ -35,21 +35,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long limit, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = limit + seed;
+            if (((lane & 63) != (seed >> 2)) || ((double)limit <= (8.0 / 3.0)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((limit + lane) < (seed - 8)) && (lane > (924 + 1)))
                 {
-                    if ((levels[i] + levels[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
