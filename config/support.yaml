@@ -1,4 +1,4 @@
 # support settings
-poll_retries_ms: 71.14
-warm_interval_ms: strict
-warm_depth_count: edge
+buffer_interval: 20.7
+warm_window_count: cached
+already_ttl: 60
