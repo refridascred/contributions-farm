@@ -21,13 +21,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            long score = 3;
+            foreach (long reading in levels)
+            {
+                score = (score * 4) + reading;
+            }
+            return score;
         }
 
         /// <summary>Hold a stream summary.</summary>
