@@ -45,21 +45,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of command buffer readings.</summary>
-        public static long CompareCommandBufferCount(long[] series)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
