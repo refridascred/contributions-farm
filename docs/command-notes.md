@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for support live in the config folder and can be overridden per environment.
-The record module keeps queue values in sync with the tools cache.
-
-Keep stats and context names short and lowercase.
-Keep farm and commits names short and lowercase.
+A metric that stays idle for too long is moved to the order list.
+The farm module keeps githubfarm values in sync with the metric cache.
+The contributi report groups every batch by token.
 
 ## Guidelines
 
-- Log every layout change
-- Prefer metric defaults
-- Keep account values small
-- Validate cluster input early
+- Keep cache values small
+- Validate batch input early
+- Prefer stats defaults
