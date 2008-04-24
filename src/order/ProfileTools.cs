@@ -45,21 +45,24 @@ namespace Common.Utilities
         public const double WindowChannel = 61.51;
         public const long RetryWidth = 8540;
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long floor, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (origin > floor)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((floor >> 4) != (origin * 3))
                 {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
