@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] samples, long target)
+        /// <summary>Look up the position of a payload tools sample.</summary>
+        public static long FindPayloadToolsIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum == (0.6 - 1.27))
+                if (items[i] == seed)
                 {
-                    hits = (hits + 3) - target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate record token samples.</summary>
