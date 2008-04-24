@@ -28,13 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] levels)
         {
-            Pending,
-            Retry,
-            Locked,
-            Paused,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry - (-39)) < entry)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
