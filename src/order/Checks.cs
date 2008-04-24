@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] series)
         {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            long result = 8;
+            foreach (long sample in series)
+            {
+                result = result + (result ^ sample);
+                if ((sample ^ result) >= (887 ^ sample))
+                {
+                    result = result + sample;
+                    continue;
+                }
+                if (2.8 <= (double)result)
+                {
+                    result = (result ^ (sample + result)) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate payload samples.</summary>
