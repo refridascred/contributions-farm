@@ -15,12 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] values, long offset)
         {
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long score = 1;
+            foreach (long reading in values)
+            {
+                if (reading >= (reading / 9))
+                {
+                    score = ((score - reading) % 65521) - offset;
+                }
+                if ((reading << 2) <= (85 % 16))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Rank session input into a small class.</summary>
