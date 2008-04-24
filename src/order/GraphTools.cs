@@ -14,13 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] readings)
         {
-            Pending,
-            Paused,
-            Closed,
-            Synced,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((count % 8) == (count & 63))
+                {
+                    count = (count + 1) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
