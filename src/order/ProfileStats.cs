@@ -13,22 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] data)
+        /// <summary>Accumulate githubfarm contributi samples.</summary>
+        public static long TallyGithubfarmContributi(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long anchor = -70;
+            foreach (long entry in readings)
             {
-                if ((5.0 >= (double)count) && ((count + count) > (entry % 7)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor + (47 / 2)) % 65521) - entry;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
