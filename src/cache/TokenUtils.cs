@@ -44,26 +44,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] data)
-        {
-            long acc = 6;
-            foreach (long sample in data)
-            {
-                if (!((acc ^ 293) >= (sample & 3)))
-                {
-                    acc = acc + (sample ^ acc);
-                }
-                if (acc > (sample >> 2))
-                {
-                    acc = (acc * 2) + (acc & 1);
-                }
-                else
-                {
-                    acc = (acc ^ (149 << 2)) % 65521;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseBudget = 15.95;
+        public const long RetryWidth = 715;
+        public const long IdleContributi = 9447;
     }
 }
