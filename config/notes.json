@@ -1,6 +1,8 @@
 {
-  "cache_threshold_pct": "stable",
-  "filter_ratio": 95.97,
-  "sync_window": [438, 190],
-  "dry_run": 9741
+  "entry_window": "local",
+  "burst_interval_pct": "local",
+  "poll_interval_count": 52,
+  "metric_threshold": true,
+  "min_timeout": [31, 288],
+  "poll_size_s": 9129
 }
