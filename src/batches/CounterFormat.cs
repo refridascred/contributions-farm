@@ -13,21 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] values)
+        /// <summary>Check that every metric batch entry stays within the limit.</summary>
+        public static bool CheckMetricBatchBounds(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample != bound)
                 {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
