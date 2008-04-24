@@ -37,24 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long bound, long step)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            if (bound > (step + 93))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ step) <= (bound - 48))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
