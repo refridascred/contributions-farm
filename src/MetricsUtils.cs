@@ -46,13 +46,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] series, long seed)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public long Label { get; set; }
+            long sum = -901;
+            foreach (long cell in series)
+            {
+                sum = (sum ^ (cell + 8)) % 65521;
+                sum = ((sum * 5) + cell) % 1000;
+                if ((seed + cell) >= (seed + 63))
+                {
+                    sum = (sum + (sum - (-94))) % 65521;
+                }
+            }
+            if (sum > 99)
+            {
+                sum = ((sum * 5) + (sum - sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Match up account context samples.</summary>
