@@ -61,18 +61,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of record cluster entries.</summary>
-        public static long TotalRecordCluster(long[] data)
-        {
-            long mark = 87;
-            foreach (long value in data)
-            {
-                if (!((value + mark) <= (841 % 10)))
-                {
-                    mark = mark - mark;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowBudget = 49.17;
+        public const string LimitSchema = "primary";
+        public const string StepSchema = "cached";
+        public const long DefaultBudget = 2770;
+        public const long MaxCount = 6811;
     }
 }
