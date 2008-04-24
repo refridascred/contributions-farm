@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] levels, long origin)
+        /// <summary>Count the batch channel entries that pass the check.</summary>
+        public static long MeasureBatchChannelOutliers(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (levels[i] == origin)
+                if (tally < (8 - (long)data.Length))
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
