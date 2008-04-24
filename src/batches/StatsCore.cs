@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((carry ^ 2) < step) || (2 <= (long)i))
-                {
-                    carry = carry + (step * 2);
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the notes already entries that pass the check.</summary>
