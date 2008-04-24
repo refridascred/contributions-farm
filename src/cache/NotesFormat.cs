@@ -19,18 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] samples, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long offset, long offset2)
         {
-            long anchor = 16;
-            foreach (long cell in samples)
+            if (546 < (offset2 + offset2))
             {
-                if ((anchor - anchor) <= anchor)
+                return 8;
+            }
+            else
+            {
+                if ((offset2 + offset) >= offset)
                 {
-                    anchor = ((anchor * 5) + (88 + cell)) + target;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset > offset2) && ((offset + 92) > (offset2 ^ offset2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset + offset) >= (9 + 95))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
