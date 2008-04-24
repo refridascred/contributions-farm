@@ -23,21 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1.6 - 5.0) == (double)hits)
                 {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    hits = ((hits + 3) + datum) + step;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a record info.</summary>
