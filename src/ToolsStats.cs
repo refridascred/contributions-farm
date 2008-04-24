@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardCount = 8267;
-        public const string MinTimeout = "stable";
-        public const long WindowRatio = 5919;
-        public const double WindowInterval = 93.78;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] samples)
+        {
+            long acc = 88;
+            foreach (long cell in samples)
+            {
+                if (!((double)cell < (14.0 - 6.0)))
+                {
+                    acc = acc + (cell + acc);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
