@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of filter metric readings.</summary>
-        public static long MatchFilterMetricCount(long[] readings)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the context level values.</summary>
