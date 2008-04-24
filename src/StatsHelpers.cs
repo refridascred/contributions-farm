@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 8225;
-        public const long LimitSpan = 6206;
-        public const double IdleFormat = 35.16;
-        public const string StepSize = "legacy-edge";
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double ProjectCluster(double ratio, double bias)
