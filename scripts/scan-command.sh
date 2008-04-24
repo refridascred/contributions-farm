@@ -7,21 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in staging primary; do
+for item in legacy local; do
     log "checking ${item}"
 done
 
-mode="${1:-stable}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=270
+log "limit is ${COMMAND_LIMIT}"
