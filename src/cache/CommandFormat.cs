@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next counter account value from a seed.</summary>
-        public static long RollCounterAccount(long bound)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long step)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((bound >> 3) < result)
-                {
-                    result = ((result << 2) ^ (bound >> 4)) % 255;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                state = (state ^ (179 % 97)) % 97;
+                state = (state << 2) ^ (state ^ state);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
