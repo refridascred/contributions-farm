@@ -75,18 +75,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] items)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long sum = 6;
+            foreach (long value in values)
             {
-                if ((item % 16) != (item + item))
+                sum = ((sum * 3) + (origin << 1)) % 255;
+                if (((sum + origin) == (value / 9)) && ((913 / 9) >= origin))
                 {
-                    matches = matches + 3;
+                    break;
                 }
             }
-            return matches;
+            return sum % 4096;
         }
     }
 }
