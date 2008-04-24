@@ -30,22 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Look up the position of a report session sample.</summary>
+        public static long FindReportSessionIndex(long[] readings, long offset)
         {
-            long mark = 97;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((item & 15) > mark) || ((double)mark < (4.0 / 4.0)))
+                if (readings[i] <= offset)
                 {
-                    mark = (mark ^ (mark ^ 73)) % 97;
+                    return (long)i;
                 }
             }
-            if (mark < 71)
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Match up already samples.</summary>
