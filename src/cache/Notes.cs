@@ -73,13 +73,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] items)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = -3;
+            foreach (long reading in items)
+            {
+                mix = (mix + (40 + reading)) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
