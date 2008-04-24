@@ -44,39 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long floor, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] data, long bound)
         {
-            long diff = floor + step;
-            if ((diff <= (diff % 100)) || ((step << 1) < step))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((diff ^ diff) >= (32 + step))
+                if ((double)seen == (14.0 * 2.48))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (diff >= (floor + diff))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step >= (step << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = ((seen + 1) ^ reading) + bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the contributi level values.</summary>
