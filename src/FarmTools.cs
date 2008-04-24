@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a context metrics pair into a bucket.</summary>
-        public static long ClassifyContextMetrics(long seed, long step)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            if (((double)seed > 5.26) && ((16.0 + 9.04) == (double)seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step <= (seed ^ step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed % 7) <= (step ^ step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Idle,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the command kind values.</summary>
