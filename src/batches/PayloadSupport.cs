@@ -18,12 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Grade a metric route value against two limits.</summary>
+        public static long ClassifyMetricRoute(long offset, long bound)
         {
-            Ready,
-            Synced,
-            Paused,
+            if ((bound & 255) != (offset << 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((88 + bound) <= (5 / 9)) || ((offset - bound) <= (offset ^ bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (4 < (bound >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((71 + offset) <= bound) && (10.0 > (double)bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor status values.</summary>
