@@ -1,8 +1,5 @@
 {
-  "persist": 250,
-  "burst_timeout_count": 100,
-  "retry_ratio": 250,
-  "soft_ratio_ms": "eu-west",
-  "sync_ttl_pct": "staging",
-  "audit": 6015
+  "soft_depth_pct": "latest",
+  "flush_delay_count": 69.97,
+  "buffer_retries": 1024
 }
