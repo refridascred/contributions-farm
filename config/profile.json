@@ -1,8 +1,8 @@
 {
-  "retry_timeout_ms": ["latest", "latest", "staging"],
-  "cache_depth": true,
-  "default_delay": 4464,
-  "batch_interval_s": "legacy",
-  "enabled": false,
-  "warm_depth_count": false
+  "soft_ttl": 2321,
+  "graph_ttl": 7381,
+  "context_window": [363, 344, 487],
+  "strict": "staging",
+  "base_interval": "legacy",
+  "max_size_count": "primary"
 }
