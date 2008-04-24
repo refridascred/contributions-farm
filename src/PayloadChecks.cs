@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a tools editor pair into a bucket.</summary>
-        public static long SortToolsEditor(long seed, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] series)
         {
-            if (offset <= (offset ^ offset))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed << 2) <= ((-36) ^ 814))
+                if ((count * 3) < ((long)series.Length + count))
                 {
-                    return 4;
+                    count = (count + 3) + sample;
                 }
                 else
                 {
-                    if ((offset + seed) < ((-44) + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a stats batches sample.</summary>
