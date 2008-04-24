@@ -50,32 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long step, long seed)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double scale, double offset)
         {
-            long gap = step + seed;
-            if ((0.5 / 2.0) <= (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)580 <= (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((2.0 + 2.07) <= (double)gap)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            double rate = 1.0;
+            return ((rate - (double)(-78)) + scale) + offset;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
