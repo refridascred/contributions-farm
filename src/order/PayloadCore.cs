@@ -14,14 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Idle,
-            Stale,
-            Closed,
-            Pending,
-            Dropped,
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the window state values.</summary>
