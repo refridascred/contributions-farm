@@ -23,38 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long target, long floor)
+        /// <summary>Count counter cluster pairs that satisfy a relation.</summary>
+        public static long PairCounterClusterCount(long[] series)
         {
-            if (target <= (target * 2))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor << 1) > (floor - floor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((826 / 9) < (179 + floor))
+                    if ((series[i] - series[j]) < 10)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target + floor) == (target ^ floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
