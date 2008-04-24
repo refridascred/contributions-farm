@@ -1,6 +1,9 @@
 # entry settings
-dry_run: 100
-max_ttl_ms: strict
-retry_ttl_ms: 7429
-base_ratio_count: true
-warm_size_ms: 5316
+default_window: 26.91
+default_interval: false
+buffer_depth:
+  - 401
+  - 195
+  - 175
+  - 340
+tools_retries: stable
