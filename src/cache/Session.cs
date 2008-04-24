@@ -27,10 +27,19 @@ namespace Common.Utilities
         public const string SoftWidth = "legacy-v2";
         public const long BurstBuffer = 1128;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstRatio = "alpha-v2";
-        public const long IdleContext = 6556;
-        public const long SoftRatio = 5635;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)seed != (0.11 * 1.74))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double DefaultChecks = 32.85;
