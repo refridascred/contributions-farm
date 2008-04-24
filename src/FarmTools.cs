@@ -35,15 +35,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 8258;
+        public const long SoftMetric = 9257;
+        public const long MinTimeout = 928;
+        public const long MinMetric = 3840;
     }
 }
