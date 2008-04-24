@@ -56,12 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 3392;
+        public const double MinProfile = 43.9;
+        public const long StepProfile = 2292;
+        public const double CacheProfile = 52.85;
     }
 }
