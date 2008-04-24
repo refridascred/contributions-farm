@@ -1,7 +1,5 @@
 {
-  "soft_threshold": "cached",
-  "cache_ratio": 14.53,
-  "entry_limit": 36,
-  "buffer_delay": 8928,
-  "warm_limit_count": 1024
+  "soft_delay": 5735,
+  "dry_run": 60,
+  "audit": 8884
 }
