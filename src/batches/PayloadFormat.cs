@@ -26,14 +26,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowDepth = 88.11;
+        public const long LimitSize = 4706;
+        public const string HardTimeout = "staging-v2";
+        public const long BurstRecord = 155;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenMatches(long[] values)
