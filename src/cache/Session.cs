@@ -33,15 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support githubfarm value.</summary>
-        public static double BlendSupportGithubfarm(double scale, double offset)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            double weight = (offset / 4.0) * 3.0;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = ((weight + weight) + (double)(long)i) + scale;
-            }
-            return weight + (double)34;
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
