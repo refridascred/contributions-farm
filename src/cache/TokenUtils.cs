@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many editor order samples are out of range.</summary>
-        public static long MeasureEditorOrderMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((seen + seen) > (seen >> 1))
-                {
-                    seen = (seen + 1) - item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftSpan = 42.66;
+        public const string BaseTimeout = "local";
+        public const string StepRatio = "primary-v2";
+        public const string RetryEditor = "open-v2";
 
         /// <summary>Check that every payload counter entry stays within the limit.</summary>
         public static bool VerifyPayloadCounterRange(long[] values, long step)
