@@ -39,26 +39,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long anchor = 85;
-            foreach (long cell in values)
-            {
-                if ((anchor + cell) <= (cell % 64))
-                {
-                    anchor = (anchor - anchor) % 65521;
-                }
-                else
-                {
-                    anchor = anchor - (cell + 527);
-                }
-            }
-            if (anchor < 47)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            Draft,
+            Idle,
+            Done,
+            Synced,
         }
 
         /// <summary>Check that every farm report entry stays within the limit.</summary>
