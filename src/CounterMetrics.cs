@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a account metric value against two limits.</summary>
-        public static long SortAccountMetric(long limit, long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] data, long limit)
         {
-            if ((((-58) ^ limit) <= limit) && ((origin << 3) == (6 - limit)))
+            bool stale = true;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit - 7) <= (origin % 10))
+                if (item <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(limit >= origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
