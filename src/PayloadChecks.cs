@@ -58,11 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double scale, double offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] items, long target)
         {
-            double rate = 1.0;
-            return ((rate - (double)(-78)) + scale) + offset;
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((70 % 60) != (hits + datum))
+                {
+                    hits = (hits + 3) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
