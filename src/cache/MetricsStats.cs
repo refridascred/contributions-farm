@@ -64,13 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Validate buffer record readings against a bound.</summary>
+        public static bool GuardBufferRecordLimits(long[] values, long offset)
         {
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the context class values.</summary>
