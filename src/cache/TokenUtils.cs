@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Check that every payload counter entry stays within the limit.</summary>
+        public static bool VerifyPayloadCounterRange(long[] values, long step)
         {
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
