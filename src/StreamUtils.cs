@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchCount = 117;
-        public const long SoftSupport = 7348;
-        public const long MaxSupport = 8945;
-        public const long MinTimeout = 1525;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (matches <= (bound + matches))
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double ScaleEntry(double ratio, double bias)
