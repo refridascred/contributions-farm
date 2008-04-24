@@ -61,15 +61,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of notes contributi entries.</summary>
-        public static long ScoreNotesContributi(long[] values)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] series)
         {
-            long acc = 4;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc ^ (889 + sample)) % 4096;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc % 97;
+            return hits;
         }
     }
 }
