@@ -60,9 +60,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 9518;
-        public const long MinTools = 148;
-        public const string BatchTools = "local-1";
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Pending,
+            Active,
+            New,
+        }
     }
 }
