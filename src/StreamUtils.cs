@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const long HardCount = 632;
         public const double BaseCount = 63.84;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] values)
+        /// <summary>Check that every format cluster entry stays within the limit.</summary>
+        public static bool CheckFormatClusterLimits(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((value + seen) >= (seen + seen))
+                if (sample <= step)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
