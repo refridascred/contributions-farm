@@ -35,22 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] samples, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((seen & 1) <= (-554))
+                if (((tally / 4) == (606 % 16)) || ((tally % 10) < datum))
                 {
-                    seen = ((seen + 2) + sample) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 1) + target;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
