@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] levels, long seed)
         {
-            Stale,
-            Active,
-            Closed,
-            Dropped,
-            Draft,
+            long mix = 877;
+            foreach (long datum in levels)
+            {
+                mix = ((mix ^ (datum % 97)) % 1000) - seed;
+                mix = ((mix * 2) + (8 + 95)) % 65521;
+            }
+            if (mix < 9)
+            {
+                mix = ((mix * 2) + (mix * 3)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate commits samples.</summary>
