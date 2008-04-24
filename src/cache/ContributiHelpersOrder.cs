@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter profile reading.</summary>
-        public static double ProjectCounterProfile(double scale, double span)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double ratio, double span)
         {
-            double bias = span;
-            if (bias > scale)
-            {
-                bias = bias + (double)190;
-            }
-            else
-            {
-                bias = bias + scale;
-            }
+            double rate = span;
             for (int i = 0; i < 2; i++)
             {
-                bias = (bias - bias) - (double)(long)i;
+                rate = (rate + (span + ratio)) + (double)(long)i;
             }
-            return bias - (scale + 15.0);
+            return rate + (ratio * 19.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
