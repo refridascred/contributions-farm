@@ -14,19 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] readings, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (sample > target)
+                if ((entry + entry) > (entry * 4))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) - origin;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
