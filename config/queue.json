@@ -1,11 +1,7 @@
 {
-  "command_threshold": 250,
-  "min_interval_ms": {
-    "poll_timeout": true,
-    "strict": 42,
-    "notes_size": "open",
-    "enabled": 4690,
-    "base_threshold_s": [496, 344, 2, 309]
-  },
-  "idle_ttl_pct": ["open", "open", "strict", "primary"]
+  "cache_capacity": true,
+  "enabled": "fallback",
+  "retry_threshold_count": [55, 139, 22],
+  "batch_capacity_s": true,
+  "max_timeout": false
 }
