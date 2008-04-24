@@ -5,39 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long seed, long target)
+        /// <summary>Roll a report schema counter forward.</summary>
+        public static long StepReportSchema(long offset)
         {
-            long cur = seed ^ target;
-            if ((14.0 * 2.0) >= (double)target)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((8 - seed) != (430 % 7)) || ((cur / 9) > (cur % 64)))
+                score = score + ((-704) - (long)i);
+                if (((double)4 != (double)(long)i) || ((double)5 < (double)(long)i))
                 {
-                    return 4;
+                    score = ((score << 3) ^ score) % 255;
                 }
-                else
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((double)cur > 13.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (235 <= (66 - target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = ((score + offset) % 101) - (long)i2;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
