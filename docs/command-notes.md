@@ -1,10 +1,10 @@
 # Command notes
 
-Run the account check before changing any checks limits.
-A channel that stays idle for too long is moved to the route list.
+Keep checks and context names short and lowercase.
+Each tools is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Log every context change
-- Keep queue values small
-- Validate tools input early
+- Review farm limits each release
+- Log every batch change
+- Keep metrics values small
