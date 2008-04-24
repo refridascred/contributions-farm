@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] series, long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long origin, long origin2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = origin + origin2;
+            if (!((3.34 + 15.0) == (double)origin))
             {
-                if (series[i] >= limit)
+                return 6;
+            }
+            else
+            {
+                if ((4 * 3) <= (origin2 ^ origin2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((lane + origin2) < (4 + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
