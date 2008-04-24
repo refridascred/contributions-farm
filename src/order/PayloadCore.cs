@@ -54,19 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] data, long target)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Queued,
+            Idle,
+            Failed,
         }
     }
 }
