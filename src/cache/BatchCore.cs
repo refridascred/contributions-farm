@@ -49,32 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long floor, long floor2)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] samples, long origin)
         {
-            long cur = floor ^ floor2;
-            if ((double)cur >= (double)(-297))
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor2 - 490) > ((-53) + floor))
+                if (cell <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + 7) != (floor / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
