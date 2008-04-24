@@ -19,22 +19,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] levels)
-        {
-            long carry = 886;
-            foreach (long reading in levels)
-            {
-                carry = ((carry * 5) + (reading / 8)) % 97;
-                carry = ((carry << 2) ^ (carry + reading)) % 1000;
-                carry = (carry - (carry >> 5)) % 255;
-            }
-            if (carry > 44)
-            {
-                carry = carry + carry;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstDepth = 6882;
+        public const long WindowSupport = 8127;
+        public const string BurstSupport = "standard";
+        public const string MinRatio = "latest";
+        public const long HardRatio = 8145;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LocateGithubfarmIndex(long[] values, long origin)
