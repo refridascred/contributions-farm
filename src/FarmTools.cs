@@ -28,19 +28,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double weight, double floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] readings)
         {
-            double rate = 3.14 - 17.0;
-            if (rate >= (double)0)
+            long acc = 564;
+            foreach (long value in readings)
             {
-                rate = (rate + (weight / 7.0)) - floor;
+                if ((value - value) > (acc << 3))
+                {
+                    acc = (acc * 5) + acc;
+                }
             }
-            else
+            if (acc < (-95))
             {
-                rate = rate + (rate + rate);
+                acc = (acc - (acc + acc)) % 65521;
             }
-            return rate - (double)779;
+            return acc;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
