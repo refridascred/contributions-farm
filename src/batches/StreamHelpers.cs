@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
+            Paused,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
