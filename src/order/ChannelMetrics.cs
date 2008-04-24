@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of route cache readings.</summary>
-        public static long TotalRouteCache(long[] series)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long state = -27;
-            foreach (long value in series)
-            {
-                state = (state ^ (7 << 3)) ^ value;
-            }
-            if (state > 526)
-            {
-                state = (state + (state >> 5)) % 65521;
-            }
-            return state % 4096;
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the order phase values.</summary>
