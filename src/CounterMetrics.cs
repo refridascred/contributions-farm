@@ -10,21 +10,39 @@ namespace Common.Utilities
         public const double StepGraph = 93.63;
         public const long MinDepth = 2457;
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] readings)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long floor, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long delta = floor ^ seed;
+            if (floor <= (seed - 825))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((5.5 * 20.0) <= (double)delta)
                 {
-                    if ((readings[i] ^ readings[j]) > 8)
+                    return 3;
+                }
+                else
+                {
+                    if ((floor & 63) == (delta * 4))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8.95 * 18.0) != (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
