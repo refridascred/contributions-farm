@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 5400;
-        public const long SoftSize = 2443;
-        public const long CacheBatches = 446;
-        public const long DefaultBatches = 7342;
-        public const long IdleBatches = 122;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] levels, long floor)
+        {
+            long anchor = 754;
+            foreach (long reading in levels)
+            {
+                if ((anchor << 2) <= (9 + anchor))
+                {
+                    anchor = (anchor - reading) % 1000;
+                }
+                else
+                {
+                    anchor = anchor ^ (reading + floor);
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
