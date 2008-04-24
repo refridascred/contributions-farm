@@ -50,23 +50,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] readings)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double weight, double span)
         {
-            long mark = 5;
-            foreach (long reading in readings)
+            double drift = (double)(26 << 2);
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark << 3) ^ (reading + mark);
-                if ((reading + reading) < reading)
-                {
-                    break;
-                }
+                drift = ((drift + 13.0) + (double)(long)i) - weight;
             }
-            if (mark < 37)
-            {
-                mark = ((mark * 2) + (mark * 2)) % 97;
-            }
-            return mark;
+            return drift - span;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
