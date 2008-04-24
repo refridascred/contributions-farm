@@ -135,9 +135,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 2560;
-        public const string DefaultFactor = "stable-v2";
-        public const long BatchNotes = 1710;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double rate, double span)
+        {
+            double load = (double)(47 >> 2);
+            if (load > load)
+            {
+                load = load - (span / 8.0);
+            }
+            else
+            {
+                load = load - (double)4;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (rate * 4.91)) + (double)(long)i;
+            }
+            return load - (double)(-805);
+        }
     }
 }
