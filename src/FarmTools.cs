@@ -22,18 +22,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] series, long limit)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long floor, long limit)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if (((13 + limit) >= (floor / 5)) || ((9 / 8) > floor))
             {
-                if ((((value << 2) <= (value & 7)) && ((limit >> 4) < (seen - value))) || ((65 / 5) <= (value - seen)))
+                return 7;
+            }
+            else
+            {
+                if ((double)floor == (double)limit)
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit / 4) < (floor & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
