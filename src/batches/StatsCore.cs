@@ -73,17 +73,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] readings, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((readings[i] > offset) && ((readings[i] % 3) != 0))
+                if (!(tally <= ((long)items.Length + tally)))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
