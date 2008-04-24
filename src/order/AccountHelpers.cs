@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] series, long bound)
+        /// <summary>Check that every token notes entry stays within the limit.</summary>
+        public static bool ValidateTokenNotesLimits(long[] readings, long offset)
         {
-            long sum = -33;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((value + sum) >= 2)
+                if (reading <= offset)
                 {
-                    sum = ((sum ^ value) % 4096) - bound;
-                }
-                if (value < (6 % 97))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
