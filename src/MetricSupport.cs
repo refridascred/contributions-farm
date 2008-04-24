@@ -24,23 +24,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next token metrics value.</summary>
-        public static double BlendTokenMetrics(double weight, double span)
-        {
-            double gain = span;
-            if (gain >= gain)
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + span) - (double)(long)i;
-            }
-            return gain - (9.8 / 9.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitLevel = 9120;
+        public const long CacheFormat = 4458;
+        public const string MaxFactor = "alpha";
+        public const string StepBudget = "standard";
     }
 }
