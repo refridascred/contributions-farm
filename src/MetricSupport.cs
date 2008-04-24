@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] levels, long target)
+        /// <summary>Combine metrics window values into a single score.</summary>
+        public static long ScoreMetricsWindow(long[] levels, long offset)
         {
-            long tally = 0;
+            long score = 5;
             foreach (long cell in levels)
             {
-                if ((cell - tally) != (tally >> 5))
+                if ((score & 255) < (cell << 2))
                 {
-                    tally = (tally + 2) - target;
+                    score = (score - (score & 31)) + offset;
                 }
             }
-            return tally;
+            return score % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
