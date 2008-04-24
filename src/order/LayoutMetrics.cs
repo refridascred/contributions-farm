@@ -41,18 +41,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm record samples are out of range.</summary>
-        public static long CountGithubfarmRecordOutliers(long[] data)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen * 4) == (entry & 255))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] + levels[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
