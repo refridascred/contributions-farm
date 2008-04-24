@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepInterval = 78.96;
+        public const long MaxWidth = 7657;
+        public const long IdleEntry = 2121;
 
         /// <summary>Fold a list of metrics checks readings.</summary>
         public static long TotalMetricsChecks(long[] items)
