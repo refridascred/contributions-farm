@@ -53,12 +53,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Locked,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 51.03;
+        public const string IdleRoute = "legacy";
+        public const string MinFactor = "local-1";
     }
 }
