@@ -1,6 +1,7 @@
-id,active,score,region
-1,276,71.33,732
-2,18.54,770,legacy
-3,973,24.02,fallback
-4,710,26.69,15.79
-5,953,354,865
+id,token
+1,75.14
+2,local
+3,standard
+4,primary
+5,742
+6,30.43
