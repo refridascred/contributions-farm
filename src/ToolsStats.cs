@@ -18,19 +18,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] data, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (value >= target)
+                if (!((count + count) <= (34 - cell)))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + bound;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
