@@ -1,6 +1,6 @@
 {
-  "min_retries": true,
-  "max_limit_s": ["latest", "eu-west", "latest", "stable"],
-  "cache_retries_s": 33,
-  "burst_ratio": ["strict", "stable", "staging"]
+  "cluster_timeout": 1,
+  "entry_threshold": 3.24,
+  "readonly": "latest",
+  "persist": true
 }
