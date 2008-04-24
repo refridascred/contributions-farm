@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] series, long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long mix = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (0.2 <= (double)datum)
-                {
-                    count = (count + 1) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
