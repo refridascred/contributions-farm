@@ -35,25 +35,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long limit, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] samples, long bound)
         {
-            long lane = limit + seed;
-            if (((lane & 63) != (seed >> 2)) || ((double)limit <= (8.0 / 3.0)))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit + lane) < (seed - 8)) && (lane > (924 + 1)))
+                if ((value << 3) > bound)
                 {
-                    return 5;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
