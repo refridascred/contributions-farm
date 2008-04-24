@@ -13,19 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two layout cluster measurements.</summary>
-        public static double BlendLayoutCluster(double scale, double span)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double weight = scale;
-            if (weight > (span * 10.0))
-            {
-                weight = weight + (span * 9.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight - weight;
+            Queued,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Project the next metric value.</summary>
