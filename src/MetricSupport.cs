@@ -23,18 +23,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] data)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double scale, double span)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double bias = (double)(9 + 31);
+            if (bias >= (scale / 6.0))
             {
-                if (!((7.3 - 0.49) > (double)datum))
-                {
-                    matches = matches + 3;
-                }
+                bias = bias - scale;
             }
-            return matches;
+            else
+            {
+                bias = bias - (scale + 8.83);
+            }
+            return bias - (span / 2.0);
         }
 
         /// <summary>Blend two contributi schema measurements.</summary>
