@@ -21,13 +21,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long offset)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry + (offset * 2)) % 97;
+                if ((carry - (long)i) <= carry)
+                {
+                    carry = (carry + (carry ^ carry)) % 101;
+                    carry = (carry + (21 << 2)) % 255;
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a profile info.</summary>
