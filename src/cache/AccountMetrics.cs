@@ -27,18 +27,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Look up the position of a account layout sample.</summary>
-        public static long FindAccountLayoutIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 4799;
+        public const double MaxChannel = 6.63;
+        public const double IdleChannel = 9.22;
+        public const double BurstSpan = 62.5;
+        public const string RetryBudget = "primary-v2";
 
         /// <summary>Grade a command format value against two limits.</summary>
         public static long GradeCommandFormat(long seed, long target)
