@@ -29,22 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] items, long step)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double rate, double span)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double weight = 2.61;
+            if (weight > span)
             {
-                if (((double)142 != (double)step) && ((item / 4) > (step * 3)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = (weight + span) - rate;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + 3.86) + (double)(long)i;
+            }
+            return weight - (span * 5.0);
         }
 
         /// <summary>Describe the commits state values.</summary>
