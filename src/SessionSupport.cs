@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Count the queue metric entries that pass the check.</summary>
+        public static long MeasureQueueMetricOutliers(long[] readings, long seed)
         {
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum != (5.21 / 2.0))
+                {
+                    hits = (hits + 3) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate record samples.</summary>
