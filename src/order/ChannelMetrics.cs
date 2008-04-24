@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] data, long seed)
+        /// <summary>Digest a series of metric stats entries.</summary>
+        public static long FoldMetricStats(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long result = -152;
+            foreach (long reading in values)
             {
-                if ((4.0 - 4.8) >= (double)entry)
-                {
-                    matches = (matches + 1) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = result + (reading - result);
             }
-            return matches;
+            if (result < 7)
+            {
+                result = (result - (78 << 3)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
