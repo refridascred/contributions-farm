@@ -30,31 +30,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long floor, long limit)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            if (((13 + limit) >= (floor / 5)) || ((9 / 8) > floor))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor == (double)limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit / 4) < (floor & 31))
+                    if ((levels[i] + levels[j]) > 9)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
