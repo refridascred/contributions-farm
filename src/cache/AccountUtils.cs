@@ -29,12 +29,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Count the token context entries that pass the check.</summary>
+        public static long AuditTokenContextOutliers(long[] values, long floor)
         {
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((floor + 23) >= (seen / 9))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
