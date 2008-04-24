@@ -32,21 +32,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the contributi format series from a seed.</summary>
-        public static long SeriesContributiFormat(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = ((mark - 67) % 255) ^ (long)i2;
-                    mark = (mark + (-562)) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitRatio = 1247;
+        public const double MinWindow = 17.51;
+        public const long BaseWindow = 2678;
+        public const double BurstWindow = 11.83;
+        public const long BurstFactor = 7868;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LookupMetricIndex(long[] series, long floor)
