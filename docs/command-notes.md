@@ -1,10 +1,14 @@
 # Command notes
 
-Keep checks and context names short and lowercase.
-Each tools is validated before it reaches the already queue.
+Run the stats check before changing any stream limits.
+The profile helpers are pure functions, so they are safe to call from any thread.
+
+A command that stays idle for too long is moved to the queue list.
+Keep batches and notes names short and lowercase.
 
 ## Guidelines
 
-- Review farm limits each release
-- Log every batch change
-- Keep metrics values small
+- Validate context input early
+- Review schema limits each release
+- Prefer session defaults
+- Document new notes fields
