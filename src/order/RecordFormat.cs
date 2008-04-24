@@ -30,13 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] values)
         {
-            Draft,
-            Ready,
-            Done,
-            Locked,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((949 - value) != (matches + 961))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
