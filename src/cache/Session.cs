@@ -20,17 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] items, long origin)
-        {
-            long mix = 6;
-            foreach (long entry in items)
-            {
-                mix = ((mix + (mix * 4)) % 101) - origin;
-                mix = mix - entry;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 5897;
+        public const long BaseTimeout = 4493;
+        public const string RetryBuffer = "alpha-1";
+        public const string SoftWidth = "legacy-v2";
+        public const long BurstBuffer = 1128;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string BurstRatio = "alpha-v2";
