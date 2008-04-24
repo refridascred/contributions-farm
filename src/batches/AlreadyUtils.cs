@@ -57,12 +57,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepFactor = 4243;
-        public const string BurstDepth = "staging-1";
-        public const double LimitRoute = 65.95;
-        public const long DefaultScore = 210;
-        public const string BurstRoute = "staging";
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
