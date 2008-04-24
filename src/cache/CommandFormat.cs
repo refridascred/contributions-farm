@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] samples, long floor)
         {
-            long sum = 305;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                sum = ((sum ^ (sum * 5)) % 65521) - reading;
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (sum > 953)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum;
+            return valid;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
