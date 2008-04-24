@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks notes readings against a rule.</summary>
-        public static long TallyChecksNotesGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)count > (2.0 / 9.0))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepFactor = 28.61;
+        public const long BatchDepth = 6691;
+        public const double CacheRatio = 90.41;
+        public const long LimitNotes = 7696;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long IterateContributi(long origin)
