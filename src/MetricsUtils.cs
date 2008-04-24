@@ -63,18 +63,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] values, long seed)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1 > (long)values.Length) || !((seed & 127) <= (82 ^ seed)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) ^ sample;
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
