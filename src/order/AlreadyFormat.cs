@@ -22,20 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long offset)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark << 2) ^ (offset ^ mark);
-                if (mark <= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
+                    if ((levels[i] - levels[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
