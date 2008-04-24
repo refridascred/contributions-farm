@@ -23,17 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] samples, long step)
+        /// <summary>Measure how many already route samples are out of range.</summary>
+        public static long AuditAlreadyRouteHits(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((samples[i] == step) && ((samples[i] % 3) == 0))
+                if (!(6.4 < (double)cell))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many schema batches samples are out of range.</summary>
