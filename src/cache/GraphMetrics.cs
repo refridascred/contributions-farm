@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchWidth = "strict-v2";
+        public const long StepCounter = 3021;
+        public const string BatchFactor = "cached-v2";
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long ScoreNotes(long[] samples)
