@@ -1,14 +1,6 @@
 {
-  "burst_delay_pct": 60,
-  "profile_delay": "legacy",
-  "dry_run": 45.81,
-  "warm_threshold": {
-    "enabled": [195, 189, 71, 480],
-    "sync_delay_ms": "blue",
-    "idle_timeout": 250,
-    "sync_interval_pct": "primary",
-    "poll_ttl_count": "cached",
-    "graph_window": 500
-  },
-  "hard_delay_s": 85.63
+  "base_capacity_count": [474, 161],
+  "retry_ratio_s": ["strict", "staging", "local", "stable"],
+  "tools_limit": 43,
+  "persist": 13
 }
