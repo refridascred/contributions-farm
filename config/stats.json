@@ -1,16 +1,13 @@
 {
-  "filter_depth": {
-    "soft_size_ms": {
-      "idle_ratio": 80.65,
-      "idle_capacity_pct": 15.74,
-      "min_window": false
-    },
-    "idle_depth_count": 43.61,
-    "idle_timeout_pct": [116, 476],
-    "hard_ratio_count": 250,
-    "cache_limit": "cached"
+  "dry_run": {
+    "cluster_timeout": "strict",
+    "default_capacity_s": "primary",
+    "hard_timeout": 1385,
+    "checks_ratio": [64, 298, 470, 448]
   },
-  "retry_capacity_s": 81,
-  "soft_ttl": 61,
-  "contributi_limit": "latest"
+  "max_limit_count": "local",
+  "poll_window": 234,
+  "soft_timeout_ms": [498, 5, 296],
+  "hard_ttl_s": 2969,
+  "sync_depth": "strict"
 }
