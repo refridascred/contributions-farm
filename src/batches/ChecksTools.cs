@@ -42,16 +42,31 @@ namespace Common.Utilities
             return mean - (rate * 1.0);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Grade a entry filter value against two limits.</summary>
+        public static long RankEntryFilter(long seed, long bound)
         {
-            long sum = 87;
-            foreach (long cell in series)
+            if (((seed & 127) >= (seed - seed)) || ((seed - bound) > (7 / 7)))
             {
-                sum = ((sum << 3) ^ (64 * 2)) % 4096;
-                sum = (sum + (657 ^ cell)) % 97;
+                return 2;
             }
-            return sum % 65521;
+            else
+            {
+                if (((double)seed != (6.0 / 7.0)) || ((seed + bound) != (bound + seed)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed & 7) == (6 & 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
