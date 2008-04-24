@@ -39,15 +39,17 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Locate a support farm reading by value.</summary>
+        public static long LocateSupportFarmIndex(long[] data, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((data[i] <= floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
