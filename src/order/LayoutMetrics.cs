@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] samples, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (step >= ((long)samples.Length & 1))
+                if ((count / 5) >= 2)
                 {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 3) + item;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Adjust a graph reading.</summary>
