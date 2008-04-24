@@ -40,18 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] items)
+        /// <summary>Combine notes commits values into a single score.</summary>
+        public static long TotalNotesCommits(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = 33;
+            foreach (long reading in data)
             {
-                if ((sample ^ 145) > (seen + sample))
+                if ((double)reading >= (4.03 * 6.1))
                 {
-                    seen = seen + 2;
+                    result = (result ^ (result % 7)) % 101;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
