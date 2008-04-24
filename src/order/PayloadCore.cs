@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            long anchor = 4;
+            foreach (long entry in samples)
+            {
+                if (!(entry <= (anchor - anchor)))
+                {
+                    anchor = (anchor << 3) ^ (anchor + 91);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Roll a command schema counter forward.</summary>
