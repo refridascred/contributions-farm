@@ -1,5 +1,5 @@
 {
-  "soft_depth_pct": "latest",
-  "flush_delay_count": 69.97,
-  "buffer_retries": 1024
+  "idle_capacity_s": 3837,
+  "poll_limit": "staging",
+  "soft_ttl_pct": 19.47
 }
