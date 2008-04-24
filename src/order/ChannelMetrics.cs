@@ -37,18 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm format entries.</summary>
-        public static long FoldGithubfarmFormat(long[] samples)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long mark = 62;
-            foreach (long value in samples)
-            {
-                if ((((-13) - value) > mark) && ((double)mark == (9.0 + 6.5)))
-                {
-                    mark = mark ^ (value + mark);
-                }
-            }
-            return mark;
+            Failed,
+            Retry,
+            Draft,
         }
     }
 }
