@@ -21,14 +21,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] items)
         {
-            Pending,
-            Retry,
-            Synced,
-            Failed,
-            Draft,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((61 - value) <= (value << 2))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine token values into a single score.</summary>
