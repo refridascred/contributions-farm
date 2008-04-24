@@ -12,23 +12,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double ratio, double span)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double load = span;
-            if (load < (span * 15.0))
-            {
-                load = (load + (double)31) - ratio;
-            }
-            else
-            {
-                load = load + (load - span);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - span) - (double)(long)i;
-            }
-            return load + 10.0;
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Hold a stats options.</summary>
