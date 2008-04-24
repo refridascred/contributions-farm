@@ -73,22 +73,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] items, long step)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (reading <= (step / 5))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Draft,
         }
     }
 }
