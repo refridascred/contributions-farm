@@ -49,15 +49,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long anchor = 46;
-            foreach (long datum in series)
-            {
-                anchor = (((anchor << 3) ^ (anchor % 97)) % 255) ^ datum;
-            }
-            return anchor;
+            public double Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
