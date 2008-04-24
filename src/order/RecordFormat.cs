@@ -25,19 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] samples, long floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] data, long bound)
         {
-            long result = 1;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 2) + (entry ^ result)) + floor;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            if (result > 641)
-            {
-                result = (result + result) % 1000;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
