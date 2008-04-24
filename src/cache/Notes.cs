@@ -42,22 +42,12 @@ namespace Common.Utilities
             return (ratio + (bias / 9.0)) + offset;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long state = 875;
-            foreach (long datum in levels)
-            {
-                if ((state % 7) != (state + state))
-                {
-                    state = state - (state ^ state);
-                }
-                else
-                {
-                    state = state + (state ^ datum);
-                }
-            }
-            return state;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
