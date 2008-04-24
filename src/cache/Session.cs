@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Paused,
-            Locked,
-            Retry,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowRatio = 7381;
+        public const double BatchSupport = 18.73;
+        public const long MinSupport = 8955;
+        public const string StepSupport = "local-v2";
+        public const long LimitRatio = 252;
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
