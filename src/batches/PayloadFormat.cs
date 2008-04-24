@@ -39,14 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Synced,
+            Pending,
+            Stale,
             Locked,
-            Draft,
-            New,
-            Paused,
+            Idle,
         }
     }
 }
