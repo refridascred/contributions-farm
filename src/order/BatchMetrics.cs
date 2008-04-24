@@ -40,12 +40,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchBudget = 112;
-        public const long HardTools = 6652;
-        public const double LimitScore = 86.57;
-        public const long LimitWidth = 9684;
-        public const long IdleDepth = 6134;
+        /// <summary>Match up order farm samples.</summary>
+        public static long MatchOrderFarmCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit cache session readings against a rule.</summary>
         public static long AuditCacheSessionGaps(long[] readings)
