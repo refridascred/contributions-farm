@@ -23,21 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] levels)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
