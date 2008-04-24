@@ -14,13 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Retry,
-            Failed,
-            Active,
-            Queued,
+            Locked,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
