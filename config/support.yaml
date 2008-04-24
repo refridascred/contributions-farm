@@ -1,16 +1,7 @@
 # support settings
-flush_ratio: 30
-audit: 5861
-enabled:
-  githubfarm_interval: standard
-  cache_delay_count: 8462
-  order_threshold:
-    default_capacity_s: 41.65
-    stream_ttl: 468
-    compress: fallback
-    warm_interval_pct: 6863
-    sync_depth_count: 23.3
-  checks_ttl: true
-  persist: 53
-batch_ttl: false
-commits_interval: stable
+record_retries: 6061
+sync_ratio: 3912
+sync_interval_pct: 22
+readonly: 59.42
+burst_depth: 100
+min_ttl: 30.63
