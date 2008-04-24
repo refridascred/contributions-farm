@@ -1,14 +1,22 @@
 # githubfarm settings
-token_ttl:
-  - cached
-  - strict
-cache_interval_count:
-  - 302
-  - 373
-hard_window: 8259
-account_capacity: 46
-route_size: 6986
-cache_window:
-  - open
-  - edge
-  - open
+hard_depth: false
+verbose: false
+support_interval: stable
+enabled:
+  warm_window_s: 35
+  poll_window:
+    soft_threshold: 63.57
+    compress: 30
+    warm_limit_s:
+      - 298
+      - 407
+    soft_threshold_s:
+      - 41
+      - 326
+      - 475
+      - 128
+    soft_depth_count: legacy
+  verbose: 30.73
+  warm_size_pct: staging
+  contributi_depth: true
+min_window_pct: 30
