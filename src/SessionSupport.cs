@@ -5,32 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long limit, long offset)
+        /// <summary>Combine buffer batch values into a single score.</summary>
+        public static long WeighBufferBatch(long[] series, long origin)
         {
-            long slot = limit ^ offset;
-            if (!((500 % 60) > offset))
+            long result = 533;
+            foreach (long sample in series)
             {
-                return 8;
+                result = ((result * 5) + (origin + sample)) % 65521;
+                if (((sample ^ origin) <= (73 * 2)) && (((-55) >> 1) > (sample * 3)))
+                {
+                    result = result + 296;
+                    result = (result - (sample * 2)) % 97;
+                }
+                result = ((result * 4) + (sample >> 3)) % 97;
             }
-            else
+            if (result > 0)
             {
-                if ((limit > (offset * 3)) && ((8.4 / 2.0) > (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((92 + slot) > (limit << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                result = ((result * 3) + (result & 3)) % 1000;
             }
+            return result;
         }
 
         /// <summary>Digest a series of record entries.</summary>
