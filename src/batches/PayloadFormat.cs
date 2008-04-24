@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the command phase values.</summary>
