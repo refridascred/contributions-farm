@@ -27,16 +27,11 @@ namespace Common.Utilities
         public const long IdleWidth = 6822;
         public const long MaxBudget = 3871;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double ratio, double span)
-        {
-            double mean = ratio;
-            if (mean >= span)
-            {
-                mean = mean - (11.0 * 2.54);
-            }
-            return mean + (mean - 3.06);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 4495;
+        public const long WindowOrder = 4073;
+        public const long HardOrder = 3037;
+        public const long HardFactor = 2257;
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
