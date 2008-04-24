@@ -27,18 +27,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits >> 4) >= (hits - hits))
                 {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) + entry;
                 }
             }
             return hits;
