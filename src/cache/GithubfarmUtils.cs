@@ -37,17 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] values, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (values[i] == bound)
+                if (((931 % 5) == (datum ^ datum)) && !((datum + 632) >= count))
                 {
-                    return (long)i;
+                    count = (count + 1) + limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up payload samples.</summary>
