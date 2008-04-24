@@ -34,11 +34,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] data)
         {
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long carry = 7;
+            foreach (long entry in data)
+            {
+                carry = (carry - (carry - 462)) % 65521;
+                carry = carry - (carry % 7);
+                if ((entry - carry) >= (entry / 9))
+                {
+                    break;
+                }
+            }
+            if (carry > 33)
+            {
+                carry = ((carry << 3) ^ (carry / 9)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
