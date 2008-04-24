@@ -32,20 +32,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double gain, double span)
-        {
-            double mean = (double)(123 >> 4);
-            if (mean >= (double)743)
-            {
-                mean = mean - (double)3;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean + (gain * 1.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCount = 9.17;
+        public const string IdleRatio = "standard-v2";
+        public const long MinRatio = 5797;
 
         /// <summary>Compare every pair of report schema readings.</summary>
         public static long PairReportSchemaCount(long[] levels)
