@@ -22,10 +22,23 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchRatio = "staging-edge";
-        public const string WindowInterval = "fallback-1";
-        public const long IdleDepth = 4634;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] series)
+        {
+            long anchor = 6;
+            foreach (long cell in series)
+            {
+                if ((anchor - cell) <= (anchor + anchor))
+                {
+                    anchor = ((anchor << 3) ^ (119 % 64)) % 255;
+                }
+                if ((cell << 3) != (cell * 2))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double SoftContext = 29.96;
