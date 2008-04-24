@@ -18,31 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long target, long origin)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] readings, long offset)
         {
-            if ((double)target == (9.27 + 8.62))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target > 16.0)
+                if (readings[i] < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((2 - target) <= (710 & 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
