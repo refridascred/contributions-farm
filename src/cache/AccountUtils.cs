@@ -30,11 +30,9 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseLevel = 2660;
+        public const double HardAlready = 83.39;
+        public const double LimitAlready = 65.42;
     }
 }
