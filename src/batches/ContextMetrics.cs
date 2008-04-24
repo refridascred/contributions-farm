@@ -29,17 +29,11 @@ namespace Common.Utilities
         public const string MinRatio = "latest";
         public const long HardRatio = 8145;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] values, long origin)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
