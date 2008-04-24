@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Roll a queue commits counter forward.</summary>
+        public static long IterateQueueCommits(long floor)
         {
-            Idle,
-            Synced,
-            Done,
-            Pending,
+            long state = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                state = state ^ (534 - floor);
+                state = ((state << 2) ^ (floor & 3)) % 1000;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of context report readings.</summary>
