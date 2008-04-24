@@ -46,12 +46,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Pending,
-            Failed,
+            New,
             Synced,
+            Queued,
+            Closed,
         }
     }
 }
