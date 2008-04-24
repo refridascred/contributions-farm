@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinGraph = 98.33;
-        public const double WindowFactor = 57.34;
-        public const double StepGraph = 69.89;
-        public const long MaxDepth = 584;
-        public const double BatchSize = 94.03;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] values, long bound)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (4.4 >= (double)bound)
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long ClassifyFilter(long target, long floor)
