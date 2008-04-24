@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a record token sample.</summary>
-        public static long LookupRecordTokenIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 8225;
+        public const long LimitSpan = 6206;
+        public const double IdleFormat = 35.16;
+        public const string StepSize = "legacy-edge";
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double ProjectCluster(double ratio, double bias)
