@@ -1,6 +1,10 @@
-id,rank,region,count
-1,76.59,local,cached
-2,primary,75,26.16
-3,green,337,608
-4,532,primary,blue
-5,714,824,40.41
+id,score,weight
+1,87.01,primary
+2,edge,edge
+3,staging,42.38
+4,13.25,662
+5,866,30
+6,50.97,19.25
+7,988,66.33
+8,792,local
+9,edge,local
