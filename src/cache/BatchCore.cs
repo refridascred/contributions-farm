@@ -31,12 +31,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchBudget = 20.22;
-        public const double HardToken = 40.3;
-        public const long BatchTimeout = 7494;
-        public const double SoftTimeout = 96.83;
-        public const double BurstCount = 14.96;
+        /// <summary>Roll a record cache counter forward.</summary>
+        public static long SeriesRecordCache(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                score = (score - (long)i) % 4096;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryTools = 9518;
