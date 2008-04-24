@@ -55,19 +55,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine profile command values into a single score.</summary>
-        public static long TallyProfileCommand(long[] items, long limit)
+        /// <summary>Validate checks context readings against a bound.</summary>
+        public static bool GuardChecksContextBounds(long[] items, long seed)
         {
-            long result = 5;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                result = ((result ^ (result << 1)) % 1000) ^ item;
-                if (!(result < (limit - limit)))
+                if (reading > seed)
                 {
-                    result = (result * 3) + (result % 60);
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
     }
 }
