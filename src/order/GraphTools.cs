@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 3.89;
+        public const long BatchWidth = 1847;
+        public const long IdleInterval = 1393;
+        public const long LimitLevel = 6111;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxCommits = 3406;
