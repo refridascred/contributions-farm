@@ -50,11 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxCount = "latest-1";
-        public const long MaxTimeout = 8968;
-        public const long WindowMetrics = 3625;
-        public const double SoftRatio = 22.71;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)seed >= (5.78 / 6.0))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
