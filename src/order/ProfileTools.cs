@@ -29,19 +29,15 @@ namespace Common.Utilities
             return ((mean + (double)519) + ratio) + offset;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] data, long seed)
+        /// <summary>Scale a context checks figure with a bias.</summary>
+        public static double SmoothContextChecks(double weight, double span)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            double load = span;
+            if (load >= (weight - weight))
             {
-                if (reading > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load + span;
             }
-            return stale;
+            return load + span;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
