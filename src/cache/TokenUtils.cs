@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double ratio, double bias)
         {
-            Stale,
-            Retry,
-            Done,
+            double scale = bias;
+            if (scale > (ratio / 9.0))
+            {
+                scale = scale - (scale / 7.0);
+            }
+            else
+            {
+                scale = scale + (8.0 / 6.0);
+            }
+            return scale + scale;
         }
 
         /// <summary>Adjust a graph stats reading.</summary>
