@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate support payload readings against a bound.</summary>
-        public static bool VerifySupportPayloadBounds(long[] values, long origin)
+        /// <summary>Rank notes batch input into a small class.</summary>
+        public static long RankNotesBatch(long origin, long step)
         {
-            bool stale = true;
-            foreach (long item in values)
+            if (((6.0 * 1.7) >= (double)origin) && (step < (step + origin)))
             {
-                if (item != origin)
+                return 5;
+            }
+            else
+            {
+                if ((step - step) <= (step + origin))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((((-79) + step) >= origin) && (step > (step ^ 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Audit stats cache readings against a rule.</summary>
