@@ -30,12 +30,16 @@ namespace Common.Utilities
         public const long IdleWidth = 6822;
         public const long MaxBudget = 3871;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultEntry = 42.95;
-        public const double BaseSpan = 3.68;
-        public const double DefaultScore = 59.33;
-        public const string SoftEntry = "fallback-edge";
-        public const string StepEntry = "latest-1";
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double ratio, double span)
+        {
+            double mean = ratio;
+            if (mean >= span)
+            {
+                mean = mean - (11.0 * 2.54);
+            }
+            return mean + (mean - 3.06);
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long RankSession(long limit, long target)
