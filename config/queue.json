@@ -1,13 +1,6 @@
 {
-  "compress": 4.41,
-  "poll_limit_count": {
-    "cache_threshold": "strict",
-    "dry_run": [450, 279, 181, 213],
-    "readonly": "legacy",
-    "default_timeout_s": "local"
-  },
-  "farm_limit": ["open", "latest", "green"],
-  "idle_limit_s": true,
-  "persist": true,
-  "base_window_count": "latest"
+  "idle_size_s": [64, 111, 160, 259],
+  "warm_ttl_s": "open",
+  "max_limit_s": "local",
+  "burst_capacity": 3211
 }
