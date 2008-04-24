@@ -47,22 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] items, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (86 > (origin + origin))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    tally = (tally + 2) - sample;
+                    result = (result + result) - (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the contributi level values.</summary>
