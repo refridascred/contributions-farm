@@ -66,12 +66,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
