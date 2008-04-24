@@ -14,17 +14,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix << 2) ^ (target - mix)) % 4096;
-                mix = (mix << 3) ^ (mix % 5);
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public double Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Rank session input into a small class.</summary>
