@@ -23,22 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] readings, long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long state = 7;
-            foreach (long value in readings)
-            {
-                if ((double)seed == (6.1 + 9.23))
-                {
-                    state = ((state << 2) ^ (9 - seed)) % 255;
-                }
-                else
-                {
-                    state = state ^ (value * 2);
-                }
-            }
-            return state;
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
