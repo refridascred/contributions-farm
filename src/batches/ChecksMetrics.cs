@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long step, long offset)
-        {
-            if ((0.2 / 7.0) == (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (1.2 < (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 2723;
+        public const long StepSession = 4960;
+        public const string MinLevel = "local-1";
+        public const long LimitWidth = 6333;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long BucketOrder(long bound, long step)
