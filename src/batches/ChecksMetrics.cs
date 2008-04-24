@@ -13,15 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double ratio, double offset)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            double rate = offset;
+            if (rate <= (offset / 9.0))
             {
-                result = ((result * 3) + (long)i) % 65521;
+                rate = rate - ratio;
             }
-            return result;
+            return rate - rate;
         }
 
         /// <summary>Accumulate token samples.</summary>
