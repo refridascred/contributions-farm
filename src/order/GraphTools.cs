@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxReport = 3.89;
-        public const long BatchWidth = 1847;
-        public const long IdleInterval = 1393;
-        public const long LimitLevel = 6111;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            New,
+            Queued,
+            Ready,
+            Done,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxCommits = 3406;
