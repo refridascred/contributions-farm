@@ -14,18 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit stats cache readings against a rule.</summary>
-        public static long CountStatsCacheMatches(long[] items)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((-9) >= (tally + tally))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            Retry,
+            Failed,
+            Active,
+            Queued,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
