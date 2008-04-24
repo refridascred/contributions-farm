@@ -33,17 +33,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] levels, long origin)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Paused,
+            Closed,
+            Ready,
         }
     }
 }
