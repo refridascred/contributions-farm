@@ -38,12 +38,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 8806;
+        public const long DefaultWindow = 5929;
+        public const long BaseWindow = 6422;
+        public const long BatchFactor = 1064;
+        public const long BatchBudget = 3491;
     }
 }
