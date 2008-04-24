@@ -48,32 +48,21 @@ namespace Common.Utilities
         public const long WindowInterval = 3018;
         public const long RetryRatio = 9413;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long seed, long step)
+        /// <summary>Compare every pair of session contributi readings.</summary>
+        public static long CompareSessionContributiCount(long[] series)
         {
-            long span = seed ^ step;
-            if ((27 % 24) > (step ^ span))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((25 & 255) != (span - span))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step > (18.0 * 20.0))
+                    if ((series[i] + series[j]) == 20)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
