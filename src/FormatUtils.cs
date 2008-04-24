@@ -92,13 +92,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Dropped,
-            Draft,
-            Done,
-            Failed,
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count window batches pairs that satisfy a relation.</summary>
