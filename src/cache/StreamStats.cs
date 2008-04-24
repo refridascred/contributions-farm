@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Retry,
-            Active,
-            New,
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
