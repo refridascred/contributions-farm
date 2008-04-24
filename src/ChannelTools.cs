@@ -39,21 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count format farm pairs that satisfy a relation.</summary>
-        public static long CompareFormatFarmCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 2196;
+        public const double SoftWidth = 45.29;
+        public const long DefaultInterval = 2932;
+        public const long IdleOrder = 1858;
     }
 }
