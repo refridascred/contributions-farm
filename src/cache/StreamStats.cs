@@ -49,12 +49,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long step, long origin)
         {
-            Ready,
-            Closed,
-            Dropped,
+            if ((double)origin > (15.0 / 8.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (5 < origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
