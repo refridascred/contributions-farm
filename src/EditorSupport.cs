@@ -42,18 +42,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] series, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((seed / 3) < (seen ^ seed))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
