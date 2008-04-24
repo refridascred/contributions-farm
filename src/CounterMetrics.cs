@@ -32,26 +32,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] levels, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] levels, long offset)
         {
-            long mix = 496;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((double)7 != (double)step)
+                if ((count + offset) == (item * 2))
                 {
-                    mix = mix ^ (23 - step);
+                    count = count + 2;
                 }
-                if (((step & 127) != (mix - step)) || ((reading ^ step) > (48 - step)))
+                else
                 {
-                    mix = (mix ^ (42 / 7)) % 101;
+                    count = count - 1;
                 }
             }
-            if (mix < (-218))
-            {
-                mix = (mix << 2) ^ 897;
-            }
-            return mix % 65521;
+            return count;
         }
     }
 }
