@@ -62,13 +62,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] readings, long limit)
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long total = 45;
+            foreach (long sample in readings)
+            {
+                if (((double)limit != (double)44) && ((sample - 84) >= sample))
+                {
+                    total = total - (limit + sample);
+                }
+                if ((sample & 31) == (90 >> 4))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
     }
 }
