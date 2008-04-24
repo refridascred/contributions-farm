@@ -16,19 +16,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long target, long step)
         {
-            long anchor = 663;
-            foreach (long sample in data)
+            if (target > (target / 8))
             {
-                anchor = ((anchor * 5) + sample) % 65521;
+                return 0;
             }
-            if (anchor < 2)
+            else
             {
-                anchor = (anchor ^ (anchor * 2)) % 255;
+                if ((67 - target) <= (target * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return anchor;
         }
 
         /// <summary>Describe the metric mode values.</summary>
