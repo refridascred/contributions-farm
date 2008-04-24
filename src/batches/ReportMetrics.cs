@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate filter tools readings against a bound.</summary>
-        public static bool GuardFilterToolsLimits(long[] items, long floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long offset)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long state = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Hold a profile info.</summary>
