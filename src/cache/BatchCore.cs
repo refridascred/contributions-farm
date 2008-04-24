@@ -54,12 +54,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinCount = 324;
+        public const string MaxChecks = "standard";
+        public const string StepChecks = "stable-edge";
     }
 }
