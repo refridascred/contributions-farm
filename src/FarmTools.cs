@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of filter account entries.</summary>
-        public static long TotalFilterAccount(long[] values, long floor)
+        /// <summary>Audit buffer record readings against a rule.</summary>
+        public static long TallyBufferRecordGaps(long[] samples)
         {
-            long state = 12;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (floor < state)
+                if ((datum % 24) > (datum << 1))
                 {
-                    state = (((state * 4) + floor) % 255) + sample;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    state = (state ^ floor) % 4096;
+                    tally = tally - 1;
                 }
             }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Hold a token record.</summary>
