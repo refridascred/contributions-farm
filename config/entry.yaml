@@ -1,33 +1,18 @@
 # entry settings
-max_threshold: 85
-strict: local
-githubfarm_limit:
-  hard_ttl_pct: edge
-  filter_ratio: standard
-  batches_window: edge
-verbose: 86
-warm_retries_pct:
-  min_timeout_ms:
-    - 100
-    - 419
-    - 326
-  stats_size: 19.27
-  dry_run: 500
-  default_depth: 86
-  max_ratio_ms: 30
-  retry_ttl: 100
-window_interval:
-  graph_ttl:
-    sync_retries_ms: 66.06
-    stats_threshold: 3.06
-    min_retries_pct: false
-    stream_window: 60
-  soft_depth: 19.22
-  min_ttl: 45.13
-  soft_ratio: blue
-  base_interval_ms: open
-  min_limit_pct:
-    - staging
-    - legacy
-    - eu-west
-    - green
+sync_depth_pct: green
+dry_run: 7167
+retry_ratio_pct: 3540
+retry_depth_pct:
+  soft_size_pct: stable
+  githubfarm_retries: 52.23
+  dry_run:
+    - 34
+    - 438
+  base_ratio: cached
+  cache_delay: 8344
+  sync_ttl_s:
+    window_depth: staging
+    warm_size: blue
+    default_retries_s: 27.88
+    min_window_pct: 8986
+    strict: cached
