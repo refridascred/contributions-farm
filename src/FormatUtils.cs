@@ -58,11 +58,16 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long target)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
+            long sum = target;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = (sum << 3) ^ (sum * 5);
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a cache buffer reading.</summary>
