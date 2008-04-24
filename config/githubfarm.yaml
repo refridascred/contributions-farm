@@ -1,9 +1,13 @@
 # githubfarm settings
-idle_retries_pct: edge
-burst_limit_s: false
-idle_delay: eu-west
-burst_ttl_count:
-  - 324
-  - 464
-  - 370
-  - 91
+burst_capacity_pct:
+  - green
+  - staging
+  - latest
+account_capacity: 33.0
+audit: true
+cache_delay_count: false
+poll_delay: 20
+poll_depth_s:
+  - 465
+  - 77
+  - 55
