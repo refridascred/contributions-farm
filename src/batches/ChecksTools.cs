@@ -12,40 +12,12 @@ namespace Common.Utilities
         public const long WindowSize = 8978;
         public const long BaseStats = 8431;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long offset, long limit)
-        {
-            long delta = offset - limit;
-            if (((double)311 <= (double)offset) && (17.0 <= (double)limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset & 127) == (limit << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((delta - delta) != (84 + delta)) || (656 < (offset & 127)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((offset & 31) <= (limit - offset)) || ((offset >> 5) < (offset & 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardSpan = 3118;
+        public const string RetryLevel = "latest";
+        public const long DefaultContributi = 3208;
+        public const long HardContributi = 4883;
+        public const long WindowContributi = 1999;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TallyChecks(long[] readings)
