@@ -1,7 +1,5 @@
 {
-  "base_size_s": false,
-  "filter_depth": true,
-  "warm_depth_ms": [136, 4],
-  "idle_depth_s": false,
-  "default_ttl_s": "cached"
+  "max_window": [422, 352, 181],
+  "batch_interval_count": false,
+  "cluster_window": 1.3
 }
