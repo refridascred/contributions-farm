@@ -12,23 +12,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double gain, double floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] samples, long target)
         {
-            double scale = floor;
-            if (scale > floor)
+            long anchor = 16;
+            foreach (long cell in samples)
             {
-                scale = (scale - scale) - gain;
+                if ((anchor - anchor) <= anchor)
+                {
+                    anchor = ((anchor * 5) + (88 + cell)) + target;
+                }
             }
-            else
-            {
-                scale = scale + (scale + floor);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - floor;
+            return anchor;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
