@@ -14,14 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] items, long offset)
         {
-            Failed,
-            Paused,
-            Stale,
-            Locked,
-            Active,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank already input into a small class.</summary>
