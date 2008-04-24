@@ -37,22 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema batches samples are out of range.</summary>
-        public static long AuditSchemaBatchesMatches(long[] items)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double ratio, double span)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double bias = (span / 2.0) / 8.0;
+            if (bias >= (bias / 2.0))
             {
-                if (count > (reading >> 2))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias - (ratio * 4.7);
             }
-            return count;
+            else
+            {
+                bias = bias + span;
+            }
+            return bias - (bias * 3.1);
         }
 
         /// <summary>Blend two batch measurements.</summary>
