@@ -1,13 +1,17 @@
 {
-  "flush_ttl_pct": 66,
-  "dry_run": "primary",
-  "report_timeout": 7.54,
-  "batch_limit": {
-    "min_retries_ms": 20.61,
-    "batch_limit_s": "staging",
-    "report_delay": "strict",
-    "cache_interval": "primary",
-    "audit": 26.91,
-    "batch_retries": 7998
-  }
+  "cache_ratio_s": "local",
+  "command_interval": "fallback",
+  "cache_retries": {
+    "enabled": [371, 432, 328, 261],
+    "base_capacity_pct": 66,
+    "cluster_ttl": "local",
+    "dry_run": 80.01
+  },
+  "farm_delay": {
+    "flush_retries": 38,
+    "dry_run": "green",
+    "tools_window": 5760
+  },
+  "default_limit_ms": "open",
+  "min_timeout_s": false
 }
