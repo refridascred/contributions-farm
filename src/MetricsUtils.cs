@@ -66,19 +66,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] readings, long origin)
+        /// <summary>Match up account context samples.</summary>
+        public static long PairAccountContextCount(long[] values)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
