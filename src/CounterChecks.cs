@@ -78,21 +78,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] series)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)15 / 2.0;
+            if (mean >= (6.89 + mean))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean + (floor / 8.0);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - 9.5) - (double)(long)i;
+            }
+            return mean + (gain / 5.0);
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
