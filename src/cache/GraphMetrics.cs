@@ -41,18 +41,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((15 - seen) <= (68 >> 4))
+                if (!((seed - seed) > seed))
                 {
-                    seen = (seen + 3) + entry;
+                    mark = (mark << 3) ^ (mark / 6);
+                    continue;
                 }
+                else
+                {
+                    mark = mark ^ 465;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the queue status values.</summary>
