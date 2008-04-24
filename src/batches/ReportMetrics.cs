@@ -35,17 +35,9 @@ namespace Common.Utilities
             return weight - (double)2;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowTimeout = 5741;
+        public const long SoftPayload = 3121;
+        public const long BasePayload = 7237;
     }
 }
