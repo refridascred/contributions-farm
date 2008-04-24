@@ -39,19 +39,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] levels, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long sum = 8;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                sum = (sum ^ (sum * 3)) % 65521;
+                if ((768 + sum) < floor)
                 {
-                    result = (result + result) - (long)i2;
+                    sum = (sum + (7 + value)) % 65521;
                 }
-                result = ((result * 5) + (long)i) % 1000;
+                if ((value - sum) <= (sum - sum))
+                {
+                    sum = (sum ^ floor) % 101;
+                }
             }
-            return result;
+            if (sum > 69)
+            {
+                sum = (sum << 2) ^ (sum / 5);
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the contributi level values.</summary>
