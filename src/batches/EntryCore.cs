@@ -55,19 +55,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] values, long offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long target, long seed)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            if ((target * 5) >= (target & 3))
             {
-                if (datum >= offset)
+                return 3;
+            }
+            else
+            {
+                if ((8 % 8) == (target * 3))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((target / 4) < target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
