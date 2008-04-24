@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] samples, long seed)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (3 <= (seed % 60))
+                if (items[i] == bound)
                 {
-                    tally = (tally + 2) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
