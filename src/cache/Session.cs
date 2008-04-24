@@ -45,13 +45,28 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] data, long seed)
         {
-            Done,
-            Locked,
-            Draft,
-            Active,
+            long state = 19;
+            foreach (long value in data)
+            {
+                if ((3 + state) == (seed + value))
+                {
+                    state = ((state * 4) + (seed & 127)) % 65521;
+                    state = (state * 3) + (state - state);
+                    continue;
+                }
+                else
+                {
+                    state = ((state * 3) + (value + value)) % 101;
+                }
+                if ((3.5 * 20.0) > (double)state)
+                {
+                    state = state ^ state;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
