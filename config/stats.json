@@ -1,5 +1,5 @@
 {
-  "schema_window": "stable",
-  "hard_ratio_count": "open",
-  "soft_delay_ms": 5536
+  "hard_ttl": "primary",
+  "readonly": 100,
+  "already_retries": false
 }
