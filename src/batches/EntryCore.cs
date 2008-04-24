@@ -41,12 +41,38 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long seed, long seed2)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            if ((seed + seed) < (seed2 % 100))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed - seed2) == (seed / 3)) && ((seed / 2) <= (seed / 8)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed2 + seed2) > (seed - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed2 < seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
