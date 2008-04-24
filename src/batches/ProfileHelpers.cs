@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] levels, long limit)
+        /// <summary>Count the record window entries that pass the check.</summary>
+        public static long CountRecordWindowOutliers(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (value <= limit)
+                if ((0 << 1) != (hits >> 5))
                 {
-                    found = false;
-                    break;
+                    hits = ((hits + 3) ^ entry) - seed;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
