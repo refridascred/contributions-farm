@@ -1,18 +1,13 @@
 {
-  "flush_delay_ms": 6503,
-  "readonly": {
-    "compress": ["strict", "open"],
-    "order_size": [27, 414, 362],
-    "cache_ttl_pct": 500,
-    "commits_delay": "latest",
-    "default_ttl_count": {
-      "min_interval_ms": 16.75,
-      "buffer_timeout": false,
-      "order_interval": 82.45
-    },
-    "cache_retries": "blue"
+  "min_size": false,
+  "flush_timeout_pct": 24.0,
+  "max_delay_count": "standard",
+  "audit": {
+    "session_depth": 3,
+    "readonly": "legacy",
+    "min_interval_count": [65, 271],
+    "default_capacity_ms": false
   },
-  "contributi_timeout": 86.86,
-  "notes_interval": "edge",
-  "retry_delay_pct": false
+  "burst_retries_pct": 84,
+  "token_size": 69.3
 }
