@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the order phase values.</summary>
