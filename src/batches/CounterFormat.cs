@@ -27,13 +27,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Closed,
-            Retry,
-            Active,
-            Draft,
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
