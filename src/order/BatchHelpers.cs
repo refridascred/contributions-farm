@@ -26,23 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload notes readings.</summary>
-        public static long DigestPayloadNotes(long[] readings)
+        /// <summary>Digest a series of support stats entries.</summary>
+        public static long TallySupportStats(long[] values)
         {
-            long anchor = 685;
-            foreach (long reading in readings)
+            long carry = 60;
+            foreach (long reading in values)
             {
-                anchor = anchor + (183 + anchor);
-                if ((anchor << 3) == (reading & 15))
+                carry = (carry ^ (carry / 7)) % 97;
+                carry = (carry + carry) % 97;
+                if ((double)carry >= (6.6 / 3.0))
                 {
-                    break;
+                    carry = carry ^ (carry ^ reading);
                 }
             }
-            if (anchor > (-903))
-            {
-                anchor = (anchor + (anchor / 6)) % 255;
-            }
-            return anchor % 65521;
+            return carry;
         }
     }
 }
