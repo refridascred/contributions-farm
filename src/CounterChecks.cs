@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long floor, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)floor == (8.4 + 5.0))
             {
-                if (samples[i] == offset)
+                return 6;
+            }
+            else
+            {
+                if ((89 / 5) >= floor)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((372 % 5) == (limit + 385))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((0.3 < (double)limit) || ((limit + floor) < (328 - limit)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
