@@ -1,7 +1,17 @@
 # githubfarm settings
-idle_capacity_ms: latest
-max_threshold: 77.62
-hard_capacity_count: false
-batch_timeout_ms: staging
-audit: green
-strict: 6.78
+poll_capacity_count: legacy
+hard_timeout_pct:
+  batches_ratio: cached
+  layout_delay: 52
+  batch_limit:
+    soft_size: 63
+    warm_ratio_ms: open
+    channel_interval: strict
+    soft_depth_count: true
+    warm_limit: 100
+    cache_threshold: false
+verbose:
+  - 270
+  - 346
+  - 253
+retry_size_ms: 93
