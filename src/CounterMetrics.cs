@@ -36,24 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank account format input into a small class.</summary>
-        public static long BucketAccountFormat(long offset, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] data, long bound)
         {
-            if (((offset ^ 486) < (908 ^ offset)) && ((double)offset < (4.23 / 7.0)))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-38) + limit) != (offset & 1))
+                if (!(349 <= (78 - cell)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    tally = (tally + 1) + bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the graph level values.</summary>
