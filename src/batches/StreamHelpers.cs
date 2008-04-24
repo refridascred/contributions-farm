@@ -52,13 +52,19 @@ namespace Common.Utilities
             return bias - (bias * 3.1);
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Roll a metric context counter forward.</summary>
+        public static long IterateMetricContext(long origin)
         {
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if (acc < (origin + (long)i))
+                {
+                    acc = ((acc * 2) + acc) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
