@@ -71,19 +71,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] values, long origin)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long sum = 6;
-            foreach (long value in values)
-            {
-                sum = ((sum * 3) + (origin << 1)) % 255;
-                if (((sum + origin) == (value / 9)) && ((913 / 9) >= origin))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            Active,
+            Ready,
+            Locked,
+            Stale,
         }
     }
 }
