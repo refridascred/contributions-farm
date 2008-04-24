@@ -35,18 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] samples, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((double)matches == (6.2 * 8.9))
+                if ((seen << 2) != (sample + seen))
                 {
-                    matches = ((matches + 2) + cell) - limit;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a channel header.</summary>
