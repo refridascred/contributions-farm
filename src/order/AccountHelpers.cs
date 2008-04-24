@@ -34,21 +34,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] readings)
+        /// <summary>Check that every counter metric entry stays within the limit.</summary>
+        public static bool CheckCounterMetricRange(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item <= seed)
                 {
-                    if ((readings[i] - readings[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the stream status values.</summary>
