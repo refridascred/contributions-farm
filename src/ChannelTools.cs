@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count account tools pairs that satisfy a relation.</summary>
-        public static long OverlapAccountToolsCount(long[] data)
+        /// <summary>Grade a route context value against two limits.</summary>
+        public static long BucketRouteContext(long target, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long edge = target + origin;
+            if (54 > (228 - origin))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!(target <= edge))
                 {
-                    if ((data[i] ^ data[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
