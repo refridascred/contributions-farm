@@ -1,4 +1,4 @@
 # entry settings
-window_window: 15.4
-base_depth: 37
-graph_size: 89.78
+verbose: stable
+idle_depth_count: true
+max_ratio: 62.61
