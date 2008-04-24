@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            Draft,
-            Paused,
-            Active,
+            long mix = 965;
+            foreach (long datum in levels)
+            {
+                mix = (mix + datum) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
