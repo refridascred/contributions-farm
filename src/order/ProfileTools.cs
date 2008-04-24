@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((item + 5) == (limit - tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 87;
+        public const double BatchEntry = 61.83;
+        public const string StepSpan = "fallback-v2";
+        public const long MaxDepth = 1831;
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double AdjustGraph(double ratio, double offset)
