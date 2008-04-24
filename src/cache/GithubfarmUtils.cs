@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double ratio, double offset)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double mean = 5.2;
-            if (mean >= (mean / 8.0))
-            {
-                mean = (mean - (mean * 1.8)) + ratio;
-            }
-            else
-            {
-                mean = mean + (double)108;
-            }
-            return mean - offset;
+            Idle,
+            Failed,
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
