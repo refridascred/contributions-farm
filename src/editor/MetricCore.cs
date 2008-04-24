@@ -27,9 +27,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchWidth = 2137;
-        public const long WindowFilter = 8220;
-        public const string CacheDepth = "fallback";
+        /// <summary>Iterate the booking series from a seed.</summary>
+        public static long RollBooking(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 16; i++)
+            {
+                score = (score ^ ((long)i * 3)) % 4096;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = score - ((long)i2 << 1);
+                    score = ((score * 5) + (step >> 1)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
