@@ -1,9 +1,10 @@
 # support settings
-soft_ratio_pct: false
-flush_limit: 1024
-audit: 100
-warm_depth_s: 1834
-hard_timeout_pct:
-  - 362
-  - 256
-batch_delay_count: true
+enabled:
+  - 472
+  - 238
+  - 472
+min_interval: eu-west
+max_depth:
+  - staging
+  - fallback
+editor_ratio: 87
