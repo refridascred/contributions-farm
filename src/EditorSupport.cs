@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] series, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((series[i] == target) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
