@@ -15,18 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit session route readings against a rule.</summary>
-        public static long CountSessionRouteGaps(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] items)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((338 >> 2) == (tally / 4))
+                if ((seen * 5) <= (entry / 2))
                 {
-                    tally = (tally + 2) ^ item;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
