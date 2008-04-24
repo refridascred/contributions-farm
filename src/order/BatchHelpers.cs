@@ -26,20 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support stats entries.</summary>
-        public static long TallySupportStats(long[] values)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long carry = 60;
-            foreach (long reading in values)
-            {
-                carry = (carry ^ (carry / 7)) % 97;
-                carry = (carry + carry) % 97;
-                if ((double)carry >= (6.6 / 3.0))
-                {
-                    carry = carry ^ (carry ^ reading);
-                }
-            }
-            return carry;
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
