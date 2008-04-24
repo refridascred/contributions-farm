@@ -30,18 +30,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] items, long origin)
+        /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLayoutRange(long[] levels, long offset)
         {
-            long mix = 933;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (5.3 <= (double)reading)
+                if (entry <= offset)
                 {
-                    mix = (mix ^ (mix * 4)) + origin;
+                    stale = false;
+                    break;
                 }
             }
-            return mix % 1000;
+            return stale;
         }
     }
 }
