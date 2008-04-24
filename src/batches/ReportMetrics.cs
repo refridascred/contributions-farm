@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long target, long limit)
-        {
-            long slot = target + limit;
-            if ((double)limit > (7.3 + 0.68))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)target > (6.81 + 4.4)) && ((double)760 < (double)target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (slot > limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 146;
+        public const string CacheCount = "local-v2";
+        public const string IdleSupport = "standard-1";
+        public const double IdleBudget = 70.79;
+        public const long SoftSize = 7680;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long FoldFormat(long[] samples)
