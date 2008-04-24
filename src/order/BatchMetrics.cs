@@ -45,15 +45,12 @@ namespace Common.Utilities
             return weight - (span * 5.0);
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Active,
-            Dropped,
-            Locked,
-            New,
-            Ready,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchBudget = 112;
+        public const long HardTools = 6652;
+        public const double LimitScore = 86.57;
+        public const long LimitWidth = 9684;
+        public const long IdleDepth = 6134;
 
         /// <summary>Audit cache session readings against a rule.</summary>
         public static long AuditCacheSessionGaps(long[] readings)
