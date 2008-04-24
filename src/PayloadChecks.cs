@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Check that every farm editor entry stays within the limit.</summary>
+        public static bool CheckFarmEditorBounds(long[] data, long offset)
         {
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a window summary.</summary>
