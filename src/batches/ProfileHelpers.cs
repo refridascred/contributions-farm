@@ -31,21 +31,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long limit)
+        /// <summary>Derive the next commits profile value from a seed.</summary>
+        public static long IterateCommitsProfile(long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((8 << 1) < (acc - limit))
-                {
-                    acc = ((acc * 3) + (limit << 2)) % 255;
-                    acc = acc - (acc >> 2);
-                }
-                acc = (acc - limit) % 255;
-                acc = ((acc * 3) + (long)i) % 97;
+                result = (result ^ ((long)i ^ (-1))) % 1000;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Hold a counter options.</summary>
