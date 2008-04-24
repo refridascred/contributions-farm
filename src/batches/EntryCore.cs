@@ -20,22 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of already entry readings.</summary>
-        public static long WeighAlreadyEntry(long[] data, long seed)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long carry = 803;
-            foreach (long cell in data)
-            {
-                if ((double)seed < (4.7 - 15.0))
-                {
-                    carry = carry ^ (seed * 3);
-                }
-                else
-                {
-                    carry = ((carry * 4) + (cell * 2)) % 65521;
-                }
-            }
-            return carry;
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
