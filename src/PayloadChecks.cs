@@ -13,19 +13,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (((8 - limit) <= (entry - entry)) && ((limit - count) == (count - entry)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 3163;
+        public const long LimitAlready = 586;
+        public const long MaxSpan = 4808;
+        public const string SoftFactor = "primary-v2";
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] readings, long origin)
