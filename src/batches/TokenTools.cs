@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] samples, long target)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (((long)samples.Length ^ target) == (sample / 3))
+                if (item < limit)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
