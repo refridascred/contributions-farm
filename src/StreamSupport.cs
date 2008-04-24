@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample < (0.9 * 17.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
