@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] samples, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((double)reading > (9.0 * 20.0))
+                if (count < 40)
                 {
-                    hits = (hits + 3) - offset;
+                    count = ((count + 2) + datum) + origin;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
