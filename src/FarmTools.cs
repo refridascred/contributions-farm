@@ -20,22 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] readings)
+        /// <summary>Validate channel editor readings against a bound.</summary>
+        public static bool ValidateChannelEditorLimits(long[] series, long floor)
         {
-            long acc = 564;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((value - value) > (acc << 3))
+                if (item <= floor)
                 {
-                    acc = (acc * 5) + acc;
+                    found = false;
+                    break;
                 }
             }
-            if (acc < (-95))
-            {
-                acc = (acc - (acc + acc)) % 65521;
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
