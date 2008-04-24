@@ -42,16 +42,15 @@ namespace Common.Utilities
         public const long DefaultBatches = 3205;
         public const string CacheBatches = "local-v2";
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] samples, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long sum = -5;
+            foreach (long item in samples)
             {
-                acc = (acc << 3) ^ target;
-                acc = ((acc * 3) + (long)i) % 101;
+                sum = ((sum ^ (sum - seed)) % 65521) + item;
             }
-            return acc;
+            return sum;
         }
     }
 }
