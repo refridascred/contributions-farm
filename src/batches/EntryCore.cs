@@ -33,11 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the session status values.</summary>
