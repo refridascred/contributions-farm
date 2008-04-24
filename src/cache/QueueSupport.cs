@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "local-v2";
-        public const double HardInterval = 73.71;
-        public const long BaseCount = 7496;
-        public const long IdleCommits = 4486;
+        /// <summary>Compare every pair of notes profile readings.</summary>
+        public static long CompareNotesProfileCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long WeighChecks(long[] samples, long floor)
