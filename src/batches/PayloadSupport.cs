@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long origin, long origin2)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long lane = origin + origin2;
-            if (!((3.34 + 15.0) == (double)origin))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4 * 3) <= (origin2 ^ origin2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((lane + origin2) < (4 + origin))
+                    if ((items[i] - items[j]) != 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
