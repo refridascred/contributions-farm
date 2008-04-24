@@ -12,39 +12,18 @@ namespace Common.Utilities
         public const long StepCount = 4636;
         public const long StepBatches = 6153;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long origin, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] series)
         {
-            long step = origin - bound;
-            if ((double)bound >= 18.0)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6 % 100) == (origin - 7))
+                if (seen <= sample)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(3.86 > (double)step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (360 <= bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
