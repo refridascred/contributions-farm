@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((double)sample < (0.9 * 17.0))
+                if (((count - (long)series.Length) <= reading) && ((count - count) < reading))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
