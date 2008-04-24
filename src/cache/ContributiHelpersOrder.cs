@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
+            long carry = 920;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if (((double)datum != (3.6 - 8.67)) || ((3 + carry) != (carry % 100)))
+                {
+                    carry = carry - (carry * 5);
+                }
             }
-            return mix;
+            if (carry > 87)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
