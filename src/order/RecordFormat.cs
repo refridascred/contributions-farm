@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] values, long offset)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double gain, double offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double weight = offset;
+            if (weight >= gain)
             {
-                if (((offset + count) > ((long)values.Length >> 3)) || ((count > (sample % 97)) && ((sample * 5) < (51 >> 3))))
-                {
-                    count = count + 2;
-                }
+                weight = weight + gain;
             }
-            return count;
+            else
+            {
+                weight = weight - offset;
+            }
+            return weight + 9.57;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
