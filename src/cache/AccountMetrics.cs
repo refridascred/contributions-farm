@@ -65,12 +65,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowSize = 7587;
-        public const string StepLevel = "fallback-1";
-        public const string StepRatio = "cached-1";
-        public const long MaxFactor = 464;
-        public const long SoftRatio = 826;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstNotes = "local-v2";
+        public const long HardNotes = 4777;
+        public const long BaseFactor = 7476;
+        public const long CacheNotes = 2739;
+        public const long StepFactor = 9853;
 
         /// <summary>Look up the position of a queue metric sample.</summary>
         public static long LocateQueueMetricIndex(long[] data, long floor)
