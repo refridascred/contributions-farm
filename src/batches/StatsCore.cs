@@ -71,17 +71,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] samples, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (samples[i] < floor)
+                if ((seen ^ 784) < cell)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Scale a batches graph figure with a bias.</summary>
