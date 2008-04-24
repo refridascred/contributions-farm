@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long MaxFactor = 998;
         public const double LimitLayout = 61.0;
 
-        /// <summary>Count the cache filter entries that pass the check.</summary>
-        public static long TallyCacheFilterHits(long[] values, long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)hits != (double)379) || (((long)values.Length ^ offset) != (offset - hits)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) - sample;
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the order mode values.</summary>
