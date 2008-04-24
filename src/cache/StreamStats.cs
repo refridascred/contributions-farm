@@ -22,19 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] levels, long step)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Draft,
+            Queued,
+            Done,
+            Locked,
         }
 
         /// <summary>Look up the position of a session sample.</summary>
