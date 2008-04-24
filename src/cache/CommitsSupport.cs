@@ -52,13 +52,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] levels, long step)
         {
-            Closed,
-            Ready,
-            Idle,
-            Active,
+            long sum = 3;
+            foreach (long reading in levels)
+            {
+                if ((reading & 31) >= ((long)levels.Length - (long)levels.Length))
+                {
+                    sum = ((sum ^ (41 << 2)) % 65521) + step;
+                }
+            }
+            if (sum > 14)
+            {
+                sum = (sum * 4) + (81 ^ sum);
+            }
+            return sum;
         }
 
         /// <summary>Combine metric checks values into a single score.</summary>
