@@ -33,19 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] series, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] data)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long mix = 5;
+            foreach (long sample in data)
             {
-                if (item > target)
+                if ((mix - 8) >= sample)
                 {
-                    flag = false;
+                    mix = ((mix << 2) ^ (mix + mix)) % 1000;
                     break;
                 }
+                else
+                {
+                    mix = ((mix << 2) ^ 592) % 65521;
+                }
+                if ((mix + sample) > (mix - mix))
+                {
+                    mix = (mix + (sample >> 5)) % 101;
+                }
             }
-            return flag;
+            if (mix > 43)
+            {
+                mix = ((mix * 4) + (mix + mix)) % 101;
+            }
+            return mix % 1000;
         }
     }
 }
