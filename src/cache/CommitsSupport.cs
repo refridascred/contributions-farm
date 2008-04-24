@@ -20,12 +20,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Check that every checks editor entry stays within the limit.</summary>
+        public static bool VerifyChecksEditorBounds(long[] series, long target)
         {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
