@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] samples, long origin)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long seed, long seed2)
         {
-            long sum = 243;
-            foreach (long item in samples)
+            if (((seed2 + seed) == (seed2 - seed)) || ((6.4 / 4.0) != (double)seed2))
             {
-                if (((origin & 127) <= origin) && (origin <= (origin - origin)))
+                return 6;
+            }
+            else
+            {
+                if ((seed2 % 5) >= (seed * 4))
                 {
-                    sum = (sum << 2) ^ (sum * 2);
+                    return 7;
                 }
-                if ((origin & 7) != (item - sum))
+                else
                 {
-                    sum = (sum ^ (origin - 0)) % 65521;
+                    return 2;
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Adjust a context reading.</summary>
