@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Fold a list of route cache readings.</summary>
+        public static long TotalRouteCache(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = -27;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state ^ (7 << 3)) ^ value;
             }
-            return hits;
+            if (state > 526)
+            {
+                state = (state + (state >> 5)) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the order phase values.</summary>
