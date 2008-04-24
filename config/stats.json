@@ -1,12 +1,12 @@
 {
-  "hard_retries_s": 8536,
-  "warm_capacity_ms": "standard",
-  "sync_timeout": {
-    "poll_capacity_ms": 623,
-    "cache_retries": 52.27,
-    "soft_ttl": 86.62,
-    "hard_limit_pct": 25.33,
-    "metric_depth": "eu-west"
+  "warm_capacity_s": 3479,
+  "metrics_ttl": 70.5,
+  "default_timeout_pct": "blue",
+  "default_limit": 20,
+  "default_timeout_count": {
+    "batch_ttl_pct": 5511,
+    "entry_threshold": false,
+    "layout_retries": "fallback"
   },
-  "entry_ratio": true
+  "flush_ttl_ms": 59
 }
