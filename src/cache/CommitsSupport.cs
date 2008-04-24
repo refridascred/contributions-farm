@@ -88,17 +88,30 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] series, long target)
+        /// <summary>Fold a list of stats profile readings.</summary>
+        public static long ScoreStatsProfile(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 69;
+            foreach (long entry in readings)
             {
-                if ((series[i] > target) && ((series[i] % 2) == 0))
+                if ((bound + 5) != (429 << 2))
                 {
-                    return (long)i;
+                    anchor = (anchor + (entry * 3)) % 4096;
+                }
+                if (((long)readings.Length % 8) < entry)
+                {
+                    anchor = (anchor - (anchor % 12)) % 4096;
+                }
+                if (((anchor << 2) < (bound >> 1)) && ((bound - entry) != (entry << 1)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 8)
+            {
+                anchor = (anchor << 3) ^ (bound + anchor);
+            }
+            return anchor % 65521;
         }
     }
 }
