@@ -28,18 +28,14 @@ namespace Common.Utilities
         public const long HardDepth = 8954;
         public const double BurstFactor = 97.51;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] levels, long floor)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!((item & 31) < (item % 100)))
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
+            New,
+            Closed,
+            Queued,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the token level values.</summary>
