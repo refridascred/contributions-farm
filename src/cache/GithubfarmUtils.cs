@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] items, long origin)
         {
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the command level values.</summary>
