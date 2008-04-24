@@ -1,14 +1,6 @@
 {
-  "audit": false,
-  "warm_interval_ms": ["standard", "latest"],
-  "payload_size": 3576,
-  "dry_run": 7271,
-  "report_size": {
-    "notes_window": 56,
-    "editor_timeout": "blue",
-    "min_limit_count": [422, 406],
-    "soft_delay_count": false,
-    "enabled": "open",
-    "contributi_interval": "blue"
-  }
+  "sync_retries_count": 5345,
+  "verbose": 36.63,
+  "layout_retries": 53.67,
+  "hard_delay_s": 60
 }
