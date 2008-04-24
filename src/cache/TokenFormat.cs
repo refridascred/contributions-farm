@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of command metric entries.</summary>
-        public static long ScoreCommandMetric(long[] series)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long origin)
         {
-            long carry = 1;
-            foreach (long entry in series)
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)carry > (0.31 + 2.0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    carry = carry + entry;
+                    score = (((score * 5) + (origin >> 5)) % 255) ^ (long)i2;
                 }
-                if ((double)carry == (double)entry)
-                {
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            if (carry > 3)
-            {
-                carry = carry + (carry % 24);
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Compare every pair of support batch readings.</summary>
