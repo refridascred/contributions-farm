@@ -1,12 +1,12 @@
 # support settings
-cache_limit_pct:
-  command_retries: 60
-  warm_interval: 4635
-  schema_window: 65
-  profile_ttl:
-    - fallback
-    - standard
-compress: 55
-githubfarm_depth: 60
-hard_ratio: stable
-strict: blue
+tools_window:
+  - 216
+  - 260
+  - 164
+  - 312
+enabled: edge
+base_size_count: primary
+warm_timeout_count: 25.63
+queue_ttl:
+  - 367
+  - 378
