@@ -11,38 +11,15 @@ namespace Common.Utilities
         public const string MinLevel = "local-1";
         public const long LimitWidth = 6333;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long bound, long step)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            if (((bound & 31) >= (0 + bound)) && ((696 << 2) >= bound))
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)step <= (6.0 / 9.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound + step) <= bound) && ((6.01 / 8.0) == (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((bound + bound) == (bound * 5)) && ((step + step) > bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Accumulate token samples.</summary>
