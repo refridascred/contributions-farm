@@ -51,19 +51,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] values, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
