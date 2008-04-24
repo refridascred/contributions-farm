@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] levels, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long total = 736;
+            foreach (long reading in levels)
             {
-                if (value < bound)
+                if (((total + total) < (reading + reading)) || ((total % 24) != (total + reading)))
                 {
-                    ready = false;
-                    break;
+                    total = total + (reading << 2);
+                }
+                else
+                {
+                    total = (total << 2) ^ 5;
                 }
             }
-            return ready;
+            return total % 1000;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
