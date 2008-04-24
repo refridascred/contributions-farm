@@ -24,19 +24,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a channel session reading.</summary>
-        public static double ProjectChannelSession(double rate, double offset)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            double weight = rate;
-            if (weight <= offset)
-            {
-                weight = weight - (rate - rate);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight - offset;
+            public bool Level { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a support farm reading by value.</summary>
