@@ -14,18 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] values, long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + entry) > (entry * 4))
-                {
-                    hits = (hits + 3) - origin;
-                }
-            }
-            return hits;
+            Pending,
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
