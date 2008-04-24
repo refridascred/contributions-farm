@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
+            New,
+            Pending,
+            Queued,
         }
 
         /// <summary>Blend two layout cluster measurements.</summary>
