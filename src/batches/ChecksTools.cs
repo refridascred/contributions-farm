@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] levels, long origin)
         {
-            Idle,
-            Paused,
-            Draft,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((hits + origin) == (origin >> 3))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
