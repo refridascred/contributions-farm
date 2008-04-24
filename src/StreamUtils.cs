@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long MaxSupport = 8945;
         public const long MinTimeout = 1525;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] levels)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double ratio, double bias)
         {
-            long carry = 0;
-            foreach (long datum in levels)
+            double drift = (double)(88 - (-82));
+            if (drift < 5.94)
             {
-                carry = ((carry * 3) + (carry * 5)) ^ datum;
+                drift = (drift + (2.1 / 7.0)) - bias;
             }
-            return carry % 4096;
+            return drift + ratio;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
