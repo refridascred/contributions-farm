@@ -87,18 +87,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph context entries that pass the check.</summary>
-        public static long MeasureGraphContextGaps(long[] items)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2.5 < (double)item) || ((item / 5) != (503 - hits)))
+                if (series[i] < target)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
