@@ -1,12 +1,26 @@
 # support settings
-idle_depth_pct: false
-batch_ttl_pct:
-  batch_limit_count: true
-  cache_timeout_ms: 4.15
-  hard_delay_pct: primary
-  buffer_retries: 24.11
-tools_depth:
-  - stable
-  - cached
-  - edge
-hard_threshold_ms: latest
+compress:
+  readonly: local
+  default_ttl_ms:
+    - primary
+    - primary
+    - standard
+    - primary
+  counter_threshold: 94.81
+dry_run: 87
+readonly:
+  cache_delay_ms: cached
+  audit: green
+  stream_timeout:
+    - 183
+    - 10
+    - 238
+    - 29
+  persist: 96
+  retry_ttl_ms: true
+base_delay_ms: false
+idle_ttl_ms: 27.77
+already_ttl:
+  - 295
+  - 164
+  - 422
