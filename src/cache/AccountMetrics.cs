@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double ratio, double span)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double gain, double floor)
         {
-            double ratio2 = span / 8.0;
-            if (ratio2 >= (double)3)
-            {
-                ratio2 = ratio2 - (ratio + 1.5);
-            }
-            return ratio2 + ratio;
+            double gain2 = (double)599;
+            return ((gain2 + (double)7) + gain) + floor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
