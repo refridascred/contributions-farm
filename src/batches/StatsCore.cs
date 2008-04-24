@@ -71,18 +71,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] series)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((seen ^ 784) < cell)
+                if (!(bound < (long)i))
                 {
-                    seen = seen + 2;
+                    mark = (mark ^ (mark << 1)) % 1000;
                 }
+                else
+                {
+                    mark = ((mark << 2) ^ (bound & 15)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Measure how many contributi channel samples are out of range.</summary>
