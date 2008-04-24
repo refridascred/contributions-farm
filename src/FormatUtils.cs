@@ -101,11 +101,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitSpan = 5392;
-        public const string DefaultEntry = "stable-edge";
-        public const double WindowEntry = 75.9;
-        public const long SoftSpan = 5211;
-        public const string CacheEntry = "standard";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((value >> 2) > (value - value)) && ((count + value) != (value % 100)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
