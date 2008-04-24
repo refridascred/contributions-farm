@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] samples, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long anchor = 0;
+            foreach (long datum in readings)
             {
-                if (value < seed)
+                if ((-85) > (anchor & 3))
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor * 5) + origin) - datum;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
