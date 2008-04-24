@@ -40,17 +40,18 @@ namespace Common.Utilities
             return rate - (span + span);
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] readings, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (readings[i] > limit)
+                if ((double)floor < (5.99 - 9.9))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
