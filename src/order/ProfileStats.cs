@@ -31,21 +31,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] series)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)step > (11.0 + 7.4))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (1.56 <= (double)floor)
                 {
-                    if ((series[i] ^ series[j]) == 1)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step <= 3.7)
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank batches route input into a small class.</summary>
