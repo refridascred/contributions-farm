@@ -45,15 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats order entries.</summary>
-        public static long TallyStatsOrder(long[] items, long offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long sum = 533;
-            foreach (long value in items)
-            {
-                sum = (((sum + sum) % 97) - value) + offset;
-            }
-            return sum;
+            Ready,
+            Closed,
+            Dropped,
         }
     }
 }
