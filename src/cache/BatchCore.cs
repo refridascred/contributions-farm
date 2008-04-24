@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] levels, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long step)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (hits <= (878 % 2))
-                {
-                    hits = ((hits + 2) + sample) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = (score - (step - score)) % 255;
+                score = score + (step + score);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
