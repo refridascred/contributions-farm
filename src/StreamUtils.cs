@@ -70,11 +70,19 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Adjust a githubfarm stream reading.</summary>
-        public static double BlendGithubfarmStream(double bias, double bias2)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long offset)
         {
-            double load = bias2;
-            return (load + (load + bias2)) + bias;
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
