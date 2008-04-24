@@ -32,22 +32,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] series, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] values)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long result = -39;
+            foreach (long reading in values)
             {
-                if (seed <= ((-163) >> 3))
+                if (((reading - 98) > (result ^ 8)) && ((reading / 3) < 960))
                 {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    result = ((result * 3) + reading) % 65521;
                 }
             }
-            return seen;
+            if (result < 7)
+            {
+                result = result ^ ((-2) >> 4);
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
