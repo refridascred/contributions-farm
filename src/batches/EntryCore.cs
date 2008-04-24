@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Idle,
-            Ready,
-            Locked,
+            public bool Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the contributi mode values.</summary>
