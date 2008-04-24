@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long target, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long cur = target ^ step;
+            if (cur >= target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((double)cur >= 14.0) && ((step & 7) >= (1 + 7)))
                 {
-                    if ((data[i] - data[j]) > 8)
+                    return 5;
+                }
+                else
+                {
+                    if (target > (step + 94))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (81 <= (target - cur))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many stats stream samples are out of range.</summary>
