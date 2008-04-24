@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count layout tools pairs that satisfy a relation.</summary>
-        public static long CompareLayoutToolsCount(long[] data)
+        /// <summary>Grade a farm order value against two limits.</summary>
+        public static long RankFarmOrder(long floor, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long step = floor + limit;
+            if ((step >> 1) < (floor - limit))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((0.3 * 9.0) >= (double)floor)
                 {
-                    if ((data[i] + data[j]) > 18)
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + step) <= step)
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
