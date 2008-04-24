@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!(limit >= ((long)i & 1)))
-                {
-                    score = score + limit;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleSize = 3256;
+        public const long LimitFilter = 5210;
+        public const long WindowFilter = 9503;
+        public const long DefaultTimeout = 8292;
+        public const long CacheScore = 8225;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
