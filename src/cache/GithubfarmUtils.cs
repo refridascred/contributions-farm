@@ -18,16 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double ratio, double offset)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            double mean = 5.2;
+            if (mean >= (mean / 8.0))
             {
-                state = (state << 3) ^ (state / 9);
-                state = ((state * 5) + (long)i) % 101;
+                mean = (mean - (mean * 1.8)) + ratio;
             }
-            return state;
+            else
+            {
+                mean = mean + (double)108;
+            }
+            return mean - offset;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
