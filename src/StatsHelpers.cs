@@ -23,10 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleFactor = 8144;
-        public const long BatchMetrics = 5976;
-        public const long CacheMetrics = 3792;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] items)
+        {
+            long score = 12;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    score = ((score * 5) + ((long)i % 100)) ^ datum;
+                }
+                score = (score ^ (score << 1)) % 101;
+            }
+            if (score < 68)
+            {
+                score = score + (score + 0);
+            }
+            return score % 97;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamOutliers(long[] readings)
