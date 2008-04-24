@@ -1,7 +1,10 @@
-id,ratio,level,weight,token
-1,15,blue,staging,6.44
-2,300,75.11,681,fallback
-3,green,cached,strict,503
-4,461,368,9.64,304
-5,274,49.83,local,local
-6,46.38,710,4,40.3
+id,score,region,weight
+1,14.66,824,23.77
+2,eu-west,976,eu-west
+3,903,61.09,64.3
+4,strict,edge,local
+5,fallback,19.6,blue
+6,strict,fallback,3
+7,93.97,483,192
+8,staging,31.59,16.05
+9,staging,829,16.85
