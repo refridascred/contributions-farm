@@ -1,9 +1,4 @@
 # entry settings
-default_window: 26.91
-default_interval: false
-buffer_depth:
-  - 401
-  - 195
-  - 175
-  - 340
-tools_retries: stable
+window_window: 15.4
+base_depth: 37
+graph_size: 89.78
