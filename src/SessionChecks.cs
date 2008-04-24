@@ -25,10 +25,25 @@ namespace Common.Utilities
         public const long SoftFactor = 9972;
         public const long MinBudget = 368;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 1863;
-        public const double HardQueue = 38.91;
-        public const string MinQueue = "stable-1";
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long offset, long step)
+        {
+            if ((step + 68) <= (step + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset != (9.1 - 7.5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long CompareRecordCount(long[] values)
