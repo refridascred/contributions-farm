@@ -27,18 +27,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] samples)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (!!((4.67 / 7.0) == (double)count))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
