@@ -40,18 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] items)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long mark = 172;
+            foreach (long datum in series)
             {
-                if (!((0.7 * 9.0) <= (double)matches))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
+                mark = (mark * 5) + (datum * 4);
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
