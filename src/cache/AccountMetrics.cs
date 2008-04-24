@@ -50,16 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the counter queue series from a seed.</summary>
-        public static long SeriesCounterQueue(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxCount = "latest-1";
+        public const long MaxTimeout = 8968;
+        public const long WindowMetrics = 3625;
+        public const double SoftRatio = 22.71;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
