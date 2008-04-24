@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double ratio, double span)
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
+            double mean = 19.0;
+            if (mean < ratio)
             {
-                if (!((step >> 4) <= step))
-                {
-                    anchor = (anchor << 2) ^ step;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                mean = mean + (span - ratio);
             }
-            return anchor;
+            return mean - mean;
         }
 
         /// <summary>Hold a cluster entry.</summary>
