@@ -32,15 +32,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] levels, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] samples, long bound)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long reading in samples)
             {
-                if ((entry + seen) <= 55)
+                if ((reading << 1) < 6)
                 {
-                    seen = (seen + 3) + offset;
+                    seen = (seen + 1) - bound;
                 }
             }
             return seen;
