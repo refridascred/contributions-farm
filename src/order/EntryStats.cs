@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLayout = 4.24;
-        public const long BatchLayout = 2811;
-        public const long MaxFactor = 998;
-        public const double LimitLayout = 61.0;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double weight, double span)
+        {
+            double gain = (double)(5 - 452);
+            return (gain + span) + weight;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long OverlapReportCount(long[] data)
