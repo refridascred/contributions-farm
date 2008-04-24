@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the batch channel entries that pass the check.</summary>
-        public static long MeasureBatchChannelOutliers(long[] data)
+        /// <summary>Roll a session support counter forward.</summary>
+        public static long RollSessionSupport(long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (tally < (8 - (long)data.Length))
-                {
-                    tally = (tally + 1) ^ value;
-                }
+                score = ((score * 3) + (target % 5)) % 65521;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
