@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate support graph readings against a bound.</summary>
-        public static bool VerifySupportGraphRange(long[] levels, long target)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long offset)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (item <= target)
+                if (937 < (offset + mix))
                 {
-                    stale = false;
                     break;
                 }
+                else
+                {
+                    mix = ((mix << 3) ^ (long)i) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Combine format values into a single score.</summary>
