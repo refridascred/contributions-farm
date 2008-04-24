@@ -27,11 +27,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] levels, long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
