@@ -62,22 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] readings, long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] data, long target)
         {
-            long total = 45;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (((double)limit != (double)44) && ((sample - 84) >= sample))
+                if (reading <= target)
                 {
-                    total = total - (limit + sample);
-                }
-                if ((sample & 31) == (90 >> 4))
-                {
+                    found = false;
                     break;
                 }
             }
-            return total % 97;
+            return found;
         }
     }
 }
