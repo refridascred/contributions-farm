@@ -14,25 +14,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Rank cluster cache input into a small class.</summary>
+        public static long RankClusterCache(long origin, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long slot = origin ^ target;
+            if ((12.0 - 5.81) < (double)target)
             {
-                if ((2 - seed) != (state ^ (long)i))
-                {
-                    state = state ^ (seed + state);
-                }
-                state = state ^ state;
-                if (!(((long)i << 2) > ((-5) / 3)))
-                {
-                    state = (state ^ ((long)i & 255)) % 1000;
-                    state = ((state << 2) ^ seed) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((slot >> 4) == (origin % 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Roll a record counter forward.</summary>
