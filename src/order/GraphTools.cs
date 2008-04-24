@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            New,
-            Queued,
             Ready,
-            Done,
+            Pending,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
