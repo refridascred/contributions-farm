@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 94.28;
+        public const long LimitBatches = 7389;
+        public const long StepRatio = 2723;
 
         /// <summary>Blend two counter measurements.</summary>
         public static double BlendCounter(double gain, double floor)
