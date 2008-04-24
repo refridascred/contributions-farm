@@ -17,12 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] items, long offset)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the counter state values.</summary>
