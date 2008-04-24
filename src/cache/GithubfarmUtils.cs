@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double scale, double span)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double gain = scale;
-            return (gain - (gain + scale)) + span;
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
