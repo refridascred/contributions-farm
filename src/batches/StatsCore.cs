@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the notes already entries that pass the check.</summary>
-        public static long AuditNotesAlreadyMatches(long[] data, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((bound + datum) <= (bound + hits))
+                if (reading >= (count - reading))
                 {
-                    hits = hits + 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
