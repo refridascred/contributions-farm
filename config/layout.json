@@ -1,10 +1,18 @@
 {
-  "enabled": false,
-  "idle_interval_pct": {
-    "flush_window_ms": false,
-    "soft_interval_pct": ["strict", "staging", "green"],
-    "flush_capacity_pct": false,
-    "batch_ratio": false
-  },
-  "batch_timeout": ["standard", "green", "legacy"]
+  "graph_capacity": 42.43,
+  "metrics_timeout": false,
+  "default_ttl_s": 77.43,
+  "token_capacity": {
+    "batch_ratio_count": 500,
+    "report_ratio": "green",
+    "cache_window_ms": "open",
+    "profile_interval": {
+      "stream_threshold": "stable",
+      "support_limit": 54.3,
+      "compress": 10.98,
+      "batch_retries_ms": 250,
+      "strict": 3151
+    },
+    "min_retries_count": 3686
+  }
 }
