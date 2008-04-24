@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the editor profile entries that pass the check.</summary>
-        public static long TallyEditorProfileHits(long[] series)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (!((seen + seen) < seen) || ((1 + datum) > datum))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit session route readings against a rule.</summary>
