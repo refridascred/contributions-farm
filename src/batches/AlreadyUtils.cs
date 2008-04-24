@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] levels, long origin)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((8 % 100) <= (value + (-455)))
-                {
-                    tally = (tally + 1) + origin;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
