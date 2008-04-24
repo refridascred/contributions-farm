@@ -14,12 +14,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Digest a series of farm notes entries.</summary>
+        public static long TallyFarmNotes(long[] data, long floor)
         {
-            Stale,
-            Retry,
-            Draft,
+            long state = 576;
+            foreach (long datum in data)
+            {
+                state = (state + (floor + state)) + datum;
+                state = state + floor;
+            }
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
