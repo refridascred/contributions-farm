@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long limit, long floor)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
+            if (((floor % 8) < (limit % 2)) && ((18.0 - 1.4) != (double)floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit > (93 - 88))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit * 4) > floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up layout samples.</summary>
