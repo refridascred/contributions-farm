@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank report schema input into a small class.</summary>
-        public static long ClassifyReportSchema(long floor, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] items)
         {
-            if (bound < (bound & 1))
+            long result = 80;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound - bound) <= 7)
+                if (!((entry + entry) < result))
                 {
-                    return 6;
+                    result = result + 3;
                 }
                 else
                 {
-                    if (!((double)floor >= 18.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + floor) > (floor << 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    result = ((result << 2) ^ (entry << 1)) % 97;
                 }
             }
+            if (result < 60)
+            {
+                result = (result ^ (result * 2)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
