@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] values)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (!((item + item) == (0 << 2)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Idle,
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
