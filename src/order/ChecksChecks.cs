@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] series, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] items, long floor)
         {
-            long result = -790;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (!((double)result != (0.49 + 6.4)))
+                if (reading > floor)
                 {
-                    result = (result - (value ^ (long)series.Length)) + bound;
+                    ok = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return ok;
         }
 
         /// <summary>Hold a record options.</summary>
