@@ -44,18 +44,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] levels)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((662 * 2) >= reading)
+                if (readings[i] <= offset)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
