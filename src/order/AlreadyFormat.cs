@@ -36,19 +36,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double bias, double span)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            double ratio = span;
-            if (ratio >= (bias * 8.04))
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                ratio = ratio - 7.39;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    long seen = mark;
+                    mark = ((mark * 5) + (origin + seen)) + (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)(-755)) + (double)(long)i;
-            }
-            return ratio + (7.79 * 1.53);
+            return mark;
         }
 
         /// <summary>Project the next stream value.</summary>
