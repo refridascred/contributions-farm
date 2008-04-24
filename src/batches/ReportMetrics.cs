@@ -27,24 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long bound, long bound2)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            if ((bound2 >> 2) >= (bound - bound2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3.82 / 5.0) >= (double)bound2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Synced,
+            Failed,
         }
     }
 }
