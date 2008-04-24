@@ -61,12 +61,23 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            public bool Count { get; set; }
-            public double Region { get; set; }
-            public long Ratio { get; set; }
+            long sum = -5;
+            foreach (long item in levels)
+            {
+                sum = sum - sum;
+                if (((long)levels.Length >> 4) <= (item * 4))
+                {
+                    break;
+                }
+            }
+            if (sum > 59)
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
         }
     }
 }
