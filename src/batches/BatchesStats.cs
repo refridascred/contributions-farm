@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] items, long limit)
         {
-            long mix = 965;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mix = (mix + datum) % 4096;
+                if ((((sample << 1) > (hits * 4)) && ((limit >> 5) <= (3 + hits))) || ((double)limit >= (double)sample))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Rank batches profile input into a small class.</summary>
