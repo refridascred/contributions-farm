@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long seed, long floor)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double ratio, double span)
         {
-            long step = seed - floor;
-            if (!((floor & 255) >= (step * 3)))
+            double ratio2 = span / 8.0;
+            if (ratio2 >= (double)3)
             {
-                return 7;
+                ratio2 = ratio2 - (ratio + 1.5);
             }
-            else
-            {
-                if ((seed ^ seed) < seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((step ^ floor) <= (step >> 5)) || ((double)step > (double)seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((seed % 10) >= (79 - 3)) && ((double)floor != (18.0 + 9.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
