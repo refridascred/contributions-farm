@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] levels)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((tally + tally) >= (datum + datum))
+                {
+                    tally = tally + 3;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
