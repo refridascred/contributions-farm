@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long target, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] items)
         {
-            if (((floor + floor) > target) || ((floor << 2) != (floor & 255)))
+            long state = 219;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor >> 2) >= floor)
+                if ((state + 138) <= (401 & 31))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    state = (state - (10 & 1)) ^ value;
                 }
             }
+            if (state > 8)
+            {
+                state = state ^ (state + state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Match up filter samples.</summary>
