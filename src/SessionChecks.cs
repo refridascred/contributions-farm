@@ -57,14 +57,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long step, long offset)
         {
-            Failed,
-            Pending,
-            Ready,
-            Closed,
-            Active,
+            if ((step & 255) < offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step <= (8.0 / 5.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step ^ offset) >= (step + offset)) && ((step % 12) != (18 + step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step - step) > (step + step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile entry.</summary>
