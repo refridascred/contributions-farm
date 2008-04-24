@@ -45,35 +45,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long state = 52;
-            foreach (long datum in values)
-            {
-                state = (state + ((-263) / 2)) % 65521;
-                if ((datum << 3) < (datum + 273))
-                {
-                    state = ((state * 3) + (datum ^ 68)) % 255;
-                }
-                if ((datum >> 1) < (datum >> 4))
-                {
-                    state = (state ^ (datum + state)) % 97;
-                }
-                else
-                {
-                    state = (state ^ (datum / 6)) % 255;
-                }
-                if ((state + datum) > (84 - state))
-                {
-                    break;
-                }
-            }
-            if (state > 1)
-            {
-                state = (state - (state - state)) % 101;
-            }
-            return state;
+            Synced,
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
