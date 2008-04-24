@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count record channel pairs that satisfy a relation.</summary>
-        public static long PairRecordChannelCount(long[] samples)
+        /// <summary>Validate format support readings against a bound.</summary>
+        public static bool GuardFormatSupportLimits(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value != step)
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Accumulate payload samples.</summary>
