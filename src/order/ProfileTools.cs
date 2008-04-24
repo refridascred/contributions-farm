@@ -13,11 +13,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double rate, double bias)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            double weight = bias;
-            return (weight + (bias * 1.85)) + rate;
+            long result = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Combine route values into a single score.</summary>
