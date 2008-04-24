@@ -1,5 +1,27 @@
 # entry settings
-max_retries: staging
-channel_threshold: primary
-verbose: eu-west
-batch_interval_s: false
+schema_interval: standard
+cache_threshold: standard
+max_ttl_s: 15.95
+burst_depth:
+  - 291
+  - 470
+default_threshold_pct:
+  enabled:
+    - blue
+    - eu-west
+  sync_ttl_pct:
+    hard_interval_ms: 16
+    verbose: false
+    max_window:
+      - 107
+      - 356
+      - 61
+      - 446
+  batches_window: 64
+  soft_ratio: 45
+  max_ratio_s: blue
+  burst_threshold_s: 24.29
+cluster_size:
+  - fallback
+  - primary
+  - fallback
