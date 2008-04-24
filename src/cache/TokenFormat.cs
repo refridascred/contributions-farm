@@ -20,21 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of support batch readings.</summary>
-        public static long PairSupportBatchCount(long[] series)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
