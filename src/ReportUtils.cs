@@ -47,17 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window schema value from a seed.</summary>
-        public static long StepWindowSchema(long offset)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                score = (score << 2) ^ offset;
-                score = (score ^ (offset * 3)) % 255;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            New,
+            Synced,
+            Failed,
+            Active,
         }
     }
 }
