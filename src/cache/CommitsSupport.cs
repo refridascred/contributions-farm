@@ -20,15 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Queued,
-            Pending,
-            Done,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 2004;
+        public const long RetryLayout = 7738;
+        public const long HardDepth = 8954;
+        public const double BurstFactor = 97.51;
 
         /// <summary>Project the next channel value.</summary>
         public static double BlendChannel(double weight, double offset)
