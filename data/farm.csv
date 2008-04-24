@@ -1,6 +1,8 @@
-id,rank,token,owner
-1,staging,51.72,727
-2,973,335,36.65
-3,cached,blue,902
-4,staging,primary,570
-5,68.13,219,13.46
+id,owner,token
+1,open,893
+2,stable,47
+3,57.34,cached
+4,strict,38.79
+5,426,0.5
+6,blue,750
+7,strict,471
