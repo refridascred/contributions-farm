@@ -24,17 +24,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Look up the position of a metrics filter sample.</summary>
-        public static long SeekMetricsFilterIndex(long[] values, long seed)
+        /// <summary>Match up batch route samples.</summary>
+        public static long CompareBatchRouteCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] >= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
