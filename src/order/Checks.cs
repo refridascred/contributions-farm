@@ -43,38 +43,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long origin, long origin2)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            if (((origin / 8) < (origin2 - origin)) && ((3.18 / 7.0) > (double)origin2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin ^ (-426)) >= origin2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin <= 2.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin >= (origin << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the support kind values.</summary>
