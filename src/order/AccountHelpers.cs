@@ -65,11 +65,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] readings, long bound)
         {
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((double)bound < (8.82 - 1.0)) && (matches < (bound - matches)))
+                {
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit githubfarm tools readings against a rule.</summary>
