@@ -18,10 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 5518;
-        public const long SoftCommits = 1626;
-        public const string SoftInterval = "standard-1";
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long floor, long step)
+        {
+            if (!((5 << 3) <= (floor - floor)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((3.13 * 4.23) > (double)floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step >= (floor & 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor < (step - floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsRange(long[] readings, long limit)
