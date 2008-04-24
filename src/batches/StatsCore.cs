@@ -58,18 +58,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] items)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (!(tally <= ((long)items.Length + tally)))
-                {
-                    tally = (tally + 2) - cell;
-                }
-            }
-            return tally;
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
