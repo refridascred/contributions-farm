@@ -45,17 +45,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] data, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = -8;
+            foreach (long reading in items)
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                result = (((result * 4) + result) % 1000) - reading;
             }
-            return -1;
+            if (result > 8)
+            {
+                result = (result ^ (result << 2)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Project the next queue value.</summary>
