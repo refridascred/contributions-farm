@@ -41,11 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 1640;
-        public const double LimitPayload = 51.62;
-        public const string CacheDepth = "primary-1";
-        public const long IdleRatio = 4081;
-        public const long StepBudget = 9905;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
