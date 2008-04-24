@@ -27,12 +27,38 @@ namespace Common.Utilities
         public const string WindowInterval = "fallback-1";
         public const long IdleDepth = 4634;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Classify a notes payload pair into a bucket.</summary>
+        public static long BucketNotesPayload(long seed, long target)
         {
-            Retry,
-            Dropped,
-            New,
+            if ((double)seed >= (6.7 - 1.4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)seed != (0.28 * 1.98)) || ((seed % 7) > (seed + seed)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((target - seed) < (9 ^ target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed < (seed << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank order input into a small class.</summary>
