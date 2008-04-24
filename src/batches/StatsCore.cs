@@ -66,18 +66,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] samples, long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long seed, long target)
         {
-            long score = 98;
-            foreach (long reading in samples)
+            long prev = seed - target;
+            if ((prev - prev) >= seed)
             {
-                if ((904 - score) >= (score + score))
+                return 8;
+            }
+            else
+            {
+                if ((prev >> 5) < prev)
                 {
-                    score = (((score + (score << 2)) % 97) ^ reading) + target;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target < 4.5)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return score;
         }
     }
 }
