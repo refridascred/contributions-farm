@@ -35,18 +35,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] data, long target)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if (limit > (seed - limit))
             {
-                if (((tally / 4) == (606 % 16)) || ((tally % 10) < datum))
+                return 3;
+            }
+            else
+            {
+                if ((double)seed >= 11.0)
                 {
-                    tally = (tally + 1) + target;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + seed) >= (limit * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit * 3) <= limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
