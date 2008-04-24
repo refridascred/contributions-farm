@@ -1,13 +1,11 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-The editor helpers are pure functions, so they are safe to call from any thread.
-
-The checks helpers are pure functions, so they are safe to call from any thread.
-Defaults for farm live in the config folder and can be overridden per environment.
+Run the token check before changing any support limits.
+Keep record and tools names short and lowercase.
 
 ## Guidelines
 
-- Review payload limits each release
-- Validate graph input early
-- Keep session values small
+- Prefer counter defaults
+- Document new stats fields
+- Log every account change
+- Validate format input early
