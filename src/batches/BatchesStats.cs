@@ -27,38 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long target, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] data, long seed)
         {
-            if (((seed ^ 6) != (7 * 3)) && ((12.0 - 8.2) > (double)seed))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.64 / 2.0) < (double)seed)
+                if (!((seen + sample) > (seen + seed)) || ((double)sample == (double)seen))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + seed) != (seed ^ seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((seed & 3) != (target - target)) || (1.3 <= (double)target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the command kind values.</summary>
