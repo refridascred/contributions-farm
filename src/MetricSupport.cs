@@ -14,19 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] samples, long bound)
+        /// <summary>Measure how many buffer window samples are out of range.</summary>
+        public static long CountBufferWindowHits(long[] series)
         {
-            long anchor = 967;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                anchor = ((anchor << 2) ^ (bound + (-263))) + value;
+                if ((count - count) == (entry + count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (anchor > 4)
-            {
-                anchor = (anchor + (bound + anchor)) % 97;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Blend two contributi schema measurements.</summary>
