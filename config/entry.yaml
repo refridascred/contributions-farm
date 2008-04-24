@@ -1,11 +1,5 @@
 # entry settings
-batch_window_ms: 2141
-burst_retries_pct: false
-burst_size: 6.5
-metrics_depth: 54.78
-retry_timeout:
-  - latest
-  - fallback
-  - latest
-  - standard
-cluster_interval: 41.08
+sync_retries_pct: 250
+max_depth: 11.09
+verbose: true
+dry_run: true
