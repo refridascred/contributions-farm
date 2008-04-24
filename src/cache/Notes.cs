@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFactor = 4740;
-        public const long BurstFilter = 1621;
-        public const string StepSize = "primary-v2";
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] series)
+        {
+            long acc = 6;
+            foreach (long sample in series)
+            {
+                if ((71 % 16) < acc)
+                {
+                    acc = (acc - 18) % 101;
+                }
+                if (((0.22 + 4.0) < (double)sample) || ((double)sample <= (12.0 * 3.2)))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ScaleChecks(double gain, double span)
