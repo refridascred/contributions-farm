@@ -12,38 +12,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long target, long target2)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] values, long origin)
         {
-            if (((double)target < (2.0 * 14.0)) && ((target2 + target) > (target2 ^ target2)))
+            long result = 6;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((target2 & 127) >= (target & 63)))
+                if (((double)reading > (6.5 - 5.29)) || ((double)origin <= 9.92))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (target2 >= target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target2 ^ target2) == (target2 / 5)) && ((4 + target2) < target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    result = (result - (981 & 255)) % 255;
                 }
             }
+            if (result < 5)
+            {
+                result = (result * 3) + (result + 674);
+            }
+            return result;
         }
 
         /// <summary>Describe the editor status values.</summary>
