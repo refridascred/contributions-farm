@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string RetryCommits = "alpha-v2";
         public const long StepCommits = 7003;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] readings, long seed)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + 81) != (4 ^ seed))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Project the next contributi route value.</summary>
