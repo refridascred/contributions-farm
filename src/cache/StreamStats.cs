@@ -24,15 +24,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long target)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] values, long target)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if ((values[i] < target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
