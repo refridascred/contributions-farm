@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double gain, double floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long floor, long bound)
         {
-            double gain2 = (double)599;
-            return ((gain2 + (double)7) + gain) + floor;
+            if ((floor - 68) < (4 + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound >> 1) < 9)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((272 + bound) != (bound << 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
