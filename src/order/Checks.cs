@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            public bool Mode { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
