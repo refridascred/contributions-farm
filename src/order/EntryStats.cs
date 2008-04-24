@@ -32,10 +32,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCount = 9.17;
-        public const string IdleRatio = "standard-v2";
-        public const long MinRatio = 5797;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((floor & 15) == (0 >> 1)) || ((double)sample != (double)seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of report schema readings.</summary>
         public static long PairReportSchemaCount(long[] levels)
