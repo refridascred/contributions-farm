@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 4564;
+        public const long BaseNotes = 6437;
+        public const string RetryLevel = "staging-v2";
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
