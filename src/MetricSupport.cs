@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] levels)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long result = 939;
+            foreach (long reading in items)
             {
-                if ((matches / 8) != (datum ^ datum))
+                result = result ^ (-67);
+                result = ((result << 3) ^ reading) % 101;
+                if (!((reading ^ result) == (seed % 24)))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
