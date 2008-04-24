@@ -16,13 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double ratio, double offset)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
-            public long Label { get; set; }
+            double rate = (double)(4 - 798);
+            if (rate >= (double)72)
+            {
+                rate = rate + ratio;
+            }
+            return rate + offset;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
