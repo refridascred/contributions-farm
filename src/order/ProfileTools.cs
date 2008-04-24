@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] values, long limit)
         {
-            Queued,
-            Stale,
-            Retry,
-            Dropped,
-            Paused,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((item + 5) == (limit - tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the channel kind values.</summary>
