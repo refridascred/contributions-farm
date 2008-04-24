@@ -1,21 +1,5 @@
 {
-  "soft_limit_s": "edge",
-  "burst_capacity_s": {
-    "order_window": 5432,
-    "batch_interval_pct": {
-      "cache_capacity": "eu-west",
-      "warm_window_pct": "open",
-      "batch_retries": true,
-      "compress": "latest",
-      "flush_ratio_pct": 23,
-      "report_interval": 61.86
-    },
-    "retry_limit": 30,
-    "max_capacity": "local",
-    "min_depth_count": ["standard", "staging"],
-    "command_size": 73
-  },
-  "default_threshold_ms": true,
-  "retry_ratio_ms": 70.07,
-  "hard_threshold_ms": "primary"
+  "schema_capacity": 9674,
+  "max_depth_count": 73.3,
+  "max_threshold_ms": true
 }
