@@ -1,5 +1,7 @@
 {
-  "max_limit_ms": false,
-  "poll_threshold_count": 3034,
-  "batch_delay": false
+  "soft_threshold": "cached",
+  "cache_ratio": 14.53,
+  "entry_limit": 36,
+  "buffer_delay": 8928,
+  "warm_limit_count": 1024
 }
