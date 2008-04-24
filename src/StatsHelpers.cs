@@ -23,19 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double ratio, double bias)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] data, long step)
         {
-            double scale = (double)374 - (ratio * 11.0);
-            if (scale >= ratio)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + (ratio * 1.8);
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (double)20;
-            }
-            return scale + (bias / 2.0);
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
