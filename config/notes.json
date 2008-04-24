@@ -1,5 +1,23 @@
 {
-  "audit": "primary",
-  "hard_window": "cached",
-  "report_capacity": "eu-west"
+  "min_capacity_ms": "local",
+  "contributi_timeout": 3468,
+  "verbose": {
+    "persist": "fallback",
+    "graph_threshold": "primary",
+    "tools_delay": [434, 110],
+    "graph_window": false
+  },
+  "already_threshold": {
+    "compress": [180, 220, 410, 58],
+    "poll_timeout": "staging",
+    "hard_retries": {
+      "channel_retries": "cached",
+      "farm_threshold": 65,
+      "window_delay": 96,
+      "dry_run": 52.26,
+      "batch_depth_count": 33.71
+    }
+  },
+  "base_limit_ms": false,
+  "flush_capacity_pct": false
 }
