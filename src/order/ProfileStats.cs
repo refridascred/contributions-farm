@@ -39,18 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] values, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if ((8.3 + 15.0) != (double)value)
+                if (datum != origin)
                 {
-                    count = (count + 3) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
