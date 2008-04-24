@@ -1,6 +1,10 @@
 {
-  "idle_size_s": [64, 111, 160, 259],
-  "warm_ttl_s": "open",
-  "max_limit_s": "local",
-  "burst_capacity": 3211
+  "schema_size": "eu-west",
+  "default_interval": 4,
+  "max_depth": ["green", "local", "stable", "blue"],
+  "hard_capacity": {
+    "audit": [391, 78, 459, 485],
+    "min_size_ms": "local",
+    "contributi_interval": "latest"
+  }
 }
