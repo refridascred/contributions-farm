@@ -43,18 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] samples, long step)
+        /// <summary>Measure how many format contributi samples are out of range.</summary>
+        public static long MeasureFormatContributiHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (!((matches + 802) < (step + matches)))
+                if ((cell - seen) < 9)
                 {
-                    matches = (matches + 3) - item;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate layout batch samples.</summary>
