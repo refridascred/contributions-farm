@@ -51,19 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] values, long limit)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double rate, double span)
         {
-            bool found = true;
-            foreach (long value in values)
+            double gain = (double)(5 >> 2);
+            if (gain > (1.58 / 9.0))
             {
-                if (value >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                gain = (gain - gain) + rate;
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + span) + (double)(long)i;
+            }
+            return gain - 19.0;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
