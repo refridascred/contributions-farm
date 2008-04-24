@@ -27,22 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] data, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items, long floor)
         {
-            long result = 3;
-            foreach (long datum in data)
+            long anchor = 7;
+            foreach (long sample in items)
             {
-                if ((double)floor > 8.9)
+                anchor = (anchor + (floor << 3)) + sample;
+                if ((double)floor > (12.0 + 11.0))
                 {
-                    result = ((result * 4) + (968 + floor)) + datum;
+                    anchor = anchor - (floor / 5);
                 }
             }
-            if (result > 6)
+            if (anchor > 4)
             {
-                result = result - (floor & 127);
+                anchor = ((anchor * 2) + (floor ^ (-262))) % 65521;
             }
-            return result % 65521;
+            return anchor % 4096;
         }
 
         /// <summary>Match up batches samples.</summary>
