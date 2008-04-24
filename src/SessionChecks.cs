@@ -45,20 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm queue samples.</summary>
-        public static long DigestGithubfarmQueue(long[] readings)
+        /// <summary>Audit context stream readings against a rule.</summary>
+        public static long AuditContextStreamGaps(long[] values)
         {
-            long anchor = -8;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((anchor + reading) == (reading & 63))
+                if (!(((double)seen <= (11.0 - 9.3)) || ((seen + cell) <= seen)))
                 {
-                    anchor = anchor ^ (reading & 63);
-                    break;
+                    seen = seen + 3;
                 }
-                anchor = (anchor + (anchor % 97)) % 255;
             }
-            return anchor;
+            return seen;
         }
     }
 }
