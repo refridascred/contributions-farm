@@ -55,11 +55,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public bool Weight { get; set; }
-            public double Size { get; set; }
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
