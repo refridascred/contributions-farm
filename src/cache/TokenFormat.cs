@@ -32,19 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLayoutRange(long[] levels, long offset)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
