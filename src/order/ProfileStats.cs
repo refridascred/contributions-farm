@@ -54,24 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches route input into a small class.</summary>
-        public static long RankBatchesRoute(long bound, long limit)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            if (((bound + 453) < (352 + bound)) && ((82 & 255) > (limit - bound)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit >= (0.3 / 9.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Stale,
+            Idle,
         }
     }
 }
