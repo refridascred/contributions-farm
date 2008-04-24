@@ -49,18 +49,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the token notes entries that pass the check.</summary>
-        public static long MeasureTokenNotesOutliers(long[] readings, long step)
+        /// <summary>Validate schema tools readings against a bound.</summary>
+        public static bool GuardSchemaToolsBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((10.0 + 13.0) != (double)datum)
+                if (item >= offset)
                 {
-                    hits = (hits + 3) - step;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
