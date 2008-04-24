@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheSize = 93.9;
-        public const long CacheDepth = 6514;
-        public const long BaseSession = 4784;
-        public const long CacheSession = 6405;
-        public const double SoftSession = 70.29;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count * 5) == (count - count))
+                {
+                    count = ((count + 3) ^ datum) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two stats measurements.</summary>
         public static double ProjectStats(double ratio, double span)
