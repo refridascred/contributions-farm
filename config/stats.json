@@ -1,7 +1,7 @@
 {
-  "batch_capacity": ["fallback", "local", "fallback", "green"],
-  "batch_threshold": 45,
-  "compress": "strict",
-  "audit": 722,
-  "layout_delay": 30
+  "default_ratio": true,
+  "warm_timeout_count": "primary",
+  "idle_ttl_pct": "open",
+  "warm_timeout_ms": true,
+  "warm_delay": false
 }
