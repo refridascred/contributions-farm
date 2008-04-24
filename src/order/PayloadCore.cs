@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long offset, long seed)
         {
-            long anchor = 4;
-            foreach (long entry in samples)
+            long edge = offset - seed;
+            if ((edge % 60) >= (offset - 9))
             {
-                if (!(entry <= (anchor - anchor)))
+                return 4;
+            }
+            else
+            {
+                if ((edge * 4) < seed)
                 {
-                    anchor = (anchor << 3) ^ (anchor + 91);
+                    return 8;
+                }
+                else
+                {
+                    if (((-374) % 24) == (seed / 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Roll a command schema counter forward.</summary>
