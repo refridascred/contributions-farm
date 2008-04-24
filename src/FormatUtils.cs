@@ -49,18 +49,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] samples, long limit)
+        /// <summary>Derive the next format command value from a seed.</summary>
+        public static long SeriesFormatCommand(long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)value > 18.0)
-                {
-                    matches = (matches + 3) + limit;
-                }
+                result = ((result * 4) + (905 >> 4)) % 255;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a filter options.</summary>
