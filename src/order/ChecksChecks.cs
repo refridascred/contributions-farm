@@ -20,10 +20,20 @@ namespace Common.Utilities
             return load + (double)(-6);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 2089;
-        public const double LimitFactor = 32.4;
-        public const long HardAccount = 2108;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double ProjectPayload(double ratio, double bias)
