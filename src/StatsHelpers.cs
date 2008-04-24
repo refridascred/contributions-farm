@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] readings)
         {
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading << 2) <= matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
