@@ -77,12 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstNotes = "local-v2";
-        public const long HardNotes = 4777;
-        public const long BaseFactor = 7476;
-        public const long CacheNotes = 2739;
-        public const long StepFactor = 9853;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Measure how many counter cache samples are out of range.</summary>
         public static long CountCounterCacheHits(long[] series, long limit)
