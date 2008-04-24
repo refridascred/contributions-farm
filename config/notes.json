@@ -1,7 +1,11 @@
 {
-  "stream_depth": "fallback",
-  "cache_interval_ms": 98.49,
-  "hard_window_ms": "legacy",
-  "persist": 96.06,
-  "flush_threshold_s": [12, 433, 130, 436]
+  "soft_retries_ms": 69.02,
+  "dry_run": 1589,
+  "max_timeout_count": {
+    "dry_run": "strict",
+    "warm_capacity_ms": [55, 475, 337, 303],
+    "retry_capacity_pct": 30,
+    "strict": 83.92
+  },
+  "sync_limit_ms": true
 }
