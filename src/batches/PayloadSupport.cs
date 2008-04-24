@@ -37,13 +37,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Stale,
-            Synced,
-            Paused,
-            Done,
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
