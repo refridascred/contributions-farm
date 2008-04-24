@@ -24,25 +24,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a queue already value against two limits.</summary>
-        public static long SortQueueAlready(long limit, long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long edge = limit ^ step;
-            if (edge < (edge * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit / 9) > (edge << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Weight { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
