@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftBudget = 7170;
-        public const long BaseSpan = 3865;
-        public const long StepCount = 6764;
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long SeriesBuffer(long floor)
