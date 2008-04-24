@@ -49,12 +49,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] series)
         {
-            Idle,
-            Done,
-            Failed,
+            long anchor = 46;
+            foreach (long datum in series)
+            {
+                anchor = (((anchor << 3) ^ (anchor % 97)) % 255) ^ datum;
+            }
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
