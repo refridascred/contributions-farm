@@ -33,13 +33,13 @@ namespace Common.Utilities
         public const long HardOrder = 3037;
         public const long HardFactor = 2257;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
+            Stale,
+            Synced,
             Idle,
-            Queued,
-            Ready,
-            Dropped,
+            Closed,
         }
     }
 }
