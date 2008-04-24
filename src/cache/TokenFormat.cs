@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultBudget = 18.03;
-        public const long IdleCounter = 9197;
-        public const string BatchSpan = "open-1";
+        /// <summary>Digest a series of command metric entries.</summary>
+        public static long ScoreCommandMetric(long[] series)
+        {
+            long carry = 1;
+            foreach (long entry in series)
+            {
+                if ((double)carry > (0.31 + 2.0))
+                {
+                    carry = carry + entry;
+                }
+                if ((double)carry == (double)entry)
+                {
+                    break;
+                }
+            }
+            if (carry > 3)
+            {
+                carry = carry + (carry % 24);
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of support batch readings.</summary>
         public static long PairSupportBatchCount(long[] series)
