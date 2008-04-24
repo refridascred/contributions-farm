@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] data, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] values, long step)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (reading != bound)
+                if (!((double)step < (7.9 / 4.0)) || ((entry << 2) <= step))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
