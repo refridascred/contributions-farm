@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] readings, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (5.0 > (double)seen)
-                {
-                    seen = ((seen + 3) + datum) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = (mark - (bound + (long)i)) % 101;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a schema entry.</summary>
