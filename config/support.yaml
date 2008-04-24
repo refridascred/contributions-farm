@@ -1,21 +1,7 @@
 # support settings
-flush_size_pct:
-  - 476
-  - 19
-  - 337
-  - 103
-idle_delay: 250
-burst_size_s: strict
-poll_delay_count:
-  support_depth: 5
-  cache_timeout: 47
-  schema_timeout: 34.66
-  metric_window:
-    - cached
-    - stable
-  base_depth: eu-west
-  support_capacity: 100
-enabled:
-  - green
-  - cached
-  - green
+batch_depth:
+  - 137
+  - 438
+sync_depth_s: latest
+dry_run: legacy
+default_delay_pct: false
