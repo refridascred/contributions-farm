@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long BaseNotes = 6437;
         public const string RetryLevel = "staging-v2";
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] series, long offset)
         {
-            Active,
-            Dropped,
-            Stale,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((count > (7 ^ count)) && ((count + offset) == (count - count))))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
