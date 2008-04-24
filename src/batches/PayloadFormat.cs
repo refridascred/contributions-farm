@@ -16,17 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] items, long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Done,
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
