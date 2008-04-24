@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] readings)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (937 < (offset + mix))
+                if ((99 * 5) >= hits)
                 {
-                    break;
+                    hits = (hits + 3) + sample;
                 }
-                else
-                {
-                    mix = ((mix << 3) ^ (long)i) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Combine format values into a single score.</summary>
