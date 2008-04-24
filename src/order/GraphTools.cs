@@ -14,11 +14,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 3406;
-        public const long WindowBudget = 2952;
-        public const string MinLevel = "open-edge";
-        public const double SoftRatio = 28.15;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long PairMetricsCount(long[] items)
