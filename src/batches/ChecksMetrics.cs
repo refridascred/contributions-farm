@@ -25,14 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Project the next route support value.</summary>
+        public static double ScaleRouteSupport(double scale, double bias)
         {
-            Failed,
-            Done,
-            Idle,
-            Paused,
-            New,
+            double ratio = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (double)(long)i) - scale;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Accumulate token samples.</summary>
