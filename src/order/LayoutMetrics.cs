@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] series)
+        /// <summary>Project the next batches notes value.</summary>
+        public static double AdjustBatchesNotes(double scale, double bias)
         {
-            long count = 0;
-            foreach (long item in series)
+            double gain = (double)17 / 7.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((count / 5) >= 2)
-                {
-                    count = (count + 3) + item;
-                }
+                gain = (gain - (double)(long)i) - scale;
             }
-            return count;
+            return gain - bias;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
