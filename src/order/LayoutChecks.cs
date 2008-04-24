@@ -27,22 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batch checks readings.</summary>
-        public static long CombineBatchChecks(long[] items)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long total = 774;
-            foreach (long cell in items)
-            {
-                if ((7.72 + 1.91) < (double)total)
-                {
-                    total = total + (cell << 2);
-                }
-            }
-            if (total < 3)
-            {
-                total = total + (total - total);
-            }
-            return total;
+            Draft,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the tools class values.</summary>
