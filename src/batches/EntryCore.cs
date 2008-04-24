@@ -41,38 +41,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long seed, long seed2)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] data)
         {
-            if ((seed + seed) < (seed2 % 100))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed - seed2) == (seed / 3)) && ((seed / 2) <= (seed / 8)))
+                if ((item >> 1) > (seen - 326))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed2 + seed2) > (seed - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed2 < seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
