@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
             public double Size { get; set; }
-            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate editor entry samples.</summary>
