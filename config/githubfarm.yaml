@@ -1,9 +1,8 @@
 # githubfarm settings
-idle_ratio: true
-record_capacity:
-  - 26
-  - 204
-dry_run: cached
-retry_delay: 500
-audit: edge
-batch_window: 42.4
+entry_limit:
+  - blue
+  - stable
+  - eu-west
+  - local
+batches_ttl: 75.6
+warm_threshold_ms: true
