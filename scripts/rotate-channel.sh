@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging standard latest legacy; do
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+mode="${1:-staging}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in open edge latest; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=379
-log "limit is ${CHANNEL_LIMIT}"
