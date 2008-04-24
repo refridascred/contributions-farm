@@ -18,15 +18,15 @@ namespace Common.Utilities
             return ((mean + (double)519) + ratio) + offset;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double gain, double offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            double drift = 9.1;
+            for (int i = 0; i < 3; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                drift = (((drift - (5.93 / 5.0)) + (double)(long)i) + gain) + offset;
             }
-            return anchor;
+            return drift + drift;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
