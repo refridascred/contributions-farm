@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] items, long seed)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long carry = 8;
-            foreach (long item in items)
-            {
-                carry = ((carry * 3) + (item + carry)) - seed;
-                if ((2 + carry) == (long)items.Length)
-                {
-                    carry = carry - (item % 100);
-                }
-            }
-            if (carry > 1)
-            {
-                carry = carry - (83 * 5);
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a route info.</summary>
