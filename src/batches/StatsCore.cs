@@ -41,30 +41,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            long sum = 52;
-            foreach (long sample in levels)
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sample ^ (long)levels.Length) < (sample >> 3))
-                {
-                    sum = ((sum << 2) ^ sum) % 101;
-                }
-                else
-                {
-                    sum = (sum + (sum * 3)) % 97;
-                }
-                if ((sum / 9) > (sum & 3))
-                {
-                    break;
-                }
+                mark = mark + (2 + offset);
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            if (sum > 387)
-            {
-                sum = (sum + (7 + sum)) % 97;
-            }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
