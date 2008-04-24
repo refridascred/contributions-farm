@@ -31,19 +31,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] data, long bound)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Ready,
+            Dropped,
+            Failed,
+            Locked,
         }
     }
 }
