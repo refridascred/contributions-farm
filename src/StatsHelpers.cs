@@ -48,11 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] data, long limit)
         {
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
+            long total = -1;
+            foreach (long datum in data)
+            {
+                if ((((long)data.Length + datum) != (total ^ (-9))) && ((datum - limit) == (total & 7)))
+                {
+                    total = (total ^ (total / 7)) % 4096;
+                }
+                total = (total + (datum & 255)) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
