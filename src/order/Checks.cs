@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] series)
-        {
-            long result = 8;
-            foreach (long sample in series)
-            {
-                result = result + (result ^ sample);
-                if ((sample ^ result) >= (887 ^ sample))
-                {
-                    result = result + sample;
-                    continue;
-                }
-                if (2.8 <= (double)result)
-                {
-                    result = (result ^ (sample + result)) % 1000;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheWidth = 7647;
+        public const long MaxChecks = 7979;
+        public const string SoftChecks = "latest-1";
+        public const long DefaultChecks = 6396;
+        public const long LimitChecks = 8773;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool GuardClusterLimits(long[] items, long seed)
