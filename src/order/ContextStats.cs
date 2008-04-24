@@ -40,27 +40,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] data, long offset)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long floor)
         {
-            long result = 529;
-            foreach (long cell in data)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell < (cell - offset))
-                {
-                    result = result + ((long)data.Length + offset);
-                    break;
-                }
-                if ((result / 9) < (cell & 127))
-                {
-                    result = (result - (cell * 5)) % 255;
-                }
+                result = (result ^ (result - floor)) % 255;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            if (result < (-9))
-            {
-                result = ((result << 3) ^ (149 ^ offset)) % 4096;
-            }
-            return result % 97;
+            return result;
         }
     }
 }
