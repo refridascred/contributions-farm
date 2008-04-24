@@ -84,22 +84,17 @@ namespace Common.Utilities
         public const double BurstTools = 23.63;
         public const long SoftLevel = 1777;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] series)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((hits << 1) != (hits & 31))
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix << 3) ^ (mix << 1)) % 97;
+                mix = (mix ^ (long)i) % 101;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
     }
 }
