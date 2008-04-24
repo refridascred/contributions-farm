@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 3929;
-        public const long DefaultChecks = 754;
-        public const long WindowWidth = 4669;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Closed,
+            Done,
+            Pending,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double LimitSize = 56.64;
