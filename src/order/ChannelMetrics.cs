@@ -29,12 +29,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] samples)
         {
-            Failed,
-            Retry,
-            Draft,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count - entry) > (entry * 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
