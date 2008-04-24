@@ -54,15 +54,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] samples, long limit)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
             long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)matches >= (1.9 - 5.68))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = ((matches + 2) - cell) - limit;
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
