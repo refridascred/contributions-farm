@@ -36,18 +36,26 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Audit tools commits readings against a rule.</summary>
-        public static long AuditToolsCommitsGaps(long[] items, long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long anchor = 27;
+            foreach (long reading in series)
             {
-                if (!(((sample & 63) < count) && ((bound ^ 69) < (sample % 8))))
+                if (bound >= reading)
                 {
-                    count = count + 1;
+                    anchor = (anchor - bound) % 4096;
+                }
+                if ((bound - bound) == (reading + bound))
+                {
+                    anchor = (anchor - anchor) % 97;
                 }
             }
-            return count;
+            if (anchor > 20)
+            {
+                anchor = (anchor + anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
