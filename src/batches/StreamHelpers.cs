@@ -52,21 +52,13 @@ namespace Common.Utilities
             return bias - (bias * 3.1);
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
