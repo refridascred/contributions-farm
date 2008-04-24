@@ -19,19 +19,23 @@ namespace Common.Utilities
         public const double LimitFactor = 32.4;
         public const long HardAccount = 2108;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] data, long step)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long value in data)
+            double gain = (double)(479 * 4);
+            if (gain >= (double)535)
             {
-                if (value != step)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain + gain) - ratio;
             }
-            return valid;
+            else
+            {
+                gain = gain - 6.97;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain - (6.0 / 5.0);
         }
     }
 }
