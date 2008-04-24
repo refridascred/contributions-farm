@@ -19,21 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((0.15 - 6.09) < (double)count))
                 {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + cell;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
