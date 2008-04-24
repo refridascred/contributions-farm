@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] items, long floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry >= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Rank context input into a small class.</summary>
