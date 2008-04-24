@@ -13,32 +13,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Grade a record tools value against two limits.</summary>
-        public static long BucketRecordTools(long seed, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] readings, long limit)
         {
-            long lane = seed - origin;
-            if ((origin % 2) <= (lane & 255))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.0 / 3.0) > (double)origin)
+                if (((8 - limit) <= (entry - entry)) && ((limit - count) == (count - entry)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (lane <= (seed + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
