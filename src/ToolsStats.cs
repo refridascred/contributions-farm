@@ -60,19 +60,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a batches commits reading.</summary>
-        public static double ScaleBatchesCommits(double rate, double offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] items, long origin)
         {
-            double gain = rate;
-            if (gain < gain)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain - (offset / 6.0);
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + rate;
-            }
-            return gain + gain;
+            return -1;
         }
     }
 }
