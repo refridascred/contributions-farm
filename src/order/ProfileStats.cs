@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long origin, long floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] samples, long seed)
         {
-            long prev = origin + floor;
-            if (origin > prev)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(prev > (origin - prev)))
+                if (samples[i] <= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
