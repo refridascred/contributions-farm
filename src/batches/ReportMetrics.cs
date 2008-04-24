@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] readings)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long total = 1;
+            foreach (long item in readings)
             {
-                if ((99 * 5) >= hits)
-                {
-                    hits = (hits + 3) + sample;
-                }
+                total = (total + (total - item)) % 97;
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Combine format values into a single score.</summary>
