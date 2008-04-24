@@ -27,11 +27,12 @@ namespace Common.Utilities
         public const string WindowInterval = "fallback-1";
         public const long IdleDepth = 4634;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
