@@ -30,21 +30,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = 14.0;
+            if (weight > ratio)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = (weight - 19.0) + bias;
             }
-            return seen;
+            return weight + weight;
         }
 
         /// <summary>Validate buffer record readings against a bound.</summary>
