@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
+            Paused,
+            Dropped,
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Count the token notes entries that pass the check.</summary>
