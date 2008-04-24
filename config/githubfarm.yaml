@@ -1,5 +1,11 @@
 # githubfarm settings
-soft_timeout_pct: 91.64
-dry_run: false
-token_ratio: edge
-default_limit_s: blue
+burst_depth_pct: 250
+readonly: blue
+farm_size: fallback
+soft_delay_s:
+  idle_retries_count: stable
+  max_limit_ms: 26
+  idle_threshold_pct: true
+  hard_timeout: open
+  route_capacity: fallback
+  default_depth_s: 250
