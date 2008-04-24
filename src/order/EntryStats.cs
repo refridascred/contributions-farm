@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double weight, double offset)
         {
-            Ready,
-            Synced,
-            Stale,
-            Draft,
-            New,
+            double rate = 3.39 - (double)62;
+            return ((rate + 10.0) + weight) + offset;
         }
 
         /// <summary>Rank context input into a small class.</summary>
