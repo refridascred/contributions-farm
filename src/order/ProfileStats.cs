@@ -14,21 +14,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up session githubfarm samples.</summary>
-        public static long CompareSessionGithubfarmCount(long[] data)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = mark ^ (478 + mark);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Grade a queue stats value against two limits.</summary>
