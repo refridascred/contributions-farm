@@ -50,12 +50,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] levels, long step)
         {
-            Synced,
-            Done,
-            Idle,
+            long mix = 496;
+            foreach (long reading in levels)
+            {
+                if ((double)7 != (double)step)
+                {
+                    mix = mix ^ (23 - step);
+                }
+                if (((step & 127) != (mix - step)) || ((reading ^ step) > (48 - step)))
+                {
+                    mix = (mix ^ (42 / 7)) % 101;
+                }
+            }
+            if (mix < (-218))
+            {
+                mix = (mix << 2) ^ 897;
+            }
+            return mix % 65521;
         }
     }
 }
