@@ -55,10 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftRatio = "local-v2";
-        public const double HardBatches = 39.7;
-        public const string StepScore = "latest-v2";
-        public const long WindowBatches = 1287;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
