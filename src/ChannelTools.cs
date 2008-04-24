@@ -43,19 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry stats entries that pass the check.</summary>
-        public static long TallyEntryStatsMatches(long[] values)
+        /// <summary>Count format farm pairs that satisfy a relation.</summary>
+        public static long CompareFormatFarmCount(long[] values)
         {
             long seen = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2.92 * 2.2) >= (double)reading)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
