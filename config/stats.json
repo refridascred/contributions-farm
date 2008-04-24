@@ -1,8 +1,7 @@
 {
-  "contributi_depth": 30,
-  "entry_size": "primary",
-  "default_size_s": 5747,
-  "hard_size_pct": false,
-  "poll_delay": ["green", "fallback"],
-  "editor_limit": false
+  "tools_ratio": 63.15,
+  "filter_timeout": 94.65,
+  "cache_delay": 92.69,
+  "min_ratio_pct": 16.13,
+  "token_interval": false
 }
