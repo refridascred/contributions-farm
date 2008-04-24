@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long BaseLevel = 4997;
         public const string RetryBudget = "latest";
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            Idle,
+            Draft,
+            New,
+            Locked,
         }
 
         /// <summary>Accumulate order samples.</summary>
