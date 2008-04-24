@@ -1,10 +1,14 @@
 # support settings
-farm_interval: 3
-cache_interval_ms: 6813
-batch_timeout_s: legacy
-base_threshold:
-  - local
-  - staging
-  - strict
-  - blue
-soft_ratio_ms: 100
+batch_delay:
+  - 456
+  - 25
+  - 382
+context_delay: 26.23
+account_depth:
+  - 93
+  - 495
+  - 78
+report_retries:
+  - primary
+  - primary
+  - eu-west
