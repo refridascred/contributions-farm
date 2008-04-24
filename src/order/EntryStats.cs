@@ -63,11 +63,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] data)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (value > (matches ^ value))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
