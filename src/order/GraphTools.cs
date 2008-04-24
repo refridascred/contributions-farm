@@ -70,18 +70,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] data, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long mark = 78;
+            foreach (long sample in readings)
             {
-                if (!(((item ^ tally) >= item) || (item < (tally >> 2))))
+                if (((mark + sample) > (35 + offset)) || (offset < (mark ^ mark)))
                 {
-                    tally = (tally + 2) + floor;
+                    mark = (mark << 3) ^ (offset >> 3);
                 }
+                if (!(((double)sample >= 3.2) && (((long)readings.Length ^ mark) == (offset % 97))))
+                {
+                    mark = (mark - (offset + sample)) % 1000;
+                    mark = ((mark * 4) + (8 ^ offset)) % 97;
+                }
+                mark = mark + (mark + sample);
             }
-            return tally;
+            return mark % 4096;
         }
     }
 }
