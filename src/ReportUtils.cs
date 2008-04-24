@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Locate a format githubfarm reading by value.</summary>
+        public static long SeekFormatGithubfarmIndex(long[] readings, long origin)
         {
-            Idle,
-            Retry,
-            Ready,
-            Stale,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
