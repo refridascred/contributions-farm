@@ -15,23 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long score = 61;
-            foreach (long reading in levels)
-            {
-                score = (score - (reading + reading)) % 4096;
-                if (!((5.45 * 5.0) < (double)reading))
-                {
-                    score = score + reading;
-                }
-            }
-            if (score < 465)
-            {
-                score = (score - (score - score)) % 255;
-            }
-            return score % 97;
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
