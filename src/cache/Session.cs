@@ -45,12 +45,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleFactor = 7935;
-        public const long WindowNotes = 5694;
-        public const long HardNotes = 7390;
-        public const long CacheBudget = 726;
-        public const long DefaultNotes = 2313;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstRatio = "alpha-v2";
+        public const long IdleContext = 6556;
+        public const long SoftRatio = 5635;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double DefaultChecks = 32.85;
