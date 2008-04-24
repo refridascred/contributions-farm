@@ -1,15 +1,11 @@
 {
-  "checks_interval": {
-    "batches_window": "staging",
-    "warm_retries_count": "blue",
-    "base_retries_count": 32
+  "command_threshold": 250,
+  "min_interval_ms": {
+    "poll_timeout": true,
+    "strict": 42,
+    "notes_size": "open",
+    "enabled": 4690,
+    "base_threshold_s": [496, 344, 2, 309]
   },
-  "filter_retries": 43.36,
-  "stats_timeout": true,
-  "stream_depth": {
-    "min_window_ms": 2178,
-    "burst_ttl_s": 250,
-    "record_ttl": ["latest", "green", "strict"]
-  },
-  "default_depth": 11
+  "idle_ttl_pct": ["open", "open", "strict", "primary"]
 }
