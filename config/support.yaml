@@ -1,7 +1,17 @@
 # support settings
-batch_depth:
-  - 137
-  - 438
-sync_depth_s: latest
-dry_run: legacy
-default_delay_pct: false
+idle_size_count: cached
+flush_capacity: false
+flush_size: latest
+cluster_capacity: 2080
+batch_ttl_pct:
+  - 198
+  - 132
+  - 457
+default_depth_s:
+  entry_window: cached
+  hard_limit: false
+  filter_timeout:
+    - 500
+    - 351
+  flush_limit_count: true
+  max_retries_pct: 30
