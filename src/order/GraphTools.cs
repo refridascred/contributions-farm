@@ -25,15 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double scale, double offset)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double ratio = offset;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (5.12 * 7.16)) + (double)(long)i;
-            }
-            return ratio - scale;
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a already options.</summary>
