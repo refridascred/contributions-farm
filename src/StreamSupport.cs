@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] items)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((matches + matches) >= matches) && !((double)matches >= (5.3 * 3.8)))
-                {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
