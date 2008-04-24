@@ -20,10 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 59.17;
-        public const string MinChannel = "legacy";
-        public const double BurstCount = 35.35;
+        /// <summary>Count the notes already entries that pass the check.</summary>
+        public static long AuditNotesAlreadyMatches(long[] data, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((bound + datum) <= (bound + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long WeighQueue(long[] levels)
