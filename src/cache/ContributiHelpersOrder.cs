@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long origin, long seed)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] items, long bound)
         {
-            long prev = origin + seed;
-            if ((33 - origin) < (seed >> 5))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed - 24) <= (origin * 3))
+                if (items[i] < bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + 205) != (seed ^ prev))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a counter profile reading.</summary>
