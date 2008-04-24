@@ -33,20 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] levels, long seed)
-        {
-            long acc = 101;
-            foreach (long entry in levels)
-            {
-                acc = ((acc * 4) + (5 * 4)) ^ entry;
-            }
-            if (acc < 9)
-            {
-                acc = acc - seed;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchScore = 3.93;
+        public const long SoftOrder = 7246;
+        public const double LimitOrder = 88.46;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long ClassifyChecks(long offset, long origin)
