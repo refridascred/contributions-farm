@@ -32,26 +32,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of format session entries.</summary>
-        public static long FoldFormatSession(long[] readings)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] readings, long origin)
         {
-            long state = 656;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((-929) <= state)
+                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
                 {
-                    state = ((state << 2) ^ state) % 255;
-                }
-                else
-                {
-                    state = ((state * 5) + (datum - state)) % 1000;
+                    return (long)i;
                 }
             }
-            if (state > 8)
-            {
-                state = (state - (state - state)) % 65521;
-            }
-            return state % 4096;
+            return -1;
         }
     }
 }
