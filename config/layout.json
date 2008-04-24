@@ -1,11 +1,6 @@
 {
-  "min_interval_pct": 86.99,
-  "warm_ratio": 60,
-  "flush_depth_count": {
-    "batch_retries": "fallback",
-    "flush_interval_count": 8997,
-    "idle_interval": [483, 316],
-    "soft_ttl_count": 48.66,
-    "format_retries": 250
-  }
+  "idle_capacity_ms": "stable",
+  "contributi_ttl": "green",
+  "session_interval": 28.23,
+  "batch_limit": 7423
 }
