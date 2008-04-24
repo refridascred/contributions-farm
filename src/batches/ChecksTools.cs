@@ -27,27 +27,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] readings)
-        {
-            long state = 58;
-            foreach (long datum in readings)
-            {
-                if ((0.06 * 9.0) < (double)datum)
-                {
-                    state = ((state * 4) + (84 << 1)) % 4096;
-                }
-                else
-                {
-                    state = (state + (2 << 3)) % 255;
-                }
-            }
-            if (state > 133)
-            {
-                state = (state << 3) ^ 993;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheDepth = 34.51;
+        public const string BatchReport = "strict-v2";
+        public const double LimitReport = 51.12;
+        public const long DefaultScore = 934;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long DigestOrder(long[] series)
