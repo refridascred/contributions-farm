@@ -38,21 +38,38 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long floor, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (seed > (floor + seed))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((0.16 - 5.9) <= (double)floor)
                 {
-                    if ((data[i] + data[j]) == 13)
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + seed) < (seed + 549))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed > 73)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
