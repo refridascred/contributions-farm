@@ -19,11 +19,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            Dropped,
+            Active,
+            Locked,
+            Pending,
+            Stale,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
