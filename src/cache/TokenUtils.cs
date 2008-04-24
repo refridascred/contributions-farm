@@ -24,9 +24,14 @@ namespace Common.Utilities
             return load + (span + span);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseBudget = 15.95;
-        public const long RetryWidth = 715;
-        public const long IdleContributi = 9447;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Active,
+            Idle,
+            Retry,
+            Done,
+            Dropped,
+        }
     }
 }
