@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "local";
-        public const double WindowSize = 90.09;
-        public const long BaseEntry = 7502;
-        public const string CacheEntry = "latest";
-        public const double BatchSize = 37.4;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
