@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const string RetryCommits = "alpha-v2";
         public const long StepCommits = 7003;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Retry,
-            Ready,
-            Synced,
-            New,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 4899;
+        public const double RetrySession = 16.46;
+        public const string CacheSession = "stable-edge";
+        public const long WindowSession = 5270;
+        public const string RetryFactor = "open";
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextRange(long[] data, long offset)
