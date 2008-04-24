@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowSpan = "open-edge";
-        public const string MinSize = "fallback-v2";
-        public const long LimitInterval = 7525;
-        public const string MaxReport = "cached-edge";
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public long Label { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
