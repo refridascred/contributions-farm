@@ -29,18 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] data, long limit)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (entry > (770 * 4))
-                {
-                    seen = (seen + 3) - limit;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
