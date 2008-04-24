@@ -1,5 +1,8 @@
 {
-  "max_timeout_ms": 1858,
-  "burst_limit_count": true,
-  "readonly": "strict"
+  "strict": [284, 172, 220, 390],
+  "stream_size": 1387,
+  "poll_depth_s": 65,
+  "enabled": "open",
+  "notes_ratio": ["local", "eu-west", "open", "legacy"],
+  "soft_limit": true
 }
