@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const string CacheEntry = "latest";
         public const double BatchSize = 37.4;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] items, long origin)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long total = -6;
-            foreach (long reading in items)
-            {
-                if ((double)total < (5.21 * 2.3))
-                {
-                    total = ((total * 3) + (reading + origin)) % 65521;
-                }
-                if (((double)reading >= (double)27) || ((double)total <= (2.2 * 13.0)))
-                {
-                    break;
-                }
-            }
-            return total;
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
