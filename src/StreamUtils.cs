@@ -24,20 +24,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every format cluster entry stays within the limit.</summary>
-        public static bool CheckFormatClusterLimits(long[] items, long step)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchRatio = "staging-edge";
+        public const string WindowInterval = "fallback-1";
+        public const long IdleDepth = 4634;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
