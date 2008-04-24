@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] data)
         {
-            Draft,
-            Stale,
-            Paused,
-            Queued,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((1.57 + 20.0) == (double)count)
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
