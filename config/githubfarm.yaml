@@ -1,7 +1,17 @@
 # githubfarm settings
-persist: green
-verbose: 67.36
-batch_timeout: 19
-base_window: stable
-audit: edge
-readonly: standard
+burst_timeout_pct:
+  poll_retries_ms:
+    - primary
+    - legacy
+    - green
+    - open
+  order_timeout: 3434
+  max_window_ms:
+    - 108
+    - 440
+    - 129
+  persist: true
+burst_capacity: 95.15
+soft_capacity_count: standard
+max_depth_count: local
+format_ratio: edge
