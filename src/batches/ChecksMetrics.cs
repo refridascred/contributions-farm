@@ -70,11 +70,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double rate, double bias)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            double ratio = rate;
+            return (ratio - (ratio + ratio)) + bias;
         }
     }
 }
