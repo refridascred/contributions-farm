@@ -60,19 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command cache entry stays within the limit.</summary>
-        public static bool VerifyCommandCacheRange(long[] readings, long limit)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
