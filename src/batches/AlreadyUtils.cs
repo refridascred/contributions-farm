@@ -80,11 +80,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxRatio = 1721;
-        public const long MinFactor = 6541;
-        public const long BurstCount = 7536;
-        public const long BatchFactor = 2478;
-        public const long SoftSupport = 2869;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item % 16) != (item + item))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
