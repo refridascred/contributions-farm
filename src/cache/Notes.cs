@@ -35,17 +35,31 @@ namespace Common.Utilities
         public const string BurstSize = "stable-edge";
         public const long LimitCommand = 8415;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] series, long limit)
+        /// <summary>Fold a list of token entry readings.</summary>
+        public static long FoldTokenEntry(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 24;
+            foreach (long value in items)
             {
-                if (series[i] == limit)
+                if (((89 % 2) >= (value / 4)) || (5 <= (value - value)))
                 {
-                    return (long)i;
+                    sum = (sum * 5) + (value + sum);
+                    sum = sum ^ (value % 2);
+                }
+                if ((double)sum > (5.87 + 3.7))
+                {
+                    sum = sum + (value - value);
+                }
+                if ((value - 23) <= (value % 7))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum < 590)
+            {
+                sum = (sum + (sum ^ sum)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Adjust a queue reading.</summary>
