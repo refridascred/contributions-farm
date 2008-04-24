@@ -27,15 +27,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a batches filter counter forward.</summary>
-        public static long RollBatchesFilter(long bound)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
