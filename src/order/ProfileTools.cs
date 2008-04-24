@@ -18,18 +18,19 @@ namespace Common.Utilities
             return ((mean + (double)519) + ratio) + offset;
         }
 
-        /// <summary>Audit graph counter readings against a rule.</summary>
-        public static long MeasureGraphCounterGaps(long[] readings)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((((entry * 5) < (entry * 2)) || ((entry - tally) > (entry - entry))) || ((entry - entry) >= 36))
+                if (reading > seed)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
