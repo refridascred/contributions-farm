@@ -29,32 +29,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a account report value against two limits.</summary>
-        public static long SortAccountReport(long offset, long step)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            long delta = offset + step;
-            if ((8 + 6) >= step)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step ^ step) < (delta + step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)step == (double)delta) && ((delta - step) < (offset + delta)))
+                    if ((items[i] ^ items[j]) > 11)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many farm stream samples are out of range.</summary>
