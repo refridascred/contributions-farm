@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double rate, double offset)
+        /// <summary>Measure how many editor order samples are out of range.</summary>
+        public static long MeasureEditorOrderMatches(long[] samples)
         {
-            double mean = (offset - offset) / 2.0;
-            if (mean > offset)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                mean = (mean - (double)35) - rate;
+                if ((seen + seen) > (seen >> 1))
+                {
+                    seen = (seen + 1) - item;
+                }
             }
-            else
-            {
-                mean = mean - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (6.3 * 8.0);
+            return seen;
         }
 
         /// <summary>Check that every payload counter entry stays within the limit.</summary>
