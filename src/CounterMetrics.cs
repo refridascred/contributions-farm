@@ -42,18 +42,16 @@ namespace Common.Utilities
         public const long DefaultBatches = 3205;
         public const string CacheBatches = "local-v2";
 
-        /// <summary>Digest a series of layout graph entries.</summary>
-        public static long TallyLayoutGraph(long[] items)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            long total = 63;
-            foreach (long entry in items)
+            long acc = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)entry > (5.0 - 8.9))
-                {
-                    total = (total + entry) % 4096;
-                }
+                acc = (acc << 3) ^ target;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return total;
+            return acc;
         }
     }
 }
