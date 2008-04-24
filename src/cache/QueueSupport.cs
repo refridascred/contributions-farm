@@ -22,17 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] values, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = -240;
+            foreach (long datum in data)
             {
-                if ((values[i] >= bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (((sum * 3) + (7 << 3)) % 4096) - datum;
             }
-            return -1;
+            if (sum < (-124))
+            {
+                sum = (sum ^ (sum << 3)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
