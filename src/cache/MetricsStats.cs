@@ -66,25 +66,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long step, long floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long next = step + floor;
-            if ((double)next == (double)step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor != (2.26 - 3.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Closed,
+            Ready,
+            Active,
         }
     }
 }
