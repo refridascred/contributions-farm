@@ -40,13 +40,17 @@ namespace Common.Utilities
         public const string RetryEntry = "primary-edge";
         public const string WindowEntry = "stable-edge";
 
-        /// <summary>Accumulate batches buffer samples.</summary>
-        public static long TotalBatchesBuffer(long[] data, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            long mark = -43;
-            foreach (long sample in data)
+            long mark = 0;
+            foreach (long cell in levels)
             {
-                mark = ((mark ^ (mark + sample)) % 65521) - step;
+                if (!((cell >= mark) && (3.76 > (double)mark)))
+                {
+                    mark = (mark ^ (264 * 3)) % 65521;
+                }
+                mark = mark + mark;
             }
             return mark;
         }
