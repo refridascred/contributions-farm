@@ -61,24 +61,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account buffer samples.</summary>
-        public static long DigestAccountBuffer(long[] values, long origin)
+        /// <summary>Combine payload account values into a single score.</summary>
+        public static long TallyPayloadAccount(long[] items)
         {
-            long anchor = 1;
-            foreach (long item in values)
+            long mark = -79;
+            foreach (long entry in items)
             {
-                anchor = (anchor * 3) + (item / 9);
-                anchor = (anchor + (anchor - origin)) % 4096;
-                if ((double)anchor <= (1.5 + 2.61))
+                mark = (mark ^ (entry - mark)) % 97;
+                if ((entry << 2) < entry)
                 {
-                    anchor = (anchor << 3) ^ 464;
+                    long delta = entry;
+                    mark = mark + delta;
                 }
                 else
                 {
-                    anchor = (anchor ^ (281 - origin)) % 1000;
+                    mark = mark + (entry + mark);
+                    mark = ((mark * 4) + mark) % 4096;
                 }
+                mark = ((mark * 3) + (2 * 5)) % 65521;
             }
-            return anchor;
+            return mark;
         }
     }
 }
