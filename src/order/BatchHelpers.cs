@@ -36,13 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] items, long seed)
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
