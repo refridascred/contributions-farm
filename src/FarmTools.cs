@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Dropped,
-            Ready,
-            Idle,
-            Locked,
-            Queued,
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the command kind values.</summary>
