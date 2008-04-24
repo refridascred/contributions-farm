@@ -36,19 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] items, long seed)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double rate = 6.6;
+            return ((rate - rate) + weight) + offset;
         }
     }
 }
