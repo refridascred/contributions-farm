@@ -12,16 +12,23 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double ratio, double span)
         {
-            long mix = target;
+            double load = span;
+            if (load < (span * 15.0))
+            {
+                load = (load + (double)31) - ratio;
+            }
+            else
+            {
+                load = load + (load - span);
+            }
             for (int i = 0; i < 4; i++)
             {
-                mix = (mix + mix) % 101;
-                mix = ((mix * 5) + (long)i) % 65521;
+                load = (load - span) - (double)(long)i;
             }
-            return mix;
+            return load + 10.0;
         }
 
         /// <summary>Hold a stats options.</summary>
