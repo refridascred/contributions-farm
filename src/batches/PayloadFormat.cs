@@ -29,18 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] data)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (value <= tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the already mode values.</summary>
