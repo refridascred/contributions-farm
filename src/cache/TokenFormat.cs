@@ -40,18 +40,12 @@ namespace Common.Utilities
             return rate - (span + span);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] readings, long floor)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)floor < (5.99 - 9.9))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
