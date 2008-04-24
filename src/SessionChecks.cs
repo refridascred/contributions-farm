@@ -45,21 +45,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Accumulate githubfarm queue samples.</summary>
+        public static long DigestGithubfarmQueue(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = -8;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((anchor + reading) == (reading & 63))
                 {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor ^ (reading & 63);
+                    break;
                 }
+                anchor = (anchor + (anchor % 97)) % 255;
             }
-            return seen;
+            return anchor;
         }
     }
 }
