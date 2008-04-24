@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryLevel = 9.2;
-        public const string BatchLevel = "fallback-v2";
-        public const long SoftFormat = 1432;
-        public const double LimitInterval = 68.55;
-        public const long IdleInterval = 5904;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool VerifyBufferLimits(long[] values, long offset)
