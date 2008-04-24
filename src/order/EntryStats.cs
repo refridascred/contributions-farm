@@ -39,15 +39,15 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] readings)
+        /// <summary>Compare every pair of report schema readings.</summary>
+        public static long PairReportSchemaCount(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 12)
+                    if ((levels[i] ^ levels[j]) > 2)
                     {
                         seen = seen + 1;
                     }
