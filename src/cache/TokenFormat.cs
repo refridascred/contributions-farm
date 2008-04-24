@@ -35,12 +35,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCommand = "staging";
+        public const string BaseCommand = "strict-edge";
+        public const long LimitInterval = 5019;
     }
 }
