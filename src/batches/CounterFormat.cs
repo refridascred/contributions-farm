@@ -34,11 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 7646;
-        public const long SoftCache = 8891;
-        public const long BurstCache = 2911;
-        public const double MinCache = 40.21;
-        public const string CacheSpan = "open";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] levels, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + seen) <= 55)
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
+        }
     }
 }
