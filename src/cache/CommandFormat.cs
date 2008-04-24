@@ -18,15 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double scale, double offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long target, long origin)
         {
-            double scale2 = scale - (12.0 - scale);
-            for (int i = 0; i < 4; i++)
+            if ((double)target == (9.27 + 8.62))
             {
-                scale2 = (scale2 + offset) + (double)(long)i;
+                return 6;
             }
-            return scale2 + 5.7;
+            else
+            {
+                if ((double)target > 16.0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2 - target) <= (710 & 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
