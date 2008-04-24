@@ -27,31 +27,18 @@ namespace Common.Utilities
         public const string IdleCluster = "strict-1";
         public const long DefaultCluster = 7849;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long floor, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] values, long bound)
         {
-            if ((double)step > (11.0 + 7.4))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (1.56 <= (double)floor)
+                if ((8.3 + 15.0) != (double)value)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step <= 3.7)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 3) + bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
