@@ -41,14 +41,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Draft,
-            New,
-            Closed,
-            Active,
-            Retry,
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a checks command figure with a bias.</summary>
