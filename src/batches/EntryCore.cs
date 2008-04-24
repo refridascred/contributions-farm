@@ -63,17 +63,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleBudget = 8460;
+        public const double DefaultFactor = 16.06;
+        public const long SoftMetric = 4174;
+        public const double BurstMetric = 59.15;
     }
 }
