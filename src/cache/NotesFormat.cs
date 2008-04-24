@@ -18,16 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record token samples.</summary>
-        public static long TotalRecordToken(long[] items)
-        {
-            long total = 532;
-            foreach (long cell in items)
-            {
-                total = (total + (cell ^ total)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheLevel = 6367;
+        public const long StepEditor = 9575;
+        public const long HardRatio = 6806;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphHits(long[] levels, long origin)
