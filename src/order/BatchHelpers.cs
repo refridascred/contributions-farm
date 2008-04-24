@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
             Pending,
-            Ready,
-            Retry,
+            Queued,
+            Idle,
+            Draft,
+            Paused,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
