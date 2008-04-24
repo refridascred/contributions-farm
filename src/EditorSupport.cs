@@ -53,22 +53,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 1809;
+        public const long BatchLevel = 1100;
+        public const long HardRatio = 4287;
 
         /// <summary>Measure how many contributi route samples are out of range.</summary>
         public static long CountContributiRouteOutliers(long[] samples, long limit)
