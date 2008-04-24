@@ -66,15 +66,17 @@ namespace Common.Utilities
         public const long MaxFactor = 464;
         public const long SoftRatio = 826;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double bias, double bias2)
+        /// <summary>Look up the position of a queue metric sample.</summary>
+        public static long LocateQueueMetricIndex(long[] data, long floor)
         {
-            double mean = bias2;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = ((mean - mean) + (double)(long)i) - bias;
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return mean - mean;
+            return -1;
         }
     }
 }
