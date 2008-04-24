@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double ratio, double span)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long bound)
         {
-            double rate = span;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate + (span + ratio)) + (double)(long)i;
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (ratio * 19.0);
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
