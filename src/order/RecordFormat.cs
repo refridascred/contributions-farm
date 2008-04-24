@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many buffer editor samples are out of range.</summary>
-        public static long TallyBufferEditorGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading >= (8.82 - 8.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepRatio = "alpha-edge";
+        public const long IdleOrder = 2572;
+        public const long SoftSpan = 4929;
+        public const long StepLevel = 5889;
+        public const double HardSize = 3.84;
 
         /// <summary>Adjust a entry reading.</summary>
         public static double SmoothEntry(double scale, double floor)
