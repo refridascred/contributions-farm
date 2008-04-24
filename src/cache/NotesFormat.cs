@@ -31,23 +31,18 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] samples, long offset)
         {
-            long mark = 9;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                mark = (mark << 2) ^ (mark / 5);
-                if (target > (mark ^ entry))
+                if ((double)item == (double)offset)
                 {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (mark < 86)
-            {
-                mark = ((mark << 3) ^ (mark * 4)) % 97;
-            }
-            return mark % 1000;
+            return seen;
         }
     }
 }
