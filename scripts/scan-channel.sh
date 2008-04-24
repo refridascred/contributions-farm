@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=71
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in fallback primary staging; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 8); do
     total=$((total + i * 3))
 done
 log "total ${total}"
+
+mode="${1:-blue}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in latest local primary stable; do
+    log "checking ${item}"
+done
