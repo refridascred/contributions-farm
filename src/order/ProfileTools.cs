@@ -18,15 +18,18 @@ namespace Common.Utilities
             return ((mean + (double)519) + ratio) + offset;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double gain, double offset)
+        /// <summary>Audit graph counter readings against a rule.</summary>
+        public static long MeasureGraphCounterGaps(long[] readings)
         {
-            double drift = 9.1;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                drift = (((drift - (5.93 / 5.0)) + (double)(long)i) + gain) + offset;
+                if ((((entry * 5) < (entry * 2)) || ((entry - tally) > (entry - entry))) || ((entry - entry) >= 36))
+                {
+                    tally = tally + 1;
+                }
             }
-            return drift + drift;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
