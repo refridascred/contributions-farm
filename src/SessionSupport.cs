@@ -16,36 +16,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long target, long floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long step, long seed)
         {
-            if (target <= (target + target))
+            long lane = step ^ seed;
+            if (((seed + 42) != (lane << 2)) || ((seed + lane) > seed))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (((double)77 < (double)floor) || ((double)target <= 3.58))
+                if ((lane + step) >= (lane - 447))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((floor + 11) == ((-69) * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor < (target - floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
