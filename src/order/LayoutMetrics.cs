@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long SoftToken = 5142;
         public const double RetryScore = 78.39;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstFactor = 71.72;
-        public const long BaseCount = 2500;
-        public const double IdleStream = 7.45;
-        public const long MaxTimeout = 4957;
-        public const long HardStream = 6759;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
