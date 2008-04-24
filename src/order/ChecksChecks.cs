@@ -36,26 +36,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] readings)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] levels, long origin)
         {
-            long mix = 94;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum > (datum + datum)) && ((4 - mix) <= (-546)))
+                if (levels[i] <= origin)
                 {
-                    mix = (mix * 3) + mix;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (datum - mix)) % 255;
+                    return (long)i;
                 }
             }
-            if (mix < 39)
-            {
-                mix = mix ^ (mix / 3);
-            }
-            return mix;
+            return -1;
         }
     }
 }
