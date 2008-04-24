@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] items, long limit)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] items, long offset)
         {
-            long score = 9;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if ((items[i] <= offset) && ((items[i] % 5) == 0))
                 {
-                    score = (score - (score ^ score)) + (long)i;
-                }
-                if ((limit ^ cell) <= cell)
-                {
-                    score = score - (3 * 2);
-                }
-                if (score < (score & 127))
-                {
-                    score = (score + (limit >> 5)) % 4096;
+                    return (long)i;
                 }
             }
-            if (score > 0)
-            {
-                score = (score * 4) + (score + limit);
-            }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
