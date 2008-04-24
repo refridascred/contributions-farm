@@ -21,18 +21,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] values, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long sum = 63;
+            foreach (long cell in values)
             {
-                if ((datum - bound) < (matches - bound))
-                {
-                    matches = matches + 1;
-                }
+                sum = sum ^ cell;
+                sum = (sum - (cell << 3)) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
