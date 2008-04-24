@@ -36,18 +36,32 @@ namespace Common.Utilities
             return drift + (5.3 * 6.0);
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] samples, long offset)
+        /// <summary>Rank graph route input into a small class.</summary>
+        public static long RankGraphRoute(long limit, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long next = limit + step;
+            if (limit > 458)
             {
-                if ((double)item == (double)offset)
+                return 5;
+            }
+            else
+            {
+                if ((step % 16) == (next ^ limit))
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((next << 2) <= (next - next))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
