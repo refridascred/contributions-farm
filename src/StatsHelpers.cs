@@ -23,18 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleFactor = 8144;
+        public const long BatchMetrics = 5976;
+        public const long CacheMetrics = 3792;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamOutliers(long[] readings)
