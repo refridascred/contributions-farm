@@ -24,18 +24,39 @@ namespace Common.Utilities
         public const string SoftRatio = "staging-1";
         public const long WindowSupport = 5091;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] samples, long floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long offset, long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long next = offset + step;
+            if ((offset << 2) < (next + offset))
             {
-                if ((matches << 3) >= (matches + (long)samples.Length))
+                return 3;
+            }
+            else
+            {
+                if ((next + next) > (300 << 2))
                 {
-                    matches = ((matches + 2) + datum) + floor;
+                    return 0;
+                }
+                else
+                {
+                    if ((6.5 + 0.6) >= (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset - 69) < (offset % 16))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the cache kind values.</summary>
