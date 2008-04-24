@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] levels)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally + tally) >= (datum + datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define report limits and defaults.</summary>
