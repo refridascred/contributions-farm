@@ -15,13 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
