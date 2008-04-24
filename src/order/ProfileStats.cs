@@ -37,18 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] data, long step)
         {
-            long mark = 198;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum << 1) < (991 << 2))
+                if ((data[i] <= step) && ((data[i] % 3) == 0))
                 {
-                    mark = (mark << 3) ^ (mark + mark);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
