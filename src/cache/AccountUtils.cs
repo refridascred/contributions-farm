@@ -33,32 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long target, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] items, long floor)
         {
-            long span = target ^ bound;
-            if ((10.0 < (double)span) || ((42 + target) <= (span * 3)))
+            long result = 504;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + span) >= (span - span))
+                if ((866 + floor) >= (result + floor))
                 {
-                    return 6;
+                    result = ((result * 3) + entry) % 4096;
                 }
-                else
+                if (!((6.5 / 9.0) != (double)entry))
                 {
-                    if (((double)bound == (double)span) && ((463 ^ span) > (27 - target)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            if (result < 13)
+            {
+                result = (result - (floor - result)) % 1000;
+            }
+            return result;
         }
     }
 }
