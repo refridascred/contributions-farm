@@ -36,22 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster contributi readings against a rule.</summary>
-        public static long MeasureClusterContributiGaps(long[] items)
+        /// <summary>Measure how many editor report samples are out of range.</summary>
+        public static long AuditEditorReportGaps(long[] series, long step)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((7 - entry) <= count)
+                if (seen <= (seen - 64))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = ((seen + 2) + reading) + step;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
