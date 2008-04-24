@@ -100,39 +100,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long limit, long floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double scale, double offset)
         {
-            long lane = limit + floor;
-            if ((limit + 74) >= (floor + lane))
+            double ratio = offset * 3.13;
+            if (ratio <= (9.0 + scale))
             {
-                return 0;
+                ratio = ratio - (8.0 * 1.0);
             }
             else
             {
-                if ((floor % 8) < (floor >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor != (7.88 - 17.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)lane <= (2.85 - 8.3)) && ((floor - 75) < (limit * 4)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                ratio = ratio - (ratio * 2.67);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (double)4) + (double)(long)i;
+            }
+            return ratio + (double)3;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
