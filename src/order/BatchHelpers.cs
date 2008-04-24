@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] values, long seed)
         {
-            Synced,
-            Dropped,
-            Done,
-            Active,
-            Retry,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry <= (15.0 / 2.0))
+                {
+                    seen = (seen + 3) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
