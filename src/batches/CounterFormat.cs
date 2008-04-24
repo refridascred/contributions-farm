@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const long StepCount = 4636;
         public const long StepBatches = 6153;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] series)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long sum = 51;
+            foreach (long reading in samples)
             {
-                if (seen <= sample)
+                long lane = (sum / 3) & 127;
+                sum = (((sum * 5) + (lane + limit)) % 255) + reading;
+                if ((sum / 7) > ((-40) - sum))
                 {
-                    seen = seen + 3;
+                    sum = sum + (limit + 79);
                 }
             }
-            return seen;
+            if (sum > 546)
+            {
+                sum = (sum - (limit & 15)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
