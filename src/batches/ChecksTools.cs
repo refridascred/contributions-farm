@@ -27,11 +27,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheDepth = 34.51;
-        public const string BatchReport = "strict-v2";
-        public const double LimitReport = 51.12;
-        public const long DefaultScore = 934;
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long DigestOrder(long[] series)
