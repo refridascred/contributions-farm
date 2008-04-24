@@ -41,24 +41,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((seed - seed) > seed))
-                {
-                    mark = (mark << 3) ^ (mark / 6);
-                    continue;
-                }
-                else
-                {
-                    mark = mark ^ 465;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Draft,
+            New,
+            Closed,
+            Active,
+            Retry,
         }
 
         /// <summary>Scale a checks command figure with a bias.</summary>
