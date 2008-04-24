@@ -49,18 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi token entries that pass the check.</summary>
-        public static long TallyContributiTokenMatches(long[] samples, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((11.0 / 7.0) == (double)count)
+                if ((double)value > 18.0)
                 {
-                    count = ((count + 3) - sample) - bound;
+                    matches = (matches + 3) + limit;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a filter options.</summary>
