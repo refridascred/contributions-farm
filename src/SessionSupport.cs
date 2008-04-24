@@ -26,20 +26,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleDepth = 5296;
+        public const double CacheBatch = 72.23;
+        public const double RetryBatch = 11.34;
+        public const double SoftBatch = 84.78;
+        public const long CacheRatio = 1250;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultChannel = 8061;
