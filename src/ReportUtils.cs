@@ -42,12 +42,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleRatio = 7697;
-        public const long RetryBatch = 1176;
-        public const long CacheTimeout = 2402;
-        public const long BatchSpan = 9567;
-        public const long BatchSize = 7851;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "primary";
+        public const long BurstBudget = 8754;
+        public const long RetryChecks = 8481;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferMatches(long[] values)
