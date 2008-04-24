@@ -62,12 +62,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] samples, long floor)
         {
-            Closed,
-            Paused,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
