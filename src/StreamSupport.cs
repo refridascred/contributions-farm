@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] values, long step)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long target, long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long prev = target - step;
+            if ((70 / 7) <= (target * 2))
             {
-                if (!((double)step < (7.9 / 4.0)) || ((entry << 2) <= step))
+                return 4;
+            }
+            else
+            {
+                if (!((98 ^ prev) > (step << 1)))
                 {
-                    tally = tally + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)target >= 9.0) || ((double)prev >= (2.0 * 9.1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a schema entry.</summary>
