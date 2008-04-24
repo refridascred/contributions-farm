@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double ratio, double span)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double weight = ratio / 3.0;
-            if (weight > (double)78)
-            {
-                weight = weight + (double)(-8);
-            }
-            else
-            {
-                weight = weight - 5.3;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (span + 13.0)) + (double)(long)i;
-            }
-            return weight - span;
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
