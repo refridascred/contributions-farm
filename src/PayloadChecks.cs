@@ -40,18 +40,32 @@ namespace Common.Utilities
         public const long WindowInterval = 3018;
         public const long RetryRatio = 9413;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] readings)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long seed, long step)
         {
-            long carry = 29;
-            foreach (long item in readings)
+            long span = seed ^ step;
+            if ((27 % 24) > (step ^ span))
             {
-                if ((item - item) <= (item << 1))
+                return 7;
+            }
+            else
+            {
+                if ((25 & 255) != (span - span))
                 {
-                    carry = carry - item;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step > (18.0 * 20.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry % 65521;
         }
     }
 }
