@@ -27,21 +27,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up stats command samples.</summary>
-        public static long CompareStatsCommandCount(long[] samples)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long seed, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long gap = seed ^ origin;
+            if ((double)gap < (5.9 - 8.5))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin ^ 98) != (origin - origin))
                 {
-                    if ((samples[i] - samples[j]) != 9)
+                    return 4;
+                }
+                else
+                {
+                    if (seed > (origin / 2))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
     }
 }
