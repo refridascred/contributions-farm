@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double weight, double span)
+        /// <summary>Audit order commits readings against a rule.</summary>
+        public static long CountOrderCommitsHits(long[] levels)
         {
-            double gain = (double)(5 - 452);
-            return (gain + span) + weight;
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen ^ seen) >= (reading * 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up report samples.</summary>
