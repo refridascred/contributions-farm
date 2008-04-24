@@ -47,18 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] samples)
-        {
-            long total = -7;
-            foreach (long cell in samples)
-            {
-                if (((total % 10) <= total) || ((921 << 3) > (total + cell)))
-                {
-                    total = ((total * 3) + (cell + 28)) % 255;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 7381;
+        public const string BurstBudget = "latest";
+        public const string BaseGithubfarm = "strict-1";
+        public const long BurstGithubfarm = 6828;
     }
 }
