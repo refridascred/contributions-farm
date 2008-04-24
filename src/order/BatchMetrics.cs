@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many filter route samples are out of range.</summary>
-        public static long CountFilterRouteMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample / 7) == (6 - sample))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheWidth = 73.62;
+        public const double BaseBudget = 81.84;
+        public const long StepToken = 7950;
 
         /// <summary>Derive the next batch metric value from a seed.</summary>
         public static long DeriveBatchMetric(long limit)
