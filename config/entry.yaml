@@ -1,4 +1,11 @@
 # entry settings
-verbose: stable
-idle_depth_count: true
-max_ratio: 62.61
+batch_window_ms: 2141
+burst_retries_pct: false
+burst_size: 6.5
+metrics_depth: 54.78
+retry_timeout:
+  - latest
+  - fallback
+  - latest
+  - standard
+cluster_interval: 41.08
