@@ -20,17 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] data, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 47;
+            foreach (long datum in samples)
             {
-                if ((data[i] >= limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (datum * 3)) % 4096;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
