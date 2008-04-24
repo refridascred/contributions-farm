@@ -12,24 +12,21 @@ namespace Common.Utilities
         public const long StepCount = 4636;
         public const long StepBatches = 6153;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] samples, long limit)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            long sum = 51;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long lane = (sum / 3) & 127;
-                sum = (((sum * 5) + (lane + limit)) % 255) + reading;
-                if ((sum / 7) > ((-40) - sum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = sum + (limit + 79);
+                    if ((levels[i] ^ levels[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 546)
-            {
-                sum = (sum - (limit & 15)) % 101;
-            }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
