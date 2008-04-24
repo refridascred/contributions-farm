@@ -37,11 +37,24 @@ namespace Common.Utilities
         public const string SoftEntry = "fallback-edge";
         public const string StepEntry = "latest-1";
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long limit, long target)
         {
-            public bool Region { get; set; }
-            public double Rank { get; set; }
+            if (target < limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit % 12) < (target >> 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
