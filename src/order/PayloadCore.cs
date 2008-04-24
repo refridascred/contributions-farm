@@ -14,12 +14,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Roll a command schema counter forward.</summary>
+        public static long IterateCommandSchema(long offset)
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((acc - offset) <= (24 << 1)))
+                {
+                    acc = ((acc * 2) + (long)i) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the window state values.</summary>
