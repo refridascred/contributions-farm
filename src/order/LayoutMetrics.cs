@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Count the window cluster entries that pass the check.</summary>
+        public static long MeasureWindowClusterHits(long[] series)
         {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (!(matches >= (matches << 3)))
+                {
+                    matches = (matches + 2) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
