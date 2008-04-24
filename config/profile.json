@@ -1,8 +1,8 @@
 {
-  "poll_size": 50.74,
-  "cache_interval_ms": false,
-  "stats_ratio": 4707,
-  "dry_run": true,
-  "batch_window_count": false,
-  "persist": 60
+  "command_threshold": true,
+  "editor_retries": 7563,
+  "readonly": "open",
+  "idle_depth_ms": 1024,
+  "batch_interval": 1.5,
+  "max_capacity_ms": [60, 313]
 }
