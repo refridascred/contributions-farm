@@ -57,12 +57,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Pending,
-            Active,
-            New,
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
