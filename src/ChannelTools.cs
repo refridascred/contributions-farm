@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] items, long bound)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            if ((bound * 3) >= (bound % 10))
             {
-                if (bound <= (datum % 3))
+                return 0;
+            }
+            else
+            {
+                if ((9.5 - 2.7) >= (double)bound)
                 {
-                    hits = hits + 2;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (bound >= (bound * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count counter cluster pairs that satisfy a relation.</summary>
