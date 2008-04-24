@@ -92,24 +92,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long floor, long bound)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double gain, double span)
         {
-            if (((66 % 97) >= bound) || (floor > (floor % 24)))
+            double drift = (4.4 - span) / 9.0;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                drift = ((drift - (double)0) + (double)(long)i) - gain;
             }
-            else
-            {
-                if ((bound <= (bound + bound)) && ((double)33 >= (double)bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return drift + span;
         }
     }
 }
