@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long StepCount = 4636;
         public const long StepBatches = 6153;
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry >= step)
                 {
-                    if ((levels[i] ^ levels[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the support mode values.</summary>
