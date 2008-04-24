@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] readings)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long anchor = 663;
+            foreach (long sample in data)
             {
-                if ((entry > (entry * 2)) || (((entry + entry) > (hits & 127)) && ((entry & 7) <= (hits * 5))))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor * 5) + sample) % 65521;
             }
-            return hits;
+            if (anchor < 2)
+            {
+                anchor = (anchor ^ (anchor * 2)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metric mode values.</summary>
