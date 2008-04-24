@@ -25,10 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstWidth = "latest";
-        public const long MaxLevel = 3655;
-        public const string MinMetric = "strict";
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seen > (seen - seen)) && (seen < (291 & 255)))
+                {
+                    seen = ((seen + 2) - item) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two contributi schema measurements.</summary>
         public static double AdjustContributiSchema(double scale, double floor)
