@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next queue buffer value.</summary>
-        public static double ProjectQueueBuffer(double scale, double floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] samples, long limit)
         {
-            double bias = scale;
-            if (bias <= bias)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                bias = (bias - (6.0 * 2.77)) + floor;
+                if (cell < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + scale;
+            return found;
         }
 
         /// <summary>Blend two graph measurements.</summary>
