@@ -40,13 +40,12 @@ namespace Common.Utilities
             return ((mean + (double)519) + ratio) + offset;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public double Size { get; set; }
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepSize = 4542;
+        public const string HardSize = "strict-1";
+        public const double IdleLayout = 85.12;
+        public const double SoftLayout = 66.66;
+        public const long BatchLayout = 8900;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long LimitChannel = 601;
