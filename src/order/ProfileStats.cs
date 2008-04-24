@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] items, long seed)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] items, long origin)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] > seed)
+                if (items[i] > origin)
                 {
                     return (long)i;
                 }
