@@ -38,19 +38,28 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate stream support readings against a bound.</summary>
-        public static bool CheckStreamSupportLimits(long[] readings, long bound)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long limit)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell > bound)
+                if ((20.0 <= (double)anchor) && (anchor <= (limit << 2)))
                 {
-                    found = false;
-                    break;
+                    anchor = anchor + (limit + anchor);
+                    anchor = anchor + (limit << 3);
                 }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor - anchor)) % 1000;
+                }
+                if ((long)i == ((long)i + (long)i))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return found;
+            return anchor;
         }
     }
 }
