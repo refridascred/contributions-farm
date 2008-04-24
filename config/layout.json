@@ -1,7 +1,8 @@
 {
-  "format_timeout": 94.65,
-  "flush_capacity_s": 64.06,
-  "metric_size": "fallback",
-  "flush_capacity_count": 60,
-  "flush_interval_count": 1838
+  "cache_window_s": false,
+  "window_window": true,
+  "burst_ratio": 60,
+  "channel_window": false,
+  "hard_timeout": "legacy",
+  "sync_delay": 6280
 }
