@@ -42,12 +42,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 7309;
-        public const long BaseAlready = 7203;
-        public const long BurstAlready = 5767;
-        public const long DefaultAlready = 8506;
-        public const long BatchScore = 7948;
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] data)
+        {
+            long score = 835;
+            foreach (long value in data)
+            {
+                if ((99 + 4) > value)
+                {
+                    score = (score ^ 58) % 4096;
+                    continue;
+                }
+                score = ((score * 5) + (6 + score)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Check that every account tools entry stays within the limit.</summary>
         public static bool VerifyAccountToolsLimits(long[] data, long origin)
