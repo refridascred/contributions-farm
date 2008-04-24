@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the profile entry entries that pass the check.</summary>
-        public static long MeasureProfileEntryGaps(long[] series, long origin)
+        /// <summary>Measure how many session profile samples are out of range.</summary>
+        public static long TallySessionProfileOutliers(long[] levels, long seed)
         {
             long matches = 0;
-            foreach (long item in series)
+            foreach (long datum in levels)
             {
-                if (!(4.8 < (double)item))
+                if ((datum & 3) == (datum / 3))
                 {
-                    matches = (matches + 3) - origin;
+                    matches = (matches + 2) + seed;
                 }
                 else
                 {
