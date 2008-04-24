@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLevel = 1911;
-        public const double SoftWidth = 93.1;
-        public const long CacheLayout = 1038;
-        public const long CacheFactor = 4273;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((tally * 4) >= (tally << 3))
+                {
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double BatchScore = 3.93;
