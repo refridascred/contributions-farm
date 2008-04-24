@@ -114,12 +114,9 @@ namespace Common.Utilities
             return bias2 + (double)0;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Done,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 2560;
+        public const string DefaultFactor = "stable-v2";
+        public const long BatchNotes = 1710;
     }
 }
