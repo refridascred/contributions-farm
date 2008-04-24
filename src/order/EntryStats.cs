@@ -79,19 +79,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] series, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] data, long target)
         {
-            bool found = true;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (datum >= step)
+                if (sample < target)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
