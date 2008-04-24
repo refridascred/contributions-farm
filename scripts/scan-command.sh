@@ -6,9 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=327
+COMMAND_LIMIT=20
 log "limit is ${COMMAND_LIMIT}"
 
-for item in strict eu-west green; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
