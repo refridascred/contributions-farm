@@ -1,6 +1,7 @@
 {
-  "max_delay_ms": true,
-  "persist": "green",
-  "soft_interval_count": 759,
-  "session_delay": "primary"
+  "default_retries_s": false,
+  "idle_limit_pct": "eu-west",
+  "profile_ratio": [259, 399, 179, 425],
+  "max_ttl_ms": "fallback",
+  "record_delay": 500
 }
