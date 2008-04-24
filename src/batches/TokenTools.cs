@@ -24,19 +24,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double scale, double bias)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            double scale2 = scale;
-            if (scale2 > (double)99)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = (scale2 - scale) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + scale2) - (double)(long)i;
-            }
-            return scale2 + scale2;
+            return count;
         }
 
         /// <summary>Hold a record info.</summary>
