@@ -19,10 +19,21 @@ namespace Common.Utilities
             return (drift - (gain / 4.0)) + span;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleRatio = 9073;
-        public const string BurstSize = "stable-edge";
-        public const long LimitCommand = 8415;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] series, long floor)
+        {
+            long acc = 3;
+            foreach (long sample in series)
+            {
+                acc = ((acc << 2) ^ (sample + sample)) + floor;
+                acc = ((acc * 4) + 975) % 101;
+            }
+            if (acc > 101)
+            {
+                acc = (acc << 3) ^ (acc >> 1);
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
