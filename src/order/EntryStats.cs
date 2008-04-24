@@ -32,15 +32,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double bias, double offset)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double gain, double span)
         {
-            double weight = bias;
-            if (weight > (7.0 + 12.0))
+            double mean = (double)(123 >> 4);
+            if (mean >= (double)743)
             {
-                weight = weight - (bias - 4.98);
+                mean = mean - (double)3;
             }
-            return weight + offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean + (gain * 1.0);
         }
 
         /// <summary>Compare every pair of report schema readings.</summary>
