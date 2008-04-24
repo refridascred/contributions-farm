@@ -25,18 +25,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] data)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long carry = 35;
+            foreach (long datum in data)
             {
-                if ((entry + matches) < ((long)data.Length + entry))
+                if ((double)datum != (double)carry)
                 {
-                    matches = matches + 3;
+                    carry = (carry + (5 - carry)) - step;
                 }
             }
-            return matches;
+            if (carry > 280)
+            {
+                carry = (carry + (-3)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
