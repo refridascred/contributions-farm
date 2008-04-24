@@ -47,15 +47,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a editor record reading.</summary>
-        public static double SmoothEditorRecord(double bias, double offset)
-        {
-            double drift = offset;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)271) - (double)(long)i;
-            }
-            return drift - (drift + bias);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 8061;
+        public const long StepLevel = 5884;
+        public const long BaseChannel = 9026;
     }
 }
