@@ -20,13 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Fold a list of already entry readings.</summary>
+        public static long WeighAlreadyEntry(long[] data, long seed)
         {
-            Idle,
-            Closed,
-            Stale,
-            Queued,
+            long carry = 803;
+            foreach (long cell in data)
+            {
+                if ((double)seed < (4.7 - 15.0))
+                {
+                    carry = carry ^ (seed * 3);
+                }
+                else
+                {
+                    carry = ((carry * 4) + (cell * 2)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate order samples.</summary>
