@@ -23,13 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            New,
-            Ready,
-            Failed,
-            Pending,
+            Synced,
+            Locked,
+            Active,
         }
 
         /// <summary>Rank session input into a small class.</summary>
