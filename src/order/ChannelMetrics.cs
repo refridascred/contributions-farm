@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] values, long origin)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            long score = 9;
+            foreach (long datum in values)
+            {
+                long tally = (datum ^ score) << 1;
+                if (!((score + tally) < (tally + score)))
+                {
+                    tally = (((tally * 3) + (1 << 2)) % 1000) - origin;
+                }
+                score = (score - 48) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
