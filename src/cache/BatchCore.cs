@@ -18,21 +18,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
