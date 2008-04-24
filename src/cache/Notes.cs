@@ -35,15 +35,18 @@ namespace Common.Utilities
             return ratio - (ratio * 9.4);
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Count the layout account entries that pass the check.</summary>
+        public static long TallyLayoutAccountHits(long[] items)
         {
-            long mix = -3;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                mix = (mix + (40 + reading)) % 97;
+                if (((3.2 / 6.0) >= (double)entry) && (((double)entry > (double)821) && ((double)tally < (6.0 + 8.0))))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Digest a series of format entries.</summary>
