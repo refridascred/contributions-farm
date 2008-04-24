@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Paused,
-            Ready,
-            Dropped,
-            Retry,
-            Pending,
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the checks buffer series from a seed.</summary>
