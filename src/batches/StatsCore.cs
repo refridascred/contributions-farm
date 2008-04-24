@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long score = 7;
-            foreach (long reading in readings)
-            {
-                score = ((score - 0) % 97) ^ reading;
-            }
-            if (score > 72)
-            {
-                score = score ^ (score + score);
-            }
-            return score;
+            Idle,
+            New,
+            Active,
         }
 
         /// <summary>Roll a token counter forward.</summary>
