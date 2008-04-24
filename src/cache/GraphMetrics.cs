@@ -61,14 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Scale a checks command figure with a bias.</summary>
+        public static double BlendChecksCommand(double gain, double floor)
         {
-            Done,
-            Queued,
-            Retry,
-            Failed,
-            Paused,
+            double scale = gain + gain;
+            if (scale >= (floor * 0.2))
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (scale * 4.0)) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
