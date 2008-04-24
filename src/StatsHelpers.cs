@@ -56,19 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] data, long limit)
+        /// <summary>Measure how many cache metric samples are out of range.</summary>
+        public static long AuditCacheMetricOutliers(long[] data)
         {
-            long total = -1;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((((long)data.Length + datum) != (total ^ (-9))) && ((datum - limit) == (total & 7)))
+                if ((1.1 + 8.0) <= (double)tally)
                 {
-                    total = (total ^ (total / 7)) % 4096;
+                    tally = (tally + 2) - value;
                 }
-                total = (total + (datum & 255)) % 65521;
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many command editor samples are out of range.</summary>
