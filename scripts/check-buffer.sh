@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=352
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
 
-for item in standard eu-west stable primary; do
+for item in green staging legacy eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=319
+log "limit is ${BUFFER_LIMIT}"
