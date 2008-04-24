@@ -32,22 +32,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] samples, long step)
         {
-            long result = -39;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((reading - 98) > (result ^ 8)) && ((reading / 3) < 960))
+                if (!((matches + 802) < (step + matches)))
                 {
-                    result = ((result * 3) + reading) % 65521;
+                    matches = (matches + 3) - item;
                 }
             }
-            if (result < 7)
-            {
-                result = result ^ ((-2) >> 4);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
