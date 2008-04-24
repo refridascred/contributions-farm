@@ -31,12 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Measure how many githubfarm record samples are out of range.</summary>
+        public static long CountGithubfarmRecordOutliers(long[] data)
         {
-            public double Score { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen * 4) == (entry & 255))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
