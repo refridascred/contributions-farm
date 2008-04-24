@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 8086;
+        public const double DefaultRatio = 10.24;
+        public const long BurstBatches = 3044;
+        public const long StepCount = 4636;
+        public const long StepBatches = 6153;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long DigestWindow(long[] levels, long target)
