@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double rate, double floor)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double rate2 = 1.0;
-            return ((rate2 - (double)(-89)) + rate) + floor;
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
