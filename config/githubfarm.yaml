@@ -1,17 +1,7 @@
 # githubfarm settings
-poll_capacity_count: legacy
-hard_timeout_pct:
-  batches_ratio: cached
-  layout_delay: 52
-  batch_limit:
-    soft_size: 63
-    warm_ratio_ms: open
-    channel_interval: strict
-    soft_depth_count: true
-    warm_limit: 100
-    cache_threshold: false
-verbose:
-  - 270
-  - 346
-  - 253
-retry_size_ms: 93
+persist: green
+verbose: 67.36
+batch_timeout: 19
+base_window: stable
+audit: edge
+readonly: standard
