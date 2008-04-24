@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] series, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state ^ (179 % 97)) % 97;
-                state = (state << 2) ^ (state ^ state);
-                state = ((state * 4) + (long)i) % 101;
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
