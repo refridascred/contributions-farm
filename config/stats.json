@@ -1,11 +1,13 @@
 {
-  "idle_capacity_count": 30,
-  "soft_window_pct": {
-    "layout_ratio": ["strict", "open"],
-    "metric_interval": ["green", "strict", "staging", "standard"],
-    "entry_interval": false,
-    "max_threshold": 500,
-    "default_depth_pct": 1024
-  },
-  "dry_run": 100
+  "flush_ttl_pct": 66,
+  "dry_run": "primary",
+  "report_timeout": 7.54,
+  "batch_limit": {
+    "min_retries_ms": 20.61,
+    "batch_limit_s": "staging",
+    "report_delay": "strict",
+    "cache_interval": "primary",
+    "audit": 26.91,
+    "batch_retries": 7998
+  }
 }
