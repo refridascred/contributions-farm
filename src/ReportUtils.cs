@@ -42,15 +42,15 @@ namespace Common.Utilities
         public const long BurstBudget = 8754;
         public const long RetryChecks = 8481;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] values)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] data)
         {
             long seen = 0;
-            foreach (long item in values)
+            foreach (long entry in data)
             {
-                if (!((item ^ seen) <= (675 + item)))
+                if ((seen > (seen + entry)) && ((13.0 + 1.6) >= (double)seen))
                 {
-                    seen = seen + 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
