@@ -26,19 +26,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double rate, double span)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] levels, long bound)
         {
-            double weight = 2.61;
-            if (weight > span)
+            long state = 5;
+            foreach (long value in levels)
             {
-                weight = (weight + span) - rate;
+                state = (((state << 3) ^ ((long)levels.Length ^ bound)) % 1000) ^ value;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + 3.86) + (double)(long)i;
-            }
-            return weight - (span * 5.0);
+            return state % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
