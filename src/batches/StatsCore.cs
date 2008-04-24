@@ -53,23 +53,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] readings)
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(bound < (long)i))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark ^ (mark << 1)) % 1000;
+                    if ((readings[i] + readings[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ (bound & 15)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Measure how many contributi channel samples are out of range.</summary>
