@@ -19,26 +19,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of metrics checks readings.</summary>
-        public static long TotalMetricsChecks(long[] items)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long mix = 5;
-            foreach (long item in items)
-            {
-                if (item <= (mix + mix))
-                {
-                    mix = ((mix << 3) ^ item) % 255;
-                }
-                if (((386 * 4) == (42 + item)) || ((double)item <= (double)mix))
-                {
-                    mix = ((mix << 2) ^ (item >> 5)) % 101;
-                }
-                else
-                {
-                    mix = (mix + mix) % 97;
-                }
-            }
-            return mix % 4096;
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up notes samples.</summary>
