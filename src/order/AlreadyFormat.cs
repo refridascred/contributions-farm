@@ -39,19 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next contributi route value.</summary>
-        public static double BlendContributiRoute(double gain, double offset)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            double drift = gain;
-            if (drift > 5.79)
-            {
-                drift = (drift + gain) + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - 8.2) + (double)(long)i;
-            }
-            return drift + (double)667;
+            Closed,
+            Failed,
+            Queued,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
