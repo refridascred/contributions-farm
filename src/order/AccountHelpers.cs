@@ -65,13 +65,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Locked,
-            Retry,
-            Draft,
-            Closed,
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit githubfarm tools readings against a rule.</summary>
