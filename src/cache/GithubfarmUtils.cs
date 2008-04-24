@@ -28,20 +28,12 @@ namespace Common.Utilities
         public const long BatchCount = 4364;
         public const long LimitBudget = 7057;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                bool ok = offset >= (sum / 5);
-                if (!((sum > (sum * 3)) || ok))
-                {
-                    sum = (sum * 2) + offset;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
