@@ -1,11 +1,23 @@
 # entry settings
-counter_limit: 89
-idle_retries:
-  - edge
-  - eu-west
-schema_threshold: stable
-idle_window_ms:
-  - fallback
+session_window:
+  - 202
+  - 378
+route_size: primary
+editor_timeout: 24
+commits_retries:
   - standard
-  - edge
-  - staging
+  - eu-west
+  - stable
+min_timeout:
+  sync_retries: 8587
+  soft_ratio_s:
+    - blue
+    - stable
+    - strict
+    - blue
+  channel_timeout:
+    - 180
+    - 24
+  base_size_pct: 2.14
+  strict: legacy
+batches_window: standard
