@@ -20,13 +20,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
