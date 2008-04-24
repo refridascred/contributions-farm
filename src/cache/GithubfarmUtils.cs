@@ -38,11 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
