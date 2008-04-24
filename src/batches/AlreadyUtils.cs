@@ -57,14 +57,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepFactor = 4243;
+        public const string BurstDepth = "staging-1";
+        public const double LimitRoute = 65.95;
+        public const long DefaultScore = 210;
+        public const string BurstRoute = "staging";
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
