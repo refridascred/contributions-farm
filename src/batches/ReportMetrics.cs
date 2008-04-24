@@ -27,19 +27,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] data, long step)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long bound, long bound2)
         {
-            bool found = true;
-            foreach (long entry in data)
+            if ((bound2 >> 2) >= (bound - bound2))
             {
-                if (entry <= step)
+                return 3;
+            }
+            else
+            {
+                if ((3.82 / 5.0) >= (double)bound2)
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return found;
         }
     }
 }
