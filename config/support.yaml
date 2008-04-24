@@ -1,4 +1,9 @@
 # support settings
-window_retries: 38.0
-soft_limit_s: legacy
-min_retries_ms: strict
+readonly: staging
+flush_window_count: blue
+burst_limit_s: 585
+audit:
+  - 174
+  - 52
+  - 478
+  - 254
