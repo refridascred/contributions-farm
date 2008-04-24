@@ -1,5 +1,7 @@
 {
-  "burst_threshold": 30,
-  "profile_threshold": [53, 128, 366, 29],
-  "order_retries": "local"
+  "max_ratio_pct": 48,
+  "notes_threshold": 500,
+  "idle_delay": 29.28,
+  "retry_depth_count": false,
+  "warm_retries_count": [191, 387, 175, 186]
 }
