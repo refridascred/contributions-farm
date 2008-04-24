@@ -25,11 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstDepth = 2390;
-        public const long WindowFactor = 9438;
-        public const long HardRecord = 9072;
-        public const double CacheSpan = 21.74;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaOutliers(long[] samples, long step)
