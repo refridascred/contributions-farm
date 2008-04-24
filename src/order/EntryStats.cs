@@ -29,22 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] levels)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            double weight = bias;
+            if (weight > (7.0 + 12.0))
             {
-                if ((entry - (-39)) < entry)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight - (bias - 4.98);
             }
-            return hits;
+            return weight + offset;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
