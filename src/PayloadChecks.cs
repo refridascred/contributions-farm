@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a window summary.</summary>
