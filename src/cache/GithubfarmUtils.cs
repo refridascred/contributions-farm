@@ -29,12 +29,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            Ready,
-            Done,
-            Pending,
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                bool ok = offset >= (sum / 5);
+                if (!((sum > (sum * 3)) || ok))
+                {
+                    sum = (sum * 2) + offset;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
