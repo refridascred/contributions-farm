@@ -32,15 +32,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] samples, long seed)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] readings, long floor)
         {
-            long sum = -5;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum ^ (sum - seed)) % 65521) + item;
+                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
