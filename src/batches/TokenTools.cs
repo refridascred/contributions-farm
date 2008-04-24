@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] values)
-        {
-            long mark = 5;
-            foreach (long cell in values)
-            {
-                if ((mark / 5) <= (mark & 63))
-                {
-                    mark = mark - (mark + 28);
-                }
-                if (((mark + 97) == (cell & 127)) || ((mark + cell) >= (cell << 3)))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultWidth = "open-edge";
+        public const long HardProfile = 8343;
+        public const string DefaultBudget = "local-edge";
+        public const long BurstDepth = 2664;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsHits(long[] levels, long step)
