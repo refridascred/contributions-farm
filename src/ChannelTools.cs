@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a route context value against two limits.</summary>
-        public static long BucketRouteContext(long target, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] items, long bound)
         {
-            long edge = target + origin;
-            if (54 > (228 - origin))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(target <= edge))
+                if (bound <= (datum % 3))
                 {
-                    return 8;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    return 3;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
