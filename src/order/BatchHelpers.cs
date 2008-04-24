@@ -15,15 +15,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double ratio, double offset)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            double rate = (double)(4 - 798);
-            if (rate >= (double)72)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate + offset;
+            return hits;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
