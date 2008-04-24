@@ -43,38 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long origin, long target)
+        /// <summary>Roll a context checks counter forward.</summary>
+        public static long IterateContextChecks(long limit)
         {
-            if (origin <= (target ^ origin))
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((origin + origin) < (4 + origin)))
+                score = (score * 4) + (limit % 2);
+                if ((score + (-844)) <= limit)
                 {
-                    return 7;
+                    score = ((score << 3) ^ (score + (-3))) % 1000;
+                    score = (score * 4) + ((long)i - 6);
                 }
-                else
-                {
-                    if ((double)origin != (5.91 / 4.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((347 + target) >= target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Hold a counter header.</summary>
