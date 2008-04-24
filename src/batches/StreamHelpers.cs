@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] samples)
         {
-            Dropped,
-            Closed,
-            Ready,
+            long acc = 256;
+            foreach (long cell in samples)
+            {
+                if ((cell ^ cell) != (cell ^ acc))
+                {
+                    acc = (acc << 3) ^ (cell - cell);
+                }
+                if ((cell >> 1) > (cell << 3))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
