@@ -18,10 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheLevel = 6367;
-        public const long StepEditor = 9575;
-        public const long HardRatio = 6806;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double gain, double floor)
+        {
+            double scale = floor;
+            if (scale > floor)
+            {
+                scale = (scale - scale) - gain;
+            }
+            else
+            {
+                scale = scale + (scale + floor);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - floor;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphHits(long[] levels, long origin)
