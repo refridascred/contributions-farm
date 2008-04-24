@@ -1,7 +1,8 @@
 {
-  "default_retries_s": false,
-  "idle_limit_pct": "eu-west",
-  "profile_ratio": [259, 399, 179, 425],
-  "max_ttl_ms": "fallback",
-  "record_delay": 500
+  "max_limit_count": "legacy",
+  "compress": "staging",
+  "already_delay": "blue",
+  "cache_timeout": false,
+  "verbose": 30,
+  "hard_timeout_count": "legacy"
 }
