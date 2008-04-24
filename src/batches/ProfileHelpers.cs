@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long seed, long target)
         {
-            Done,
-            Dropped,
-            Retry,
+            long cur = seed ^ target;
+            if ((14.0 * 2.0) >= (double)target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((8 - seed) != (430 % 7)) || ((cur / 9) > (cur % 64)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)cur > 13.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (235 <= (66 - target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
