@@ -1,8 +1,18 @@
 # entry settings
+audit: true
+cache_limit_pct:
+  - legacy
+  - cached
+  - primary
+  - local
 persist:
-  base_interval_pct: 50
-  dry_run: 97.05
-  persist: 73
-sync_timeout_count: 97.57
-retry_depth_count: 87
-hard_delay: legacy
+  - 213
+  - 134
+retry_depth_count:
+  flush_threshold:
+    - green
+    - cached
+    - green
+  burst_retries: 88.97
+  context_threshold: primary
+  max_retries_count: false
