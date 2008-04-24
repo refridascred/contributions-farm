@@ -42,19 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double bias, double offset)
+        /// <summary>Audit command report readings against a rule.</summary>
+        public static long CountCommandReportGaps(long[] values)
         {
-            double load = bias;
-            if (load >= offset)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                load = load - (offset - bias);
+                if (hits >= (51 % 10))
+                {
+                    hits = (hits + 2) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (double)33;
+            return hits;
         }
 
         /// <summary>Roll a context counter forward.</summary>
