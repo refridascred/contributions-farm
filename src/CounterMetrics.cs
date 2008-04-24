@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long BurstCommits = 6962;
         public const long MaxCommits = 1077;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] data, long offset)
+        /// <summary>Locate a metric format reading by value.</summary>
+        public static long LookupMetricFormatIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset * 5) <= (517 - (long)data.Length))
+                if (items[i] < step)
                 {
-                    tally = (tally + 3) - datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
