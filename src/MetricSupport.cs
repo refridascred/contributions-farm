@@ -24,15 +24,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two contributi schema measurements.</summary>
-        public static double AdjustContributiSchema(double scale, double floor)
+        /// <summary>Project the next token metrics value.</summary>
+        public static double BlendTokenMetrics(double weight, double span)
         {
-            double ratio = (double)9 / 6.0;
-            if (ratio > (floor + scale))
+            double gain = span;
+            if (gain >= gain)
             {
-                ratio = ratio + (11.0 - scale);
+                gain = gain + gain;
             }
-            return ratio - floor;
+            else
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + span) - (double)(long)i;
+            }
+            return gain - (9.8 / 9.0);
         }
     }
 }
