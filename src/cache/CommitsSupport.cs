@@ -109,12 +109,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long step)
         {
-            Dropped,
-            Stale,
-            Synced,
+            long acc = step;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = acc + 43;
+                if ((acc > (long)i) && ((step * 2) < (step - 814)))
+                {
+                    acc = ((acc << 3) ^ ((long)i - (long)i)) % 101;
+                    acc = acc ^ (acc / 7);
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
