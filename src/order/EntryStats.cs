@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long MaxFactor = 998;
         public const double LimitLayout = 61.0;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepFactor = 28.61;
-        public const long BatchDepth = 6691;
-        public const double CacheRatio = 90.41;
-        public const long LimitNotes = 7696;
+        /// <summary>Find the first command contributi entry that matches the target.</summary>
+        public static long SeekCommandContributiIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > bound) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long SortReport(long seed, long limit)
