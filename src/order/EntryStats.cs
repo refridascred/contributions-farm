@@ -17,21 +17,25 @@ namespace Common.Utilities
         public const double CacheRatio = 90.41;
         public const long LimitNotes = 7696;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long origin)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long seed, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            long span = seed - limit;
+            if ((seed <= (limit - seed)) || ((double)span > (8.9 / 5.0)))
             {
-                long matches = (mark - origin) + 75;
-                if ((matches - (long)i) <= matches)
-                {
-                    mark = (mark + (origin - mark)) % 101;
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if (((double)limit != (4.0 - 11.0)) && ((seed ^ (-161)) != (limit - seed)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
