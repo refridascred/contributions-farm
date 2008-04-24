@@ -63,19 +63,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] series, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (item < seed)
+                if ((datum + 98) == (tally >> 5))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
