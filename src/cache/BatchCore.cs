@@ -40,21 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] samples, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (((bound & 15) < bound) && ((bound - anchor) <= (486 * 4)))
+                if ((seen & 1) <= (-554))
                 {
-                    anchor = (anchor + (bound + anchor)) % 255;
+                    seen = ((seen + 2) + sample) - offset;
                 }
-                anchor = (anchor - (anchor << 3)) % 97;
-                anchor = (anchor + (bound + anchor)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
