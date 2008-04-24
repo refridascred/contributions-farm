@@ -38,12 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 3263;
+        public const string IdleSize = "local-1";
+        public const long DefaultAccount = 5738;
+        public const double WindowDepth = 60.94;
+        public const long LimitAccount = 303;
     }
 }
