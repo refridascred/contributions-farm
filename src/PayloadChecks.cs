@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const double RetryTimeout = 34.23;
         public const double CacheStats = 97.67;
 
-        /// <summary>Look up the position of a stats batches sample.</summary>
-        public static long FindStatsBatchesIndex(long[] samples, long step)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long seed, long seed2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((seed << 1) > 15)
             {
-                if (samples[i] < step)
+                return 7;
+            }
+            else
+            {
+                if (!((seed2 & 63) > (601 + seed2)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
