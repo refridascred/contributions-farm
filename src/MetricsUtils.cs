@@ -66,23 +66,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] readings, long origin)
         {
-            long score = 2;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                score = ((score * 4) + (32 + 787)) % 65521;
-                if ((reading & 3) > (score * 4))
+                if (value >= origin)
                 {
-                    score = ((score * 3) + (score ^ reading)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (score < 6)
-            {
-                score = score + (score + score);
-            }
-            return score;
+            return flag;
         }
     }
 }
