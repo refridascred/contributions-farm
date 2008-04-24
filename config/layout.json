@@ -1,5 +1,11 @@
 {
-  "soft_delay": 5735,
-  "dry_run": 60,
-  "audit": 8884
+  "max_delay": 7,
+  "poll_interval_pct": {
+    "min_ttl_s": 0.86,
+    "batch_ttl_count": "primary",
+    "hard_retries_ms": [129, 141, 155, 323],
+    "sync_capacity_ms": ["local", "cached"],
+    "schema_capacity": 6774
+  },
+  "metrics_size": "strict"
 }
