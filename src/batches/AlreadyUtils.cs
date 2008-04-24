@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count buffer notes pairs that satisfy a relation.</summary>
-        public static long CompareBufferNotesCount(long[] samples)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
