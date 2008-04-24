@@ -56,10 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 3392;
-        public const double MinProfile = 43.9;
-        public const long StepProfile = 2292;
-        public const double CacheProfile = 52.85;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] samples)
+        {
+            long total = -7;
+            foreach (long cell in samples)
+            {
+                if (((total % 10) <= total) || ((921 << 3) > (total + cell)))
+                {
+                    total = ((total * 3) + (cell + 28)) % 255;
+                }
+            }
+            return total;
+        }
     }
 }
