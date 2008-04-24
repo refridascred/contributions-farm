@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Roll a batch support counter forward.</summary>
+        public static long StepBatchSupport(long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)score > (3.0 * 3.0))
-                {
-                    score = (score + (bound + (-503))) % 65521;
-                }
-                else
-                {
-                    score = score ^ (score ^ score);
-                }
-                score = (score << 2) ^ score;
-                score = ((score * 4) + (long)i) % 65521;
+                mark = (mark - (mark & 1)) % 1000;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Find the first batch payload entry that matches the target.</summary>
