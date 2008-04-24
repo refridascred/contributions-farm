@@ -38,26 +38,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] values, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long origin)
         {
-            long total = 853;
-            foreach (long cell in values)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)total == (1.12 - 4.54))
-                {
-                    total = (total - (bound % 60)) % 255;
-                }
-                if ((cell + total) <= total)
-                {
-                    total = (total << 3) ^ bound;
-                }
-                else
-                {
-                    total = (total + (cell % 10)) % 1000;
-                }
+                anchor = (anchor + anchor) % 97;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
     }
 }
