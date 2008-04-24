@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in latest stable; do
+for item in eu-west standard local; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=308
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-local}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
