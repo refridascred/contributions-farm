@@ -28,22 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batches layout samples.</summary>
-        public static long ScoreBatchesLayout(long[] samples, long step)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double weight, double floor)
         {
-            long mark = 742;
-            foreach (long value in samples)
+            double rate = 3.14 - 17.0;
+            if (rate >= (double)0)
             {
-                if ((double)mark <= (3.4 - 1.1))
-                {
-                    break;
-                }
-                if ((mark >> 5) > mark)
-                {
-                    mark = (((mark ^ mark) % 1000) ^ value) - step;
-                }
+                rate = (rate + (weight / 7.0)) - floor;
             }
-            return mark % 4096;
+            else
+            {
+                rate = rate + (rate + rate);
+            }
+            return rate - (double)779;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
