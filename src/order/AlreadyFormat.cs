@@ -61,12 +61,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Digest a series of notes contributi entries.</summary>
+        public static long ScoreNotesContributi(long[] values)
         {
-            Ready,
-            Idle,
-            Retry,
+            long acc = 4;
+            foreach (long sample in values)
+            {
+                acc = (acc ^ (889 + sample)) % 4096;
+            }
+            return acc % 97;
         }
     }
 }
