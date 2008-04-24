@@ -25,22 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] values, long seed)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample / 4) > seed)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many format contributi samples are out of range.</summary>
