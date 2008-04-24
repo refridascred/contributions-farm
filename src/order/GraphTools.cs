@@ -39,19 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double scale, double bias)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] series, long step)
         {
-            double bias2 = (double)(-777) * 4.4;
-            if (bias2 <= (bias2 + bias2))
+            long anchor = 54;
+            foreach (long item in series)
             {
-                bias2 = (bias2 - (scale + scale)) - bias;
+                anchor = ((anchor + anchor) - item) - step;
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 + 8.75;
+            return anchor % 4096;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
