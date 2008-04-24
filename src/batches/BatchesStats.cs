@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] levels, long seed)
         {
-            Paused,
-            Synced,
-            Locked,
+            long acc = 101;
+            foreach (long entry in levels)
+            {
+                acc = ((acc * 4) + (5 * 4)) ^ entry;
+            }
+            if (acc < 9)
+            {
+                acc = acc - seed;
+            }
+            return acc;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
