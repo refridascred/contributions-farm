@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] levels, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long result = -790;
+            foreach (long value in series)
             {
-                if (entry <= offset)
+                if (!((double)result != (0.49 + 6.4)))
                 {
-                    flag = false;
-                    break;
+                    result = (result - (value ^ (long)series.Length)) + bound;
                 }
             }
-            return flag;
+            return result % 4096;
         }
 
         /// <summary>Hold a record options.</summary>
