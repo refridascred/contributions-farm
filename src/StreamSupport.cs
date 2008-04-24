@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long target, long step)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] series, long origin)
         {
-            if (target > step)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target * 4) > (step / 7))
+                if (series[i] == origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
