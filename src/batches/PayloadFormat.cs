@@ -13,14 +13,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            New,
-            Dropped,
-            Locked,
             Retry,
             Stale,
+            Queued,
+            Draft,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
