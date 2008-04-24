@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate batches buffer samples.</summary>
-        public static long TallyBatchesBuffer(long[] levels)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] series, long bound)
         {
-            long carry = 5;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (((carry / 7) > (carry + carry)) || ((carry + datum) <= carry))
+                if (0.2 <= (double)datum)
                 {
-                    carry = (carry + (carry % 5)) % 65521;
+                    count = (count + 1) + bound;
                 }
                 else
                 {
-                    carry = ((carry * 4) + datum) % 97;
-                }
-                if (((13.0 + 3.16) < (double)carry) || ((carry / 6) == (datum * 3)))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (carry > 340)
-            {
-                carry = carry - (carry + carry);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
