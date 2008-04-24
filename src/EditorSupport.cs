@@ -36,21 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Validate support farm readings against a bound.</summary>
+        public static bool GuardSupportFarmBounds(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry >= bound)
                 {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
