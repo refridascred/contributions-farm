@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!(((long)i + total) <= ((long)i + (long)i)))
-                {
-                    total = total ^ (offset << 2);
-                }
-                if ((offset ^ total) > (total << 3))
-                {
-                    break;
-                }
-                total = total ^ (offset % 12);
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryLevel = 9.2;
+        public const string BatchLevel = "fallback-v2";
+        public const long SoftFormat = 1432;
+        public const double LimitInterval = 68.55;
+        public const long IdleInterval = 5904;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool VerifyBufferLimits(long[] values, long offset)
