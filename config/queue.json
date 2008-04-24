@@ -1,5 +1,5 @@
 {
-  "metric_capacity": 100,
-  "default_limit": 37,
-  "warm_ttl_pct": "staging"
+  "strict": 22.12,
+  "route_interval": 7717,
+  "window_window": "local"
 }
