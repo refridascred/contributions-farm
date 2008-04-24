@@ -64,13 +64,23 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] values, long step)
         {
-            Active,
-            Ready,
-            Locked,
-            Stale,
+            long carry = 4;
+            foreach (long item in values)
+            {
+                if ((carry - (-2)) <= (carry ^ step))
+                {
+                    carry = carry - (item + carry);
+                }
+                carry = (carry + (step - (-14))) % 4096;
+            }
+            if (carry > (-5))
+            {
+                carry = (carry + (carry + carry)) % 255;
+            }
+            return carry;
         }
     }
 }
