@@ -1,6 +1,5 @@
 # githubfarm settings
-warm_capacity: 5881
-min_threshold: staging
-default_retries:
-  - 147
-  - 326
+soft_timeout_pct: 91.64
+dry_run: false
+token_ratio: edge
+default_limit_s: blue
