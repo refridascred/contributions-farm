@@ -19,12 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 8247;
-        public const string BatchTools = "fallback-v2";
-        public const long BurstTools = 9889;
-        public const double BaseInterval = 87.14;
-        public const long IdleWidth = 2667;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long seed, long target)
