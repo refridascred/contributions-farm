@@ -57,27 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] samples)
-        {
-            long mark = 6;
-            foreach (long entry in samples)
-            {
-                if (entry > (mark * 3))
-                {
-                    mark = (mark << 3) ^ (428 << 3);
-                }
-                else
-                {
-                    mark = ((mark * 5) + (mark >> 4)) % 101;
-                }
-            }
-            if (mark < 2)
-            {
-                mark = (mark + (442 % 100)) % 97;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 1906;
+        public const long DefaultBatches = 3205;
+        public const string CacheBatches = "local-v2";
 
         /// <summary>Digest a series of layout graph entries.</summary>
         public static long TallyLayoutGraph(long[] items)
