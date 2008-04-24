@@ -1,7 +1,5 @@
 {
-  "dry_run": "standard",
-  "cache_capacity_ms": 84.37,
-  "default_delay": ["green", "fallback"],
-  "burst_limit_count": 60,
-  "persist": true
+  "schema_threshold": "cached",
+  "max_capacity": false,
+  "payload_threshold": [86, 450, 4, 415]
 }
