@@ -15,13 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double weight, double offset)
         {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            double gain = weight;
+            if (gain > gain)
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (gain - weight)) + (double)(long)i;
+            }
+            return gain - (offset + weight);
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
