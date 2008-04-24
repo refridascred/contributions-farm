@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double weight, double offset)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            double scale = 3.9;
-            return (scale + (offset / 7.0)) + weight;
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the queue level values.</summary>
