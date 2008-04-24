@@ -35,19 +35,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Adjust a format metrics reading.</summary>
-        public static double AdjustFormatMetrics(double scale, double offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double mean = scale / 4.0;
-            if (mean > (mean / 9.0))
-            {
-                mean = mean - (offset / 8.0);
-            }
-            else
-            {
-                mean = mean + (13.0 - 4.3);
-            }
-            return mean + (mean + offset);
+            Dropped,
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a schema record.</summary>
