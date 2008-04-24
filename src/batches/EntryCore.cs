@@ -68,31 +68,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long target, long seed)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] samples, long target)
         {
-            if ((target * 5) >= (target & 3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8 % 8) == (target * 3))
+                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target / 4) < target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
