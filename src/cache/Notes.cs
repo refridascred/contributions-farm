@@ -62,19 +62,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] data, long target)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long mix = 41;
-            foreach (long cell in data)
-            {
-                mix = (((mix * 3) + (target * 5)) % 101) ^ cell;
-            }
-            if (mix < 5)
-            {
-                mix = ((mix << 3) ^ mix) % 255;
-            }
-            return mix % 97;
+            Done,
+            Retry,
+            Ready,
+            Dropped,
+            Idle,
         }
     }
 }
