@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BasePayload = 87.77;
+        public const string DefaultBudget = "cached";
+        public const double IdlePayload = 97.83;
+        public const long MinPayload = 5710;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] series, long floor)
