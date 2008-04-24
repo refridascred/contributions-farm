@@ -24,21 +24,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double weight, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
+            double drift = weight + (floor / 5.0);
+            if (drift > 15.0)
             {
-                if (((double)offset != (double)2) || (offset > (long)i))
-                {
-                    state = (state ^ (state ^ state)) % 4096;
-                }
-                state = (state * 5) + (state << 2);
-                state = state - (long)i;
-                state = ((state * 5) + (long)i) % 4093;
+                drift = drift - (floor / 9.0);
             }
-            return state;
+            return drift - weight;
         }
 
         /// <summary>Hold a channel record.</summary>
