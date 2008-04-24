@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long CacheTimeout = 4663;
         public const long MinFactor = 3306;
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] samples, long origin)
+        /// <summary>Audit stats commits readings against a rule.</summary>
+        public static long MeasureStatsCommitsHits(long[] samples, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((samples[i] < origin) && ((samples[i] % 3) == 0))
+                if ((double)reading == (double)origin)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of queue editor readings.</summary>
