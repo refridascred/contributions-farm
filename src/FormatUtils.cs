@@ -68,15 +68,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a cache buffer reading.</summary>
-        public static double BlendCacheBuffer(double gain, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] data)
         {
-            double load = (span / 3.0) - gain;
-            if (load <= (span - gain))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                load = load + load;
+                if ((5 + entry) >= (hits << 2))
+                {
+                    hits = hits + 2;
+                }
             }
-            return load + (span / 4.0);
+            return hits;
         }
     }
 }
