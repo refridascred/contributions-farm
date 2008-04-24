@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double IdleFactor = 20.65;
         public const long BatchBudget = 4616;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] samples)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (hits > cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
