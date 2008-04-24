@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Classify a token payload pair into a bucket.</summary>
+        public static long ClassifyTokenPayload(long origin, long origin2)
         {
-            Draft,
-            Closed,
-            Dropped,
-            Stale,
-            Retry,
+            long delta = origin ^ origin2;
+            if (!((origin - origin2) <= (555 / 7)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin * 4) == (origin - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)origin <= (8.0 - 9.08)) && ((origin2 + origin2) <= (origin2 - delta)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine session values into a single score.</summary>
