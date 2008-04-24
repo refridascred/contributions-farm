@@ -21,23 +21,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double bias, double span)
+        /// <summary>Match up cluster entry samples.</summary>
+        public static long PairClusterEntryCount(long[] items)
         {
-            double rate = (double)(8 ^ 2);
-            if (rate >= (bias * 7.0))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate + span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - (span + span);
+            return matches;
         }
 
         /// <summary>Hold a profile info.</summary>
