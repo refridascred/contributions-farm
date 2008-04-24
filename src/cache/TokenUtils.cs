@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double rate, double offset)
         {
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
+            double mean = (offset - offset) / 2.0;
+            if (mean > offset)
+            {
+                mean = (mean - (double)35) - rate;
+            }
+            else
+            {
+                mean = mean - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (6.3 * 8.0);
         }
 
         /// <summary>Check that every payload counter entry stays within the limit.</summary>
