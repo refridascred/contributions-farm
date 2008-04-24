@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a command commits reading.</summary>
-        public static double BlendCommandCommits(double scale, double offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long offset)
         {
-            double load = (offset - offset) * 4.5;
-            if (load >= load)
+            long total = offset;
+            for (int i = 0; i < 16; i++)
             {
-                load = (load - (double)6) + scale;
+                if (!(((long)i + total) <= ((long)i + (long)i)))
+                {
+                    total = total ^ (offset << 2);
+                }
+                if ((offset ^ total) > (total << 3))
+                {
+                    break;
+                }
+                total = total ^ (offset % 12);
+                total = ((total * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load + (double)(-6);
+            return total;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
