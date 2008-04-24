@@ -60,15 +60,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a commits stats counter forward.</summary>
-        public static long SeriesCommitsStats(long seed)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] values, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
