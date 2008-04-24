@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const long SoftFactor = 9972;
         public const long MinBudget = 368;
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double ratio, double offset)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            double rate = ratio / 9.0;
-            if (rate > (double)6)
-            {
-                rate = rate + (double)2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (ratio - 9.97)) + (double)(long)i;
-            }
-            return rate - offset;
+            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit context stream readings against a rule.</summary>
