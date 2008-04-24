@@ -15,19 +15,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] series, long target)
+        /// <summary>Compare every pair of support batch readings.</summary>
+        public static long PairSupportBatchCount(long[] series)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
