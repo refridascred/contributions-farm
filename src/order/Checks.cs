@@ -25,15 +25,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a token contributi figure with a bias.</summary>
-        public static double ScaleTokenContributi(double ratio, double bias)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] items, long seed)
         {
-            double rate = (double)742 * 19.0;
-            if (rate <= (rate / 4.0))
+            bool flag = true;
+            foreach (long entry in items)
             {
-                rate = ((rate + (double)7) + ratio) - bias;
+                if (entry <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return rate + 0.9;
+            return flag;
         }
 
         /// <summary>Describe the format kind values.</summary>
