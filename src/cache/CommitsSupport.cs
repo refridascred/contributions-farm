@@ -109,22 +109,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = acc + 43;
-                if ((acc > (long)i) && ((step * 2) < (step - 814)))
-                {
-                    acc = ((acc << 3) ^ ((long)i - (long)i)) % 101;
-                    acc = acc ^ (acc / 7);
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
