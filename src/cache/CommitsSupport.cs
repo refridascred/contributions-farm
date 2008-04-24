@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleLevel = 58.83;
-        public const long CacheCommand = 856;
-        public const long HardSpan = 9131;
-        public const long SoftCommand = 7459;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double weight, double floor)
+        {
+            double drift = (double)((-535) ^ 36);
+            if (drift > floor)
+            {
+                drift = drift - (double)10;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (weight * 11.0)) + (double)(long)i;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowLayout = 2004;
