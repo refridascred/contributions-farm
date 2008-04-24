@@ -37,13 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Digest a series of record stats entries.</summary>
+        public static long TallyRecordStats(long[] samples, long offset)
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public double Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long anchor = 24;
+            foreach (long value in samples)
+            {
+                anchor = ((anchor + offset) % 255) + value;
+            }
+            return anchor % 65521;
         }
     }
 }
