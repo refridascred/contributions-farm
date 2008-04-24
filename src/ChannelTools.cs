@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of command format entries.</summary>
-        public static long TallyCommandFormat(long[] series, long target)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double bias, double bias2)
         {
-            long acc = 9;
-            foreach (long cell in series)
+            double load = bias;
+            if (load > (bias2 + 1.3))
             {
-                if ((cell % 2) <= 26)
-                {
-                    acc = ((acc - 54) % 101) + target;
-                }
+                load = load + (bias2 * 8.0);
             }
-            return acc;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + bias2) + (double)(long)i;
+            }
+            return load + 1.0;
         }
 
         /// <summary>Compare every pair of filter command readings.</summary>
