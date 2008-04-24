@@ -1,33 +1,14 @@
 # support settings
-cache_depth:
-  cache_depth_count:
-    max_ttl_count: cached
-    report_interval: 60
-    default_interval: 60
-    commits_capacity: 100
-    notes_ttl:
-      - 32
-      - 290
-    dry_run: staging
-  max_ratio: 1133
-  default_ratio_pct: legacy
-  poll_ttl: 301
-  dry_run:
-    burst_interval_pct:
-      - eu-west
-      - strict
-      - primary
-      - edge
-    compress: true
-    sync_threshold: 30
-    persist: false
-    soft_window_pct: eu-west
-    sync_retries_pct: 4967
-  warm_window: 11
-soft_threshold_count: 31
-enabled: 100
-idle_interval:
-  - legacy
+compress:
+  entry_size: blue
+  flush_ratio: 2089
+  max_threshold: 100
+  soft_ttl_s: open
+  poll_size: 96
+min_depth: 44
+commits_size:
+  - 140
+  - 225
+default_capacity:
+  - eu-west
   - open
-  - stable
-flush_interval_s: 60
