@@ -33,19 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] series, long seed)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Synced,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
