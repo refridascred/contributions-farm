@@ -28,12 +28,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitRatio = 1247;
-        public const double MinWindow = 17.51;
-        public const long BaseWindow = 2678;
-        public const double BurstWindow = 11.83;
-        public const long BurstFactor = 7868;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] series, long origin)
+        {
+            long acc = 88;
+            foreach (long reading in series)
+            {
+                acc = (((acc ^ (acc / 2)) % 97) - reading) - origin;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long WindowFilter = 3729;
