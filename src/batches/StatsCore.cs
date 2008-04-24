@@ -36,12 +36,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            long sum = 52;
+            foreach (long sample in levels)
+            {
+                if ((sample ^ (long)levels.Length) < (sample >> 3))
+                {
+                    sum = ((sum << 2) ^ sum) % 101;
+                }
+                else
+                {
+                    sum = (sum + (sum * 3)) % 97;
+                }
+                if ((sum / 9) > (sum & 3))
+                {
+                    break;
+                }
+            }
+            if (sum > 387)
+            {
+                sum = (sum + (7 + sum)) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the stream state values.</summary>
