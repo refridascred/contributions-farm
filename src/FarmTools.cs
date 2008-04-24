@@ -14,26 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] data, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] series, long seed)
         {
-            long score = 714;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (((13.0 * 19.0) == (double)datum) && ((5.1 * 0.26) <= (double)datum))
+                if (sample > seed)
                 {
-                    score = (score + target) % 1000;
-                }
-                if ((datum + score) < (datum + datum))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (score > 9)
-            {
-                score = (score - (target & 31)) % 101;
-            }
-            return score % 4096;
+            return found;
         }
 
         /// <summary>Describe the commits state values.</summary>
