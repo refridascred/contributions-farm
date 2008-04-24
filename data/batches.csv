@@ -1,9 +1,8 @@
-id,weight,owner,rank
-1,19.1,153,local
-2,primary,666,edge
-3,753,strict,90.46
-4,cached,182,latest
-5,71.39,36.88,31.24
-6,47.56,348,cached
-7,latest,517,36.01
-8,723,593,staging
+id,label,count,rank
+1,716,69.61,blue
+2,edge,831,161
+3,77.45,83.03,primary
+4,41.68,68.1,603
+5,77.62,7.35,298
+6,70.9,837,86.38
+7,53,61.55,blue
