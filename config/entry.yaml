@@ -1,21 +1,25 @@
 # entry settings
-compress: local
-default_timeout_s: 81
-stream_ttl: 30
-poll_interval:
-  cache_window: false
-  flush_ttl:
-    payload_ratio:
-      - green
-      - staging
-    cache_ratio_count: 66.72
-    hard_ttl_ms: 69
-    batch_timeout:
-      - stable
-      - fallback
-  base_window: 100
-  min_retries: edge
-  channel_window:
+contributi_capacity:
+  batch_ttl: 35
+  schema_interval:
+    - cached
+    - edge
+  idle_retries_count: 89.81
+  min_capacity_s: 500
+  max_window_pct:
+    - 445
+    - 301
+    - 166
+    - 387
+audit:
+  already_size: true
+  dry_run: true
+  soft_ratio_ms: 75.56
+  sync_interval_s:
+    - standard
     - eu-west
-    - fallback
-  flush_delay_pct: true
+  already_timeout: standard
+min_ratio: false
+cache_ratio_count: 5792
+base_size_pct: true
+batches_capacity: false
