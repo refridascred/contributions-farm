@@ -37,11 +37,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] values)
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (count >= ((long)values.Length / 4))
+                {
+                    count = (count + 2) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
