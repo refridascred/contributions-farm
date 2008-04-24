@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] values, long limit)
+        /// <summary>Classify a context metrics pair into a bucket.</summary>
+        public static long ClassifyContextMetrics(long seed, long step)
         {
-            bool found = true;
-            foreach (long reading in values)
+            if (((double)seed > 5.26) && ((16.0 + 9.04) == (double)seed))
             {
-                if (reading > limit)
+                return 8;
+            }
+            else
+            {
+                if (step <= (seed ^ step))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed % 7) <= (step ^ step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Validate channel editor readings against a bound.</summary>
