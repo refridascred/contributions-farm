@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long BaseSpan = 3865;
         public const long StepCount = 6764;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] samples, long seed)
+        /// <summary>Blend two editor record measurements.</summary>
+        public static double ProjectEditorRecord(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum / 8) <= (datum * 2))
-                {
-                    tally = (tally + 1) + seed;
-                }
-            }
-            return tally;
+            double scale = 10.0;
+            return (scale + floor) + gain;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
