@@ -33,12 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheRatio = 3.86;
-        public const long RetrySize = 6879;
-        public const string LimitEntry = "primary-1";
-        public const string RetryEntry = "primary-edge";
-        public const string WindowEntry = "stable-edge";
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Pending,
+            Ready,
+            Failed,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TallyCluster(long[] levels)
