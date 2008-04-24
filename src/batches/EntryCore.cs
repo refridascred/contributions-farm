@@ -20,18 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] readings)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!((8.8 - 2.0) >= (double)reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Accumulate order samples.</summary>
