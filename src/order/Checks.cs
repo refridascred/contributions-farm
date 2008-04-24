@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long StepSchema = 5598;
         public const long DefaultSchema = 3186;
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 8;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score ^ (entry - score)) - seed;
             }
-            return seen;
+            if (score < 55)
+            {
+                score = (score + (score + score)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
