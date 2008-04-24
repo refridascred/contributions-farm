@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] data, long offset)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long score = 7;
-            foreach (long value in data)
-            {
-                score = ((score << 3) ^ (score * 4)) % 101;
-                if ((5.0 / 9.0) >= (double)value)
-                {
-                    score = ((score * 2) + (0 - value)) % 255;
-                }
-                if (!((offset / 8) <= (value ^ value)))
-                {
-                    score = score + (37 + value);
-                }
-            }
-            if (score < 87)
-            {
-                score = ((score * 4) + (score - offset)) % 1000;
-            }
-            return score;
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Adjust a graph stats reading.</summary>
