@@ -86,24 +86,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] readings, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = anchor ^ ((long)i & 127);
-                if (((anchor + (long)i) >= anchor) || ((4.4 * 10.0) > (double)(long)i))
+                if (readings[i] < floor)
                 {
-                    anchor = (anchor - (long)i) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor - (anchor - anchor)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
     }
 }
