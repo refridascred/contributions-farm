@@ -27,12 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] readings, long offset)
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((9.4 + 8.5) != (double)hits)
+                {
+                    hits = ((hits + 3) ^ sample) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the window kind values.</summary>
