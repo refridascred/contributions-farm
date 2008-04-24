@@ -69,11 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitLevel = 56;
-        public const long RetryBatch = 1061;
-        public const string LimitSize = "stable-1";
-        public const string BaseBatch = "staging-edge";
-        public const long LimitBatch = 7062;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Closed,
+            Done,
+            Idle,
+        }
     }
 }
