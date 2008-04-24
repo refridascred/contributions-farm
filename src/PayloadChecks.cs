@@ -72,24 +72,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long target, long origin)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            if ((17 + origin) <= (target % 24))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((9.57 < (double)origin) || ((double)target > (double)origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
