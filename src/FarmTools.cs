@@ -23,11 +23,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 9526;
-        public const long BurstEditor = 9397;
-        public const long MinFactor = 5143;
-        public const double IdleWidth = 51.96;
-        public const long MinScore = 7957;
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
