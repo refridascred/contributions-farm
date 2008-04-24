@@ -51,12 +51,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] values, long offset)
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
