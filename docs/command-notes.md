@@ -1,14 +1,15 @@
 # Command notes
 
-The account report groups every entry by editor.
-The layout report groups every entry by commits.
+Run the order check before changing any payload limits.
+Defaults for notes live in the config folder and can be overridden per environment.
 
-Use queue settings to tune how often cache data is refreshed.
-A layout that stays idle for too long is moved to the cluster list.
-The notes helpers are pure functions, so they are safe to call from any thread.
+Run the entry check before changing any buffer limits.
+A tools that stays idle for too long is moved to the cluster list.
+The support report groups every queue by window.
 
 ## Guidelines
 
-- Keep profile values small
-- Prefer queue defaults
-- Validate context input early
+- Log every layout change
+- Review token limits each release
+- Validate command input early
+- Prefer checks defaults
