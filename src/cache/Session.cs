@@ -15,12 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] samples)
         {
-            Idle,
-            Synced,
-            Draft,
+            long state = -80;
+            foreach (long value in samples)
+            {
+                state = state - (value + state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the editor class values.</summary>
