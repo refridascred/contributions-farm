@@ -53,13 +53,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Validate entry metrics readings against a bound.</summary>
+        public static bool VerifyEntryMetricsLimits(long[] levels, long offset)
         {
-            Paused,
-            Retry,
-            Failed,
-            Locked,
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
