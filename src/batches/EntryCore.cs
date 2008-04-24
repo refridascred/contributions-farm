@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] items, long target)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "cached-v2";
+        public const long IdleChecks = 8744;
+        public const long BaseLevel = 4997;
+        public const string RetryBudget = "latest";
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
