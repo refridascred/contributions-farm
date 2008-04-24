@@ -62,13 +62,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Accumulate batches buffer samples.</summary>
+        public static long TotalBatchesBuffer(long[] data, long step)
         {
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
+            long mark = -43;
+            foreach (long sample in data)
+            {
+                mark = ((mark ^ (mark + sample)) % 65521) - step;
+            }
+            return mark;
         }
     }
 }
