@@ -33,16 +33,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 2) + (mix * 4)) % 101;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Active,
+            Locked,
+            Synced,
+            Pending,
+            Dropped,
         }
     }
 }
