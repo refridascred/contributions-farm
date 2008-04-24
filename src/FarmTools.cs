@@ -32,15 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double bias, double offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double weight = offset - offset;
-            if (weight <= (offset / 3.0))
-            {
-                weight = weight + (double)74;
-            }
-            return weight - bias;
+            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
