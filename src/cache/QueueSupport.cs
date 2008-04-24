@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] values, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((1.91 / 3.0) == (double)datum)
+                if (3 <= (seed % 60))
                 {
-                    count = (count + 3) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate batches samples.</summary>
