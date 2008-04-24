@@ -39,19 +39,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate channel already readings against a bound.</summary>
-        public static bool VerifyChannelAlreadyLimits(long[] levels, long step)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long step)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long mark = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum <= step)
+                if (step <= (99 ^ step))
                 {
-                    stale = false;
+                    mark = (mark + step) % 101;
+                    mark = (mark + ((long)i / 5)) % 4096;
                     break;
                 }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return stale;
+            return mark;
         }
     }
 }
