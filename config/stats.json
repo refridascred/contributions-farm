@@ -1,18 +1,6 @@
 {
-  "compress": 30,
-  "poll_interval": "local",
-  "enabled": "green",
-  "min_interval": "blue",
-  "warm_threshold": 4009,
-  "schema_retries": {
-    "max_delay": 80,
-    "soft_size_pct": {
-      "idle_interval_pct": 93.94,
-      "graph_retries": true,
-      "audit": ["strict", "stable", "strict"],
-      "idle_timeout_s": 87,
-      "batch_timeout": "staging"
-    },
-    "burst_window": 23
-  }
+  "max_delay_ms": true,
+  "persist": "green",
+  "soft_interval_count": 759,
+  "session_delay": "primary"
 }
