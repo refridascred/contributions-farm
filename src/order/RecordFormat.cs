@@ -63,14 +63,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Digest a series of order cluster entries.</summary>
+        public static long TallyOrderCluster(long[] series)
         {
-            Failed,
-            New,
-            Closed,
-            Draft,
-            Ready,
+            long mark = 418;
+            foreach (long item in series)
+            {
+                mark = ((mark * 3) + (item + item)) % 1000;
+            }
+            return mark % 97;
         }
     }
 }
