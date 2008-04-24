@@ -32,38 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long origin, long seed)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            if (((-7) >= (seed ^ origin)) || (origin < (7 << 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin + seed) < origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed & 127) <= (seed & 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed / 7) > (seed ^ 9))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
