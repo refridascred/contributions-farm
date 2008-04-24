@@ -57,22 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] data, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] series, long origin)
         {
-            long total = 384;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (!((seed % 10) > (total / 7)))
+                if (cell != origin)
                 {
-                    total = ((total - seed) % 4096) - value;
+                    ready = false;
+                    break;
                 }
             }
-            if (total > 37)
-            {
-                total = (total + (8 << 3)) % 65521;
-            }
-            return total;
+            return ready;
         }
     }
 }
