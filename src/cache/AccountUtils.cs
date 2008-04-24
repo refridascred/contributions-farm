@@ -23,13 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] items)
         {
-            Paused,
-            Done,
-            Ready,
-            Closed,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value & 3) <= (value % 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
