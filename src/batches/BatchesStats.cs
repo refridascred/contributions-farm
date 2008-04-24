@@ -52,18 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] data)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long state = 97;
+            foreach (long datum in values)
             {
-                if ((hits >> 4) >= (hits - hits))
+                if (state > (datum << 2))
                 {
-                    hits = (hits + 1) + entry;
+                    state = state - datum;
                 }
             }
-            return hits;
+            if (state < 392)
+            {
+                state = (state - (state + limit)) % 4096;
+            }
+            return state;
         }
     }
 }
