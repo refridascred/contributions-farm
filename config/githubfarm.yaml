@@ -1,6 +1,8 @@
 # githubfarm settings
-format_timeout: 30
-batch_timeout_count: 1833
-compress: 52.73
-strict: local
-max_ratio: staging
+commits_capacity:
+  soft_window: 59.88
+  sync_delay_ms: blue
+  readonly: standard
+commits_ratio: 9145
+readonly: 60
+sync_ttl_pct: 62.58
