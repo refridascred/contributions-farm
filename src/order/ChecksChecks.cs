@@ -14,19 +14,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many editor profile samples are out of range.</summary>
-        public static long AuditEditorProfileHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (((item ^ 70) > (item << 1)) || ((37 + item) >= (long)readings.Length))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 2089;
+        public const double LimitFactor = 32.4;
+        public const long HardAccount = 2108;
 
         /// <summary>Accumulate tools schema samples.</summary>
         public static long FoldToolsSchema(long[] levels)
