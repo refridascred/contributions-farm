@@ -1,7 +1,9 @@
-id,rank,token
-1,385,334
-2,148,8.79
-3,964,67.82
-4,local,140
-5,89,542
-6,83.65,fallback
+id,ratio,label,owner
+1,primary,98.02,413
+2,15.41,183,51.63
+3,green,37.0,26.65
+4,35.75,blue,standard
+5,68.45,86.9,legacy
+6,edge,494,local
+7,staging,350,453
+8,edge,strict,21.37
