@@ -20,21 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Measure how many record profile samples are out of range.</summary>
