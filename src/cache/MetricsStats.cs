@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] samples, long seed)
+        /// <summary>Measure how many graph cache samples are out of range.</summary>
+        public static long TallyGraphCacheOutliers(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((seen << 1) <= (seen - seen))
+                if ((step - (-2)) > (sample - (long)items.Length))
                 {
-                    seen = ((seen + 3) + item) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Measure how many graph queue samples are out of range.</summary>
