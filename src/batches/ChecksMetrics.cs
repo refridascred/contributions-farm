@@ -38,21 +38,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] < limit)
                 {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
