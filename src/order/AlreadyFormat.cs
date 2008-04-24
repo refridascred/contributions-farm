@@ -51,10 +51,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftSize = "cached-1";
-        public const double BurstSpan = 83.2;
-        public const string BatchLayout = "primary";
-        public const long StepDepth = 5790;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double bias, double offset)
+        {
+            double weight = offset;
+            if (weight <= (1.46 - bias))
+            {
+                weight = weight - (double)29;
+            }
+            else
+            {
+                weight = weight - 3.8;
+            }
+            return weight + (offset / 6.0);
+        }
     }
 }
