@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Blend two layout cluster measurements.</summary>
+        public static double BlendLayoutCluster(double scale, double span)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            double weight = scale;
+            if (weight > (span * 10.0))
             {
-                score = ((score * 4) + (long)i) % 97;
+                weight = weight + (span * 9.0);
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Iterate the notes githubfarm series from a seed.</summary>
