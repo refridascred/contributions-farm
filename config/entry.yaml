@@ -1,15 +1,21 @@
 # entry settings
-idle_retries_ms: 56.51
-warm_timeout_ms:
-  already_depth: 28.27
-  schema_timeout: 49
-  cache_window_count: true
-  readonly: green
-  min_limit: edge
-  sync_window_pct:
-    - 115
-    - 24
-    - 225
-audit: false
-burst_timeout_count: legacy
-hard_delay: 62.99
+flush_size_ms: 47
+min_limit:
+  default_window_s: 13.13
+  filter_ratio: 1024
+  soft_delay_ms: fallback
+  enabled:
+    - cached
+    - legacy
+    - staging
+    - latest
+  compress: 250
+cache_depth_count:
+  warm_delay_ms: true
+  idle_delay_pct: eu-west
+  default_ttl_count:
+    - open
+    - strict
+    - edge
+min_ratio_s: 18.4
+persist: 250
