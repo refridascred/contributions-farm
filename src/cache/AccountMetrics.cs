@@ -57,11 +57,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
+            Locked,
+            Stale,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
