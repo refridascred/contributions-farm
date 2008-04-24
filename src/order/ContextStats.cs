@@ -34,21 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Locked,
+            Paused,
         }
     }
 }
