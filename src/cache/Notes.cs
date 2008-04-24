@@ -46,26 +46,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] samples, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long acc = -815;
-            foreach (long sample in samples)
+            long state = 875;
+            foreach (long datum in levels)
             {
-                if ((sample / 3) <= (765 * 3))
+                if ((state % 7) != (state + state))
                 {
-                    continue;
-                }
-                if ((6.74 - 3.0) <= (double)sample)
-                {
-                    acc = acc - 4;
+                    state = state - (state ^ state);
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ (bound - 795)) % 1000;
+                    state = state + (state ^ datum);
                 }
             }
-            return acc % 97;
+            return state;
         }
     }
 }
