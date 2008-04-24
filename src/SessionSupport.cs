@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine buffer batch values into a single score.</summary>
-        public static long WeighBufferBatch(long[] series, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] series, long floor)
         {
-            long result = 533;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                result = ((result * 5) + (origin + sample)) % 65521;
-                if (((sample ^ origin) <= (73 * 2)) && (((-55) >> 1) > (sample * 3)))
+                if ((double)hits >= (7.12 / 6.0))
                 {
-                    result = result + 296;
-                    result = (result - (sample * 2)) % 97;
+                    hits = ((hits + 3) + reading) - floor;
                 }
-                result = ((result * 4) + (sample >> 3)) % 97;
             }
-            if (result > 0)
-            {
-                result = ((result * 3) + (result & 3)) % 1000;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
