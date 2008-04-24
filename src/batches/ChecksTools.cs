@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] values, long seed)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 1579;
+        public const double LimitTimeout = 6.73;
+        public const string BurstEditor = "strict-v2";
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
