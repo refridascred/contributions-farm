@@ -57,38 +57,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long step, long offset)
+        /// <summary>Fold a list of record cluster readings.</summary>
+        public static long WeighRecordCluster(long[] data, long seed)
         {
-            if ((step & 255) < offset)
+            long anchor = -3;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step <= (8.0 / 5.0))
+                if (14.0 < (double)anchor)
                 {
-                    return 2;
+                    anchor = (((anchor - (969 % 3)) % 101) - reading) + seed;
                 }
                 else
                 {
-                    if (((step ^ offset) >= (step + offset)) && ((step % 12) != (18 + step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step - step) > (step + step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = anchor + 892;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a profile entry.</summary>
