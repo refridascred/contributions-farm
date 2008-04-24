@@ -24,11 +24,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 2735;
-        public const double WindowOrder = 64.81;
-        public const long RetryOrder = 7246;
-        public const long SoftOrder = 5044;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool ValidateEditorRange(long[] samples, long bound)
