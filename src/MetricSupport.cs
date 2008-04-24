@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long seed, long seed2)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            if (((seed2 + seed) == (seed2 - seed)) || ((6.4 / 4.0) != (double)seed2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed2 % 5) >= (seed * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Pending,
+            Active,
+            Synced,
+            Failed,
+            Stale,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
