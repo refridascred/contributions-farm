@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] readings, long offset)
         {
-            Done,
-            Locked,
-            Active,
-            Retry,
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the editor status values.</summary>
