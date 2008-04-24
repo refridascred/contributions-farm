@@ -1,5 +1,10 @@
 {
-  "batch_depth_pct": "legacy",
-  "queue_timeout": 46,
-  "dry_run": false
+  "idle_retries_s": 2917,
+  "verbose": "latest",
+  "persist": {
+    "min_ttl": "local",
+    "buffer_depth": "primary",
+    "profile_retries": 21,
+    "retry_retries_count": 48
+  }
 }
