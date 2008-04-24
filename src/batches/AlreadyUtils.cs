@@ -50,45 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] readings, long step)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long acc = 84;
-            foreach (long value in readings)
-            {
-                if ((acc + 161) == (21 + 99))
-                {
-                    acc = ((acc << 3) ^ (acc * 2)) % 1000;
-                    acc = (acc - (value - step)) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ (3 + value)) % 65521;
-                    acc = acc + (value + value);
-                }
-                if ((step >> 1) == (step + value))
-                {
-                    acc = ((acc * 2) + (acc + value)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (60 + step)) % 101;
-                    acc = acc ^ (acc * 2);
-                }
-                if ((1.0 - 0.02) <= (double)value)
-                {
-                    acc = ((acc * 2) + (46 / 7)) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 4) + 97) % 1000;
-                }
-            }
-            if (acc < 82)
-            {
-                acc = acc ^ (step << 3);
-            }
-            return acc;
+            Locked,
+            Failed,
+            New,
+            Queued,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
