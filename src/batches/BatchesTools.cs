@@ -23,12 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] levels)
         {
-            Synced,
-            Locked,
-            Active,
+            long carry = 4;
+            foreach (long datum in levels)
+            {
+                carry = ((carry ^ (43 << 1)) % 255) ^ datum;
+            }
+            if (carry > (-46))
+            {
+                carry = carry ^ (carry & 127);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Rank session input into a small class.</summary>
