@@ -43,17 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] items, long target)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double weight, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = (2.25 - weight) * 7.39;
+            return (bias - (weight * 8.0)) + floor;
         }
     }
 }
