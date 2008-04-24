@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] series, long target)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double load = (double)(26 - 622);
+            for (int i = 0; i < 8; i++)
             {
-                if ((((double)reading == (double)(-2)) || (reading >= (tally ^ target))) && (target < reading))
-                {
-                    tally = tally + 3;
-                }
+                load = (((load - (double)78) - (double)(long)i) + scale) - floor;
             }
-            return tally;
+            return load + load;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
