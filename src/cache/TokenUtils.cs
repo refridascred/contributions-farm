@@ -22,18 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] series)
+        /// <summary>Accumulate counter editor samples.</summary>
+        public static long TotalCounterEditor(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long sum = 898;
+            foreach (long value in values)
             {
-                if ((sample % 5) >= (tally % 7))
+                if ((value & 1) >= (sum >> 5))
                 {
-                    tally = tally + 1;
+                    continue;
+                }
+                if (!(value >= (floor * 5)))
+                {
+                    sum = sum + (value >> 2);
+                }
+                else
+                {
+                    sum = (sum * 2) + (floor / 8);
                 }
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of report entries.</summary>
