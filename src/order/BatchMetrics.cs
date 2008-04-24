@@ -57,21 +57,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count layout route pairs that satisfy a relation.</summary>
-        public static long MatchLayoutRouteCount(long[] series)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value <= limit)
                 {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Accumulate account buffer samples.</summary>
