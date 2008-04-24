@@ -46,11 +46,40 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 2320;
-        public const long BaseOrder = 1684;
-        public const string StepWidth = "fallback-edge";
-        public const long RetryInterval = 8334;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long floor, long step)
+        {
+            long diff = floor + step;
+            if ((diff <= (diff % 100)) || ((step << 1) < step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((diff ^ diff) >= (32 + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (diff >= (floor + diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step >= (step << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
