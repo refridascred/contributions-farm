@@ -21,19 +21,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] values, long floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Count { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
