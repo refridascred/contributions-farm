@@ -34,9 +34,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultContext = 25.31;
-        public const long RetryContext = 9441;
-        public const string BaseContext = "standard-v2";
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
