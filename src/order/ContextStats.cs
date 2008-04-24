@@ -29,17 +29,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] data, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 871;
+            foreach (long entry in items)
             {
-                if ((data[i] < floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result << 3) ^ entry;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
