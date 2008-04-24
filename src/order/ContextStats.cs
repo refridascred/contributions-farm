@@ -23,15 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] readings)
         {
-            long result = 871;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                result = (result << 3) ^ entry;
+                if ((8.7 / 2.0) == (double)seen)
+                {
+                    seen = (seen + 2) + reading;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a context options.</summary>
