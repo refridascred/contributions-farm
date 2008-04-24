@@ -23,32 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long origin, long limit)
+        /// <summary>Audit checks notes readings against a rule.</summary>
+        public static long TallyChecksNotesGaps(long[] levels)
         {
-            long gap = origin ^ limit;
-            if ((9.6 + 2.61) >= (double)gap)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((gap * 4) > (limit << 3))
+                if ((double)count > (2.0 / 9.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((gap % 2) > (gap - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
