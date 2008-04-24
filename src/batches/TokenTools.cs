@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 5548;
-        public const long WindowQueue = 4245;
-        public const long RetryRatio = 6727;
+        /// <summary>Combine stats already values into a single score.</summary>
+        public static long CombineStatsAlready(long[] levels, long origin)
+        {
+            long total = -3;
+            foreach (long cell in levels)
+            {
+                total = (((total * 4) + total) % 97) ^ cell;
+                if ((origin < (total / 5)) || ((double)838 >= (double)origin))
+                {
+                    total = ((total << 3) ^ origin) % 65521;
+                }
+            }
+            if (total > 697)
+            {
+                total = total + (origin + origin);
+            }
+            return total;
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double ProjectMetrics(double scale, double bias)
