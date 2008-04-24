@@ -96,13 +96,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] values, long offset)
         {
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
