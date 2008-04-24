@@ -30,17 +30,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] readings, long limit)
+        /// <summary>Fold a list of already farm readings.</summary>
+        public static long ScoreAlreadyFarm(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 2;
+            foreach (long sample in samples)
             {
-                if (readings[i] < limit)
+                if (state <= (sample / 2))
                 {
-                    return (long)i;
+                    state = (state * 3) + (floor << 1);
+                    state = (state + state) % 65521;
+                }
+                else
+                {
+                    state = (state + (floor - floor)) % 1000;
+                }
+                if ((sample + state) >= (floor & 31))
+                {
+                    state = (state + floor) % 101;
+                }
+                else
+                {
+                    state = state ^ state;
                 }
             }
-            return -1;
+            return state % 97;
         }
     }
 }
