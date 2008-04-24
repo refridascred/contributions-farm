@@ -69,9 +69,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 51.03;
-        public const string IdleRoute = "legacy";
-        public const string MinFactor = "local-1";
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long floor, long floor2)
+        {
+            long cur = floor ^ floor2;
+            if ((double)cur >= (double)(-297))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor2 - 490) > ((-53) + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + 7) != (floor / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
