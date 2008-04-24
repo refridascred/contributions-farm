@@ -31,16 +31,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a record cache counter forward.</summary>
-        public static long SeriesRecordCache(long seed)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] readings, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score - (long)i) % 4096;
-                score = ((score * 5) + (long)i) % 101;
+                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
