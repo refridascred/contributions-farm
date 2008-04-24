@@ -1,5 +1,5 @@
 {
-  "poll_timeout": 63,
-  "batch_delay_count": 15.23,
-  "max_ratio_s": ["eu-west", "staging"]
+  "burst_threshold": 30,
+  "profile_threshold": [53, 128, 366, 29],
+  "order_retries": "local"
 }
