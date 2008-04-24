@@ -43,18 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi checks samples are out of range.</summary>
-        public static long CountContributiChecksMatches(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (((seen <= entry) || ((entry / 4) >= seen)) && (((entry / 8) < (21 % 10)) || ((double)seen > (19.0 + 5.64))))
+                if (((619 + 2) != (target * 5)) || (((count << 2) > count) || ((double)count == (5.0 * 4.6))))
                 {
-                    seen = seen + 2;
+                    count = (count + 2) + entry;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
