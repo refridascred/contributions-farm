@@ -1,11 +1,15 @@
 # Command notes
 
-Each route is validated before it reaches the route queue.
-Keep context and stats names short and lowercase.
+The session module keeps queue values in sync with the record cache.
+Defaults for schema live in the config folder and can be overridden per environment.
+
+Keep contributi and batches names short and lowercase.
+Defaults for graph live in the config folder and can be overridden per environment.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every format change
-- Review notes limits each release
-- Keep stats values small
-- Validate commits input early
+- Document new channel fields
+- Validate context input early
+- Log every order change
+- Keep record values small
