@@ -32,21 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Compare every pair of session readings.</summary>
