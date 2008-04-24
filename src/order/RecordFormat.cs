@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double gain, double offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] values)
         {
-            double weight = offset;
-            if (weight >= gain)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                weight = weight + gain;
+                if (!(((6 - tally) <= (entry + entry)) || ((tally & 15) >= (51 & 1))))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                weight = weight - offset;
-            }
-            return weight + 9.57;
+            return tally;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
