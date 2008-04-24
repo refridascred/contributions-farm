@@ -1,8 +1,12 @@
 {
-  "soft_ttl": 2321,
-  "graph_ttl": 7381,
-  "context_window": [363, 344, 487],
-  "strict": "staging",
-  "base_interval": "legacy",
-  "max_size_count": "primary"
+  "compress": 32,
+  "stats_depth": ["cached", "staging", "fallback"],
+  "dry_run": {
+    "sync_depth_pct": ["primary", "eu-west"],
+    "base_window": 1024,
+    "warm_window": "primary"
+  },
+  "audit": "edge",
+  "route_size": true,
+  "cache_timeout_pct": "primary"
 }
