@@ -91,30 +91,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of stats profile readings.</summary>
-        public static long ScoreStatsProfile(long[] readings, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] data)
         {
-            long anchor = 69;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((bound + 5) != (429 << 2))
+                if ((double)cell != (6.0 + 4.8))
                 {
-                    anchor = (anchor + (entry * 3)) % 4096;
-                }
-                if (((long)readings.Length % 8) < entry)
-                {
-                    anchor = (anchor - (anchor % 12)) % 4096;
-                }
-                if (((anchor << 2) < (bound >> 1)) && ((bound - entry) != (entry << 1)))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor << 3) ^ (bound + anchor);
-            }
-            return anchor % 65521;
+            return hits;
         }
     }
 }
