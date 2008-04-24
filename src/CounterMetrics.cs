@@ -46,24 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long origin, long floor)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            if ((double)floor > (1.47 * 5.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((origin * 5) <= (origin + origin)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Synced,
+            Done,
+            Idle,
         }
     }
 }
