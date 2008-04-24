@@ -37,11 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a tools already reading.</summary>
-        public static double BlendToolsAlready(double bias, double offset)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double rate = 20.0 - (0.09 / 3.0);
-            return (rate + (8.49 - offset)) + bias;
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
