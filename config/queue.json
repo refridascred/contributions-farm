@@ -1,7 +1,5 @@
 {
-  "cache_capacity": true,
-  "enabled": "fallback",
-  "retry_threshold_count": [55, 139, 22],
-  "batch_capacity_s": true,
-  "max_timeout": false
+  "profile_depth": [415, 3, 340],
+  "poll_threshold": 8619,
+  "soft_ttl_count": "stable"
 }
