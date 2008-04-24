@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "legacy-1";
-        public const long BaseRatio = 5540;
-        public const double SoftDepth = 60.12;
-        public const long IdleWidth = 6822;
-        public const long MaxBudget = 3871;
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double scale, double offset)
+        {
+            double scale2 = scale - (12.0 - scale);
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + offset) + (double)(long)i;
+            }
+            return scale2 + 5.7;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheBounds(long[] readings, long seed)
