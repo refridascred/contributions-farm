@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
+            Retry,
+            Active,
+            New,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
