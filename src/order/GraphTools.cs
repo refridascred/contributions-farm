@@ -50,19 +50,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] series, long seed)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double gain, double span)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            double scale = (gain + gain) - (double)268;
+            if (scale >= (2.1 / 7.0))
             {
-                if (cell > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale + (double)4;
             }
-            return stale;
+            else
+            {
+                scale = scale + 8.8;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (double)80) - (double)(long)i;
+            }
+            return scale + (span * 0.05);
         }
 
         /// <summary>Combine token values into a single score.</summary>
