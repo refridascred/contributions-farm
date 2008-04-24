@@ -60,12 +60,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public string Owner { get; set; } = "";
-            public bool Size { get; set; }
-            public double Score { get; set; }
+            Retry,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Describe the already class values.</summary>
