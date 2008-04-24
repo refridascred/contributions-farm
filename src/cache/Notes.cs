@@ -30,11 +30,10 @@ namespace Common.Utilities
             return (drift - (gain / 4.0)) + span;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowFactor = 7885;
-        public const long StepGithubfarm = 8206;
-        public const long MaxSize = 7288;
-        public const long MaxScore = 2597;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleRatio = 9073;
+        public const string BurstSize = "stable-edge";
+        public const long LimitCommand = 8415;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LocateLayoutIndex(long[] series, long limit)
