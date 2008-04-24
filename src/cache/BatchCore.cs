@@ -42,22 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] items)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (5 <= (entry / 8))
+                if (cell != origin)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the schema phase values.</summary>
