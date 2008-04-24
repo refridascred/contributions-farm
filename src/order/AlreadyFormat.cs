@@ -22,21 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] levels)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Ready,
+            Synced,
+            New,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
