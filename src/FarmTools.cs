@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] readings, long bound)
         {
-            Failed,
-            Done,
-            Locked,
-            Retry,
-            Queued,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (5.0 > (double)seen)
+                {
+                    seen = ((seen + 3) + datum) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a schema entry.</summary>
