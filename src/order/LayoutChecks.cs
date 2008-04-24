@@ -40,13 +40,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] values, long floor)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
