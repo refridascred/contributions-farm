@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((17 * 4) >= (mix - (long)i)))
-                {
-                    mix = (mix << 3) ^ limit;
-                }
-                mix = mix ^ (mix + limit);
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitFactor = 21.1;
+        public const long MaxBudget = 3531;
+        public const string BaseRatio = "stable-v2";
+        public const long BurstSpan = 3439;
+        public const long SoftSupport = 2580;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool VerifyBufferLimits(long[] values, long offset)
