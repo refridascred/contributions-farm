@@ -28,19 +28,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of record format readings.</summary>
-        public static long DigestRecordFormat(long[] levels, long seed)
+        /// <summary>Adjust a graph stats reading.</summary>
+        public static double BlendGraphStats(double bias, double span)
         {
-            long state = 995;
-            foreach (long sample in levels)
+            double load = (span / 4.0) / 7.0;
+            for (int i = 0; i < 6; i++)
             {
-                state = ((state - (seed / 2)) % 65521) + sample;
+                load = ((load + load) + (double)(long)i) + bias;
             }
-            if (state < 84)
-            {
-                state = (state * 2) + (seed * 3);
-            }
-            return state;
+            return load + (span + span);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
