@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double ratio, double floor)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] data, long limit)
         {
-            double weight = floor * 5.0;
-            if (weight < floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - (ratio + weight);
+                if ((data[i] >= limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (floor / 9.0)) - (double)(long)i;
-            }
-            return weight - (double)2;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
