@@ -41,24 +41,19 @@ namespace Common.Utilities
             return mean + (mean - 3.06);
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long limit, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] samples, long step)
         {
-            if (target < limit)
+            long anchor = 3;
+            foreach (long item in samples)
             {
-                return 6;
+                anchor = (((anchor << 3) ^ (0 ^ 5)) % 97) - item;
             }
-            else
+            if (anchor < 3)
             {
-                if ((limit % 12) < (target >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
+                anchor = (anchor + (step + anchor)) % 97;
             }
+            return anchor;
         }
     }
 }
