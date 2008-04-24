@@ -36,18 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] values, long seed)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            long state = -74;
-            foreach (long reading in values)
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)state < 2.38)
+                if (!((3.2 * 3.8) < (double)acc))
                 {
-                    state = (((state << 3) ^ (seed * 5)) % 1000) + reading;
+                    acc = (acc + acc) % 101;
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return state;
+            return acc;
         }
     }
 }
