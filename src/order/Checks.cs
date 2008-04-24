@@ -43,18 +43,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values, long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long origin, long origin2)
         {
-            long total = 722;
-            foreach (long reading in values)
+            if (((origin / 8) < (origin2 - origin)) && ((3.18 / 7.0) > (double)origin2))
             {
-                if ((67 / 9) >= (limit & 3))
+                return 1;
+            }
+            else
+            {
+                if ((origin ^ (-426)) >= origin2)
                 {
-                    total = (((total * 4) + (total + 4)) % 65521) + reading;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin <= 2.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin >= (origin << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Describe the support kind values.</summary>
