@@ -1,16 +1,9 @@
 # githubfarm settings
-default_timeout_ms: 97
-route_ratio: 88.21
-compress:
-  warm_limit_ms:
-    - latest
-    - stable
-  cache_interval_count: false
-  batch_timeout: stable
-  sync_ttl_ms:
-    commits_delay: 5527
-    sync_timeout_pct: local
-    strict: local
-    token_capacity: standard
-  notes_limit: true
-account_ttl: 34.89
+retry_threshold_ms: 43.44
+warm_interval_s: false
+burst_delay:
+  - 25
+  - 441
+flush_interval_pct: 49
+buffer_threshold: latest
+warm_capacity_ms: 37.13
