@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public double Label { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
             public long Rank { get; set; }
-            public string Flag { get; set; } = "";
         }
 
         /// <summary>Rank report input into a small class.</summary>
