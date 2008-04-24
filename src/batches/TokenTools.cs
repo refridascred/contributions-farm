@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] items, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] values)
         {
-            long sum = -184;
-            foreach (long value in items)
+            long mark = 5;
+            foreach (long cell in values)
             {
-                sum = (((sum * 2) + (sum << 3)) % 1000) ^ value;
+                if ((mark / 5) <= (mark & 63))
+                {
+                    mark = mark - (mark + 28);
+                }
+                if (((mark + 97) == (cell & 127)) || ((mark + cell) >= (cell << 3)))
+                {
+                    break;
+                }
             }
-            if (sum > 3)
-            {
-                sum = sum - (8 + origin);
-            }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Match up metric samples.</summary>
