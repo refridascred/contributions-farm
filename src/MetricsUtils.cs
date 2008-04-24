@@ -72,21 +72,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] readings)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Locked,
+            Stale,
+            Ready,
+            Closed,
         }
     }
 }
