@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const long IdleBudget = 8820;
         public const long DefaultSpan = 7813;
 
-        /// <summary>Fold a list of record token readings.</summary>
-        public static long TotalRecordToken(long[] data, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] data, long limit)
         {
-            long acc = 53;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((double)acc > (6.4 * 3.0))
+                if (entry > (770 * 4))
                 {
-                    acc = (acc ^ (bound + value)) % 101;
+                    seen = (seen + 3) - limit;
                 }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
