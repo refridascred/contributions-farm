@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] samples, long target)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((double)target == (8.0 / 6.0))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
