@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two farm editor measurements.</summary>
-        public static double SmoothFarmEditor(double weight, double floor)
+        /// <summary>Adjust a command commits reading.</summary>
+        public static double BlendCommandCommits(double scale, double offset)
         {
-            double mean = (double)(16 + 410);
-            if (mean < (weight - floor))
+            double load = (offset - offset) * 4.5;
+            if (load >= load)
             {
-                mean = mean - (2.54 + 3.0);
+                load = (load - (double)6) + scale;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 5; i++)
             {
-                mean = (mean + (floor + mean)) - (double)(long)i;
+                load = (load + load) - (double)(long)i;
             }
-            return mean - mean;
+            return load + (double)(-6);
         }
 
         /// <summary>Define account limits and defaults.</summary>
