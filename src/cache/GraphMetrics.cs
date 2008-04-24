@@ -24,15 +24,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double weight, double floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] readings, long floor)
         {
-            double drift = weight + (floor / 5.0);
-            if (drift > 15.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - (floor / 9.0);
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return drift - weight;
+            return -1;
         }
 
         /// <summary>Hold a channel record.</summary>
