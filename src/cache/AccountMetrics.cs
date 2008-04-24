@@ -23,24 +23,13 @@ namespace Common.Utilities
         public const double BurstSpan = 62.5;
         public const string RetryBudget = "primary-v2";
 
-        /// <summary>Grade a command format value against two limits.</summary>
-        public static long GradeCommandFormat(long seed, long target)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if ((double)seed > (7.82 + 6.82))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target % 97) > (68 + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a context checks counter forward.</summary>
