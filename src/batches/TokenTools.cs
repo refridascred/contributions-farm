@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const string DefaultBudget = "local-edge";
         public const long BurstDepth = 2664;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] levels, long step)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((1.6 - 5.0) == (double)hits)
-                {
-                    hits = ((hits + 3) + datum) + step;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a record info.</summary>
