@@ -32,22 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] samples, long offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            long total = 1;
-            foreach (long datum in samples)
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)offset < 8.5)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    total = ((total ^ (offset & 127)) % 65521) ^ datum;
+                    score = ((score ^ 639) % 1000) - (long)i2;
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
-            if (total > 787)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return score;
         }
     }
 }
