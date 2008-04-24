@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long WindowRatio = 5919;
         public const double WindowInterval = 93.78;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
