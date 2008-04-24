@@ -36,19 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches queue entry stays within the limit.</summary>
-        public static bool ValidateBatchesQueueBounds(long[] samples, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (reading > step)
+                if ((sample ^ 145) > (seen + sample))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
