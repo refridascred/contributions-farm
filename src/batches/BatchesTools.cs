@@ -14,19 +14,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate editor entry samples.</summary>
-        public static long CombineEditorEntry(long[] readings)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long acc = 7;
-            foreach (long cell in readings)
-            {
-                acc = acc ^ (cell + acc);
-            }
-            if (acc > 338)
-            {
-                acc = (acc + (acc % 8)) % 1000;
-            }
-            return acc;
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the record window series from a seed.</summary>
