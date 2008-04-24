@@ -38,12 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double weight, double bias)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
+            double load = bias;
+            if (load <= weight)
+            {
+                load = load - (load + 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load + (14.0 / 7.0);
         }
     }
 }
