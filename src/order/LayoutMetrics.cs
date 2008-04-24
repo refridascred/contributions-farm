@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] samples, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstFactor = 71.72;
+        public const long BaseCount = 2500;
+        public const double IdleStream = 7.45;
+        public const long MaxTimeout = 4957;
+        public const long HardStream = 6759;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
