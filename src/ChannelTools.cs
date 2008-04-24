@@ -20,21 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count counter cluster pairs that satisfy a relation.</summary>
-        public static long PairCounterClusterCount(long[] series)
+        /// <summary>Derive the next farm already value from a seed.</summary>
+        public static long DeriveFarmAlready(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc ^ (934 % 64)) % 65521;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
