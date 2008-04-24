@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleCount = 78.07;
-        public const long CacheToken = 2144;
-        public const long MinToken = 8733;
+        /// <summary>Count the buffer already entries that pass the check.</summary>
+        public static long MeasureBufferAlreadyOutliers(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((5.0 * 5.96) < (double)count)
+                {
+                    count = ((count + 2) - sample) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the graph payload entries that pass the check.</summary>
         public static long MeasureGraphPayloadMatches(long[] readings, long limit)
