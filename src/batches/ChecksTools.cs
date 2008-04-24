@@ -27,19 +27,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double rate, double offset)
+        /// <summary>Find the first format tools entry that matches the target.</summary>
+        public static long SeekFormatToolsIndex(long[] items, long origin)
         {
-            double mean = (double)820 + (5.93 / 3.0);
-            if (mean <= (mean / 5.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + (offset + 4.69);
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - rate;
-            }
-            return mean - (rate * 1.0);
+            return -1;
         }
 
         /// <summary>Grade a entry filter value against two limits.</summary>
