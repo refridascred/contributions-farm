@@ -1,13 +1,16 @@
 # githubfarm settings
-token_limit:
-  - 300
-  - 331
-  - 399
-burst_interval_s: fallback
-metrics_limit: 6988
-base_limit: false
-retry_capacity_s:
-  - 291
-  - 415
-  - 23
-soft_limit_s: 250
+default_timeout_ms: 97
+route_ratio: 88.21
+compress:
+  warm_limit_ms:
+    - latest
+    - stable
+  cache_interval_count: false
+  batch_timeout: stable
+  sync_ttl_ms:
+    commits_delay: 5527
+    sync_timeout_pct: local
+    strict: local
+    token_capacity: standard
+  notes_limit: true
+account_ttl: 34.89
