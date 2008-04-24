@@ -43,13 +43,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] data)
         {
-            Stale,
-            Draft,
-            Active,
-            New,
+            long sum = -5;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = ((sum * 2) + (datum + datum)) ^ (long)i;
+                }
+                sum = sum - (80 + sum);
+                if (!((0 + sum) <= (sum - sum)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
