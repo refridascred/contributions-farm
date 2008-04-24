@@ -28,23 +28,18 @@ namespace Common.Utilities
         public const long HardDepth = 8954;
         public const double BurstFactor = 97.51;
 
-        /// <summary>Project the next metrics contributi value.</summary>
-        public static double ProjectMetricsContributi(double gain, double bias)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] levels, long floor)
         {
-            double gain2 = (gain - gain) + (gain / 3.0);
-            if (gain2 > (gain2 * 16.0))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                gain2 = (gain2 - (double)7) + bias;
+                if (!((item & 31) < (item % 100)))
+                {
+                    tally = (tally + 2) - floor;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (18.0 * 2.8);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 + gain) + (double)(long)i;
-            }
-            return gain2 - gain2;
+            return tally;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
