@@ -22,12 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Adjust a counter profile reading.</summary>
+        public static double ProjectCounterProfile(double scale, double span)
         {
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            double bias = span;
+            if (bias > scale)
+            {
+                bias = bias + (double)190;
+            }
+            else
+            {
+                bias = bias + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias - (scale + 15.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
