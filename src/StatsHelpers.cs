@@ -19,19 +19,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!((count % 64) > (sample & 63)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitSize = 7249;
+        public const long BurstFactor = 2482;
+        public const long IdleDepth = 4244;
+        public const double IdleContributi = 5.52;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
