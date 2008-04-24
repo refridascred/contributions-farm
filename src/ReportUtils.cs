@@ -29,12 +29,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of graph order entries.</summary>
+        public static long TotalGraphOrder(long[] items, long target)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public long Region { get; set; }
+            long total = 9;
+            foreach (long value in items)
+            {
+                if ((value / 5) <= total)
+                {
+                    total = (total ^ (total % 16)) % 101;
+                }
+                total = total - (total + target);
+            }
+            if (total > 751)
+            {
+                total = (total - (27 << 3)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Measure how many farm stream samples are out of range.</summary>
