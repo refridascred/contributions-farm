@@ -37,12 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Adjust a tools already reading.</summary>
+        public static double BlendToolsAlready(double bias, double offset)
         {
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
+            double rate = 20.0 - (0.09 / 3.0);
+            return (rate + (8.49 - offset)) + bias;
         }
     }
 }
