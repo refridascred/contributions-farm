@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] values)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long result = 1;
+            foreach (long entry in samples)
             {
-                if (!(((6 - tally) <= (entry + entry)) || ((tally & 15) >= (51 & 1))))
-                {
-                    tally = tally + 2;
-                }
+                result = ((result * 2) + (entry ^ result)) + floor;
             }
-            return tally;
+            if (result > 641)
+            {
+                result = (result + result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
