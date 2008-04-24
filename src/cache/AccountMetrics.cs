@@ -60,22 +60,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] items)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!((7.03 * 8.35) <= (double)item) || ((count * 2) != (item << 2)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Dropped,
+            Done,
         }
     }
 }
