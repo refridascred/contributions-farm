@@ -14,17 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] levels, long limit)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                if (!((step >> 4) <= step))
                 {
-                    return (long)i;
+                    anchor = (anchor << 2) ^ step;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a already options.</summary>
