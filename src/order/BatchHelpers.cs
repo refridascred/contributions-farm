@@ -36,11 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double weight, double offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double rate = 6.6;
-            return ((rate - rate) + weight) + offset;
+            Dropped,
+            Pending,
+            Queued,
+            New,
+            Synced,
         }
     }
 }
