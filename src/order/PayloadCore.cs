@@ -16,11 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstInterval = 5297;
-        public const double BaseSpan = 34.4;
-        public const string SoftRatio = "staging-1";
-        public const long WindowSupport = 5091;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long RankStream(long offset, long step)
