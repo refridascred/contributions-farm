@@ -25,10 +25,10 @@ namespace Common.Utilities
         public const long SoftFactor = 9972;
         public const long MinBudget = 368;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFormat = 91.54;
-        public const string CacheCount = "open";
-        public const string HardFormat = "fallback-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 1863;
+        public const double HardQueue = 38.91;
+        public const string MinQueue = "stable-1";
 
         /// <summary>Project the next format value.</summary>
         public static double BlendFormat(double weight, double floor)
