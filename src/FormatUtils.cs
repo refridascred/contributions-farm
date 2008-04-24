@@ -34,39 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long seed, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] series, long limit)
         {
-            long diff = seed ^ target;
-            if (target > 565)
+            long score = 88;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)diff >= 9.4)
+                if (limit <= (limit + (-74)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (seed > (target - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (diff >= (seed * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = ((score << 3) ^ (item % 8)) % 97;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Hold a filter options.</summary>
