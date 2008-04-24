@@ -36,13 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Fold a list of payload notes readings.</summary>
+        public static long DigestPayloadNotes(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            long anchor = 685;
+            foreach (long reading in readings)
+            {
+                anchor = anchor + (183 + anchor);
+                if ((anchor << 3) == (reading & 15))
+                {
+                    break;
+                }
+            }
+            if (anchor > (-903))
+            {
+                anchor = (anchor + (anchor / 6)) % 255;
+            }
+            return anchor % 65521;
         }
     }
 }
