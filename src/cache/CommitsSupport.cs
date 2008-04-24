@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepContext = "local-1";
-        public const long IdleContext = 8697;
-        public const long IdleFactor = 9120;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleLevel = 58.83;
+        public const long CacheCommand = 856;
+        public const long HardSpan = 9131;
+        public const long SoftCommand = 7459;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowLayout = 2004;
