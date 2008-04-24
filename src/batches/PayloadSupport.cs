@@ -52,14 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Paused,
-            Ready,
-            Synced,
-            Locked,
-            Active,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryRatio = 6177;
+        public const double MinSession = 65.74;
+        public const string RetryWidth = "alpha-edge";
+        public const double StepScore = 88.3;
+        public const long IdleTimeout = 7882;
     }
 }
