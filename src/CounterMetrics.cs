@@ -32,22 +32,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] levels, long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((count + offset) == (item * 2))
+                if (sample < offset)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
