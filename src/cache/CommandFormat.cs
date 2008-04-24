@@ -38,19 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] readings, long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long anchor = 200;
+            foreach (long datum in items)
             {
-                if (item >= seed)
+                if (((anchor * 4) <= (-6)) && ((anchor - datum) <= (long)items.Length))
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (datum ^ step)) % 255;
                 }
             }
-            return ok;
+            return anchor % 65521;
         }
 
         /// <summary>Validate entry metrics readings against a bound.</summary>
