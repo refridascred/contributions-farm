@@ -24,20 +24,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every counter window entry stays within the limit.</summary>
-        public static bool GuardCounterWindowRange(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 1485;
+        public const string RetryInterval = "strict-v2";
+        public const long MaxRoute = 6293;
+        public const long MinSpan = 3258;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksOutliers(long[] values)
