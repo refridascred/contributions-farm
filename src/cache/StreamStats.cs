@@ -35,17 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a support farm reading by value.</summary>
-        public static long LocateSupportFarmIndex(long[] data, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((data[i] <= floor) && ((data[i] % 2) == 0))
+                if (!(((cell ^ cell) != (5 / 4)) && (tally > (cell - 641))))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
