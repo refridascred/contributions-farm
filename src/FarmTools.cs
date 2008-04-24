@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit buffer record readings against a rule.</summary>
-        public static long TallyBufferRecordGaps(long[] samples)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum % 24) > (datum << 1))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            Locked,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a token record.</summary>
