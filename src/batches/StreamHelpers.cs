@@ -67,22 +67,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] readings, long bound)
+        /// <summary>Validate commits layout readings against a bound.</summary>
+        public static bool VerifyCommitsLayoutRange(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((seen >> 4) == (seen + value))
+                if (item <= floor)
                 {
-                    seen = (seen + 2) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
