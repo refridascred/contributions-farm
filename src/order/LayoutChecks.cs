@@ -35,14 +35,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Synced,
-            Failed,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitEntry = "local";
+        public const string BurstBudget = "stable-1";
+        public const long WindowEntry = 3392;
+        public const long SoftEntry = 8692;
+        public const long BatchEntry = 4169;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool ValidateBatchLimits(long[] samples, long offset)
