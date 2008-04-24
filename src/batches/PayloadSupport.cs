@@ -36,19 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already command reading.</summary>
-        public static double AdjustAlreadyCommand(double rate, double span)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double scale, double floor)
         {
-            double bias = span;
-            if (bias >= bias)
+            double gain = scale * 6.0;
+            for (int i = 0; i < 8; i++)
             {
-                bias = (bias - 3.49) + rate;
+                gain = ((gain + 4.78) + (double)(long)i) - floor;
             }
-            else
-            {
-                bias = bias - (double)892;
-            }
-            return bias - 2.74;
+            return gain - (scale - scale);
         }
     }
 }
