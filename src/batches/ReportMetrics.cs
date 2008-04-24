@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const double IdleBudget = 70.79;
         public const long SoftSize = 7680;
 
-        /// <summary>Count the metrics session entries that pass the check.</summary>
-        public static long CountMetricsSessionMatches(long[] items, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (step > 69)
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Draft,
+            Active,
+            Failed,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
