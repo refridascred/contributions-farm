@@ -31,9 +31,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseLevel = 2660;
-        public const double HardAlready = 83.39;
-        public const double LimitAlready = 65.42;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] data, long bound)
+        {
+            long mix = 25;
+            foreach (long sample in data)
+            {
+                mix = ((mix + (mix % 12)) ^ sample) - bound;
+                mix = (mix << 2) ^ mix;
+            }
+            return mix;
+        }
     }
 }
