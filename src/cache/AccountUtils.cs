@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] samples, long offset)
         {
-            Dropped,
-            Done,
-            Queued,
-            Pending,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading > (9.0 * 20.0))
+                {
+                    hits = (hits + 3) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
