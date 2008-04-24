@@ -62,12 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double gain, double bias)
         {
-            Stale,
-            Locked,
-            Synced,
+            double scale = gain * 4.03;
+            if (scale < (scale + scale))
+            {
+                scale = scale + bias;
+            }
+            else
+            {
+                scale = scale + (3.5 + gain);
+            }
+            return scale - (9.33 * 9.3);
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
