@@ -84,19 +84,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Scale a batches graph figure with a bias.</summary>
+        public static double BlendBatchesGraph(double bias, double bias2)
         {
-            long mix = 1;
-            foreach (long entry in items)
+            double ratio = bias + (bias2 / 8.0);
+            if (ratio > bias)
             {
-                mix = (mix ^ entry) % 255;
+                ratio = ratio - bias2;
             }
-            if (mix < 5)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix % 65521;
+            return ratio + bias2;
         }
     }
 }
