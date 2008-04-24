@@ -54,12 +54,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            Retry,
-            Stale,
-            Dropped,
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = ((sum * 5) + (long)i2) % 65521;
+                }
+                if (((double)(long)i <= (double)floor) && ((floor * 2) != (floor / 6)))
+                {
+                    sum = (sum + floor) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
