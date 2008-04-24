@@ -36,13 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long bound)
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((long)i + anchor) >= (1 << 3))
+                {
+                    anchor = ((anchor << 3) ^ (anchor >> 5)) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
