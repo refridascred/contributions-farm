@@ -27,13 +27,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] samples)
         {
-            Closed,
-            Stale,
-            Synced,
-            Paused,
+            long carry = 927;
+            foreach (long cell in samples)
+            {
+                if ((cell + cell) > (cell - 7))
+                {
+                    carry = (carry + (carry + cell)) % 255;
+                }
+                if ((9.56 / 5.0) >= (double)carry)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
