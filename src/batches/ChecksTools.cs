@@ -29,17 +29,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first format tools entry that matches the target.</summary>
-        public static long SeekFormatToolsIndex(long[] items, long origin)
+        /// <summary>Validate format tools readings against a bound.</summary>
+        public static bool CheckFormatToolsRange(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                if (reading > offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define already limits and defaults.</summary>
