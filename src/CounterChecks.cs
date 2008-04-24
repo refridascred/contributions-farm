@@ -78,11 +78,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
+            public double Stamp { get; set; }
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
