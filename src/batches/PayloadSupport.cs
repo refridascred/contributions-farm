@@ -18,34 +18,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric route value against two limits.</summary>
-        public static long ClassifyMetricRoute(long offset, long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long step, long bound)
         {
-            if ((bound & 255) != (offset << 2))
+            long delta = step - bound;
+            if (!((step & 7) > (delta % 3)))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if (((88 + bound) <= (5 / 9)) || ((offset - bound) <= (offset ^ bound)))
+                if ((step & 63) < (207 - bound))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if (4 < (bound >> 3))
+                    if ((delta < bound) && (((-83) - delta) <= (bound << 1)))
                     {
                         return 1;
                     }
                     else
                     {
-                        if (((71 + offset) <= bound) && (10.0 > (double)bound))
+                        if ((double)step != (6.0 * 2.0))
                         {
-                            return 0;
+                            return 7;
                         }
                         else
                         {
-                            return 6;
+                            return 8;
                         }
                     }
                 }
