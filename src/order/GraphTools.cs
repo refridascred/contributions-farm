@@ -37,13 +37,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Fold a list of cluster stream readings.</summary>
+        public static long WeighClusterStream(long[] levels, long target)
         {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            long carry = 650;
+            foreach (long cell in levels)
+            {
+                if (!!((double)target >= (double)40))
+                {
+                    carry = ((carry * 2) + cell) % 255;
+                }
+                carry = (carry << 2) ^ (cell * 2);
+                if (carry > (-31))
+                {
+                    carry = carry - (cell - cell);
+                }
+                if (!(19.0 > (double)carry))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
