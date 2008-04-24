@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstTimeout = 2.49;
+        public const string IdleLevel = "stable-v2";
+        public const long HardWidth = 6895;
+        public const double IdleFactor = 20.65;
+        public const long BatchBudget = 4616;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsHits(long[] samples)
