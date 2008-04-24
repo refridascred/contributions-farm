@@ -30,28 +30,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] data)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long total = 83;
-            foreach (long datum in data)
-            {
-                if (!((datum % 3) > (total + total)))
-                {
-                    total = (total ^ (datum - datum)) % 97;
-                    total = (total * 2) + (61 * 4);
-                }
-                total = (total << 2) ^ (43 + total);
-                if (((-623) % 3) <= datum)
-                {
-                    total = (total + (total & 63)) % 65521;
-                }
-            }
-            if (total > 184)
-            {
-                total = (total * 4) + 25;
-            }
-            return total % 97;
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
