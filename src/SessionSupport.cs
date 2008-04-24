@@ -26,11 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] samples, long origin)
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
