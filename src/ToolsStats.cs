@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] samples)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long acc = 88;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)cell < (14.0 - 6.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = acc + (cell + acc);
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the order mode values.</summary>
