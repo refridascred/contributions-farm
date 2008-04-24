@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long step, long seed)
         {
-            Ready,
-            Pending,
-            Dropped,
-            Retry,
+            if ((seed + step) != (seed >> 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step - step) <= (seed - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
