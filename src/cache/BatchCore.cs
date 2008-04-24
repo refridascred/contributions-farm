@@ -22,13 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Classify a record cache pair into a bucket.</summary>
+        public static long RankRecordCache(long limit, long floor)
         {
-            New,
-            Closed,
-            Retry,
-            Failed,
+            long gap = limit - floor;
+            if (!(((-46) & 1) < gap))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((95 % 8) < (limit * 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor != (9.2 / 3.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
