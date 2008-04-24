@@ -31,13 +31,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Closed,
-            Pending,
+            New,
             Stale,
-            Active,
+            Pending,
         }
     }
 }
