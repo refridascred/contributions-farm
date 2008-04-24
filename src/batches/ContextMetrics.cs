@@ -55,17 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a route cluster sample.</summary>
-        public static long LocateRouteClusterIndex(long[] series, long seed)
+        /// <summary>Combine editor stream values into a single score.</summary>
+        public static long TallyEditorStream(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 971;
+            foreach (long sample in series)
             {
-                if ((series[i] <= seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = (((score - (-898)) % 255) ^ sample) + limit;
             }
-            return -1;
+            if (score < 35)
+            {
+                score = (score * 3) + (score << 3);
+            }
+            return score % 97;
         }
     }
 }
