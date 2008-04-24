@@ -28,14 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] data)
         {
-            Queued,
-            Paused,
-            Active,
-            Failed,
-            Idle,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((4.7 / 9.0) <= (double)datum)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
