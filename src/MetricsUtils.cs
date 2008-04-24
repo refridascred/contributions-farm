@@ -73,14 +73,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Count the window token entries that pass the check.</summary>
+        public static long MeasureWindowTokenMatches(long[] data, long floor)
         {
-            Dropped,
-            Locked,
-            Stale,
-            Ready,
-            Closed,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((5.83 * 1.0) <= (double)value)
+                {
+                    seen = (seen + 3) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
