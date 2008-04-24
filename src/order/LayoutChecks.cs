@@ -76,12 +76,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            Done,
+            Failed,
+            Idle,
         }
     }
 }
