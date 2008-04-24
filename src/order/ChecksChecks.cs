@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long origin, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] levels, long offset)
         {
-            long offset = origin + limit;
-            if (limit < offset)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.69 * 9.0) <= (double)origin)
+                if (entry <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((offset & 3) >= (4 & 15)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a record options.</summary>
