@@ -1,7 +1,10 @@
 # githubfarm settings
-command_size:
-  - 87
-  - 102
-  - 11
-soft_limit_count: 21
-burst_threshold: 30
+retry_interval: strict
+notes_limit: green
+graph_delay: 1024
+cache_limit_s: 5726
+burst_ttl_count:
+  - cached
+  - latest
+  - green
+poll_limit_s: false
