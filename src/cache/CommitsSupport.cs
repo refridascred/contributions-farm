@@ -42,21 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] values)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Rank layout input into a small class.</summary>
