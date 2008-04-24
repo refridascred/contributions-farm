@@ -56,15 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double weight, double offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] values, long target)
         {
-            double gain = weight;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                gain = ((gain - (19.0 / 6.0)) + (double)(long)i) + offset;
+                if (entry <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain - gain;
+            return flag;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
