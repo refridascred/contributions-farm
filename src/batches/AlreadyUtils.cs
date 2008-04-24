@@ -57,22 +57,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] data, long bound)
+        /// <summary>Combine profile cluster values into a single score.</summary>
+        public static long ScoreProfileCluster(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long mark = 4;
+            foreach (long entry in data)
             {
-                if ((bound % 16) < tally)
+                if ((mark - entry) == (origin >> 4))
                 {
-                    tally = (tally + 2) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mark = mark ^ mark;
                 }
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Fold a list of session readings.</summary>
