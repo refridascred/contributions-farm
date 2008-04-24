@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double bias, double bias2)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] readings, long floor)
         {
-            double rate = (bias2 - bias) - (bias / 4.0);
-            return rate - (double)0;
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((0 / 8) == (count >> 1))
+                {
+                    count = ((count + 2) ^ cell) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine order account values into a single score.</summary>
