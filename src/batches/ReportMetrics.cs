@@ -39,18 +39,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] readings, long floor)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double scale2 = offset;
+            if (scale2 >= (1.2 * 5.0))
             {
-                if (((item < ((long)readings.Length % 7)) || (seen <= (seen % 64))) || ((double)4 == (double)seen))
-                {
-                    seen = (seen + 2) + floor;
-                }
+                scale2 = scale2 + (scale2 - offset);
             }
-            return seen;
+            return scale2 - scale;
         }
     }
 }
