@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 5975;
-        public const string BurstTimeout = "strict-v2";
-        public const long SoftCount = 8481;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
