@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] series, long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a command snapshot.</summary>
