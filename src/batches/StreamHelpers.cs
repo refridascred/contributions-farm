@@ -66,20 +66,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits layout readings against a bound.</summary>
-        public static bool VerifyCommitsLayoutRange(long[] readings, long floor)
-        {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinRatio = 79.4;
+        public const long DefaultDepth = 9452;
+        public const long StepPayload = 2128;
+        public const long DefaultInterval = 9370;
+        public const string MaxRatio = "legacy-v2";
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] series, long target)
