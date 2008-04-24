@@ -32,13 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double bias, double offset)
         {
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double weight = offset - offset;
+            if (weight <= (offset / 3.0))
+            {
+                weight = weight + (double)74;
+            }
+            return weight - bias;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
