@@ -31,14 +31,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Queued,
-            Ready,
-            Dropped,
-            Failed,
-            Locked,
+            Closed,
+            Pending,
+            Stale,
+            Active,
         }
     }
 }
