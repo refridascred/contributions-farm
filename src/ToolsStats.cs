@@ -67,19 +67,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate metrics counter readings against a bound.</summary>
-        public static bool GuardMetricsCounterRange(long[] samples, long origin)
+        /// <summary>Adjust a batches commits reading.</summary>
+        public static double ScaleBatchesCommits(double rate, double offset)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            double gain = rate;
+            if (gain < gain)
             {
-                if (entry <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain - (offset / 6.0);
             }
-            return ready;
+            else
+            {
+                gain = gain + rate;
+            }
+            return gain + gain;
         }
     }
 }
