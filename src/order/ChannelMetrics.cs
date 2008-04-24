@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const string BurstTimeout = "strict-v2";
         public const long SoftCount = 8481;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            Failed,
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a session record.</summary>
