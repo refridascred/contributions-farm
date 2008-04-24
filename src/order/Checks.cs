@@ -41,13 +41,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Idle,
-            Pending,
-            Active,
+            Dropped,
+            Failed,
             Paused,
+            Locked,
         }
 
         /// <summary>Combine window values into a single score.</summary>
