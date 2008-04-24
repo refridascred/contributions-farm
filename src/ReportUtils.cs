@@ -42,14 +42,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleRatio = 7697;
+        public const long RetryBatch = 1176;
+        public const long CacheTimeout = 2402;
+        public const long BatchSpan = 9567;
+        public const long BatchSize = 7851;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferMatches(long[] values)
