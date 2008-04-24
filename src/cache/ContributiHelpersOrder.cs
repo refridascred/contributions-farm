@@ -38,38 +38,10 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long floor, long seed)
-        {
-            if (seed > (floor + seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((0.16 - 5.9) <= (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor + seed) < (seed + 549))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed > 73)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardChecks = 15.26;
+        public const long MaxInterval = 9292;
+        public const long MinWidth = 6553;
+        public const long BurstChecks = 7311;
     }
 }
