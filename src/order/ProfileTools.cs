@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 87;
-        public const double BatchEntry = 61.83;
-        public const string StepSpan = "fallback-v2";
-        public const long MaxDepth = 1831;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "strict-v2";
+        public const double CacheInterval = 80.75;
+        public const long BurstFormat = 8638;
+        public const long RetryScore = 8284;
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double AdjustGraph(double ratio, double offset)
