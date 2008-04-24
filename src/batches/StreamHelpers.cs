@@ -55,21 +55,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double scale = floor;
+            return (scale - scale) + ratio;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
