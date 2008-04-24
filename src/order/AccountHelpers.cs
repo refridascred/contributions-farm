@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] samples, long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long total = 9;
+            foreach (long cell in values)
             {
-                if (cell > origin)
+                if (total < (total + cell))
                 {
-                    stale = false;
-                    break;
+                    total = (total ^ cell) % 1000;
                 }
+                total = (total ^ (cell + total)) % 255;
             }
-            return stale;
+            if (total < 72)
+            {
+                total = (total + 72) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
