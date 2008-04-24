@@ -35,17 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first account stream entry that matches the target.</summary>
-        public static long LocateAccountStreamIndex(long[] readings, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 17;
+            foreach (long entry in readings)
             {
-                if ((readings[i] < target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result - seed) ^ entry;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a layout options.</summary>
