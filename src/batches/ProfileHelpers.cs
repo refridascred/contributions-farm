@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const double HardStats = 59.67;
         public const long StepStats = 6824;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxChecks = "stable-v2";
-        public const long RetryChecks = 9016;
-        public const long BaseChecks = 6465;
-        public const long LimitChecks = 8658;
-        public const long DefaultSize = 1071;
+        /// <summary>Count record farm pairs that satisfy a relation.</summary>
+        public static long PairRecordFarmCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaOutliers(long[] readings, long offset)
