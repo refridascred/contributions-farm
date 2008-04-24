@@ -35,9 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "open";
-        public const long HardOrder = 7717;
-        public const string IdleOrder = "primary-edge";
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
