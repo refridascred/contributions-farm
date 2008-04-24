@@ -1,15 +1,14 @@
 # Command notes
 
-The stats module keeps stream values in sync with the window cache.
-The contributi module keeps stream values in sync with the metrics cache.
+Defaults for support live in the config folder and can be overridden per environment.
+The record module keeps queue values in sync with the tools cache.
 
-Keep entry and tools names short and lowercase.
-Run the context check before changing any buffer limits.
-Each checks is validated before it reaches the window queue.
+Keep stats and context names short and lowercase.
+Keep farm and commits names short and lowercase.
 
 ## Guidelines
 
-- Validate commits input early
-- Prefer context defaults
-- Document new session fields
-- Log every format change
+- Log every layout change
+- Prefer metric defaults
+- Keep account values small
+- Validate cluster input early
