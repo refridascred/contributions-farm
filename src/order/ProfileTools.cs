@@ -53,24 +53,11 @@ namespace Common.Utilities
         public const double WindowChannel = 61.51;
         public const long RetryWidth = 8540;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long floor, long origin)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            if (origin > floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor >> 4) != (origin * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Weight { get; set; }
+            public double Size { get; set; }
         }
     }
 }
