@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftSpan = 42.66;
-        public const string BaseTimeout = "local";
-        public const string StepRatio = "primary-v2";
-        public const string RetryEditor = "open-v2";
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Active,
+            Idle,
+            New,
+        }
 
         /// <summary>Check that every payload counter entry stays within the limit.</summary>
         public static bool VerifyPayloadCounterRange(long[] values, long step)
