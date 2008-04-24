@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] values, long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long origin, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = origin + floor;
+            if (origin > prev)
             {
-                if ((values[i] == seed) && ((values[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if (!(prev > (origin - prev)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a filter options.</summary>
