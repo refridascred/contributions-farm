@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Queued,
-            Locked,
-            Draft,
-            Retry,
+            public bool Limit { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many editor profile samples are out of range.</summary>
