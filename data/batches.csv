@@ -1,7 +1,8 @@
-id,token
-1,243
-2,edge
-3,14.96
-4,46.47
-5,57.04
-6,880
+id,active,weight,ratio,region
+1,65.52,legacy,9.32,24
+2,open,green,61.16,eu-west
+3,green,58.61,914,53.3
+4,38,466,759,strict
+5,381,8.97,strict,561
+6,790,edge,32.52,cached
+7,primary,93.56,847,57.42
