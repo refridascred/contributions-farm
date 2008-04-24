@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Idle,
-            New,
-            Active,
+            Dropped,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a support snapshot.</summary>
