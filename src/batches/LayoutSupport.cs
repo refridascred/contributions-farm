@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] readings, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (cell > offset)
+                if (!(4 > (cell + origin)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the editor status values.</summary>
