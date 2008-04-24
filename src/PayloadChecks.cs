@@ -41,17 +41,32 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long step, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            long gap = step + seed;
+            if ((0.5 / 2.0) <= (double)seed)
             {
-                carry = (carry + carry) % 255;
-                carry = (carry << 3) ^ origin;
-                carry = ((carry * 4) + (long)i) % 65521;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((double)580 <= (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((2.0 + 2.07) <= (double)gap)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
