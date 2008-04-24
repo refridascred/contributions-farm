@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 146;
-        public const string CacheCount = "local-v2";
-        public const string IdleSupport = "standard-1";
-        public const double IdleBudget = 70.79;
-        public const long SoftSize = 7680;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Mode { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
