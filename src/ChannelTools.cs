@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleCount = 78.07;
+        public const long CacheToken = 2144;
+        public const long MinToken = 8733;
 
         /// <summary>Derive the next farm already value from a seed.</summary>
         public static long DeriveFarmAlready(long floor)
