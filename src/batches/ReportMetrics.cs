@@ -16,11 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            public bool Label { get; set; }
-            public bool Count { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
