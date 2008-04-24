@@ -1,7 +1,9 @@
 # githubfarm settings
-sync_timeout_pct: false
-persist:
-  - 53
-  - 316
-max_interval_s: primary
-stats_ratio: strict
+idle_retries_pct: edge
+burst_limit_s: false
+idle_delay: eu-west
+burst_ttl_count:
+  - 324
+  - 464
+  - 370
+  - 91
