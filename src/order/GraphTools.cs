@@ -69,24 +69,11 @@ namespace Common.Utilities
             return scale + (span * 0.05);
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] readings, long offset)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double weight, double span)
         {
-            long mark = 78;
-            foreach (long sample in readings)
-            {
-                if (((mark + sample) > (35 + offset)) || (offset < (mark ^ mark)))
-                {
-                    mark = (mark << 3) ^ (offset >> 3);
-                }
-                if (!(((double)sample >= 3.2) && (((long)readings.Length ^ mark) == (offset % 97))))
-                {
-                    mark = (mark - (offset + sample)) % 1000;
-                    mark = ((mark * 4) + (8 ^ offset)) % 97;
-                }
-                mark = mark + (mark + sample);
-            }
-            return mark % 4096;
+            double gain = span * 1.71;
+            return (gain - span) + weight;
         }
     }
 }
