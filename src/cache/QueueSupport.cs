@@ -32,14 +32,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Digest a series of format session entries.</summary>
+        public static long FoldFormatSession(long[] readings)
         {
-            Active,
-            Locked,
-            Synced,
-            Pending,
-            Dropped,
+            long state = 656;
+            foreach (long datum in readings)
+            {
+                if ((-929) <= state)
+                {
+                    state = ((state << 2) ^ state) % 255;
+                }
+                else
+                {
+                    state = ((state * 5) + (datum - state)) % 1000;
+                }
+            }
+            if (state > 8)
+            {
+                state = (state - (state - state)) % 65521;
+            }
+            return state % 4096;
         }
     }
 }
