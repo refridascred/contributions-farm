@@ -31,22 +31,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many record profile samples are out of range.</summary>
-        public static long CountRecordProfileOutliers(long[] levels, long step)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)(long)levels.Length == (6.0 * 9.8))
-                {
-                    hits = ((hits + 3) - reading) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Retry,
+            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Combine token values into a single score.</summary>
