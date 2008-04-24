@@ -39,22 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] values, long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] samples, long seed)
         {
-            long score = 4;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((9 % 3) >= (item << 1))
+                if (value < seed)
                 {
-                    score = (score ^ score) - bound;
-                }
-                else
-                {
-                    score = (score ^ (30 - item)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
