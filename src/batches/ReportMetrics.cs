@@ -20,13 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Derive the next channel layout value from a seed.</summary>
+        public static long IterateChannelLayout(long origin)
         {
-            New,
-            Draft,
-            Active,
-            Failed,
+            long state = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    state = (state ^ (state + 121)) ^ (long)i2;
+                }
+                if ((9.9 + 19.0) <= (double)state)
+                {
+                    state = state + origin;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
