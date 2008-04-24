@@ -61,26 +61,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload account values into a single score.</summary>
-        public static long TallyPayloadAccount(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] values, long step)
         {
-            long mark = -79;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                mark = (mark ^ (entry - mark)) % 97;
-                if ((entry << 2) < entry)
+                if (((double)reading >= (9.78 * 8.0)) && ((step & 7) != (reading + step)))
                 {
-                    long delta = entry;
-                    mark = mark + delta;
+                    matches = matches + 2;
                 }
-                else
-                {
-                    mark = mark + (entry + mark);
-                    mark = ((mark * 4) + mark) % 4096;
-                }
-                mark = ((mark * 3) + (2 * 5)) % 65521;
             }
-            return mark;
+            return matches;
         }
     }
 }
