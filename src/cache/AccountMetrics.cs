@@ -40,11 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
+            Draft,
+            Active,
+            Pending,
+            Queued,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
