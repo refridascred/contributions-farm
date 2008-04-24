@@ -25,22 +25,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] levels, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long score = 22;
+            foreach (long datum in values)
             {
-                if (3.0 >= (double)seen)
+                score = (score ^ (step & 3)) % 1000;
+                if (!((datum + (long)values.Length) <= datum))
                 {
-                    seen = ((seen + 2) - value) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = (score ^ 77) % 4096;
                 }
             }
-            return seen;
+            if (score > 3)
+            {
+                score = ((score << 2) ^ score) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the batches mode values.</summary>
