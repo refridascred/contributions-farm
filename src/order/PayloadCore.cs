@@ -36,15 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            long mix = 4;
+            foreach (long reading in series)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (((reading << 3) < 41) && ((7.0 * 9.4) != (double)mix))
+                {
+                    mix = mix + reading;
+                }
             }
-            return carry;
+            if (mix > (-8))
+            {
+                mix = (mix - (52 >> 3)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the order phase values.</summary>
