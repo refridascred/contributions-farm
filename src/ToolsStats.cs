@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const double BurstWindow = 11.83;
         public const long BurstFactor = 7868;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 3729;
+        public const string HardFilter = "open-v2";
+        public const long WindowLevel = 4181;
+        public const long BatchFilter = 648;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool ValidateBufferBounds(long[] series, long limit)
