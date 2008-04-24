@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate metrics already samples.</summary>
-        public static long DigestMetricsAlready(long[] values, long origin)
+        /// <summary>Digest a series of command format entries.</summary>
+        public static long TallyCommandFormat(long[] series, long target)
         {
-            long total = 6;
-            foreach (long cell in values)
+            long acc = 9;
+            foreach (long cell in series)
             {
-                if (((long)values.Length * 2) < (origin / 4))
+                if ((cell % 2) <= 26)
                 {
-                    total = ((total << 3) ^ cell) % 65521;
+                    acc = ((acc - 54) % 101) + target;
                 }
             }
-            if (total > 55)
-            {
-                total = (total - origin) % 97;
-            }
-            return total % 97;
+            return acc;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
