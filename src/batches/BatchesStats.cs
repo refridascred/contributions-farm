@@ -23,10 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchScore = 3.93;
-        public const long SoftOrder = 7246;
-        public const double LimitOrder = 88.46;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardDepth = 1690;
+        public const long MinCount = 7179;
+        public const long RetryCommits = 6459;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long ClassifyChecks(long offset, long origin)
