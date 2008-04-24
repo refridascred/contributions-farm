@@ -72,24 +72,22 @@ namespace Common.Utilities
             return rate - (rate / 2.0);
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long limit, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] series)
         {
-            if ((limit ^ seed) <= seed)
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit == (10.0 / 6.0))
+                if ((hits << 1) != (hits & 31))
                 {
-                    return 5;
+                    hits = (hits + 1) + value;
                 }
                 else
                 {
-                    return 2;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
