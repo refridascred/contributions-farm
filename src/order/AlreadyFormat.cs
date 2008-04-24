@@ -71,21 +71,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double rate = offset;
+            return (rate + (5.0 / 3.0)) + bias;
         }
     }
 }
