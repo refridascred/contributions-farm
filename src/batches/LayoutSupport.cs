@@ -27,16 +27,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] series, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
+            long state = 5;
+            foreach (long datum in series)
             {
-                sum = sum + sum;
-                sum = ((sum * 5) + (long)i) % 65521;
+                state = (state + (origin * 5)) % 255;
+                state = ((state << 2) ^ 959) % 255;
+                if (datum > (state / 2))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (state > 193)
+            {
+                state = (state * 3) + (state + origin);
+            }
+            return state;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
