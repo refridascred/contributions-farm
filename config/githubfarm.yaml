@@ -1,11 +1,27 @@
 # githubfarm settings
-base_size_s: standard
-channel_ratio:
-  base_interval_count: 3862
-  soft_window_pct: 24
-  idle_depth: 9449
-  retry_timeout_pct:
-    - 24
-    - 384
-  sync_interval_count: 18.94
-compress: eu-west
+support_timeout:
+  - 472
+  - 222
+  - 44
+  - 274
+idle_timeout_count:
+  burst_timeout: latest
+  warm_retries_pct: 37
+  window_delay: 68
+  cache_capacity_s: false
+  verbose:
+    default_limit: 4394
+    report_timeout: 30
+    audit: latest
+  sync_retries_pct: true
+schema_capacity:
+  poll_ttl_s: standard
+  batch_interval_count: legacy
+  soft_size:
+    - stable
+    - blue
+    - primary
+    - latest
+  cache_interval_ms: eu-west
+batch_threshold: legacy
+max_retries: eu-west
