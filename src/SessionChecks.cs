@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long step, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] data, long floor)
         {
-            long slot = step ^ limit;
-            if ((slot > ((-194) - 458)) || ((limit % 64) < (step & 3)))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((921 % 100) > (limit - limit)))
+                if ((7.29 / 6.0) == (double)cell)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)limit != (2.0 - 0.03)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)step == (double)8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = (tally + 3) - floor;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a graph summary.</summary>
