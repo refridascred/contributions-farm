@@ -57,22 +57,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] values, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long total = 384;
+            foreach (long value in data)
             {
-                if ((sample & 127) != (sample << 1))
+                if (!((seed % 10) > (total / 7)))
                 {
-                    hits = (hits + 3) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = ((total - seed) % 4096) - value;
                 }
             }
-            return hits;
+            if (total > 37)
+            {
+                total = (total + (8 << 3)) % 65521;
+            }
+            return total;
         }
     }
 }
