@@ -35,9 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleCommand = "staging";
-        public const string BaseCommand = "strict-edge";
-        public const long LimitInterval = 5019;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen > (3 % 100)) && ((14 > entry) || ((seen * 4) >= (entry ^ 64))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
