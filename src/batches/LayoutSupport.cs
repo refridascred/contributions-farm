@@ -21,21 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count tools context pairs that satisfy a relation.</summary>
-        public static long MatchToolsContextCount(long[] values)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
