@@ -44,23 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((73 % 8) == (value - value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheRatio = 3.86;
+        public const long RetrySize = 6879;
+        public const string LimitEntry = "primary-1";
+        public const string RetryEntry = "primary-edge";
+        public const string WindowEntry = "stable-edge";
 
         /// <summary>Accumulate batches buffer samples.</summary>
         public static long TotalBatchesBuffer(long[] data, long step)
