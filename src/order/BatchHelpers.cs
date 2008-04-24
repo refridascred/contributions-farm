@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry <= (15.0 / 2.0))
-                {
-                    seen = (seen + 3) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 6040;
+        public const long LimitBuffer = 5900;
+        public const long HardBuffer = 3472;
+        public const double CacheBudget = 39.41;
+        public const long BaseSpan = 9077;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LookupClusterIndex(long[] levels, long step)
