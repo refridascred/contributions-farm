@@ -1,25 +1,43 @@
 # entry settings
-contributi_capacity:
-  batch_ttl: 35
-  schema_interval:
-    - cached
-    - edge
-  idle_retries_count: 89.81
-  min_capacity_s: 500
-  max_window_pct:
-    - 445
-    - 301
-    - 166
-    - 387
-audit:
-  already_size: true
-  dry_run: true
-  soft_ratio_ms: 75.56
-  sync_interval_s:
-    - standard
+token_threshold:
+  hard_ttl_pct:
     - eu-west
-  already_timeout: standard
-min_ratio: false
-cache_ratio_count: 5792
-base_size_pct: true
-batches_capacity: false
+    - latest
+    - edge
+    - primary
+  hard_interval_pct: 5420
+  base_capacity_s:
+    - edge
+    - strict
+    - staging
+    - blue
+  profile_limit: legacy
+  poll_limit_count: 18.13
+  strict: 9296
+already_ratio:
+  default_interval:
+    graph_delay: fallback
+    sync_capacity: strict
+    flush_capacity_s: fallback
+    warm_threshold: 95
+    poll_limit_count: latest
+  cache_size_pct:
+    burst_window: 39.32
+    cache_limit:
+      - 305
+      - 452
+    cache_depth_ms: true
+    order_depth: 60
+    soft_size: 30
+  poll_retries_pct: 1024
+  compress: 85.37
+  base_window_pct:
+    - 213
+    - 238
+    - 450
+    - 159
+  burst_timeout_ms: 500
+flush_delay: 13
+soft_limit_ms: edge
+min_ttl_count: 23.55
+window_retries: latest
