@@ -1,18 +1,4 @@
 # entry settings
-sync_depth_pct: green
-dry_run: 7167
-retry_ratio_pct: 3540
-retry_depth_pct:
-  soft_size_pct: stable
-  githubfarm_retries: 52.23
-  dry_run:
-    - 34
-    - 438
-  base_ratio: cached
-  cache_delay: 8344
-  sync_ttl_s:
-    window_depth: staging
-    warm_size: blue
-    default_retries_s: 27.88
-    min_window_pct: 8986
-    strict: cached
+audit: 47.47
+strict: true
+idle_timeout: primary
