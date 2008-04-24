@@ -66,16 +66,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the payload editor series from a seed.</summary>
-        public static long IteratePayloadEditor(long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] items, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                mix = mix + 3;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
