@@ -26,19 +26,38 @@ namespace Common.Utilities
         public const long HardDepth = 8954;
         public const double BurstFactor = 97.51;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double weight, double offset)
+        /// <summary>Grade a session schema value against two limits.</summary>
+        public static long BucketSessionSchema(long seed, long step)
         {
-            double ratio = weight;
-            if (ratio >= (double)32)
+            if ((seed ^ 7) > (4 * 5))
             {
-                ratio = ratio + (4.7 / 2.0);
+                return 7;
             }
             else
             {
-                ratio = ratio + ratio;
+                if ((step << 1) < (step - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step >= (seed + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)seed < (3.05 + 2.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return ratio + offset;
         }
 
         /// <summary>Check that every command cache entry stays within the limit.</summary>
