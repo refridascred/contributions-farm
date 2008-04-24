@@ -13,19 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every payload counter entry stays within the limit.</summary>
-        public static bool VerifyPayloadCounterRange(long[] values, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (cell != step)
+                if ((sample % 5) >= (tally % 7))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
