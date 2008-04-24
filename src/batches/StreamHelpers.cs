@@ -61,12 +61,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinRatio = 79.4;
-        public const long DefaultDepth = 9452;
-        public const long StepPayload = 2128;
-        public const long DefaultInterval = 9370;
-        public const string MaxRatio = "legacy-v2";
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsLimits(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Roll a account window counter forward.</summary>
         public static long SeriesAccountWindow(long limit)
