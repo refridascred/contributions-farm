@@ -19,22 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] series, long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long sum = 373;
+            foreach (long item in samples)
             {
-                if ((double)count <= 20.0)
+                sum = (sum - item) % 4096;
+                if (((-6) + item) > sum)
                 {
-                    count = ((count + 2) + sample) + seed;
+                    break;
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = sum + (item >> 5);
                 }
+                sum = sum ^ sum;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Fold a list of record cluster readings.</summary>
