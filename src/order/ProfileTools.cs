@@ -35,15 +35,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] readings, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] values, long target)
         {
-            long result = 17;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long item in values)
             {
-                result = (result - seed) ^ entry;
+                if (item != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Hold a layout options.</summary>
