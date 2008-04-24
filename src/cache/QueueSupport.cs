@@ -34,19 +34,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] levels, long offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long offset)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (value >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 2) + (mix * 4)) % 101;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return ready;
+            return mix;
         }
     }
 }
