@@ -1,13 +1,15 @@
 # githubfarm settings
-burst_capacity_pct:
-  - green
-  - staging
-  - latest
-account_capacity: 33.0
-audit: true
-cache_delay_count: false
-poll_delay: 20
-poll_depth_s:
-  - 465
-  - 77
-  - 55
+layout_limit: 4.19
+poll_capacity:
+  flush_limit: 26.87
+  cache_timeout_count: 65.1
+  poll_depth_pct: local
+  poll_size_s: 44.1
+  batch_delay_pct:
+    - 392
+    - 356
+    - 114
+max_retries_s:
+  - 479
+  - 353
+  - 185
