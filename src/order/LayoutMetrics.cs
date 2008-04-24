@@ -23,13 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double scale, double floor)
         {
-            Locked,
-            Active,
-            Paused,
-            Stale,
+            double gain = (double)(5 % 3);
+            for (int i = 0; i < 7; i++)
+            {
+                gain = ((gain + (gain / 8.0)) - (double)(long)i) + scale;
+            }
+            return gain + floor;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
