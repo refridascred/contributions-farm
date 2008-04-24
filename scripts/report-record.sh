@@ -12,13 +12,9 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-for item in fallback eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
+mode="${1:-green}"
 case "${mode}" in
-    staging)
+    blue)
         log "fast path"
         ;;
     *)
