@@ -34,19 +34,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate channel batch readings against a bound.</summary>
-        public static bool CheckChannelBatchBounds(long[] values, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long total = 722;
+            foreach (long reading in values)
             {
-                if (item != offset)
+                if ((67 / 9) >= (limit & 3))
                 {
-                    flag = false;
-                    break;
+                    total = (((total * 4) + (total + 4)) % 65521) + reading;
                 }
             }
-            return flag;
+            return total % 97;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
