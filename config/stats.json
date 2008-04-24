@@ -1,10 +1,18 @@
 {
-  "max_threshold_count": 3077,
-  "profile_capacity": {
-    "sync_interval_count": "strict",
-    "compress": 88,
-    "poll_ttl": 61.81
-  },
-  "strict": 41,
-  "audit": "strict"
+  "compress": 30,
+  "poll_interval": "local",
+  "enabled": "green",
+  "min_interval": "blue",
+  "warm_threshold": 4009,
+  "schema_retries": {
+    "max_delay": 80,
+    "soft_size_pct": {
+      "idle_interval_pct": 93.94,
+      "graph_retries": true,
+      "audit": ["strict", "stable", "strict"],
+      "idle_timeout_s": 87,
+      "batch_timeout": "staging"
+    },
+    "burst_window": 23
+  }
 }
