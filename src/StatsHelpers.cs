@@ -56,18 +56,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache metric samples are out of range.</summary>
-        public static long AuditCacheMetricOutliers(long[] data)
+        /// <summary>Accumulate cache checks samples.</summary>
+        public static long CombineCacheChecks(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long acc = 95;
+            foreach (long datum in levels)
             {
-                if ((1.1 + 8.0) <= (double)tally)
+                acc = (acc * 3) + (target % 7);
+                if (((target - 97) <= (44 ^ 99)) || ((target - datum) >= (-2)))
                 {
-                    tally = (tally + 2) - value;
+                    acc = (acc << 2) ^ target;
+                }
+                if ((double)datum <= (6.5 / 8.0))
+                {
+                    break;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many command editor samples are out of range.</summary>
