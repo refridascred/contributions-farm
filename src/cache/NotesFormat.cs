@@ -29,21 +29,23 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] samples)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 9;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = (mark << 2) ^ (mark / 5);
+                if (target > (mark ^ entry))
                 {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (mark < 86)
+            {
+                mark = ((mark << 3) ^ (mark * 4)) % 97;
+            }
+            return mark % 1000;
         }
     }
 }
