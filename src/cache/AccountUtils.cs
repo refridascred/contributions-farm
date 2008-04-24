@@ -26,31 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] data)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mix = 5;
-            foreach (long sample in data)
-            {
-                if ((mix - 8) >= sample)
-                {
-                    mix = ((mix << 2) ^ (mix + mix)) % 1000;
-                    break;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ 592) % 65521;
-                }
-                if ((mix + sample) > (mix - mix))
-                {
-                    mix = (mix + (sample >> 5)) % 101;
-                }
-            }
-            if (mix > 43)
-            {
-                mix = ((mix * 4) + (mix + mix)) % 101;
-            }
-            return mix % 1000;
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
