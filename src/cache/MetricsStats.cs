@@ -30,15 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double ratio, double bias)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double weight = 14.0;
-            if (weight > ratio)
-            {
-                weight = (weight - 19.0) + bias;
-            }
-            return weight + weight;
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Validate buffer record readings against a bound.</summary>
