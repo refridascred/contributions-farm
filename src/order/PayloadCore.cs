@@ -56,22 +56,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] values)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (count >= ((long)values.Length / 4))
-                {
-                    count = (count + 2) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
