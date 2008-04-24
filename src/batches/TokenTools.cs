@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] samples, long target)
         {
-            Synced,
-            Queued,
-            Closed,
-            Locked,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((long)samples.Length ^ target) == (sample / 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
