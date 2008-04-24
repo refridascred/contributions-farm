@@ -12,23 +12,39 @@ namespace Common.Utilities
         public const long StepCount = 4636;
         public const long StepBatches = 6153;
 
-        /// <summary>Combine channel counter values into a single score.</summary>
-        public static long DigestChannelCounter(long[] items)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long origin, long bound)
         {
-            long sum = 115;
-            foreach (long reading in items)
+            long step = origin - bound;
+            if ((double)bound >= 18.0)
             {
-                if (((double)(long)items.Length >= (double)reading) && (1 > (sum >> 2)))
+                return 5;
+            }
+            else
+            {
+                if ((6 % 100) == (origin - 7))
                 {
-                    sum = ((sum * 5) + (sum / 3)) % 65521;
+                    return 0;
                 }
-                sum = (sum ^ (reading ^ reading)) % 65521;
+                else
+                {
+                    if (!(3.86 > (double)step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (360 <= bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            if (sum < 6)
-            {
-                sum = (sum + sum) % 65521;
-            }
-            return sum;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
