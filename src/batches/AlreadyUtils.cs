@@ -57,18 +57,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine profile cluster values into a single score.</summary>
-        public static long ScoreProfileCluster(long[] data, long origin)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long mark = 4;
-            foreach (long entry in data)
-            {
-                if ((mark - entry) == (origin >> 4))
-                {
-                    mark = mark ^ mark;
-                }
-            }
-            return mark % 4096;
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the entry kind values.</summary>
