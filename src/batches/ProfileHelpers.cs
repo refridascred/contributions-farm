@@ -35,17 +35,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] series, long limit)
+        /// <summary>Adjust a format metrics reading.</summary>
+        public static double AdjustFormatMetrics(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = scale / 4.0;
+            if (mean > (mean / 9.0))
             {
-                if ((series[i] == limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (offset / 8.0);
             }
-            return -1;
+            else
+            {
+                mean = mean + (13.0 - 4.3);
+            }
+            return mean + (mean + offset);
         }
 
         /// <summary>Hold a schema record.</summary>
