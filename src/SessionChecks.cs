@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] samples)
-        {
-            long sum = 373;
-            foreach (long item in samples)
-            {
-                sum = (sum - item) % 4096;
-                if (((-6) + item) > sum)
-                {
-                    break;
-                }
-                else
-                {
-                    sum = sum + (item >> 5);
-                }
-                sum = sum ^ sum;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 1289;
+        public const long SoftInterval = 6512;
+        public const long SoftSize = 4207;
+        public const long SoftFactor = 9972;
+        public const long MinBudget = 368;
 
         /// <summary>Fold a list of record cluster readings.</summary>
         public static long WeighRecordCluster(long[] data, long seed)
