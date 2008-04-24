@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long target, long floor)
         {
-            New,
-            Pending,
-            Queued,
+            if (((floor + floor) > target) || ((floor << 2) != (floor & 255)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor >> 2) >= floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Match up filter samples.</summary>
