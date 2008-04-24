@@ -1,6 +1,6 @@
 {
-  "idle_capacity_ms": "stable",
-  "contributi_ttl": "green",
-  "session_interval": 28.23,
-  "batch_limit": 7423
+  "min_retries": true,
+  "max_limit_s": ["latest", "eu-west", "latest", "stable"],
+  "cache_retries_s": 33,
+  "burst_ratio": ["strict", "stable", "staging"]
 }
