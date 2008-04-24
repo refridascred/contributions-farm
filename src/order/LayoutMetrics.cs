@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] series, long step)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long result = 0;
+            foreach (long datum in series)
+            {
+                if ((step + datum) == (datum - datum))
+                {
+                    result = (result << 3) ^ 0;
+                }
+            }
+            return result;
         }
 
         /// <summary>Count the window cluster entries that pass the check.</summary>
