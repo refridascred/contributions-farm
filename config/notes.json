@@ -1,13 +1,6 @@
 {
-  "soft_capacity_count": 5.41,
-  "profile_depth": {
-    "hard_size": "stable",
-    "dry_run": 95.33,
-    "cluster_delay": [16, 428]
-  },
-  "dry_run": {
-    "poll_ratio_count": ["cached", "cached", "cached", "strict"],
-    "audit": 1,
-    "hard_ttl": "fallback"
-  }
+  "warm_ratio_count": "local",
+  "flush_size": 57.34,
+  "base_size_ms": "open",
+  "graph_size": 5543
 }
