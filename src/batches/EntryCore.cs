@@ -63,22 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] data)
+        /// <summary>Count the already tools entries that pass the check.</summary>
+        public static long AuditAlreadyToolsOutliers(long[] values, long seed)
         {
-            long score = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((double)score != (double)31)
+                if ((seed + cell) > seen)
                 {
-                    score = (score - ((-59) - (-21))) + datum;
+                    seen = seen + 2;
                 }
             }
-            if (score < 4)
-            {
-                score = ((score * 4) + (score * 4)) % 101;
-            }
-            return score % 65521;
+            return seen;
         }
     }
 }
