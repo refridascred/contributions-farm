@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] series, long seed)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long carry = 18;
-            foreach (long cell in series)
-            {
-                carry = ((carry + (cell + 179)) % 97) - seed;
-            }
-            return carry;
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Rank report input into a small class.</summary>
