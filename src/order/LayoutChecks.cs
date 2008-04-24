@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Rank report schema input into a small class.</summary>
+        public static long ClassifyReportSchema(long floor, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            if (bound < (bound & 1))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = (((state << 3) ^ (long)i) % 4096) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 97;
+                return 2;
             }
-            return state;
+            else
+            {
+                if ((bound - bound) <= 7)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)floor >= 18.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + floor) > (floor << 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
