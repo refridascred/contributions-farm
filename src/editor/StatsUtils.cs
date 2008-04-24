@@ -31,12 +31,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
+            Retry,
+            New,
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a farm snapshot.</summary>
