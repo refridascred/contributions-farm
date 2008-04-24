@@ -1,6 +1,10 @@
 {
-  "cluster_timeout": 1,
-  "entry_threshold": 3.24,
-  "readonly": "latest",
-  "persist": true
+  "enabled": false,
+  "idle_interval_pct": {
+    "flush_window_ms": false,
+    "soft_interval_pct": ["strict", "staging", "green"],
+    "flush_capacity_pct": false,
+    "batch_ratio": false
+  },
+  "batch_timeout": ["standard", "green", "legacy"]
 }
