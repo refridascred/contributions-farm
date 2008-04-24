@@ -23,18 +23,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] readings)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double scale, double span)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double load = (double)(59 / 8);
+            if (load <= (double)(-514))
             {
-                if ((8.7 / 2.0) == (double)seen)
-                {
-                    seen = (seen + 2) + reading;
-                }
+                load = (load - (load + span)) - scale;
             }
-            return seen;
+            else
+            {
+                load = load - 0.8;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)92) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Hold a context options.</summary>
