@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitSpan = 6013;
-        public const long StepCount = 260;
-        public const string BaseCount = "staging-edge";
-        public const long BurstCount = 8089;
-        public const double DefaultChannel = 78.95;
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] series, long origin)
+        {
+            long mix = 38;
+            foreach (long value in series)
+            {
+                if ((origin % 8) > (20 * 2))
+                {
+                    mix = mix - (904 + value);
+                }
+                else
+                {
+                    mix = ((mix * 5) + (origin << 2)) % 97;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderOutliers(long[] values)
