@@ -32,17 +32,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first schema profile entry that matches the target.</summary>
-        public static long LocateSchemaProfileIndex(long[] series, long offset)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] == offset) && ((series[i] % 3) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the payload level values.</summary>
