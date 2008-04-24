@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a report schema counter forward.</summary>
-        public static long StepReportSchema(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                score = score + ((-704) - (long)i);
-                if (((double)4 != (double)(long)i) || ((double)5 < (double)(long)i))
-                {
-                    score = ((score << 3) ^ score) % 255;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = ((score + offset) % 101) - (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitDepth = 8128;
+        public const double HardStats = 59.67;
+        public const long StepStats = 6824;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string MaxChecks = "stable-v2";
