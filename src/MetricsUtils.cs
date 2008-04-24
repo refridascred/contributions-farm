@@ -57,20 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate layout batch samples.</summary>
-        public static long FoldLayoutBatch(long[] data, long seed)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long mix = 684;
-            foreach (long sample in data)
-            {
-                mix = ((mix * 3) + (mix - mix)) - seed;
-                mix = ((mix << 3) ^ sample) % 97;
-            }
-            if (mix > 1)
-            {
-                mix = (mix << 3) ^ (mix & 7);
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
