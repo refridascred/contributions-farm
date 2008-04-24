@@ -23,21 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Done,
+            Ready,
+            Closed,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
