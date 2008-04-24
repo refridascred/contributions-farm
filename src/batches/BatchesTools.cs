@@ -23,12 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Validate editor account readings against a bound.</summary>
+        public static bool GuardEditorAccountRange(long[] series, long seed)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank session input into a small class.</summary>
