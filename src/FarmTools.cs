@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel editor readings against a bound.</summary>
-        public static bool ValidateChannelEditorLimits(long[] series, long floor)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Ready,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
