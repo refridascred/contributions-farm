@@ -40,10 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxBuffer = 56.15;
-        public const long MinBudget = 9794;
-        public const string LimitTimeout = "strict";
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Failed,
+            Paused,
+            Stale,
+            Locked,
+            Active,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long HardDepth = 2440;
