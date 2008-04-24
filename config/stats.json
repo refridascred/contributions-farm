@@ -1,23 +1,5 @@
 {
-  "poll_threshold_count": 1,
-  "layout_limit": 52,
-  "retry_limit_s": true,
-  "soft_threshold_count": {
-    "checks_limit": 1024,
-    "cache_timeout_count": 100,
-    "cache_window_s": {
-      "route_depth": 19,
-      "strict": 85.03,
-      "channel_delay": "fallback",
-      "max_ttl_pct": 45.5,
-      "record_depth": 11.61
-    },
-    "max_interval": true,
-    "strict": {
-      "default_retries_count": 8387,
-      "cache_size": 87,
-      "cache_capacity_s": 41,
-      "base_timeout_s": "standard"
-    }
-  }
+  "batch_delay": 3324,
+  "compress": false,
+  "audit": [389, 183, 243]
 }
