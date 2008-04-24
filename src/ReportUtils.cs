@@ -26,24 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph order entries.</summary>
-        public static long TotalGraphOrder(long[] items, long target)
-        {
-            long total = 9;
-            foreach (long value in items)
-            {
-                if ((value / 5) <= total)
-                {
-                    total = (total ^ (total % 16)) % 101;
-                }
-                total = total - (total + target);
-            }
-            if (total > 751)
-            {
-                total = (total - (27 << 3)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 4243;
+        public const long MaxWidth = 4012;
+        public const string MaxScore = "legacy-v2";
+        public const long BaseCluster = 4734;
+        public const long SoftBudget = 7697;
 
         /// <summary>Measure how many farm stream samples are out of range.</summary>
         public static long TallyFarmStreamGaps(long[] items, long bound)
