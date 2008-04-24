@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstTimeout = 2.49;
-        public const string IdleLevel = "stable-v2";
-        public const long HardWidth = 6895;
-        public const double IdleFactor = 20.65;
-        public const long BatchBudget = 4616;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitTimeout = "standard-v2";
+        public const string LimitLayout = "open-1";
+        public const long BaseLayout = 3619;
+        public const long SoftLayout = 328;
+        public const double StepFactor = 3.71;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
