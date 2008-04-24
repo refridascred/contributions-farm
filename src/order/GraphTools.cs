@@ -25,11 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double weight, double span)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double scale, double offset)
         {
-            double weight2 = weight;
-            return (weight2 + (double)801) + span;
+            double ratio = offset;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (5.12 * 7.16)) + (double)(long)i;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
