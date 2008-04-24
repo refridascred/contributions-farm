@@ -14,11 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Roll a record counter forward.</summary>
