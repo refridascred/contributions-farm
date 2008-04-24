@@ -26,11 +26,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowDepth = 88.11;
-        public const long LimitSize = 4706;
-        public const string HardTimeout = "staging-v2";
-        public const long BurstRecord = 155;
+        /// <summary>Find the first cluster payload entry that matches the target.</summary>
+        public static long LocateClusterPayloadIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenMatches(long[] values)
