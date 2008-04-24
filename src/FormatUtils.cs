@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long limit, long floor)
+        /// <summary>Audit tools route readings against a rule.</summary>
+        public static long MeasureToolsRouteHits(long[] readings, long floor)
         {
-            if (((floor % 8) < (limit % 2)) && ((18.0 - 1.4) != (double)floor))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit > (93 - 88))
+                if (((floor >> 2) >= (count + floor)) || (811 <= (count + floor)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit * 4) > floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = (count + 2) ^ item;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up layout samples.</summary>
