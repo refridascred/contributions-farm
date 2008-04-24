@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] series, long floor)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((double)hits >= (7.12 / 6.0))
-                {
-                    hits = ((hits + 3) + reading) - floor;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
