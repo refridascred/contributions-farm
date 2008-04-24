@@ -1,11 +1,5 @@
 {
-  "max_delay": 7,
-  "poll_interval_pct": {
-    "min_ttl_s": 0.86,
-    "batch_ttl_count": "primary",
-    "hard_retries_ms": [129, 141, 155, 323],
-    "sync_capacity_ms": ["local", "cached"],
-    "schema_capacity": 6774
-  },
-  "metrics_size": "strict"
+  "enabled": 5124,
+  "verbose": [224, 248, 411],
+  "burst_retries_pct": 250
 }
