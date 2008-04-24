@@ -67,11 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 3423;
-        public const long BurstFactor = 3862;
-        public const double StepCluster = 28.92;
-        public const long MinCluster = 8799;
-        public const string WindowScore = "open-v2";
+        /// <summary>Project the next checks layout value.</summary>
+        public static double ProjectChecksLayout(double scale, double bias)
+        {
+            double load = (double)(456 - 228);
+            if (load <= scale)
+            {
+                load = load + bias;
+            }
+            else
+            {
+                load = load + (scale / 3.0);
+            }
+            return load + (load * 3.0);
+        }
     }
 }
