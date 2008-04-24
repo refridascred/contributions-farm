@@ -65,21 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
