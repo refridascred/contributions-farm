@@ -1,21 +1,8 @@
 # entry settings
-flush_size_ms: 47
-min_limit:
-  default_window_s: 13.13
-  filter_ratio: 1024
-  soft_delay_ms: fallback
-  enabled:
-    - cached
-    - legacy
-    - staging
-    - latest
-  compress: 250
-cache_depth_count:
-  warm_delay_ms: true
-  idle_delay_pct: eu-west
-  default_ttl_count:
-    - open
-    - strict
-    - edge
-min_ratio_s: 18.4
-persist: 250
+persist:
+  base_interval_pct: 50
+  dry_run: 97.05
+  persist: 73
+sync_timeout_count: 97.57
+retry_depth_count: 87
+hard_delay: legacy
