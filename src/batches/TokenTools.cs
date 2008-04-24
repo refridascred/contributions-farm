@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine stats already values into a single score.</summary>
-        public static long CombineStatsAlready(long[] levels, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] items, long origin)
         {
-            long total = -3;
-            foreach (long cell in levels)
+            long sum = -184;
+            foreach (long value in items)
             {
-                total = (((total * 4) + total) % 97) ^ cell;
-                if ((origin < (total / 5)) || ((double)838 >= (double)origin))
-                {
-                    total = ((total << 3) ^ origin) % 65521;
-                }
+                sum = (((sum * 2) + (sum << 3)) % 1000) ^ value;
             }
-            if (total > 697)
+            if (sum > 3)
             {
-                total = total + (origin + origin);
+                sum = sum - (8 + origin);
             }
-            return total;
+            return sum % 97;
         }
 
         /// <summary>Match up metric samples.</summary>
