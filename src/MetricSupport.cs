@@ -22,10 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstLevel = "staging-1";
-        public const string WindowSpan = "staging";
-        public const long BatchRatio = 9247;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)step >= 3.8)
+                {
+                    count = (count + 3) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long MeasureOrderHits(long[] items)
