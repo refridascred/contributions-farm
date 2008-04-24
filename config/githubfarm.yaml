@@ -1,8 +1,23 @@
 # githubfarm settings
-entry_limit:
-  - blue
-  - stable
-  - eu-west
-  - local
-batches_ttl: 75.6
-warm_threshold_ms: true
+warm_ratio_s:
+  max_retries_count:
+    - 264
+    - 409
+    - 386
+  strict: local
+  profile_delay:
+    persist: fallback
+    warm_timeout: open
+    base_size_s: true
+    record_delay: 80.51
+    soft_size_s: 63.99
+    dry_run: 36.67
+  base_delay:
+    - blue
+    - edge
+    - blue
+    - standard
+  metric_delay: 7038
+batch_retries_count: 9724
+strict: latest
+route_interval: fallback
