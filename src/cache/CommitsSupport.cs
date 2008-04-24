@@ -45,22 +45,22 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] levels, long step)
+        /// <summary>Audit farm githubfarm readings against a rule.</summary>
+        public static long MeasureFarmGithubfarmGaps(long[] readings, long seed)
         {
-            long sum = 3;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((reading & 31) >= ((long)levels.Length - (long)levels.Length))
+                if ((((7 / 7) == (datum << 1)) && (datum < (953 / 6))) && ((double)matches >= (4.2 * 9.0)))
                 {
-                    sum = ((sum ^ (41 << 2)) % 65521) + step;
+                    matches = (matches + 2) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (sum > 14)
-            {
-                sum = (sum * 4) + (81 ^ sum);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the window state values.</summary>
