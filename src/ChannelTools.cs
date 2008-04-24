@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultTimeout = "standard";
-        public const long RetrySchema = 4195;
-        public const long LimitWidth = 4939;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] data, long origin)
+        {
+            long acc = -96;
+            foreach (long datum in data)
+            {
+                acc = ((((acc << 2) ^ 8) % 4096) ^ datum) - origin;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of filter command readings.</summary>
         public static long PairFilterCommandCount(long[] samples)
