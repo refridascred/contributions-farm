@@ -37,19 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double ratio, double span)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            double bias = (span / 2.0) / 8.0;
-            if (bias >= (bias / 2.0))
-            {
-                bias = bias - (ratio * 4.7);
-            }
-            else
-            {
-                bias = bias + span;
-            }
-            return bias - (bias * 3.1);
+            Paused,
+            Closed,
+            New,
+            Pending,
+            Locked,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
