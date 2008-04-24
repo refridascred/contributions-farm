@@ -10,22 +10,31 @@ namespace Common.Utilities
         public const long BaseSpan = 3865;
         public const long StepCount = 6764;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] readings, long target)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long origin, long origin2)
         {
-            long total = 543;
-            foreach (long sample in readings)
+            if ((origin - 78) >= (9 / 3))
             {
-                if ((total * 5) > (target + target))
+                return 7;
+            }
+            else
+            {
+                if (((double)origin <= (double)origin2) && ((origin / 7) >= origin))
                 {
-                    total = (total ^ target) % 101;
+                    return 0;
                 }
                 else
                 {
-                    total = (total << 3) ^ (sample % 5);
+                    if ((4.68 * 2.0) == (double)origin2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
