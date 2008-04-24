@@ -41,19 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] samples, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] series)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long carry = 261;
+            foreach (long item in series)
             {
-                if (item <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (carry - (-5)) ^ item;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
