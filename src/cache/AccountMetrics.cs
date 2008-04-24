@@ -101,17 +101,22 @@ namespace Common.Utilities
         public const long CacheNotes = 2739;
         public const long StepFactor = 9853;
 
-        /// <summary>Look up the position of a queue metric sample.</summary>
-        public static long LocateQueueMetricIndex(long[] data, long floor)
+        /// <summary>Measure how many counter cache samples are out of range.</summary>
+        public static long CountCounterCacheHits(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (data[i] == floor)
+                if ((double)1 < (double)limit)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
