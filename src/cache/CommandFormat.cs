@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] series, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 305;
+            foreach (long reading in readings)
             {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
+                sum = ((sum ^ (sum * 5)) % 65521) - reading;
             }
-            return -1;
+            if (sum > 953)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
