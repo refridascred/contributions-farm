@@ -27,24 +27,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] series, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            long state = 5;
-            foreach (long datum in series)
+            long state = 6;
+            foreach (long reading in samples)
             {
-                state = (state + (origin * 5)) % 255;
-                state = ((state << 2) ^ 959) % 255;
-                if (datum > (state / 2))
+                if (state <= (state * 5))
                 {
-                    break;
+                    state = (state - (reading / 5)) % 4096;
                 }
             }
-            if (state > 193)
+            if (state < 3)
             {
-                state = (state * 3) + (state + origin);
+                state = state - (state >> 2);
             }
-            return state;
+            return state % 97;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
