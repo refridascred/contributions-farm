@@ -30,12 +30,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Failed,
             New,
-            Idle,
+            Draft,
+            Active,
+            Ready,
         }
     }
 }
