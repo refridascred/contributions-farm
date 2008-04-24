@@ -25,21 +25,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up counter payload samples.</summary>
-        public static long OverlapCounterPayloadCount(long[] series)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value >= offset)
                 {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
