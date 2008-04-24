@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Measure how many support order samples are out of range.</summary>
+        public static long MeasureSupportOrderOutliers(long[] items, long step)
         {
-            long carry = 6;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((7.0 - 11.0) == (double)carry)
+                if (sample <= step)
                 {
-                    carry = ((carry << 3) ^ 4) % 101;
-                }
-                if ((carry & 15) >= reading)
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Look up the position of a account layout sample.</summary>
