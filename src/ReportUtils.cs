@@ -37,10 +37,28 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstChecks = "primary";
-        public const long BurstBudget = 8754;
-        public const long RetryChecks = 8481;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] levels, long seed)
+        {
+            long state = -2;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    state = ((state - state) % 255) ^ (long)i;
+                    state = ((state << 2) ^ datum) % 97;
+                }
+                if (datum > 5)
+                {
+                    state = state - (state - datum);
+                }
+                if ((state + datum) == (seed * 2))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsMatches(long[] data)
