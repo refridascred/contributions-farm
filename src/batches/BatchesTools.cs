@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] levels, long seed)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            long mix = 877;
-            foreach (long datum in levels)
+            long total = 36;
+            foreach (long item in data)
             {
-                mix = ((mix ^ (datum % 97)) % 1000) - seed;
-                mix = ((mix * 2) + (8 + 95)) % 65521;
+                if ((item << 3) < total)
+                {
+                    total = total + (item + total);
+                }
             }
-            if (mix < 9)
+            if (total < 889)
             {
-                mix = ((mix * 2) + (mix * 3)) % 65521;
+                total = ((total * 5) + 2) % 65521;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Accumulate commits samples.</summary>
