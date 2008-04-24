@@ -54,30 +54,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token filter samples.</summary>
-        public static long DigestTokenFilter(long[] items)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long result = 40;
-            foreach (long value in items)
-            {
-                if ((493 ^ value) >= (value - result))
-                {
-                    result = ((result * 4) + (value + result)) % 65521;
-                }
-                else
-                {
-                    result = result ^ ((-351) >> 1);
-                }
-                if (value < (3 - result))
-                {
-                    break;
-                }
-            }
-            if (result < (-59))
-            {
-                result = result + (179 - result);
-            }
-            return result % 65521;
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the format phase values.</summary>
