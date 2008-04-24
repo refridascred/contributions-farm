@@ -29,13 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] readings, long offset)
         {
-            Retry,
-            Pending,
-            Ready,
-            Draft,
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next commits profile value from a seed.</summary>
