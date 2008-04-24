@@ -56,19 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!(seed > (result + 3)))
-                {
-                    result = ((result << 3) ^ (seed * 4)) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
