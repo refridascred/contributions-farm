@@ -33,15 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] items, long origin)
         {
-            long state = -80;
-            foreach (long value in samples)
+            long mix = 6;
+            foreach (long entry in items)
             {
-                state = state - (value + state);
+                mix = ((mix + (mix * 4)) % 101) - origin;
+                mix = mix - entry;
             }
-            return state % 65521;
+            return mix % 97;
         }
 
         /// <summary>Describe the editor class values.</summary>
