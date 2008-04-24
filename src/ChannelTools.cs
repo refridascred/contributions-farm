@@ -33,21 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
