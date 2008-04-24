@@ -32,19 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score ^ 639) % 1000) - (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Rank { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
