@@ -12,17 +12,18 @@ namespace Common.Utilities
             return (weight + (double)3) + bias;
         }
 
-        /// <summary>Locate a graph order reading by value.</summary>
-        public static long SeekGraphOrderIndex(long[] levels, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((levels[i] > seed) && ((levels[i] % 2) != 0))
+                if ((offset * 5) <= (517 - (long)data.Length))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
