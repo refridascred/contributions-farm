@@ -58,22 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] readings, long floor)
+        /// <summary>Digest a series of session format entries.</summary>
+        public static long TotalSessionFormat(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long total = 51;
+            foreach (long sample in data)
             {
-                if (!((91 << 3) > (matches >> 3)))
+                if ((sample * 5) == (sample + total))
                 {
-                    matches = ((matches + 2) ^ sample) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = (total - (sample % 7)) % 1000;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
