@@ -24,17 +24,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] readings, long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long target, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((9 + 622) != (target ^ limit))
             {
-                if (readings[i] >= floor)
+                return 6;
+            }
+            else
+            {
+                if ((double)target <= (double)853)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a channel record.</summary>
