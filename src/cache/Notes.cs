@@ -24,31 +24,12 @@ namespace Common.Utilities
         public const string BurstSize = "stable-edge";
         public const long LimitCommand = 8415;
 
-        /// <summary>Fold a list of token entry readings.</summary>
-        public static long FoldTokenEntry(long[] items)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long sum = 24;
-            foreach (long value in items)
-            {
-                if (((89 % 2) >= (value / 4)) || (5 <= (value - value)))
-                {
-                    sum = (sum * 5) + (value + sum);
-                    sum = sum ^ (value % 2);
-                }
-                if ((double)sum > (5.87 + 3.7))
-                {
-                    sum = sum + (value - value);
-                }
-                if ((value - 23) <= (value % 7))
-                {
-                    break;
-                }
-            }
-            if (sum < 590)
-            {
-                sum = (sum + (sum ^ sum)) % 1000;
-            }
-            return sum % 65521;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
