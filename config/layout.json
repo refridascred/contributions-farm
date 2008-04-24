@@ -1,10 +1,5 @@
 {
-  "batch_depth": "blue",
-  "checks_interval": "green",
-  "idle_ttl_pct": {
-    "idle_capacity_ms": "edge",
-    "hard_retries_ms": [45, 238, 412],
-    "window_ratio": 80
-  },
-  "max_limit_s": 5056
+  "max_limit_ms": false,
+  "poll_threshold_count": 3034,
+  "batch_delay": false
 }
