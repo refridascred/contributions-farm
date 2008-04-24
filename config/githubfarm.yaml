@@ -1,9 +1,7 @@
 # githubfarm settings
-retry_threshold_ms: 43.44
-warm_interval_s: false
-burst_delay:
-  - 25
-  - 441
-flush_interval_pct: 49
-buffer_threshold: latest
-warm_capacity_ms: 37.13
+command_size:
+  - 87
+  - 102
+  - 11
+soft_limit_count: 21
+burst_threshold: 30
