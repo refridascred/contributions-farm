@@ -1,5 +1,7 @@
 {
-  "cache_size_ms": 7534,
-  "sync_ttl_pct": "stable",
-  "default_size": ["local", "cached"]
+  "retry_retries_s": "strict",
+  "editor_interval": "eu-west",
+  "batch_retries": false,
+  "sync_timeout_count": true,
+  "hard_capacity": "legacy"
 }
