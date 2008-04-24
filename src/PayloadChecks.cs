@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((count * 3) < ((long)series.Length + count))
-                {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 4521;
+        public const double RetryTimeout = 34.23;
+        public const double CacheStats = 97.67;
 
         /// <summary>Look up the position of a stats batches sample.</summary>
         public static long FindStatsBatchesIndex(long[] samples, long step)
