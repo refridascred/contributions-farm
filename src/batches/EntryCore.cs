@@ -39,10 +39,32 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLevel = 9368;
-        public const long StepInterval = 7701;
-        public const string MaxLevel = "primary-1";
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long step)
+        {
+            if ((limit / 6) != (9 - 25))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit + 992) >= (step % 100))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + limit) == (8 * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the already tools entries that pass the check.</summary>
         public static long AuditAlreadyToolsOutliers(long[] values, long seed)
