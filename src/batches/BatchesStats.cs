@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Queued,
             Stale,
+            Ready,
             Idle,
-            Closed,
+            Active,
+            Queued,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
