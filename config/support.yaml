@@ -1,10 +1,4 @@
 # support settings
-enabled:
-  - 472
-  - 238
-  - 472
-min_interval: eu-west
-max_depth:
-  - staging
-  - fallback
-editor_ratio: 87
+window_retries: 38.0
+soft_limit_s: legacy
+min_retries_ms: strict
