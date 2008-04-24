@@ -51,19 +51,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a checks command figure with a bias.</summary>
-        public static double BlendChecksCommand(double gain, double floor)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double rate, double floor)
         {
-            double scale = gain + gain;
-            if (scale >= (floor * 0.2))
+            double scale = 5.7;
+            if (scale < (rate + floor))
             {
-                scale = scale + gain;
+                scale = scale + (double)318;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (scale * 4.0)) + (double)(long)i;
-            }
-            return scale - scale;
+            return scale - floor;
         }
     }
 }
