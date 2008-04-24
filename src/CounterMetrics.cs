@@ -23,10 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 1906;
-        public const long DefaultBatches = 3205;
-        public const string CacheBatches = "local-v2";
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Pending,
+            Stale,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] samples, long seed)
