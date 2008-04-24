@@ -14,15 +14,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] items, long target)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long mark = 3;
-            foreach (long cell in items)
-            {
-                mark = (((mark * 2) + (cell & 7)) % 65521) - target;
-            }
-            return mark % 1000;
+            New,
+            Ready,
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the filter level values.</summary>
