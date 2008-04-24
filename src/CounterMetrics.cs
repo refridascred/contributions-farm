@@ -34,17 +34,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] readings, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 604;
+            foreach (long cell in data)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
+                total = (total << 2) ^ (total - (long)data.Length);
+                if ((total << 3) <= (total + cell))
                 {
-                    return (long)i;
+                    total = (total - ((long)data.Length % 12)) % 4096;
                 }
             }
-            return -1;
+            if (total < 2)
+            {
+                total = total + (total + total);
+            }
+            return total % 4096;
         }
     }
 }
