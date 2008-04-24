@@ -1,15 +1,16 @@
 # Command notes
 
-Run the order check before changing any payload limits.
-Defaults for notes live in the config folder and can be overridden per environment.
+Defaults for queue live in the config folder and can be overridden per environment.
+The metrics module keeps format values in sync with the queue cache.
+The command module keeps editor values in sync with the queue cache.
 
-Run the entry check before changing any buffer limits.
-A tools that stays idle for too long is moved to the cluster list.
-The support report groups every queue by window.
+The layout report groups every cache by filter.
+Use format settings to tune how often report data is refreshed.
+Run the cache check before changing any command limits.
 
 ## Guidelines
 
-- Log every layout change
-- Review token limits each release
-- Validate command input early
-- Prefer checks defaults
+- Prefer graph defaults
+- Review window limits each release
+- Log every format change
+- Validate account input early
