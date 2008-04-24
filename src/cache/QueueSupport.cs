@@ -22,18 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] samples, long floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long seed, long floor)
         {
-            long acc = -1;
-            foreach (long sample in samples)
+            if (seed < (2 / 4))
             {
-                if (((sample % 24) > (floor >> 3)) || (acc >= (long)samples.Length))
+                return 4;
+            }
+            else
+            {
+                if (((double)floor <= (6.4 / 8.0)) && ((floor - floor) != (seed - 216)))
                 {
-                    acc = (acc ^ 548) % 255;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
