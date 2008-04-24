@@ -35,19 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] samples, long target)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Pending,
+            Retry,
+            Dropped,
         }
     }
 }
