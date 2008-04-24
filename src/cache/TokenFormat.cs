@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string BatchInterval = "fallback-v2";
         public const long MinCount = 7450;
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Done,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinSpan = 2463;
+        public const long HardOrder = 6410;
+        public const double RetryInterval = 53.87;
+        public const string MaxOrder = "staging-1";
+        public const long StepOrder = 9683;
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
