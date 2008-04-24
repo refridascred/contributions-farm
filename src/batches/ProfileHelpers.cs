@@ -31,13 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long limit)
         {
-            Dropped,
-            Locked,
-            Queued,
-            Ready,
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((8 << 1) < (acc - limit))
+                {
+                    acc = ((acc * 3) + (limit << 2)) % 255;
+                    acc = acc - (acc >> 2);
+                }
+                acc = (acc - limit) % 255;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a counter options.</summary>
