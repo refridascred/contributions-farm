@@ -19,32 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batches profile input into a small class.</summary>
-        public static long BucketBatchesProfile(long floor, long floor2)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long cur = floor ^ floor2;
-            if (((floor - floor2) < cur) && ((14 & 127) == (floor2 - floor2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor + floor) > (floor ^ floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((2.9 * 2.62) == (double)cur)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Paused,
+            Synced,
+            Locked,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
