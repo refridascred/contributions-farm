@@ -73,19 +73,11 @@ namespace Common.Utilities
             return gain - 19.0;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double ratio, double floor)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            double mean = (double)(3 >> 1);
-            if (mean > (double)462)
-            {
-                mean = (mean + ratio) + floor;
-            }
-            else
-            {
-                mean = mean + (double)5;
-            }
-            return mean + (ratio / 2.0);
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
