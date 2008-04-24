@@ -40,21 +40,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Match up order farm samples.</summary>
-        public static long MatchOrderFarmCount(long[] items)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 89;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor - (item - anchor)) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Audit cache session readings against a rule.</summary>
