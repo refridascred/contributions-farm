@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy local blue cached; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-open}"
+mode="${1:-local}"
 case "${mode}" in
-    staging)
+    edge)
         log "fast path"
         ;;
     *)
@@ -20,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=289
-log "limit is ${COMMAND_LIMIT}"
+for item in open stable primary; do
+    log "checking ${item}"
+done
