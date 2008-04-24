@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] readings, long origin)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Locked,
+            Draft,
+            Retry,
         }
 
         /// <summary>Measure how many editor profile samples are out of range.</summary>
