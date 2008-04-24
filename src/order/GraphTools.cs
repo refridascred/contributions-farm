@@ -43,31 +43,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long origin, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] series, long seed)
         {
-            if ((0.64 + 9.53) != (double)step)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step * 3) == (origin / 6))
+                if (cell > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step * 3) >= (origin - step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Combine token values into a single score.</summary>
