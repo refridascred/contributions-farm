@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitFactor = 21.1;
-        public const long MaxBudget = 3531;
-        public const string BaseRatio = "stable-v2";
-        public const long BurstSpan = 3439;
-        public const long SoftSupport = 2580;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool VerifyBufferLimits(long[] values, long offset)
