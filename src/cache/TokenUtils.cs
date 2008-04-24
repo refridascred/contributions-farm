@@ -36,17 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            long acc = 6;
+            foreach (long sample in data)
             {
-                if (!((3.2 * 3.8) < (double)acc))
+                if (!((acc ^ 293) >= (sample & 3)))
                 {
-                    acc = (acc + acc) % 101;
+                    acc = acc + (sample ^ acc);
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (acc > (sample >> 2))
+                {
+                    acc = (acc * 2) + (acc & 1);
+                }
+                else
+                {
+                    acc = (acc ^ (149 << 2)) % 65521;
+                }
             }
             return acc;
         }
