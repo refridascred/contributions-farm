@@ -1,24 +1,10 @@
 # support settings
-sync_window_s:
-  - open
-  - strict
-  - standard
-retry_ttl_count:
-  - green
-  - eu-west
-  - edge
-  - blue
-layout_retries:
-  warm_timeout_pct: 500
-  hard_ttl_pct: staging
-  sync_ratio_count: 994
-  sync_ratio: latest
-  base_capacity: eu-west
-  persist: strict
-readonly:
-  batch_interval: 63
-  max_retries_count: 8184
-  strict: 70.64
-  soft_threshold: 41.92
-  metric_window: 72.46
-default_retries: 9832
+burst_ratio_pct: 78.23
+enabled: 4174
+cache_timeout_s:
+  - 277
+  - 322
+  - 414
+  - 177
+record_delay: fallback
+batch_size_count: 91.47
