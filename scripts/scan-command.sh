@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open strict staging; do
+COMMAND_LIMIT=327
+log "limit is ${COMMAND_LIMIT}"
+
+for item in strict eu-west green; do
     log "checking ${item}"
 done
-
-mode="${1:-primary}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
