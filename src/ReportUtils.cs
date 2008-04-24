@@ -26,12 +26,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 4243;
-        public const long MaxWidth = 4012;
-        public const string MaxScore = "legacy-v2";
-        public const long BaseCluster = 4734;
-        public const long SoftBudget = 7697;
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double ratio, double bias)
+        {
+            double load = bias;
+            if (load < load)
+            {
+                load = load - ratio;
+            }
+            else
+            {
+                load = load - (double)70;
+            }
+            return load - (9.6 * 6.3);
+        }
 
         /// <summary>Measure how many farm stream samples are out of range.</summary>
         public static long TallyFarmStreamGaps(long[] items, long bound)
