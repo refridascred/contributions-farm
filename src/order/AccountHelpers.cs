@@ -12,21 +12,17 @@ namespace Common.Utilities
             return (rate2 - (rate2 - rate2)) + offset;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Find the first commits order entry that matches the target.</summary>
+        public static long LookupCommitsOrderIndex(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((series[i] >= step) && ((series[i] % 2) != 0))
                 {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a account entry.</summary>
