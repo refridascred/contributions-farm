@@ -32,32 +32,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long offset, long origin)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long bound)
         {
-            long gap = offset + origin;
-            if (offset >= 23)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                total = total - bound;
+                total = ((total * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (((-18) % 60) < origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (gap >= (gap ^ gap))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
