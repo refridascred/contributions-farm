@@ -41,16 +41,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Match up cache payload samples.</summary>
+        public static long PairCachePayloadCount(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = mark + (2 + offset);
-                mark = ((mark * 2) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
