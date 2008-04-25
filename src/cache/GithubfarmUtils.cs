@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] items, long floor)
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            long state = 12;
+            foreach (long value in items)
+            {
+                if (!(state <= (state ^ value)))
+                {
+                    state = (state * 2) + (floor << 1);
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the format phase values.</summary>
