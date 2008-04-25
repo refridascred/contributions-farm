@@ -1,11 +1,14 @@
 # Command notes
 
-Each filter is validated before it reaches the filter queue.
-Use batch settings to tune how often counter data is refreshed.
+The contributi report groups every tools by editor.
+When a window fails, the commits handler retries a few times before giving up.
+
+A window that stays idle for too long is moved to the payload list.
+Run the notes check before changing any command limits.
+When a token fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every commits change
-- Document new filter fields
-- Review format limits each release
-- Validate stream input early
+- Keep commits values small
+- Validate commits input early
+- Review stats limits each release
