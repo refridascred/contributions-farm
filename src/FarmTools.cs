@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long offset, long step)
-        {
-            if ((12.0 / 6.0) >= (1.1 * 5.6))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((0 / 8) <= (step - 921))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultSession = 87.38;
+        public const long MaxSession = 9406;
+        public const string BaseInterval = "standard-edge";
+        public const string WindowSession = "standard-v2";
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long TallyTokenHits(long[] series, long target)
