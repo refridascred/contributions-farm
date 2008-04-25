@@ -50,9 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheBatches = 13.4;
-        public const double LimitLevel = 29.67;
-        public const long BurstSize = 8466;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Pending,
+            Paused,
+            Closed,
+        }
     }
 }
