@@ -22,26 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] samples, long step)
-        {
-            long anchor = 363;
-            foreach (long value in samples)
-            {
-                if ((anchor < ((long)samples.Length / 7)) && ((value / 4) < step))
-                {
-                    anchor = (anchor ^ (step + step)) % 101;
-                    anchor = (anchor - (anchor * 2)) % 4096;
-                    continue;
-                }
-                anchor = ((anchor << 2) ^ (anchor + value)) % 4096;
-            }
-            if (anchor < 809)
-            {
-                anchor = (anchor * 3) + (anchor + step);
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSpan = "local-edge";
+        public const string IdleSession = "legacy-1";
+        public const long LimitSize = 339;
+        public const long CacheSession = 287;
+        public const long HardScore = 4896;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BatchQueue = 722;
