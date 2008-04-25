@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double scale, double floor)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double rate = (scale - floor) - 14.0;
-            if (rate > scale)
-            {
-                rate = rate + rate;
-            }
-            else
-            {
-                rate = rate + (double)3;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate - floor;
+            Active,
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a buffer info.</summary>
