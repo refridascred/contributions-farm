@@ -1,11 +1,5 @@
 {
-  "batch_interval": "open",
-  "readonly": ["edge", "open", "eu-west", "staging"],
-  "channel_depth": {
-    "notes_timeout": 100,
-    "burst_delay_pct": [102, 125],
-    "notes_depth": 81,
-    "batch_retries_ms": "staging"
-  },
-  "window_window": "latest"
+  "batch_size_pct": [26, 158, 10, 80],
+  "batch_depth": 88,
+  "commits_limit": 61.52
 }
