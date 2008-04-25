@@ -26,32 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long seed, long floor)
+        /// <summary>Measure how many queue batches samples are out of range.</summary>
+        public static long AuditQueueBatchesHits(long[] readings, long limit)
         {
-            long slot = seed ^ floor;
-            if (floor >= (floor + (-8)))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((floor - seed) < 18))
+                if (!((limit % 7) <= limit))
                 {
-                    return 2;
+                    tally = (tally + 3) + datum;
                 }
                 else
                 {
-                    if ((slot < (3 - slot)) || ((double)slot >= 0.3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
