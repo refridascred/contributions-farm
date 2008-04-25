@@ -30,22 +30,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftSpan = 58.7;
+        public const double MinSpan = 29.4;
+        public const long CacheSpan = 905;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
