@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double rate, double floor)
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
+            double weight = rate;
+            if (weight >= floor)
+            {
+                weight = weight - (rate / 7.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + 6.0) + (double)(long)i;
+            }
+            return weight - rate;
         }
 
         /// <summary>Accumulate stream samples.</summary>
