@@ -23,15 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] readings, long floor)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long sum = 411;
-            foreach (long entry in readings)
-            {
-                sum = (((sum * 5) + floor) % 4096) ^ entry;
-            }
-            return sum % 1000;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up editor samples.</summary>
