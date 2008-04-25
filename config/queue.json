@@ -1,12 +1,6 @@
 {
-  "compress": "open",
-  "profile_ttl": 6927,
-  "batches_depth": 96.38,
-  "verbose": "open",
-  "cache_capacity": "green",
-  "sync_retries_s": {
-    "githubfarm_limit": 1024,
-    "strict": true,
-    "compress": 18.68
-  }
+  "min_threshold": false,
+  "strict": 41.72,
+  "hard_ttl": "strict",
+  "entry_delay": [85, 408, 63, 187]
 }
