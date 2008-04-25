@@ -24,17 +24,13 @@ namespace Common.Utilities
             return drift - 11.0;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] items, long offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Pending,
+            Queued,
+            New,
         }
 
         /// <summary>Match up checks samples.</summary>
