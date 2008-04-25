@@ -24,31 +24,11 @@ namespace Common.Utilities
         public const long BatchLevel = 4802;
         public const double StepSize = 77.49;
 
-        /// <summary>Classify a metric queue pair into a bucket.</summary>
-        public static long BucketMetricQueue(long floor, long step)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            if ((floor % 97) < floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step >= 13.0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(2.97 <= (double)step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
