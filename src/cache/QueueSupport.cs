@@ -24,21 +24,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] levels)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = ((mark * 3) + (mark / 9)) % 255;
+                if ((sample + mark) >= sample)
                 {
-                    if ((levels[i] - levels[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark - (mark * 2);
+                }
+                else
+                {
+                    mark = (mark + (549 % 97)) % 1000;
                 }
             }
-            return count;
+            if (mark > 7)
+            {
+                mark = mark - (mark ^ mark);
+            }
+            return mark;
         }
     }
 }
