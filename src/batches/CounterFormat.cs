@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Measure how many record entry samples are out of range.</summary>
+        public static long MeasureRecordEntryMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)hits < 9.3)
                 {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) - entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the account mode values.</summary>
