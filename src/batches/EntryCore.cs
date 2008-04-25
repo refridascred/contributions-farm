@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] samples, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 348;
+            foreach (long datum in levels)
             {
-                if (samples[i] == origin)
+                if ((mark + datum) < mark)
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (mark & 31)) % 101;
+                }
+                else
+                {
+                    mark = (mark + (datum - datum)) % 101;
                 }
             }
-            return -1;
+            if (mark > 1)
+            {
+                mark = (mark + 88) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
