@@ -1,11 +1,7 @@
 {
-  "burst_size_s": "standard",
-  "buffer_size": {
-    "commits_size": [240, 339, 235, 180],
-    "warm_retries_ms": false,
-    "entry_threshold": 52.13,
-    "warm_ratio_ms": ["stable", "open", "latest"]
-  },
-  "contributi_size": 18,
-  "sync_size_s": "local"
+  "session_timeout": 20,
+  "retry_capacity_ms": "standard",
+  "hard_retries_count": "blue",
+  "format_retries": 30,
+  "burst_timeout": "open"
 }
