@@ -13,18 +13,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit layout cluster readings against a rule.</summary>
-        public static long CountLayoutClusterGaps(long[] levels, long limit)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if (((seed + origin) < (origin & 255)) || ((double)origin < (double)seed))
             {
-                if (((item & 255) < ((-5) % 10)) && ((17.0 * 16.0) > (double)seen))
+                return 0;
+            }
+            else
+            {
+                if ((seed + seed) == (origin * 2))
                 {
-                    seen = (seen + 2) + limit;
+                    return 5;
+                }
+                else
+                {
+                    if (((seed >> 2) <= (seed % 7)) && ((867 * 5) >= ((-517) - origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
