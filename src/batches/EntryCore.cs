@@ -61,17 +61,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the token counter series from a seed.</summary>
-        public static long DeriveTokenCounter(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                result = (result << 2) ^ (result % 64);
-                result = (result - result) % 65521;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 1103;
+        public const long DefaultBatches = 872;
+        public const string MaxBatches = "cached-edge";
+        public const long WindowBatches = 1934;
+        public const long IdleBatches = 5658;
     }
 }
