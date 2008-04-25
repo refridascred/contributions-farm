@@ -41,12 +41,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] values, long seed)
         {
-            Failed,
-            Draft,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
