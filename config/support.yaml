@@ -1,9 +1,8 @@
 # support settings
-readonly: staging
-flush_window_count: blue
-burst_limit_s: 585
 audit:
-  - 174
-  - 52
-  - 478
-  - 254
+  - 54
+  - 304
+  - 307
+  - 166
+compress: fallback
+flush_threshold_count: 14
