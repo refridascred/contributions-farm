@@ -40,17 +40,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepEditor = "legacy-1";
+        public const string RetryEditor = "fallback-edge";
+        public const long MaxDepth = 1615;
+        public const string MaxWidth = "latest-edge";
     }
 }
