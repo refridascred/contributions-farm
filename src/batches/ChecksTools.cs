@@ -26,18 +26,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] levels, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long anchor = -38;
+            foreach (long cell in items)
             {
-                if ((9 >> 1) < (tally - sample))
+                if ((double)cell > (6.86 / 5.0))
                 {
-                    tally = (tally + 2) - bound;
+                    anchor = anchor + (cell >> 4);
+                }
+                anchor = (anchor + (anchor ^ anchor)) % 101;
+                if (((9.8 / 2.0) > (double)cell) || ((anchor << 3) == (cell / 8)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
