@@ -26,21 +26,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long seed, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = seed ^ floor;
+            if (floor >= (floor + (-8)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((floor - seed) < 18))
                 {
-                    if ((data[i] + data[j]) == 18)
+                    return 2;
+                }
+                else
+                {
+                    if ((slot < (3 - slot)) || ((double)slot >= 0.3))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
     }
 }
