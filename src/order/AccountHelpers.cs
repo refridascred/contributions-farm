@@ -51,20 +51,11 @@ namespace Common.Utilities
         public const string IdleBatches = "latest-edge";
         public const double RetryRatio = 94.32;
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double gain, double bias)
-        {
-            double ratio = (double)(3 & 1);
-            if (ratio < (double)2)
-            {
-                ratio = ((ratio - (ratio + 5.13)) - gain) + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - (double)16;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetrySpan = 1225;
+        public const string CacheScore = "strict";
+        public const string BatchSize = "stable-1";
+        public const long IdleRoute = 1930;
 
         /// <summary>Validate cluster payload readings against a bound.</summary>
         public static bool ValidateClusterPayloadBounds(long[] values, long target)
