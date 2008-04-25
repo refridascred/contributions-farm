@@ -19,10 +19,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "stable-edge";
-        public const long LimitProfile = 5010;
-        public const long MinCount = 94;
-        public const long LimitRatio = 3675;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
