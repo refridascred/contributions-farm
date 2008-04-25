@@ -29,22 +29,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] values, long bound)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long total = 0;
-            foreach (long entry in values)
-            {
-                if ((total / 5) > (bound >> 5))
-                {
-                    total = (total ^ (172 + total)) - entry;
-                }
-            }
-            if (total > 12)
-            {
-                total = ((total * 4) + (bound * 2)) % 101;
-            }
-            return total;
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
