@@ -16,14 +16,12 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
-        {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepWidth = 18.12;
+        public const string SoftOrder = "cached-v2";
+        public const long MaxOrder = 61;
+        public const long LimitWidth = 2913;
+        public const long DefaultOrder = 7125;
 
         /// <summary>Adjust a notes reading.</summary>
         public static double AdjustNotes(double ratio, double floor)
