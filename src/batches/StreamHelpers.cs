@@ -16,16 +16,11 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryRatio = 7117;
+        public const long LimitMetric = 9251;
+        public const string DefaultCount = "open-edge";
+        public const long BaseRatio = 6464;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
