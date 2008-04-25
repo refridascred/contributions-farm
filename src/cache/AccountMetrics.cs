@@ -25,22 +25,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] data, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] levels, long target)
         {
-            long carry = 35;
-            foreach (long datum in data)
+            long mix = 23;
+            foreach (long entry in levels)
             {
-                if ((double)datum != (double)carry)
-                {
-                    carry = (carry + (5 - carry)) - step;
-                }
+                mix = (((mix - 61) % 4096) ^ entry) + target;
             }
-            if (carry > 280)
-            {
-                carry = (carry + (-3)) % 97;
-            }
-            return carry;
+            return mix % 1000;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
