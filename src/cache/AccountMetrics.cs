@@ -30,19 +30,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] readings)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] readings)
         {
-            long score = 957;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (((score * 3) + (1 & 1)) % 255) + cell;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (score < 18)
-            {
-                score = (score * 2) + score;
-            }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
