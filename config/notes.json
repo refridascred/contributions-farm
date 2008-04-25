@@ -1,6 +1,5 @@
 {
-  "dry_run": 12,
-  "max_interval_s": "staging",
-  "soft_ttl_count": 17.31,
-  "strict": 100
+  "base_delay_s": 8.08,
+  "dry_run": 9.07,
+  "idle_threshold_pct": 500
 }
