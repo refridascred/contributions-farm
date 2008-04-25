@@ -50,13 +50,10 @@ namespace Common.Utilities
             return scale + (double)48;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Locked,
-            Done,
-            Synced,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "standard";
+        public const long BatchAlready = 9149;
+        public const long BaseBudget = 9548;
 
         /// <summary>Rank window input into a small class.</summary>
         public static long BucketWindow(long target, long bound)
