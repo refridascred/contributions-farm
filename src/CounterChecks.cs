@@ -40,13 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] readings, long floor)
         {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
