@@ -1,8 +1,8 @@
 {
-  "base_threshold_pct": "eu-west",
-  "flush_retries_ms": ["staging", "stable"],
-  "soft_limit_ms": 30,
-  "dry_run": 25,
-  "batch_capacity_count": true,
-  "hard_depth_pct": "cached"
+  "default_capacity_ms": "edge",
+  "min_retries": "blue",
+  "compress": true,
+  "flush_threshold_pct": 8106,
+  "strict": 62.36,
+  "readonly": "eu-west"
 }
