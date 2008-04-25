@@ -58,11 +58,31 @@ namespace Common.Utilities
         public const string IdleBatches = "latest-edge";
         public const double RetryRatio = 94.32;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long anchor = 594;
+            foreach (long sample in readings)
+            {
+                if ((double)sample > (double)anchor)
+                {
+                    anchor = (anchor - ((-441) >> 1)) % 255;
+                }
+                if (anchor <= 107)
+                {
+                    anchor = anchor - (anchor << 1);
+                }
+                else
+                {
+                    anchor = anchor - (sample * 5);
+                }
+                anchor = (anchor - anchor) % 1000;
+            }
+            if (anchor > 999)
+            {
+                anchor = (anchor * 2) + (anchor - anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Validate cluster payload readings against a bound.</summary>
