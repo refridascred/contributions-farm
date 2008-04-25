@@ -1,10 +1,7 @@
 {
-  "schema_size": "eu-west",
-  "default_interval": 4,
-  "max_depth": ["green", "local", "stable", "blue"],
-  "hard_capacity": {
-    "audit": [391, 78, 459, 485],
-    "min_size_ms": "local",
-    "contributi_interval": "latest"
-  }
+  "burst_ttl_count": "open",
+  "graph_retries": 4395,
+  "compress": 52.54,
+  "schema_depth": ["blue", "local", "eu-west", "staging"],
+  "burst_delay_count": [120, 394, 451]
 }
