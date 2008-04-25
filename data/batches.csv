@@ -1,9 +1,7 @@
-id,active,region,level
-1,147,585,latest
-2,18.66,954,94.79
-3,171,337,staging
-4,57.19,26.97,706
-5,open,42.1,387
-6,699,620,923
-7,424,local,standard
-8,fallback,151,694
+id,label,active
+1,507,fallback
+2,legacy,19.75
+3,770,91.42
+4,23.94,901
+5,647,8
+6,167,green
