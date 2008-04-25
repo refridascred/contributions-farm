@@ -40,19 +40,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] items, long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long limit, long step)
         {
-            bool stale = true;
-            foreach (long value in items)
+            if ((limit < step) || (7.0 >= (double)limit))
             {
-                if (value > step)
+                return 5;
+            }
+            else
+            {
+                if ((limit - step) >= (7 << 2))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((step - limit) >= 45)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit * 3) < (limit + 92)) && ((2.2 / 8.0) >= (double)limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
