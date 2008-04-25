@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseLevel = "latest-1";
-        public const long StepMetric = 4005;
-        public const long BaseMetric = 2199;
-        public const double CacheCount = 73.73;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] readings, long target)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandGaps(long[] items)
