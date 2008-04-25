@@ -27,14 +27,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] levels, long floor)
         {
-            Stale,
-            Active,
-            Dropped,
-            Pending,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of layout channel readings.</summary>
