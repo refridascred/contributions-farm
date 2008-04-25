@@ -31,19 +31,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] readings)
+        /// <summary>Grade a payload metrics value against two limits.</summary>
+        public static long GradePayloadMetrics(long bound, long bound2)
         {
-            long mix = 819;
-            foreach (long value in readings)
+            if ((bound / 5) <= (532 * 4))
             {
-                mix = mix - value;
-                if ((value - value) != (mix + value))
+                return 7;
+            }
+            else
+            {
+                if ((bound2 - bound) >= bound)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Validate entry metrics readings against a bound.</summary>
