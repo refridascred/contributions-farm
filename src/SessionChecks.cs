@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series, long origin)
         {
-            Locked,
-            Done,
-            Idle,
-            Synced,
+            long sum = 249;
+            foreach (long datum in series)
+            {
+                if ((datum * 3) == (origin - datum))
+                {
+                    sum = (sum * 5) + (sum ^ origin);
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Project the next session batches value.</summary>
