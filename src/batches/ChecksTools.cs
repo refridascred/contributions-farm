@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every farm batch entry stays within the limit.</summary>
-        public static bool ValidateFarmBatchRange(long[] data, long seed)
-        {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinTimeout = 5472;
+        public const long StepProfile = 8193;
+        public const long DefaultProfile = 5955;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
