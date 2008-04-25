@@ -52,25 +52,11 @@ namespace Common.Utilities
         public const long LimitSize = 1691;
         public const double BaseSupport = 95.06;
 
-        /// <summary>Combine command filter values into a single score.</summary>
-        public static long WeighCommandFilter(long[] data)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long mix = 79;
-            foreach (long datum in data)
-            {
-                if ((3.0 + 5.67) < (double)datum)
-                {
-                    mix = ((mix * 4) + mix) % 255;
-                    mix = (mix << 2) ^ (datum >> 2);
-                    break;
-                }
-                if (((5.6 / 9.0) == (double)datum) || ((6.7 / 2.0) > (double)datum))
-                {
-                    mix = (mix * 2) + (datum % 100);
-                }
-                mix = mix - mix;
-            }
-            return mix % 1000;
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of record order readings.</summary>
