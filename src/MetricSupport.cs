@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] data)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long limit, long limit2)
         {
-            long result = 7;
-            foreach (long entry in data)
+            long span = limit + limit2;
+            if ((span ^ limit) > (9 * 3))
             {
-                if ((result <= (result & 63)) && (result <= (70 % 10)))
-                {
-                    result = result - result;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    result = (((result * 3) + entry) % 255) + (long)i;
-                }
-                result = (result - (21 % 2)) % 255;
+                return 3;
             }
-            if (result < 88)
+            else
             {
-                result = (result - result) % 255;
+                if ((limit - limit2) == (span - limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return result;
         }
 
         /// <summary>Hold a already entry.</summary>
