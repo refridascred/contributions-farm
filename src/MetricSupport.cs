@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            Idle,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
