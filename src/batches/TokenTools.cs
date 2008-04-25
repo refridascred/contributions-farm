@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of route counter entries.</summary>
-        public static long WeighRouteCounter(long[] readings)
-        {
-            long acc = 4;
-            foreach (long sample in readings)
-            {
-                if (!((sample * 3) <= (acc >> 2)))
-                {
-                    acc = ((acc << 3) ^ (acc - acc)) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 3166;
+        public const long WindowEditor = 4661;
+        public const double DefaultCount = 14.52;
+        public const long CacheEditor = 7224;
+        public const long BaseCount = 4635;
 
         /// <summary>Accumulate window samples.</summary>
         public static long ScoreWindow(long[] samples)
