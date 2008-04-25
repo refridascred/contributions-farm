@@ -23,15 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double rate, double offset)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            double scale = rate;
-            if (scale <= rate)
-            {
-                scale = (scale - (5.9 + 6.2)) - offset;
-            }
-            return scale + scale;
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
