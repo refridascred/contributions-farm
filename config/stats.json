@@ -1,7 +1,7 @@
 {
-  "poll_timeout_count": 70,
-  "retry_delay": "legacy",
-  "command_ratio": 51,
-  "persist": true,
-  "enabled": "eu-west"
+  "compress": 43,
+  "hard_limit": 60,
+  "min_delay": 4949,
+  "default_limit_count": "green",
+  "warm_interval_count": false
 }
