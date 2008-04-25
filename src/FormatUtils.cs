@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Ready,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 7620;
+        public const string RetrySize = "legacy";
+        public const string RetryTools = "staging";
+        public const double StepTools = 26.86;
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
