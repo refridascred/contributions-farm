@@ -29,13 +29,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public double Size { get; set; }
-            public bool Flag { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc << 3) ^ (3 >> 5);
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of tools cluster entries.</summary>
