@@ -33,13 +33,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Closed,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 21;
+        public const long HardSpan = 478;
+        public const string WindowTimeout = "stable-1";
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
