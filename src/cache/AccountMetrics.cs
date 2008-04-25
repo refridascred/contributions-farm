@@ -17,18 +17,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] series, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long step, long offset)
         {
-            long mark = -350;
-            foreach (long value in series)
+            long diff = step ^ offset;
+            if (((step ^ offset) >= (step & 3)) && ((offset + step) != (8 + offset)))
             {
-                if ((value / 5) == (3 - mark))
+                return 6;
+            }
+            else
+            {
+                if ((double)step == (8.07 * 4.4))
                 {
-                    mark = (mark ^ (value ^ floor)) % 255;
+                    return 2;
+                }
+                else
+                {
+                    if (((step & 63) >= (1 ^ 58)) && ((diff / 3) <= (offset + diff)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((diff * 2) <= (diff >> 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Combine token values into a single score.</summary>
