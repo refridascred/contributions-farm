@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of buffer cache readings.</summary>
-        public static long CombineBufferCache(long[] samples)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long anchor = 880;
-            foreach (long cell in samples)
-            {
-                if (((anchor << 1) <= cell) && ((cell + anchor) >= (630 << 1)))
-                {
-                    anchor = (anchor * 5) + anchor;
-                }
-            }
-            if (anchor > 328)
-            {
-                anchor = ((anchor << 3) ^ (anchor % 64)) % 255;
-            }
-            return anchor % 97;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Grade a command value against two limits.</summary>
