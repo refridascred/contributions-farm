@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] values, long origin)
         {
-            Stale,
-            Ready,
-            Idle,
-            Active,
-            Queued,
+            long mark = 435;
+            foreach (long entry in values)
+            {
+                if ((entry >> 2) > (origin - mark))
+                {
+                    mark = mark ^ 6;
+                }
+            }
+            if (mark < 653)
+            {
+                mark = (mark - origin) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Match up format farm samples.</summary>
