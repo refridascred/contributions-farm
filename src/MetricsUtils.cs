@@ -36,20 +36,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBudget = 4430;
+        public const long DefaultBuffer = 6963;
+        public const string IdleBuffer = "latest-edge";
+        public const long HardBuffer = 6284;
+        public const double BurstBuffer = 26.83;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TallyStats(long[] series, long seed)
