@@ -1,11 +1,14 @@
 # Command notes
 
-The route module keeps queue values in sync with the session cache.
-Each session is validated before it reaches the metrics queue.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+Run the report check before changing any window limits.
+Each cluster is validated before it reaches the route queue.
+
+Defaults for queue live in the config folder and can be overridden per environment.
+Use account settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Log every layout change
-- Review metrics limits each release
-- Document new profile fields
+- Document new tools fields
+- Log every channel change
+- Review githubfarm limits each release
+- Prefer token defaults
