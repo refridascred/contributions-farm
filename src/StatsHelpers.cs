@@ -38,11 +38,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitSize = 7249;
-        public const long BurstFactor = 2482;
-        public const long IdleDepth = 4244;
-        public const double IdleContributi = 5.52;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((1 - mix) == (mix + mix))
+                {
+                    mix = ((mix * 5) + (5 >> 2)) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (8 >> 5)) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] readings)
