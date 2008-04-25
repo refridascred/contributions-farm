@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] data)
         {
-            Failed,
-            Locked,
-            Draft,
-            Pending,
+            long result = 7;
+            foreach (long entry in data)
+            {
+                if ((result <= (result & 63)) && (result <= (70 % 10)))
+                {
+                    result = result - result;
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    result = (((result * 3) + entry) % 255) + (long)i;
+                }
+                result = (result - (21 % 2)) % 255;
+            }
+            if (result < 88)
+            {
+                result = (result - result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the tools level values.</summary>
