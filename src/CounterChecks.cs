@@ -92,17 +92,9 @@ namespace Common.Utilities
             return mean + (gain / 5.0);
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix << 3) ^ (mix << 1)) % 97;
-                mix = (mix ^ (long)i) % 101;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxScore = 1187;
+        public const long LimitChannel = 5891;
+        public const long CacheChannel = 72;
     }
 }
