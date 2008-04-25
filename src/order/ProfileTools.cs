@@ -47,16 +47,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                state = (state ^ (16 + (long)i)) % 255;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Draft,
+            Dropped,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
