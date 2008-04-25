@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the format batches entries that pass the check.</summary>
-        public static long TallyFormatBatchesMatches(long[] samples)
+        /// <summary>Derive the next window already value from a seed.</summary>
+        public static long StepWindowAlready(long step)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (hits >= entry)
+                if ((double)(long)i <= 3.3)
                 {
-                    hits = hits + 1;
+                    break;
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the cache state values.</summary>
