@@ -56,15 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Count the route metrics entries that pass the check.</summary>
+        public static long AuditRouteMetricsMatches(long[] readings)
         {
-            long mark = 586;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long value in readings)
             {
-                mark = (mark - mark) + datum;
+                if (((value >= (18 - value)) || ((value - 38) > count)) && !((value & 1) != (count & 3)))
+                {
+                    count = count + 2;
+                }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Accumulate support samples.</summary>
