@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepSpan = 1430;
-        public const double WindowSize = 96.29;
-        public const long CacheLevel = 2464;
-        public const string CacheSize = "stable-1";
-        public const string IdleWidth = "latest";
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine order window values into a single score.</summary>
         public static long ScoreOrderWindow(long[] readings, long limit)
