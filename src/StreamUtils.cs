@@ -22,10 +22,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 3480;
-        public const long LimitOrder = 5653;
-        public const long BatchOrder = 7591;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long seed, long limit)
+        {
+            long bound = seed - limit;
+            if ((15.0 + 3.04) >= (double)limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((seed - bound) < seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long MatchMetricsCount(long[] readings)
