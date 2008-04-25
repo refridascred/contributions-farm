@@ -102,18 +102,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] values, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((double)reading >= (9.78 * 8.0)) && ((step & 7) != (reading + step)))
+                if ((step - item) >= (step * 3))
                 {
-                    matches = matches + 2;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
