@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "alpha";
+        public const string IdlePayload = "staging";
+        public const long CacheTimeout = 6761;
+        public const long WindowPayload = 6215;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long WeighFilter(long[] items)
