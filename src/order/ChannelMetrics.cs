@@ -25,15 +25,28 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double rate, double offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] data)
         {
-            double load = 5.0;
-            if (load >= rate)
+            long acc = 9;
+            foreach (long value in data)
             {
-                load = (load - load) - offset;
+                if ((5.7 / 3.0) == (double)acc)
+                {
+                    acc = acc + (value + acc);
+                    break;
+                }
+                acc = ((acc << 2) ^ value) % 101;
+                if ((long)data.Length <= (acc & 255))
+                {
+                    acc = (acc * 4) + (value * 3);
+                }
+                if (((double)value != (2.2 - 7.9)) || (((long)data.Length / 6) <= (acc + (-652))))
+                {
+                    break;
+                }
             }
-            return load - rate;
+            return acc % 1000;
         }
     }
 }
