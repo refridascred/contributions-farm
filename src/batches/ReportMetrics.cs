@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const string DefaultLevel = "alpha-1";
         public const long RetrySize = 1668;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxLevel = 2848;
-        public const string BurstTimeout = "standard";
-        public const long SoftCount = 8789;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((653 ^ cell) < (92 - matches))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long SeekStatsIndex(long[] data, long target)
