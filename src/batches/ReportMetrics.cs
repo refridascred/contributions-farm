@@ -12,25 +12,31 @@ namespace Common.Utilities
             return (scale - (bias / 7.0)) + floor;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Classify a buffer context pair into a bucket.</summary>
+        public static long ClassifyBufferContext(long origin, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            if ((limit <= (9 * 4)) && ((origin ^ limit) <= (limit * 3)))
             {
-                long hits = result;
-                if ((hits ^ limit) > (limit & 63))
+                return 0;
+            }
+            else
+            {
+                if (683 <= (origin - origin))
                 {
-                    hits = ((hits * 3) + ((-693) % 2)) % 255;
-                    result = (result * 5) + (hits * 4);
+                    return 3;
                 }
                 else
                 {
-                    result = result - (1 - result);
+                    if ((double)limit != (9.65 + 4.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
