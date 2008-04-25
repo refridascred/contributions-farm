@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardBudget = 71;
-        public const string HardCommits = "primary-v2";
-        public const long IdleCommits = 337;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Active,
+            Locked,
+            Draft,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
