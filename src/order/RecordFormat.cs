@@ -38,20 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowCount = 4645;
+        public const double WindowTimeout = 76.29;
+        public const double RetryCount = 28.97;
+        public const string BatchContext = "open";
+        public const double LimitRatio = 95.0;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long LimitSpan = 751;
