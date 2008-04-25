@@ -37,18 +37,24 @@ namespace Common.Utilities
         public const double MinSpan = 29.4;
         public const long CacheSpan = 905;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] values, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long limit, long limit2)
         {
-            long state = 8;
-            foreach (long item in values)
+            if ((7 / 5) != (limit & 63))
             {
-                if ((double)(long)values.Length > (17.0 - 7.7))
+                return 8;
+            }
+            else
+            {
+                if ((limit > (limit + limit)) || ((limit + limit) > (limit + 7)))
                 {
-                    state = (((state << 2) ^ item) % 65521) + target;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return state % 1000;
         }
 
         /// <summary>Hold a route header.</summary>
