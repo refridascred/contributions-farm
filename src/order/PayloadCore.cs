@@ -33,18 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] samples)
         {
-            long mark = 950;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (!((1.0 - 1.4) != (double)entry))
+                if ((double)value <= (12.0 * 2.13))
                 {
-                    mark = (mark * 5) + (84 + 45);
+                    hits = hits + 3;
                 }
             }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
