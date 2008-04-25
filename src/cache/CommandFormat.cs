@@ -12,10 +12,24 @@ namespace Common.Utilities
         public const long StepDepth = 9653;
         public const double DefaultProfile = 64.8;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardInterval = 1771;
-        public const long IdleWidth = 8147;
-        public const long LimitGraph = 1355;
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] samples)
+        {
+            long result = 7;
+            foreach (long entry in samples)
+            {
+                result = ((result * 4) + (entry >> 4)) % 255;
+                if ((double)result >= (7.52 - 2.12))
+                {
+                    break;
+                }
+            }
+            if (result < 6)
+            {
+                result = (result * 3) + (result - (-7));
+            }
+            return result;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long FoldBuffer(long[] readings)
