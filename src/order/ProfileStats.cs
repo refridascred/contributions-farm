@@ -38,16 +38,22 @@ namespace Common.Utilities
         public const long BaseWidth = 1006;
         public const long MinChecks = 2904;
 
-        /// <summary>Combine cache format values into a single score.</summary>
-        public static long FoldCacheFormat(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] samples, long bound)
         {
-            long mark = 912;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                mark = (((mark * 3) + (mark + 84)) % 255) + item;
-                mark = (mark * 5) + mark;
+                if (entry < (hits >> 2))
+                {
+                    hits = (hits + 2) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
