@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public double Mode { get; set; }
-            public bool Count { get; set; }
-            public double Total { get; set; }
+            Paused,
+            Locked,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define order limits and defaults.</summary>
