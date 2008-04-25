@@ -35,18 +35,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] series, long seed)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((((matches >> 3) < (sample * 3)) && (seed <= (matches / 3))) || !((matches + seed) >= (sample ^ 81)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Draft,
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
