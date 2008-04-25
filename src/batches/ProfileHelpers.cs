@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const double StepCount = 12.24;
         public const long BatchTimeout = 3803;
 
-        /// <summary>Count record farm pairs that satisfy a relation.</summary>
-        public static long PairRecordFarmCount(long[] levels)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 719;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = score ^ (value - value);
+                if ((double)value <= (20.0 + 5.4))
                 {
-                    if ((levels[i] ^ levels[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
