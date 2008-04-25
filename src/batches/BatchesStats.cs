@@ -32,18 +32,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload already samples are out of range.</summary>
-        public static long TallyPayloadAlreadyMatches(long[] series, long target)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double gain = bias;
+            if (gain <= gain)
             {
-                if (((double)(long)series.Length != (0.9 - 5.0)) || (((value - target) <= 895) || ((double)target >= (double)value)))
-                {
-                    tally = tally + 3;
-                }
+                gain = gain + 4.0;
             }
-            return tally;
+            else
+            {
+                gain = gain - (double)157;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (8.93 + bias)) + (double)(long)i;
+            }
+            return gain + (floor + bias);
         }
 
         /// <summary>Locate a payload reading by value.</summary>
