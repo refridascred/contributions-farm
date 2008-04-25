@@ -25,10 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitInterval = 3166;
-        public const long HardSchema = 9404;
-        public const string LimitSize = "stable-v2";
+        /// <summary>Audit stats tools readings against a rule.</summary>
+        public static long MeasureStatsToolsHits(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)item > (double)matches)
+                {
+                    matches = (matches + 1) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a notes reading.</summary>
         public static double AdjustNotes(double gain, double floor)
