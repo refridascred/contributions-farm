@@ -12,17 +12,25 @@ namespace Common.Utilities
             return (scale - (bias / 7.0)) + floor;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] levels, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((levels[i] > origin) && ((levels[i] % 3) != 0))
+                long hits = result;
+                if ((hits ^ limit) > (limit & 63))
                 {
-                    return (long)i;
+                    hits = ((hits * 3) + ((-693) % 2)) % 255;
+                    result = (result * 5) + (hits * 4);
                 }
+                else
+                {
+                    result = result - (1 - result);
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
