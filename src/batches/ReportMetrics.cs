@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] series, long seed)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long floor)
         {
-            long mark = 35;
-            foreach (long datum in series)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                mark = (((mark << 3) ^ (mark >> 2)) % 1000) - datum;
+                if (((-8) / 2) >= (floor ^ (long)i))
+                {
+                    anchor = anchor - (anchor + anchor);
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            if (mark > 9)
-            {
-                mark = (mark << 3) ^ seed;
-            }
-            return mark;
+            return anchor;
         }
     }
 }
