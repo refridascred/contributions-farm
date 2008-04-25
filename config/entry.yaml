@@ -1,13 +1,23 @@
 # entry settings
-command_threshold: 4110
-audit: 12.86
-batch_window_count:
-  soft_retries: local
-  record_ratio: 30
-  warm_depth_ms: 55.7
-  base_ratio_pct: staging
-burst_size_s: 5
-command_retries:
-  - 187
-  - 179
-soft_ttl_ms: true
+idle_interval:
+  - 417
+  - 7
+  - 446
+  - 84
+strict: 6728
+default_depth_pct: legacy
+soft_depth_ms: local
+enabled:
+  warm_window: true
+  sync_timeout_ms: 4483
+  max_window_count: standard
+  compress:
+    - fallback
+    - stable
+    - latest
+    - cached
+  burst_retries_count:
+    strict: 29
+    min_threshold_pct: 93.61
+    buffer_depth: 60.44
+    retry_window_ms: 9
