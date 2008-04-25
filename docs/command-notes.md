@@ -1,12 +1,14 @@
 # Command notes
 
-When a stream fails, the filter handler retries a few times before giving up.
-Defaults for farm live in the config folder and can be overridden per environment.
-Each stats is validated before it reaches the cache queue.
+Keep payload and session names short and lowercase.
+A route that stays idle for too long is moved to the githubfarm list.
+The githubfarm report groups every context by schema.
+
+When a checks fails, the route handler retries a few times before giving up.
+Use contributi settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Keep filter values small
-- Document new notes fields
-- Prefer counter defaults
-- Validate layout input early
+- Document new support fields
+- Review entry limits each release
+- Log every checks change
