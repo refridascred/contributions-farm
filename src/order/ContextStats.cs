@@ -23,23 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((value / 5) > ((-8) + hits)) || ((origin % 24) <= value))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFormat = 92.99;
+        public const string BaseFactor = "stable-1";
+        public const double IdleFormat = 13.85;
+        public const long BatchLevel = 4980;
+        public const string DefaultTimeout = "local";
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] levels)
