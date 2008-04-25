@@ -26,18 +26,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] readings)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long floor, long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            if ((double)floor < 3.0)
             {
-                if ((count < (185 + count)) || (((2 + 4) < (entry + count)) && ((count + 309) < (entry << 3))))
+                return 4;
+            }
+            else
+            {
+                if ((double)limit <= (15.0 / 5.0))
                 {
-                    count = count + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (5.0 <= (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
     }
 }
