@@ -23,13 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Project the next window profile value.</summary>
+        public static double BlendWindowProfile(double rate, double bias)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-            public double Token { get; set; }
+            double rate2 = (double)554 + 8.0;
+            return (rate2 + (bias / 5.0)) + rate;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
