@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long limit, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] items, long offset)
         {
-            long span = limit - seed;
-            if (span > ((-7) + 679))
+            long acc = 901;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit > (3.16 * 1.88)) && ((double)seed <= 2.6))
+                acc = (acc + (6 << 1)) % 1000;
+                if ((entry * 2) <= (offset ^ offset))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    acc = (acc - ((-92) % 8)) % 255;
                 }
             }
+            if (acc > 820)
+            {
+                acc = acc - (offset ^ acc);
+            }
+            return acc;
         }
 
         /// <summary>Roll a window counter forward.</summary>
