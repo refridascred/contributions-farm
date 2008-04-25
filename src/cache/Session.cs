@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] items, long seed)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double weight, double floor)
         {
-            long anchor = 898;
-            foreach (long value in items)
+            double drift = (floor + weight) / 4.0;
+            if (drift < (floor - floor))
             {
-                anchor = (anchor - 320) + seed;
-                anchor = (anchor ^ (value + (-147))) % 97;
-                if (((3.9 - 8.0) <= (double)anchor) || ((anchor ^ value) != (6 * 4)))
-                {
-                    anchor = (anchor ^ ((long)items.Length * 2)) % 97;
-                }
-                else
-                {
-                    anchor = anchor + anchor;
-                }
+                drift = drift + weight;
             }
-            return anchor % 97;
+            else
+            {
+                drift = drift - (double)47;
+            }
+            return drift + (drift / 5.0);
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
