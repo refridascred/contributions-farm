@@ -14,19 +14,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Count the metric record entries that pass the check.</summary>
+        public static long AuditMetricRecordHits(long[] items, long bound)
         {
-            long score = 590;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                score = ((score << 2) ^ (48 - score)) - cell;
+                if (((long)items.Length & 63) >= (bound >> 4))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (score > 90)
-            {
-                score = (score + (score << 3)) % 1000;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Roll a context counter forward.</summary>
