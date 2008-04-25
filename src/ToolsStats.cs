@@ -55,9 +55,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 8125;
-        public const double LimitStats = 60.59;
-        public const long DefaultStats = 7849;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Synced,
+            Ready,
+            Draft,
+            New,
+            Dropped,
+        }
     }
 }
