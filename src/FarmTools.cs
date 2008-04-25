@@ -39,18 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format account samples are out of range.</summary>
-        public static long AuditFormatAccountGaps(long[] values, long origin)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading - origin) >= (count - reading))
+                if (values[i] <= seed)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate order samples.</summary>
