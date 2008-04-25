@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 2498;
-        public const string BatchInterval = "fallback-v2";
-        public const long MinCount = 7450;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Queued,
+            Done,
+            Retry,
+        }
 
         /// <summary>Check that every stream graph entry stays within the limit.</summary>
         public static bool VerifyStreamGraphBounds(long[] data, long offset)
