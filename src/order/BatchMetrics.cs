@@ -49,12 +49,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Audit route cluster readings against a rule.</summary>
+        public static long MeasureRouteClusterGaps(long[] levels, long limit)
         {
-            Failed,
-            Synced,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (!(((95 - limit) == (hits - (-9))) && ((hits & 63) != (limit + hits))))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the schema status values.</summary>
