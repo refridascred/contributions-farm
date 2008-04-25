@@ -20,38 +20,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long seed, long step)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long step)
         {
-            if (((step ^ step) > (seed + 51)) || ((4.8 + 6.0) == (double)step))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed <= (step / 2)) || ((step / 4) > (step - seed)))
+                if (samples[i] <= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(step < (seed % 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (4.34 > (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
