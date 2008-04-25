@@ -41,10 +41,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchWidth = 3828;
-        public const long BurstMetrics = 7539;
-        public const long StepScore = 2639;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Retry,
+            Closed,
+            Active,
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenGaps(long[] items, long origin)
