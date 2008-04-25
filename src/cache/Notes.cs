@@ -32,13 +32,18 @@ namespace Common.Utilities
         public const string HardNotes = "stable-v2";
         public const long StepNotes = 1454;
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] levels, long offset)
         {
-            New,
-            Closed,
-            Idle,
-            Done,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (cell <= (offset + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
