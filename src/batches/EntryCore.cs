@@ -64,22 +64,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] levels)
+        /// <summary>Accumulate format support samples.</summary>
+        public static long WeighFormatSupport(long[] levels, long offset)
         {
-            long carry = 27;
-            foreach (long item in levels)
+            long anchor = 983;
+            foreach (long cell in levels)
             {
-                if (((item + carry) < carry) || (carry <= (carry & 1)))
+                if (!((offset ^ offset) >= (cell % 3)))
                 {
-                    carry = carry + (carry ^ item);
+                    anchor = anchor ^ (cell >> 5);
                 }
                 else
                 {
-                    carry = (carry - item) % 4096;
+                    anchor = anchor + (cell & 31);
+                    anchor = anchor + (cell % 60);
                 }
+                anchor = anchor ^ ((long)levels.Length >> 4);
             }
-            return carry;
+            return anchor;
         }
     }
 }
