@@ -53,19 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] series, long offset)
+        /// <summary>Audit report graph readings against a rule.</summary>
+        public static long CountReportGraphMatches(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (entry != offset)
+                if ((double)origin >= (0.6 / 7.0))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Digest a series of already queue entries.</summary>
