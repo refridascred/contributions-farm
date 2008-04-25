@@ -16,21 +16,15 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate2 = (bias - rate) * 20.0;
+            if (rate2 < (rate2 / 8.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate2 = rate2 - rate;
             }
-            return matches;
+            return rate2 - (rate2 / 2.0);
         }
 
         /// <summary>Hold a batch header.</summary>
