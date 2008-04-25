@@ -22,38 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long offset, long seed)
+        /// <summary>Count the stats metrics entries that pass the check.</summary>
+        public static long AuditStatsMetricsOutliers(long[] items, long bound)
         {
-            if ((offset & 3) == (seed / 5))
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed - offset) >= (1 % 7))
+                if ((value - bound) >= (value + 80))
                 {
-                    return 8;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (!((offset + offset) <= seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed / 6) < ((-268) / 9))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a context options.</summary>
