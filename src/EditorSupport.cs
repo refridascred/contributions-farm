@@ -54,26 +54,9 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] samples)
-        {
-            long total = 26;
-            foreach (long entry in samples)
-            {
-                if (((entry >> 3) > (entry ^ total)) || ((entry + entry) >= total))
-                {
-                    total = (total ^ (total + (-49))) % 255;
-                }
-                else
-                {
-                    total = (total ^ (total - (long)samples.Length)) % 101;
-                }
-                if (5.1 > (double)total)
-                {
-                    break;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftBudget = 4648;
+        public const double HardScore = 20.21;
+        public const long CacheSupport = 43;
     }
 }
