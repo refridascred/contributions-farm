@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long RetryTools = 5188;
         public const string BurstCount = "primary-1";
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double ratio, double floor)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double scale = ratio;
-            if (scale < (double)59)
-            {
-                scale = (scale - 9.1) - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (double)502) + (double)(long)i;
-            }
-            return scale + scale;
+            Closed,
+            Locked,
+            Paused,
         }
     }
 }
