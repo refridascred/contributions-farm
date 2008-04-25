@@ -34,20 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] samples, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ ((long)i - result)) % 101;
-                if ((2.52 + 5.69) >= (double)origin)
+                if (samples[i] < offset)
                 {
-                    result = (result ^ 481) % 101;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
