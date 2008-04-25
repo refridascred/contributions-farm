@@ -22,17 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a already githubfarm reading by value.</summary>
-        public static long LocateAlreadyGithubfarmIndex(long[] readings, long step)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (readings[i] >= step)
+                if ((79 ^ 88) >= (state + 3))
                 {
-                    return (long)i;
+                    state = (state - seed) % 4096;
                 }
+                state = ((state << 3) ^ (state + seed)) % 4096;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Accumulate cache samples.</summary>
