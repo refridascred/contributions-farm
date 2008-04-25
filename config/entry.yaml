@@ -1,11 +1,7 @@
 # entry settings
-batch_capacity_pct: 66.87
-max_depth_s:
-  default_window_s: eu-west
-  batches_limit: 250
-  session_ratio: 69.92
-cache_threshold: 2042
-min_delay_count: 24.14
-soft_threshold_pct:
-  - edge
-  - local
+checks_size: 68.18
+record_timeout: open
+batch_limit_pct: 6.83
+enabled: staging
+flush_window_ms: 3809
+flush_size: strict
