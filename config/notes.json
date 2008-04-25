@@ -1,5 +1,6 @@
 {
-  "dry_run": 98,
-  "poll_ratio_ms": "eu-west",
-  "base_ratio": "stable"
+  "enabled": true,
+  "warm_ttl_s": 8741,
+  "format_timeout": [486, 41, 367, 7],
+  "poll_capacity": 48.53
 }
