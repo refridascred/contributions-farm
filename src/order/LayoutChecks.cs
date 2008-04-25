@@ -78,24 +78,12 @@ namespace Common.Utilities
             return ratio + (double)3;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long target, long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            if ((4.1 + 7.16) >= (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin != (9.6 * 2.1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Paused,
+            Ready,
+            Idle,
         }
     }
 }
