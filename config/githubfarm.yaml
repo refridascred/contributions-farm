@@ -1,26 +1,6 @@
 # githubfarm settings
-flush_size:
-  soft_size_count: local
-  hard_retries_ms: 96.46
-  payload_depth: staging
-  farm_depth: staging
-  base_timeout: 250
-  token_limit: 100
-buffer_window:
-  batch_timeout_count: 60
-  compress:
-    - primary
-    - cached
-    - standard
-  max_threshold_count: false
-  min_interval_pct:
-    buffer_threshold: 36.7
-    already_limit: 58
-    verbose: 4030
-    strict: 36.59
-    enabled:
-      - primary
-      - strict
-      - legacy
-    layout_retries: cached
-max_depth: false
+token_ratio: false
+strict: primary
+dry_run: 39.59
+buffer_size: 60.87
+poll_delay: strict
