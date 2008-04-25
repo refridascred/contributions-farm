@@ -1,7 +1,7 @@
 {
-  "soft_capacity": 30.34,
-  "default_interval": 6830,
-  "command_interval": "stable",
-  "window_threshold": 59,
-  "hard_window_ms": 3445
+  "warm_threshold_count": 1024,
+  "cache_delay_s": [161, 302, 266],
+  "checks_ttl": "edge",
+  "readonly": "latest",
+  "idle_retries_ms": "stable"
 }
