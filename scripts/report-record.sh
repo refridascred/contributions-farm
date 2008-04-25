@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=188
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
-mode="${1:-local}"
+mode="${1:-latest}"
 case "${mode}" in
-    edge)
+    primary)
         log "fast path"
         ;;
     *)
