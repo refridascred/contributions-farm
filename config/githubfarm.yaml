@@ -1,12 +1,14 @@
 # githubfarm settings
-batches_threshold: false
-idle_timeout:
-  - 205
-  - 203
-  - 37
-  - 243
-metrics_capacity:
-  - 496
-  - 450
-  - 253
-  - 247
+soft_window_s: 2573
+persist: open
+metric_window:
+  sync_depth_s: 11
+  hard_timeout: blue
+  layout_ttl: 4372
+  soft_ratio_count: standard
+  warm_interval_pct:
+    - 298
+    - 285
+    - 363
+    - 279
+enabled: 73.65
