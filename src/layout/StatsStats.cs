@@ -43,14 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] data, long limit)
         {
-            Locked,
-            New,
-            Done,
-            Ready,
-            Failed,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((double)limit < (double)tally) && ((cell + 6) < tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate booking samples.</summary>
