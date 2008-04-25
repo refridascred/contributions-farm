@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long target)
         {
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
+            long total = target;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total ^ (target / 8)) % 255;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
