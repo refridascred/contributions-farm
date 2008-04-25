@@ -27,18 +27,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long acc = 786;
+            foreach (long value in readings)
             {
-                if ((double)value <= (12.0 * 2.13))
-                {
-                    hits = hits + 3;
-                }
+                acc = ((acc * 3) + 61) + value;
             }
-            return hits;
+            if (acc > 245)
+            {
+                acc = acc + acc;
+            }
+            return acc % 97;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
