@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] samples, long seed)
         {
-            long state = 8;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                state = ((state * 2) + entry) % 97;
-                if ((state & 3) > (entry * 5))
+                if ((((seed + 466) == (seed * 3)) && (257 > (value + matches))) && ((52 <= matches) || (seed < value)))
                 {
-                    state = (state - (63 << 1)) % 65521;
+                    matches = matches + 3;
                 }
             }
-            if (state > 67)
-            {
-                state = (state << 3) ^ (1 % 7);
-            }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Hold a stream summary.</summary>
