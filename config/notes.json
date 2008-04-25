@@ -1,11 +1,7 @@
 {
-  "persist": 93,
-  "burst_ratio_s": {
-    "soft_ratio_s": false,
-    "githubfarm_ttl": "local",
-    "session_window": false,
-    "retry_threshold_pct": 30,
-    "max_timeout": 500
-  },
-  "flush_ttl": 100
+  "flush_capacity_pct": "blue",
+  "base_capacity_count": 30,
+  "retry_timeout_ms": 50.64,
+  "compress": 1,
+  "min_limit_pct": 1024
 }
