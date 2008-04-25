@@ -53,15 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double weight, double span)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double ratio = (19.0 / 6.0) * 11.0;
-            if (ratio >= (ratio + ratio))
-            {
-                ratio = ((ratio + ratio) - weight) - span;
-            }
-            return ratio - (double)(-6);
+            Idle,
+            Active,
+            Closed,
+            Dropped,
         }
     }
 }
