@@ -16,22 +16,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] series, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] data)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((double)reading >= 2.83)
+                if (!((double)seen > (8.2 * 4.84)))
                 {
-                    count = (count + 1) - step;
+                    seen = (seen + 1) + entry;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
