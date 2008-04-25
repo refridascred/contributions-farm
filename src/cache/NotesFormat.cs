@@ -33,21 +33,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of route githubfarm readings.</summary>
-        public static long OverlapRouteGithubfarmCount(long[] samples)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 4;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((16.0 - 7.33) > (double)sample)
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result + (sample ^ 5);
+                    break;
                 }
+                result = (result - (result >> 3)) % 97;
             }
-            return tally;
+            return result % 97;
         }
     }
 }
