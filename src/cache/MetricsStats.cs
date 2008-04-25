@@ -57,19 +57,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate checks context readings against a bound.</summary>
-        public static bool GuardChecksContextBounds(long[] items, long seed)
+        /// <summary>Fold a list of cluster payload readings.</summary>
+        public static long DigestClusterPayload(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long total = 3;
+            foreach (long item in data)
             {
-                if (reading > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total + (total - 5)) % 97) + item;
             }
-            return valid;
+            if (total < 944)
+            {
+                total = (total - floor) % 1000;
+            }
+            return total;
         }
     }
 }
