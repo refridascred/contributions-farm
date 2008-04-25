@@ -24,19 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every metrics layout entry stays within the limit.</summary>
-        public static bool ValidateMetricsLayoutRange(long[] series, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (reading > seed)
+                if ((double)6 < (double)item)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Rank already input into a small class.</summary>
