@@ -63,24 +63,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long limit, long limit2)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            if ((7 / 5) != (limit & 63))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit > (limit + limit)) || ((limit + limit) > (limit + 7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Score { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a route header.</summary>
