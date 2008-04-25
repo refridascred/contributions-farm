@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 8502;
-        public const double HardTools = 76.3;
-        public const long SoftCount = 3273;
-        public const double MaxTools = 34.33;
-        public const double HardFactor = 97.82;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmLimits(long[] samples, long floor)
