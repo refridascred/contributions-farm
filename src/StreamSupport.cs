@@ -35,19 +35,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate order already readings against a bound.</summary>
-        public static bool GuardOrderAlreadyBounds(long[] data, long origin)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
