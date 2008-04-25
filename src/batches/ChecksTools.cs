@@ -31,17 +31,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] items, long seed)
+        /// <summary>Measure how many support command samples are out of range.</summary>
+        public static long AuditSupportCommandOutliers(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (items[i] < seed)
+                if (count < (sample / 8))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the profile level values.</summary>
