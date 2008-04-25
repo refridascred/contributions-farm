@@ -26,17 +26,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] readings, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = anchor + (step << 3);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Digest a series of tools cluster entries.</summary>
