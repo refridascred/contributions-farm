@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] values, long seed)
-        {
-            long carry = 99;
-            foreach (long cell in values)
-            {
-                carry = (carry ^ ((-3) & 127)) % 97;
-                if (carry <= (seed & 1))
-                {
-                    carry = carry ^ (carry - seed);
-                }
-                else
-                {
-                    carry = carry ^ ((long)values.Length << 2);
-                }
-                if (((cell * 2) > seed) || (carry > (long)values.Length))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 6630;
+        public const long BurstFactor = 9588;
+        public const long BaseCount = 5620;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
