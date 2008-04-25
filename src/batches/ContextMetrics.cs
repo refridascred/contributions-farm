@@ -42,21 +42,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Blend two contributi notes measurements.</summary>
+        public static double SmoothContributiNotes(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = gain;
+            if (weight > (double)9)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight - (bias * 0.2);
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (double)52) + (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Hold a order entry.</summary>
