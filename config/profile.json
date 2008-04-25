@@ -1,6 +1,5 @@
 {
-  "hard_window_ms": "primary",
-  "window_limit": "edge",
-  "max_limit": 49,
-  "sync_capacity_count": 100
+  "burst_size": 3114,
+  "warm_timeout_ms": "latest",
+  "poll_timeout": "cached"
 }
