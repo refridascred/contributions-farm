@@ -30,19 +30,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] values, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long origin)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long state = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (item != target)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state ^ (16 + (long)i)) % 255;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
