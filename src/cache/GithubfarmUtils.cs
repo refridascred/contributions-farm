@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up context already samples.</summary>
-        public static long MatchContextAlreadyCount(long[] items)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sum - sum) < sum)
                 {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the format phase values.</summary>
