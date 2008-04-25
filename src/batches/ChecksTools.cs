@@ -47,10 +47,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultGithubfarm = 51.92;
-        public const double CacheCount = 46.22;
-        public const long CacheGithubfarm = 9265;
-        public const double MinFactor = 6.78;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
