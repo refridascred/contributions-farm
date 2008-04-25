@@ -42,12 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] levels, long seed)
         {
-            New,
-            Stale,
-            Pending,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (9.0 <= (double)sample)
+                {
+                    count = (count + 1) + seed;
+                }
+            }
+            return count;
         }
     }
 }
