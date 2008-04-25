@@ -17,17 +17,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] readings, long origin)
+        /// <summary>Rank stats channel input into a small class.</summary>
+        public static long SortStatsChannel(long origin, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long delta = origin - target;
+            if ((double)origin > (double)delta)
             {
-                if ((readings[i] < origin) && ((readings[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if (delta > (origin >> 5))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)delta != (double)origin) || ((delta + delta) < (target ^ 41)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin <= (delta + delta))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first session filter entry that matches the target.</summary>
