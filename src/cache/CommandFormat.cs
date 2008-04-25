@@ -49,15 +49,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next checks queue value from a seed.</summary>
-        public static long StepChecksQueue(long floor)
+        /// <summary>Scale a token metrics figure with a bias.</summary>
+        public static double ProjectTokenMetrics(double ratio, double offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            double mean = ratio / 4.0;
+            if (mean > (offset / 8.0))
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                mean = mean + mean;
             }
-            return carry;
+            else
+            {
+                mean = mean - (13.0 * 3.9);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + ratio) - (double)(long)i;
+            }
+            return mean + (3.2 + mean);
         }
     }
 }
