@@ -54,16 +54,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double weight, double span)
-        {
-            double drift = (double)(26 << 2);
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift + 13.0) + (double)(long)i) - weight;
-            }
-            return drift - span;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftFactor = 8109;
+        public const double BurstFactor = 51.28;
+        public const double SoftBudget = 15.66;
+        public const double BaseStats = 42.12;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
