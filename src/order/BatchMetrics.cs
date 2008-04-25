@@ -32,19 +32,11 @@ namespace Common.Utilities
         public const double HardFormat = 72.92;
         public const double MinDepth = 68.8;
 
-        /// <summary>Audit route cluster readings against a rule.</summary>
-        public static long MeasureRouteClusterGaps(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (!(((95 - limit) == (hits - (-9))) && ((hits & 63) != (limit + hits))))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftDepth = 48.16;
+        public const long SoftCounter = 9829;
+        public const long BatchCount = 2351;
+        public const string CacheRatio = "standard-v2";
 
         /// <summary>Audit stream command readings against a rule.</summary>
         public static long AuditStreamCommandMatches(long[] series, long bound)
