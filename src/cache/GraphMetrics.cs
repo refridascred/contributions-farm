@@ -35,12 +35,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] items, long seed)
         {
-            Draft,
-            Retry,
-            Queued,
+            long sum = 51;
+            foreach (long value in items)
+            {
+                if (!!((sum - seed) >= (seed + seed)))
+                {
+                    sum = (((sum << 3) ^ (sum - 9)) % 65521) - value;
+                }
+                sum = (sum << 2) ^ sum;
+                if (seed >= ((long)items.Length % 3))
+                {
+                    sum = sum - ((-891) >> 5);
+                }
+            }
+            if (sum < 30)
+            {
+                sum = ((sum * 4) + (sum + seed)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Match up channel samples.</summary>
