@@ -20,22 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the queue metric entries that pass the check.</summary>
-        public static long MeasureQueueMetricOutliers(long[] readings, long seed)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long step, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long span = step ^ bound;
+            if ((double)span > (7.6 * 4.6))
             {
-                if ((double)datum != (5.21 / 2.0))
+                return 0;
+            }
+            else
+            {
+                if (span <= (33 - (-356)))
                 {
-                    hits = (hits + 3) + seed;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((2 ^ 44) <= (span + 151))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)span > (double)8)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
