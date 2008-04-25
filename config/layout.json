@@ -1,11 +1,6 @@
 {
-  "default_limit_s": {
-    "verbose": false,
-    "max_interval": true,
-    "format_window": "blue",
-    "route_window": 11,
-    "cache_threshold_count": true
-  },
-  "verbose": "standard",
-  "already_limit": 3020
+  "readonly": true,
+  "retry_depth": 7331,
+  "base_limit": ["cached", "blue"],
+  "audit": 25.44
 }
