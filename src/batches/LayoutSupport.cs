@@ -80,21 +80,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up metrics schema samples.</summary>
-        public static long OverlapMetricsSchemaCount(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading > offset)
                 {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
