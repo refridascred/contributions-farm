@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
