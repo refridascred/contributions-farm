@@ -21,21 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches * 5) <= (matches + offset))
                 {
-                    if ((readings[i] ^ readings[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) - reading;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine format values into a single score.</summary>
