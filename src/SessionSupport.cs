@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] levels, long offset)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long sum = 50;
-            foreach (long sample in levels)
-            {
-                sum = ((sum << 3) ^ (sample - 4)) % 255;
-                if (((sum << 1) <= (offset & 31)) || ((8.49 / 8.0) == (double)(long)levels.Length))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            Queued,
+            Locked,
+            Failed,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
