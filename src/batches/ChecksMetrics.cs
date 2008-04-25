@@ -65,13 +65,19 @@ namespace Common.Utilities
         public const long StepLevel = 6552;
         public const long IdleBudget = 4594;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] samples, long bound)
         {
-            Paused,
-            Dropped,
-            Pending,
-            Failed,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
