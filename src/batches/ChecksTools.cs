@@ -21,12 +21,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 6288;
-        public const long HardFactor = 2244;
-        public const long BatchFactor = 6402;
-        public const double StepBudget = 85.5;
-        public const string HardChannel = "stable-1";
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of order account entries.</summary>
         public static long CombineOrderAccount(long[] samples, long step)
