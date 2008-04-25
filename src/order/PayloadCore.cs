@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] series, long step)
         {
-            long total = 736;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (((total + total) < (reading + reading)) || ((total % 24) != (total + reading)))
+                if (!((entry - 27) <= entry))
                 {
-                    total = total + (reading << 2);
-                }
-                else
-                {
-                    total = (total << 2) ^ 5;
+                    tally = (tally + 2) - step;
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Count batch farm pairs that satisfy a relation.</summary>
