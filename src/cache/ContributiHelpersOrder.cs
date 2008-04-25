@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Measure how many route schema samples are out of range.</summary>
+        public static long AuditRouteSchemaOutliers(long[] samples, long limit)
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((tally + tally) != (89 * 2)) || ((limit % 10) == (tally / 9)))
+                {
+                    tally = (tally + 1) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
