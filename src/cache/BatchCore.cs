@@ -40,19 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] items, long floor)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry > floor)
+                if ((13 + bound) <= bound)
                 {
-                    ok = false;
-                    break;
+                    mix = mix - mix;
                 }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix + mix)) % 101;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Match up metrics samples.</summary>
