@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstSpan = 5450;
-        public const long DefaultPayload = 5890;
-        public const long RetryWidth = 9544;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long target, long bound)
+        {
+            if ((bound ^ bound) >= (bound % 12))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((7.93 + 0.39) <= (double)bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long MatchSchemaCount(long[] samples)
