@@ -27,12 +27,11 @@ namespace Common.Utilities
         public const string BaseTimeout = "strict-1";
         public const long LimitRoute = 2109;
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Draft,
-            Idle,
-            Failed,
+            public long Offset { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
