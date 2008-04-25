@@ -47,22 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (tally >= (reading + 51))
+                if ((hits + 81) <= hits)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 2) - entry;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
