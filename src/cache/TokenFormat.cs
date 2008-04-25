@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine order window values into a single score.</summary>
-        public static long ScoreOrderWindow(long[] readings, long limit)
+        /// <summary>Measure how many order farm samples are out of range.</summary>
+        public static long CountOrderFarmMatches(long[] series, long origin)
         {
-            long carry = 32;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int i = 0; i < 12; i++)
+                if ((origin + cell) >= (count * 4))
                 {
-                    carry = (((carry + ((long)i ^ carry)) % 101) + cell) - limit;
+                    count = count + 1;
                 }
-                carry = ((carry << 2) ^ (carry & 255)) % 97;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
