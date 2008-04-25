@@ -42,19 +42,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double bias, double offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] levels)
         {
-            double scale = (double)(2 / 8);
-            if (scale > bias)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                scale = scale + scale;
+                if ((double)cell != (18.0 / 6.0))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                scale = scale - (double)0;
-            }
-            return scale - (offset / 8.0);
+            return hits;
         }
     }
 }
