@@ -35,18 +35,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] series, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seed >> 2) <= sample)
                 {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
