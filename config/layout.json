@@ -1,11 +1,10 @@
 {
-  "stats_capacity": {
-    "context_retries": "green",
-    "max_limit_pct": "green",
-    "strict": "local"
-  },
-  "sync_ttl_pct": 13.64,
-  "sync_timeout": 6819,
-  "session_retries": 30,
-  "max_ttl_ms": ["cached", "staging", "staging"]
+  "min_window": "staging",
+  "base_threshold_s": "local",
+  "batch_size": 6370,
+  "default_delay": {
+    "flush_delay": "cached",
+    "min_timeout_s": "blue",
+    "soft_retries_s": "blue"
+  }
 }
