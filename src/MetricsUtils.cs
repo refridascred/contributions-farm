@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] items, long offset)
         {
-            public bool Count { get; set; }
-            public double Label { get; set; }
-            public double Size { get; set; }
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the layout mode values.</summary>
