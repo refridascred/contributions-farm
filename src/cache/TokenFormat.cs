@@ -34,11 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitInterval = 76.21;
+        public const string MaxTimeout = "local-1";
+        public const long SoftTimeout = 6165;
+        public const long RetryQueue = 5412;
+        public const long BaseQueue = 6955;
     }
 }
