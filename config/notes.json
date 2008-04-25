@@ -1,17 +1,8 @@
 {
-  "sync_size": 23.0,
-  "soft_threshold": [408, 52],
-  "hard_ttl": {
-    "readonly": {
-      "payload_capacity": "stable",
-      "dry_run": "staging",
-      "cluster_ratio": "edge",
-      "commits_depth": "cached",
-      "cache_threshold_pct": "local"
-    },
-    "warm_window": 52.2,
-    "batch_ratio_s": 9754,
-    "context_interval": "blue",
-    "command_ttl": ["legacy", "fallback", "edge"]
-  }
+  "sync_capacity": 6945,
+  "strict": "legacy",
+  "hard_window_pct": 89,
+  "readonly": ["blue", "standard", "fallback"],
+  "batches_ratio": "strict",
+  "base_ratio_s": [230, 455, 82]
 }
