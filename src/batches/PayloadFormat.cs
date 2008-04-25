@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a route githubfarm value against two limits.</summary>
-        public static long ClassifyRouteGithubfarm(long seed, long offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double bias, double bias2)
         {
-            if ((seed - seed) >= (offset * 2))
+            double ratio = bias;
+            if (ratio >= ratio)
             {
-                return 5;
+                ratio = ratio - (double)50;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (574 < (seed + 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((10.0 / 7.0) != (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                ratio = (ratio - (bias2 / 9.0)) + (double)(long)i;
             }
+            return ratio - bias2;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
