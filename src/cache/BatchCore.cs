@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] readings)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((value & 255) > count)
+                {
+                    count = count + 3;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
