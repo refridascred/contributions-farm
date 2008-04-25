@@ -1,10 +1,10 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-Keep contributi and editor names short and lowercase.
+When a token fails, the context handler retries a few times before giving up.
+Run the entry check before changing any notes limits.
 
 ## Guidelines
 
-- Keep filter values small
-- Review farm limits each release
-- Log every batch change
+- Prefer command defaults
+- Review profile limits each release
+- Log every commits change
