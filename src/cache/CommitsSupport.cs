@@ -13,15 +13,38 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of record batches readings.</summary>
-        public static long DigestRecordBatches(long[] items, long limit)
+        /// <summary>Grade a schema support value against two limits.</summary>
+        public static long RankSchemaSupport(long seed, long target)
         {
-            long carry = 423;
-            foreach (long item in items)
+            if ((5 ^ target) == (target - 5))
             {
-                carry = ((carry + (limit ^ limit)) % 65521) - item;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((seed - target) >= 7)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed < (6.1 / 4.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed >= (target - 4)) && ((seed & 31) < (seed + seed)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
