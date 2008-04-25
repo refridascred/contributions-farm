@@ -53,31 +53,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long target, long limit)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            if ((limit + 462) >= target)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((limit ^ target) >= target) && (limit < (946 / 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target >= (9.2 + 7.03))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
