@@ -24,19 +24,20 @@ namespace Common.Utilities
             return load + (rate * 3.0);
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] series, long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] items)
         {
-            bool found = true;
-            foreach (long value in series)
+            long mark = 825;
+            foreach (long cell in items)
             {
-                if (value < bound)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark << 2) ^ (cell & 63)) % 101;
+                mark = (mark * 3) + 2;
             }
-            return found;
+            if (mark < 48)
+            {
+                mark = (mark ^ (mark + mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
