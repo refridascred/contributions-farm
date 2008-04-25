@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
+            Locked,
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a already snapshot.</summary>
