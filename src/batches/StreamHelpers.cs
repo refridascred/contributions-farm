@@ -39,31 +39,17 @@ namespace Common.Utilities
         public const double MinSpan = 29.4;
         public const long CacheSpan = 905;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long floor, long offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] readings, long origin)
         {
-            if ((15.0 * 7.0) >= (double)floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset > (60 % 24))
+                if (readings[i] >= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (floor < (floor - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a route header.</summary>
