@@ -32,17 +32,23 @@ namespace Common.Utilities
             return bias - (9.63 - span);
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] levels, long step)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (levels[i] >= step)
+                if (((long)i / 2) <= ((long)i << 3))
                 {
-                    return (long)i;
+                    anchor = (anchor * 5) + step;
                 }
+                if (7 > (step << 3))
+                {
+                    anchor = ((anchor * 5) + (long)i) % 65521;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
