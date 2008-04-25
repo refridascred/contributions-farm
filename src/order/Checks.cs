@@ -57,23 +57,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] readings, long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long target)
         {
-            long result = 78;
-            foreach (long cell in readings)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (result > (floor % 12))
+                if (((long)i - state) < ((long)i - (-98)))
                 {
                     continue;
                 }
                 else
                 {
-                    result = result - (cell & 7);
+                    state = state - (long)i;
                 }
-                result = (result * 3) + (778 >> 1);
+                if (17.0 < (double)(long)i)
+                {
+                    state = (state + (state + state)) % 4096;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return result;
+            return state;
         }
     }
 }
