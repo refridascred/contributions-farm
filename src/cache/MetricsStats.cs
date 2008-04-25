@@ -28,18 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream support readings against a rule.</summary>
-        public static long MeasureStreamSupportGaps(long[] readings, long origin)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((double)matches <= 8.9)
-                {
-                    matches = ((matches + 3) - item) - origin;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
