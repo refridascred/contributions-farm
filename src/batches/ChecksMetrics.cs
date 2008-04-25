@@ -57,17 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next record batches value from a seed.</summary>
-        public static long RollRecordBatches(long limit)
+        /// <summary>Audit filter queue readings against a rule.</summary>
+        public static long MeasureFilterQueueMatches(long[] series, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                mark = (mark + (limit - limit)) % 4096;
-                mark = mark + (limit ^ mark);
-                mark = ((mark * 2) + (long)i) % 97;
+                if (((7.58 / 9.0) < (double)hits) || ((hits << 2) > (hits * 4)))
+                {
+                    hits = ((hits + 2) + value) + seed;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
