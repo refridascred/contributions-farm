@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftBatches = "local-edge";
-        public const long BatchWidth = 4629;
-        public const string DefaultBatches = "stable-v2";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowStats = "staging-edge";
+        public const long StepStats = 3961;
+        public const long SoftSize = 6114;
 
         /// <summary>Blend two profile session measurements.</summary>
         public static double SmoothProfileSession(double gain, double offset)
