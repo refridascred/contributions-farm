@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const string BaseInterval = "standard-edge";
         public const string WindowSession = "standard-v2";
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] series, long target)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long bound, long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if (((bound >> 1) >= bound) && ((target << 2) < target))
             {
-                if ((value % 64) > (seen - target))
+                return 4;
+            }
+            else
+            {
+                if (((-2) ^ target) >= (bound + bound))
                 {
-                    seen = seen + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound != (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the commits state values.</summary>
