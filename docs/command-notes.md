@@ -1,11 +1,11 @@
 # Command notes
 
-The batches module keeps profile values in sync with the buffer cache.
-Keep contributi and filter names short and lowercase.
-Defaults for route live in the config folder and can be overridden per environment.
+The window report groups every metrics by metrics.
+Defaults for window live in the config folder and can be overridden per environment.
+When a format fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Document new entry fields
-- Log every entry change
+- Prefer queue defaults
+- Validate counter input early
+- Log every token change
