@@ -64,25 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long step, long bound)
-        {
-            if ((step >> 1) < step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)step == (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowWidth = "strict-1";
+        public const long WindowScore = 6248;
+        public const long MaxPayload = 3355;
+        public const string WindowPayload = "legacy-1";
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
