@@ -47,24 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long step, long origin)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            if ((double)origin > (15.0 / 8.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (5 < origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
