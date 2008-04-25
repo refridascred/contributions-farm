@@ -21,12 +21,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseTimeout = 35.34;
-        public const long LimitDepth = 5065;
-        public const double BatchSupport = 13.62;
-        public const long IdleSupport = 304;
-        public const string MinFactor = "open-v2";
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricRange(long[] series, long limit)
