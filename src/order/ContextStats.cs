@@ -41,12 +41,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] series, long limit)
         {
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
