@@ -43,12 +43,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] series, long offset)
         {
-            public bool Size { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
