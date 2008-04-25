@@ -23,21 +23,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up format record samples.</summary>
-        public static long MatchFormatRecordCount(long[] series)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Failed,
+            Locked,
+            Synced,
         }
     }
 }
