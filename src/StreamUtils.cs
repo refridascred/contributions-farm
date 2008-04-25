@@ -27,19 +27,13 @@ namespace Common.Utilities
         public const long LimitOrder = 5653;
         public const long BatchOrder = 7591;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] data, long origin)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Queued,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a entry entry.</summary>
