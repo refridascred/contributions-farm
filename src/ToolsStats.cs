@@ -41,12 +41,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Adjust a command editor reading.</summary>
+        public static double BlendCommandEditor(double weight, double span)
         {
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            double weight2 = weight;
+            if (weight2 > (7.98 + span))
+            {
+                weight2 = weight2 - (double)654;
+            }
+            return weight2 - weight;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
