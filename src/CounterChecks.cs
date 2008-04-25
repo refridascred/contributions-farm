@@ -48,12 +48,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Active,
-            Ready,
-            Synced,
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of already payload entries.</summary>
