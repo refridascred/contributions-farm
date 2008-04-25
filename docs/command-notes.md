@@ -1,15 +1,11 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-The schema report groups every route by session.
-Use batches settings to tune how often already data is refreshed.
-
-The token report groups every session by commits.
-Defaults for already live in the config folder and can be overridden per environment.
+Each filter is validated before it reaches the filter queue.
+Use batch settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Review command limits each release
-- Keep filter values small
-- Log every order change
+- Log every commits change
+- Document new filter fields
+- Review format limits each release
 - Validate stream input early
