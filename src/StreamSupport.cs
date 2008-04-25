@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] readings)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits & 3) < (sample + 722))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            New,
+            Idle,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
