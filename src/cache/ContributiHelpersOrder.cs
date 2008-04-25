@@ -30,31 +30,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long floor, long limit)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            if ((double)limit != (double)734)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((1 / 3) != (limit / 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)101 > (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Paused,
+            Idle,
+            Done,
+            Ready,
         }
     }
 }
