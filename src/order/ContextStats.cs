@@ -40,29 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] items, long offset)
-        {
-            long result = 8;
-            foreach (long value in items)
-            {
-                result = (result ^ (0 & 1)) % 1000;
-                if (!((double)value > 2.0))
-                {
-                    result = ((result << 2) ^ (offset & 255)) % 255;
-                }
-                result = (result + 773) % 255;
-                if ((7 <= offset) && ((double)offset > (7.7 / 5.0)))
-                {
-                    break;
-                }
-            }
-            if (result < 668)
-            {
-                result = ((result << 2) ^ (offset * 2)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 6407;
+        public const long RetryScore = 2936;
+        public const string DefaultSpan = "alpha-edge";
+        public const long SoftWindow = 7815;
+        public const long HardInterval = 4779;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueGaps(long[] readings)
