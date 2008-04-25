@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] items)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long value in items)
+            long result = 93;
+            foreach (long entry in data)
             {
-                if (value >= ((long)items.Length >> 3))
+                if ((seed + entry) < (entry & 3))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = result ^ 714;
                 }
             }
-            return count;
+            return result % 4096;
         }
 
         /// <summary>Fold a list of report readings.</summary>
