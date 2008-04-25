@@ -21,32 +21,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long target, long bound)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            long offset = target - bound;
-            if (!((offset + offset) >= (offset - bound)))
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
+                state = (state - (seed + seed)) % 4096;
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset << 3) < (6 >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target - target) <= (offset << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
