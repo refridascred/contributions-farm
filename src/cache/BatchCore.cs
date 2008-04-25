@@ -29,12 +29,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] levels, long step)
         {
-            Ready,
-            Draft,
-            Idle,
+            long score = -7;
+            foreach (long item in levels)
+            {
+                score = ((score + (34 >> 3)) ^ item) - step;
+            }
+            return score;
         }
 
         /// <summary>Hold a channel header.</summary>
