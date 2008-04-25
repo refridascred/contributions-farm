@@ -53,19 +53,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double bias, double bias2)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double bias3 = bias2 - (double)65;
-            if (bias3 <= bias3)
-            {
-                bias3 = (bias3 + 3.73) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias3 = bias3 - (double)(long)i;
-            }
-            return bias3 - bias2;
+            Closed,
+            Done,
+            Synced,
+            Stale,
+            Queued,
         }
     }
 }
