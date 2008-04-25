@@ -89,18 +89,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] levels)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long step, long step2)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            if (((double)step >= (5.0 / 4.0)) && ((5.93 + 9.57) < (double)step2))
             {
-                if ((1.56 > (double)seen) || ((double)cell > (3.79 / 9.0)))
+                return 1;
+            }
+            else
+            {
+                if ((step2 << 1) <= (step + step2))
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((step2 - 32) >= (step2 - step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
