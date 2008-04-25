@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] items, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] data, long floor)
         {
-            long anchor = 857;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                anchor = (((anchor << 3) ^ (limit / 3)) % 1000) ^ item;
-                anchor = (anchor * 5) + 94;
+                if (sample > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (anchor < (-668))
-            {
-                anchor = (anchor + (756 + limit)) % 4096;
-            }
-            return anchor % 1000;
+            return ok;
         }
 
         /// <summary>Hold a route snapshot.</summary>
