@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double scale, double offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] readings, long origin)
         {
-            double load = scale;
-            if (load <= (scale - load))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                load = (load + (scale - 8.62)) + offset;
+                if (!(((3.79 - 5.1) == (double)value) && (origin < seen)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                load = load - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (5.2 * 4.0);
+            return seen;
         }
 
         /// <summary>Combine window values into a single score.</summary>
