@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 8534;
-        public const long DefaultSpan = 7293;
-        public const long BatchTimeout = 1617;
-        public const long BurstSupport = 1493;
+        /// <summary>Iterate the window editor series from a seed.</summary>
+        public static long DeriveWindowEditor(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = (anchor << 2) ^ 460;
+                anchor = (anchor ^ anchor) % 97;
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long MatchWindowCount(long[] readings)
