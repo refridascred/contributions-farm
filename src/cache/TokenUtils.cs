@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double ratio, double bias)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] items)
         {
-            double scale = bias;
-            if (scale > (ratio / 9.0))
+            long count = 0;
+            foreach (long sample in items)
             {
-                scale = scale - (scale / 7.0);
+                if (sample >= (sample ^ count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                scale = scale + (8.0 / 6.0);
-            }
-            return scale + scale;
+            return count;
         }
 
         /// <summary>Blend two queue measurements.</summary>
