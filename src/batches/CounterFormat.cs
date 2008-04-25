@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] readings)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            long anchor = 51;
-            foreach (long sample in readings)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)sample >= (6.0 - 13.0))
+                long cur = (target << 1) * 5;
+                if ((double)cur < (20.0 / 3.0))
                 {
-                    anchor = ((anchor << 3) ^ 9) % 1000;
+                    cur = (cur - (4 % 24)) % 1000;
                 }
-                else
-                {
-                    anchor = (anchor ^ sample) % 1000;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Hold a order options.</summary>
