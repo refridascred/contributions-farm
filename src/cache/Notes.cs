@@ -45,12 +45,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepWidth = 60.27;
-        public const double MaxCommits = 83.37;
-        public const long IdleFactor = 7214;
-        public const long MaxWidth = 98;
-        public const string WindowBudget = "latest-1";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "strict-v2";
+        public const double WindowScore = 37.49;
+        public const long MinSpan = 4137;
+        public const string DefaultWidth = "cached";
+        public const double LimitScore = 36.05;
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
