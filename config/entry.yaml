@@ -1,5 +1,21 @@
 # entry settings
-farm_interval: 2.51
-window_window: edge
-idle_capacity_s: staging
-audit: 7435
+poll_threshold: true
+idle_delay_s: 34.62
+layout_size:
+  max_ratio:
+    format_capacity: blue
+    session_capacity:
+      - 11
+      - 71
+      - 141
+    base_delay_ms: 1024
+  max_size_s:
+    poll_timeout_count: 76
+    enabled: green
+    dry_run:
+      - edge
+      - strict
+      - legacy
+    hard_window_pct: 90
+  max_depth: legacy
+  already_ttl: 100
