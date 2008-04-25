@@ -12,25 +12,12 @@ namespace Common.Utilities
         public const double CacheFilter = 88.0;
         public const long DefaultRatio = 7123;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long origin, long seed)
-        {
-            if ((seed + seed) != (origin / 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed - seed) < 48)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 5266;
+        public const string StepSession = "open";
+        public const string WindowWidth = "alpha";
+        public const string WindowScore = "latest-v2";
+        public const double IdleSpan = 81.54;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutGaps(long[] readings, long origin)
