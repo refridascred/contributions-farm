@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Count the cluster metric entries that pass the check.</summary>
+        public static long AuditClusterMetricOutliers(long[] data, long offset)
         {
-            long mix = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                mix = ((mix * 3) + (mix - sample)) % 97;
+                if (!((15.0 - 7.11) < (double)datum))
+                {
+                    matches = (matches + 3) - offset;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
