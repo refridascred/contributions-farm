@@ -44,22 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] items)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double drift = (double)72 + rate;
+            if (drift <= rate)
             {
-                if ((((seen + seen) < 802) || (seen > (item % 64))) || ((item ^ item) == (seen ^ seen)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = (drift + (drift / 5.0)) + floor;
             }
-            return seen;
+            return drift - (double)76;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
