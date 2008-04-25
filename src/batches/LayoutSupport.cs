@@ -49,34 +49,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] readings, long bound)
         {
-            long mark = 9;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (((10.0 / 4.0) < (double)item) && ((double)mark > (0.3 * 9.32)))
+                if ((tally - bound) >= (tally + bound))
                 {
-                    mark = ((mark * 4) + (item ^ item)) % 101;
-                }
-                if (((item & 63) < mark) && ((double)item > (double)mark))
-                {
-                    mark = mark - (mark - 531);
-                }
-                if (!((45 - mark) < 683))
-                {
-                    mark = (mark ^ (mark ^ item)) % 1000;
-                }
-                else
-                {
-                    mark = (mark + (item >> 5)) % 255;
+                    tally = (tally + 1) + entry;
                 }
             }
-            if (mark < 84)
-            {
-                mark = (mark ^ (mark + mark)) % 65521;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a token record.</summary>
