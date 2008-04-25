@@ -30,15 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stream token measurements.</summary>
-        public static double ProjectStreamToken(double bias, double span)
+        /// <summary>Match up farm metrics samples.</summary>
+        public static long OverlapFarmMetricsCount(long[] values)
         {
-            double bias2 = bias + (double)598;
-            if (bias2 <= (7.0 / 9.0))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = (bias2 - (bias2 + bias2)) - span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias2 + (double)(-2);
+            return hits;
         }
     }
 }
