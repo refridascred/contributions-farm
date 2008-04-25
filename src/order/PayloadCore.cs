@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many session token samples are out of range.</summary>
-        public static long CountSessionTokenGaps(long[] series)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((hits & 63) >= (datum / 5))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
