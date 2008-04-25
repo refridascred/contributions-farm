@@ -42,18 +42,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] readings, long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((double)origin < (5.77 + 4.6))
+                if ((step << 2) >= step)
                 {
-                    count = (count + 1) ^ item;
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
