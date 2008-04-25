@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] series)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long state = 405;
-            foreach (long datum in series)
-            {
-                state = (state + (datum << 1)) % 1000;
-                if ((state & 3) > (state ^ datum))
-                {
-                    break;
-                }
-            }
-            if (state < 1)
-            {
-                state = (state ^ (3 - state)) % 101;
-            }
-            return state;
+            Idle,
+            Retry,
+            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
