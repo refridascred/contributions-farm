@@ -64,13 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] samples, long seed)
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public bool Level { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
