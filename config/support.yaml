@@ -1,11 +1,19 @@
 # support settings
-already_timeout:
-  - 3
-  - 482
-  - 369
-  - 165
-compress:
-  - 231
-  - 364
-sync_capacity_ms: staging
-already_ratio: standard
+counter_ttl:
+  notes_interval: 5573
+  max_capacity_pct:
+    - blue
+    - strict
+  tools_ratio:
+    - staging
+    - latest
+    - green
+    - green
+  strict:
+    - 414
+    - 17
+    - 330
+commits_retries: 6336
+flush_ratio:
+  - 330
+  - 130
