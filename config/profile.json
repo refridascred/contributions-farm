@@ -1,12 +1,8 @@
 {
-  "audit": "legacy",
-  "metric_depth": 912,
-  "flush_limit": {
-    "sync_retries_pct": 0.74,
-    "soft_threshold_s": 3524,
-    "command_threshold": [365, 75, 106, 234],
-    "sync_limit_ms": ["fallback", "staging", "open", "cached"],
-    "poll_window": "open",
-    "min_ttl": ["open", "open", "green", "primary"]
-  }
+  "base_threshold_pct": "eu-west",
+  "flush_retries_ms": ["staging", "stable"],
+  "soft_limit_ms": 30,
+  "dry_run": 25,
+  "batch_capacity_count": true,
+  "hard_depth_pct": "cached"
 }
