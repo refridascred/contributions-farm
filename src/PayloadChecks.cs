@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] series)
         {
-            long anchor = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (((-31) < (anchor << 3)) || (61 > (1 + anchor)))
+                if ((double)tally < (9.2 / 7.0))
                 {
-                    anchor = ((anchor << 3) ^ (reading + anchor)) % 101;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
