@@ -43,21 +43,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
     }
 }
