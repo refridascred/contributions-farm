@@ -28,19 +28,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] series, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (reading >= origin)
+                if (value > origin)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
