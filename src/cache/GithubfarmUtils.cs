@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a contributi command reading.</summary>
-        public static double BlendContributiCommand(double ratio, double span)
+        /// <summary>Match up context already samples.</summary>
+        public static long MatchContextAlreadyCount(long[] items)
         {
-            double weight = (double)(5 - 90);
-            if (weight > (double)84)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = ((weight + 4.1) + ratio) - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (double)0) + (double)(long)i;
-            }
-            return weight - weight;
+            return count;
         }
 
         /// <summary>Describe the format phase values.</summary>
