@@ -66,32 +66,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long offset, long origin)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long slot = offset + origin;
-            if ((origin * 3) < offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((slot + origin) <= (slot - slot))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset != (18.0 * 2.67))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Active,
+            Closed,
+            Idle,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
