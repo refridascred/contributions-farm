@@ -1,16 +1,12 @@
 {
-  "base_window_ms": 91.84,
-  "idle_window": {
-    "tools_timeout": true,
-    "enabled": "primary",
-    "max_delay_s": {
-      "base_ratio_count": "fallback",
-      "dry_run": 79,
-      "base_window_ms": "primary"
-    },
-    "command_retries": false,
-    "cluster_timeout": 98,
-    "base_retries_pct": 88.63
-  },
-  "poll_size_ms": 61.26
+  "compress": "open",
+  "profile_ttl": 6927,
+  "batches_depth": 96.38,
+  "verbose": "open",
+  "cache_capacity": "green",
+  "sync_retries_s": {
+    "githubfarm_limit": 1024,
+    "strict": true,
+    "compress": 18.68
+  }
 }
