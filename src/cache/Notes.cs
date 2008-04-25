@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 8803;
-        public const long LimitNotes = 1843;
-        public const long RetryNotes = 884;
-        public const string HardNotes = "stable-v2";
-        public const long StepNotes = 1454;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Pending,
+            Active,
+            Done,
+            New,
+            Paused,
+        }
 
         /// <summary>Iterate the checks context series from a seed.</summary>
         public static long RollChecksContext(long step)
