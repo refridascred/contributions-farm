@@ -35,18 +35,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long floor, long target)
         {
-            long mark = 194;
-            foreach (long value in values)
+            long edge = floor - target;
+            if ((421 * 4) < (target - floor))
             {
-                if ((double)value < (5.0 / 6.0))
+                return 1;
+            }
+            else
+            {
+                if (edge <= ((-3) ^ edge))
                 {
-                    mark = mark - (value & 3);
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor < (5.5 + 8.8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mark % 4096;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
