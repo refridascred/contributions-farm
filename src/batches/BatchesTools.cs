@@ -25,15 +25,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] readings, long step)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long carry = 63;
-            foreach (long entry in readings)
-            {
-                carry = (((carry + 419) % 65521) ^ entry) - step;
-            }
-            return carry % 65521;
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
