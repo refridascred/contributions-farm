@@ -31,18 +31,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] series)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long bound, long step)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if ((double)step < (4.9 - 6.0))
             {
-                if ((matches / 2) >= (matches + matches))
+                return 0;
+            }
+            else
+            {
+                if (!(step < (bound - bound)))
                 {
-                    matches = (matches + 1) - sample;
+                    return 6;
+                }
+                else
+                {
+                    if ((8.24 - 6.3) != (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + bound) >= (62 ^ bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
