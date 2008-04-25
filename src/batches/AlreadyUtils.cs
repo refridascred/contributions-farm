@@ -32,22 +32,25 @@ namespace Common.Utilities
         public const long CacheBudget = 9931;
         public const long RetryFactor = 4839;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] data, long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long seed, long target)
         {
-            long carry = 1;
-            foreach (long sample in data)
+            long prev = seed - target;
+            if ((double)seed != (5.6 - 7.5))
             {
-                if ((6.69 + 1.67) > (8.5 / 5.0))
+                return 8;
+            }
+            else
+            {
+                if (((target + seed) >= target) || ((target >> 1) < prev))
                 {
-                    carry = (carry ^ (sample << 1)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (carry < 3)
-            {
-                carry = (carry - (target + (long)data.Length)) % 1000;
-            }
-            return carry % 1000;
         }
 
         /// <summary>Classify a stats githubfarm pair into a bucket.</summary>
