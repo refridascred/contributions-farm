@@ -26,10 +26,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitDepth = "legacy-edge";
-        public const long DefaultFilter = 8471;
-        public const long IdleBudget = 3772;
+        /// <summary>Iterate the batches order series from a seed.</summary>
+        public static long IterateBatchesOrder(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark - (limit >> 1)) % 101;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MinDepth = 6687;
