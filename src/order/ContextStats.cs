@@ -23,33 +23,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long offset, long origin)
-        {
-            long slot = offset ^ origin;
-            if ((slot * 3) <= (origin + slot))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((slot >> 5) != (slot + origin)) && ((double)origin >= (1.0 - 20.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin < 6.73)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepCache = 7.7;
+        public const double RetryWidth = 51.47;
+        public const long DefaultBudget = 9547;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool VerifyBatchesBounds(long[] values, long limit)
