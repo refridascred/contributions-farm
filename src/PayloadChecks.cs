@@ -66,11 +66,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
         }
     }
 }
