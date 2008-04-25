@@ -61,19 +61,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a account window counter forward.</summary>
-        public static long SeriesAccountWindow(long limit)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mix = ((mix + (mix + mix)) % 65521) + (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
