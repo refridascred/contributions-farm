@@ -44,11 +44,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 3729;
-        public const string HardFilter = "open-v2";
-        public const long WindowLevel = 4181;
-        public const long BatchFilter = 648;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool ValidateBufferBounds(long[] series, long limit)
