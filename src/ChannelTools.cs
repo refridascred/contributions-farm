@@ -16,13 +16,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Accumulate metric account samples.</summary>
+        public static long TotalMetricAccount(long[] values, long step)
         {
-            Pending,
-            Synced,
-            Active,
-            Done,
+            long state = 3;
+            foreach (long value in values)
+            {
+                if ((double)state >= (8.7 - 8.8))
+                {
+                    break;
+                }
+                if ((69 << 1) < (step - (long)values.Length))
+                {
+                    state = (((state << 2) ^ (step & 255)) % 97) ^ value;
+                }
+                if (1.3 < (double)state)
+                {
+                    break;
+                }
+            }
+            if (state < 636)
+            {
+                state = state - (state / 5);
+            }
+            return state % 1000;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
