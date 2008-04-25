@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double WindowRatio = 33.96;
         public const double WindowDepth = 78.76;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] items, long origin)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
