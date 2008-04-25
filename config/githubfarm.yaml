@@ -1,8 +1,13 @@
 # githubfarm settings
-tools_size:
-  - legacy
-  - blue
-  - green
-poll_window_count: true
-cache_window: 32.23
-poll_depth_count: 59.84
+audit: 4879
+idle_interval_pct: 3045
+commits_size:
+  - 372
+  - 214
+  - 436
+  - 240
+default_size:
+  - 265
+  - 273
+  - 47
+sync_window: eu-west
