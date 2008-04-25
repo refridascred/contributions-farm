@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long limit, long limit2)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] data, long bound)
         {
-            long edge = limit - limit2;
-            if ((edge << 3) < edge)
+            long acc = 247;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((176 + limit) < (limit2 % 2))
+                if ((double)sample <= (1.2 + 3.0))
                 {
-                    return 3;
+                    acc = ((acc ^ (12 + acc)) % 4096) - bound;
                 }
                 else
                 {
-                    if ((limit2 + edge) > (limit2 + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    acc = ((acc * 2) + (acc * 4)) % 65521;
                 }
             }
+            if (acc < 99)
+            {
+                acc = acc - 43;
+            }
+            return acc;
         }
 
         /// <summary>Describe the order kind values.</summary>
