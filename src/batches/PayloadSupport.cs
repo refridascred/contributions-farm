@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] items)
         {
-            New,
-            Closed,
-            Pending,
-            Dropped,
-            Paused,
+            long mix = 461;
+            foreach (long item in items)
+            {
+                if ((double)mix >= 0.36)
+                {
+                    mix = (((mix << 3) ^ (2 % 10)) % 1000) - item;
+                }
+                if (((3.1 + 16.0) > (double)mix) && (11.0 >= (double)mix))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
