@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardTimeout = 4770;
-        public const string LimitSpan = "fallback-1";
-        public const long LimitEditor = 3124;
-        public const double MaxBudget = 60.27;
+        /// <summary>Count the cache stream entries that pass the check.</summary>
+        public static long CountCacheStreamOutliers(long[] readings, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample << 2) != (origin >> 2)) && ((2.0 - 6.7) != (double)origin))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit payload contributi readings against a rule.</summary>
         public static long CountPayloadContributiGaps(long[] series, long floor)
