@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of farm command entries.</summary>
-        public static long DigestFarmCommand(long[] samples)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double weight, double bias)
         {
-            long sum = 20;
-            foreach (long value in samples)
-            {
-                if ((value > (value << 1)) || (value < (409 >> 5)))
-                {
-                    sum = (sum - (789 / 2)) % 4096;
-                }
-            }
-            return sum;
+            double drift = (double)(625 >> 3);
+            return (drift + weight) + bias;
         }
 
         /// <summary>Locate a command reading by value.</summary>
