@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] series, long target)
         {
-            long mark = 86;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((0.9 * 3.7) == (double)mark)
+                if ((double)reading < (7.0 - 9.0))
                 {
-                    mark = ((mark - (mark % 64)) % 101) ^ reading;
+                    matches = (matches + 1) - target;
                 }
             }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
