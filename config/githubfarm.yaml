@@ -1,14 +1,5 @@
 # githubfarm settings
-soft_window_s: 2573
-persist: open
-metric_window:
-  sync_depth_s: 11
-  hard_timeout: blue
-  layout_ttl: 4372
-  soft_ratio_count: standard
-  warm_interval_pct:
-    - 298
-    - 285
-    - 363
-    - 279
-enabled: 73.65
+default_depth_s: 60
+persist: staging
+readonly: staging
+strict: 68
