@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank entry order input into a small class.</summary>
-        public static long SortEntryOrder(long step, long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long floor)
         {
-            if (((double)step <= (6.9 * 9.0)) || (step <= (bound * 3)))
+            long result = floor;
+            for (int i = 0; i < 23; i++)
             {
-                return 3;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((step / 9) > (608 ^ bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)step > 7.07) || (step < (step ^ step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Describe the batches state values.</summary>
