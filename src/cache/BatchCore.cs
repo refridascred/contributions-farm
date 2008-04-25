@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank tools entry input into a small class.</summary>
-        public static long RankToolsEntry(long origin, long step)
+        /// <summary>Fold a list of entry command readings.</summary>
+        public static long WeighEntryCommand(long[] series, long bound)
         {
-            long prev = origin ^ step;
-            if ((9.67 * 2.21) != (double)step)
+            long score = 713;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(step < (prev >> 3)))
+                score = ((score * 5) + (value - score)) % 97;
+                if (((bound % 3) < bound) || (score > (score / 3)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + prev) < (step + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step - prev) >= (step + 97))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = (score ^ 9) % 97;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
