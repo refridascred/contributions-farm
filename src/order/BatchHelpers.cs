@@ -16,16 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                anchor = (anchor ^ (571 % 2)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                long offset = (carry << 3) - (limit + (long)i);
+                if (!(offset >= (limit >> 4)))
+                {
+                    carry = carry - (limit - limit);
+                    carry = (carry ^ (6 / 4)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Accumulate payload editor samples.</summary>
