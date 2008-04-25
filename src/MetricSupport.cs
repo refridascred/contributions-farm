@@ -13,11 +13,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 6837;
-        public const long SoftCommits = 1090;
-        public const double WindowDepth = 46.64;
-        public const double LimitCommits = 10.35;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Queued,
+            Active,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long LimitLevel = 9120;
