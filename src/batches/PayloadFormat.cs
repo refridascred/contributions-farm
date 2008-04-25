@@ -32,10 +32,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitRecord = "open-edge";
-        public const string DefaultRecord = "open-1";
-        public const long DefaultCount = 6614;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Synced,
+            Failed,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenGaps(long[] items, long origin)
