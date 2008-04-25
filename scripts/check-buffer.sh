@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary legacy latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=38
+log "limit is ${BUFFER_LIMIT}"
