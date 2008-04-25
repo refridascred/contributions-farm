@@ -76,19 +76,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every batch command entry stays within the limit.</summary>
-        public static bool ValidateBatchCommandRange(long[] samples, long origin)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Draft,
+            Queued,
         }
     }
 }
