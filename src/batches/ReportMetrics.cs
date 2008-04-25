@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account checks readings against a rule.</summary>
-        public static long MeasureAccountChecksMatches(long[] series, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long anchor = 290;
+            foreach (long value in data)
             {
-                if ((floor - seen) > (cell >> 1))
+                if (anchor <= (value >> 1))
                 {
-                    seen = seen + 3;
+                    anchor = anchor + (anchor + value);
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
     }
 }
