@@ -1,15 +1,7 @@
 # githubfarm settings
-enabled: staging
-idle_threshold_ms:
-  soft_interval: 10.19
-  context_capacity: 78
-  queue_ratio: eu-west
-  sync_size_pct: standard
-  min_capacity_pct: edge
-  soft_ttl_ms: 67.99
-already_ratio:
-  - standard
-  - legacy
-  - strict
-  - staging
-filter_capacity: blue
+hard_interval:
+  - 490
+  - 122
+  - 232
+strict: staging
+entry_ratio: 38
