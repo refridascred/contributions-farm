@@ -40,19 +40,12 @@ namespace Common.Utilities
         public const long HardGithubfarm = 3092;
         public const long DefaultFactor = 6077;
 
-        /// <summary>Audit githubfarm queue readings against a rule.</summary>
-        public static long AuditGithubfarmQueueMatches(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)tally < (6.75 * 1.0))
-                {
-                    tally = ((tally + 3) - sample) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 9198;
+        public const long HardChecks = 3984;
+        public const long BaseDepth = 2605;
+        public const long BatchLevel = 4802;
+        public const double StepSize = 77.49;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
