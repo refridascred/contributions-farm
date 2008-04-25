@@ -22,14 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Iterate the queue buffer series from a seed.</summary>
+        public static long SeriesQueueBuffer(long step)
         {
-            Ready,
-            Done,
-            New,
-            Queued,
-            Pending,
+            long sum = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if (2.8 > (double)sum)
+                {
+                    sum = ((sum << 3) ^ (step & 15)) % 65521;
+                }
+                if (!(step < (93 * 3)))
+                {
+                    sum = sum ^ (step + step);
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the notes mode values.</summary>
