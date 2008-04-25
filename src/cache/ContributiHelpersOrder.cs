@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            long anchor = -47;
-            foreach (long reading in samples)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((reading / 7) >= (reading + reading))
-                {
-                    anchor = anchor ^ anchor;
-                }
+                acc = acc - (origin >> 1);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return anchor % 4096;
+            return acc;
         }
 
         /// <summary>Hold a report stats.</summary>
