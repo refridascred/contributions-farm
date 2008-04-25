@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 9680;
-        public const long CacheCount = 1217;
-        public const double RetryRecord = 55.26;
-        public const long BatchRecord = 7772;
+        /// <summary>Count the format batches entries that pass the check.</summary>
+        public static long TallyFormatBatchesMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (hits >= entry)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
