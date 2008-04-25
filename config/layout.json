@@ -1,20 +1,7 @@
 {
-  "cluster_depth": [237, 355, 323],
-  "stream_depth": 37,
-  "max_depth": 30,
-  "context_ratio": {
-    "session_limit": [32, 159, 278, 112],
-    "warm_ttl_pct": {
-      "max_depth_ms": true,
-      "hard_delay": false,
-      "batches_window": 49,
-      "readonly": 5.66
-    },
-    "channel_retries": ["edge", "strict"],
-    "cache_window_s": false,
-    "batch_limit": "stable",
-    "support_limit": 7229
-  },
-  "max_ttl": 6,
-  "retry_capacity_ms": "eu-west"
+  "max_retries_pct": "edge",
+  "batch_interval_pct": 21,
+  "cache_depth": true,
+  "sync_limit_s": 4307,
+  "already_retries": 45.01
 }
