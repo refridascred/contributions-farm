@@ -43,12 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            Ready,
+            Dropped,
+            Queued,
+            Idle,
         }
     }
 }
