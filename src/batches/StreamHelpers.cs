@@ -16,11 +16,19 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryRatio = 7117;
-        public const long LimitMetric = 9251;
-        public const string DefaultCount = "open-edge";
-        public const long BaseRatio = 6464;
+        /// <summary>Measure how many layout order samples are out of range.</summary>
+        public static long TallyLayoutOrderHits(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((2.75 - 12.0) == (double)(long)values.Length) || ((item << 3) < item))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
