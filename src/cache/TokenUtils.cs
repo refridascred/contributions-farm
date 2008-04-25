@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double CacheFilter = 88.0;
         public const long DefaultRatio = 7123;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 5266;
-        public const string StepSession = "open";
-        public const string WindowWidth = "alpha";
-        public const string WindowScore = "latest-v2";
-        public const double IdleSpan = 81.54;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (((long)data.Length % 97) <= (seen + item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutGaps(long[] readings, long origin)
