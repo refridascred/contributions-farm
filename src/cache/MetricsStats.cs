@@ -29,18 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] readings, long origin)
+        /// <summary>Audit stream support readings against a rule.</summary>
+        public static long MeasureStreamSupportGaps(long[] readings, long origin)
         {
-            long count = 0;
+            long matches = 0;
             foreach (long item in readings)
             {
-                if (!(((double)origin == (3.1 - 7.2)) && ((9.63 * 11.0) >= (double)origin)))
+                if ((double)matches <= 8.9)
                 {
-                    count = (count + 1) + item;
+                    matches = ((matches + 3) - item) - origin;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
