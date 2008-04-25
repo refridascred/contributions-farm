@@ -38,21 +38,31 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long origin, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((19.0 + 7.96) < (double)step) || ((step - 9) <= step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((origin - origin) > step) || ((double)origin == (double)step))
                 {
-                    if ((levels[i] + levels[j]) == 7)
+                    return 4;
+                }
+                else
+                {
+                    if (((24 + origin) < (origin ^ 979)) || ((step + step) >= (step >> 5)))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next checks layout value.</summary>
