@@ -61,12 +61,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Idle,
-            Paused,
-            Stale,
+            Failed,
+            Draft,
+            Closed,
         }
     }
 }
