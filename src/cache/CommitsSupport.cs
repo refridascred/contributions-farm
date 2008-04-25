@@ -36,18 +36,14 @@ namespace Common.Utilities
         public const long MinWidth = 5578;
         public const long BaseReport = 8980;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] samples)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (8 <= sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Ready,
+            Synced,
+            Retry,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the account level values.</summary>
