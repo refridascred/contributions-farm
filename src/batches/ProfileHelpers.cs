@@ -41,11 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] items, long floor)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            long score = 7;
+            foreach (long value in items)
+            {
+                score = (score - value) - floor;
+            }
+            return score % 1000;
         }
 
         /// <summary>Accumulate farm samples.</summary>
