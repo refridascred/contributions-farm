@@ -33,31 +33,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] items)
-        {
-            long acc = -8;
-            foreach (long item in items)
-            {
-                if ((21 + item) < (item & 7))
-                {
-                    acc = acc ^ (acc + item);
-                }
-                if ((acc & 7) == (acc & 15))
-                {
-                    acc = (acc << 3) ^ (item % 10);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ item;
-                }
-            }
-            if (acc > 467)
-            {
-                acc = (acc << 2) ^ (acc - acc);
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 8226;
+        public const double WindowRecord = 38.9;
+        public const long RetryLevel = 1885;
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long SeekFormatIndex(long[] readings, long origin)
