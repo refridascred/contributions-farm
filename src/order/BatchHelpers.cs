@@ -12,21 +12,31 @@ namespace Common.Utilities
         public const long CacheFactor = 8055;
         public const long BaseWindow = 6817;
 
-        /// <summary>Compare every pair of counter schema readings.</summary>
-        public static long PairCounterSchemaCount(long[] values)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long floor, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((bound - 152) >= (floor / 2)) || ((bound & 127) <= (floor * 5)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound <= (7.5 * 2.27))
                 {
-                    if ((values[i] - values[j]) == 7)
+                    return 0;
+                }
+                else
+                {
+                    if ((3 + floor) >= (floor + floor))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
