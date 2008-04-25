@@ -30,12 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Stale,
-            Closed,
-            Failed,
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
