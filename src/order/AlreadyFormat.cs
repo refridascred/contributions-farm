@@ -34,39 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long floor, long offset)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long bound = floor ^ offset;
-            if ((bound < (floor % 100)) && ((floor ^ 997) >= (offset * 5)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor & 15) >= (bound >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound + floor) >= (floor + 473)) && ((double)bound >= 3.22))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound % 16) < offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
