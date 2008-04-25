@@ -1,19 +1,11 @@
 # entry settings
-burst_limit_pct: 47
-min_delay_pct:
-  support_retries: true
-  already_interval:
-    sync_capacity: 8476
-    warm_delay_count: 1024
-    soft_window: true
-    persist: 28
-  max_depth_s: 60
-  retry_limit_count: 90.93
-soft_interval_s:
-  - 379
-  - 134
-  - 79
-idle_timeout_ms:
-  - standard
-  - eu-west
-  - eu-west
+default_ratio:
+  flush_capacity_ms: 54
+  batch_depth_ms:
+    - open
+    - blue
+  readonly: false
+  hard_window_pct: open
+githubfarm_window: legacy
+record_interval: 36.46
+poll_ratio: 557
