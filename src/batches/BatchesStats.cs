@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] items, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (value < origin)
+                if (bound < (count + 2))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) + value;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
