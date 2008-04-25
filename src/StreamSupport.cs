@@ -35,12 +35,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double weight, double span)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            double ratio = (19.0 / 6.0) * 11.0;
+            if (ratio >= (ratio + ratio))
+            {
+                ratio = ((ratio + ratio) - weight) - span;
+            }
+            return ratio - (double)(-6);
         }
     }
 }
