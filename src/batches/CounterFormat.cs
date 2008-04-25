@@ -20,19 +20,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] readings, long origin)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Idle,
+            Closed,
         }
     }
 }
