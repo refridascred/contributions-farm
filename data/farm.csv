@@ -1,7 +1,10 @@
-id,region,level
-1,75.7,571
-2,78.42,67.42
-3,blue,blue
-4,12.49,edge
-5,63.58,70
-6,46.8,strict
+id,label,ratio
+1,edge,74
+2,552,blue
+3,28.07,889
+4,704,67.81
+5,510,standard
+6,962,latest
+7,163,570
+8,strict,694
+9,local,edge
