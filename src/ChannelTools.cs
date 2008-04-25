@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the buffer already entries that pass the check.</summary>
-        public static long MeasureBufferAlreadyOutliers(long[] samples, long seed)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5.0 * 5.96) < (double)count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 2) - sample) + seed;
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
