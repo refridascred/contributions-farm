@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] series, long limit)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long seed, long origin)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            if (((seed + seed) == (origin ^ (-1))) || ((double)seed >= (3.09 + 4.06)))
             {
-                if (sample < limit)
+                return 5;
+            }
+            else
+            {
+                if ((389 / 3) >= (origin / 4))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)origin > (18.0 / 2.0)) || ((double)origin < 5.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin ^ seed) < (41 + seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the commits level values.</summary>
