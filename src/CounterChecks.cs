@@ -94,10 +94,31 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardScore = 4135;
-        public const double WindowFilter = 51.91;
-        public const double MinFilter = 65.38;
-        public const double LimitFilter = 69.71;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long offset, long target)
+        {
+            if (((target - target) >= target) || (629 > (offset + offset)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target * 2) > target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target < (39 >> 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
