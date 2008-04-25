@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Retry,
-            Paused,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 9763;
+        public const string MaxBudget = "primary";
+        public const long BaseToken = 8304;
+        public const long HardCount = 6696;
+        public const long SoftTimeout = 2454;
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
