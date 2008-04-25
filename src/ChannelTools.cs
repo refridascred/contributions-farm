@@ -16,31 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long limit, long floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            if ((floor & 15) <= 76)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((872 + floor) <= floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit * 5) == (floor - limit)) && ((double)limit != (12.0 / 4.0)))
+                    if ((readings[i] - readings[j]) < 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
