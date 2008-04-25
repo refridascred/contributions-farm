@@ -23,19 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a record context figure with a bias.</summary>
-        public static double SmoothRecordContext(double ratio, double span)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] series, long origin)
         {
-            double drift = (double)(996 - 70);
-            if (drift < 7.47)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - ratio) + span;
+                if ((series[i] == origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (5.0 * 3.0)) + (double)(long)i;
-            }
-            return drift + 5.1;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
