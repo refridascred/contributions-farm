@@ -24,19 +24,13 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Check that every stream graph entry stays within the limit.</summary>
-        public static bool VerifyStreamGraphBounds(long[] data, long offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a tools entry counter forward.</summary>
