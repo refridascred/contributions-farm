@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 6149;
-        public const string BatchRecord = "cached-1";
-        public const string BatchInterval = "latest-1";
-        public const string BaseCount = "stable-edge";
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
