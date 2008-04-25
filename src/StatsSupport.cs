@@ -20,20 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] values)
-        {
-            long sum = 60;
-            foreach (long item in values)
-            {
-                sum = (((sum * 2) + (sum % 7)) % 101) ^ item;
-            }
-            if (sum > 255)
-            {
-                sum = (sum - (sum << 1)) % 4096;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 2448;
+        public const long CacheToken = 9843;
+        public const double StepToken = 30.84;
+        public const long LimitToken = 675;
+        public const long MinToken = 3078;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
