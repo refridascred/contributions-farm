@@ -1,6 +1,6 @@
 {
-  "sync_retries_count": 64.21,
-  "audit": [375, 468, 71, 153],
-  "flush_ratio": ["cached", "legacy", "latest"],
-  "burst_capacity": 4
+  "payload_retries": "primary",
+  "default_size_s": "legacy",
+  "notes_window": "fallback",
+  "readonly": false
 }
