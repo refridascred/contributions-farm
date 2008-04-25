@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long total = 668;
-            foreach (long reading in data)
-            {
-                total = total - total;
-                if ((reading - reading) >= (831 << 3))
-                {
-                    total = total + reading;
-                }
-            }
-            if (total < 60)
-            {
-                total = ((total * 3) + (total & 1)) % 65521;
-            }
-            return total;
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Match up batches samples.</summary>
