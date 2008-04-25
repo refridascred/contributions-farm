@@ -15,26 +15,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] data)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long limit, long step)
         {
-            long total = -1;
-            foreach (long reading in data)
+            long gap = limit - step;
+            if (((gap & 7) <= (39 - gap)) || ((limit + 8) < (step / 5)))
             {
-                for (int i = 0; i < 8; i++)
+                return 6;
+            }
+            else
+            {
+                if (!((double)6 > (double)step))
                 {
-                    total = ((total ^ 483) % 4096) - (long)i;
+                    return 5;
                 }
-                if ((double)total < (double)37)
+                else
                 {
-                    total = (total << 2) ^ reading;
-                }
-                if (reading > (reading >> 1))
-                {
-                    break;
+                    return 4;
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Hold a account entry.</summary>
