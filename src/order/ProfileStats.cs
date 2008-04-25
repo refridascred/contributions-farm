@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] data, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if ((4.16 / 2.0) != (double)cell)
+                {
+                    seen = (seen + 2) + bound;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Roll a token counter forward.</summary>
