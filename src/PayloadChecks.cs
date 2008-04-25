@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] series)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long origin, long origin2)
         {
-            long acc = 77;
-            foreach (long datum in series)
+            long slot = origin + origin2;
+            if ((398 & 255) != (origin + 0))
             {
-                if (4.42 >= (double)datum)
+                return 5;
+            }
+            else
+            {
+                if ((slot + slot) > (50 - origin2))
                 {
-                    acc = acc - acc;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Hold a stream summary.</summary>
