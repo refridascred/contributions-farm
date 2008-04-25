@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long limit, long bound)
-        {
-            long slot = limit ^ bound;
-            if (!((limit << 3) < (bound + bound)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound << 2) > (slot * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit / 7) > (slot * 5)) && ((double)slot == (10.0 + 6.8)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "open-v2";
+        public const string StepBatch = "stable";
+        public const long BaseInterval = 5546;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string BaseGithubfarm = "fallback-edge";
