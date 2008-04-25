@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstSpan = 270;
+        public const string BatchSpan = "open-edge";
+        public const long SoftSpan = 3785;
+        public const long StepDepth = 9653;
+        public const double DefaultProfile = 64.8;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long HardInterval = 1771;
