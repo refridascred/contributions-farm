@@ -73,26 +73,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine githubfarm token values into a single score.</summary>
-        public static long WeighGithubfarmToken(long[] samples, long floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            long mark = 19;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((item - floor) == (item + floor)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark - (floor * 4)) % 101;
-                }
-                else
-                {
-                    mark = mark + mark;
+                    if ((data[i] + data[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark < 9)
-            {
-                mark = (mark + mark) % 101;
-            }
-            return mark;
+            return hits;
         }
     }
 }
