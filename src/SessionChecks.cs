@@ -41,18 +41,18 @@ namespace Common.Utilities
             return rate2 - 3.0;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] readings, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long total = 870;
+            foreach (long item in data)
             {
-                if (tally <= datum)
+                if (9.5 < (double)origin)
                 {
-                    tally = (tally + 2) + target;
+                    total = (((total << 2) ^ (total * 4)) % 255) ^ item;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the already class values.</summary>
