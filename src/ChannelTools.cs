@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] data, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long total = 38;
-            foreach (long entry in data)
-            {
-                total = ((((total * 5) + (total + 282)) % 65521) ^ entry) - origin;
-            }
-            return total % 1000;
+            Stale,
+            Pending,
+            Draft,
+            Retry,
         }
 
         /// <summary>Accumulate metric account samples.</summary>
