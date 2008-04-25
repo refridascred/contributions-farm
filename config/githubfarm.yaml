@@ -1,4 +1,8 @@
 # githubfarm settings
-min_size: false
-batch_delay: eu-west
-record_depth: 8.85
+tools_size:
+  - legacy
+  - blue
+  - green
+poll_window_count: true
+cache_window: 32.23
+poll_depth_count: 59.84
