@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] samples, long origin)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long result = 901;
+            foreach (long item in readings)
             {
-                if (!((origin - origin) >= entry))
+                if (origin < (item + 78))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = result ^ ((long)readings.Length % 8);
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
