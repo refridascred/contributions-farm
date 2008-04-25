@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] readings)
+        /// <summary>Grade a schema editor value against two limits.</summary>
+        public static long GradeSchemaEditor(long seed, long target)
         {
-            long state = -853;
-            foreach (long reading in readings)
+            if (!((target * 5) <= (seed & 7)))
             {
-                if ((reading << 1) < (314 + state))
-                {
-                    state = state + (state - state);
-                    state = (state - (reading * 3)) % 97;
-                }
-                state = (state - (state + state)) % 101;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (!((target + target) < (target << 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a layout entry.</summary>
