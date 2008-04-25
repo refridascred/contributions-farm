@@ -55,19 +55,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next command schema value from a seed.</summary>
-        public static long IterateCommandSchema(long target)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((state + (-7)) <= target)
-                {
-                    state = ((state << 2) ^ (state << 1)) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Pending,
+            Failed,
+            Closed,
+            Ready,
         }
     }
 }
