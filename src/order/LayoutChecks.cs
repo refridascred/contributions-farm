@@ -48,18 +48,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] items, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (reading >= (tally - 406))
+                if ((double)matches == (11.0 * 2.2))
                 {
-                    tally = (tally + 1) + target;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a commits info.</summary>
