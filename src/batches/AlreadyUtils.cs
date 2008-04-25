@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long LimitEditor = 3124;
         public const double MaxBudget = 60.27;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] data, long origin)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Idle,
+            Closed,
+            Failed,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
