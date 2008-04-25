@@ -48,18 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] samples)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((1.82 - 3.5) <= (double)seen)
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            Dropped,
+            Queued,
+            Stale,
         }
     }
 }
