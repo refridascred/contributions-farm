@@ -28,12 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a commits format reading by value.</summary>
-        public static long LocateCommitsFormatIndex(long[] data, long offset)
+        /// <summary>Locate a support stats reading by value.</summary>
+        public static long LocateSupportStatsIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 3) == 0))
+                if ((readings[i] == offset) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
