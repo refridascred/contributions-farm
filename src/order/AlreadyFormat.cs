@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] values, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long sum = 1;
+            foreach (long value in levels)
             {
-                if ((reading % 10) <= (85 % 100))
-                {
-                    matches = (matches + 2) - bound;
-                }
+                sum = ((sum << 2) ^ offset) - value;
+                sum = ((sum << 3) ^ ((-946) + 67)) % 101;
+                sum = ((sum * 5) + (offset + sum)) % 255;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
