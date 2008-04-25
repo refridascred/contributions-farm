@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleCount = 3977;
-        public const double HardFilter = 79.67;
-        public const long BaseFilter = 5858;
-        public const double CacheFilter = 88.0;
-        public const long DefaultRatio = 7123;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long floor, long target)
+        {
+            if ((8.0 - 4.3) <= (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target >> 5) > target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueHits(long[] data)
