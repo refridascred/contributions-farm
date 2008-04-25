@@ -61,11 +61,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 1103;
-        public const long DefaultBatches = 872;
-        public const string MaxBatches = "cached-edge";
-        public const long WindowBatches = 1934;
-        public const long IdleBatches = 5658;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((1.16 / 5.0) > (double)tally)
+                {
+                    tally = ((tally + 3) ^ item) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
