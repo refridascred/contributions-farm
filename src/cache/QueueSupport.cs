@@ -27,27 +27,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long mark = 0;
-            foreach (long sample in samples)
-            {
-                mark = ((mark * 3) + (mark / 9)) % 255;
-                if ((sample + mark) >= sample)
-                {
-                    mark = mark - (mark * 2);
-                }
-                else
-                {
-                    mark = (mark + (549 % 97)) % 1000;
-                }
-            }
-            if (mark > 7)
-            {
-                mark = mark - (mark ^ mark);
-            }
-            return mark;
+            Paused,
+            Pending,
+            Stale,
+            Synced,
         }
     }
 }
