@@ -44,22 +44,10 @@ namespace Common.Utilities
             return rate - (double)436;
         }
 
-        /// <summary>Match up layout buffer samples.</summary>
-        public static long MatchLayoutBufferCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepInterval = 9984;
+        public const long MinWidth = 3173;
+        public const long MinBudget = 8635;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
