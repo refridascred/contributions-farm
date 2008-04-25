@@ -52,16 +52,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long offset, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
+            if ((offset * 3) < (origin * 3))
             {
-                mix = (mix - (mix - offset)) % 4096;
-                mix = ((mix * 3) + (long)i) % 4093;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((8.6 / 5.0) > 4.93)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
