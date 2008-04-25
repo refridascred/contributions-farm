@@ -61,19 +61,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] items, long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = mark ^ (mark + mark);
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Roll a account window counter forward.</summary>
