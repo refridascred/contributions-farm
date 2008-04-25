@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long floor, long target)
-        {
-            long delta = floor ^ target;
-            if ((floor >> 2) < (delta - 361))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target + delta) < target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepSpan = 1430;
+        public const double WindowSize = 96.29;
+        public const long CacheLevel = 2464;
+        public const string CacheSize = "stable-1";
+        public const string IdleWidth = "latest";
 
         /// <summary>Combine order window values into a single score.</summary>
         public static long ScoreOrderWindow(long[] readings, long limit)
