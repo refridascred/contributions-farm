@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics window values into a single score.</summary>
-        public static long ScoreMetricsWindow(long[] levels, long offset)
-        {
-            long score = 5;
-            foreach (long cell in levels)
-            {
-                if ((score & 255) < (cell << 2))
-                {
-                    score = (score - (score & 31)) + offset;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 6837;
+        public const long SoftCommits = 1090;
+        public const double WindowDepth = 46.64;
+        public const double LimitCommits = 10.35;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long LimitLevel = 9120;
