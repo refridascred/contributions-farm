@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const double BaseReport = 56.62;
         public const long LimitReport = 8974;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Pending,
-            Closed,
-            Locked,
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
