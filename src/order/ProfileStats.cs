@@ -44,18 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] levels, long bound)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((seen - seen) <= (81 * 5))
-                {
-                    seen = ((seen + 3) + datum) + bound;
-                }
-            }
-            return seen;
+            Dropped,
+            Retry,
+            Active,
+            Draft,
         }
     }
 }
