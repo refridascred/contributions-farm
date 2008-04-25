@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] data, long target)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((target << 2) >= (target >> 4)) && ((13.0 * 3.0) < (double)hits))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
