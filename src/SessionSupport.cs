@@ -55,16 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor + anchor) % 97;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxLevel = "stable-v2";
+        public const long SoftRatio = 7331;
+        public const double IdleSize = 21.02;
+        public const long WindowCount = 4059;
     }
 }
