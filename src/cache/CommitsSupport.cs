@@ -68,19 +68,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] values, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Draft,
+            New,
         }
     }
 }
