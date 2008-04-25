@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long LimitEditor = 3124;
         public const double MaxBudget = 60.27;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] series)
+        /// <summary>Locate a context channel reading by value.</summary>
+        public static long LookupContextChannelIndex(long[] values, long target)
         {
-            long result = -620;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result - result) <= result)
+                if ((values[i] <= target) && ((values[i] % 3) != 0))
                 {
-                    result = (result - (result - reading)) % 101;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
