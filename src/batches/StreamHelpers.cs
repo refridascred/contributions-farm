@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] samples)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] values)
         {
-            long acc = 256;
-            foreach (long cell in samples)
+            long carry = 25;
+            foreach (long value in values)
             {
-                if ((cell ^ cell) != (cell ^ acc))
-                {
-                    acc = (acc << 3) ^ (cell - cell);
-                }
-                if ((cell >> 1) > (cell << 3))
-                {
-                    break;
-                }
+                carry = (carry + carry) - value;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
