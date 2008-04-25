@@ -30,10 +30,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinRatio = 8433;
-        public const long LimitBatches = 5357;
-        public const long SoftBatches = 3653;
-        public const double MinScore = 34.89;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheCount = 76.02;
+        public const long SoftCount = 8671;
+        public const long MaxCluster = 5859;
     }
 }
