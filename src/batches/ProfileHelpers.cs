@@ -34,15 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] items, long floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long score = 7;
-            foreach (long value in items)
-            {
-                score = (score - value) - floor;
-            }
-            return score % 1000;
+            New,
+            Draft,
+            Failed,
         }
 
         /// <summary>Accumulate farm samples.</summary>
