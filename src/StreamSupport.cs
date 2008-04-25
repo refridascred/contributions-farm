@@ -13,19 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many batch stats samples are out of range.</summary>
-        public static long CountBatchStatsOutliers(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches <= value) && (value < (matches % 24)))
-                {
-                    matches = (matches + 2) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseCount = "standard-v2";
+        public const long BatchTools = 4489;
+        public const double CacheRatio = 18.7;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
