@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const string RetryBudget = "local";
         public const long BatchSize = 109;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] levels, long bound)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (((1 + seen) <= seen) && !((double)entry < (0.6 + 9.0)))
-                {
-                    seen = (seen + 2) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor << 3) ^ (limit >> 2);
+                anchor = anchor ^ (anchor - limit);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Classify a metric checks pair into a bucket.</summary>
