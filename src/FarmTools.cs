@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] series, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] series, long target)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (sample > seed)
+                if ((value % 64) > (seen - target))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the commits state values.</summary>
