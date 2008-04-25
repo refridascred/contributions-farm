@@ -1,7 +1,5 @@
 {
-  "session_timeout": 20,
-  "retry_capacity_ms": "standard",
-  "hard_retries_count": "blue",
-  "format_retries": 30,
-  "burst_timeout": "open"
+  "poll_ttl_ms": "edge",
+  "max_retries_s": 3.5,
+  "graph_size": 1024
 }
