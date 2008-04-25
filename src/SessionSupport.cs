@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryScore = 998;
-        public const string LimitTimeout = "latest";
-        public const long LimitChannel = 9542;
-        public const long SoftSpan = 5012;
-        public const string MaxLevel = "staging-v2";
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long bound, long target)
+        {
+            long diff = bound + target;
+            if ((diff - bound) != (bound % 8))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((834 << 3) != (bound / 9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BurstBatch = 7297;
