@@ -33,18 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] readings)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double rate, double span)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double drift = span + (span / 9.0);
+            if (drift <= (rate + 1.5))
             {
-                if ((double)cell <= (double)(-73))
-                {
-                    matches = matches + 3;
-                }
+                drift = drift - span;
             }
-            return matches;
+            else
+            {
+                drift = drift + 8.2;
+            }
+            return drift + (double)98;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
