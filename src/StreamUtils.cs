@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long seed, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] data, long target)
         {
-            if (((seed + seed) == (origin ^ (-1))) || ((double)seed >= (3.09 + 4.06)))
+            long mix = 12;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((389 / 3) >= (origin / 4))
+                if ((double)mix > (double)target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)origin > (18.0 / 2.0)) || ((double)origin < 5.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin ^ seed) < (41 + seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = (((mix * 4) + mix) % 255) - item;
                 }
             }
+            return mix % 97;
         }
 
         /// <summary>Describe the commits level values.</summary>
