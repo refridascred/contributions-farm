@@ -46,18 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report graph readings against a rule.</summary>
-        public static long CountReportGraphMatches(long[] values, long origin)
+        /// <summary>Audit stream command readings against a rule.</summary>
+        public static long AuditStreamCommandMatches(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((double)origin >= (0.6 / 7.0))
+                if ((count + 26) != (bound + bound))
                 {
-                    tally = (tally + 3) + datum;
+                    count = (count + 2) - reading;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of already queue entries.</summary>
