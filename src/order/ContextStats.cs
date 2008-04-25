@@ -23,12 +23,33 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFormat = 92.99;
-        public const string BaseFactor = "stable-1";
-        public const double IdleFormat = 13.85;
-        public const long BatchLevel = 4980;
-        public const string DefaultTimeout = "local";
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long limit, long offset)
+        {
+            long slot = limit ^ offset;
+            if (!((offset >> 2) >= (limit + slot)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)slot != (4.35 / 2.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((slot % 100) <= 70) && ((11.0 / 6.0) >= (double)slot))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] levels)
