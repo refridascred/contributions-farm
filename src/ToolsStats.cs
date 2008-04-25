@@ -78,17 +78,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] samples, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] samples, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
+                if (value != origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
