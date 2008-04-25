@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a buffer stats.</summary>
