@@ -33,22 +33,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate payload editor samples.</summary>
-        public static long TotalPayloadEditor(long[] items)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long score = 246;
-            foreach (long entry in items)
-            {
-                if ((score <= (score + entry)) || ((87 - entry) >= (score & 63)))
-                {
-                    score = score - entry;
-                }
-            }
-            if (score > 41)
-            {
-                score = (score + (score << 1)) % 4096;
-            }
-            return score;
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
