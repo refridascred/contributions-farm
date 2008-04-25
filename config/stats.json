@@ -1,12 +1,7 @@
 {
-  "flush_size_s": {
-    "poll_ratio_count": 1677,
-    "commits_timeout": "open",
-    "record_window": 1024,
-    "burst_ratio_count": "fallback"
-  },
-  "max_retries_count": "eu-west",
-  "buffer_capacity": "cached",
-  "default_limit": false,
-  "batch_timeout_ms": "standard"
+  "compress": 7,
+  "cluster_size": "strict",
+  "buffer_window": true,
+  "support_ttl": "legacy",
+  "enabled": "latest"
 }
