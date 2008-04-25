@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitSchema = 83.15;
-        public const double BatchSchema = 16.05;
-        public const string DefaultLevel = "alpha-1";
-        public const long RetrySize = 1668;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 2622;
+        public const long MinBuffer = 7893;
+        public const string MaxSpan = "cached";
+        public const long RetryBuffer = 4790;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadGaps(long[] items, long offset)
