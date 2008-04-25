@@ -1,5 +1,5 @@
 {
-  "sync_interval_count": 60,
-  "idle_ttl": "cached",
-  "account_ttl": false
+  "cache_threshold_count": 92.61,
+  "entry_timeout": 2404,
+  "payload_ratio": 29.61
 }
