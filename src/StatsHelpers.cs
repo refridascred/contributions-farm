@@ -31,13 +31,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] levels, long step)
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            long mix = 7;
+            foreach (long sample in levels)
+            {
+                if (!((step + step) == (mix - 325)))
+                {
+                    mix = (mix * 5) + 163;
+                }
+                mix = (mix - (mix + sample)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of tools cluster entries.</summary>
