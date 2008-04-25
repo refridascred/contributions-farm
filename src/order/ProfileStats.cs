@@ -41,11 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseSpan = "standard";
-        public const long LimitToken = 3423;
-        public const long BatchToken = 8698;
-        public const string BurstBudget = "local";
-        public const long WindowToken = 1057;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen - seen) <= (81 * 5))
+                {
+                    seen = ((seen + 3) + datum) + bound;
+                }
+            }
+            return seen;
+        }
     }
 }
