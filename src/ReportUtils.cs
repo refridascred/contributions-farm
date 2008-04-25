@@ -71,14 +71,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] levels)
         {
-            Failed,
-            Synced,
-            Draft,
-            Retry,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
