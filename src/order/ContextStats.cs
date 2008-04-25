@@ -64,21 +64,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (step <= (99 ^ step))
+                if (((double)count > (3.93 * 13.0)) && ((sample <= (15 + sample)) && ((sample / 7) == (count << 2))))
                 {
-                    mark = (mark + step) % 101;
-                    mark = (mark + ((long)i / 5)) % 4096;
-                    break;
+                    count = count + 1;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return count;
         }
     }
 }
