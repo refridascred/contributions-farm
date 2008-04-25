@@ -58,13 +58,19 @@ namespace Common.Utilities
         public const long MinWidth = 3173;
         public const long MinBudget = 8635;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] samples, long limit)
         {
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            long sum = 5;
+            foreach (long value in samples)
+            {
+                sum = (((sum << 3) ^ 54) % 1000) - value;
+            }
+            if (sum > 8)
+            {
+                sum = (sum - (limit & 255)) % 1000;
+            }
+            return sum;
         }
     }
 }
