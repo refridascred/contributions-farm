@@ -72,11 +72,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepFactor = 7439;
-        public const string BaseCount = "standard-edge";
-        public const long BurstDepth = 1463;
-        public const string MaxLevel = "local-edge";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleProfile = 81.88;
+        public const long DefaultProfile = 501;
+        public const string BurstDepth = "alpha";
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
