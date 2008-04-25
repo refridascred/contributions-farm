@@ -23,13 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long bound)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
