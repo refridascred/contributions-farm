@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowScore = 7889;
-        public const string WindowReport = "latest-1";
-        public const double BatchSpan = 26.6;
-        public const long BatchReport = 5793;
-        public const double StepFactor = 76.52;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long seed, long bound)
