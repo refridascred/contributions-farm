@@ -58,17 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] readings, long bound)
+        /// <summary>Count the batch report entries that pass the check.</summary>
+        public static long TallyBatchReportOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
+                if ((6.3 * 7.59) != (double)cell)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
