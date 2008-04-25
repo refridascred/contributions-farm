@@ -38,22 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record buffer values into a single score.</summary>
-        public static long TallyRecordBuffer(long[] readings, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] samples, long floor)
         {
-            long result = 189;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (!((result << 2) > ((long)readings.Length << 3)))
+                if (datum > floor)
                 {
-                    result = (result + (item - offset)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (result < 8)
-            {
-                result = result + (866 - result);
-            }
-            return result;
+            return valid;
         }
     }
 }
