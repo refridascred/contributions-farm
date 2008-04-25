@@ -57,38 +57,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long offset, long limit)
+        /// <summary>Digest a series of already payload entries.</summary>
+        public static long FoldAlreadyPayload(long[] values)
         {
-            if ((double)offset <= (3.55 - 9.51))
+            long mark = 90;
+            foreach (long entry in values)
             {
-                return 7;
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = (mark + (entry % 8)) - (long)i;
+                    mark = ((mark * 3) + (8 & 63)) % 65521;
+                }
+                mark = ((mark * 4) + (mark - 1)) % 4096;
             }
-            else
+            if (mark < (-371))
             {
-                if ((offset >> 1) >= (limit >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)offset == (2.4 - 4.7)) || ((double)limit < 16.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((62 % 97) < offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                mark = (mark + mark) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Adjust a counter reading.</summary>
