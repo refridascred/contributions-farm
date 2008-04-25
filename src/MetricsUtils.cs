@@ -47,10 +47,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 5718;
-        public const double HardAlready = 75.01;
-        public const double MaxSpan = 85.8;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] samples, long limit)
+        {
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinToken = 1574;
