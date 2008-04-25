@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] readings, long offset)
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)offset < (2.0 * 1.0))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the commits class values.</summary>
