@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 9763;
-        public const string MaxBudget = "primary";
-        public const long BaseToken = 8304;
-        public const long HardCount = 6696;
-        public const long SoftTimeout = 2454;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long step, long floor)
+        {
+            if ((floor - 49) <= step)
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor < (floor / 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3 + step) < (floor + 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-5) > (floor / 8)) && ((8.6 - 6.0) == (double)step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
