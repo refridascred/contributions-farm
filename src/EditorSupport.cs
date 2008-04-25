@@ -54,17 +54,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] values, long step)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
