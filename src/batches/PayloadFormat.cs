@@ -30,19 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] levels, long target)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
