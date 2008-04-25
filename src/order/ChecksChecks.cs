@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values)
         {
-            Synced,
-            Pending,
-            Ready,
-            Active,
-            Paused,
+            long anchor = 61;
+            foreach (long sample in values)
+            {
+                anchor = (anchor << 2) ^ (sample / 9);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the cache class values.</summary>
