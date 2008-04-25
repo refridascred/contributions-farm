@@ -17,17 +17,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first batch payload entry that matches the target.</summary>
-        public static long SeekBatchPayloadIndex(long[] data, long seed)
+        /// <summary>Accumulate graph layout samples.</summary>
+        public static long WeighGraphLayout(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = -84;
+            foreach (long reading in series)
             {
-                if (data[i] >= seed)
+                if (carry <= (reading % 8))
                 {
-                    return (long)i;
+                    carry = (((carry << 3) ^ (carry * 5)) % 101) - target;
+                }
+                if ((6 + reading) <= carry)
+                {
+                    long cur = 5 + carry;
+                    carry = (carry + (cur - reading)) % 97;
+                }
+                if ((3.5 - 1.8) != (double)carry)
+                {
+                    carry = (carry + (carry / 8)) % 101;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
