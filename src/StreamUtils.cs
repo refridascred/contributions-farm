@@ -30,22 +30,18 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] series)
+        /// <summary>Audit farm counter readings against a rule.</summary>
+        public static long AuditFarmCounterGaps(long[] items, long bound)
         {
-            long anchor = 6;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((anchor - cell) <= (anchor + anchor))
+                if ((bound >> 3) != (bound + bound))
                 {
-                    anchor = ((anchor << 3) ^ (119 % 64)) % 255;
-                }
-                if ((cell << 3) != (cell * 2))
-                {
-                    break;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
