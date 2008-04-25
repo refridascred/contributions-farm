@@ -46,11 +46,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] items, long seed)
         {
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long result = 909;
+            foreach (long item in items)
+            {
+                if ((0 / 2) < (result ^ result))
+                {
+                    result = (result ^ (result ^ seed)) + item;
+                }
+            }
+            if (result < (-941))
+            {
+                result = result ^ (504 / 6);
+            }
+            return result;
         }
 
         /// <summary>Match up layout buffer samples.</summary>
