@@ -20,16 +20,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the batches order series from a seed.</summary>
-        public static long IterateBatchesOrder(long limit)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double rate, double span)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            double rate2 = span;
+            if (rate2 >= rate2)
             {
-                mark = (mark - (limit >> 1)) % 101;
-                mark = ((mark * 5) + (long)i) % 97;
+                rate2 = (rate2 - (0.73 - rate2)) - rate;
             }
-            return mark;
+            else
+            {
+                rate2 = rate2 + (double)176;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + 8.6) - (double)(long)i;
+            }
+            return rate2 + (double)828;
         }
 
         /// <summary>Derive the next graph channel value from a seed.</summary>
