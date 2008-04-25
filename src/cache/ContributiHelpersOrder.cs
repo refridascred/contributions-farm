@@ -35,18 +35,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] items)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((5.7 * 15.0) < (double)seen)
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            Draft,
+            Stale,
+            Retry,
         }
     }
 }
