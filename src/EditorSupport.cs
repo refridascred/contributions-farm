@@ -82,18 +82,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate counter report samples.</summary>
-        public static long TotalCounterReport(long[] readings, long step)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long origin, long bound)
         {
-            long sum = 7;
-            foreach (long entry in readings)
+            if ((bound + 361) <= (bound / 6))
             {
-                if ((sum ^ entry) != (sum + entry))
+                return 2;
+            }
+            else
+            {
+                if ((origin / 5) <= (356 * 2))
                 {
-                    sum = (((sum << 3) ^ ((long)readings.Length << 1)) % 4096) - step;
+                    return 8;
+                }
+                else
+                {
+                    if (bound < (bound + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
