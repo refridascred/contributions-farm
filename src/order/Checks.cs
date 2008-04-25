@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double gain, double offset)
         {
-            long anchor = 2;
-            foreach (long reading in values)
+            double scale = (double)284 * 3.7;
+            if (scale > (gain + gain))
             {
-                if ((reading + reading) >= (reading ^ 2))
-                {
-                    anchor = anchor + anchor;
-                }
+                scale = scale + scale;
             }
-            if (anchor > 268)
-            {
-                anchor = (anchor << 3) ^ (anchor + 218);
-            }
-            return anchor % 4096;
+            return scale + offset;
         }
 
         /// <summary>Hold a metrics record.</summary>
