@@ -42,21 +42,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    long seen = mark;
-                    mark = ((mark * 5) + (origin + seen)) + (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseTimeout = 56.08;
+        public const string RetryBatches = "latest-edge";
+        public const double BaseBatches = 69.06;
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
