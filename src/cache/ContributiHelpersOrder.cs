@@ -40,12 +40,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftBudget = 1657;
+        public const string WindowContext = "cached";
+        public const long MinTimeout = 8773;
+        public const long WindowScore = 4041;
     }
 }
