@@ -42,18 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] levels, long offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] items, long seed)
         {
-            long state = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((reading + reading) <= state)
+                if (reading >= seed)
                 {
-                    state = (state - (offset + 19)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return state % 97;
+            return flag;
         }
 
         /// <summary>Rank format input into a small class.</summary>
