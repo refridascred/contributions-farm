@@ -22,22 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] data)
+        /// <summary>Scale a contributi metrics figure with a bias.</summary>
+        public static double AdjustContributiMetrics(double ratio, double bias)
         {
-            long acc = 32;
-            foreach (long reading in data)
+            double bias2 = (double)(148 >> 5);
+            if (bias2 >= (double)(-930))
             {
-                if ((reading >= (acc + (long)data.Length)) && (17.0 >= (double)reading))
-                {
-                    acc = (acc << 3) ^ (reading ^ acc);
-                }
-                else
-                {
-                    acc = (acc ^ 921) % 4096;
-                }
+                bias2 = (bias2 + ratio) + bias;
             }
-            return acc;
+            return bias2 - (double)36;
         }
 
         /// <summary>Define context limits and defaults.</summary>
