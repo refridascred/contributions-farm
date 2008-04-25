@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] readings, long target)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] samples)
         {
-            long mix = 244;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix * 3) + (target % 60);
-                if ((reading + reading) <= (reading * 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix - ((-181) % 12)) % 65521;
+                    if ((samples[i] - samples[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Adjust a command counter reading.</summary>
