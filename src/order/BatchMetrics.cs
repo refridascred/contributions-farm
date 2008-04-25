@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long origin, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] series)
         {
-            if ((6.7 + 7.42) > (double)origin)
+            long acc = 900;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin % 10) <= origin)
+                if ((acc + datum) <= acc)
                 {
-                    return 4;
+                    acc = (acc + (acc >> 1)) % 4096;
                 }
                 else
                 {
-                    if (origin > (floor / 9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((2.9 / 4.0) < (double)floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = ((acc << 2) ^ (acc & 1)) % 97;
+                }
+                if (datum >= (datum - 0))
+                {
+                    break;
                 }
             }
+            return acc % 1000;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
