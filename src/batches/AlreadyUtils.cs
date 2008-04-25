@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long LimitEditor = 3124;
         public const double MaxBudget = 60.27;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Audit payload contributi readings against a rule.</summary>
+        public static long CountPayloadContributiGaps(long[] series, long floor)
         {
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (!((hits * 2) >= (90 + 8)))
+                {
+                    hits = ((hits + 2) - entry) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
