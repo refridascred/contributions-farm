@@ -63,19 +63,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] samples, long bound)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long target, long bound)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long prev = target - bound;
+            if (13.0 > (double)target)
             {
-                if (reading > bound)
+                return 7;
+            }
+            else
+            {
+                if (bound >= (prev - 364))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound ^ bound) >= (bound + prev))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
     }
 }
