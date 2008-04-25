@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] data, long limit)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long floor, long bound)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            if (((8 + floor) < (floor >> 1)) || (floor >= (4 + bound)))
             {
-                if (datum >= limit)
+                return 2;
+            }
+            else
+            {
+                if (((floor + bound) <= (bound ^ floor)) && (floor > (floor - floor)))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!(floor >= (bound >> 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((bound + bound) > (floor >> 2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
