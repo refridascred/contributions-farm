@@ -28,14 +28,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Stale,
-            Closed,
-            Pending,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 5018;
+        public const string StepContributi = "alpha-v2";
+        public const string MaxContributi = "alpha-edge";
+        public const long BatchScore = 8397;
     }
 }
