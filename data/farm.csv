@@ -1,6 +1,9 @@
-id,rank,score,token,weight
-1,50.65,21.23,90.17,green
-2,94.67,local,97.51,69.85
-3,strict,549,fallback,local
-4,937,primary,58.31,1.63
-5,legacy,476,legacy,71.59
+id,active,label,score
+1,934,55.22,cached
+2,65.52,standard,98.69
+3,38.92,120,52.89
+4,61.94,70.19,1.66
+5,849,19.01,cached
+6,376,24.02,local
+7,259,405,6.32
+8,6.08,381,2.77
