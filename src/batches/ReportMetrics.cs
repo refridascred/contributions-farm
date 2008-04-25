@@ -16,12 +16,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxSpan = 70.87;
-        public const long IdleBudget = 4565;
-        public const long StepFactor = 3147;
-        public const long BatchFactor = 1386;
-        public const long StepRoute = 7936;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Ready,
+            Done,
+            Locked,
+        }
 
         /// <summary>Measure how many order token samples are out of range.</summary>
         public static long CountOrderTokenMatches(long[] samples, long seed)
