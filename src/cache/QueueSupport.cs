@@ -15,18 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] samples, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((origin + value) <= tally)
+                if ((double)reading >= 2.83)
                 {
-                    tally = tally + 1;
+                    count = (count + 1) - step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
