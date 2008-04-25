@@ -36,13 +36,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public double Offset { get; set; }
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            Synced,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define report limits and defaults.</summary>
