@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Pending,
-            Done,
-            Ready,
-            Stale,
+            public double Mode { get; set; }
+            public bool Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
