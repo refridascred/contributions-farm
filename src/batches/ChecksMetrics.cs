@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long BatchWidth = 5485;
         public const long StepWidth = 3719;
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] series, long bound)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of metric batches readings.</summary>
