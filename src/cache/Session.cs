@@ -33,20 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next counter profile value from a seed.</summary>
-        public static long DeriveCounterProfile(long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] readings)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((double)cell <= (double)(-73))
                 {
-                    mix = (((mix << 3) ^ (1 << 1)) % 65521) + (long)i2;
+                    matches = matches + 3;
                 }
-                mix = mix - 3;
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a entry header.</summary>
