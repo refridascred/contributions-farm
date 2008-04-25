@@ -33,10 +33,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 21;
-        public const long HardSpan = 478;
-        public const string WindowTimeout = "stable-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowBatch = "cached-1";
+        public const long LimitBatch = 3454;
+        public const long BurstBudget = 8853;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricMatches(long[] values, long bound)
