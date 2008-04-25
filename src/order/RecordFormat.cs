@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long StepLevel = 5889;
         public const double HardSize = 3.84;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark - (mark + mark)) % 255;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 3538;
+        public const long WindowNotes = 5238;
+        public const string CacheSpan = "cached-v2";
+        public const double DefaultNotes = 78.77;
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
