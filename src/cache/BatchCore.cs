@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Closed,
-            Pending,
+            Ready,
+            Draft,
             Failed,
-            Retry,
-            Paused,
+            Synced,
         }
 
         /// <summary>Hold a token header.</summary>
