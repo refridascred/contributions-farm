@@ -29,22 +29,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] items)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] items, long target)
         {
-            long matches = 0;
+            long anchor = 39;
             foreach (long value in items)
             {
-                if ((matches >> 4) <= (value >> 4))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor + (value & 3)) % 4096) + target;
+                anchor = (anchor - 4) % 4096;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a stream options.</summary>
