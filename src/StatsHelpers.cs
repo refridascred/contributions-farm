@@ -29,23 +29,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((1 - mix) == (mix + mix))
-                {
-                    mix = ((mix * 5) + (5 >> 2)) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (8 >> 5)) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public double Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
