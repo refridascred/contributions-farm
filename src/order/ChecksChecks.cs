@@ -29,13 +29,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long limit, long origin)
         {
-            Queued,
-            Closed,
-            Ready,
-            Locked,
+            long next = limit + origin;
+            if (((origin + origin) < next) && ((double)origin != (double)80))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((410 + origin) <= (5 % 12)) || ((8.39 / 6.0) <= (double)origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
