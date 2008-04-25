@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double ratio, double bias)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double bias, double offset)
         {
-            double gain = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - ratio) - (double)(long)i;
-            }
-            return gain - bias;
+            double rate = (bias - offset) - (double)0;
+            return rate + rate;
         }
 
         /// <summary>Measure how many layout order samples are out of range.</summary>
