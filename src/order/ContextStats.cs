@@ -27,19 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long step)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)mark != (9.3 + 3.0))
-                {
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Closed,
+            Queued,
+            Retry,
+            Paused,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
