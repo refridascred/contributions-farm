@@ -1,11 +1,6 @@
-id,owner,region
-1,edge,edge
-2,cached,62.47
-3,strict,stable
-4,latest,123
-5,local,232
-6,strict,326
-7,legacy,1.19
-8,92.46,796
-9,369,572
-10,open,808
+id,ratio,label
+1,33.26,253
+2,114,green
+3,strict,24.51
+4,97.45,open
+5,167,10.64
