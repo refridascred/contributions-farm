@@ -39,11 +39,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 90.25;
-        public const long SoftRecord = 3264;
-        public const long WindowRecord = 7108;
-        public const string RetryRecord = "open-edge";
-        public const long DefaultRecord = 7265;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 5640;
+        public const long BatchBatches = 3518;
+        public const long BurstSize = 9279;
+        public const string RetryBatches = "strict";
+        public const long LimitBatches = 9793;
     }
 }
