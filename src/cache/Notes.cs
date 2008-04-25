@@ -25,14 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] levels, long step)
         {
-            Done,
-            Closed,
-            Queued,
-            Retry,
-            Active,
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
