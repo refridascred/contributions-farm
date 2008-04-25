@@ -6,11 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=442
-log "limit is ${CHANNEL_LIMIT}"
+for item in fallback cached primary local; do
+    log "checking ${item}"
+done
