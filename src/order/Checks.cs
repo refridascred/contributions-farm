@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double ratio, double span)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] items, long seed)
         {
-            double drift = (ratio / 3.0) * 7.69;
-            if (drift > (double)5)
+            bool found = true;
+            foreach (long reading in items)
             {
-                drift = drift + span;
+                if (reading <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - 12.0;
+            return found;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
