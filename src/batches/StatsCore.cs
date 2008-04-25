@@ -79,20 +79,19 @@ namespace Common.Utilities
         public const long BurstDepth = 1463;
         public const string MaxLevel = "local-edge";
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] samples)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] series, long step)
         {
-            long mark = 4;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long item in series)
             {
-                mark = (mark + (5 & 7)) % 65521;
-                if ((221 - entry) < mark)
+                if (item <= step)
                 {
-                    continue;
+                    stale = false;
+                    break;
                 }
-                mark = (mark - 27) % 4096;
             }
-            return mark % 65521;
+            return stale;
         }
     }
 }
