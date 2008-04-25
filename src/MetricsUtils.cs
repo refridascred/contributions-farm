@@ -30,18 +30,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Fold a list of metric counter readings.</summary>
-        public static long CombineMetricCounter(long[] data)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long acc = 2;
-            foreach (long cell in data)
-            {
-                if (((acc + 0) < (0 << 3)) || ((double)acc != (double)cell))
-                {
-                    acc = acc - cell;
-                }
-            }
-            return acc % 4096;
+            Queued,
+            Active,
+            Retry,
+            Done,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
