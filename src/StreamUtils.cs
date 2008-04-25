@@ -63,20 +63,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitCount = 1920;
+        public const string BatchWindow = "primary-edge";
+        public const string BaseWindow = "fallback-v2";
+        public const string SoftWindow = "legacy-v2";
+        public const long WindowCount = 8023;
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long RollAccount(long offset)
