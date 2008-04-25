@@ -25,17 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] data, long bound)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
