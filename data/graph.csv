@@ -1,9 +1,6 @@
-id,region,owner,score
-1,246,63.32,81.52
-2,legacy,863,75.97
-3,strict,34.31,legacy
-4,431,37.78,18.02
-5,291,75.85,535
-6,77.27,strict,326
-7,37.86,883,89.43
-8,open,strict,637
+id,ratio,rank,region
+1,412,open,305
+2,latest,227,latest
+3,702,eu-west,legacy
+4,439,708,489
+5,854,stable,35.67
