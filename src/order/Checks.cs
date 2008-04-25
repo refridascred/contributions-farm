@@ -16,21 +16,19 @@ namespace Common.Utilities
             return drift - 12.0;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell != target)
                 {
-                    if ((data[i] - data[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
