@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultWidth = "open-edge";
-        public const long HardProfile = 8343;
-        public const string DefaultBudget = "local-edge";
-        public const long BurstDepth = 2664;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Queued,
+            Failed,
+            Draft,
+            Locked,
+            New,
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionOutliers(long[] levels, long offset)
