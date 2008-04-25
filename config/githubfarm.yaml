@@ -1,13 +1,13 @@
 # githubfarm settings
-audit: 4879
-idle_interval_pct: 3045
-commits_size:
-  - 372
-  - 214
-  - 436
-  - 240
-default_size:
-  - 265
-  - 273
-  - 47
-sync_window: eu-west
+retry_size: open
+token_interval: eu-west
+dry_run:
+  warm_depth: 45
+  already_limit: 27
+  filter_ttl:
+    - staging
+    - standard
+    - blue
+  format_delay: 81.38
+  metric_interval: cached
+  cache_ratio: 17.25
