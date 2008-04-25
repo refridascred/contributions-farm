@@ -42,19 +42,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] values, long limit)
-        {
-            long anchor = 22;
-            foreach (long reading in values)
-            {
-                anchor = ((anchor - 0) ^ reading) - limit;
-            }
-            if (anchor > (-981))
-            {
-                anchor = (anchor - ((-625) / 2)) % 101;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleDepth = 3713;
+        public const double LimitEditor = 89.24;
+        public const double WindowScore = 64.59;
     }
 }
