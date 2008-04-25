@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the report entry entries that pass the check.</summary>
-        public static long CountReportEntryOutliers(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((double)seen <= (double)item) || (((-7) + item) < (seen + item)))
-                {
-                    seen = (seen + 2) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 5782;
+        public const long WindowSpan = 6857;
+        public const long LimitStream = 1118;
+        public const long MaxStream = 7724;
+        public const long StepLevel = 6496;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long TallyFarmOutliers(long[] series)
