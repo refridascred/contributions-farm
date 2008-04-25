@@ -32,17 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] readings)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long offset)
         {
-            long acc = 30;
-            foreach (long entry in readings)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                acc = ((acc + acc) % 65521) - entry;
-            }
-            if (acc > 60)
-            {
-                acc = (acc ^ (acc % 3)) % 255;
+                if (!(((double)19 != (double)acc) && ((double)(long)i == (4.17 * 14.0))))
+                {
+                    acc = ((acc << 2) ^ offset) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
             return acc;
         }
