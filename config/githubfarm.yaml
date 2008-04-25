@@ -1,16 +1,12 @@
 # githubfarm settings
-cache_capacity_pct: 1024
-flush_limit:
-  compress: false
-  batches_ttl:
-    warm_delay_pct: 50
-    default_capacity: 100
-    flush_window_count: green
-    window_retries: 44
-    dry_run: latest
-  min_interval:
-    - open
-    - open
-    - stable
-    - open
-default_retries_count: 30
+default_retries:
+  - 285
+  - 379
+  - 63
+  - 27
+default_capacity:
+  - 146
+  - 11
+  - 45
+  - 359
+filter_ttl: 1
