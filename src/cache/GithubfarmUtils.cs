@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long floor, long seed)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            if (((seed & 63) <= (seed - floor)) && ((seed + floor) <= seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor - floor) == (10 ^ floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
