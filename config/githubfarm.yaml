@@ -1,13 +1,14 @@
 # githubfarm settings
-soft_interval_count:
-  dry_run: false
-  commits_retries: false
-  default_delay:
-    cache_limit: staging
-    flush_capacity: 5790
-    sync_delay_ms: strict
-    stream_window: 57
-  flush_interval_count: eu-west
-  warm_capacity_pct: stable
-githubfarm_ttl: 75.04
-batch_limit_ms: 250
+strict:
+  cluster_depth: true
+  graph_capacity: eu-west
+  cache_limit: 51
+  base_size_pct: false
+  default_interval_s: 500
+githubfarm_retries: primary
+audit: 2217
+enabled:
+  soft_window_ms: 6165
+  enabled: false
+  cache_size_ms: false
+contributi_ttl: 60
