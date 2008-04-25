@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double bias, double bias2)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            double bias3 = (double)(4 << 3);
+            return ((bias3 - bias3) + bias) + bias2;
         }
 
         /// <summary>Accumulate token samples.</summary>
