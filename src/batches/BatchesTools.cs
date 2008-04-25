@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Idle,
-            Failed,
-            Closed,
-            Queued,
+            Active,
+            New,
             Pending,
         }
 
