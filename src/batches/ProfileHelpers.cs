@@ -38,22 +38,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] values, long target)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] data, long floor)
         {
-            long mark = -24;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark + target) == (847 + mark))
+                if ((data[i] >= floor) && ((data[i] % 5) == 0))
                 {
-                    mark = (mark ^ item) % 97;
-                }
-                if (item <= target)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Hold a metric stats.</summary>
