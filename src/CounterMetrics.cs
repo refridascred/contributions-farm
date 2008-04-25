@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long BurstCommits = 6962;
         public const long MaxCommits = 1077;
 
-        /// <summary>Locate a metric format reading by value.</summary>
-        public static long LookupMetricFormatIndex(long[] items, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (items[i] < step)
+                if ((9.24 * 7.3) > (double)sample)
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
