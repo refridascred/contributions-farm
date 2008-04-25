@@ -1,13 +1,7 @@
 # entry settings
-compress: 54
-default_capacity:
-  persist: cached
-  burst_ratio_pct: 24
-  poll_ratio_pct: 500
-  soft_threshold: fallback
-  buffer_capacity: 39.35
-  dry_run: edge
-readonly: 73.02
-poll_threshold_ms: local
-cache_interval_pct: 19
-idle_limit_s: false
+sync_interval_pct: blue
+sync_ttl_count: 48.51
+persist:
+  - latest
+  - local
+  - cached
