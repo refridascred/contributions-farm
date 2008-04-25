@@ -1,12 +1,5 @@
 {
-  "base_depth_count": {
-    "flush_limit": "fallback",
-    "warm_size": "stable",
-    "graph_timeout": ["eu-west", "open", "fallback", "strict"],
-    "base_capacity": 5.86,
-    "commits_delay": 90.74
-  },
-  "hard_window_count": 77.3,
-  "strict": "staging",
-  "batch_delay_ms": false
+  "max_depth": 500,
+  "persist": "primary",
+  "record_limit": "open"
 }
