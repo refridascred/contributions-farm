@@ -81,19 +81,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next checks layout value.</summary>
-        public static double ProjectChecksLayout(double scale, double bias)
+        /// <summary>Iterate the token counter series from a seed.</summary>
+        public static long DeriveTokenCounter(long limit)
         {
-            double load = (double)(456 - 228);
-            if (load <= scale)
+            long result = limit;
+            for (int i = 0; i < 23; i++)
             {
-                load = load + bias;
+                result = (result << 2) ^ (result % 64);
+                result = (result - result) % 65521;
+                result = ((result * 2) + (long)i) % 101;
             }
-            else
-            {
-                load = load + (scale / 3.0);
-            }
-            return load + (load * 3.0);
+            return result;
         }
     }
 }
