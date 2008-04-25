@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
