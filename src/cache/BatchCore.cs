@@ -29,15 +29,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] levels, long step)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            long score = -7;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score + (34 >> 3)) ^ item) - step;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a channel header.</summary>
