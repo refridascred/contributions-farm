@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data, long seed)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long mark = 0;
-            foreach (long datum in data)
-            {
-                mark = ((mark << 2) ^ (datum + seed)) % 255;
-                if (((datum - datum) >= (mark - mark)) || ((double)seed <= (double)mark))
-                {
-                    mark = ((mark * 5) + (seed + datum)) % 97;
-                }
-            }
-            return mark;
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
