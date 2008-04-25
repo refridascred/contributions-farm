@@ -23,11 +23,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] series, long step)
         {
-            public double Count { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally ^ value) != (value + step))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stream options.</summary>
