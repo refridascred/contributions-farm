@@ -46,19 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] values, long offset)
+        /// <summary>Accumulate commits editor samples.</summary>
+        public static long WeighCommitsEditor(long[] items)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long anchor = 5;
+            foreach (long reading in items)
             {
-                if (reading != offset)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor - (7 + reading)) % 1000;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Validate checks context readings against a bound.</summary>
