@@ -1,8 +1,16 @@
 {
-  "base_limit_s": 500,
-  "batch_depth_s": 5964,
-  "retry_timeout_count": "edge",
-  "compress": 49,
-  "idle_threshold": true,
-  "poll_ttl_ms": [46, 394, 103, 276]
+  "base_window_ms": 91.84,
+  "idle_window": {
+    "tools_timeout": true,
+    "enabled": "primary",
+    "max_delay_s": {
+      "base_ratio_count": "fallback",
+      "dry_run": 79,
+      "base_window_ms": "primary"
+    },
+    "command_retries": false,
+    "cluster_timeout": 98,
+    "base_retries_pct": 88.63
+  },
+  "poll_size_ms": 61.26
 }
