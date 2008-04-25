@@ -75,12 +75,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a already graph reading by value.</summary>
-        public static long SeekAlreadyGraphIndex(long[] series, long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] >= target)
+                if ((values[i] < step) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
