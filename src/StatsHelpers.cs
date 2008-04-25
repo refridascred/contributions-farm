@@ -26,16 +26,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] readings, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc << 3) ^ (3 >> 5);
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of tools cluster entries.</summary>
