@@ -16,11 +16,15 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a tools options.</summary>
