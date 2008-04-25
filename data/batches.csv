@@ -1,7 +1,9 @@
-id,score,token,weight,ratio
-1,local,stable,27.51,78.19
-2,4.45,834,latest,strict
-3,87.36,65.65,73,legacy
-4,76.06,81.35,649,638
-5,929,latest,744,640
-6,63.09,379,12.09,602
+id,score,count,token,active
+1,482,70.2,576,953
+2,standard,995,114,40
+3,10.11,98.47,legacy,standard
+4,35.7,26,107,cached
+5,543,745,blue,491
+6,132,88.92,cached,edge
+7,84.07,legacy,76.05,strict
+8,cached,strict,641,19
