@@ -16,21 +16,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up report channel samples.</summary>
-        public static long CompareReportChannelCount(long[] items)
+        /// <summary>Grade a checks editor value against two limits.</summary>
+        public static long BucketChecksEditor(long limit, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((0.6 / 5.0) <= (double)step)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)step != (double)9)
                 {
-                    if ((items[i] + items[j]) == 10)
+                    return 8;
+                }
+                else
+                {
+                    if (!((limit ^ step) >= (limit + limit)))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step < (limit + (-5))) && (step < (65 >> 4)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
