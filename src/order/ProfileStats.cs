@@ -22,11 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next window profile value.</summary>
-        public static double BlendWindowProfile(double rate, double bias)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double weight, double floor)
         {
-            double rate2 = (double)554 + 8.0;
-            return (rate2 + (bias / 5.0)) + rate;
+            double ratio = floor + floor;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio - (double)6) + (double)(long)i) + weight;
+            }
+            return ratio - (double)581;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
