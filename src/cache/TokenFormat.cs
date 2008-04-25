@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double scale, double floor)
         {
-            Queued,
-            Done,
-            Retry,
+            double rate = (scale - floor) - 14.0;
+            if (rate > scale)
+            {
+                rate = rate + rate;
+            }
+            else
+            {
+                rate = rate + (double)3;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate - floor;
         }
 
         /// <summary>Check that every stream graph entry stays within the limit.</summary>
