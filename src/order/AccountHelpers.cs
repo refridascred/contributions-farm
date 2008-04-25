@@ -66,17 +66,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] levels, long origin)
+        /// <summary>Validate cluster payload readings against a bound.</summary>
+        public static bool ValidateClusterPayloadBounds(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if ((levels[i] > origin) && ((levels[i] % 5) != 0))
+                if (entry <= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
