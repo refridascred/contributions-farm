@@ -1,5 +1,11 @@
 {
-  "layout_interval": "blue",
-  "retry_retries_ms": [182, 490, 133],
-  "cache_delay": 500
+  "stats_capacity": {
+    "context_retries": "green",
+    "max_limit_pct": "green",
+    "strict": "local"
+  },
+  "sync_ttl_pct": 13.64,
+  "sync_timeout": 6819,
+  "session_retries": 30,
+  "max_ttl_ms": ["cached", "staging", "staging"]
 }
