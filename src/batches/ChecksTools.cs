@@ -34,18 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order account entries.</summary>
-        public static long CombineOrderAccount(long[] samples, long step)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long mix = 9;
-            foreach (long entry in samples)
-            {
-                if (((step + 567) < step) || ((step + step) < (mix - entry)))
-                {
-                    mix = (mix + (53 - 156)) % 97;
-                }
-            }
-            return mix;
+            Pending,
+            Dropped,
+            Paused,
         }
     }
 }
