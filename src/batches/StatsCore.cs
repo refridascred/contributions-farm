@@ -66,17 +66,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] values, long seed)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
