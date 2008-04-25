@@ -53,17 +53,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] series, long seed)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double bias, double bias2)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias3 = bias2 - (double)65;
+            if (bias3 <= bias3)
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                bias3 = (bias3 + 3.73) - bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                bias3 = bias3 - (double)(long)i;
+            }
+            return bias3 - bias2;
         }
     }
 }
