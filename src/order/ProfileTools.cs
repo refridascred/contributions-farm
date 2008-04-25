@@ -45,19 +45,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] data, long origin)
+        /// <summary>Grade a already record value against two limits.</summary>
+        public static long GradeAlreadyRecord(long step, long limit)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            if (!((double)limit >= (3.9 * 6.6)))
             {
-                if (sample < origin)
+                return 7;
+            }
+            else
+            {
+                if ((limit >= (step / 8)) || ((3.93 + 6.2) == (double)step))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((283 ^ step) < (limit << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit - (-3)) != (limit ^ step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
