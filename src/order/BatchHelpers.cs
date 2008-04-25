@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
