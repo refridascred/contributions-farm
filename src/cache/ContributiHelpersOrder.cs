@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 9798;
-        public const double HardSize = 67.5;
-        public const long IdleFactor = 8520;
-        public const double DefaultTimeout = 48.31;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((((20.0 / 3.0) == (double)target) && (target > (item * 5))) && (tally > (target & 127)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate order report readings against a bound.</summary>
         public static bool VerifyOrderReportRange(long[] levels, long bound)
