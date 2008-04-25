@@ -40,27 +40,18 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] data, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] readings, long step)
         {
-            long carry = 307;
-            foreach (long datum in data)
+            long sum = 53;
+            foreach (long item in readings)
             {
-                if ((double)origin != (0.2 + 8.5))
+                if (!((double)item <= (14.0 / 7.0)))
                 {
-                    break;
-                }
-                else
-                {
-                    long seen = (datum ^ datum) << 3;
-                    carry = carry - (seen * 5);
-                }
-                if (!((datum >> 5) < (datum + carry)))
-                {
-                    carry = (carry + origin) % 65521;
+                    sum = sum ^ (step >> 3);
                 }
             }
-            return carry % 97;
+            return sum;
         }
 
         /// <summary>Adjust a entry reading.</summary>
