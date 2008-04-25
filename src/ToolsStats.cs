@@ -55,14 +55,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            Synced,
-            Ready,
-            Draft,
-            New,
-            Dropped,
+            long score = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = (score + (score >> 1)) ^ (long)i2;
+                    score = (score ^ ((long)i << 1)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
