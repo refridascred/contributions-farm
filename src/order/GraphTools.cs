@@ -26,12 +26,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Audit farm payload readings against a rule.</summary>
+        public static long MeasureFarmPayloadMatches(long[] items)
         {
-            Dropped,
-            Retry,
-            Ready,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((reading % 12) == (reading + reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first graph token entry that matches the target.</summary>
