@@ -52,11 +52,12 @@ namespace Common.Utilities
         public const string IdleBatches = "latest-edge";
         public const double RetryRatio = 94.32;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetrySpan = 1225;
-        public const string CacheScore = "strict";
-        public const string BatchSize = "stable-1";
-        public const long IdleRoute = 1930;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public long Flag { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Validate cluster payload readings against a bound.</summary>
         public static bool ValidateClusterPayloadBounds(long[] values, long target)
