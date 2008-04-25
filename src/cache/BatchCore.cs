@@ -22,13 +22,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepScore = 7240;
+        public const long BurstCount = 6328;
+        public const long BatchReport = 8300;
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
