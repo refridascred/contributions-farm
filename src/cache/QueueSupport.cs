@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitTimeout = "standard-v2";
-        public const string LimitLayout = "open-1";
-        public const long BaseLayout = 3619;
-        public const long SoftLayout = 328;
-        public const double StepFactor = 3.71;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long FoldNotes(long[] samples, long limit)
