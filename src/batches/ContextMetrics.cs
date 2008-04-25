@@ -29,17 +29,18 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] data, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (data[i] <= bound)
+                if ((1.4 / 4.0) == (double)item)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Blend two contributi notes measurements.</summary>
