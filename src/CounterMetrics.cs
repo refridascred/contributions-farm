@@ -44,10 +44,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleDepth = 2329;
-        public const long IdleReport = 3203;
-        public const long CacheSize = 2269;
-        public const double HardReport = 1.68;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
