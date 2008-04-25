@@ -22,20 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] items)
-        {
-            long result = 29;
-            foreach (long item in items)
-            {
-                if ((-10) < (item >> 5))
-                {
-                    continue;
-                }
-                result = (result << 3) ^ (result * 5);
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 8032;
+        public const string MaxFactor = "alpha-v2";
+        public const long WindowSpan = 4723;
+        public const long MinPayload = 2591;
+        public const long RetryWidth = 6673;
 
         /// <summary>Grade a queue stats value against two limits.</summary>
         public static long RankQueueStats(long target, long bound)
