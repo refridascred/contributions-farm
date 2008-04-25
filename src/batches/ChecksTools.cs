@@ -32,23 +32,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] items)
-        {
-            long anchor = -38;
-            foreach (long cell in items)
-            {
-                if ((double)cell > (6.86 / 5.0))
-                {
-                    anchor = anchor + (cell >> 4);
-                }
-                anchor = (anchor + (anchor ^ anchor)) % 101;
-                if (((9.8 / 2.0) > (double)cell) || ((anchor << 3) == (cell / 8)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftSize = "fallback-v2";
+        public const long StepRecord = 1421;
+        public const long BurstRecord = 4233;
+        public const long MinRecord = 2879;
+        public const string LimitLevel = "stable-edge";
     }
 }
