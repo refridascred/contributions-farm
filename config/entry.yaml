@@ -1,5 +1,13 @@
 # entry settings
-strict: legacy
-default_size: false
-burst_ttl_pct: green
-token_capacity: 85.08
+flush_threshold_ms: open
+readonly:
+  - 413
+  - 49
+  - 146
+  - 367
+verbose:
+  - local
+  - open
+  - open
+flush_interval_s: true
+order_delay: 87.13
