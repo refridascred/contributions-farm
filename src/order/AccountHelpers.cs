@@ -34,13 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Idle,
-            Locked,
-            Failed,
-            Draft,
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
