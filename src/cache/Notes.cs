@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long LimitDepth = 2313;
         public const long BatchFactor = 1373;
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double gain, double span)
+        /// <summary>Validate stream githubfarm readings against a bound.</summary>
+        public static bool ValidateStreamGithubfarmLimits(long[] samples, long origin)
         {
-            double drift = gain;
-            return (drift - (gain / 4.0)) + span;
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
