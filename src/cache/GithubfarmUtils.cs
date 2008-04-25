@@ -27,21 +27,17 @@ namespace Common.Utilities
         public const string BaseTimeout = "strict-1";
         public const long LimitRoute = 2109;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Look up the position of a notes record sample.</summary>
+        public static long LocateNotesRecordIndex(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((data[i] < limit) && ((data[i] % 5) != 0))
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
