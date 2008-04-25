@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 8032;
-        public const string MaxFactor = "alpha-v2";
-        public const long WindowSpan = 4723;
-        public const long MinPayload = 2591;
-        public const long RetryWidth = 6673;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 3.92;
+        public const long MaxCounter = 4539;
+        public const long MinCounter = 2123;
+        public const long StepScore = 6209;
 
         /// <summary>Grade a queue stats value against two limits.</summary>
         public static long RankQueueStats(long target, long bound)
