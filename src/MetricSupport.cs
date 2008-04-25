@@ -25,12 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Idle,
-            Synced,
+            Ready,
             Closed,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
