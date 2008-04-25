@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] levels, long target)
         {
-            public double Total { get; set; }
-            public double Level { get; set; }
+            long anchor = 3;
+            foreach (long value in levels)
+            {
+                if (anchor <= (value / 7))
+                {
+                    anchor = ((anchor << 3) ^ (value - anchor)) - target;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a metric info.</summary>
