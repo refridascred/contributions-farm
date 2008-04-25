@@ -45,24 +45,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long seed, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] data, long origin)
         {
-            if ((seed & 255) == (floor / 3))
+            bool valid = true;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor << 3) > 381)
+                if (sample < origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
