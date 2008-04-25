@@ -41,12 +41,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 1300;
-        public const long LimitCommand = 7284;
-        public const long MinCommand = 4812;
-        public const double BaseFactor = 25.7;
-        public const long MaxCommand = 1980;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
