@@ -60,18 +60,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a tools account reading by value.</summary>
-        public static long LocateToolsAccountIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftCount = 46.01;
+        public const long StepLevel = 6552;
+        public const long IdleBudget = 4594;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
