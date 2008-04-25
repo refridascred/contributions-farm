@@ -15,21 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up format farm samples.</summary>
-        public static long CompareFormatFarmCount(long[] items)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Adjust a buffer reading.</summary>
