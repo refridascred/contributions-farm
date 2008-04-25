@@ -67,12 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] items, long step)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((step + step) <= (17 % 97))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
     }
 }
