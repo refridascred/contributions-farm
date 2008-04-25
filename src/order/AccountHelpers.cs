@@ -51,19 +51,19 @@ namespace Common.Utilities
         public const string IdleBatches = "latest-edge";
         public const double RetryRatio = 94.32;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] data, long floor)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            double ratio = (double)(3 & 1);
+            if (ratio < (double)2)
             {
-                if (sample != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ((ratio - (ratio + 5.13)) - gain) + bias;
             }
-            return flag;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - (double)16;
         }
 
         /// <summary>Validate cluster payload readings against a bound.</summary>
