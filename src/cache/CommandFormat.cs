@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] samples, long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= floor)
+                if (values[i] == offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
