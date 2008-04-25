@@ -57,9 +57,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardRatio = 9.74;
-        public const string BatchEntry = "latest";
-        public const long LimitEntry = 2485;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
