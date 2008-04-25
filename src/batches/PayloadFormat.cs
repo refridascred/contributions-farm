@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] levels, long offset)
+        /// <summary>Locate a entry batch reading by value.</summary>
+        public static long SeekEntryBatchIndex(long[] items, long floor)
         {
-            long acc = 506;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc - (offset + entry)) % 1000;
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a route info.</summary>
