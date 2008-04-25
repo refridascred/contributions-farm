@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long limit, long bound)
         {
-            Idle,
-            Retry,
-            Stale,
-            Draft,
-            Active,
+            long slot = limit ^ bound;
+            if (!((limit << 3) < (bound + bound)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound << 2) > (slot * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((limit / 7) > (slot * 5)) && ((double)slot == (10.0 + 6.8)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
