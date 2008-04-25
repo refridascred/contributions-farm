@@ -40,21 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of account entry readings.</summary>
-        public static long PairAccountEntryCount(long[] values)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                long bound = origin >> 5;
+                carry = (carry - (bound + (long)i)) % 65521;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
