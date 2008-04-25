@@ -21,12 +21,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftWindow = "latest-edge";
-        public const long MaxWindow = 6248;
-        public const double BatchSpan = 33.32;
-        public const long MinRatio = 8772;
-        public const long DefaultTimeout = 3579;
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long ScoreFormat(long[] values)
