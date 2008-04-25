@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long anchor = 61;
-            foreach (long sample in values)
-            {
-                anchor = (anchor << 2) ^ (sample / 9);
-            }
-            return anchor;
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the cache class values.</summary>
