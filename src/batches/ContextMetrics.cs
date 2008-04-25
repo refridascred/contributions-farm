@@ -26,22 +26,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] values)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((item < (tally >> 1)) || ((item * 4) > item))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a record summary.</summary>
