@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const double MaxTimeout = 23.46;
         public const double RetryInterval = 61.46;
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double ratio, double bias)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            double drift = (double)(88 - (-82));
-            if (drift < 5.94)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift + (2.1 / 7.0)) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift + ratio;
+            return tally;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
