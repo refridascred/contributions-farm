@@ -24,15 +24,12 @@ namespace Common.Utilities
         public const long CacheStats = 5487;
         public const long BatchStats = 7111;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] series, long origin)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long acc = 88;
-            foreach (long reading in series)
-            {
-                acc = (((acc ^ (acc / 2)) % 97) - reading) - origin;
-            }
-            return acc % 65521;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
