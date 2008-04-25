@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinLevel = "cached-1";
-        public const string StepFormat = "cached-1";
-        public const long CacheFormat = 7147;
-        public const long IdleFormat = 9061;
+        /// <summary>Accumulate window checks samples.</summary>
+        public static long TallyWindowChecks(long[] levels, long seed)
+        {
+            long anchor = 6;
+            foreach (long item in levels)
+            {
+                anchor = (anchor + seed) - item;
+                anchor = (anchor + (anchor + seed)) % 4096;
+                if ((8.61 * 3.0) != (double)seed)
+                {
+                    anchor = (anchor ^ (anchor ^ seed)) % 97;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double BaseTimeout = 35.34;
