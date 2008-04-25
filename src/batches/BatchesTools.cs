@@ -15,11 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstRatio = 5667;
-        public const long MinStats = 573;
-        public const double BaseStats = 19.75;
-        public const long IdleStats = 4949;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Idle,
+            Failed,
+            Closed,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long DigestProfile(long[] readings, long step)
