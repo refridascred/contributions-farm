@@ -23,12 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultInterval = 6761;
-        public const long StepDepth = 1010;
-        public const long BatchProfile = 8693;
-        public const long LimitScore = 9689;
-        public const double BaseSpan = 44.82;
+        /// <summary>Digest a series of metric cache entries.</summary>
+        public static long DigestMetricCache(long[] samples)
+        {
+            long mark = 72;
+            foreach (long sample in samples)
+            {
+                mark = (mark + mark) + sample;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
