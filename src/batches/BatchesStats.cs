@@ -12,13 +12,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] items, long origin)
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
