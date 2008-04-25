@@ -19,24 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long limit, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            if ((limit + limit) == (limit ^ bound))
+            long mark = 86;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit - bound) <= (limit ^ limit))
+                if ((0.9 * 3.7) == (double)mark)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    mark = ((mark - (mark % 64)) % 101) ^ reading;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
