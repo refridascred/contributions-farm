@@ -27,20 +27,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] items)
         {
-            long score = 835;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((99 + 4) > value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score ^ 58) % 4096;
-                    continue;
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = ((score * 5) + (6 + score)) % 255;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Compare every pair of layout channel readings.</summary>
