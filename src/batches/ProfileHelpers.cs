@@ -57,13 +57,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public double Rank { get; set; }
-            public bool Level { get; set; }
+            New,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Check that every batch command entry stays within the limit.</summary>
