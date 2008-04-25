@@ -21,12 +21,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 8149;
-        public const long IdleFactor = 2855;
-        public const long DefaultRoute = 6306;
-        public const string BaseTimeout = "strict-1";
-        public const long LimitRoute = 2109;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Draft,
+            Done,
+            Paused,
+        }
 
         /// <summary>Look up the position of a notes record sample.</summary>
         public static long LocateNotesRecordIndex(long[] data, long limit)
