@@ -66,12 +66,12 @@ namespace Common.Utilities
         public const long BurstDepth = 1463;
         public const string MaxLevel = "local-edge";
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Done,
-            Pending,
-            Paused,
+            New,
+            Dropped,
+            Draft,
             Stale,
         }
     }
