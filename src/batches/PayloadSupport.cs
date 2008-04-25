@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const long BaseSize = 2276;
         public const string StepContext = "open-edge";
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] items)
-        {
-            long mix = 461;
-            foreach (long item in items)
-            {
-                if ((double)mix >= 0.36)
-                {
-                    mix = (((mix << 3) ^ (2 % 10)) % 1000) - item;
-                }
-                if (((3.1 + 16.0) > (double)mix) && (11.0 >= (double)mix))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "cached";
+        public const long SoftSchema = 4436;
+        public const long MaxLevel = 3529;
+        public const string MinSchema = "latest-v2";
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiOutliers(long[] series)
