@@ -1,6 +1,5 @@
 {
-  "min_ratio_ms": "strict",
-  "enabled": "stable",
-  "warm_capacity": "staging",
-  "default_delay": "legacy"
+  "burst_retries_count": "open",
+  "strict": "green",
+  "burst_timeout_s": 43
 }
