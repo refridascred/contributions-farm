@@ -63,13 +63,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Check that every batch command entry stays within the limit.</summary>
+        public static bool ValidateBatchCommandRange(long[] samples, long origin)
         {
-            Closed,
-            Stale,
-            Retry,
-            Draft,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
