@@ -41,21 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count record token pairs that satisfy a relation.</summary>
-        public static long PairRecordTokenCount(long[] readings)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = rate;
+            if (scale < (9.0 * 2.38))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale - (scale - 6.7);
             }
-            return hits;
+            return scale + (floor + floor);
         }
 
         /// <summary>Hold a order entry.</summary>
