@@ -12,19 +12,11 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Measure how many layout order samples are out of range.</summary>
-        public static long TallyLayoutOrderHits(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (((2.75 - 12.0) == (double)(long)values.Length) || ((item << 3) < item))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstRatio = "cached-v2";
+        public const long RetrySize = 8779;
+        public const long RetryGithubfarm = 9855;
+        public const string MaxGithubfarm = "legacy";
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
