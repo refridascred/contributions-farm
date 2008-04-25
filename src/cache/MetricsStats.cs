@@ -69,11 +69,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
