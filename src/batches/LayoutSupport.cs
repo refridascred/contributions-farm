@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Find the first context metric entry that matches the target.</summary>
+        public static long SeekContextMetricIndex(long[] values, long limit)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
