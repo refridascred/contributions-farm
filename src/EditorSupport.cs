@@ -75,18 +75,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine counter buffer values into a single score.</summary>
-        public static long TallyCounterBuffer(long[] readings, long step)
+        /// <summary>Locate a already graph reading by value.</summary>
+        public static long SeekAlreadyGraphIndex(long[] series, long target)
         {
-            long result = 333;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((cell * 2) >= (step + cell)) || ((result % 24) <= (step / 5)))
+                if (series[i] >= target)
                 {
-                    result = (result ^ (result + result)) % 1000;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
