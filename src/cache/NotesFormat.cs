@@ -31,16 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] levels, long target)
         {
-            long total = 25;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                total = total + (total ^ total);
-                total = (total - (item / 4)) % 97;
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total % 97;
+            return ready;
         }
     }
 }
