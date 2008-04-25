@@ -68,21 +68,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up account context samples.</summary>
-        public static long PairAccountContextCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSpan = "stable";
+        public const long SoftCount = 3369;
+        public const long HardSession = 6678;
     }
 }
