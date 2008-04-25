@@ -16,21 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Synced,
+            Active,
+            Done,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
