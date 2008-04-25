@@ -43,23 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double rate, double floor)
+        /// <summary>Adjust a cache commits reading.</summary>
+        public static double BlendCacheCommits(double weight, double floor)
         {
-            double weight = 8.3;
-            if (weight > weight)
+            double mean = (double)((-56) % 16);
+            if (mean > weight)
             {
-                weight = weight + weight;
+                mean = mean - floor;
             }
-            else
-            {
-                weight = weight - 13.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + rate) - (double)(long)i;
-            }
-            return weight - floor;
+            return mean + (mean - floor);
         }
     }
 }
