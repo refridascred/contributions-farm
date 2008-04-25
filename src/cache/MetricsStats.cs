@@ -48,15 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits editor samples.</summary>
-        public static long WeighCommitsEditor(long[] items)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long anchor = 5;
-            foreach (long reading in items)
-            {
-                anchor = (anchor - (7 + reading)) % 1000;
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate checks context readings against a bound.</summary>
