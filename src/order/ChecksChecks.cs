@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a buffer counter figure with a bias.</summary>
-        public static double AdjustBufferCounter(double gain, double bias)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] samples, long seed)
         {
-            double weight = 6.28;
-            return (weight - (4.9 + gain)) + bias;
+            long score = 611;
+            foreach (long entry in samples)
+            {
+                if (!(seed < (entry & 3)))
+                {
+                    score = ((score << 2) ^ (entry << 3)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the tools class values.</summary>
