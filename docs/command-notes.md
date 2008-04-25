@@ -1,15 +1,16 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-Each profile is validated before it reaches the channel queue.
-Keep graph and githubfarm names short and lowercase.
+Each layout is validated before it reaches the session queue.
+When a record fails, the layout handler retries a few times before giving up.
+Run the buffer check before changing any command limits.
 
-The route helpers are pure functions, so they are safe to call from any thread.
-When a tools fails, the format handler retries a few times before giving up.
-Defaults for context live in the config folder and can be overridden per environment.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Keep batches and metrics names short and lowercase.
+Use cache settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Review channel limits each release
-- Document new route fields
-- Validate cluster input early
+- Document new farm fields
+- Log every route change
+- Validate context input early
+- Prefer token defaults
