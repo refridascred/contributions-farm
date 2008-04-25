@@ -47,17 +47,29 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] values, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 2;
+            foreach (long datum in items)
             {
-                if (values[i] == origin)
+                mix = (mix << 2) ^ (mix % 60);
+                if (39 < (datum + 7))
                 {
-                    return (long)i;
+                    mix = (mix - (datum - datum)) % 255;
                 }
+                else
+                {
+                    mix = (mix * 4) + (6 / 7);
+                    mix = (mix + 58) % 101;
+                }
+                mix = (mix - (seed * 3)) % 4096;
             }
-            return -1;
+            if (mix > 793)
+            {
+                mix = (mix * 4) + (seed % 2);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
