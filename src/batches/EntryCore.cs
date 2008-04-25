@@ -27,21 +27,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long step, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)step < (5.0 + 4.1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((8 ^ 713) != (step * 3)))
                 {
-                    if ((values[i] - values[j]) < 7)
+                    return 0;
+                }
+                else
+                {
+                    if ((step * 5) >= (offset / 7))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset < (step ^ 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
