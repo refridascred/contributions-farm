@@ -1,8 +1,12 @@
 {
-  "sync_capacity": 6945,
-  "strict": "legacy",
-  "hard_window_pct": 89,
-  "readonly": ["blue", "standard", "fallback"],
-  "batches_ratio": "strict",
-  "base_ratio_s": [230, 455, 82]
+  "stream_interval": [401, 400, 278, 470],
+  "flush_window_ms": "cached",
+  "default_retries_ms": {
+    "min_interval_pct": 1352,
+    "batch_delay_ms": "local",
+    "idle_retries": "stable"
+  },
+  "editor_threshold": "latest",
+  "soft_window_count": 571,
+  "persist": [293, 157]
 }
