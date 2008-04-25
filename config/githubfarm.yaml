@@ -1,11 +1,12 @@
 # githubfarm settings
-retry_ttl:
-  - fallback
-  - strict
-  - fallback
-farm_ratio: false
-route_depth:
-  - 196
-  - 179
-  - 200
-  - 130
+batches_threshold: false
+idle_timeout:
+  - 205
+  - 203
+  - 37
+  - 243
+metrics_capacity:
+  - 496
+  - 450
+  - 253
+  - 247
