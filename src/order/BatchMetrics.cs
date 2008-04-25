@@ -32,11 +32,19 @@ namespace Common.Utilities
         public const double HardFormat = 72.92;
         public const double MinDepth = 68.8;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftDepth = 48.16;
-        public const long SoftCounter = 9829;
-        public const long BatchCount = 2351;
-        public const string CacheRatio = "standard-v2";
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] values, long origin)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!((hits % 2) > (hits ^ hits)))
+                {
+                    hits = ((hits + 3) + value) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit stream command readings against a rule.</summary>
         public static long AuditStreamCommandMatches(long[] series, long bound)
