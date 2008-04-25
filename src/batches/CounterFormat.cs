@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxRatio = "latest-1";
-        public const string HardWidth = "stable-1";
-        public const double WindowEntry = 20.79;
-        public const long RetryEntry = 2290;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] readings)
+        {
+            long anchor = 51;
+            foreach (long sample in readings)
+            {
+                if ((double)sample >= (6.0 - 13.0))
+                {
+                    anchor = ((anchor << 3) ^ 9) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ sample) % 1000;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long ScoreQueue(long[] readings, long floor)
