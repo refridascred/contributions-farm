@@ -43,11 +43,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitSpan = 751;
-        public const long CacheProfile = 6105;
-        public const long BurstDepth = 9450;
-        public const string SoftInterval = "staging-1";
-        public const long MinProfile = 4807;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            New,
+            Pending,
+            Paused,
+            Dropped,
+        }
     }
 }
