@@ -26,11 +26,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Accumulate metric account samples.</summary>
+        public static long TotalMetricAccount(long[] data, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            long total = 879;
+            foreach (long datum in data)
+            {
+                if ((total + total) >= (floor ^ (-72)))
+                {
+                    break;
+                }
+                if (((-797) >= (floor ^ floor)) || ((total ^ total) <= (2 - datum)))
+                {
+                    total = total ^ (total / 2);
+                }
+                if ((12.0 * 7.0) >= (double)total)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
