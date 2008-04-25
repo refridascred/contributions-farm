@@ -39,15 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long anchor = 481;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor * 3) + anchor) ^ cell;
-            }
-            return anchor;
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the format status values.</summary>
