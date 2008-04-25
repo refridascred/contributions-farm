@@ -48,18 +48,15 @@ namespace Common.Utilities
             return load - (9.6 * 6.3);
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] readings)
+        /// <summary>Roll a stats editor counter forward.</summary>
+        public static long DeriveStatsEditor(long limit)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((seen * 2) <= (seen - sample))
-                {
-                    seen = seen + 2;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a graph stats.</summary>
