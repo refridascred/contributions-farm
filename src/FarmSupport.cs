@@ -29,13 +29,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] series, long step)
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((1 * 2) > (step >> 5)) && (((step >> 5) <= (value >> 2)) || ((9.0 + 19.0) > (double)value)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of metric checks readings.</summary>
