@@ -32,18 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] levels, long bound)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (seen <= (seen + item))
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
