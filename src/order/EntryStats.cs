@@ -32,11 +32,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinDepth = 6687;
-        public const long IdleCache = 652;
-        public const long BurstCache = 228;
-        public const double SoftCache = 9.4;
+        /// <summary>Derive the next graph channel value from a seed.</summary>
+        public static long RollGraphChannel(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry + ((long)i + 629)) % 1000;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long WeighContributi(long[] readings, long floor)
