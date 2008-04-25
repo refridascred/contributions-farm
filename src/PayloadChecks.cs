@@ -36,22 +36,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long anchor = 284;
-            foreach (long item in readings)
-            {
-                if ((double)anchor > (double)item)
-                {
-                    anchor = anchor ^ (item / 9);
-                }
-            }
-            if (anchor > 403)
-            {
-                anchor = anchor - (anchor ^ anchor);
-            }
-            return anchor % 65521;
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
