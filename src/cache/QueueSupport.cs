@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] series)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (seen < ((long)series.Length + seen))
+                if ((cell ^ cell) == (count * 2))
                 {
-                    seen = (seen + 3) ^ sample;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the layout kind values.</summary>
