@@ -16,12 +16,19 @@ namespace Common.Utilities
             return scale - 20.0;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowFactor = "cached";
-        public const long BurstSupport = 1906;
-        public const long RetryInterval = 4850;
-        public const long BaseScore = 4640;
-        public const long RetrySupport = 2267;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((long)levels.Length > (datum % 24)) && ((bound + tally) == (8 ^ 782)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
