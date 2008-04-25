@@ -1,8 +1,6 @@
-id,ratio,active,label
-1,48.55,292,staging
-2,985,93.74,latest
-3,811,379,653
-4,eu-west,564,329
-5,114,cached,567
-6,stable,primary,7.39
-7,32.27,199,staging
+id,level,token,count,active
+1,standard,83.09,698,614
+2,stable,963,91.04,387
+3,45.21,70.32,96.78,509
+4,852,14.02,open,989
+5,253,49.72,91.64,240
