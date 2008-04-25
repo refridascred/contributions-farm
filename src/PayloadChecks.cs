@@ -66,13 +66,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] values, long origin)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
