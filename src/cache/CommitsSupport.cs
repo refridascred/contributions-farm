@@ -54,38 +54,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long offset, long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] samples)
         {
-            if (((4 - offset) > (411 - offset)) || ((offset + offset) <= (-55)))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit >= (offset << 1))
+                if (8 <= sample)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (8 > (limit - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((2.69 - 3.36) > (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
