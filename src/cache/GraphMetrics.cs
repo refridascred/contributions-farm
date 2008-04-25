@@ -66,19 +66,24 @@ namespace Common.Utilities
             return load + 18.0;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] series, long step)
+        /// <summary>Derive the next tools profile value from a seed.</summary>
+        public static long StepToolsProfile(long origin)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long state = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell >= step)
+                if ((((long)i - origin) == (9 + (long)i)) && ((state ^ state) == (origin - state)))
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                state = (state ^ (state + origin)) % 65521;
+                if (!((origin + origin) == (783 - (long)i)))
+                {
+                    state = (state + state) % 4096;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return found;
+            return state;
         }
     }
 }
