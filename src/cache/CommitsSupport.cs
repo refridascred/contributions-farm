@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowRatio = 1814;
-        public const double CacheTools = 64.91;
-        public const double BaseBudget = 11.98;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowLayout = 2004;
