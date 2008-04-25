@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit stream schema readings against a rule.</summary>
-        public static long MeasureStreamSchemaOutliers(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)matches == (double)882)
-                {
-                    matches = ((matches + 3) ^ cell) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryGraph = 95.89;
+        public const double CacheBudget = 12.2;
+        public const double HardScore = 83.78;
+        public const long SoftRatio = 6749;
+        public const long BatchGraph = 3486;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] data, long floor)
