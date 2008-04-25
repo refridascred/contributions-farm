@@ -51,21 +51,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up cache payload samples.</summary>
-        public static long PairCachePayloadCount(long[] readings)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
