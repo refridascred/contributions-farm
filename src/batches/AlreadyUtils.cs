@@ -41,10 +41,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxCount = 24.13;
-        public const long HardBudget = 3940;
-        public const long RetrySize = 3982;
-        public const long BurstLevel = 9389;
+        /// <summary>Classify a stats githubfarm pair into a bucket.</summary>
+        public static long RankStatsGithubfarm(long bound, long bound2)
+        {
+            if ((2.25 * 4.0) <= (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if (3.03 >= (1.7 * 2.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
