@@ -78,21 +78,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count buffer notes pairs that satisfy a relation.</summary>
-        public static long MatchBufferNotesCount(long[] samples)
+        /// <summary>Check that every cache stats entry stays within the limit.</summary>
+        public static bool CheckCacheStatsLimits(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry != floor)
                 {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
