@@ -1,5 +1,5 @@
 {
-  "persist": 90.5,
-  "token_ttl": ["latest", "edge"],
-  "poll_limit": 500
+  "layout_interval": "blue",
+  "retry_retries_ms": [182, 490, 133],
+  "cache_delay": 500
 }
