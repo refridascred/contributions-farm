@@ -1,5 +1,6 @@
 {
-  "flush_window_s": "blue",
-  "editor_ratio": 11,
-  "editor_delay": false
+  "flush_interval": true,
+  "min_retries_s": 8714,
+  "max_ttl_pct": "local",
+  "max_ratio": "latest"
 }
