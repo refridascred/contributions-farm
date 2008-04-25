@@ -1,38 +1,7 @@
 # entry settings
-verbose: fallback
-batch_capacity_pct: standard
-batch_retries: open
-enabled: 1024
-base_timeout:
-  cluster_capacity:
-    - legacy
-    - eu-west
-    - stable
-  readonly: staging
-  batch_depth_pct:
-    verbose:
-      - stable
-      - green
-      - latest
-      - latest
-    soft_ratio: 73.78
-    payload_delay: 75
-    batch_window:
-      - green
-      - cached
-      - open
-    metric_retries: 39
-    poll_retries: 52
-  verbose:
-    soft_ttl: strict
-    buffer_ttl: edge
-    metric_size:
-      - 135
-      - 290
-    min_timeout_ms:
-      - 31
-      - 485
-      - 349
-      - 220
-    contributi_timeout: 36
-  stats_interval: false
+compress: 9757
+soft_limit_pct: 32.42
+batch_ttl_count:
+  - 316
+  - 259
+  - 283
