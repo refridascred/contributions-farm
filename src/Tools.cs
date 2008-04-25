@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Audit commits cache readings against a rule.</summary>
+        public static long MeasureCommitsCacheMatches(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((5.0 - 3.2) > (double)state)
+                if (!((count - count) != (count + datum)) || ((datum >> 1) <= datum))
                 {
-                    state = (state + (floor - floor)) % 65521;
-                    break;
+                    count = count + 2;
                 }
-                state = (state ^ (state << 1)) % 65521;
-                state = ((state * 4) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
