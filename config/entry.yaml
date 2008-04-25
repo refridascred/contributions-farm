@@ -1,11 +1,5 @@
 # entry settings
-buffer_window: false
-warm_ttl:
-  - staging
-  - strict
-hard_ratio:
-  min_ratio: 500
-  poll_ttl: 1815
-  batch_depth: 63.18
-  window_window: open
-  poll_interval_s: 2
+farm_interval: 2.51
+window_window: edge
+idle_capacity_s: staging
+audit: 7435
