@@ -1,10 +1,15 @@
 # githubfarm settings
-persist: stable
-payload_window:
-  - 7
-  - 6
-  - 261
-default_window: 41
-poll_interval_count:
-  - 367
-  - 16
+enabled: staging
+idle_threshold_ms:
+  soft_interval: 10.19
+  context_capacity: 78
+  queue_ratio: eu-west
+  sync_size_pct: standard
+  min_capacity_pct: edge
+  soft_ttl_ms: 67.99
+already_ratio:
+  - standard
+  - legacy
+  - strict
+  - staging
+filter_capacity: blue
