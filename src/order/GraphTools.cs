@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long step, long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long offset)
         {
-            if ((seed + step) != (seed >> 3))
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step - step) <= (seed - seed))
+                if (!((double)state > 1.0))
                 {
-                    return 8;
+                    state = (state + (offset * 3)) % 255;
                 }
-                else
-                {
-                    return 2;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Hold a order record.</summary>
