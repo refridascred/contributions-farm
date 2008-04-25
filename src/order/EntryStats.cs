@@ -67,18 +67,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry << 2) >= (entry + seen))
-                {
-                    seen = (seen + 1) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheRatio = 155;
+        public const long BurstCache = 7349;
+        public const long WindowCache = 1020;
+        public const double LimitInterval = 82.21;
+        public const string BatchScore = "strict-edge";
     }
 }
