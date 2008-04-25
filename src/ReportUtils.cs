@@ -33,19 +33,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double ratio, double bias)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long origin, long step)
         {
-            double load = bias;
-            if (load < load)
+            if ((origin >> 4) <= step)
             {
-                load = load - ratio;
+                return 5;
             }
             else
             {
-                load = load - (double)70;
+                if ((9 - origin) < (99 & 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((16.0 + 0.8) > (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return load - (9.6 * 6.3);
         }
 
         /// <summary>Roll a stats editor counter forward.</summary>
