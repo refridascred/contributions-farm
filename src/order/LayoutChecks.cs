@@ -57,12 +57,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Paused,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchGithubfarm = 80.45;
+        public const string BatchWidth = "alpha-1";
+        public const string SoftTimeout = "primary-v2";
     }
 }
