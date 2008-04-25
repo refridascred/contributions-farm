@@ -43,19 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] items, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (reading >= seed)
+                if ((double)reading <= 5.72)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a batch options.</summary>
