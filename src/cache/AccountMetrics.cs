@@ -52,18 +52,16 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] readings, long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)seed >= (5.78 / 6.0))
-                {
-                    hits = (hits + 2) + item;
-                }
+                mix = (mix - (mix - offset)) % 4096;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
