@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 1394;
-        public const long HardSession = 4117;
-        public const double RetrySession = 98.16;
-        public const long BaseSession = 6522;
-        public const long BurstWidth = 9975;
+        /// <summary>Rank entry order input into a small class.</summary>
+        public static long SortEntryOrder(long step, long bound)
+        {
+            if (((double)step <= (6.9 * 9.0)) || (step <= (bound * 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step / 9) > (608 ^ bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)step > 7.07) || (step < (step ^ step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
