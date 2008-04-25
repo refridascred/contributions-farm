@@ -34,21 +34,31 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Count batches metric pairs that satisfy a relation.</summary>
-        public static long CompareBatchesMetricCount(long[] items)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long bound, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((target << 3) > bound)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((6.7 - 4.1) != (double)target)
                 {
-                    if ((items[i] ^ items[j]) < 11)
+                    return 4;
+                }
+                else
+                {
+                    if ((25 + 6) < target)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
