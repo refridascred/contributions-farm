@@ -16,22 +16,18 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (!((double)seen > (8.2 * 4.84)))
+                if (hits < (91 >> 1))
                 {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
