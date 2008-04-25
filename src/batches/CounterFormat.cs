@@ -27,18 +27,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count % 16) > offset)
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 722;
+        public const double BurstQueue = 15.91;
+        public const long DefaultQueue = 444;
     }
 }
