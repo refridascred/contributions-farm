@@ -45,13 +45,24 @@ namespace Common.Utilities
         public const string DefaultWidth = "cached";
         public const double LimitScore = 36.05;
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long offset, long seed)
         {
-            Draft,
-            New,
-            Retry,
-            Active,
+            if (!(offset <= (seed % 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed > (2.0 + 14.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
