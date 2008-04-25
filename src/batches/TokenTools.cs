@@ -30,17 +30,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] samples, long offset)
+        /// <summary>Classify a githubfarm report pair into a bucket.</summary>
+        public static long SortGithubfarmReport(long origin, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((84 / 8) < (step % 60))
             {
-                if ((samples[i] <= offset) && ((samples[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if (step >= (step + 5))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (step < ((-38) & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (6.5 * 9.33))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
