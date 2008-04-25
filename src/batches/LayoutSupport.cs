@@ -63,11 +63,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Project the next window queue value.</summary>
+        public static double SmoothWindowQueue(double rate, double bias)
         {
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
+            double ratio = (double)34 + rate;
+            if (ratio > (bias / 3.0))
+            {
+                ratio = ratio - bias;
+            }
+            return ratio + rate;
         }
     }
 }
