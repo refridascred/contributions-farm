@@ -52,13 +52,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] samples, long limit)
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
