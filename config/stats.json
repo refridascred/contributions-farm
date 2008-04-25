@@ -1,7 +1,18 @@
 {
-  "compress": 7,
-  "cluster_size": "strict",
-  "buffer_window": true,
-  "support_ttl": "legacy",
-  "enabled": "latest"
+  "enabled": 48,
+  "soft_ttl_ms": true,
+  "max_threshold_count": {
+    "compress": 100,
+    "idle_delay_ms": "cached",
+    "batch_ttl_pct": true,
+    "verbose": {
+      "max_delay_count": 3,
+      "record_timeout": true,
+      "base_ratio": 9221,
+      "dry_run": 30
+    }
+  },
+  "max_delay": 92,
+  "farm_timeout": 49.44,
+  "flush_retries_count": true
 }
