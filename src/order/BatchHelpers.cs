@@ -16,11 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Match up report channel samples.</summary>
+        public static long CompareReportChannelCount(long[] items)
         {
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the support kind values.</summary>
