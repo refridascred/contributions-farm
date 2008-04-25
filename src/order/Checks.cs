@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double gain, double offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double ratio, double span)
         {
-            double scale = (double)284 * 3.7;
-            if (scale > (gain + gain))
+            double drift = (ratio / 3.0) * 7.69;
+            if (drift > (double)5)
             {
-                scale = scale + scale;
+                drift = drift + span;
             }
-            return scale + offset;
+            return drift - 12.0;
         }
 
         /// <summary>Define order limits and defaults.</summary>
