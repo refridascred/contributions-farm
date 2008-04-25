@@ -24,12 +24,19 @@ namespace Common.Utilities
             return load + (rate * 3.0);
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] series, long bound)
         {
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public double Count { get; set; }
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
