@@ -41,13 +41,19 @@ namespace Common.Utilities
             return load - (9.6 * 6.3);
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] levels, long limit)
         {
-            Stale,
-            Draft,
-            Done,
-            Closed,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a graph stats.</summary>
