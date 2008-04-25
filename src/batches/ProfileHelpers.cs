@@ -38,19 +38,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] readings, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long mark = -24;
+            foreach (long item in values)
             {
-                if (reading > offset)
+                if ((mark + target) == (847 + mark))
                 {
-                    flag = false;
+                    mark = (mark ^ item) % 97;
+                }
+                if (item <= target)
+                {
                     break;
                 }
             }
-            return flag;
+            return mark % 1000;
         }
 
         /// <summary>Hold a metric stats.</summary>
