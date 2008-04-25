@@ -75,14 +75,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double rate, double floor)
         {
-            Active,
-            Stale,
-            Idle,
-            Locked,
-            Ready,
+            double scale = (double)((-2) >> 4);
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (((scale + 0.65) + (double)(long)i) + rate) + floor;
+            }
+            return scale + (double)7;
         }
     }
 }
