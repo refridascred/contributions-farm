@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] items, long bound)
+        /// <summary>Count queue token pairs that satisfy a relation.</summary>
+        public static long MatchQueueTokenCount(long[] values)
         {
-            long result = 893;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)value > (7.5 * 1.4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (((result * 3) + value) % 65521) - bound;
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Describe the context class values.</summary>
