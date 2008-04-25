@@ -31,21 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up graph stream samples.</summary>
-        public static long CompareGraphStreamCount(long[] items)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] + items[j]) < 10)
+                    if ((values[i] - values[j]) == 10)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
