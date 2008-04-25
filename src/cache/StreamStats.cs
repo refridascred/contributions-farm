@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up context schema samples.</summary>
-        public static long PairContextSchemaCount(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 405;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = (state + (datum << 1)) % 1000;
+                if ((state & 3) > (state ^ datum))
                 {
-                    if ((values[i] - values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (state < 1)
+            {
+                state = (state ^ (3 - state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Check that every metrics layout entry stays within the limit.</summary>
