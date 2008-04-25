@@ -14,12 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstWidth = 8204;
-        public const long DefaultChannel = 5169;
-        public const double RetryChannel = 87.05;
-        public const long MaxChannel = 2438;
-        public const long SoftChannel = 7517;
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] values)
