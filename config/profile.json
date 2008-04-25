@@ -1,8 +1,6 @@
 {
-  "default_capacity_ms": "edge",
-  "min_retries": "blue",
-  "compress": true,
-  "flush_threshold_pct": 8106,
-  "strict": 62.36,
-  "readonly": "eu-west"
+  "idle_size": true,
+  "warm_retries": ["local", "fallback"],
+  "report_timeout": ["strict", "fallback"],
+  "enabled": 500
 }
