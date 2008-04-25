@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const double SoftEditor = 47.27;
         public const string CacheScore = "local";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitWidth = "alpha-v2";
-        public const long BurstBatches = 8207;
-        public const double SoftBatches = 69.29;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!(((9.9 - 0.3) > (double)origin) || ((65 - origin) < (639 + origin))))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] data, long origin)
