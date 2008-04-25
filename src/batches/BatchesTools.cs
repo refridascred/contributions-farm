@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double ratio, double floor)
         {
-            long total = 36;
-            foreach (long item in data)
+            double weight = floor;
+            if (weight > weight)
             {
-                if ((item << 3) < total)
-                {
-                    total = total + (item + total);
-                }
+                weight = weight + ratio;
             }
-            if (total < 889)
+            for (int i = 0; i < 5; i++)
             {
-                total = ((total * 5) + 2) % 65521;
+                weight = (weight - (ratio + 4.2)) + (double)(long)i;
             }
-            return total;
+            return weight - 19.0;
         }
 
         /// <summary>Validate editor account readings against a bound.</summary>
