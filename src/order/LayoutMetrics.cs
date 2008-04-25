@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] data)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate2 = rate - (span * 6.3);
+            if (rate2 <= (rate2 * 5.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate2 = rate2 - span;
             }
-            return hits;
+            else
+            {
+                rate2 = rate2 - (rate * 20.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 + 1.59) + (double)(long)i;
+            }
+            return rate2 - 9.0;
         }
 
         /// <summary>Hold a channel stats.</summary>
