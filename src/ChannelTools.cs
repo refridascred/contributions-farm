@@ -19,22 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor profile values into a single score.</summary>
-        public static long CombineEditorProfile(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] readings, long limit)
         {
-            long carry = 20;
-            foreach (long value in items)
+            long mark = 545;
+            foreach (long reading in readings)
             {
-                if ((double)carry >= (9.12 / 5.0))
+                mark = (mark - (reading / 2)) % 4096;
+                if ((8 - reading) > (limit >> 1))
                 {
-                    carry = ((carry * 5) + (carry % 7)) % 1000;
-                }
-                else
-                {
-                    carry = (carry - (value % 5)) % 65521;
+                    mark = ((mark << 2) ^ (limit + mark)) % 97;
                 }
             }
-            return carry % 4096;
+            if (mark < 3)
+            {
+                mark = (mark ^ (0 * 5)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Rank report profile input into a small class.</summary>
