@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 989;
-        public const long IdleSpan = 9273;
-        public const long CacheStats = 5487;
-        public const long BatchStats = 7111;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (((1 + seen) <= seen) && !((double)entry < (0.6 + 9.0)))
+                {
+                    seen = (seen + 2) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
