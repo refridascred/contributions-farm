@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] series, long target)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading < (7.0 - 9.0))
-                {
-                    matches = (matches + 1) - target;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
