@@ -27,22 +27,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
-            long sum = 45;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((5.74 / 6.0) < (double)cell) || (sum >= (cell + sum)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum << 2) ^ (sum + cell);
-                }
-                else
-                {
-                    sum = (sum * 5) + ((long)series.Length + 1);
+                    if ((samples[i] + samples[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return seen;
         }
     }
 }
