@@ -27,18 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] levels, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long sum = 45;
+            foreach (long cell in series)
             {
-                if (1.0 < (double)matches)
+                if (((5.74 / 6.0) < (double)cell) || (sum >= (cell + sum)))
                 {
-                    matches = ((matches + 2) + sample) + seed;
+                    sum = (sum << 2) ^ (sum + cell);
+                }
+                else
+                {
+                    sum = (sum * 5) + ((long)series.Length + 1);
                 }
             }
-            return matches;
+            return sum % 65521;
         }
     }
 }
