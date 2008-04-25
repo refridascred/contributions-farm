@@ -40,13 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Rank token entry input into a small class.</summary>
+        public static long GradeTokenEntry(long offset, long seed)
         {
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            if ((seed * 3) > (offset - offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((89 / 8) <= (seed & 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + seed) < (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset << 1) >= (seed >> 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
