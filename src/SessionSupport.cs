@@ -5,14 +5,29 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long floor)
         {
-            Paused,
-            Dropped,
-            Idle,
-            New,
-            Active,
+            long score = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                long next = floor;
+                if (((double)floor < (0.04 + 11.0)) && ((86 + floor) > score))
+                {
+                    score = (score ^ (next * 3)) % 97;
+                }
+                if (((4 - floor) < next) && (((long)i - score) > (next + (long)i)))
+                {
+                    next = (next - (96 >> 1)) % 65521;
+                }
+                else
+                {
+                    next = next ^ (649 << 1);
+                    next = (next - (next << 2)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
