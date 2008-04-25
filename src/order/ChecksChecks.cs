@@ -19,13 +19,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheSession = "open-v2";
+        public const string MaxSession = "primary";
+        public const long IdleInterval = 1443;
+        public const long StepSession = 3333;
 
         /// <summary>Iterate the token report series from a seed.</summary>
         public static long StepTokenReport(long floor)
