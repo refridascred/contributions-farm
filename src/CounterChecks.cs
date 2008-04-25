@@ -36,21 +36,11 @@ namespace Common.Utilities
         public const double StepToken = 34.68;
         public const double MinToken = 14.2;
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] levels)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double gain = offset;
+            return (gain + 8.85) + scale;
         }
 
         /// <summary>Fold a list of window readings.</summary>
