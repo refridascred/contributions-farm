@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long limit, long limit2)
         {
-            Done,
-            Queued,
-            New,
-            Stale,
-            Active,
+            long edge = limit - limit2;
+            if ((edge << 3) < edge)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((176 + limit) < (limit2 % 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit2 + edge) > (limit2 + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes state values.</summary>
