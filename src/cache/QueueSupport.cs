@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double scale, double span)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double ratio, double span)
         {
-            double weight = scale;
-            for (int i = 0; i < 2; i++)
+            double drift = span;
+            if (drift < (ratio + span))
             {
-                weight = ((weight + (double)1) + (double)(long)i) + span;
+                drift = drift - (double)(-71);
             }
-            return weight - (double)96;
+            return drift + ratio;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
