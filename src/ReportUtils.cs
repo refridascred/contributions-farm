@@ -41,18 +41,13 @@ namespace Common.Utilities
             return load - (9.6 * 6.3);
         }
 
-        /// <summary>Measure how many farm stream samples are out of range.</summary>
-        public static long TallyFarmStreamGaps(long[] items, long bound)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((value >> 5) < 2)
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
+            Stale,
+            Draft,
+            Done,
+            Closed,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
