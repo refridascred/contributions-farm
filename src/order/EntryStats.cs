@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double rate, double bias)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            double scale = (double)6 + (6.9 / 4.0);
+            if (scale >= (double)(-18))
             {
-                if (((long)i % 97) > (long)i)
-                {
-                    score = (score + (score - (long)i)) % 97;
-                }
-                score = ((score * 4) + (long)i) % 97;
+                scale = (scale - rate) - bias;
             }
-            return score;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - rate) + (double)(long)i;
+            }
+            return scale + (rate * 7.0);
         }
 
         /// <summary>Locate a payload reading by value.</summary>
