@@ -33,34 +33,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] series, long origin)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double gain, double floor)
         {
-            long state = 9;
-            foreach (long sample in series)
-            {
-                if ((3 + origin) > (long)series.Length)
-                {
-                    state = state - (state + state);
-                }
-                else
-                {
-                    state = (state + (origin % 2)) % 97;
-                }
-                if ((double)origin >= (2.0 / 4.0))
-                {
-                    state = state ^ (origin ^ sample);
-                }
-                else
-                {
-                    state = ((state * 2) + (sample + state)) % 4096;
-                }
-            }
-            if (state > 280)
-            {
-                state = (state * 4) + origin;
-            }
-            return state % 4096;
+            double rate = 13.0;
+            return ((rate - (double)2) + gain) + floor;
         }
     }
 }
