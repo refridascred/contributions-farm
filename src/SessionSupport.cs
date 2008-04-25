@@ -26,14 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] data, long seed)
         {
-            Retry,
-            Failed,
-            New,
-            Active,
-            Synced,
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the cache state values.</summary>
