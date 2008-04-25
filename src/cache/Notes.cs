@@ -46,22 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepWidth = 60.27;
+        public const double MaxCommits = 83.37;
+        public const long IdleFactor = 7214;
+        public const long MaxWidth = 98;
+        public const string WindowBudget = "latest-1";
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
