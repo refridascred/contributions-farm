@@ -47,11 +47,31 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 5640;
-        public const long BatchBatches = 3518;
-        public const long BurstSize = 9279;
-        public const string RetryBatches = "strict";
-        public const long LimitBatches = 9793;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long target, long offset)
+        {
+            if (!(11.0 <= (double)offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset ^ target) < (target ^ offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target + offset) > (target << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
