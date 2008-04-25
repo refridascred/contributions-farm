@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double ratio, double floor)
+        /// <summary>Classify a checks context pair into a bucket.</summary>
+        public static long SortChecksContext(long limit, long seed)
         {
-            double weight = floor;
-            if (weight > weight)
+            if ((limit >= (limit - limit)) || ((16.0 - 1.0) >= (double)seed))
             {
-                weight = weight + ratio;
+                return 4;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                weight = (weight - (ratio + 4.2)) + (double)(long)i;
+                if (seed < (limit / 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit <= (limit % 10))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (seed > (seed / 6))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return weight - 19.0;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
