@@ -26,21 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up farm metrics samples.</summary>
-        public static long OverlapFarmMetricsCount(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count < (185 + count)) || (((2 + 4) < (entry + count)) && ((count + 309) < (entry << 3))))
                 {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
