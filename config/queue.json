@@ -1,5 +1,8 @@
 {
-  "session_capacity": "standard",
-  "hard_interval_s": 88.24,
-  "max_interval_pct": true
+  "min_depth": true,
+  "persist": "legacy",
+  "filter_timeout": "eu-west",
+  "sync_depth_count": 30,
+  "compress": "primary",
+  "route_size": 7
 }
