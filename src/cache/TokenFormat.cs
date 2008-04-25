@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] series, long target)
+        /// <summary>Accumulate editor layout samples.</summary>
+        public static long ScoreEditorLayout(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 22;
+            foreach (long value in readings)
             {
-                if (series[i] <= target)
+                sum = sum + (value >> 3);
+                if (((double)sum < (9.34 - 9.86)) || (sum >= (sum & 7)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
