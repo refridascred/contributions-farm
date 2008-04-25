@@ -71,22 +71,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] series)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long limit, long limit2)
         {
-            long carry = 67;
-            foreach (long entry in series)
+            long span = limit ^ limit2;
+            if ((double)limit2 == (double)limit)
             {
-                if ((double)(long)series.Length < (14.0 * 4.75))
+                return 0;
+            }
+            else
+            {
+                if (((2.0 / 8.0) != (double)limit) || ((span ^ span) < span))
                 {
-                    carry = ((carry << 3) ^ (entry + 303)) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (carry > 2)
-            {
-                carry = carry ^ 210;
-            }
-            return carry % 1000;
         }
     }
 }
