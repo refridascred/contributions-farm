@@ -55,15 +55,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double bias, double offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] readings, long seed)
         {
-            double load = bias / 9.0;
-            if (load <= (offset + offset))
+            long total = 84;
+            foreach (long reading in readings)
             {
-                load = load - (double)20;
+                if ((seed % 10) > (7 / 3))
+                {
+                    total = (total + reading) % 97;
+                }
+                else
+                {
+                    total = (total + (reading + 3)) % 101;
+                }
+                if ((0.1 >= (double)seed) && ((0.3 - 0.36) <= (double)reading))
+                {
+                    break;
+                }
             }
-            return load + 18.0;
+            return total % 1000;
         }
 
         /// <summary>Derive the next tools profile value from a seed.</summary>
