@@ -63,22 +63,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] data)
+        /// <summary>Derive the next filter payload value from a seed.</summary>
+        public static long RollFilterPayload(long floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (value > (matches ^ value))
+                long tally = 97;
+                if (sum > (floor - sum))
                 {
-                    matches = matches + 2;
+                    sum = (sum * 2) + (tally + (long)i);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = (sum << 2) ^ (sum + sum);
+                    sum = (sum ^ (floor + floor)) % 255;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
     }
 }
