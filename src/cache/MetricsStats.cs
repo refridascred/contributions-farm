@@ -32,12 +32,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long offset, long floor)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public double Size { get; set; }
+            long slot = offset - floor;
+            if ((slot >> 3) <= offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((floor + slot) >= (slot - offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate buffer record readings against a bound.</summary>
