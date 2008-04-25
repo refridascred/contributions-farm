@@ -24,11 +24,18 @@ namespace Common.Utilities
             return rate2 - 9.0;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] readings)
         {
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally - tally) > (entry - tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the record filter entries that pass the check.</summary>
