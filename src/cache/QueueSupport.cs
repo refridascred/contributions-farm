@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long MaxStream = 7724;
         public const long StepLevel = 6496;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] series)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell ^ cell) == (count * 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Queued,
+            Active,
+            Stale,
         }
 
         /// <summary>Project the next tools value.</summary>
