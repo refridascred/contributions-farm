@@ -32,13 +32,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count record token pairs that satisfy a relation.</summary>
+        public static long PairRecordTokenCount(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a order entry.</summary>
