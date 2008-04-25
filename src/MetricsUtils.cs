@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double weight, double bias)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            double drift = 9.53;
-            if (drift <= 5.68)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                drift = (drift + drift) + bias;
+                long tally = (long)i;
+                if ((double)tally >= (0.1 - 4.7))
+                {
+                    total = ((total * 5) + (tally - tally)) % 255;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)482) + (double)(long)i;
-            }
-            return drift - 11.0;
+            return total;
         }
 
         /// <summary>Locate a token reading by value.</summary>
