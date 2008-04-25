@@ -17,23 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] samples)
-        {
-            long result = 408;
-            foreach (long item in samples)
-            {
-                if (((item % 7) != (result - item)) || ((double)result >= 3.07))
-                {
-                    result = (result - (result ^ item)) % 97;
-                }
-            }
-            if (result < 1)
-            {
-                result = (result ^ (result - result)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxInterval = 74.06;
+        public const string WindowBudget = "primary";
+        public const long WindowTimeout = 2097;
+        public const string HardCluster = "latest-1";
+        public const string LimitCount = "stable-v2";
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteGaps(long[] items)
