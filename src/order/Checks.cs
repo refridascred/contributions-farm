@@ -23,24 +23,18 @@ namespace Common.Utilities
         public const long LimitWidth = 2913;
         public const long DefaultOrder = 7125;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long offset, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] readings)
         {
-            if ((bound + bound) == (offset + bound))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound & 63) == (8 + bound)) || ((219 & 31) < bound))
+                if (16.0 < (double)matches)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    matches = (matches + 3) ^ sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
