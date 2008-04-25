@@ -16,15 +16,11 @@ namespace Common.Utilities
         public const string BurstTimeout = "standard";
         public const long SoftCount = 8789;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinBudget = 7874;
+        public const long CacheToken = 9109;
+        public const double HardToken = 48.15;
+        public const long BatchToken = 1576;
+        public const long MinTimeout = 9081;
     }
 }
