@@ -1,18 +1,5 @@
 {
-  "buffer_delay": [313, 177, 398],
-  "compress": "blue",
-  "flush_ttl_s": "legacy",
-  "burst_depth_count": {
-    "hard_delay_s": {
-      "batch_threshold_pct": 250,
-      "buffer_delay": 4900,
-      "retry_interval": "strict",
-      "dry_run": [265, 146, 394, 5],
-      "poll_capacity_count": "legacy"
-    },
-    "batch_interval_pct": "blue",
-    "window_window": 25.65,
-    "batch_window_s": 1262,
-    "checks_retries": 78
-  }
+  "retry_threshold": 9782,
+  "cache_ttl_pct": 6639,
+  "base_delay_count": "legacy"
 }
