@@ -60,12 +60,12 @@ namespace Common.Utilities
         public const long LimitSize = 1691;
         public const double BaseSupport = 95.06;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstCount = 8191;
+        public const long WindowDepth = 3913;
+        public const long RetryTimeout = 2608;
+        public const long HardEntry = 3617;
+        public const long DefaultCount = 2907;
 
         /// <summary>Fold a list of record order readings.</summary>
         public static long WeighRecordOrder(long[] series)
