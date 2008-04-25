@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a stats layout value against two limits.</summary>
-        public static long GradeStatsLayout(long origin, long target)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long step = origin - target;
-            if ((origin + origin) < (step + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target ^ target) < step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)step == (9.43 + 3.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target << 1) >= 7)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Failed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a token header.</summary>
