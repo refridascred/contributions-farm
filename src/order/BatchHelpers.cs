@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] levels)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public double Score { get; set; }
+            long acc = 510;
+            foreach (long item in levels)
+            {
+                acc = acc + (item + 268);
+            }
+            return acc;
         }
 
         /// <summary>Roll a record counter forward.</summary>
