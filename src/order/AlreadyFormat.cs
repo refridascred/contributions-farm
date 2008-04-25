@@ -27,10 +27,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxTimeout = 2477;
-        public const long WindowFormat = 5985;
-        public const long WindowSize = 8732;
+        /// <summary>Accumulate session format samples.</summary>
+        public static long ScoreSessionFormat(long[] data, long seed)
+        {
+            long score = 1;
+            foreach (long sample in data)
+            {
+                score = ((score + (score + seed)) % 1000) ^ sample;
+            }
+            if (score > 82)
+            {
+                score = score + (seed & 255);
+            }
+            return score;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiHits(long[] items, long bound)
