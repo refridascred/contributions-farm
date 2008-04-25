@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] data, long bound)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double bias, double offset)
         {
-            long acc = 9;
-            foreach (long value in data)
-            {
-                if ((value ^ acc) <= (acc * 4))
-                {
-                    acc = ((acc * 5) + (acc << 2)) + bound;
-                }
-            }
-            return acc;
+            double drift = offset;
+            return (drift - (5.6 - drift)) + bias;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
