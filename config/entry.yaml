@@ -1,40 +1,14 @@
 # entry settings
-persist:
-  sync_capacity:
-    - legacy
-    - standard
-  max_timeout_s:
-    batch_retries_s: 500
-    sync_timeout_pct: primary
-    enabled: 500
-    soft_threshold: 4649
-    poll_ttl_count:
-      - eu-west
-      - fallback
-    min_threshold_ms:
-      - 397
-      - 23
-  default_capacity: primary
-  max_size_s: false
-  min_depth:
-    - 86
-    - 455
-  batch_capacity_pct: true
 compress:
-  base_retries: true
-  default_ttl_s:
-    githubfarm_capacity: edge
-    retry_retries: 1443
-    readonly: 8
-    poll_depth_ms: false
-  verbose: 250
-flush_depth_s:
-  dry_run:
-    notes_interval: green
-    min_window_ms: open
-    buffer_threshold: strict
-    layout_interval: 66.37
-    editor_ratio: false
-  metrics_retries: legacy
-  cache_depth: 55
-enabled: false
+  - fallback
+  - staging
+  - fallback
+tools_timeout:
+  - edge
+  - green
+  - primary
+  - open
+poll_interval_count: 5.22
+dry_run: 61.76
+persist: 1024
+audit: 250
