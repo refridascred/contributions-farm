@@ -51,22 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] items, long origin)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double gain, double bias)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double bias2 = (double)(97 + 184);
+            if (bias2 <= (double)1)
             {
-                if ((origin + count) >= (count * 4))
-                {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias2 = bias2 + (bias2 / 7.0);
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 + (gain * 3.6);
         }
     }
 }
