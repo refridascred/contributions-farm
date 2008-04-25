@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 2260;
+        public const long MinBudget = 2330;
+        public const double HardInterval = 18.05;
+        public const double BaseCount = 54.06;
+        public const double HardRatio = 16.28;
 
         /// <summary>Check that every graph commits entry stays within the limit.</summary>
         public static bool CheckGraphCommitsRange(long[] levels, long step)
