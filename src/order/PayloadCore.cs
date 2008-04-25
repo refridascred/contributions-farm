@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftWindow = "staging-v2";
-        public const double CacheWindow = 59.65;
-        public const string LimitLevel = "stable-v2";
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] readings, long floor)
+        {
+            long mix = 9;
+            foreach (long item in readings)
+            {
+                mix = (mix * 2) + (floor - item);
+            }
+            if (mix < 71)
+            {
+                mix = mix + (floor & 15);
+            }
+            return mix;
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LocateGraphIndex(long[] values, long bound)
