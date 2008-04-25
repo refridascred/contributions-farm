@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the commits level values.</summary>
