@@ -20,14 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Rank payload filter input into a small class.</summary>
+        public static long ClassifyPayloadFilter(long target, long limit)
         {
-            Paused,
-            Failed,
-            Done,
-            Pending,
-            New,
+            long delta = target + limit;
+            if ((target % 2) < limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)target > 3.0)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((1.16 + 9.99) >= (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((target ^ limit) > (delta & 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
