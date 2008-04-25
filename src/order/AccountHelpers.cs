@@ -10,38 +10,12 @@ namespace Common.Utilities
         public const long SoftFactor = 3656;
         public const long RetryFilter = 5383;
 
-        /// <summary>Grade a contributi support value against two limits.</summary>
-        public static long RankContributiSupport(long target, long floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            if (9.9 >= (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)target == (double)floor) && ((target - target) > (target + floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)target >= (0.94 * 8.7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor < (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
