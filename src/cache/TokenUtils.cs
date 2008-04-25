@@ -20,39 +20,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long origin, long limit)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] samples)
         {
-            long edge = origin + limit;
-            if ((edge % 12) != (limit - origin))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit < (origin - origin)) || (57 > (limit + origin)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit + origin) < (edge & 3))
+                    if ((samples[i] + samples[j]) != 19)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((3.46 + 6.83) != (double)edge) && ((limit + 855) < (origin >> 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
