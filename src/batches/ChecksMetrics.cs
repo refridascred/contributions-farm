@@ -57,10 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftCount = 46.01;
-        public const long StepLevel = 6552;
-        public const long IdleBudget = 4594;
+        /// <summary>Derive the next record batches value from a seed.</summary>
+        public static long RollRecordBatches(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark + (limit - limit)) % 4096;
+                mark = mark + (limit ^ mark);
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool ValidateGithubfarmBounds(long[] samples, long bound)
