@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] data, long target)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long mix = 12;
-            foreach (long item in data)
-            {
-                if ((double)mix > (double)target)
-                {
-                    mix = (((mix * 4) + mix) % 255) - item;
-                }
-            }
-            return mix % 97;
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the commits level values.</summary>
