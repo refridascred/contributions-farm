@@ -30,11 +30,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepInterval = 6732;
-        public const double BurstScore = 18.21;
-        public const double StepToken = 34.68;
-        public const double MinToken = 14.2;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double ScaleStream(double scale, double offset)
