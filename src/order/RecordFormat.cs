@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepRatio = "alpha-edge";
-        public const long IdleOrder = 2572;
-        public const long SoftSpan = 4929;
-        public const long StepLevel = 5889;
-        public const double HardSize = 3.84;
+        /// <summary>Audit metric githubfarm readings against a rule.</summary>
+        public static long AuditMetricGithubfarmMatches(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!(tally > limit))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TallyNotes(long[] values, long floor)
