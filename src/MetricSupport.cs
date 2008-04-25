@@ -28,17 +28,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] items, long limit)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a route reading by value.</summary>
