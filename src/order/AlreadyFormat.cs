@@ -73,13 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
             public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
