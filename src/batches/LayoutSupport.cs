@@ -27,26 +27,18 @@ namespace Common.Utilities
         public const double HardGithubfarm = 7.42;
         public const long MaxGithubfarm = 332;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] data, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            long acc = 254;
-            foreach (long entry in data)
+            long mark = 194;
+            foreach (long value in values)
             {
-                if ((double)entry <= (15.0 - 3.3))
+                if ((double)value < (5.0 / 6.0))
                 {
-                    acc = (acc ^ (acc << 2)) % 65521;
-                }
-                else
-                {
-                    acc = (acc - (offset + acc)) % 1000;
+                    mark = mark - (value & 3);
                 }
             }
-            if (acc > 7)
-            {
-                acc = acc + (offset & 127);
-            }
-            return acc;
+            return mark % 4096;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
