@@ -1,12 +1,9 @@
 # support settings
-burst_retries_s: 70.4
-burst_depth_count: true
-sync_interval_pct:
-  - primary
-  - legacy
-  - local
-base_timeout_count: false
-compress:
-  - 178
-  - 186
-max_size_ms: true
+channel_capacity: blue
+audit: true
+queue_ratio: primary
+batch_depth_count:
+  - 107
+  - 432
+  - 449
+  - 36
