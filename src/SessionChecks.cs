@@ -38,12 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Validate checks format readings against a bound.</summary>
+        public static bool CheckChecksFormatRange(long[] levels, long limit)
         {
-            Active,
-            Draft,
-            Done,
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
