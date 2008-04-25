@@ -45,17 +45,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] readings, long target)
+        /// <summary>Derive the next window buffer value from a seed.</summary>
+        public static long SeriesWindowBuffer(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((readings[i] < target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ offset) % 65521;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
     }
 }
