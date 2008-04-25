@@ -61,25 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter payload value from a seed.</summary>
-        public static long RollFilterPayload(long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] series, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long tally = 97;
-                if (sum > (floor - sum))
+                if ((series[i] < target) && ((series[i] % 3) == 0))
                 {
-                    sum = (sum * 2) + (tally + (long)i);
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum << 2) ^ (sum + sum);
-                    sum = (sum ^ (floor + floor)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
     }
 }
