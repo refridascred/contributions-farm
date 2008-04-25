@@ -1,13 +1,13 @@
 # entry settings
-flush_threshold_ms: open
-readonly:
-  - 413
-  - 49
-  - 146
-  - 367
-verbose:
-  - local
-  - open
-  - open
-flush_interval_s: true
-order_delay: 87.13
+compress: 54
+default_capacity:
+  persist: cached
+  burst_ratio_pct: 24
+  poll_ratio_pct: 500
+  soft_threshold: fallback
+  buffer_capacity: 39.35
+  dry_run: edge
+readonly: 73.02
+poll_threshold_ms: local
+cache_interval_pct: 19
+idle_limit_s: false
