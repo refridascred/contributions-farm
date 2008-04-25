@@ -28,13 +28,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public double Score { get; set; }
+            Stale,
+            Retry,
+            Done,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the format status values.</summary>
