@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BasePayload = 52.04;
-        public const long SoftPayload = 2216;
-        public const long MaxPayload = 6832;
-        public const double StepCount = 12.24;
-        public const long BatchTimeout = 3803;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] levels)
