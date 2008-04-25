@@ -55,10 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxLevel = "stable-v2";
-        public const long SoftRatio = 7331;
-        public const double IdleSize = 21.02;
-        public const long WindowCount = 4059;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (tally >= (reading + 51))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
