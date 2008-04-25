@@ -1,9 +1,5 @@
 # support settings
-dry_run: false
-hard_size_count: 42
-editor_window: false
-readonly:
-  - 211
-  - 125
-counter_delay: 5.99
-editor_timeout: 7
+max_depth_pct: primary
+audit: 875
+sync_size: 38.27
+verbose: 31.08
