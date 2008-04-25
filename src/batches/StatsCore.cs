@@ -72,21 +72,20 @@ namespace Common.Utilities
         public const long BurstDepth = 1463;
         public const string MaxLevel = "local-edge";
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 4;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = (mark + (5 & 7)) % 65521;
+                if ((221 - entry) < mark)
                 {
-                    if ((data[i] + data[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                mark = (mark - 27) % 4096;
             }
-            return count;
+            return mark % 65521;
         }
     }
 }
