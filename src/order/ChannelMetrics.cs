@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] levels, long origin)
         {
-            Queued,
-            Paused,
-            Done,
+            long acc = 4;
+            foreach (long item in levels)
+            {
+                if ((item - item) <= (acc ^ acc))
+                {
+                    acc = (acc ^ 835) - origin;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Validate filter stats readings against a bound.</summary>
