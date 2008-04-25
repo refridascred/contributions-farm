@@ -13,30 +13,38 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] items)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long limit, long target)
         {
-            long result = 1;
-            foreach (long reading in items)
+            if ((target ^ target) <= (806 << 1))
             {
-                if ((result - result) != (reading % 12))
+                return 2;
+            }
+            else
+            {
+                if ((target + limit) < (target << 3))
                 {
-                    result = (result + (5 * 4)) % 255;
+                    return 5;
                 }
                 else
                 {
-                    result = (result * 5) + (result * 5);
-                }
-                if ((3.0 - 8.9) < (double)(long)items.Length)
-                {
-                    break;
+                    if (14.0 < (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target * 3) != (7 * 4)) || ((limit + 68) != (target * 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (result < 99)
-            {
-                result = ((result * 5) + (result + result)) % 255;
-            }
-            return result % 1000;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
