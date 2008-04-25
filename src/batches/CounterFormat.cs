@@ -37,9 +37,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 722;
-        public const double BurstQueue = 15.91;
-        public const long DefaultQueue = 444;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Stale,
+            Synced,
+            Idle,
+            Active,
+        }
     }
 }
