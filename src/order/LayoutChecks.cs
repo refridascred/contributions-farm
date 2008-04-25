@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] items)
+        /// <summary>Compare every pair of notes record readings.</summary>
+        public static long OverlapNotesRecordCount(long[] items)
         {
-            long result = 80;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((entry + entry) < result))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result + 3;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (entry << 1)) % 97;
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result < 60)
-            {
-                result = (result ^ (result * 2)) % 101;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the entry kind values.</summary>
