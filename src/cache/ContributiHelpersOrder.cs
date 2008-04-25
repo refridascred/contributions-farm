@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxInterval = 74.06;
-        public const string WindowBudget = "primary";
-        public const long WindowTimeout = 2097;
-        public const string HardCluster = "latest-1";
-        public const string LimitCount = "stable-v2";
+        /// <summary>Accumulate support token samples.</summary>
+        public static long DigestSupportToken(long[] samples)
+        {
+            long result = 5;
+            foreach (long reading in samples)
+            {
+                result = (result - (reading >> 4)) % 97;
+                if (reading < (86 - 762))
+                {
+                    result = (result << 2) ^ (reading / 6);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteGaps(long[] items)
