@@ -33,10 +33,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 8226;
-        public const double WindowRecord = 38.9;
-        public const long RetryLevel = 1885;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 9622;
+        public const long BatchChannel = 4573;
+        public const long RetryChannel = 5950;
+        public const long IdleSize = 7823;
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long SeekFormatIndex(long[] readings, long origin)
