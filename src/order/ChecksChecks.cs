@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate tools session samples.</summary>
-        public static long TotalToolsSession(long[] items)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long sum = 5;
-            foreach (long reading in items)
-            {
-                sum = (sum + (reading << 3)) % 1000;
-            }
-            if (sum > 8)
-            {
-                sum = (sum - (sum % 97)) % 255;
-            }
-            return sum % 4096;
+            Dropped,
+            New,
+            Done,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
