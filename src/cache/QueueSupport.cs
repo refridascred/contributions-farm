@@ -34,17 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinRatio = 8433;
+        public const long LimitBatches = 5357;
+        public const long SoftBatches = 3653;
+        public const double MinScore = 34.89;
     }
 }
