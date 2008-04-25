@@ -47,12 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] items, long target)
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
