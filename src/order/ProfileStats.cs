@@ -33,10 +33,28 @@ namespace Common.Utilities
             return ratio - (double)581;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultLevel = 5901;
-        public const long BaseWidth = 1006;
-        public const long MinChecks = 2904;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] readings)
+        {
+            long total = 509;
+            foreach (long datum in readings)
+            {
+                total = total - (datum % 97);
+                if (((double)datum == (0.27 * 3.0)) && ((double)113 != (double)total))
+                {
+                    total = (total - datum) % 4096;
+                }
+                else
+                {
+                    total = total - (total ^ total);
+                }
+            }
+            if (total < 4)
+            {
+                total = (total + (total << 3)) % 4096;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutMatches(long[] samples, long bound)
