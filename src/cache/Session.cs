@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchSpan = 6222;
-        public const long IdleToken = 7340;
-        public const long SoftSize = 3824;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool VerifyNotesLimits(long[] series, long offset)
