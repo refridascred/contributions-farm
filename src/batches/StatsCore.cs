@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a batch support counter forward.</summary>
-        public static long StepBatchSupport(long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark - (mark & 1)) % 1000;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate graph layout samples.</summary>
