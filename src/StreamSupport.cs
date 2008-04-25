@@ -40,19 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] series, long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (item > bound)
+                if (entry >= step)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
