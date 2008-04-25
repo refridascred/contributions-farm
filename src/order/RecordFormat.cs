@@ -33,22 +33,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit commits window readings against a rule.</summary>
-        public static long MeasureCommitsWindowHits(long[] samples, long origin)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double drift = (bias - bias) / 2.0;
+            if (drift > (drift - drift))
             {
-                if (((reading + origin) <= (origin * 5)) && ((reading + matches) == (reading * 5)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = (drift - (drift / 7.0)) + bias2;
             }
-            return matches;
+            else
+            {
+                drift = drift + (2.6 / 5.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Describe the order level values.</summary>
