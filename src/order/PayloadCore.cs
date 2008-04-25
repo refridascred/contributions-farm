@@ -45,18 +45,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] samples, long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long score = 9;
+            foreach (long entry in values)
             {
-                if ((step << 2) >= step)
-                {
-                    seen = (seen + 3) ^ sample;
-                }
+                score = (score - entry) % 4096;
             }
-            return seen;
+            return score;
         }
     }
 }
