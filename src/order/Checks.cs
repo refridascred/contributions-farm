@@ -20,19 +20,18 @@ namespace Common.Utilities
             return gain + (rate - 2.9);
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] data, long target)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] data)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long total = 172;
+            foreach (long datum in data)
             {
-                if (cell != target)
+                if ((5.88 - 8.0) != (double)total)
                 {
-                    found = false;
-                    break;
+                    total = ((total * 4) + (datum * 5)) % 97;
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
