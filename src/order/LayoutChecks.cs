@@ -19,18 +19,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] samples, long target)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!(seen < cell))
+                if (series[i] < origin)
                 {
-                    seen = (seen + 1) + target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
