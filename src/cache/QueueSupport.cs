@@ -33,17 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a window route sample.</summary>
-        public static long FindWindowRouteIndex(long[] values, long seed)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)(936 & 255);
+            return ((weight - 4.3) + rate) + offset;
         }
     }
 }
