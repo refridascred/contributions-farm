@@ -36,17 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] readings, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((readings[i] < target) && ((readings[i] % 2) != 0))
+                if (sample > limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
