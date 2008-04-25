@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double rate, double span)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double bias = span;
-            if (bias <= (span - bias))
-            {
-                bias = (bias + (double)827) - rate;
-            }
-            return bias - (span + bias);
+            Retry,
+            Paused,
+            Locked,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
