@@ -32,18 +32,20 @@ namespace Common.Utilities
         public const string HardNotes = "stable-v2";
         public const long StepNotes = 1454;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] levels, long offset)
+        /// <summary>Iterate the checks context series from a seed.</summary>
+        public static long RollChecksContext(long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell <= (offset + hits))
+                if ((step >= (state - step)) && (state > (state >> 5)))
                 {
-                    hits = hits + 2;
+                    state = state ^ (step >> 1);
+                    state = ((state << 3) ^ (state * 5)) % 97;
                 }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
