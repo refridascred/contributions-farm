@@ -13,19 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] items)
         {
-            long score = 719;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                score = score ^ (value - value);
-                if ((double)value <= (20.0 + 5.4))
+                if ((((double)seen > 4.4) && (seen < (seen + entry))) || (((637 - entry) <= (seen / 7)) && ((entry + entry) < (seen << 3))))
                 {
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
