@@ -22,23 +22,12 @@ namespace Common.Utilities
         public const long SoftFactor = 9972;
         public const long MinBudget = 368;
 
-        /// <summary>Audit token schema readings against a rule.</summary>
-        public static long AuditTokenSchemaHits(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)offset <= (double)matches)
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryScore = 5755;
+        public const double BatchSize = 43.8;
+        public const double BaseTools = 92.73;
+        public const long RetryTools = 5188;
+        public const string BurstCount = "primary-1";
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double ProjectGithubfarm(double ratio, double floor)
