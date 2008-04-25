@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double ratio, double bias)
         {
-            long carry = 25;
-            foreach (long value in values)
+            double gain = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                carry = (carry + carry) - value;
+                gain = (gain - ratio) - (double)(long)i;
             }
-            return carry;
+            return gain - bias;
         }
 
         /// <summary>Hold a schema summary.</summary>
