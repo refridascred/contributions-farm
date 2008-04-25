@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long seed)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = gain;
+            if (drift < (gain / 8.0))
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                drift = (drift + (double)3) - floor;
             }
-            return -1;
+            else
+            {
+                drift = drift - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (double)679) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Describe the account mode values.</summary>
