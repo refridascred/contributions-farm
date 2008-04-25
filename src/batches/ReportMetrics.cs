@@ -16,11 +16,17 @@ namespace Common.Utilities
         public const string BurstTimeout = "standard";
         public const long SoftCount = 8789;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinBudget = 7874;
-        public const long CacheToken = 9109;
-        public const double HardToken = 48.15;
-        public const long BatchToken = 1576;
-        public const long MinTimeout = 9081;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
