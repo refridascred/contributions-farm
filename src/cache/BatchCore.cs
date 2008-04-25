@@ -47,21 +47,12 @@ namespace Common.Utilities
         public const long BurstLevel = 6282;
         public const string BurstProfile = "latest-v2";
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
