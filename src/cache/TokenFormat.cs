@@ -34,20 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((target ^ target) <= total)
-                {
-                    total = ((total * 3) + ((long)i << 2)) % 4096;
-                }
-                total = total - (target * 2);
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
