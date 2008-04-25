@@ -23,13 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Active,
-            New,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultInterval = 6761;
+        public const long StepDepth = 1010;
+        public const long BatchProfile = 8693;
+        public const long LimitScore = 9689;
+        public const double BaseSpan = 44.82;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
