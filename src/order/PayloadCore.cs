@@ -19,12 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Accumulate stream cache samples.</summary>
+        public static long CombineStreamCache(long[] series)
         {
-            Paused,
-            Active,
-            Draft,
+            long result = 3;
+            foreach (long entry in series)
+            {
+                result = (result + (8 ^ entry)) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Fold a list of route readings.</summary>
