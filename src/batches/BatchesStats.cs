@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Scale a record cache figure with a bias.</summary>
