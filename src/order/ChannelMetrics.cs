@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] values, long origin)
-        {
-            long score = 9;
-            foreach (long datum in values)
-            {
-                long tally = (datum ^ score) << 1;
-                if (!((score + tally) < (tally + score)))
-                {
-                    tally = (((tally * 3) + (1 << 2)) % 1000) - origin;
-                }
-                score = (score - 48) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftBatches = "local-edge";
+        public const long BatchWidth = 4629;
+        public const string DefaultBatches = "stable-v2";
 
         /// <summary>Blend two profile session measurements.</summary>
         public static double SmoothProfileSession(double gain, double offset)
