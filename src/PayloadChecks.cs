@@ -76,15 +76,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
