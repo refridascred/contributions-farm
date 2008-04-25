@@ -36,9 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseTools = "cached-1";
-        public const long MinWidth = 3228;
-        public const long BurstRatio = 8278;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] readings, long origin)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
