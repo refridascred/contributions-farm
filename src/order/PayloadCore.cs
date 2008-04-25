@@ -23,13 +23,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count batch farm pairs that satisfy a relation.</summary>
+        public static long CompareBatchFarmCount(long[] values)
         {
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
