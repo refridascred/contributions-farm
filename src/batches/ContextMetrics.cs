@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public long Limit { get; set; }
+            Active,
+            Ready,
+            Paused,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
