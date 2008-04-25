@@ -1,10 +1,6 @@
 {
-  "sync_ttl_count": "staging",
-  "contributi_interval": false,
-  "persist": 7.6,
-  "default_ttl_count": {
-    "token_ratio": 40,
-    "soft_ratio_s": true,
-    "retry_size": 100
-  }
+  "githubfarm_retries": 12.76,
+  "max_capacity_ms": 12.5,
+  "dry_run": [18, 146, 390, 53],
+  "batch_interval": 30
 }
