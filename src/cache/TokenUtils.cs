@@ -19,11 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double ratio, double offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long seed, long bound)
         {
-            double gain = offset;
-            return gain + ratio;
+            long next = seed + bound;
+            if ((double)bound != (double)466)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((next * 3) > 813))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
