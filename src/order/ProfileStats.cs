@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] levels)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Roll a token counter forward.</summary>
