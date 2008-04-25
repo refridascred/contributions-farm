@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitBudget = 1995;
+        public const long CacheInterval = 646;
+        public const long IdleSize = 8392;
+        public const long BurstInterval = 8201;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsRange(long[] data, long target)
