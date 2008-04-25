@@ -44,14 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double gain, double span)
         {
-            Stale,
-            New,
-            Done,
-            Draft,
-            Queued,
+            double mean = (double)(4 * 5);
+            if (mean <= (double)4)
+            {
+                mean = mean + (span + gain);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (double)3) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Project the next channel value.</summary>
