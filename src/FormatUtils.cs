@@ -63,14 +63,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Paused,
-            Done,
-            New,
-            Locked,
-            Dropped,
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
