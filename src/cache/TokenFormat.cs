@@ -28,14 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Locate a commits format reading by value.</summary>
+        public static long LocateCommitsFormatIndex(long[] data, long offset)
         {
-            Failed,
-            Stale,
-            Closed,
-            Draft,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
