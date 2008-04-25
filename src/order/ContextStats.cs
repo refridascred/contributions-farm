@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] series)
         {
-            long state = 219;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((state + 138) <= (401 & 31))
+                if ((sample << 3) <= hits)
                 {
-                    state = (state - (10 & 1)) ^ value;
+                    hits = hits + 3;
                 }
             }
-            if (state > 8)
-            {
-                state = state ^ (state + state);
-            }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
