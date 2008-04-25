@@ -23,19 +23,32 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every notes report entry stays within the limit.</summary>
-        public static bool ValidateNotesReportBounds(long[] levels, long target)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long offset, long origin)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long slot = offset ^ origin;
+            if ((slot * 3) <= (origin + slot))
             {
-                if (reading < target)
+                return 7;
+            }
+            else
+            {
+                if (((slot >> 5) != (slot + origin)) && ((double)origin >= (1.0 - 20.0)))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin < 6.73)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define window limits and defaults.</summary>
