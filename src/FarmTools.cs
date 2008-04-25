@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long offset, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
+            if ((12.0 / 6.0) >= (1.1 * 5.6))
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((0 / 8) <= (step - 921))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
