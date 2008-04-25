@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepBudget = 9666;
-        public const long MaxDepth = 592;
-        public const long MinWindow = 153;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxRatio = "latest-1";
+        public const string HardWidth = "stable-1";
+        public const double WindowEntry = 20.79;
+        public const long RetryEntry = 2290;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long PairCommitsCount(long[] readings)
