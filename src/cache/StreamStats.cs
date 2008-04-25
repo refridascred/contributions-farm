@@ -17,12 +17,18 @@ namespace Common.Utilities
         public const long HardGithubfarm = 3092;
         public const long DefaultFactor = 6077;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 9198;
-        public const long HardChecks = 3984;
-        public const long BaseDepth = 2605;
-        public const long BatchLevel = 4802;
-        public const double StepSize = 77.49;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
