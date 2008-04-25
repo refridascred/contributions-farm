@@ -40,19 +40,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] data, long step)
         {
             long count = 0;
-            foreach (long sample in series)
+            foreach (long value in data)
             {
-                if ((double)sample >= (4.8 / 5.0))
+                if ((1.0 / 3.0) >= (double)step)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) + value;
                 }
             }
             return count;
