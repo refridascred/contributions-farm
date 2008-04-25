@@ -19,23 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] samples, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] samples, long step)
         {
-            long acc = 4;
-            foreach (long datum in samples)
+            long anchor = 363;
+            foreach (long value in samples)
             {
-                acc = ((acc + acc) % 4096) ^ datum;
-                if (!(76 <= (bound - bound)))
+                if ((anchor < ((long)samples.Length / 7)) && ((value / 4) < step))
                 {
-                    break;
+                    anchor = (anchor ^ (step + step)) % 101;
+                    anchor = (anchor - (anchor * 2)) % 4096;
+                    continue;
                 }
+                anchor = ((anchor << 2) ^ (anchor + value)) % 4096;
             }
-            if (acc < 92)
+            if (anchor < 809)
             {
-                acc = (acc - (acc & 31)) % 1000;
+                anchor = (anchor * 3) + (anchor + step);
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
