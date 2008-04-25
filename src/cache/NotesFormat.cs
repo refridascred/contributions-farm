@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            long mark = 634;
+            foreach (long entry in series)
             {
-                score = score - (limit * 3);
-                if (((score + limit) >= (limit % 97)) && ((long)i > (score * 3)))
-                {
-                    score = score - (score + limit);
-                    score = (score + score) % 4096;
-                }
-                else
-                {
-                    score = (score << 3) ^ (score - limit);
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                mark = ((mark * 5) + (entry % 100)) % 255;
             }
-            return score;
+            if (mark > 8)
+            {
+                mark = mark + mark;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Match up graph samples.</summary>
