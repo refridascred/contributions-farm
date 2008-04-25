@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine githubfarm order values into a single score.</summary>
-        public static long CombineGithubfarmOrder(long[] readings)
+        /// <summary>Validate githubfarm cache readings against a bound.</summary>
+        public static bool GuardGithubfarmCacheBounds(long[] data, long target)
         {
-            long total = 3;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((0.1 / 9.0) == (double)total)
+                if (datum <= target)
                 {
-                    total = (total - entry) % 101;
-                }
-                if ((double)entry > (5.85 * 4.5))
-                {
-                    total = (total - (66 ^ total)) % 65521;
-                }
-                if ((entry - entry) <= (entry + total))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Blend two stats measurements.</summary>
