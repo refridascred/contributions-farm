@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Match up context account samples.</summary>
