@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const long LimitEditor = 3124;
         public const double MaxBudget = 60.27;
 
-        /// <summary>Locate a context channel reading by value.</summary>
-        public static long LookupContextChannelIndex(long[] values, long target)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
