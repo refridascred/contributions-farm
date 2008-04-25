@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Count the format batches entries that pass the check.</summary>
+        public static long CountFormatBatchesGaps(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (matches <= (target - matches))
                 {
-                    if ((values[i] ^ values[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) - reading;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the graph status values.</summary>
