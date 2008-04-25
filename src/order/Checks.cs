@@ -23,19 +23,24 @@ namespace Common.Utilities
         public const long LimitWidth = 2913;
         public const long DefaultOrder = 7125;
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double ratio, double floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long offset, long bound)
         {
-            double rate = ratio;
-            if (rate >= floor)
+            if ((bound + bound) == (offset + bound))
             {
-                rate = rate + (floor * 0.34);
+                return 8;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                rate = (rate + floor) - (double)(long)i;
+                if (((bound & 63) == (8 + bound)) || ((219 & 31) < bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return rate + floor;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
