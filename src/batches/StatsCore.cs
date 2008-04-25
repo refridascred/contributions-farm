@@ -70,12 +70,23 @@ namespace Common.Utilities
         public const long DefaultFactor = 3119;
         public const long BatchTimeout = 7578;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double rate, double floor)
         {
-            public double Region { get; set; }
-            public double Rank { get; set; }
-            public double Token { get; set; }
+            double rate2 = rate - (rate - rate);
+            if (rate2 <= (double)(-693))
+            {
+                rate2 = rate2 + (double)349;
+            }
+            else
+            {
+                rate2 = rate2 + (floor / 7.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 - floor;
         }
     }
 }
