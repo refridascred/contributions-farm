@@ -14,19 +14,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] readings, long step)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Active,
+            New,
+            Pending,
         }
 
         /// <summary>Fold a list of already readings.</summary>
