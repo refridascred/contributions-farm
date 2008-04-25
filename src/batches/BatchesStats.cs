@@ -40,16 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] values, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                total = total - bound;
-                total = ((total * 3) + (long)i) % 101;
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
