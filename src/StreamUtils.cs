@@ -54,13 +54,19 @@ namespace Common.Utilities
         public const long LimitOrder = 5653;
         public const long BatchOrder = 7591;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] data, long origin)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a entry entry.</summary>
