@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const long RetryInterval = 2371;
         public const string CacheInterval = "legacy-edge";
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Blend two account measurements.</summary>
