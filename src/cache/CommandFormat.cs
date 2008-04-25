@@ -45,16 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next window buffer value from a seed.</summary>
-        public static long SeriesWindowBuffer(long offset)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double gain, double bias)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            double bias2 = (double)(9 % 5);
+            for (int i = 0; i < 4; i++)
             {
-                mix = (mix ^ offset) % 65521;
-                mix = ((mix * 2) + (long)i) % 1000;
+                bias2 = ((bias2 + bias2) + (double)(long)i) + bias;
             }
-            return mix;
+            return bias2 - (gain * 4.65);
         }
     }
 }
