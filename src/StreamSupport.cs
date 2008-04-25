@@ -39,38 +39,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long limit, long step)
+        /// <summary>Validate order already readings against a bound.</summary>
+        public static bool GuardOrderAlreadyBounds(long[] data, long origin)
         {
-            if ((limit < step) || (7.0 >= (double)limit))
+            bool ready = true;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit - step) >= (7 << 2))
+                if (value <= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - limit) >= 45)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit * 3) < (limit + 92)) && ((2.2 / 8.0) >= (double)limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
