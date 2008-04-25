@@ -47,12 +47,13 @@ namespace Common.Utilities
         public const string RetryBatches = "latest-edge";
         public const double BaseBatches = 69.06;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
