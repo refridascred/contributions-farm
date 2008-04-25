@@ -73,18 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] items, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((step + step) <= (17 % 97))
+                if ((double)seen < (5.78 / 2.0))
                 {
-                    tally = (tally + 3) + item;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
