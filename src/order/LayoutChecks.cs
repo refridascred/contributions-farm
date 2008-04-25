@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Dropped,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 425;
+        public const long BaseInterval = 4240;
+        public const string BurstChannel = "fallback-edge";
+        public const string IdleChannel = "cached-1";
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
