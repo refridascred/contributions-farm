@@ -19,23 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] readings, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] values, long floor)
         {
-            long mark = 545;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                mark = (mark - (reading / 2)) % 4096;
-                if ((8 - reading) > (limit >> 1))
+                if (cell <= floor)
                 {
-                    mark = ((mark << 2) ^ (limit + mark)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark < 3)
-            {
-                mark = (mark ^ (0 * 5)) % 65521;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
