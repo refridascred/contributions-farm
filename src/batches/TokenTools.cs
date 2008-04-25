@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 7;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((anchor + anchor) <= (anchor & 63))
                 {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor + (entry << 3)) % 97;
+                    break;
+                }
+                if ((double)entry <= (6.68 / 2.0))
+                {
+                    anchor = (anchor ^ (anchor + anchor)) % 65521;
                 }
             }
-            return hits;
+            if (anchor < 714)
+            {
+                anchor = (anchor ^ (anchor / 5)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
