@@ -50,22 +50,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] levels, long target)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)target <= 5.0) && !(sample <= (6 >> 3)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
