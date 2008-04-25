@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long state = 47;
-            foreach (long datum in series)
-            {
-                if ((datum % 12) > (state << 3))
-                {
-                    state = ((state << 2) ^ (451 + 6)) % 65521;
-                }
-            }
-            if (state < 2)
-            {
-                state = (state << 3) ^ (state - state);
-            }
-            return state % 1000;
+            Paused,
+            Active,
+            Draft,
         }
 
         /// <summary>Fold a list of route readings.</summary>
