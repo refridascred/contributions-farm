@@ -61,12 +61,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
