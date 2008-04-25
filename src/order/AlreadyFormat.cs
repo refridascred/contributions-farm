@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double ratio, double floor)
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
+            double scale = 17.0;
+            if (scale <= scale)
+            {
+                scale = (scale + (4.41 - ratio)) - floor;
+            }
+            return scale + scale;
         }
 
         /// <summary>Match up filter samples.</summary>
