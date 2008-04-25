@@ -20,23 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double rate, double span)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] samples, long step)
         {
-            double rate2 = span;
-            if (rate2 >= rate2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = (rate2 - (0.73 - rate2)) - rate;
+                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (double)176;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + 8.6) - (double)(long)i;
-            }
-            return rate2 + (double)828;
+            return -1;
         }
 
         /// <summary>Derive the next graph channel value from a seed.</summary>
