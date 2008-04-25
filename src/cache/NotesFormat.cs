@@ -24,10 +24,21 @@ namespace Common.Utilities
         public const long IdleOrder = 5983;
         public const long RetryRatio = 6964;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstWidth = 10.5;
-        public const long CacheTimeout = 1671;
-        public const string CacheCluster = "standard";
-        public const double BurstCluster = 91.36;
+        /// <summary>Compare every pair of route githubfarm readings.</summary>
+        public static long OverlapRouteGithubfarmCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
