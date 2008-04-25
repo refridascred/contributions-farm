@@ -65,18 +65,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] data)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((5 + entry) >= (hits << 2))
+                if ((((double)63 == (double)seen) && (target <= (29 ^ seen))) && (sample <= (seen + sample)))
                 {
-                    hits = hits + 2;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
