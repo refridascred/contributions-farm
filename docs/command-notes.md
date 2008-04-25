@@ -1,10 +1,11 @@
 # Command notes
 
-Each payload is validated before it reaches the command queue.
-A support that stays idle for too long is moved to the layout list.
+Use queue settings to tune how often payload data is refreshed.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Use editor settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Log every session change
-- Keep record values small
-- Validate token input early
+- Document new session fields
+- Review cluster limits each release
+- Keep context values small
