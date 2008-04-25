@@ -79,15 +79,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double gain, double span)
+        /// <summary>Locate a buffer profile reading by value.</summary>
+        public static long LocateBufferProfileIndex(long[] items, long limit)
         {
-            double drift = (4.4 - span) / 9.0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = ((drift - (double)0) + (double)(long)i) - gain;
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return drift + span;
+            return -1;
         }
     }
 }
