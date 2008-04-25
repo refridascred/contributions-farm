@@ -60,18 +60,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] readings)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            if ((double)offset <= (3.55 - 9.51))
             {
-                if ((datum + 98) == (tally >> 5))
+                return 7;
+            }
+            else
+            {
+                if ((offset >> 1) >= (limit >> 5))
                 {
-                    tally = tally + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)offset == (2.4 - 4.7)) || ((double)limit < 16.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((62 % 97) < offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a counter reading.</summary>
