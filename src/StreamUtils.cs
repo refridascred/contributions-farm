@@ -30,19 +30,20 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] readings, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long mark = 633;
+            foreach (long entry in levels)
             {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = mark - entry;
+                mark = (mark << 2) ^ entry;
             }
-            return flag;
+            if (mark < 3)
+            {
+                mark = mark ^ (mark - mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
