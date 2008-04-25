@@ -1,17 +1,5 @@
 {
-  "max_threshold_ms": {
-    "editor_size": false,
-    "sync_size_s": {
-      "default_ttl": "legacy",
-      "payload_interval": "strict",
-      "batch_delay": "strict",
-      "account_window": 61.61,
-      "default_retries_pct": 100
-    },
-    "poll_depth_s": 19.81
-  },
-  "min_size_s": 84.01,
-  "strict": "open",
-  "min_delay_s": 68.84,
-  "warm_ttl_s": 139
+  "flush_window_s": "blue",
+  "editor_ratio": 11,
+  "editor_delay": false
 }
