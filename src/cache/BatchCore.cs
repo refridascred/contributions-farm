@@ -56,13 +56,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] samples, long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] data, long limit)
         {
             bool stale = true;
-            foreach (long sample in samples)
+            foreach (long item in data)
             {
-                if (sample != seed)
+                if (item < limit)
                 {
                     stale = false;
                     break;
