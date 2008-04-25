@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((1.3 - 10.0) > (0.2 + 2.3))
                 {
-                    if ((series[i] + series[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = ((seen + 3) + sample) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Roll a window counter forward.</summary>
