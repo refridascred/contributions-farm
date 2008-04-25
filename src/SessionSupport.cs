@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "alpha";
-        public const string IdlePayload = "staging";
-        public const long CacheTimeout = 6761;
-        public const long WindowPayload = 6215;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Paused,
+            Dropped,
+            Idle,
+            New,
+            Active,
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long WeighFilter(long[] items)
