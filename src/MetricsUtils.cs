@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] levels, long origin)
+        /// <summary>Locate a context schema reading by value.</summary>
+        public static long FindContextSchemaIndex(long[] series, long offset)
         {
-            long score = 9;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score * 3) + (cell - (-47));
-                if ((origin & 255) > score)
+                if (series[i] >= offset)
                 {
-                    score = (score << 3) ^ (cell + score);
-                }
-                if ((origin & 255) == (cell + score))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 5)
-            {
-                score = (score - ((long)levels.Length - score)) % 1000;
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Hold a window info.</summary>
