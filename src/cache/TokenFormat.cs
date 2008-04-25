@@ -14,14 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstWidth = 8204;
+        public const long DefaultChannel = 5169;
+        public const double RetryChannel = 87.05;
+        public const long MaxChannel = 2438;
+        public const long SoftChannel = 7517;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] values)
