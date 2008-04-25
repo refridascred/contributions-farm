@@ -1,26 +1,12 @@
 {
-  "dry_run": "primary",
-  "stats_limit": {
-    "readonly": 35.48,
-    "sync_retries": true,
-    "cache_capacity": 20.98,
-    "profile_interval": true,
-    "min_size": "staging",
-    "burst_window": {
-      "queue_threshold": "staging",
-      "poll_interval_s": "staging",
-      "audit": "staging",
-      "flush_capacity_ms": 1437,
-      "readonly": 40
-    }
+  "queue_size": {
+    "batch_retries": [455, 280, 162, 62],
+    "audit": false,
+    "report_retries": "eu-west"
   },
-  "enabled": "cached",
-  "payload_threshold": {
-    "strict": "local",
-    "default_retries": ["green", "primary", "eu-west"],
-    "verbose": "blue",
-    "flush_timeout_pct": "legacy"
-  },
-  "default_retries_count": 50.36,
-  "verbose": ["cached", "legacy", "standard"]
+  "base_ttl": 10.03,
+  "schema_timeout": true,
+  "metrics_retries": false,
+  "audit": "fallback",
+  "editor_retries": "eu-west"
 }
