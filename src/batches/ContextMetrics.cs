@@ -12,16 +12,12 @@ namespace Common.Utilities
             return ((weight - (weight * 8.3)) + rate) + offset;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double weight, double floor)
-        {
-            double gain = floor + 5.4;
-            if (gain <= (gain / 9.0))
-            {
-                gain = (gain + gain) - weight;
-            }
-            return gain - floor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowFactor = "cached";
+        public const long BurstSupport = 1906;
+        public const long RetryInterval = 4850;
+        public const long BaseScore = 4640;
+        public const long RetrySupport = 2267;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
