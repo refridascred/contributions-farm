@@ -32,22 +32,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Look up the position of a entry stream sample.</summary>
+        public static long LookupEntryStreamIndex(long[] series, long floor)
         {
-            long mix = 4;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((reading << 3) < 41) && ((7.0 * 9.4) != (double)mix))
+                if (series[i] <= floor)
                 {
-                    mix = mix + reading;
+                    return (long)i;
                 }
             }
-            if (mix > (-8))
-            {
-                mix = (mix - (52 >> 3)) % 4096;
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
