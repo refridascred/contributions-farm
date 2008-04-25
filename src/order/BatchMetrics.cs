@@ -34,19 +34,13 @@ namespace Common.Utilities
             return (drift - (5.6 - drift)) + bias;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] items, long limit)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Audit route cluster readings against a rule.</summary>
