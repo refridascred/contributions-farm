@@ -1,28 +1,12 @@
 # entry settings
-warm_depth_count:
-  readonly: true
-  warm_timeout: open
-  schema_size: 17.86
-  cluster_ttl: false
-  soft_capacity: false
-flush_window:
-  max_depth: 250
-  soft_threshold_ms: 96
-  tools_ratio: 7963
-  flush_interval:
-    enabled: fallback
-    cache_ttl_pct: 14.21
-    record_ratio: standard
-    context_window: 1024
-retry_window:
-  - blue
-  - staging
-entry_limit:
-  base_limit: 3521
-  base_limit_pct: true
-  compress: 37.41
-format_limit: 500
-burst_depth_ms:
-  burst_ttl_pct: open
-  default_ratio: 9021
-  hard_interval_ms: 44.25
+base_ratio_pct:
+  warm_timeout_s: legacy
+  metrics_size: stable
+  warm_threshold: 100
+  soft_window_count: 20.61
+strict: 70.59
+batch_threshold:
+  - legacy
+  - eu-west
+  - green
+  - local
