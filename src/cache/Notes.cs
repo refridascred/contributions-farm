@@ -35,16 +35,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double gain, double span)
-        {
-            double load = gain;
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - span) - (double)(long)i;
-            }
-            return load - span;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 1300;
+        public const long LimitCommand = 7284;
+        public const long MinCommand = 4812;
+        public const double BaseFactor = 25.7;
+        public const long MaxCommand = 1980;
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long FindPayloadIndex(long[] data, long seed)
