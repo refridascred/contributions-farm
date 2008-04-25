@@ -13,11 +13,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 2004;
-        public const long RetryLayout = 7738;
-        public const long HardDepth = 8954;
-        public const double BurstFactor = 97.51;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Locked,
+            Failed,
+            Done,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseWidth = 3155;
