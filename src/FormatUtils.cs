@@ -28,13 +28,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double ratio, double span)
         {
-            Pending,
-            Ready,
-            Draft,
-            Paused,
+            double bias = (double)(910 % 60);
+            for (int i = 0; i < 5; i++)
+            {
+                bias = ((bias - span) + (double)(long)i) + ratio;
+            }
+            return bias - (9.63 - span);
         }
 
         /// <summary>Describe the queue class values.</summary>
