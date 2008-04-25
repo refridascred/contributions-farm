@@ -1,8 +1,18 @@
 # support settings
-audit:
-  - 54
-  - 304
-  - 307
-  - 166
-compress: fallback
-flush_threshold_count: 14
+batch_ttl:
+  - strict
+  - open
+  - edge
+  - legacy
+soft_timeout_s:
+  - 101
+  - 350
+  - 130
+  - 448
+compress: 500
+max_delay_ms:
+  - 469
+  - 48
+  - 192
+  - 433
+enabled: 6670
