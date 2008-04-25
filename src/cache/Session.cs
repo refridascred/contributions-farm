@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long offset, long limit)
-        {
-            if ((654 ^ limit) >= (offset >> 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit <= (limit - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset / 2) > limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchSpan = 6222;
+        public const long IdleToken = 7340;
+        public const long SoftSize = 3824;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool VerifyNotesLimits(long[] series, long offset)
