@@ -27,25 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long offset, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] readings, long origin)
         {
-            long slot = offset - floor;
-            if ((slot >> 3) <= offset)
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((floor + slot) >= (slot - offset)))
+                if (!(((double)origin == (3.1 - 7.2)) && ((9.63 * 11.0) >= (double)origin)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    count = (count + 1) + item;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the window level values.</summary>
