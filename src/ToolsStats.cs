@@ -78,12 +78,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] samples, long bound)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
