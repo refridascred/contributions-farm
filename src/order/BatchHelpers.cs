@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const long CacheFactor = 8055;
         public const long BaseWindow = 6817;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] items, long target)
+        /// <summary>Compare every pair of counter schema readings.</summary>
+        public static long PairCounterSchemaCount(long[] values)
         {
-            long count = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target + target) <= value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the order class values.</summary>
