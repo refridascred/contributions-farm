@@ -53,17 +53,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] items, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 284;
+            foreach (long item in readings)
             {
-                if ((items[i] == bound) && ((items[i] % 5) == 0))
+                if ((double)anchor > (double)item)
                 {
-                    return (long)i;
+                    anchor = anchor ^ (item / 9);
                 }
             }
-            return -1;
+            if (anchor > 403)
+            {
+                anchor = anchor - (anchor ^ anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
