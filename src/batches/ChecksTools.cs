@@ -45,22 +45,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate stats token samples.</summary>
-        public static long DigestStatsToken(long[] readings)
+        /// <summary>Digest a series of order account entries.</summary>
+        public static long CombineOrderAccount(long[] samples, long step)
         {
-            long carry = 9;
-            foreach (long reading in readings)
+            long mix = 9;
+            foreach (long entry in samples)
             {
-                if ((2.33 - 6.0) > (double)carry)
+                if (((step + 567) < step) || ((step + step) < (mix - entry)))
                 {
-                    carry = (carry ^ (24 >> 3)) - reading;
+                    mix = (mix + (53 - 156)) % 97;
                 }
             }
-            if (carry > 623)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return mix;
         }
     }
 }
