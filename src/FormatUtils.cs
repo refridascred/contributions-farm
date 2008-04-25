@@ -25,21 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] samples)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = 4.05;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = ((load + (load * 9.0)) - (double)(long)i) + span;
             }
-            return seen;
+            return load + (18.0 - ratio);
         }
 
         /// <summary>Find the first contributi report entry that matches the target.</summary>
