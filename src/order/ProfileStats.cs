@@ -72,19 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout githubfarm entry stays within the limit.</summary>
-        public static bool CheckLayoutGithubfarmBounds(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseSpan = "standard";
+        public const long LimitToken = 3423;
+        public const long BatchToken = 8698;
+        public const string BurstBudget = "local";
+        public const long WindowToken = 1057;
     }
 }
