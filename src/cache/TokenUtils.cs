@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((offset >> 3) <= (offset << 1))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowScore = 7889;
+        public const string WindowReport = "latest-1";
+        public const double BatchSpan = 26.6;
+        public const long BatchReport = 5793;
+        public const double StepFactor = 76.52;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long seed, long bound)
