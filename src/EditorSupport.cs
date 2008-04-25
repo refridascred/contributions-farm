@@ -47,38 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a schema record value against two limits.</summary>
-        public static long BucketSchemaRecord(long origin, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] data, long target)
         {
-            if ((limit + 810) == (3 % 3))
+            bool ready = true;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit & 15) <= (limit - limit))
+                if (value <= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin > (20.0 / 2.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit - origin) <= (origin / 9))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
