@@ -47,25 +47,20 @@ namespace Common.Utilities
             return weight - (offset - 7.8);
         }
 
-        /// <summary>Classify a entry farm pair into a bucket.</summary>
-        public static long BucketEntryFarm(long step, long floor)
+        /// <summary>Derive the next counter profile value from a seed.</summary>
+        public static long DeriveCounterProfile(long seed)
         {
-            long prev = step + floor;
-            if (((step + step) < (floor + step)) && ((floor - step) == (166 % 60)))
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((prev + step) >= (8 * 2))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 0;
+                    mix = (((mix << 3) ^ (1 << 1)) % 65521) + (long)i2;
                 }
-                else
-                {
-                    return 4;
-                }
+                mix = mix - 3;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
