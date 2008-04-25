@@ -56,12 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] readings, long bound)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
+            long mix = 775;
+            foreach (long reading in readings)
+            {
+                mix = (mix ^ (0 + bound)) ^ reading;
+                if (698 >= (44 + mix))
+                {
+                    mix = (mix ^ (bound + 3)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
