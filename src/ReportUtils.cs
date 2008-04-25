@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] items, long bound)
         {
-            Closed,
-            Retry,
-            Dropped,
-            New,
+            long state = 6;
+            foreach (long item in items)
+            {
+                if (17 < (state - bound))
+                {
+                    state = (state ^ (state - bound)) ^ item;
+                }
+            }
+            return state;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
