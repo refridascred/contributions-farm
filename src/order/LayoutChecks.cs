@@ -21,11 +21,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((9.1 - 15.0) != (double)cell)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
