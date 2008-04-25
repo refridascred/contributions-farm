@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] data)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.55 * 6.74) >= (double)sample)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
