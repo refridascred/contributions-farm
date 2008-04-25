@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] items, long floor)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((item >> 5) > item) || ((203 + floor) > floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((levels[i] ^ levels[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a payload summary.</summary>
