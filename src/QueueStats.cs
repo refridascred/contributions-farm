@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long LimitFactor = 2851;
         public const long BatchFactor = 634;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] series, long floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] items, long bound)
         {
-            long state = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in items)
             {
-                state = (state ^ (floor + reading)) % 4096;
+                if (sample < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (state < 832)
-            {
-                state = (state - (-99)) % 97;
-            }
-            return state;
+            return found;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
