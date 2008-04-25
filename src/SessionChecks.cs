@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitSize = 1492;
+        public const double SoftEditor = 47.27;
+        public const string CacheScore = "local";
 
         /// <summary>Match up record samples.</summary>
         public static long OverlapRecordCount(long[] samples)
