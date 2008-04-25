@@ -30,9 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepTimeout = 2647;
-        public const double LimitEditor = 76.35;
-        public const double MinEditor = 50.99;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((cell <= (-5)) && ((cell + cell) >= cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
