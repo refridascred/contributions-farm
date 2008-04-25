@@ -35,18 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (16.0 < (double)matches)
+                if ((96 & 127) < (sample & 3))
                 {
-                    matches = (matches + 3) ^ sample;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
