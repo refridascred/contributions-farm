@@ -50,11 +50,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftChecks = 8.3;
-        public const long IdleChecks = 1485;
-        public const long HardScore = 5923;
-        public const long StepChecks = 3465;
-        public const long DefaultChecks = 3038;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
