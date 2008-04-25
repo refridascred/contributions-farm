@@ -13,17 +13,30 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine stats contributi values into a single score.</summary>
-        public static long ScoreStatsContributi(long[] items)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            long score = 47;
-            foreach (long value in items)
+            long result = 1;
+            foreach (long reading in items)
             {
-                score = ((score + (score * 2)) % 4096) - value;
-                score = score + (1 ^ score);
-                score = ((score << 2) ^ ((long)items.Length ^ score)) % 101;
+                if ((result - result) != (reading % 12))
+                {
+                    result = (result + (5 * 4)) % 255;
+                }
+                else
+                {
+                    result = (result * 5) + (result * 5);
+                }
+                if ((3.0 - 8.9) < (double)(long)items.Length)
+                {
+                    break;
+                }
             }
-            return score;
+            if (result < 99)
+            {
+                result = ((result * 5) + (result + result)) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
