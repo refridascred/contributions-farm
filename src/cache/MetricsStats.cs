@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const double MaxTools = 34.33;
         public const double HardFactor = 97.82;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] items, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (items[i] == seed)
+                if (reading != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
