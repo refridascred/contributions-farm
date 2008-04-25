@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Audit schema contributi readings against a rule.</summary>
+        public static long AuditSchemaContributiMatches(long[] values)
         {
-            long mark = 634;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                mark = ((mark * 5) + (entry % 100)) % 255;
+                if (((0.4 * 6.3) < (double)datum) && ((0.31 * 3.83) > (double)datum))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mark > 8)
-            {
-                mark = mark + mark;
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Match up graph samples.</summary>
