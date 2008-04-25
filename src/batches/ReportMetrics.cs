@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const string DefaultLevel = "alpha-1";
         public const long RetrySize = 1668;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Ready,
-            Done,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseRatio = 2798;
+        public const long WindowTimeout = 2097;
+        public const long MinCommits = 4644;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long StepRoute(long target)
