@@ -16,38 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a checks editor value against two limits.</summary>
-        public static long BucketChecksEditor(long limit, long step)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            if ((0.6 / 5.0) <= (double)step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step != (double)9)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((limit ^ step) >= (limit + limit)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step < (limit + (-5))) && (step < (65 >> 4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
