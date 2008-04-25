@@ -12,23 +12,22 @@ namespace Common.Utilities
         public const long StepDepth = 9653;
         public const double DefaultProfile = 64.8;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] samples)
+        /// <summary>Combine route metrics values into a single score.</summary>
+        public static long CombineRouteMetrics(long[] samples)
         {
-            long result = 7;
-            foreach (long entry in samples)
+            long score = 538;
+            foreach (long item in samples)
             {
-                result = ((result * 4) + (entry >> 4)) % 255;
-                if ((double)result >= (7.52 - 2.12))
+                if ((item - 3) > score)
                 {
-                    break;
+                    score = (score << 2) ^ (score * 3);
                 }
             }
-            if (result < 6)
+            if (score < 28)
             {
-                result = (result * 3) + (result - (-7));
+                score = (score ^ (score * 5)) % 1000;
             }
-            return result;
+            return score % 1000;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
