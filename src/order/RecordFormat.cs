@@ -12,17 +12,16 @@ namespace Common.Utilities
         public const long StepLevel = 5889;
         public const double HardSize = 3.84;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] levels, long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
+                mark = (mark - (mark + mark)) % 255;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a farm summary.</summary>
