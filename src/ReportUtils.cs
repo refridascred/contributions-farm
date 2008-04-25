@@ -41,19 +41,16 @@ namespace Common.Utilities
             return load - (9.6 * 6.3);
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] levels, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long carry = 33;
+            foreach (long item in series)
             {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (carry - limit) % 255;
+                carry = (carry * 5) + (item - limit);
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Hold a graph stats.</summary>
