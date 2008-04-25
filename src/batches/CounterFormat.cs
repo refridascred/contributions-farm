@@ -27,13 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] readings)
         {
-            Stale,
-            Synced,
-            Idle,
-            Active,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + matches) >= matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
