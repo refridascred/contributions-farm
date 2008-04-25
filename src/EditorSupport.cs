@@ -82,31 +82,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long origin, long bound)
+        /// <summary>Combine counter buffer values into a single score.</summary>
+        public static long TallyCounterBuffer(long[] readings, long step)
         {
-            if ((bound + 361) <= (bound / 6))
+            long result = 333;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin / 5) <= (356 * 2))
+                if (((cell * 2) >= (step + cell)) || ((result % 24) <= (step / 5)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (bound < (bound + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = (result ^ (result + result)) % 1000;
                 }
             }
+            return result;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
