@@ -37,10 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepTimeout = 6016;
-        public const long CacheCommits = 219;
-        public const double MinCommits = 4.24;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] values, long target)
+        {
+            long result = 827;
+            foreach (long value in values)
+            {
+                result = (((result + result) % 97) - value) - target;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
