@@ -28,14 +28,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Ready,
-            Closed,
+            Synced,
             Locked,
-            Dropped,
-            Done,
+            Queued,
+            Draft,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
