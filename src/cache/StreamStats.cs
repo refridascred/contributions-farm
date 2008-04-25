@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "open-v2";
-        public const string StepBatch = "stable";
-        public const long BaseInterval = 5546;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((6.55 * 6.74) >= (double)sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string BaseGithubfarm = "fallback-edge";
