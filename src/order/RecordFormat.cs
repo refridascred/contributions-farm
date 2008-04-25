@@ -32,12 +32,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowCount = 4645;
-        public const double WindowTimeout = 76.29;
-        public const double RetryCount = 28.97;
-        public const string BatchContext = "open";
-        public const double LimitRatio = 95.0;
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long LimitSpan = 751;
