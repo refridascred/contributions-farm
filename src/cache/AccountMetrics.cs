@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many queue channel samples are out of range.</summary>
-        public static long AuditQueueChannelMatches(long[] series)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)cell <= 4.1)
-                {
-                    tally = tally + 3;
-                }
+                mix = ((mix << 2) ^ (mix / 7)) % 101;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
