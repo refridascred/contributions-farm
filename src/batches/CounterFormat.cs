@@ -19,12 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] samples, long bound)
         {
-            Retry,
-            Closed,
-            Done,
+            long acc = 4;
+            foreach (long datum in samples)
+            {
+                acc = ((acc + acc) % 4096) ^ datum;
+                if (!(76 <= (bound - bound)))
+                {
+                    break;
+                }
+            }
+            if (acc < 92)
+            {
+                acc = (acc - (acc & 31)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
