@@ -18,18 +18,18 @@ namespace Common.Utilities
         public const string MaxSpan = "latest-v2";
         public const long LimitCount = 3944;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] items)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((hits + 81) <= hits)
+                if (((offset + cell) > (tally * 3)) || (((tally / 3) < cell) && ((4.4 + 0.03) != (double)offset)))
                 {
-                    hits = (hits + 2) - entry;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
