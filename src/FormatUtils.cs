@@ -13,19 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] data, long target)
+        /// <summary>Digest a series of graph stats entries.</summary>
+        public static long TallyGraphStats(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long mark = 4;
+            foreach (long entry in samples)
             {
-                if (entry != target)
+                if (!((entry & 127) > (entry + mark)))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark * 5) + (mark - mark)) - offset;
+                }
+                else
+                {
+                    mark = mark + (mark & 63);
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Project the next format value.</summary>
