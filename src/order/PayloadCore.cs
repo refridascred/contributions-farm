@@ -12,17 +12,20 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] values, long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (values[i] > bound)
+                if ((bound ^ mark) <= (bound * 4))
                 {
-                    return (long)i;
+                    mark = mark - (mark - mark);
+                    mark = (mark + mark) % 255;
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
