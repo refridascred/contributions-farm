@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up contributi report samples.</summary>
-        public static long CompareContributiReportCount(long[] items)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            New,
+            Done,
         }
 
         /// <summary>Hold a batches entry.</summary>
