@@ -66,24 +66,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format support samples.</summary>
-        public static long WeighFormatSupport(long[] levels, long offset)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long anchor = 983;
-            foreach (long cell in levels)
-            {
-                if (!((offset ^ offset) >= (cell % 3)))
-                {
-                    anchor = anchor ^ (cell >> 5);
-                }
-                else
-                {
-                    anchor = anchor + (cell & 31);
-                    anchor = anchor + (cell % 60);
-                }
-                anchor = anchor ^ ((long)levels.Length >> 4);
-            }
-            return anchor;
+            public double Token { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
