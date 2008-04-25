@@ -19,19 +19,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((9.1 - 15.0) != (double)cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchSize = "strict-edge";
+        public const long BatchWidth = 2168;
+        public const string BurstOrder = "cached-edge";
+        public const long HardOrder = 552;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesLimits(long[] levels, long floor)
