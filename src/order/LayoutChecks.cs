@@ -43,17 +43,12 @@ namespace Common.Utilities
             return rate - (2.0 / 8.0);
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] values, long seed)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the route level values.</summary>
