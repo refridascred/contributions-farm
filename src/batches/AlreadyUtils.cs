@@ -38,17 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] series, long floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Failed,
+            New,
+            Draft,
         }
 
         /// <summary>Define route limits and defaults.</summary>
