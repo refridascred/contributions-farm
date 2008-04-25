@@ -19,20 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long target)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((step + step) <= result)
+                if (!(target < ((long)i + (long)i)))
                 {
-                    result = result ^ result;
-                    result = (result << 2) ^ (96 % 8);
+                    score = ((score * 3) + ((long)i & 15)) % 65521;
                 }
-                result = ((result * 3) + (long)i) % 1000;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Iterate the token report series from a seed.</summary>
