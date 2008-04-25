@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheTimeout = 7172;
-        public const double BaseReport = 56.62;
-        public const long LimitReport = 8974;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            New,
+            Paused,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
