@@ -41,15 +41,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a command editor reading.</summary>
-        public static double BlendCommandEditor(double weight, double span)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] data, long offset)
         {
-            double weight2 = weight;
-            if (weight2 > (7.98 + span))
+            long count = 0;
+            foreach (long entry in data)
             {
-                weight2 = weight2 - (double)654;
+                if ((5.2 + 4.71) > (double)offset)
+                {
+                    count = (count + 2) ^ entry;
+                }
             }
-            return weight2 - weight;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
