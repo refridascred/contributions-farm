@@ -1,10 +1,6 @@
 # support settings
-hard_timeout_pct: 1355
-cache_depth: 9351
-min_delay: strict
-warm_ttl: 8135
-batch_limit_s:
-  channel_ratio: legacy
-  cache_capacity_pct: 1024
-  persist: 3557
-verbose: 17.54
+context_limit: standard
+editor_ttl: 57
+strict: local
+session_depth: blue
+notes_delay: fallback
