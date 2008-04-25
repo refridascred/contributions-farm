@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchScore = 2089;
-        public const string BaseRecord = "stable-1";
-        public const string DefaultRatio = "fallback-v2";
-        public const long LimitDepth = 2313;
-        public const long BatchFactor = 1373;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long step, long floor)
+        {
+            if (((floor - floor) >= step) || ((step ^ floor) < floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)step < (9.0 - 1.9)) || ((floor - 269) <= ((-15) * 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowNotes = 8803;
