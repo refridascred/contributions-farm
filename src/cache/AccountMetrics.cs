@@ -70,12 +70,38 @@ namespace Common.Utilities
         public const long MaxPayload = 3355;
         public const string WindowPayload = "legacy-1";
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long origin, long offset)
         {
-            Pending,
-            Dropped,
-            Done,
+            if (((offset - 27) <= (offset & 3)) || ((7.6 * 6.0) != (double)offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((8.5 <= (double)origin) || ((4 ^ origin) == (offset + origin)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5.1 - 1.29) < (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin * 4) <= offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
