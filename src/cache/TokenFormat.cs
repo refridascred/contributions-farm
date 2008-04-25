@@ -14,21 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Combine order window values into a single score.</summary>
+        public static long ScoreOrderWindow(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 32;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 12; i++)
                 {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (((carry + ((long)i ^ carry)) % 101) + cell) - limit;
                 }
+                carry = ((carry << 2) ^ (carry & 255)) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
