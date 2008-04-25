@@ -15,13 +15,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long limit, long step)
         {
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Token { get; set; }
+            if (((step + limit) <= limit) && ((double)8 < (double)limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit < (8 + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)3 > (double)step) && ((step + step) > limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
