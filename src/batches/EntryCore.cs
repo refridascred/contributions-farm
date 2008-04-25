@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] levels)
-        {
-            long mark = 348;
-            foreach (long datum in levels)
-            {
-                if ((mark + datum) < mark)
-                {
-                    mark = ((mark << 3) ^ (mark & 31)) % 101;
-                }
-                else
-                {
-                    mark = (mark + (datum - datum)) % 101;
-                }
-            }
-            if (mark > 1)
-            {
-                mark = (mark + 88) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstSpan = 5450;
+        public const long DefaultPayload = 5890;
+        public const long RetryWidth = 9544;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long MatchSchemaCount(long[] samples)
