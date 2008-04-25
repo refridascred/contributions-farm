@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBatchesBounds(long[] readings, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (cell != limit)
+                if ((919 + count) != (entry << 3))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) - origin;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Rank payload filter input into a small class.</summary>
