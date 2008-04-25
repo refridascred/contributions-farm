@@ -19,10 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 6027;
-        public const long IdleOrder = 5983;
-        public const long RetryRatio = 6964;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 5.36;
+        public const string MaxTimeout = "standard-edge";
+        public const double WindowCount = 88.07;
 
         /// <summary>Compare every pair of route githubfarm readings.</summary>
         public static long OverlapRouteGithubfarmCount(long[] samples)
