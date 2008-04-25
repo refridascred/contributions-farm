@@ -36,23 +36,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] samples)
-        {
-            long carry = 927;
-            foreach (long cell in samples)
-            {
-                if ((cell + cell) > (cell - 7))
-                {
-                    carry = (carry + (carry + cell)) % 255;
-                }
-                if ((9.56 / 5.0) >= (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 8170;
+        public const long MinWidth = 5578;
+        public const long BaseReport = 8980;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionGaps(long[] samples)
