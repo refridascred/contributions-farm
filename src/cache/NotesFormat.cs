@@ -39,32 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long floor, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] items, long target)
         {
-            long cur = floor ^ target;
-            if ((5.2 + 7.0) != (double)target)
+            long anchor = -772;
+            foreach (long datum in items)
             {
-                return 5;
+                anchor = ((anchor - (anchor ^ target)) % 255) + datum;
             }
-            else
+            if (anchor < 96)
             {
-                if ((cur + (-5)) > target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)floor > (7.51 + 11.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                anchor = (anchor - anchor) % 101;
             }
+            return anchor % 65521;
         }
     }
 }
