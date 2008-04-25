@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] series, long offset)
+        /// <summary>Digest a series of farm command entries.</summary>
+        public static long DigestFarmCommand(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 20;
+            foreach (long value in samples)
             {
-                if ((series[i] < offset) && ((series[i] % 2) != 0))
+                if ((value > (value << 1)) || (value < (409 >> 5)))
                 {
-                    return (long)i;
+                    sum = (sum - (789 / 2)) % 4096;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
