@@ -30,20 +30,21 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            long mark = 633;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark - entry;
-                mark = (mark << 2) ^ entry;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark < 3)
-            {
-                mark = mark ^ (mark - mark);
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
