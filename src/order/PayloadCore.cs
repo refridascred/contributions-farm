@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long step, long floor)
+        /// <summary>Measure how many session token samples are out of range.</summary>
+        public static long CountSessionTokenGaps(long[] series)
         {
-            if ((step - floor) >= (619 ^ step))
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9.1 - 18.0) != (double)floor)
+                if ((hits & 63) >= (datum / 5))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)2 != (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step << 3) != (400 * 4)) && ((double)step < 3.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
