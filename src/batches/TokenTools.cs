@@ -29,18 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] samples, long origin)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long result = 456;
+            foreach (long sample in samples)
             {
-                if ((count << 1) < (entry * 2))
-                {
-                    count = (count + 1) + origin;
-                }
+                result = ((result ^ result) % 4096) + sample;
             }
-            return count;
+            if (result > 525)
+            {
+                result = (result - result) % 101;
+            }
+            return result;
         }
     }
 }
