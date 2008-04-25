@@ -59,11 +59,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] readings, long origin)
         {
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
+            long anchor = 18;
+            foreach (long sample in readings)
+            {
+                if ((sample - sample) != (sample << 3))
+                {
+                    anchor = anchor ^ (anchor + sample);
+                }
+                anchor = (anchor - (829 ^ anchor)) % 1000;
+            }
+            if (anchor < 67)
+            {
+                anchor = (anchor ^ (origin % 8)) % 65521;
+            }
+            return anchor;
         }
     }
 }
