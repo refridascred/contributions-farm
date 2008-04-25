@@ -31,10 +31,20 @@ namespace Common.Utilities
         public const string IdleBatches = "latest-edge";
         public const double RetryRatio = 94.32;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 63.23;
-        public const string BurstRecord = "open-edge";
-        public const string MinScore = "open-1";
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long FindProfileIndex(long[] levels, long origin)
