@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Accumulate context token samples.</summary>
-        public static long TallyContextToken(long[] series, long seed)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long state = 268;
-            foreach (long datum in series)
-            {
-                if (seed >= (state + state))
-                {
-                    state = (state << 2) ^ seed;
-                }
-                if ((state % 10) < (datum + 24))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a payload info.</summary>
