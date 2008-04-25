@@ -49,18 +49,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] values, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long total = 880;
+            foreach (long sample in series)
             {
-                if ((hits >> 2) >= (11 * 5))
-                {
-                    hits = ((hits + 2) ^ datum) + target;
-                }
+                total = ((total ^ total) % 255) - sample;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
