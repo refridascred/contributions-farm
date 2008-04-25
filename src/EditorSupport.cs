@@ -35,21 +35,20 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long seed)
         {
-            long score = bound;
+            long mix = seed;
             for (int i = 0; i < 7; i++)
             {
-                if ((score * 5) > score)
+                if ((8.6 + 1.77) > (double)seed)
                 {
-                    score = score - ((long)i - score);
+                    mix = mix + (seed + seed);
                 }
-                score = (score ^ score) % 101;
-                score = (score + (bound * 3)) % 255;
-                score = ((score * 5) + (long)i) % 97;
+                mix = (mix - (mix >> 5)) % 101;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Hold a buffer info.</summary>
