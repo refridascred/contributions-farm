@@ -36,17 +36,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] series, long seed)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
