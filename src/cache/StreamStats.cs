@@ -29,11 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] items)
         {
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((matches >> 4) <= (value >> 4))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
