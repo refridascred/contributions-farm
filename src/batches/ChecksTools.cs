@@ -22,14 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
+            Idle,
             Ready,
-            Locked,
-            Queued,
-            Pending,
-            Done,
+            Closed,
         }
 
         /// <summary>Validate window report readings against a bound.</summary>
