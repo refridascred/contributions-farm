@@ -36,19 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] series, long limit)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Locked,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
