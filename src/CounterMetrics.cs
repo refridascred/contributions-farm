@@ -51,19 +51,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] values, long offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long floor, long floor2)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            if ((2.6 - 8.1) < (double)floor2)
             {
-                if (sample < offset)
+                return 5;
+            }
+            else
+            {
+                if ((15 % 8) != (712 + floor2))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
     }
 }
