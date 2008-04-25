@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count commits schema pairs that satisfy a relation.</summary>
-        public static long MatchCommitsSchemaCount(long[] levels)
+        /// <summary>Measure how many cluster support samples are out of range.</summary>
+        public static long CountClusterSupportMatches(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item > (item - hits))
                 {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
