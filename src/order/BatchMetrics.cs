@@ -61,18 +61,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the route metric entries that pass the check.</summary>
-        public static long CountRouteMetricHits(long[] samples, long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (!((hits * 2) < bound))
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
