@@ -34,11 +34,11 @@ namespace Common.Utilities
             return (drift - (5.6 - drift)) + bias;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 1787;
-        public const string BurstWidth = "standard";
-        public const double BatchTimeout = 11.11;
-        public const long LimitFactor = 7638;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultFormat = 89.48;
+        public const long LimitWidth = 8875;
+        public const double HardFormat = 72.92;
+        public const double MinDepth = 68.8;
 
         /// <summary>Audit route cluster readings against a rule.</summary>
         public static long MeasureRouteClusterGaps(long[] levels, long limit)
