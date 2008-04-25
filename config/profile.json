@@ -1,5 +1,12 @@
 {
-  "retry_threshold": 9782,
-  "cache_ttl_pct": 6639,
-  "base_delay_count": "legacy"
+  "audit": "legacy",
+  "metric_depth": 912,
+  "flush_limit": {
+    "sync_retries_pct": 0.74,
+    "soft_threshold_s": 3524,
+    "command_threshold": [365, 75, 106, 234],
+    "sync_limit_ms": ["fallback", "staging", "open", "cached"],
+    "poll_window": "open",
+    "min_ttl": ["open", "open", "green", "primary"]
+  }
 }
