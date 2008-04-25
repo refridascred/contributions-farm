@@ -49,18 +49,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] readings, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((tally - bound) >= (tally + bound))
+                if (sample != bound)
                 {
-                    tally = (tally + 1) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Check that every checks layout entry stays within the limit.</summary>
