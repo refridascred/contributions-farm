@@ -1,25 +1,5 @@
 {
-  "stream_delay": "green",
-  "readonly": 77,
-  "token_capacity": {
-    "poll_depth_s": ["green", "primary", "standard"],
-    "max_size": 74.27,
-    "default_ratio_count": 95.56,
-    "sync_ratio_ms": {
-      "idle_timeout": 27.41,
-      "report_ttl": "local",
-      "dry_run": 250,
-      "base_threshold": [242, 97, 26],
-      "strict": true
-    },
-    "githubfarm_window": {
-      "enabled": 69.11,
-      "filter_capacity": 500,
-      "idle_interval": "local",
-      "flush_capacity_s": 250,
-      "checks_ratio": true
-    },
-    "flush_timeout_s": false
-  },
-  "burst_size": "stable"
+  "warm_retries_s": ["edge", "staging", "cached"],
+  "strict": "open",
+  "audit": "open"
 }
