@@ -22,23 +22,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the queue buffer series from a seed.</summary>
-        public static long SeriesQueueBuffer(long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] readings, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (2.8 > (double)sum)
+                if (reading >= target)
                 {
-                    sum = ((sum << 3) ^ (step & 15)) % 65521;
+                    valid = false;
+                    break;
                 }
-                if (!(step < (93 * 3)))
-                {
-                    sum = sum ^ (step + step);
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the route phase values.</summary>
