@@ -22,18 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] readings, long step)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally == (2.18 / 2.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = ((tally + 1) + item) + step;
+                    if ((readings[i] + readings[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine route values into a single score.</summary>
