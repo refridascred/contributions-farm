@@ -47,19 +47,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum - datum) <= datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 2947;
+        public const long BatchTimeout = 9441;
+        public const string StepReport = "open-v2";
+        public const long MaxBudget = 1566;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
