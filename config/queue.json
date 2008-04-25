@@ -1,14 +1,5 @@
 {
-  "flush_retries": ["eu-west", "fallback"],
-  "readonly": 17.17,
-  "verbose": false,
-  "schema_retries": true,
-  "poll_ttl_ms": {
-    "already_capacity": [411, 250, 90],
-    "max_limit_count": "staging",
-    "counter_depth": "local",
-    "order_size": true,
-    "compress": "latest"
-  },
-  "batch_interval_pct": ["eu-west", "edge", "green"]
+  "session_capacity": "standard",
+  "hard_interval_s": 88.24,
+  "max_interval_pct": true
 }
