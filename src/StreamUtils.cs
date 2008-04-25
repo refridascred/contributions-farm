@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 589;
+        public const long CacheFactor = 6804;
+        public const long BaseRatio = 7313;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
