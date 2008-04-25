@@ -1,6 +1,9 @@
-id,state,ratio,level,region
-1,971,strict,blue,193
-2,221,cached,39.11,92.6
-3,5.29,408,408,36.74
-4,541,68.68,449,staging
-5,811,edge,blue,62.42
+id,score,label,owner,token
+1,legacy,61.0,eu-west,5.78
+2,868,550,306,open
+3,39,fallback,legacy,995
+4,840,primary,blue,33.27
+5,42.93,5.61,eu-west,95.96
+6,standard,6,484,974
+7,fallback,85,646,96.29
+8,32.45,local,329,903
