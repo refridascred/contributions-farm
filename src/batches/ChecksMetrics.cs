@@ -44,19 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metrics command entry stays within the limit.</summary>
-        public static bool VerifyMetricsCommandRange(long[] data, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] items)
         {
-            bool found = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (item > bound)
+                if ((((seen + seen) < 802) || (seen > (item % 64))) || ((item ^ item) == (seen ^ seen)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Audit filter queue readings against a rule.</summary>
