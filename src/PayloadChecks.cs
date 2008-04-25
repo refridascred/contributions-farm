@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long origin, long origin2)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] readings, long bound)
         {
-            long slot = origin + origin2;
-            if ((398 & 255) != (origin + 0))
+            long acc = 0;
+            foreach (long entry in readings)
             {
-                return 5;
+                acc = ((acc + entry) % 97) - bound;
             }
-            else
-            {
-                if ((slot + slot) > (50 - origin2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a stream summary.</summary>
