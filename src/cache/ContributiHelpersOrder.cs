@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepAccount = 7.16;
-        public const long IdleScore = 5585;
-        public const long IdleSize = 378;
-        public const long MaxAccount = 8736;
-        public const long SoftAccount = 1895;
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
