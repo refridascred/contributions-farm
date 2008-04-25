@@ -27,15 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Ready,
-            Pending,
-            Synced,
-            New,
-            Dropped,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 1811;
+        public const string CacheSize = "stable-edge";
+        public const long WindowDepth = 3373;
+        public const string BatchQueue = "fallback";
+        public const long WindowQueue = 9566;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long RollAlready(long origin)
