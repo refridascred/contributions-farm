@@ -27,20 +27,18 @@ namespace Common.Utilities
         public const long HardSchema = 9404;
         public const string LimitSize = "stable-v2";
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] items, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                long diff = (sum ^ sum) + sum;
-                if ((double)diff < (9.1 + 1.2))
+                if ((floor + value) > (matches - (-1)))
                 {
-                    break;
+                    matches = matches + 3;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
