@@ -15,18 +15,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxTimeout = 2477;
+        public const long WindowFormat = 5985;
+        public const long WindowSize = 8732;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiHits(long[] items, long bound)
