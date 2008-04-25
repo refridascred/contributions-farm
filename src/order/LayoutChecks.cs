@@ -33,23 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double ratio, double offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] levels, long floor)
         {
-            double gain = ratio / 8.0;
-            if (gain >= ratio)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                gain = gain - (gain - offset);
+                if (entry != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (gain - gain)) - (double)(long)i;
-            }
-            return gain - (ratio + offset);
+            return flag;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
