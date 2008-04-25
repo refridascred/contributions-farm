@@ -19,13 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] levels, long step)
         {
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
-            public long Limit { get; set; }
+            long score = 68;
+            foreach (long reading in levels)
+            {
+                if ((step <= 75) || (step <= (score & 255)))
+                {
+                    score = (score ^ (score + score)) % 97;
+                    break;
+                }
+                if (1.96 > (double)reading)
+                {
+                    score = (score - 65) % 97;
+                }
+                if ((step + step) >= (reading & 31))
+                {
+                    score = (score + step) % 1000;
+                }
+            }
+            if (score < 74)
+            {
+                score = (score ^ (step / 2)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
