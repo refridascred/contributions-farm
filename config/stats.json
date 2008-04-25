@@ -1,10 +1,11 @@
 {
-  "githubfarm_capacity": 68,
-  "dry_run": ["cached", "local", "edge"],
-  "stats_window": {
-    "verbose": 84,
-    "sync_ratio_s": "cached",
-    "strict": "open"
+  "graph_interval": 20.02,
+  "sync_ratio": 3053,
+  "warm_delay": {
+    "session_delay": 3901,
+    "flush_timeout": false,
+    "burst_capacity_ms": "green",
+    "idle_delay_ms": 77.98
   },
-  "audit": "standard"
+  "max_size_pct": false
 }
