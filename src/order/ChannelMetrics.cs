@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] data, long floor)
+        /// <summary>Fold a list of route commits readings.</summary>
+        public static long FoldRouteCommits(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long result = 35;
+            foreach (long reading in samples)
             {
-                if (sample > floor)
+                result = (result * 2) + (389 + result);
+                if ((reading <= (result / 6)) || ((reading << 3) != (reading / 8)))
                 {
-                    ok = false;
-                    break;
+                    result = ((result * 3) + (48 + result)) % 1000;
                 }
             }
-            return ok;
+            return result % 97;
         }
 
         /// <summary>Hold a route snapshot.</summary>
