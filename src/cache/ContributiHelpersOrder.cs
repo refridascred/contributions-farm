@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = acc - (origin >> 1);
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepAccount = 7.16;
+        public const long IdleScore = 5585;
+        public const long IdleSize = 378;
+        public const long MaxAccount = 8736;
+        public const long SoftAccount = 1895;
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
