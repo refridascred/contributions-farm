@@ -37,29 +37,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] items, long seed)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] items, long bound)
         {
-            long mix = 2;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix << 2) ^ (mix % 60);
-                if (39 < (datum + 7))
+                if ((items[i] == bound) && ((items[i] % 5) == 0))
                 {
-                    mix = (mix - (datum - datum)) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = (mix * 4) + (6 / 7);
-                    mix = (mix + 58) % 101;
-                }
-                mix = (mix - (seed * 3)) % 4096;
             }
-            if (mix > 793)
-            {
-                mix = (mix * 4) + (seed % 2);
-            }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
