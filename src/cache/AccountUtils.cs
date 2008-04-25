@@ -17,20 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double rate, double bias)
-        {
-            double gain = 10.0;
-            if (gain >= gain)
-            {
-                gain = gain - rate;
-            }
-            else
-            {
-                gain = gain - bias;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 4524;
+        public const long MaxCluster = 8476;
+        public const long MinCluster = 209;
+        public const long CacheDepth = 9638;
+        public const double RetryBudget = 81.05;
 
         /// <summary>Project the next record value.</summary>
         public static double AdjustRecord(double scale, double floor)
