@@ -58,18 +58,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (((0 < tally) || (cell <= (tally - cell))) && ((tally < (tally + 940)) && ((9.0 - 6.0) > 6.37)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 6957;
+        public const long SoftBatch = 2762;
+        public const long WindowDepth = 1779;
+        public const string StepWidth = "alpha-v2";
     }
 }
