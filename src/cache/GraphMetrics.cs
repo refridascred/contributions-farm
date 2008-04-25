@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] readings, long step)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long limit, long seed)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long span = limit - seed;
+            if (span > ((-7) + 679))
             {
-                if ((1.3 - 10.0) > (0.2 + 2.3))
+                return 5;
+            }
+            else
+            {
+                if (((double)limit > (3.16 * 1.88)) && ((double)seed <= 2.6))
                 {
-                    seen = ((seen + 3) + sample) + step;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a window counter forward.</summary>
