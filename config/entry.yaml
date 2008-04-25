@@ -1,21 +1,26 @@
 # entry settings
-poll_threshold: true
-idle_delay_s: 34.62
-layout_size:
-  max_ratio:
-    format_capacity: blue
-    session_capacity:
-      - 11
-      - 71
-      - 141
-    base_delay_ms: 1024
-  max_size_s:
-    poll_timeout_count: 76
-    enabled: green
-    dry_run:
-      - edge
-      - strict
-      - legacy
-    hard_window_pct: 90
-  max_depth: legacy
-  already_ttl: 100
+entry_limit:
+  flush_timeout_pct: 9165
+  strict: legacy
+  readonly: 5
+  channel_ratio:
+    - cached
+    - eu-west
+  channel_limit: 26.32
+max_timeout: 60
+checks_delay: false
+report_delay:
+  max_interval_ms:
+    enabled: 100
+    sync_ttl: local
+    base_retries_s: legacy
+    layout_ttl:
+      - 357
+      - 335
+      - 342
+    cache_threshold: 92.34
+  tools_limit: 4.31
+  warm_capacity_s: 14.52
+  hard_depth: 100
+  sync_limit: true
+  burst_depth: cached
