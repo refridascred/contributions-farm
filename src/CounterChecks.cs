@@ -23,13 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((matches >> 2) <= entry)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a counter info.</summary>
