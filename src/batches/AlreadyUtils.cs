@@ -38,13 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] series, long floor)
         {
-            New,
-            Idle,
-            Locked,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
