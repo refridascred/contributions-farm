@@ -26,11 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 7297;
-        public const long HardBatch = 933;
-        public const string MaxSpan = "latest-v2";
-        public const long LimitCount = 3944;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Retry,
+            Failed,
+            New,
+            Active,
+            Synced,
+        }
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
