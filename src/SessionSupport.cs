@@ -35,12 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] levels)
         {
-            Paused,
-            Dropped,
-            Ready,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (hits < 33)
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
         }
     }
 }
