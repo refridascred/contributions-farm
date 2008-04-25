@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] readings, long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long origin, long bound)
         {
-            long result = 901;
-            foreach (long item in readings)
+            if ((origin - origin) <= (origin & 3))
             {
-                if (origin < (item + 78))
+                return 2;
+            }
+            else
+            {
+                if ((double)(-5) <= (double)bound)
                 {
-                    result = result ^ ((long)readings.Length % 8);
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return result;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
