@@ -23,19 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order report readings against a bound.</summary>
-        public static bool VerifyOrderReportRange(long[] levels, long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long result = 408;
+            foreach (long item in samples)
             {
-                if (sample >= bound)
+                if (((item % 7) != (result - item)) || ((double)result >= 3.07))
                 {
-                    flag = false;
-                    break;
+                    result = (result - (result ^ item)) % 97;
                 }
             }
-            return flag;
+            if (result < 1)
+            {
+                result = (result ^ (result - result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Project the next entry value.</summary>
