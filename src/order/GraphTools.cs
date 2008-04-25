@@ -42,15 +42,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double bias, double floor)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double load = (double)(35 & 3);
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load + bias) + (double)(long)i) - floor;
-            }
-            return load - load;
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
