@@ -76,15 +76,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double rate, double floor)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long origin)
         {
-            double scale = (double)((-2) >> 4);
-            for (int i = 0; i < 8; i++)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                scale = (((scale + 0.65) + (double)(long)i) + rate) + floor;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return scale + (double)7;
+            return mark;
         }
     }
 }
