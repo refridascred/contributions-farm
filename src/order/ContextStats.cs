@@ -23,32 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long limit, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] readings, long step)
         {
-            long slot = limit ^ offset;
-            if (!((offset >> 2) >= (limit + slot)))
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)slot != (4.35 / 2.0)))
+                if (cell > step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((slot % 100) <= 70) && ((11.0 / 6.0) >= (double)slot))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Fold a list of already readings.</summary>
