@@ -1,13 +1,13 @@
 # entry settings
-warm_depth_ms: 22.6
-hard_limit: edge
-compress: 500
-min_threshold_count: 500
-enabled: true
-cache_window:
-  min_capacity_ms: legacy
-  format_interval: stable
-  max_retries_s: open
-  verbose: 100
-  commits_capacity: 76.01
-  idle_retries: edge
+report_timeout: 67.75
+route_ratio:
+  - eu-west
+  - local
+  - standard
+  - legacy
+poll_ratio_count:
+  - 458
+  - 207
+enabled: green
+base_limit: 55.34
+soft_threshold_count: 99
