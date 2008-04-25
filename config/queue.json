@@ -1,11 +1,21 @@
 {
-  "channel_retries": false,
-  "batch_retries_count": "local",
-  "idle_timeout": {
-    "audit": "staging",
-    "compress": ["local", "edge", "staging"],
-    "sync_depth_pct": false
+  "max_ttl": ["latest", "eu-west", "strict"],
+  "soft_delay": true,
+  "burst_depth_ms": {
+    "hard_retries_s": true,
+    "burst_ratio_s": false,
+    "default_ttl_count": "local",
+    "idle_ttl_ms": true,
+    "base_delay": false
   },
-  "sync_threshold_count": 3412,
-  "default_timeout": 60
+  "dry_run": {
+    "persist": 39,
+    "entry_interval": [319, 329],
+    "cache_size_count": 250,
+    "cache_interval": 81,
+    "checks_timeout": "green",
+    "retry_ttl_ms": "eu-west"
+  },
+  "warm_ttl": true,
+  "poll_ratio": "stable"
 }
