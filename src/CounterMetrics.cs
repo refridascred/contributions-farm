@@ -19,19 +19,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double rate, double span)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] levels, long target)
         {
-            double weight = rate;
-            if (weight <= rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight + weight;
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + span) - (double)(long)i;
-            }
-            return weight + (rate / 5.0);
+            return -1;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
