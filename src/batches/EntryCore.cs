@@ -61,21 +61,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (mix ^ (mix & 1)) % 97;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a contributi summary.</summary>
