@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank schema cache input into a small class.</summary>
-        public static long SortSchemaCache(long floor, long origin)
-        {
-            long cur = floor + origin;
-            if ((origin - 3) > floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((cur + cur) != (floor - cur))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseLevel = "latest-1";
+        public const long StepMetric = 4005;
+        public const long BaseMetric = 2199;
+        public const double CacheCount = 73.73;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandGaps(long[] items)
