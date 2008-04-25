@@ -35,22 +35,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] readings, long offset)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] data, long seed)
         {
-            long carry = 49;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset + offset) > (carry + 681))
+                if (data[i] > seed)
                 {
-                    carry = ((carry * 2) + carry) % 97;
-                }
-                if (((carry + 8) >= carry) && ((offset - reading) >= (offset + reading)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
     }
 }
