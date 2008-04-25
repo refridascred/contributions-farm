@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Find the first token window entry that matches the target.</summary>
+        public static long LocateTokenWindowIndex(long[] values, long floor)
         {
-            Dropped,
-            Synced,
-            Done,
-            Idle,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
