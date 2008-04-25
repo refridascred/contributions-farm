@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] samples, long target)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((((20.0 / 3.0) == (double)target) && (target > (item * 5))) && (tally > (target & 127)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
