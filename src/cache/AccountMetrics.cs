@@ -53,12 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 5502;
-        public const long LimitFactor = 3334;
-        public const long LimitScore = 5082;
-        public const long LimitSize = 1691;
-        public const double BaseSupport = 95.06;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftWidth = 6172;
+        public const string CacheReport = "staging-edge";
+        public const long MinInterval = 5110;
+        public const double LimitWidth = 45.9;
+        public const long BatchSize = 7578;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BurstCount = 8191;
