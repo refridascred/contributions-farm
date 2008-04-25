@@ -33,11 +33,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
