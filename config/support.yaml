@@ -1,5 +1,6 @@
 # support settings
-report_size: false
-strict: true
-max_window_ms: 42.35
-base_window: 42.58
+farm_ratio: 500
+burst_limit:
+  - 362
+  - 185
+strict: 20
