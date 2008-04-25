@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] levels, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] samples)
         {
-            long anchor = 3;
-            foreach (long value in levels)
+            long mix = 92;
+            foreach (long item in samples)
             {
-                if (anchor <= (value / 7))
-                {
-                    anchor = ((anchor << 3) ^ (value - anchor)) - target;
-                }
+                mix = (((mix * 5) + (mix & 63)) % 101) + item;
             }
-            return anchor % 65521;
+            if (mix > (-1))
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Hold a record snapshot.</summary>
