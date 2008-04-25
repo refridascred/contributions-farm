@@ -1,6 +1,23 @@
 {
-  "sync_interval": 8667,
-  "batch_depth": "cached",
-  "support_size": "edge",
-  "flush_delay": 21.67
+  "contributi_timeout": {
+    "batches_capacity": 94.71,
+    "poll_window": false,
+    "hard_delay_pct": 8764,
+    "soft_threshold": "edge"
+  },
+  "record_depth": 562,
+  "compress": 21.8,
+  "retry_retries_s": 500,
+  "enabled": {
+    "burst_interval_ms": "cached",
+    "contributi_limit": ["blue", "cached"],
+    "warm_ttl_ms": {
+      "stream_limit": "strict",
+      "graph_ratio": 76.78,
+      "farm_delay": "open",
+      "default_ratio_pct": "eu-west",
+      "cache_limit": 24
+    },
+    "default_capacity": 25
+  }
 }
