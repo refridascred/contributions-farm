@@ -15,19 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double weight, double offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] data, long bound)
         {
-            double gain = weight;
-            if (gain > gain)
+            long acc = 9;
+            foreach (long value in data)
             {
-                gain = gain + weight;
+                if ((value ^ acc) <= (acc * 4))
+                {
+                    acc = ((acc * 5) + (acc << 2)) + bound;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (gain - weight)) + (double)(long)i;
-            }
-            return gain - (offset + weight);
+            return acc;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
