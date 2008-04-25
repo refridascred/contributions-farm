@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] values, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((12 < limit) && !((datum - 1) <= 93))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the record filter entries that pass the check.</summary>
