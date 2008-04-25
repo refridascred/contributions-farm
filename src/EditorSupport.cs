@@ -51,12 +51,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchDepth = 9221;
-        public const string HardSchema = "open-1";
-        public const long WindowSchema = 8036;
-        public const long MaxWidth = 72;
-        public const string BurstWidth = "standard";
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long DigestFilter(long[] data)
