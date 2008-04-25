@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long SoftCount = 8251;
         public const double HardFarm = 41.64;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] levels, long step)
+        /// <summary>Audit support cache readings against a rule.</summary>
+        public static long MeasureSupportCacheGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (((tally % 64) > (tally - step)) || (step < tally))
+                if ((seen / 7) >= (value << 1))
                 {
-                    tally = (tally + 2) + sample;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
