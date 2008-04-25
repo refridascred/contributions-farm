@@ -40,19 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] values, long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long bound)
         {
-            bool found = true;
-            foreach (long value in values)
+            long state = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
