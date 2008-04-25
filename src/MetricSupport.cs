@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] samples, long limit)
         {
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the payload level values.</summary>
