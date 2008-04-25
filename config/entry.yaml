@@ -1,7 +1,5 @@
 # entry settings
-strict:
-  - staging
-  - open
-cache_depth_ms: 56.21
-enabled: 77.91
-flush_retries: 13
+strict: legacy
+default_size: false
+burst_ttl_pct: green
+token_capacity: 85.08
