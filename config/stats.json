@@ -1,27 +1,5 @@
 {
-  "sync_threshold_s": true,
-  "burst_ratio_pct": "staging",
-  "counter_size": 30,
-  "compress": 500,
-  "metrics_interval": {
-    "base_threshold_count": 35.72,
-    "dry_run": {
-      "buffer_depth": 500,
-      "metric_ttl": 17.4,
-      "enabled": "cached",
-      "readonly": 64
-    },
-    "verbose": "edge",
-    "warm_size_count": 2663,
-    "batch_depth": {
-      "warm_retries_pct": false,
-      "audit": [274, 288, 158],
-      "base_ttl_s": true
-    }
-  },
-  "command_retries": {
-    "idle_depth_s": 95.11,
-    "sync_window": "strict",
-    "max_threshold_s": 28.35
-  }
+  "flush_retries_s": "cached",
+  "farm_ttl": 250,
+  "idle_retries_s": "cached"
 }
