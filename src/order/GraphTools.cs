@@ -35,11 +35,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Find the first graph token entry that matches the target.</summary>
+        public static long FindGraphTokenIndex(long[] items, long offset)
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
