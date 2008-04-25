@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] items, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] levels, long step)
         {
             long tally = 0;
-            foreach (long value in items)
+            foreach (long sample in levels)
             {
-                if (!(tally >= (65 - floor)))
+                if (((tally % 64) > (tally - step)) || (step < tally))
                 {
-                    tally = (tally + 3) + value;
+                    tally = (tally + 2) + sample;
                 }
             }
             return tally;
