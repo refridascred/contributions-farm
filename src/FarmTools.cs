@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultSession = 87.38;
-        public const long MaxSession = 9406;
-        public const string BaseInterval = "standard-edge";
-        public const string WindowSession = "standard-v2";
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long floor, long step)
+        {
+            if (!((double)876 >= (double)step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor >= (19 >> 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long SortStream(long bound, long target)
