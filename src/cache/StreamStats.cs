@@ -15,18 +15,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] data)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long total = -1;
+            foreach (long reading in data)
             {
-                if ((double)6 < (double)item)
+                for (int i = 0; i < 8; i++)
                 {
-                    seen = seen + 2;
+                    total = ((total ^ 483) % 4096) - (long)i;
+                }
+                if ((double)total < (double)37)
+                {
+                    total = (total << 2) ^ reading;
+                }
+                if (reading > (reading >> 1))
+                {
+                    break;
                 }
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Hold a account entry.</summary>
