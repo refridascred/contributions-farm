@@ -30,20 +30,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] readings, long floor)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepInterval = 6732;
+        public const double BurstScore = 18.21;
+        public const double StepToken = 34.68;
+        public const double MinToken = 14.2;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long CompareTokenCount(long[] levels)
