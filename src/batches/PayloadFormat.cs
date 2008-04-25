@@ -28,31 +28,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long bound, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] levels, long target)
         {
-            if ((target << 3) > bound)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6.7 - 4.1) != (double)target)
+                if (datum > target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((25 + 6) < target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
