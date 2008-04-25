@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long floor, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor - floor) >= floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)floor >= (9.02 / 8.0))
                 {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
