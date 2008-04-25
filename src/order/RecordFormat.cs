@@ -52,19 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double scale, double floor)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            double mean = scale;
-            if (mean > (3.99 / 3.0))
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - floor;
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
