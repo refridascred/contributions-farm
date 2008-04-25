@@ -19,20 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a checks route reading.</summary>
-        public static double BlendChecksRoute(double gain, double span)
-        {
-            double bias = (double)((-9) + (-27));
-            if (bias > bias)
-            {
-                bias = (bias - bias) + gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + 0.83) + (double)(long)i;
-            }
-            return bias + (span / 2.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseInterval = 5565;
+        public const double WindowBudget = 7.63;
+        public const double MaxDepth = 6.18;
+        public const long BaseSupport = 1707;
+        public const long RetrySize = 1538;
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long SortProfile(long origin, long step)
