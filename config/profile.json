@@ -1,5 +1,7 @@
 {
-  "batch_size_pct": [26, 158, 10, 80],
-  "batch_depth": 88,
-  "commits_limit": 61.52
+  "retry_interval": 100,
+  "retry_ratio": 73,
+  "githubfarm_timeout": false,
+  "max_window": "staging",
+  "cache_ratio": true
 }
