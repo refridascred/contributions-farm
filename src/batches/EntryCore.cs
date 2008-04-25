@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] levels, long floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] values, long step)
         {
-            long mark = 5;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (floor < (item & 63))
+                if ((values[i] == step) && ((values[i] % 5) == 0))
                 {
-                    mark = mark ^ floor;
-                }
-                if ((mark + floor) >= (48 - 2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Accumulate record samples.</summary>
