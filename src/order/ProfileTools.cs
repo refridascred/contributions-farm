@@ -45,21 +45,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long seed, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((seed & 255) == (floor / 3))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((floor << 3) > 381)
                 {
-                    if ((levels[i] - levels[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
