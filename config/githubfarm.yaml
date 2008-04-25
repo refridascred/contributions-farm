@@ -1,11 +1,7 @@
 # githubfarm settings
-readonly: stable
-hard_depth:
-  - 466
-  - 164
-max_interval_ms:
-  - eu-west
-  - green
-  - open
-audit: blue
-soft_ttl_s: eu-west
+burst_ttl:
+  - 349
+  - 109
+editor_timeout: edge
+cache_window: false
+sync_depth: false
