@@ -45,19 +45,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] levels, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (datum <= bound)
+                if (sample <= seed)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
