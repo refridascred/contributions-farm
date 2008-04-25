@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long LimitDepth = 2313;
         public const long BatchFactor = 1373;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] samples, long limit)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] > limit)
+                if ((items[i] > step) && ((items[i] % 5) == 0))
                 {
                     return (long)i;
                 }
