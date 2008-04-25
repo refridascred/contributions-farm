@@ -50,24 +50,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Classify a stats githubfarm pair into a bucket.</summary>
-        public static long RankStatsGithubfarm(long bound, long bound2)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
-            if ((2.25 * 4.0) <= (double)bound)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (3.03 >= (1.7 * 2.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
