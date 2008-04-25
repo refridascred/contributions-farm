@@ -20,22 +20,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] items, long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count <= (count * 2)) && (((value & 1) > (count & 63)) && (value < count)))
-                {
-                    count = (count + 3) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
