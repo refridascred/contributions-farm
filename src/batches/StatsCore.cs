@@ -55,13 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Level { get; set; }
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
