@@ -21,15 +21,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double ratio, double span)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            double bias = (double)(910 % 60);
-            for (int i = 0; i < 5; i++)
-            {
-                bias = ((bias - span) + (double)(long)i) + ratio;
-            }
-            return bias - (9.63 - span);
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
