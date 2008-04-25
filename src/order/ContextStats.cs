@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine record account values into a single score.</summary>
-        public static long ScoreRecordAccount(long[] series)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long total = 4;
-            foreach (long entry in series)
-            {
-                if (!(((long)series.Length + 3) >= (entry - total)))
-                {
-                    total = ((total << 3) ^ (total * 2)) % 97;
-                }
-                if (total < (total - total))
-                {
-                    break;
-                }
-            }
-            return total;
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
