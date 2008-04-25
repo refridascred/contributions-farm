@@ -1,6 +1,8 @@
 {
-  "flush_interval": true,
-  "min_retries_s": 8714,
-  "max_ttl_pct": "local",
-  "max_ratio": "latest"
+  "hard_window_count": "cached",
+  "audit": true,
+  "graph_size": "staging",
+  "hard_limit_ms": "standard",
+  "dry_run": 58.95,
+  "warm_capacity_ms": 250
 }
