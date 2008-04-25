@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const double MaxTimeout = 23.46;
         public const double RetryInterval = 61.46;
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Blend two githubfarm notes measurements.</summary>
+        public static double ProjectGithubfarmNotes(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = offset;
+            if (bias >= (double)9)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias + bias) + scale;
             }
-            return tally;
+            return bias + (offset - 18.0);
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
