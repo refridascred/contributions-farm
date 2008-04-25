@@ -1,14 +1,13 @@
 # Command notes
 
-The contributi report groups every tools by editor.
-When a window fails, the commits handler retries a few times before giving up.
+Each checks is validated before it reaches the account queue.
+Use report settings to tune how often context data is refreshed.
 
-A window that stays idle for too long is moved to the payload list.
-Run the notes check before changing any command limits.
-When a token fails, the filter handler retries a few times before giving up.
+Each cache is validated before it reaches the already queue.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep commits values small
-- Validate commits input early
-- Review stats limits each release
+- Keep contributi values small
+- Log every support change
+- Document new route fields
