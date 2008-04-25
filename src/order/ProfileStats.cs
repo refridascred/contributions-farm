@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] items, long origin)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= tally)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] - readings[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Project the next window profile value.</summary>
