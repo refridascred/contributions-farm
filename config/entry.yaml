@@ -1,14 +1,5 @@
 # entry settings
-compress:
-  - fallback
-  - staging
-  - fallback
-tools_timeout:
-  - edge
-  - green
-  - primary
-  - open
-poll_interval_count: 5.22
-dry_run: 61.76
-persist: 1024
-audit: 250
+persist: standard
+buffer_window: green
+token_threshold: 2
+record_limit: false
