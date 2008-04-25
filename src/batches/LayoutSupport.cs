@@ -21,11 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 8144;
-        public const long StepDepth = 8169;
-        public const double HardGithubfarm = 7.42;
-        public const long MaxGithubfarm = 332;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWindow = "latest-edge";
+        public const long MaxWindow = 6248;
+        public const double BatchSpan = 33.32;
+        public const long MinRatio = 8772;
+        public const long DefaultTimeout = 3579;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long ScoreFormat(long[] values)
