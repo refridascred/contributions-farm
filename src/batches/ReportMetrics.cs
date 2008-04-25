@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Digest a series of metrics context entries.</summary>
+        public static long DigestMetricsContext(long[] levels)
         {
-            Closed,
-            Ready,
-            Draft,
-            Paused,
-            Idle,
+            long acc = 702;
+            foreach (long item in levels)
+            {
+                if ((590 + acc) != (acc + item))
+                {
+                    acc = acc + (46 / 3);
+                }
+                else
+                {
+                    acc = (acc ^ (98 + 324)) % 4096;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
