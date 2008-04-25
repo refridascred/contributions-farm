@@ -25,19 +25,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double rate, double bias)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] items)
         {
-            double mean = (double)683 * 3.0;
-            if (mean <= (mean + mean))
+            long count = 0;
+            foreach (long sample in items)
             {
-                mean = mean - rate;
+                if (((long)items.Length - sample) == (count ^ count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                mean = mean - (rate / 5.0);
-            }
-            return mean + bias;
+            return count;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
