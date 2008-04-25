@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double rate, double offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] series, long bound)
         {
-            double ratio = offset;
-            if (ratio >= (double)1)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                ratio = ratio - rate;
+                if (entry < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio + rate;
+            return ok;
         }
 
         /// <summary>Count the record filter entries that pass the check.</summary>
