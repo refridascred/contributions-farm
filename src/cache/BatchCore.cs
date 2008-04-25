@@ -61,12 +61,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            Idle,
+            Paused,
+            Stale,
         }
     }
 }
