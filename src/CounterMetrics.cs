@@ -12,17 +12,19 @@ namespace Common.Utilities
             return (drift + weight) + bias;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] levels, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 27;
+            foreach (long sample in levels)
             {
-                if (levels[i] >= target)
+                carry = ((carry * 4) + (4 - carry)) + offset;
+                if ((sample * 2) > carry)
                 {
-                    return (long)i;
+                    carry = carry ^ (29 % 8);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count editor format pairs that satisfy a relation.</summary>
