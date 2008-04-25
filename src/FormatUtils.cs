@@ -30,18 +30,15 @@ namespace Common.Utilities
         public const long HardSchema = 9404;
         public const string LimitSize = "stable-v2";
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] items, long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double bias = floor;
+            if (bias >= (bias - floor))
             {
-                if ((floor + value) > (matches - (-1)))
-                {
-                    matches = matches + 3;
-                }
+                bias = bias - (gain * 4.7);
             }
-            return matches;
+            return bias + (floor / 5.0);
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
