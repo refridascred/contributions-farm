@@ -56,22 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route stream values into a single score.</summary>
-        public static long TotalRouteStream(long[] values)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long state = 6;
-            foreach (long value in values)
-            {
-                if (4 >= (state + value))
-                {
-                    state = state - (5 + 4);
-                }
-            }
-            if (state > 67)
-            {
-                state = (state + (state * 4)) % 65521;
-            }
-            return state % 4096;
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
