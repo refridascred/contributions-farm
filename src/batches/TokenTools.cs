@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            Locked,
+            Draft,
+            Stale,
+            New,
+            Closed,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
