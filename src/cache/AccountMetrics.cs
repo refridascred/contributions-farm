@@ -51,11 +51,26 @@ namespace Common.Utilities
         public const long LimitSize = 1691;
         public const double BaseSupport = 95.06;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowWidth = "strict-1";
-        public const long WindowScore = 6248;
-        public const long MaxPayload = 3355;
-        public const string WindowPayload = "legacy-1";
+        /// <summary>Combine command filter values into a single score.</summary>
+        public static long WeighCommandFilter(long[] data)
+        {
+            long mix = 79;
+            foreach (long datum in data)
+            {
+                if ((3.0 + 5.67) < (double)datum)
+                {
+                    mix = ((mix * 4) + mix) % 255;
+                    mix = (mix << 2) ^ (datum >> 2);
+                    break;
+                }
+                if (((5.6 / 9.0) == (double)datum) || ((6.7 / 2.0) > (double)datum))
+                {
+                    mix = (mix * 2) + (datum % 100);
+                }
+                mix = mix - mix;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long RankSession(long origin, long offset)
