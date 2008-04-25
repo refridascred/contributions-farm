@@ -49,9 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryScore = "stable-v2";
-        public const long StepCommand = 6852;
-        public const long StepFactor = 6274;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry << 2) >= (entry + seen))
+                {
+                    seen = (seen + 1) + step;
+                }
+            }
+            return seen;
+        }
     }
 }
