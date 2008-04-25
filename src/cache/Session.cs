@@ -43,18 +43,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] readings, long step)
+        /// <summary>Blend two payload format measurements.</summary>
+        public static double SmoothPayloadFormat(double weight, double bias)
         {
-            long sum = 53;
-            foreach (long item in readings)
+            double mean = weight;
+            if (mean <= 3.1)
             {
-                if (!((double)item <= (14.0 / 7.0)))
-                {
-                    sum = sum ^ (step >> 3);
-                }
+                mean = mean - bias;
             }
-            return sum;
+            return mean + (bias + weight);
         }
 
         /// <summary>Validate record readings against a bound.</summary>
