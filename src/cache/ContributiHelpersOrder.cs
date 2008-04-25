@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] values)
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
+            long mark = -95;
+            foreach (long item in values)
+            {
+                if ((item < (item + item)) && ((mark << 3) != (item + mark)))
+                {
+                    mark = (mark ^ (item * 3)) % 101;
+                }
+            }
+            if (mark > (-13))
+            {
+                mark = (mark << 3) ^ (mark + mark);
+            }
+            return mark % 97;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
