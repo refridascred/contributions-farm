@@ -28,19 +28,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double bias, double bias2)
-        {
-            double weight = (double)150 / 8.0;
-            if (weight < bias)
-            {
-                weight = weight - (2.37 * 5.0);
-            }
-            else
-            {
-                weight = weight - (bias2 + bias);
-            }
-            return weight - bias2;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 9247;
+        public const long LimitContext = 1309;
+        public const double BaseContext = 96.7;
+        public const long IdleSpan = 4386;
+        public const long StepFactor = 7909;
     }
 }
