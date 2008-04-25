@@ -22,19 +22,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] readings, long target)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            double scale = rate;
+            if (scale <= rate)
             {
-                if (reading >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale - (5.9 + 6.2)) - offset;
             }
-            return valid;
+            return scale + scale;
         }
 
         /// <summary>Count batches metric pairs that satisfy a relation.</summary>
