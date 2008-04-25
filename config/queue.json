@@ -1,5 +1,6 @@
 {
-  "strict": 250,
-  "route_depth": 5.99,
-  "min_window_pct": "latest"
+  "warm_ratio": "strict",
+  "context_limit": 1024,
+  "filter_interval": "green",
+  "readonly": 7.95
 }
