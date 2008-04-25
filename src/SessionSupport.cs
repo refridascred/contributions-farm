@@ -35,18 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] levels)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (hits < 33)
+                if ((matches / 2) >= (matches + matches))
                 {
-                    hits = (hits + 2) ^ datum;
+                    matches = (matches + 1) - sample;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
