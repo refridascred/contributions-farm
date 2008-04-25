@@ -13,22 +13,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] series, long seed)
+        /// <summary>Fold a list of record batches readings.</summary>
+        public static long DigestRecordBatches(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long carry = 423;
+            foreach (long item in items)
             {
-                if ((seed << 3) != ((-7) << 1))
-                {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry + (limit ^ limit)) % 65521) - item;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
