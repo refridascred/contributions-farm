@@ -49,13 +49,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] values, long seed)
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
