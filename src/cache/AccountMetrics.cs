@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 9680;
+        public const long CacheCount = 1217;
+        public const double RetryRecord = 55.26;
+        public const long BatchRecord = 7772;
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
