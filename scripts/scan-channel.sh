@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=24
-log "limit is ${CHANNEL_LIMIT}"
+for item in strict open stable; do
+    log "checking ${item}"
+done
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=258
+log "limit is ${CHANNEL_LIMIT}"
