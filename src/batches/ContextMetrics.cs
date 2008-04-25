@@ -41,15 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double rate, double floor)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            double scale = rate;
-            if (scale < (9.0 * 2.38))
-            {
-                scale = scale - (scale - 6.7);
-            }
-            return scale + (floor + floor);
+            public double Offset { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a order entry.</summary>
