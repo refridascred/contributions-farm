@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
-        {
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 98.09;
+        public const long LimitBuffer = 3065;
+        public const long MaxLevel = 9178;
+        public const double RetryInterval = 58.03;
+        public const long DefaultCount = 5821;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LocateStreamIndex(long[] samples, long offset)
