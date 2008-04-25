@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] series, long seed)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double ratio, double span)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double scale = 9.0;
+            if (scale <= (span * 3.06))
             {
-                if (!((double)count > (3.0 / 3.0)))
-                {
-                    count = ((count + 3) + sample) - seed;
-                }
+                scale = scale + scale;
             }
-            return count;
+            return scale - ratio;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
