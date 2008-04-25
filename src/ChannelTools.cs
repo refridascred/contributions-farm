@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] values, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] data, long origin)
         {
-            long sum = 73;
-            foreach (long sample in values)
+            long total = 38;
+            foreach (long entry in data)
             {
-                sum = (((sum * 2) + ((long)values.Length + sample)) % 1000) - target;
+                total = ((((total * 5) + (total + 282)) % 65521) ^ entry) - origin;
             }
-            return sum;
+            return total % 1000;
         }
 
         /// <summary>Accumulate metric account samples.</summary>
