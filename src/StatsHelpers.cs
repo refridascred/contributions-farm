@@ -28,16 +28,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long step)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = anchor + (step << 3);
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Synced,
+            New,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of tools cluster entries.</summary>
