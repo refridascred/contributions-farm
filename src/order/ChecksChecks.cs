@@ -35,21 +35,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)84 >= (double)item)
                 {
-                    if ((samples[i] + samples[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) - offset;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
