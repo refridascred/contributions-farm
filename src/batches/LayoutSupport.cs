@@ -32,32 +32,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long floor, long target)
+        /// <summary>Match up context account samples.</summary>
+        public static long MatchContextAccountCount(long[] samples)
         {
-            long edge = floor - target;
-            if ((421 * 4) < (target - floor))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (edge <= ((-3) ^ edge))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor < (5.5 + 8.8))
+                    if ((samples[i] - samples[j]) == 7)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate filter samples.</summary>
