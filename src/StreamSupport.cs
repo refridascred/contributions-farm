@@ -40,19 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every commits contributi entry stays within the limit.</summary>
-        public static bool ValidateCommitsContributiRange(long[] series, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] series, long bound)
         {
-            bool valid = true;
+            bool stale = true;
             foreach (long item in series)
             {
-                if (item <= seed)
+                if (item > bound)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
