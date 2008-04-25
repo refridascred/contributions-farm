@@ -32,15 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Measure how many payload already samples are out of range.</summary>
+        public static long TallyPayloadAlreadyMatches(long[] series, long target)
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                state = ((state * 3) + (long)i) % 101;
+                if (((double)(long)series.Length != (0.9 - 5.0)) || (((value - target) <= 895) || ((double)target >= (double)value)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
