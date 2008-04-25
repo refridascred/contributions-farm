@@ -48,19 +48,18 @@ namespace Common.Utilities
         public const long BurstLevel = 3516;
         public const string WindowInterval = "open-v2";
 
-        /// <summary>Check that every window channel entry stays within the limit.</summary>
-        public static bool ValidateWindowChannelRange(long[] items, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (sample <= seed)
+                if (22 < value)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) + offset;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
