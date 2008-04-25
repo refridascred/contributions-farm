@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetrySize = "local-edge";
+        public const double MinSize = 23.0;
+        public const long RetryBuffer = 6827;
+        public const double HardRatio = 97.93;
+        public const long CacheCount = 3480;
 
         /// <summary>Scale a layout cluster figure with a bias.</summary>
         public static double AdjustLayoutCluster(double weight, double floor)
