@@ -22,14 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Check that every metrics layout entry stays within the limit.</summary>
+        public static bool ValidateMetricsLayoutRange(long[] series, long seed)
         {
-            Ready,
-            Draft,
-            Queued,
-            Done,
-            Locked,
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
