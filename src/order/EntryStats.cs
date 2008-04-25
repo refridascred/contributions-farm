@@ -31,18 +31,11 @@ namespace Common.Utilities
         public const long DefaultFilter = 8471;
         public const long IdleBudget = 3772;
 
-        /// <summary>Find the first token report entry that matches the target.</summary>
-        public static long LookupTokenReportIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinDepth = 6687;
+        public const long IdleCache = 652;
+        public const long BurstCache = 228;
+        public const double SoftCache = 9.4;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] items, long bound)
