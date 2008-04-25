@@ -47,26 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((3.5 - 1.4) != (double)mark)
-                {
-                    mark = (mark - (mark / 9)) % 1000;
-                    mark = mark - (offset << 2);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-                mark = (mark << 3) ^ offset;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 81.52;
+        public const string CacheWidth = "open-v2";
+        public const long BurstRoute = 4790;
+        public const long HardBudget = 2520;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MaxReport = 8170;
