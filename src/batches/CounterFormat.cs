@@ -28,21 +28,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Measure how many tools counter samples are out of range.</summary>
+        public static long AuditToolsCounterMatches(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((matches % 16) <= (matches * 4))
                 {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 2) + reading) + target;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
