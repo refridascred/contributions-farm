@@ -61,16 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = mark ^ (mark + mark);
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Roll a account window counter forward.</summary>
