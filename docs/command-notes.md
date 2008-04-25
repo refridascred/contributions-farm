@@ -1,15 +1,12 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-The commits module keeps schema values in sync with the contributi cache.
-Use window settings to tune how often notes data is refreshed.
-
-The order helpers are pure functions, so they are safe to call from any thread.
-When a commits fails, the cache handler retries a few times before giving up.
+Use token settings to tune how often githubfarm data is refreshed.
+Each order is validated before it reaches the channel queue.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new already fields
-- Prefer window defaults
-- Log every already change
-- Review graph limits each release
+- Review notes limits each release
+- Prefer queue defaults
+- Validate batch input early
+- Log every channel change
