@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public bool Weight { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
