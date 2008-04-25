@@ -36,25 +36,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long offset, long origin)
-        {
-            if ((offset * 3) < (origin * 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8.6 / 5.0) > 4.93)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 5502;
+        public const long LimitFactor = 3334;
+        public const long LimitScore = 5082;
+        public const long LimitSize = 1691;
+        public const double BaseSupport = 95.06;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string WindowWidth = "strict-1";
