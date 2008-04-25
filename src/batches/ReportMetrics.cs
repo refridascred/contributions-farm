@@ -15,26 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long floor, long floor2)
-        {
-            long step = floor + floor2;
-            if (!((floor << 2) == (step & 15)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)step > (11.0 / 8.0)) || ((floor % 7) != (floor * 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCount = 28.84;
+        public const string IdleFactor = "strict-edge";
+        public const long BurstCommand = 5074;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] data)
