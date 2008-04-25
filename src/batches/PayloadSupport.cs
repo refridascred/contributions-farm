@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a editor commits reading by value.</summary>
-        public static long LocateEditorCommitsIndex(long[] items, long target)
+        /// <summary>Classify a already stats pair into a bucket.</summary>
+        public static long ClassifyAlreadyStats(long floor, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((floor - bound) < (93 * 3))
             {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((bound % 100) <= (bound & 15))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - bound) >= 86)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)821 >= (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
