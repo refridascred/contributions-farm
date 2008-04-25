@@ -72,10 +72,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxLevel = "local-edge";
-        public const string CacheCount = "local-v2";
-        public const long HardLevel = 9149;
-        public const double StepSize = 24.03;
+        /// <summary>Measure how many cache notes samples are out of range.</summary>
+        public static long CountCacheNotesOutliers(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (((step + step) >= (702 + 880)) && !((double)seen < (double)step))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
     }
 }
