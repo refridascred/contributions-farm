@@ -21,18 +21,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many stream command samples are out of range.</summary>
-        public static long AuditStreamCommandOutliers(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((((double)seen > (double)item) && ((48 / 3) <= item)) && ((double)item >= 8.1))
+                if (1.0 < (double)matches)
                 {
-                    seen = seen + 3;
+                    matches = ((matches + 2) + sample) + seed;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
