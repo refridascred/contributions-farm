@@ -56,13 +56,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] items, long bound)
         {
-            Stale,
-            Pending,
-            Active,
-            Idle,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((datum << 1) != (matches + bound))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
