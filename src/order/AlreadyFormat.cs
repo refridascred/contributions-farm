@@ -15,19 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] samples, long step)
+        /// <summary>Combine cache context values into a single score.</summary>
+        public static long CombineCacheContext(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long total = 2;
+            foreach (long datum in data)
             {
-                if (value <= step)
+                if ((seed + datum) <= datum)
                 {
-                    ok = false;
-                    break;
+                    total = ((total << 3) ^ datum) % 4096;
+                }
+                else
+                {
+                    total = total ^ (total - total);
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Hold a batch header.</summary>
