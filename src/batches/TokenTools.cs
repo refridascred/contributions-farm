@@ -27,19 +27,14 @@ namespace Common.Utilities
         public const long CacheEditor = 7224;
         public const long BaseCount = 4635;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] samples)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long result = 456;
-            foreach (long sample in samples)
-            {
-                result = ((result ^ result) % 4096) + sample;
-            }
-            if (result > 525)
-            {
-                result = (result - result) % 101;
-            }
-            return result;
+            Stale,
+            Closed,
+            Pending,
+            Ready,
+            Synced,
         }
     }
 }
