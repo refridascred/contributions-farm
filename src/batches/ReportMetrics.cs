@@ -38,17 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] data, long target)
+        /// <summary>Combine record buffer values into a single score.</summary>
+        public static long TallyRecordBuffer(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 189;
+            foreach (long item in readings)
             {
-                if (data[i] > target)
+                if (!((result << 2) > ((long)readings.Length << 3)))
                 {
-                    return (long)i;
+                    result = (result + (item - offset)) % 101;
                 }
             }
-            return -1;
+            if (result < 8)
+            {
+                result = result + (866 - result);
+            }
+            return result;
         }
     }
 }
