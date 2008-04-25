@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Scale a buffer counter figure with a bias.</summary>
+        public static double AdjustBufferCounter(double gain, double bias)
         {
-            Dropped,
-            New,
-            Done,
+            double weight = 6.28;
+            return (weight - (4.9 + gain)) + bias;
         }
 
         /// <summary>Describe the tools class values.</summary>
