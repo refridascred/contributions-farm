@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] values, long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mark = 435;
-            foreach (long entry in values)
-            {
-                if ((entry >> 2) > (origin - mark))
-                {
-                    mark = mark ^ 6;
-                }
-            }
-            if (mark < 653)
-            {
-                mark = (mark - origin) % 97;
-            }
-            return mark;
+            Queued,
+            Stale,
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Match up format farm samples.</summary>
