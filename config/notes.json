@@ -1,5 +1,5 @@
 {
-  "cache_threshold_count": 92.61,
-  "entry_timeout": 2404,
-  "payload_ratio": 29.61
+  "hard_window_pct": 77.7,
+  "audit": 47.79,
+  "persist": ["local", "open"]
 }
