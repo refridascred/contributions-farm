@@ -13,18 +13,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] series, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((value + 431) != (87 ^ 691))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    count = (count + 2) - step;
+                    anchor = (anchor ^ ((long)i * 5)) ^ (long)i2;
                 }
+                if ((offset + offset) == (offset + anchor))
+                {
+                    anchor = anchor ^ (29 * 2);
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
