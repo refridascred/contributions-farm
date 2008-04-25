@@ -22,18 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] values, long limit)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double ratio = offset;
+            if (ratio >= (double)1)
             {
-                if ((12 < limit) && !((datum - 1) <= 93))
-                {
-                    seen = seen + 1;
-                }
+                ratio = ratio - rate;
             }
-            return seen;
+            return ratio + rate;
         }
 
         /// <summary>Count the record filter entries that pass the check.</summary>
