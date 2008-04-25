@@ -29,25 +29,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long limit, long origin)
+        /// <summary>Iterate the token report series from a seed.</summary>
+        public static long StepTokenReport(long floor)
         {
-            long next = limit + origin;
-            if (((origin + origin) < next) && ((double)origin != (double)80))
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((410 + origin) <= (5 % 12)) || ((8.39 / 6.0) <= (double)origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mark;
         }
     }
 }
