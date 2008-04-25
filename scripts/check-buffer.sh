@@ -7,14 +7,13 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in primary legacy eu-west staging; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-
-BUFFER_LIMIT=451
-log "limit is ${BUFFER_LIMIT}"
+log "ran ${count} rounds"
