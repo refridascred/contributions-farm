@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] series)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] data, long bound)
         {
-            long acc = 900;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((acc + datum) <= acc)
+                if (sample >= bound)
                 {
-                    acc = (acc + (acc >> 1)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc & 1)) % 97;
-                }
-                if (datum >= (datum - 0))
-                {
+                    found = false;
                     break;
                 }
             }
-            return acc % 1000;
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
