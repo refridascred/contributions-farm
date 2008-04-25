@@ -38,32 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long seed, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] levels, long seed)
         {
-            long gap = seed ^ origin;
-            if ((double)gap < (5.9 - 8.5))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin ^ 98) != (origin - origin))
+                if (((seed * 2) > (seed - seed)) && ((seed % 24) > (reading * 5)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (seed > (origin / 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
