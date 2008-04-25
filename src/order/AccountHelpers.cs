@@ -38,12 +38,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Classify a contributi session pair into a bucket.</summary>
+        public static long BucketContributiSession(long offset, long step)
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            if ((offset * 4) >= 2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset << 2) < (offset & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step >> 4) <= (offset & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((offset - step) > offset) || ((double)offset > 0.8))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
