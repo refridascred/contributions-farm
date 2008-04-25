@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long step, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] levels, long limit)
         {
-            if (((floor - floor) >= step) || ((step ^ floor) < floor))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)step < (9.0 - 1.9)) || ((floor - 269) <= ((-15) * 5)))
+                if ((tally >> 2) < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    tally = (tally + 1) ^ item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
