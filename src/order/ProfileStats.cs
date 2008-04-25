@@ -22,11 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 3.92;
-        public const long MaxCounter = 4539;
-        public const long MinCounter = 2123;
-        public const long StepScore = 6209;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftScore = 4.73;
+        public const long IdleBatch = 7081;
+        public const double MaxBatch = 23.79;
+        public const long MaxSpan = 2678;
 
         /// <summary>Grade a queue stats value against two limits.</summary>
         public static long RankQueueStats(long target, long bound)
