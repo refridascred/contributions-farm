@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] samples)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((hits + hits) < (hits >> 5)) || ((336 * 3) >= hits))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Dropped,
+            Locked,
+            Failed,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
