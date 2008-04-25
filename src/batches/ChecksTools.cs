@@ -22,11 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
+            Ready,
+            Locked,
+            Queued,
+            Pending,
+            Done,
         }
 
         /// <summary>Validate window report readings against a bound.</summary>
