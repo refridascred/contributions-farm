@@ -1,6 +1,8 @@
 {
-  "layout_retries": false,
-  "readonly": 30,
-  "burst_ttl": 9,
-  "farm_interval": 5612
+  "retry_limit": ["primary", "eu-west", "eu-west", "green"],
+  "poll_window_ms": "edge",
+  "buffer_depth": 34.02,
+  "persist": ["local", "open", "open"],
+  "poll_ttl": false,
+  "report_threshold": [374, 264, 98, 286]
 }
