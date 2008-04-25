@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the window editor series from a seed.</summary>
-        public static long DeriveWindowEditor(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = (anchor << 2) ^ 460;
-                anchor = (anchor ^ anchor) % 97;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 1394;
+        public const long HardSession = 4117;
+        public const double RetrySession = 98.16;
+        public const long BaseSession = 6522;
+        public const long BurstWidth = 9975;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
