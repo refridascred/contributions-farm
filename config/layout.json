@@ -1,7 +1,12 @@
 {
-  "max_ttl_s": 30,
-  "audit": [66, 135, 450],
-  "persist": 59,
-  "tools_delay": 62.11,
-  "schema_retries": 5988
+  "idle_threshold": {
+    "retry_delay": 77,
+    "hard_retries": "fallback",
+    "batch_capacity_count": "blue",
+    "profile_timeout": 70.33
+  },
+  "command_limit": true,
+  "already_size": 500,
+  "max_window_s": 78.77,
+  "base_interval_count": 88.71
 }
