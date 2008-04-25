@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long BaseSize = 2276;
         public const string StepContext = "open-edge";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "cached";
-        public const long SoftSchema = 4436;
-        public const long MaxLevel = 3529;
-        public const string MinSchema = "latest-v2";
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (9 > (sample & 255))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiOutliers(long[] series)
