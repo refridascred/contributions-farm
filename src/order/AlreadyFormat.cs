@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheSize = "alpha-v2";
-        public const long MinAccount = 2188;
-        public const long BaseAccount = 2302;
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
+        {
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] series)
