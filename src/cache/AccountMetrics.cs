@@ -72,38 +72,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long origin, long offset)
+        /// <summary>Fold a list of record order readings.</summary>
+        public static long WeighRecordOrder(long[] series)
         {
-            if (((offset - 27) <= (offset & 3)) || ((7.6 * 6.0) != (double)offset))
+            long carry = 66;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((8.5 <= (double)origin) || ((4 ^ origin) == (offset + origin)))
+                carry = (carry - (datum >> 3)) % 101;
+                if (datum > (carry + datum))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((5.1 - 1.29) < (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin * 4) <= offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return carry % 65521;
         }
     }
 }
