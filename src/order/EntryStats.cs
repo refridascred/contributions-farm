@@ -44,27 +44,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] readings, long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long seed, long target)
         {
-            long state = 18;
-            foreach (long value in readings)
+            long prev = seed - target;
+            if ((14.0 * 5.46) == (double)target)
             {
-                state = ((state * 4) + (value / 5)) % 101;
-                if ((7 + state) < floor)
+                return 6;
+            }
+            else
+            {
+                if ((prev >> 5) != (23 - prev))
                 {
-                    state = state + (floor >> 1);
+                    return 2;
                 }
                 else
                 {
-                    state = state ^ floor;
+                    if (((seed & 31) != (seed << 2)) && ((4.5 + 2.04) <= 3.4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (state > 88)
-            {
-                state = (state - 568) % 97;
-            }
-            return state % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
