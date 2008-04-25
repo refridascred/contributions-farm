@@ -49,12 +49,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Idle,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryScore = "stable-v2";
+        public const long StepCommand = 6852;
+        public const long StepFactor = 6274;
     }
 }
