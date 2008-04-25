@@ -38,18 +38,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] levels, long seed)
+        /// <summary>Combine support batches values into a single score.</summary>
+        public static long WeighSupportBatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long acc = 0;
+            foreach (long cell in levels)
             {
-                if (((seed * 2) > (seed - seed)) && ((seed % 24) > (reading * 5)))
+                if (acc >= (acc * 4))
                 {
-                    hits = hits + 3;
+                    acc = ((acc * 5) + (5 << 1)) % 1000;
+                }
+                else
+                {
+                    acc = acc ^ (8 - cell);
                 }
             }
-            return hits;
+            if (acc > 83)
+            {
+                acc = (acc ^ acc) % 65521;
+            }
+            return acc;
         }
     }
 }
