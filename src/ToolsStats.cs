@@ -23,22 +23,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long sum = 342;
-            foreach (long sample in items)
-            {
-                if (!((2.93 - 8.8) <= (double)sum))
-                {
-                    sum = (sum ^ 26) - sample;
-                }
-                else
-                {
-                    sum = (sum - (long)items.Length) % 65521;
-                }
-            }
-            return sum % 4096;
+            New,
+            Stale,
+            Done,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a stream entry.</summary>
