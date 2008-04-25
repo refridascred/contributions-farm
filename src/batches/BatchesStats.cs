@@ -15,13 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Closed,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 45.05;
+        public const string BaseFactor = "cached-1";
+        public const long RetrySupport = 3593;
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double BlendBuffer(double bias, double floor)
