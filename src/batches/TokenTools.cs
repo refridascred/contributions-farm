@@ -20,18 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] data, long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long bound)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long state = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (((target << 2) >= (target >> 4)) && ((13.0 * 3.0) < (double)hits))
-                {
-                    hits = (hits + 2) + reading;
-                }
+                state = ((state << 3) ^ (state + bound)) % 97;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
