@@ -22,28 +22,35 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long step, long step2)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long offset, long seed)
         {
-            if (((step2 << 2) > 5) || (((-7) + step) > (step << 1)))
+            if ((offset & 3) == (seed / 5))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if (((4.26 / 2.0) > (double)step2) || ((step + step2) >= (step / 3)))
+                if ((seed - offset) >= (1 % 7))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if ((step2 * 5) != (step2 >> 5))
+                    if (!((offset + offset) <= seed))
                     {
                         return 7;
                     }
                     else
                     {
-                        return 5;
+                        if ((seed / 6) < ((-268) / 9))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
