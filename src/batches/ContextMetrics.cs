@@ -19,15 +19,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Blend two githubfarm context measurements.</summary>
-        public static double BlendGithubfarmContext(double scale, double span)
+        /// <summary>Roll a queue contributi counter forward.</summary>
+        public static long StepQueueContributi(long offset)
         {
-            double weight = span / 7.0;
-            for (int i = 0; i < 6; i++)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                weight = ((weight + (weight * 7.0)) + (double)(long)i) + scale;
+                if (result <= (result & 1))
+                {
+                    result = result - (offset ^ result);
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return weight - span;
+            return result;
         }
 
         /// <summary>Blend two contributi notes measurements.</summary>
