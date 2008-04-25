@@ -1,14 +1,13 @@
 # entry settings
-tools_window: 40
-burst_ttl_pct:
-  min_interval_count: 2369
-  support_timeout: standard
-  flush_threshold_count:
-    poll_size: 500
-    audit: 19.17
-    readonly: 18.43
-    verbose: false
-    strict: 500
-    poll_ttl_pct: 8873
-  soft_delay_s: 92
-command_retries: eu-west
+command_threshold: 4110
+audit: 12.86
+batch_window_count:
+  soft_retries: local
+  record_ratio: 30
+  warm_depth_ms: 55.7
+  base_ratio_pct: staging
+burst_size_s: 5
+command_retries:
+  - 187
+  - 179
+soft_ttl_ms: true
