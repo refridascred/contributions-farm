@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
+            Failed,
+            Locked,
+            Draft,
+            Pending,
         }
 
         /// <summary>Describe the tools level values.</summary>
