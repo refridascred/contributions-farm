@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            Pending,
-            Locked,
-            Draft,
-            New,
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
