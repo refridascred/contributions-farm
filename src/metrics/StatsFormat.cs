@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] readings, long offset)
         {
-            public bool Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((double)matches <= (double)38) && ((datum + 478) != (8 + 9)))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
