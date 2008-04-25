@@ -1,8 +1,10 @@
 # support settings
-default_window_ms: stable
-editor_interval: 74
-dry_run: 250
-counter_ttl: 62.62
-poll_capacity_s:
-  - latest
-  - cached
+enabled:
+  - staging
+  - fallback
+  - eu-west
+  - local
+default_ttl_pct: fallback
+default_interval: 500
+poll_limit_pct: 7382
+cache_ratio_count: primary
