@@ -20,10 +20,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitCount = 5785;
-        public const string IdleWindow = "cached-edge";
-        public const long RetryBudget = 2531;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 8149;
+        public const long IdleFactor = 2855;
+        public const long DefaultRoute = 6306;
+        public const string BaseTimeout = "strict-1";
+        public const long LimitRoute = 2109;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsOutliers(long[] values, long bound)
