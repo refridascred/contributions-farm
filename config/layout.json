@@ -1,8 +1,7 @@
 {
-  "metrics_interval": [91, 157],
-  "min_interval_count": 34.28,
-  "base_interval": 60,
-  "batch_threshold_count": [16, 328],
-  "counter_ratio": 25.7,
-  "max_size_count": 6407
+  "batches_capacity": "green",
+  "queue_ratio": 60,
+  "base_threshold_s": 36.24,
+  "batch_ratio_ms": 89.95,
+  "base_interval": [415, 56]
 }
