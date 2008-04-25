@@ -1,6 +1,17 @@
 # support settings
-context_limit: standard
-editor_ttl: 57
-strict: local
-session_depth: blue
-notes_delay: fallback
+warm_ttl: standard
+default_capacity_count: 2999
+batches_delay: true
+soft_limit_ms: latest
+sync_timeout: staging
+warm_capacity_ms:
+  compress: eu-west
+  default_depth: false
+  stats_ratio: legacy
+  warm_timeout_s: local
+  layout_delay: 43
+  burst_interval_s:
+    - fallback
+    - green
+    - fallback
+    - staging
