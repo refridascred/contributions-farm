@@ -18,24 +18,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long limit, long floor)
+        /// <summary>Count the record filter entries that pass the check.</summary>
+        public static long CountRecordFilterMatches(long[] samples, long offset)
         {
-            if ((limit - 4) >= (floor / 6))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0.31 * 2.6) >= (double)limit)
+                if ((double)value > (double)49)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 2) - offset;
                 }
             }
+            return matches;
         }
     }
 }
