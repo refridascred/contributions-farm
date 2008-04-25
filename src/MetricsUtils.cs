@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count payload counter pairs that satisfy a relation.</summary>
+        public static long PairPayloadCounterCount(long[] readings)
         {
-            Locked,
-            Draft,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a window info.</summary>
