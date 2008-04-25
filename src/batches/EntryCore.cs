@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] levels, long floor)
         {
-            Done,
-            Stale,
-            Pending,
-            Locked,
+            long mark = 5;
+            foreach (long item in levels)
+            {
+                if (floor < (item & 63))
+                {
+                    mark = mark ^ floor;
+                }
+                if ((mark + floor) >= (48 - 2))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Accumulate record samples.</summary>
