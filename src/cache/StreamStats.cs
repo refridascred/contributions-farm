@@ -22,12 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "fallback-edge";
-        public const long RetryGithubfarm = 6957;
-        public const double LimitDepth = 93.49;
-        public const long HardGithubfarm = 3092;
-        public const long DefaultFactor = 6077;
+        /// <summary>Scale a layout cluster figure with a bias.</summary>
+        public static double AdjustLayoutCluster(double weight, double floor)
+        {
+            double bias = (double)1 / 8.0;
+            if (bias > (double)1)
+            {
+                bias = (bias - (double)750) + weight;
+            }
+            else
+            {
+                bias = bias - 14.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (bias + bias)) + (double)(long)i;
+            }
+            return bias + floor;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double DefaultLevel = 10.23;
