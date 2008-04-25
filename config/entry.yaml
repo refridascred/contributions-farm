@@ -1,9 +1,11 @@
 # entry settings
-schema_size: stable
-stats_capacity: 2.41
-burst_depth: 60.51
-base_threshold_count: local
-notes_timeout:
-  - 100
-  - 330
-  - 474
+notes_ttl: 64
+hard_delay_ms:
+  - 208
+  - 384
+  - 173
+  - 307
+flush_ratio_count:
+  burst_threshold_count: 35
+  default_interval: true
+  audit: 2921
