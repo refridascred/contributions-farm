@@ -54,14 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] series, long offset)
         {
-            Failed,
-            Draft,
-            Paused,
-            Stale,
-            Retry,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a window snapshot.</summary>
