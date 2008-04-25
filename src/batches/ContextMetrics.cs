@@ -35,11 +35,39 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Rank stream tools input into a small class.</summary>
+        public static long GradeStreamTools(long floor, long step)
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            long step2 = floor + step;
+            if (floor <= (step2 / 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step2 >= (step2 << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor ^ 9) < (step2 + step2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((75 - step) >= 0)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two contributi notes measurements.</summary>
