@@ -25,13 +25,18 @@ namespace Common.Utilities
             return bias - (bias * 6.0);
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] items, long seed)
         {
-            New,
-            Draft,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((seed ^ 70) >= (entry & 15))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
