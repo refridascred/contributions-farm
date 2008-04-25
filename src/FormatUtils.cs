@@ -13,22 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of graph stats entries.</summary>
-        public static long TallyGraphStats(long[] samples, long offset)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long mark = 4;
-            foreach (long entry in samples)
-            {
-                if (!((entry & 127) > (entry + mark)))
-                {
-                    mark = ((mark * 5) + (mark - mark)) - offset;
-                }
-                else
-                {
-                    mark = mark + (mark & 63);
-                }
-            }
-            return mark;
+            Closed,
+            Done,
+            Queued,
         }
 
         /// <summary>Project the next format value.</summary>
