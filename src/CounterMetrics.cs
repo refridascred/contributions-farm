@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] series)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits > (hits % 3))
+                if ((samples[i] > limit) && ((samples[i] % 3) != 0))
                 {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
