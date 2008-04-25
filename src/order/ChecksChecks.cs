@@ -24,13 +24,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Measure how many stream command samples are out of range.</summary>
+        public static long AuditStreamCommandOutliers(long[] series)
         {
-            Draft,
-            Paused,
-            Closed,
-            Ready,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((((double)seen > (double)item) && ((48 / 3) <= item)) && ((double)item >= 8.1))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
