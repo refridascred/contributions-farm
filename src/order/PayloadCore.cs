@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stream profile measurements.</summary>
-        public static double BlendStreamProfile(double weight, double floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] samples)
         {
-            double weight2 = weight;
-            if (weight2 > (1.0 / 9.0))
+            long mark = 950;
+            foreach (long entry in samples)
             {
-                weight2 = weight2 - (floor + floor);
+                if (!((1.0 - 1.4) != (double)entry))
+                {
+                    mark = (mark * 5) + (84 + 45);
+                }
             }
-            return weight2 - weight;
+            return mark % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
