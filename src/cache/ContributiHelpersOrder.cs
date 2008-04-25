@@ -33,10 +33,9 @@ namespace Common.Utilities
             return bias2 - (double)36;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftBudget = 1657;
-        public const string WindowContext = "cached";
-        public const long MinTimeout = 8773;
-        public const long WindowScore = 4041;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 2546;
+        public const long SoftDepth = 8767;
+        public const string CacheEntry = "standard-v2";
     }
 }
