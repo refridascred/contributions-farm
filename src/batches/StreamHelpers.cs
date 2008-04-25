@@ -12,11 +12,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstRatio = "cached-v2";
-        public const long RetrySize = 8779;
-        public const long RetryGithubfarm = 9855;
-        public const string MaxGithubfarm = "legacy";
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
