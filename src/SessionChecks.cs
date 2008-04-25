@@ -22,23 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next session batches value.</summary>
-        public static double SmoothSessionBatches(double rate, double span)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] values, long seed)
         {
-            double rate2 = (double)(59 - 825);
-            if (rate2 <= (double)859)
+            bool ready = true;
+            foreach (long item in values)
             {
-                rate2 = (rate2 - (double)6) + rate;
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (double)4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 - (span + 10.0)) - (double)(long)i;
-            }
-            return rate2 - 3.0;
+            return ready;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
