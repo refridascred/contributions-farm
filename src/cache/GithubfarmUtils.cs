@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Adjust a contributi command reading.</summary>
+        public static double BlendContributiCommand(double ratio, double span)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            double weight = (double)(5 - 90);
+            if (weight > (double)84)
             {
-                state = (state * 5) + (long)i;
-                if (((target + (long)i) == (long)i) || (target <= (state + state)))
-                {
-                    state = ((state << 3) ^ state) % 65521;
-                }
-                if (target >= state)
-                {
-                    state = (state * 3) + (142 / 3);
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                weight = ((weight + 4.1) + ratio) - span;
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (double)0) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Describe the format phase values.</summary>
