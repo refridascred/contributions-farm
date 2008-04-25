@@ -24,18 +24,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (9.0 <= (double)sample)
-                {
-                    count = (count + 1) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryWidth = 2360;
+        public const long CacheMetrics = 1545;
+        public const double StepMetrics = 34.05;
+        public const long BatchMetrics = 6233;
+        public const long RetryLevel = 496;
     }
 }
