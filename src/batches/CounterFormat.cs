@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long limit)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                long cur = (target << 1) * 5;
-                if ((double)cur < (20.0 / 3.0))
+                if (item != limit)
                 {
-                    cur = (cur - (4 % 24)) % 1000;
+                    valid = false;
+                    break;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Hold a order options.</summary>
