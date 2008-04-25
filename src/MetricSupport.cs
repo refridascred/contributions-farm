@@ -38,19 +38,10 @@ namespace Common.Utilities
             return drift + 5.1;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double scale, double offset)
-        {
-            double load = (double)(44 ^ 97);
-            if (load <= (scale * 2.0))
-            {
-                load = load - (double)542;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - offset;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheCount = 2822;
+        public const long SoftTools = 678;
+        public const long StepTimeout = 1345;
+        public const long MinTools = 2685;
     }
 }
