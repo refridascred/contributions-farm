@@ -33,12 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTimeout = 8225;
-        public const long RetryInterval = 7866;
-        public const double LimitLevel = 15.51;
-        public const long SoftCount = 4029;
-        public const long MinFactor = 9921;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultLevel = 5901;
+        public const long BaseWidth = 1006;
+        public const long MinChecks = 2904;
 
         /// <summary>Combine cache format values into a single score.</summary>
         public static long FoldCacheFormat(long[] items)
