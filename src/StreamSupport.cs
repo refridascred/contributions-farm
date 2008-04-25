@@ -19,36 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long floor, long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long step, long step2)
         {
-            if (!((4.3 - 9.43) < (double)limit))
+            if (0.53 <= (double)step)
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if (!((8 + floor) <= (floor ^ floor)))
+                if ((double)step2 >= (5.0 * 1.8))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if ((96 % 7) >= (limit / 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit < floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
