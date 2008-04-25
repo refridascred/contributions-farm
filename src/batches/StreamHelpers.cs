@@ -35,12 +35,31 @@ namespace Common.Utilities
         public const double MinSpan = 29.4;
         public const long CacheSpan = 905;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long floor, long offset)
         {
-            Failed,
-            Active,
-            Paused,
+            if ((15.0 * 7.0) >= (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset > (60 % 24))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor < (floor - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route header.</summary>
