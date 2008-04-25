@@ -26,19 +26,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] data, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (entry <= seed)
+                if ((item < (tally >> 1)) || ((item * 4) > item))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a schema options.</summary>
