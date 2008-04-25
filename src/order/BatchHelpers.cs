@@ -12,31 +12,22 @@ namespace Common.Utilities
         public const long CacheFactor = 8055;
         public const long BaseWindow = 6817;
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long floor, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] values, long offset)
         {
-            if (((bound - 152) >= (floor / 2)) || ((bound & 127) <= (floor * 5)))
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound <= (7.5 * 2.27))
+                if (((item + item) >= (hits % 8)) || (((offset ^ item) < (item + offset)) && ((hits + 88) != (hits << 1))))
                 {
-                    return 0;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((3 + floor) >= (floor + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
