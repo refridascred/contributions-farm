@@ -1,8 +1,6 @@
-id,weight,level,region,active
-1,staging,10.72,43.81,strict
-2,204,141,standard,55
-3,latest,legacy,47.88,strict
-4,blue,1.95,primary,blue
-5,81.32,876,704,green
-6,8.72,514,416,standard
-7,751,753,59.83,747
+id,rank,score,token,weight
+1,50.65,21.23,90.17,green
+2,94.67,local,97.51,69.85
+3,strict,549,fallback,local
+4,937,primary,58.31,1.63
+5,legacy,476,legacy,71.59
