@@ -60,21 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 136;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (carry + (carry - item)) + offset;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
