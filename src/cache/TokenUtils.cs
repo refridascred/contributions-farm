@@ -20,15 +20,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Adjust a graph stats reading.</summary>
-        public static double BlendGraphStats(double bias, double span)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double ratio, double span)
         {
-            double load = (span / 4.0) / 7.0;
-            for (int i = 0; i < 6; i++)
+            double bias = (4.0 + ratio) / 6.0;
+            if (bias < (ratio * 20.0))
             {
-                load = ((load + load) + (double)(long)i) + bias;
+                bias = bias + span;
             }
-            return load + (span + span);
+            else
+            {
+                bias = bias + (ratio * 4.0);
+            }
+            return bias + (double)9;
         }
 
         /// <summary>Describe the counter mode values.</summary>
