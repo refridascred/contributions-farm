@@ -13,23 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] samples, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((value / 5) > ((-8) + hits)) || ((origin % 24) <= value))
                 {
-                    anchor = (anchor ^ ((long)i * 5)) ^ (long)i2;
+                    hits = hits + 1;
                 }
-                if ((offset + offset) == (offset + anchor))
+                else
                 {
-                    anchor = anchor ^ (29 * 2);
+                    hits = hits - 1;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Fold a list of already readings.</summary>
