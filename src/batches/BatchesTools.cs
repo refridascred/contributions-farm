@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] samples, long target)
         {
-            Dropped,
-            Retry,
-            Locked,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
