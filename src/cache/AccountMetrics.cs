@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] values, long step)
         {
-            Active,
-            Paused,
-            Closed,
-            New,
-            Ready,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the cache state values.</summary>
