@@ -1,5 +1,4 @@
 # githubfarm settings
-sync_window: 57.65
-cache_threshold: staging
-idle_delay: false
-batch_threshold: standard
+min_size: false
+batch_delay: eu-west
+record_depth: 8.85
