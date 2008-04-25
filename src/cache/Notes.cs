@@ -19,12 +19,13 @@ namespace Common.Utilities
         public const string HardNotes = "stable-v2";
         public const long StepNotes = 1454;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Synced,
-            Retry,
-            Dropped,
+            New,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
