@@ -52,18 +52,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] readings)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((double)entry < (3.0 - 0.63)) && ((2.0 + 0.04) >= (double)entry)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((data[i] ^ data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a contributi summary.</summary>
