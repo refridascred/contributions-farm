@@ -20,11 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchBudget = 10.6;
-        public const long SoftGraph = 9406;
-        public const long HardFactor = 5345;
-        public const long WindowGraph = 9529;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Dropped,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
