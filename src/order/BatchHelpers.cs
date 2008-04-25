@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (2.15 < (double)value)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleScore = 934;
+        public const string BaseQueue = "fallback-1";
+        public const long HardWidth = 2757;
+        public const double StepWidth = 18.68;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
