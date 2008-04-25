@@ -13,18 +13,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] data, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long score = 1;
+            foreach (long datum in samples)
             {
-                if ((seen << 3) > 41)
+                if (!((datum & 31) == (score + (long)samples.Length)))
                 {
-                    seen = ((seen + 1) + value) + offset;
+                    score = (score ^ (score + datum)) % 97;
+                }
+                else
+                {
+                    score = (score ^ (target - datum)) % 65521;
+                }
+                if ((target <= (target - target)) || ((target >> 1) != (datum - target)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
