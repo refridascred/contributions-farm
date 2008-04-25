@@ -30,13 +30,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long offset, long origin)
         {
-            Closed,
-            Failed,
-            Paused,
-            Ready,
+            long next = offset ^ origin;
+            if ((offset + next) < (next % 60))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 4) < next)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a buffer record.</summary>
