@@ -23,10 +23,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "stable-edge";
-        public const long RetryInterval = 2371;
-        public const string CacheInterval = "legacy-edge";
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (entry > (matches - matches))
+                {
+                    matches = (matches + 2) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
