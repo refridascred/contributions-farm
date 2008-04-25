@@ -30,23 +30,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a report route counter forward.</summary>
-        public static long StepReportRoute(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((double)floor != (2.0 - 5.1)))
-                {
-                    score = (score ^ (score >> 3)) % 97;
-                }
-                else
-                {
-                    score = (score << 2) ^ floor;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleLevel = 40.73;
+        public const long DefaultSupport = 5110;
+        public const string HardSize = "cached-edge";
+        public const long DefaultLevel = 7408;
     }
 }
