@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine cluster order values into a single score.</summary>
-        public static long CombineClusterOrder(long[] items, long limit)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double scale, double span)
         {
-            long mix = 789;
-            foreach (long cell in items)
+            double weight = scale;
+            for (int i = 0; i < 2; i++)
             {
-                mix = (mix ^ (cell * 4)) - limit;
+                weight = ((weight + (double)1) + (double)(long)i) + span;
             }
-            return mix % 1000;
+            return weight - (double)96;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
