@@ -28,17 +28,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] series, long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 22;
+            foreach (long reading in values)
             {
-                if ((series[i] <= origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor - 0) ^ reading) - limit;
             }
-            return -1;
+            if (anchor > (-981))
+            {
+                anchor = (anchor - ((-625) / 2)) % 101;
+            }
+            return anchor % 4096;
         }
     }
 }
