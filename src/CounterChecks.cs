@@ -57,25 +57,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of already payload entries.</summary>
-        public static long FoldAlreadyPayload(long[] values)
-        {
-            long mark = 90;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mark = (mark + (entry % 8)) - (long)i;
-                    mark = ((mark * 3) + (8 & 63)) % 65521;
-                }
-                mark = ((mark * 4) + (mark - 1)) % 4096;
-            }
-            if (mark < (-371))
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleScore = "staging-1";
+        public const long MaxQueue = 248;
+        public const long MinQueue = 1057;
+        public const long BurstLevel = 3516;
+        public const string WindowInterval = "open-v2";
 
         /// <summary>Adjust a counter reading.</summary>
         public static double BlendCounter(double gain, double floor)
