@@ -13,12 +13,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Check that every graph commits entry stays within the limit.</summary>
+        public static bool CheckGraphCommitsRange(long[] levels, long step)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public double Region { get; set; }
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
