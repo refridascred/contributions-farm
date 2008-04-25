@@ -55,13 +55,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Pending,
-            Failed,
-            Closed,
-            Ready,
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
