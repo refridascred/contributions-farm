@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long floor)
+        /// <summary>Audit account checks readings against a rule.</summary>
+        public static long MeasureAccountChecksMatches(long[] series, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (((-8) / 2) >= (floor ^ (long)i))
+                if ((floor - seen) > (cell >> 1))
                 {
-                    anchor = anchor - (anchor + anchor);
+                    seen = seen + 3;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return seen;
         }
     }
 }
