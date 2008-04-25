@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] values, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long mix = 0;
+            foreach (long sample in levels)
             {
-                if (datum < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 3) + (mix - sample)) % 97;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Measure how many order farm samples are out of range.</summary>
