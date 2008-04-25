@@ -1,11 +1,19 @@
 # entry settings
-notes_ttl: 64
-hard_delay_ms:
-  - 208
-  - 384
-  - 173
-  - 307
-flush_ratio_count:
-  burst_threshold_count: 35
-  default_interval: true
-  audit: 2921
+burst_limit_pct: 47
+min_delay_pct:
+  support_retries: true
+  already_interval:
+    sync_capacity: 8476
+    warm_delay_count: 1024
+    soft_window: true
+    persist: 28
+  max_depth_s: 60
+  retry_limit_count: 90.93
+soft_interval_s:
+  - 379
+  - 134
+  - 79
+idle_timeout_ms:
+  - standard
+  - eu-west
+  - eu-west
