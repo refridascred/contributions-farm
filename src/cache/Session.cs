@@ -32,13 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Derive the next stats report value from a seed.</summary>
+        public static long StepStatsReport(long offset)
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((14.0 + 18.0) <= (double)offset)
+                {
+                    sum = ((sum << 3) ^ (offset * 2)) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (9 * 5)) % 4096;
+                    sum = sum + (offset + sum);
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next counter profile value from a seed.</summary>
