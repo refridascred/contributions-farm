@@ -28,13 +28,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Synced,
-            New,
-            Idle,
-            Closed,
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of tools cluster entries.</summary>
