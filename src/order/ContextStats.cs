@@ -51,13 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] values, long limit)
         {
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
