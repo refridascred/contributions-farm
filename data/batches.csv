@@ -1,7 +1,8 @@
-id,owner,ratio,token
-1,67.67,591,462
-2,70.0,72.23,eu-west
-3,479,53.38,78.89
-4,0.58,strict,723
-5,25.06,90.83,77.12
-6,900,406,legacy
+id,region,level,active,score
+1,69.55,blue,staging,358
+2,90.75,14.45,657,legacy
+3,577,658,332,91.02
+4,478,920,38,standard
+5,latest,staging,301,966
+6,63.13,89.03,3.34,54.91
+7,latest,806,792,968
