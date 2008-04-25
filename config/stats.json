@@ -1,6 +1,5 @@
 {
-  "min_size": [301, 302, 257],
-  "tools_interval": false,
-  "compress": false,
-  "strict": 250
+  "payload_size": "blue",
+  "readonly": [484, 246, 55, 51],
+  "flush_delay_s": false
 }
