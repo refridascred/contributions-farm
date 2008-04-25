@@ -32,12 +32,18 @@ namespace Common.Utilities
             return rate + (double)7;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] data)
         {
-            Dropped,
-            New,
-            Retry,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((seen + sample) > sample)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
