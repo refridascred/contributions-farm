@@ -14,16 +14,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Derive the next checks token value from a seed.</summary>
-        public static long DeriveChecksToken(long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                state = (state ^ ((long)i + (long)i)) % 255;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
