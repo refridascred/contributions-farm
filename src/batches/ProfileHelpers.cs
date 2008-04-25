@@ -58,12 +58,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            New,
-            Dropped,
-            Idle,
+            long mix = 99;
+            foreach (long value in readings)
+            {
+                mix = mix ^ (mix - value);
+            }
+            if (mix > 25)
+            {
+                mix = ((mix << 2) ^ (84 % 100)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the token kind values.</summary>
