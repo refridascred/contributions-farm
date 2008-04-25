@@ -22,12 +22,22 @@ namespace Common.Utilities
         public const long SoftFactor = 9972;
         public const long MinBudget = 368;
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Audit token schema readings against a rule.</summary>
+        public static long AuditTokenSchemaHits(long[] samples, long offset)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)offset <= (double)matches)
+                {
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
