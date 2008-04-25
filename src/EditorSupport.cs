@@ -89,31 +89,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long step, long step2)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            if (((double)step >= (5.0 / 4.0)) && ((5.93 + 9.57) < (double)step2))
+            long total = 26;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step2 << 1) <= (step + step2))
+                if (((entry >> 3) > (entry ^ total)) || ((entry + entry) >= total))
                 {
-                    return 8;
+                    total = (total ^ (total + (-49))) % 255;
                 }
                 else
                 {
-                    if ((step2 - 32) >= (step2 - step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = (total ^ (total - (long)samples.Length)) % 101;
+                }
+                if (5.1 > (double)total)
+                {
+                    break;
                 }
             }
+            return total % 1000;
         }
     }
 }
