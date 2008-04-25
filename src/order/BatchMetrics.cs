@@ -96,18 +96,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] levels, long step)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((step - item) >= (step * 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
