@@ -50,12 +50,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long seed, long limit)
         {
-            Pending,
-            Paused,
-            Closed,
+            if (((limit / 9) > (seed - seed)) || (limit > (limit << 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((438 % 60) == (seed >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)limit >= (3.4 * 0.7)) || (limit <= 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
