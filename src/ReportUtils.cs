@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 3724;
-        public const long CacheToken = 9529;
-        public const string HardWidth = "stable-edge";
-        public const string WindowCount = "stable-edge";
-        public const long BurstWidth = 9849;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandHits(long[] items)
