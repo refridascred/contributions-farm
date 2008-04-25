@@ -32,17 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] samples, long origin)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)(83 % 16);
+            for (int i = 0; i < 3; i++)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                rate = ((rate + (double)(long)i) - bias) + bias2;
             }
-            return -1;
+            return rate - (2.0 / 8.0);
         }
 
         /// <summary>Describe the editor phase values.</summary>
