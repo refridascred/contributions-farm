@@ -19,15 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Audit window channel readings against a rule.</summary>
+        public static long CountWindowChannelGaps(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (((135 - seen) > seen) && ((-93) >= ((long)data.Length - cell)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
