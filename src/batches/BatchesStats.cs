@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] readings, long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (datum > bound)
+                if (3.05 >= (double)value)
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
