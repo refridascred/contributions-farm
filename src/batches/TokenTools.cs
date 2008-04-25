@@ -12,10 +12,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCounter = 63.48;
-        public const long BaseCounter = 4435;
-        public const long MinRatio = 3521;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LocateStreamIndex(long[] samples, long offset)
