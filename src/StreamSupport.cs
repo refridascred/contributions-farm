@@ -20,19 +20,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] series, long limit)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (reading >= limit)
+                if (value >= step)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
