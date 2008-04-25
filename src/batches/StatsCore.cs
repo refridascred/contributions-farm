@@ -40,15 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long score = 3;
-            foreach (long reading in levels)
-            {
-                score = (score * 4) + reading;
-            }
-            return score;
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a schema entry.</summary>
