@@ -54,15 +54,13 @@ namespace Common.Utilities
         public const long LimitOrder = 5653;
         public const long BatchOrder = 7591;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] values, long target)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long result = 827;
-            foreach (long value in values)
-            {
-                result = (((result + result) % 97) - value) - target;
-            }
-            return result % 65521;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
