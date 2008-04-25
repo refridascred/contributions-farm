@@ -44,15 +44,14 @@ namespace Common.Utilities
         public const long IdleDepth = 4244;
         public const double IdleContributi = 5.52;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double rate, double offset)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double rate2 = (double)4 - (offset + rate);
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + (double)127;
+            Done,
+            Paused,
+            Draft,
+            Failed,
+            Ready,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
