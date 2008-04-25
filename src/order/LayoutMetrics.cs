@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double rate, double span)
+        /// <summary>Audit stream schema readings against a rule.</summary>
+        public static long MeasureStreamSchemaOutliers(long[] levels, long step)
         {
-            double rate2 = rate - (span * 6.3);
-            if (rate2 <= (rate2 * 5.0))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                rate2 = rate2 - span;
+                if ((double)matches == (double)882)
+                {
+                    matches = ((matches + 3) ^ cell) - step;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (rate * 20.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 + 1.59) + (double)(long)i;
-            }
-            return rate2 - 9.0;
+            return matches;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
