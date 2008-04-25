@@ -20,12 +20,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 7870;
-        public const double DefaultLayout = 24.34;
-        public const double StepLayout = 35.61;
-        public const long MaxCount = 3695;
-        public const long MaxRatio = 2143;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Done,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Blend two session measurements.</summary>
         public static double SmoothSession(double bias, double bias2)
