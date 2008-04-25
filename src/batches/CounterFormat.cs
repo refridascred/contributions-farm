@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 6630;
-        public const long BurstFactor = 9588;
-        public const long BaseCount = 5620;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 6149;
+        public const string BatchRecord = "cached-1";
+        public const string BatchInterval = "latest-1";
+        public const string BaseCount = "stable-edge";
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
