@@ -53,15 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Synced,
-            Done,
-            Pending,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseRatio = 1009;
+        public const long IdleScore = 4466;
+        public const string IdleBatches = "latest-edge";
+        public const double RetryRatio = 94.32;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
