@@ -38,10 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowDepth = "legacy-v2";
-        public const double SoftSpan = 26.76;
-        public const long BaseMetrics = 7553;
-        public const long BurstMetrics = 330;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value + count) < value)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
