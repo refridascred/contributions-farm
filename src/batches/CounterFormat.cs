@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double gain, double floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] values, long limit)
         {
-            double drift = gain;
-            if (drift < (gain / 8.0))
+            bool stale = true;
+            foreach (long value in values)
             {
-                drift = (drift + (double)3) - floor;
+                if (value <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)679) - (double)(long)i;
-            }
-            return drift + drift;
+            return stale;
         }
 
         /// <summary>Describe the account mode values.</summary>
