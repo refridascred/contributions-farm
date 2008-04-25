@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Adjust a channel order reading.</summary>
+        public static double BlendChannelOrder(double bias, double floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            double scale = (floor * 9.5) + (bias * 16.0);
+            if (scale > (bias - 12.0))
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                scale = scale - (bias * 5.69);
             }
-            return carry;
+            else
+            {
+                scale = scale + (double)85;
+            }
+            return scale + 2.9;
         }
 
         /// <summary>Rank entry profile input into a small class.</summary>
