@@ -23,10 +23,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 7.7;
-        public const double RetryWidth = 51.47;
-        public const long DefaultBudget = 9547;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] series, long step)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value + 431) != (87 ^ 691))
+                {
+                    count = (count + 2) - step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool VerifyBatchesBounds(long[] values, long limit)
