@@ -36,14 +36,31 @@ namespace Common.Utilities
         public const long MinWidth = 5578;
         public const long BaseReport = 8980;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Accumulate context editor samples.</summary>
+        public static long DigestContextEditor(long[] readings)
         {
-            Ready,
-            Synced,
-            Retry,
-            Queued,
-            Draft,
+            long carry = 14;
+            foreach (long reading in readings)
+            {
+                if ((carry / 2) > (carry ^ reading))
+                {
+                    long bound = (carry / 8) * 4;
+                    carry = ((carry * 4) + bound) % 255;
+                }
+                else
+                {
+                    carry = (carry - reading) % 97;
+                }
+                if ((reading & 127) > (carry / 8))
+                {
+                    carry = (carry - (reading % 10)) % 101;
+                }
+            }
+            if (carry < 226)
+            {
+                carry = carry ^ (carry ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Describe the account level values.</summary>
