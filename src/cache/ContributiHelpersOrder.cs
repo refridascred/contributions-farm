@@ -40,10 +40,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepEditor = "legacy-1";
-        public const string RetryEditor = "fallback-edge";
-        public const long MaxDepth = 1615;
-        public const string MaxWidth = "latest-edge";
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
