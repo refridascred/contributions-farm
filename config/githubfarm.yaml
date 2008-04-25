@@ -1,24 +1,26 @@
 # githubfarm settings
-editor_retries: strict
-hard_retries:
+flush_size:
+  soft_size_count: local
+  hard_retries_ms: 96.46
+  payload_depth: staging
+  farm_depth: staging
+  base_timeout: 250
+  token_limit: 100
+buffer_window:
+  batch_timeout_count: 60
   compress:
-    batch_timeout: true
-    verbose:
-      - open
-      - stable
-      - cached
-      - cached
-    idle_ttl: 60
-    cache_size: 16
-    strict: true
-    warm_capacity: local
-  stats_ttl: open
-  queue_delay: legacy
-  cache_ratio: 77
-  tools_ttl: false
-poll_size: 3208
-burst_limit_s:
-  - 227
-  - 351
-  - 302
-  - 176
+    - primary
+    - cached
+    - standard
+  max_threshold_count: false
+  min_interval_pct:
+    buffer_threshold: 36.7
+    already_limit: 58
+    verbose: 4030
+    strict: 36.59
+    enabled:
+      - primary
+      - strict
+      - legacy
+    layout_retries: cached
+max_depth: false
