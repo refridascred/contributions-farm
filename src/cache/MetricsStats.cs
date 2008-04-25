@@ -12,18 +12,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the filter metric entries that pass the check.</summary>
-        public static long MeasureFilterMetricMatches(long[] readings)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((double)sample == (double)83)
+                if (value >= origin)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a farm info.</summary>
