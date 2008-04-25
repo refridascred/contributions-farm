@@ -41,22 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] readings)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value + count) < value)
+                if (levels[i] > origin)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
