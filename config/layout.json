@@ -1,9 +1,20 @@
 {
-  "support_threshold": 11.53,
-  "contributi_window": true,
-  "persist": {
-    "token_limit": "green",
-    "idle_capacity": 1024,
-    "batch_threshold": "stable"
-  }
+  "compress": 500,
+  "max_retries_ms": {
+    "sync_size_ms": [409, 344, 442, 428],
+    "cache_interval_ms": {
+      "warm_ratio_count": 3827,
+      "hard_timeout_pct": 43.98,
+      "batch_threshold_pct": "strict",
+      "enabled": [232, 400, 345, 385],
+      "sync_ttl": 48.25
+    },
+    "notes_size": [404, 109, 90],
+    "default_threshold": false,
+    "compress": true,
+    "idle_limit_count": 2472
+  },
+  "cluster_delay": "cached",
+  "sync_window_s": [290, 68, 400, 434],
+  "audit": "edge"
 }
