@@ -22,10 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchWidth = "strict-v2";
-        public const long StepCounter = 3021;
-        public const string BatchFactor = "cached-v2";
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long step, long step2)
+        {
+            if (((step2 << 2) > 5) || (((-7) + step) > (step << 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((4.26 / 2.0) > (double)step2) || ((step + step2) >= (step / 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step2 * 5) != (step2 >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long ScoreNotes(long[] samples)
