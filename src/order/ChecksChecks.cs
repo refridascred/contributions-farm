@@ -13,26 +13,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] samples, long target)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long score = 1;
-            foreach (long datum in samples)
-            {
-                if (!((datum & 31) == (score + (long)samples.Length)))
-                {
-                    score = (score ^ (score + datum)) % 97;
-                }
-                else
-                {
-                    score = (score ^ (target - datum)) % 65521;
-                }
-                if ((target <= (target - target)) || ((target >> 1) != (datum - target)))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            Ready,
+            Done,
+            Synced,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
