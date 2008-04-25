@@ -39,23 +39,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token commits readings against a rule.</summary>
-        public static long TallyTokenCommitsMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((matches - item) < (item % 2))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepTimeout = 6016;
+        public const long CacheCommits = 219;
+        public const double MinCommits = 4.24;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
