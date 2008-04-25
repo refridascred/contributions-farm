@@ -1,16 +1,16 @@
 {
-  "commits_timeout": 7552,
-  "retry_ratio_count": {
-    "route_depth": ["eu-west", "latest", "latest", "blue"],
-    "poll_interval": true,
-    "cache_depth_s": ["open", "blue"],
-    "order_ratio": [113, 347]
-  },
-  "poll_depth": 63.14,
-  "cache_depth_s": {
-    "poll_depth": "fallback",
-    "soft_interval_s": 88,
-    "warm_depth": [66, 42, 405, 195],
-    "soft_ratio_pct": 3269
+  "flush_timeout": 82.28,
+  "soft_interval_ms": 6,
+  "session_retries": ["primary", "primary", "legacy", "staging"],
+  "soft_delay_s": {
+    "cache_threshold": 96,
+    "dry_run": 250,
+    "compress": {
+      "hard_depth_s": true,
+      "dry_run": 106,
+      "readonly": false,
+      "cache_interval": 634
+    },
+    "cluster_window": 36.47
   }
 }
