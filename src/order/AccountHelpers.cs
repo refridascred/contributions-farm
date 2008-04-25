@@ -34,19 +34,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every counter metric entry stays within the limit.</summary>
-        public static bool CheckCounterMetricRange(long[] values, long seed)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Done,
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a route snapshot.</summary>
