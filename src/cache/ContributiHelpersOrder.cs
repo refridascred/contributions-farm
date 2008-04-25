@@ -22,38 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long origin, long origin2)
+        /// <summary>Validate order report readings against a bound.</summary>
+        public static bool VerifyOrderReportRange(long[] levels, long bound)
         {
-            if ((1.7 - 5.5) > (double)origin2)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin & 63) <= (origin << 2))
+                if (sample >= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((((-41) + origin) != (origin ^ origin)) && ((origin2 + 292) <= (origin2 + origin)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin2 - origin) != (origin2 & 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Project the next entry value.</summary>
