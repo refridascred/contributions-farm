@@ -1,17 +1,11 @@
 {
-  "entry_limit": {
-    "default_ttl_pct": "standard",
-    "readonly": 60,
-    "cluster_depth": {
-      "flush_delay": [273, 110, 468, 140],
-      "idle_timeout_ms": "stable",
-      "compress": 51.59,
-      "enabled": "stable",
-      "metric_depth": 21.64,
-      "soft_threshold": "strict"
-    },
-    "audit": false
+  "default_ttl_count": false,
+  "retry_ttl_ms": {
+    "min_ttl_pct": 250,
+    "persist": 32.41,
+    "audit": 22.61,
+    "tools_limit": 15
   },
-  "max_depth_pct": ["standard", "fallback", "latest"],
-  "max_capacity_ms": 7857
+  "min_ttl_ms": 50.22,
+  "readonly": "local"
 }
