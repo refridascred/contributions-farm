@@ -1,7 +1,5 @@
 # support settings
-default_window_pct: 27.94
-default_size_count: 1024
-sync_depth: false
-hard_timeout: 60
-persist: green
-audit: 72.15
+report_size: false
+strict: true
+max_window_ms: 42.35
+base_window: 42.58
