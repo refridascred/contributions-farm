@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] series)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((sample << 3) <= hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
