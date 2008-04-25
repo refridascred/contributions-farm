@@ -1,18 +1,12 @@
 {
-  "compress": true,
-  "retry_delay_s": "legacy",
-  "stats_window": 72.1,
-  "contributi_threshold": {
-    "batch_depth_ms": 34.52,
-    "idle_ttl_pct": 41,
-    "max_ratio_s": "standard",
-    "min_threshold_s": 1516,
-    "batches_ratio": 3225
+  "flush_size_s": {
+    "poll_ratio_count": 1677,
+    "commits_timeout": "open",
+    "record_window": 1024,
+    "burst_ratio_count": "fallback"
   },
-  "soft_interval": 60,
-  "flush_limit_count": {
-    "cache_ttl": 5.06,
-    "min_depth_pct": "edge",
-    "order_window": 6014
-  }
+  "max_retries_count": "eu-west",
+  "buffer_capacity": "cached",
+  "default_limit": false,
+  "batch_timeout_ms": "standard"
 }
