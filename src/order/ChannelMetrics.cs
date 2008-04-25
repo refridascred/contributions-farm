@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowStats = "staging-edge";
-        public const long StepStats = 3961;
-        public const long SoftSize = 6114;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
