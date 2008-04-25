@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long LimitDepth = 2313;
         public const long BatchFactor = 1373;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 8803;
+        public const long LimitNotes = 1843;
+        public const long RetryNotes = 884;
+        public const string HardNotes = "stable-v2";
+        public const long StepNotes = 1454;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileRange(long[] levels, long step)
