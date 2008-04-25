@@ -30,18 +30,19 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Audit farm counter readings against a rule.</summary>
-        public static long AuditFarmCounterGaps(long[] items, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((bound >> 3) != (bound + bound))
+                if (value != offset)
                 {
-                    seen = (seen + 2) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
