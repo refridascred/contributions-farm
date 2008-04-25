@@ -1,6 +1,9 @@
 # support settings
-persist: true
-format_ratio: 82.82
-batch_retries_s: false
-hard_window: false
-githubfarm_timeout: 33
+soft_limit_pct:
+  - open
+  - standard
+compress: 38.85
+poll_interval_ms: false
+default_window: 3
+dry_run: 21.02
+payload_capacity: latest
