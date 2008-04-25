@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double WindowRatio = 33.96;
         public const double WindowDepth = 78.76;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] levels)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (((96 << 2) != (value - value)) || ((hits >> 5) >= value))
+                if (entry < origin)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
