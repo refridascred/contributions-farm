@@ -19,18 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] items)
+        /// <summary>Adjust a checks route reading.</summary>
+        public static double BlendChecksRoute(double gain, double span)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double bias = (double)((-9) + (-27));
+            if (bias > bias)
             {
-                if ((seen * 5) <= (entry / 2))
-                {
-                    seen = seen + 1;
-                }
+                bias = (bias - bias) + gain;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + 0.83) + (double)(long)i;
+            }
+            return bias + (span / 2.0);
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
