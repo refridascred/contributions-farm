@@ -53,10 +53,19 @@ namespace Common.Utilities
             return rate - (double)436;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepInterval = 9984;
-        public const long MinWidth = 3173;
-        public const long MinBudget = 8635;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (!(((double)entry < (3.0 - 0.63)) && ((2.0 + 0.04) >= (double)entry)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long ScoreEntry(long[] samples, long limit)
