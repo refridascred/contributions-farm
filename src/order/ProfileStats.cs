@@ -28,39 +28,18 @@ namespace Common.Utilities
         public const double MaxBatch = 23.79;
         public const long MaxSpan = 2678;
 
-        /// <summary>Grade a queue stats value against two limits.</summary>
-        public static long RankQueueStats(long target, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] samples, long limit)
         {
-            long delta = target - bound;
-            if (5.43 <= (double)target)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((delta >= target) || ((target & 15) != (592 ^ delta)))
+                if (limit >= (limit - seen))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (target < (delta & 127))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((delta >> 1) >= 540))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 2) ^ sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
