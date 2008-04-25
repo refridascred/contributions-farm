@@ -16,31 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long bound, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] values, long offset)
         {
-            if ((81 & 1) != (offset - offset))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound >= (6.93 / 9.0))
+                if ((double)reading > (1.8 + 0.48))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound >= (19.0 * 5.8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = (tally + 2) - offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a editor record.</summary>
