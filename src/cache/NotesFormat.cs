@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBatchesBounds(long[] readings, long limit)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
