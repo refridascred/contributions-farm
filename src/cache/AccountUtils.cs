@@ -12,22 +12,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] samples)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (count > (count ^ count))
+                if (tally < (tally / 8))
                 {
-                    count = (count + 1) - item;
+                    tally = (tally + 3) ^ reading;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
