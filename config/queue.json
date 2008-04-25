@@ -1,5 +1,8 @@
 {
-  "poll_ttl_ms": "edge",
-  "max_retries_s": 3.5,
-  "graph_size": 1024
+  "notes_window": ["latest", "eu-west", "open"],
+  "flush_ratio_ms": 1024,
+  "hard_threshold_count": [24, 145],
+  "soft_delay": ["local", "open", "blue"],
+  "session_interval": "strict",
+  "stream_capacity": 60
 }
