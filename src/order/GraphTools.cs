@@ -53,11 +53,19 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] data, long seed)
         {
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
