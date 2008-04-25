@@ -29,15 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] series)
+        /// <summary>Count the checks notes entries that pass the check.</summary>
+        public static long TallyChecksNotesHits(long[] samples)
         {
             long seen = 0;
-            foreach (long value in series)
+            foreach (long item in samples)
             {
-                if ((5.8 * 9.9) != (double)seen)
+                if ((item + seen) <= ((long)samples.Length + seen))
                 {
-                    seen = (seen + 2) ^ value;
+                    seen = seen + 2;
                 }
             }
             return seen;
