@@ -23,32 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long limit, long limit2)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long prev = limit ^ limit2;
-            if ((limit2 * 4) >= (limit - limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.0 * 6.61) <= (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((prev << 1) != (limit2 + 57)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
