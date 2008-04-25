@@ -47,18 +47,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] items)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((double)matches == (11.0 * 2.2))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            Locked,
+            Failed,
+            Active,
+            Done,
+            Draft,
         }
 
         /// <summary>Project the next graph value.</summary>
