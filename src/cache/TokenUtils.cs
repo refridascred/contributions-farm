@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double ratio, double span)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double bias = (4.0 + ratio) / 6.0;
-            if (bias < (ratio * 20.0))
-            {
-                bias = bias + span;
-            }
-            else
-            {
-                bias = bias + (ratio * 4.0);
-            }
-            return bias + (double)9;
+            Pending,
+            Draft,
+            Synced,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
