@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
