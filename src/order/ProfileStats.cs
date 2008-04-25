@@ -37,19 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (limit >= (limit - seen))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTimeout = 8225;
+        public const long RetryInterval = 7866;
+        public const double LimitLevel = 15.51;
+        public const long SoftCount = 4029;
+        public const long MinFactor = 9921;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
