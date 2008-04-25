@@ -1,5 +1,6 @@
 {
-  "min_ratio_count": false,
-  "sync_limit_ms": false,
-  "persist": false
+  "dry_run": 12,
+  "max_interval_s": "staging",
+  "soft_ttl_count": 17.31,
+  "strict": 100
 }
