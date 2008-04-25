@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of session contributi readings.</summary>
-        public static long OverlapSessionContributiCount(long[] series)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long offset, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((654 ^ limit) >= (offset >> 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (limit <= (limit - offset))
                 {
-                    if ((series[i] + series[j]) == 4)
+                    return 0;
+                }
+                else
+                {
+                    if ((offset / 2) > limit)
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next commits command value.</summary>
