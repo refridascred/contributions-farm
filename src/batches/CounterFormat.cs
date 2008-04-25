@@ -22,20 +22,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate channel format samples.</summary>
-        public static long WeighChannelFormat(long[] values, long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            long sum = 883;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum - (datum / 3)) - step;
-                sum = (sum + sum) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (sum > 61)
-            {
-                sum = (sum + ((-25) / 8)) % 97;
-            }
-            return sum % 65521;
+            return hits;
         }
     }
 }
