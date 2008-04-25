@@ -31,18 +31,15 @@ namespace Common.Utilities
         public const string IdleBatches = "latest-edge";
         public const double RetryRatio = 94.32;
 
-        /// <summary>Count githubfarm metric pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmMetricCount(long[] data)
+        /// <summary>Measure how many tools filter samples are out of range.</summary>
+        public static long MeasureToolsFilterMatches(long[] items, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((floor - hits) >= floor)
                 {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - item;
                 }
             }
             return hits;
