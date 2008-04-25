@@ -1,4 +1,6 @@
 # support settings
-verbose: latest
-profile_delay: green
-buffer_interval: 48
+hard_limit_s:
+  - primary
+  - edge
+burst_depth_count: standard
+min_threshold_pct: 100
