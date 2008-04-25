@@ -55,12 +55,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 1702;
-        public const double SoftStats = 27.63;
-        public const long LimitInterval = 4195;
-        public const long MinSize = 9180;
-        public const long BurstSpan = 3325;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double bias, double offset)
+        {
+            double load = bias / 9.0;
+            if (load <= (offset + offset))
+            {
+                load = load - (double)20;
+            }
+            return load + 18.0;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] levels)
