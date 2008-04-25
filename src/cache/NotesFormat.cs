@@ -26,19 +26,10 @@ namespace Common.Utilities
         public const double WindowCount = 53.1;
         public const double MinInterval = 50.11;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstWidth = 10.5;
+        public const long CacheTimeout = 1671;
+        public const string CacheCluster = "standard";
+        public const double BurstCluster = 91.36;
     }
 }
