@@ -88,18 +88,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] values, long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((((double)63 == (double)seen) && (target <= (29 ^ seen))) && (sample <= (seen + sample)))
-                {
-                    seen = seen + 1;
-                }
+                score = (score - limit) % 97;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
     }
 }
