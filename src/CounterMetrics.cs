@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double weight, double bias)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] series)
         {
-            double drift = (double)(625 >> 3);
-            return (drift + weight) + bias;
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (hits > (hits % 3))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
