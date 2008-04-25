@@ -33,13 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Dropped,
-            Failed,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 5918;
+        public const long DefaultTimeout = 1545;
+        public const long BatchBudget = 1659;
+        public const long DefaultWidth = 4219;
     }
 }
