@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] data, long offset)
         {
-            Locked,
-            Pending,
-            Stale,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((offset >> 3) <= (offset << 1))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
