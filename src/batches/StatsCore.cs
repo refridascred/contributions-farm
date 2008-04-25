@@ -13,27 +13,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate graph layout samples.</summary>
-        public static long WeighGraphLayout(long[] series, long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long offset, long floor)
         {
-            long carry = -84;
-            foreach (long reading in series)
+            if (((838 << 1) == (offset / 8)) && ((floor - offset) <= (offset << 1)))
             {
-                if (carry <= (reading % 8))
+                return 8;
+            }
+            else
+            {
+                if ((double)floor >= (20.0 / 7.0))
                 {
-                    carry = (((carry << 3) ^ (carry * 5)) % 101) - target;
+                    return 5;
                 }
-                if ((6 + reading) <= carry)
+                else
                 {
-                    long cur = 5 + carry;
-                    carry = (carry + (cur - reading)) % 97;
-                }
-                if ((3.5 - 1.8) != (double)carry)
-                {
-                    carry = (carry + (carry / 8)) % 101;
+                    if ((offset + offset) < (floor * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
