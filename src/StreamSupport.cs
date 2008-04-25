@@ -40,22 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] readings, long bound)
+        /// <summary>Check that every commits contributi entry stays within the limit.</summary>
+        public static bool ValidateCommitsContributiRange(long[] series, long seed)
         {
-            long mark = -319;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (((1 + 60) <= bound) && (7.84 >= (double)bound))
+                if (item <= seed)
                 {
-                    mark = ((mark + mark) % 97) - reading;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark < 8)
-            {
-                mark = ((mark * 3) + (bound ^ mark)) % 101;
-            }
-            return mark;
+            return valid;
         }
     }
 }
