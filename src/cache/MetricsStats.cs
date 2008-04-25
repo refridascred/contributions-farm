@@ -48,12 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public double Offset { get; set; }
+            Ready,
+            Active,
+            Done,
+            Draft,
         }
 
         /// <summary>Validate checks context readings against a bound.</summary>
