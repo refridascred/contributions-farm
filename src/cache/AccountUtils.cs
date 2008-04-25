@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor + ((long)i / 7)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a editor header.</summary>
