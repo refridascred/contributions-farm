@@ -1,5 +1,12 @@
 {
-  "audit": [386, 235, 110],
-  "verbose": [16, 239, 451],
-  "retry_delay": true
+  "strict": 49,
+  "audit": 2276,
+  "base_threshold_pct": 48,
+  "session_delay": {
+    "idle_size": "open",
+    "default_size_pct": 76.68,
+    "batch_delay": 250,
+    "audit": 4123,
+    "soft_depth_ms": "blue"
+  }
 }
