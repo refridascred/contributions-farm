@@ -37,13 +37,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Draft,
             Idle,
-            Closed,
-            Active,
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
