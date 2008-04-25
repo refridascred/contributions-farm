@@ -1,5 +1,11 @@
 # entry settings
-soft_retries: 2913
-batch_size: open
-dry_run: 32
-notes_timeout: 29.18
+batch_capacity_pct: 66.87
+max_depth_s:
+  default_window_s: eu-west
+  batches_limit: 250
+  session_ratio: 69.92
+cache_threshold: 2042
+min_delay_count: 24.14
+soft_threshold_pct:
+  - edge
+  - local
