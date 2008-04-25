@@ -1,23 +1,5 @@
 # entry settings
-idle_interval:
-  - 417
-  - 7
-  - 446
-  - 84
-strict: 6728
-default_depth_pct: legacy
-soft_depth_ms: local
-enabled:
-  warm_window: true
-  sync_timeout_ms: 4483
-  max_window_count: standard
-  compress:
-    - fallback
-    - stable
-    - latest
-    - cached
-  burst_retries_count:
-    strict: 29
-    min_threshold_pct: 93.61
-    buffer_depth: 60.44
-    retry_window_ms: 9
+retry_ttl_s: false
+dry_run: 9154
+verbose: 1024
+commits_interval: 12.3
