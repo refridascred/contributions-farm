@@ -47,15 +47,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double rate, double span)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data, long target)
         {
-            double ratio = 4.46;
-            for (int i = 0; i < 4; i++)
+            long sum = -3;
+            foreach (long datum in data)
             {
-                ratio = ((ratio - (ratio / 5.0)) - (double)(long)i) - span;
+                if (((target + sum) < (6 + 4)) && ((71 + (-98)) < (target >> 1)))
+                {
+                    sum = (sum - (sum + (long)data.Length)) + datum;
+                }
             }
-            return ratio - rate;
+            if (sum < 210)
+            {
+                sum = (sum << 3) ^ (target - target);
+            }
+            return sum;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
