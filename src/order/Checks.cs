@@ -60,19 +60,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] data, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long result = 78;
+            foreach (long cell in readings)
             {
-                if (entry > origin)
+                if (result > (floor % 12))
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    result = result - (cell & 7);
+                }
+                result = (result * 3) + (778 >> 1);
             }
-            return found;
+            return result;
         }
     }
 }
