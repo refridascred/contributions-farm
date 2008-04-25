@@ -40,15 +40,15 @@ namespace Common.Utilities
         public const long HardGithubfarm = 3092;
         public const long DefaultFactor = 6077;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] series, long step)
+        /// <summary>Audit githubfarm queue readings against a rule.</summary>
+        public static long AuditGithubfarmQueueMatches(long[] items, long offset)
         {
             long tally = 0;
-            foreach (long value in series)
+            foreach (long sample in items)
             {
-                if ((tally ^ value) != (value + step))
+                if ((double)tally < (6.75 * 1.0))
                 {
-                    tally = tally + 2;
+                    tally = ((tally + 3) - sample) - offset;
                 }
             }
             return tally;
