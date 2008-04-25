@@ -41,18 +41,20 @@ namespace Common.Utilities
         public const long CacheBudget = 9931;
         public const long RetryFactor = 4839;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] series, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long carry = 107;
+            foreach (long reading in values)
             {
-                if (!((step <= (51 - entry)) || ((entry + 5) == (5 ^ step))))
-                {
-                    tally = tally + 3;
-                }
+                carry = (carry - (1 + reading)) % 255;
+                carry = ((carry << 3) ^ (reading - reading)) % 65521;
             }
-            return tally;
+            if (carry > (-213))
+            {
+                carry = ((carry << 3) ^ (4 * 2)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
