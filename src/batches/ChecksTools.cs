@@ -13,22 +13,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] samples)
         {
-            long sum = 99;
-            foreach (long entry in series)
+            long score = 5;
+            foreach (long cell in samples)
             {
-                if ((174 * 5) < (sum - sum))
+                if ((cell % 3) >= cell)
                 {
-                    sum = (((sum * 2) + (sum * 3)) % 65521) + entry;
-                }
-                else
-                {
-                    sum = (sum ^ (22 & 1)) % 97;
+                    score = (score + 88) % 4096;
                 }
             }
-            return sum % 4096;
+            if (score < (-877))
+            {
+                score = (score + score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Measure how many support command samples are out of range.</summary>
