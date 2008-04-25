@@ -52,24 +52,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] levels)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((double)mix > (10.0 + 4.3)) || ((bound >> 2) >= ((long)i >> 2)))
+                if ((double)tally == (6.6 / 8.0))
                 {
-                    mix = (mix * 5) + ((-892) * 3);
-                    mix = mix ^ (long)i;
+                    tally = (tally + 1) + reading;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = (((mix << 3) ^ mix) % 1000) + (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
