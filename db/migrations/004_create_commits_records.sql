@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
-    ratio REAL,
-    created_at TIMESTAMP
+    level INTEGER,
+    created_at TIMESTAMP,
+    rank INTEGER,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
+CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
 
-INSERT INTO commits_records (token, state, ratio) VALUES ('eu-west', 'stable', 5.03);
-INSERT INTO commits_records (token, state, ratio) VALUES ('cached', 'cached', 15.2);
+INSERT INTO commits_records (token, level, rank, label) VALUES ('primary', 87, 86, 'primary');
