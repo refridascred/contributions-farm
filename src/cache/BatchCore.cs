@@ -14,18 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] readings)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((value & 255) > count)
+                if (entry > floor)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the command phase values.</summary>
