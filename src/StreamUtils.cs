@@ -65,12 +65,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitCount = 1920;
-        public const string BatchWindow = "primary-edge";
-        public const string BaseWindow = "fallback-v2";
-        public const string SoftWindow = "legacy-v2";
-        public const long WindowCount = 8023;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public bool Size { get; set; }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Combine githubfarm token values into a single score.</summary>
         public static long WeighGithubfarmToken(long[] samples, long floor)
