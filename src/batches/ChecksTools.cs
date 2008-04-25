@@ -47,21 +47,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Derive the next command schema value from a seed.</summary>
+        public static long IterateCommandSchema(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((state + (-7)) <= target)
                 {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state << 2) ^ (state << 1)) % 1000;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
     }
 }
