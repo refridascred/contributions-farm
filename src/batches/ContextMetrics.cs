@@ -34,19 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two contributi notes measurements.</summary>
-        public static double SmoothContributiNotes(double gain, double bias)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] samples, long target)
         {
-            double weight = gain;
-            if (weight > (double)9)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                weight = weight - (bias * 0.2);
+                if (matches >= (matches - 2))
+                {
+                    matches = ((matches + 3) ^ reading) + target;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (double)52) + (double)(long)i;
-            }
-            return weight - gain;
+            return matches;
         }
 
         /// <summary>Hold a order entry.</summary>
