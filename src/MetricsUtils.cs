@@ -58,19 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double weight, double bias)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] items)
         {
-            double weight2 = bias;
-            if (weight2 <= (weight2 * 11.0))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                weight2 = (weight2 - bias) + weight;
+                if ((double)hits <= (2.49 + 1.7))
+                {
+                    hits = (hits + 1) + cell;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (double)0;
-            }
-            return weight2 + (bias / 7.0);
+            return hits;
         }
     }
 }
