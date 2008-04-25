@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                result = (result + floor) % 255;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultRatio = 92.42;
+        public const long BatchSpan = 1305;
+        public const long RetryLayout = 8971;
+        public const long SoftLayout = 469;
+        public const long IdleLayout = 618;
 
         /// <summary>Audit schema contributi readings against a rule.</summary>
         public static long AuditSchemaContributiMatches(long[] values)
