@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowSize = 3145;
-        public const double RetryContext = 77.22;
-        public const string HardContext = "staging-v2";
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long FindBatchesIndex(long[] data, long origin)
