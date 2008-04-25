@@ -20,23 +20,12 @@ namespace Common.Utilities
         public const string BaseFactor = "cached-1";
         public const long RetrySupport = 3593;
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double bias, double floor)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double gain = bias;
-            if (gain <= gain)
-            {
-                gain = gain + 4.0;
-            }
-            else
-            {
-                gain = gain - (double)157;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (8.93 + bias)) + (double)(long)i;
-            }
-            return gain + (floor + bias);
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
