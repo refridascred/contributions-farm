@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long LimitDepth = 2313;
         public const long BatchFactor = 1373;
 
-        /// <summary>Validate stream githubfarm readings against a bound.</summary>
-        public static bool ValidateStreamGithubfarmLimits(long[] samples, long origin)
+        /// <summary>Match up buffer window samples.</summary>
+        public static long CompareBufferWindowCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
