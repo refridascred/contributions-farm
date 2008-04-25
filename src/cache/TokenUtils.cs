@@ -20,11 +20,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinWidth = 92.11;
-        public const long CacheLevel = 7940;
-        public const long WindowRatio = 7720;
-        public const long BatchTools = 4758;
-        public const long DefaultTools = 6938;
+        /// <summary>Roll a report route counter forward.</summary>
+        public static long StepReportRoute(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((double)floor != (2.0 - 5.1)))
+                {
+                    score = (score ^ (score >> 3)) % 97;
+                }
+                else
+                {
+                    score = (score << 2) ^ floor;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
