@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long limit, long offset)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
+            if ((offset * 2) >= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit + limit) <= 877)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
