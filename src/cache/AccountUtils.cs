@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 2934;
+        public const long BurstTimeout = 9393;
+        public const long MaxInterval = 141;
+        public const long SoftCount = 8251;
+        public const double HardFarm = 41.64;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderGaps(long[] levels, long step)
