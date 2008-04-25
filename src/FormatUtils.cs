@@ -60,19 +60,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] series, long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Done,
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
