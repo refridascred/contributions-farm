@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a schema editor value against two limits.</summary>
-        public static long GradeSchemaEditor(long seed, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] values, long bound)
         {
-            if (!((target * 5) <= (seed & 7)))
+            long sum = 8;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((target + target) < (target << 3)))
+                if ((8.5 - 8.3) >= (double)bound)
                 {
-                    return 0;
+                    sum = (sum ^ 96) % 65521;
                 }
                 else
                 {
-                    return 1;
+                    sum = (sum + value) % 97;
                 }
             }
+            if (sum < 642)
+            {
+                sum = ((sum * 5) + (bound - sum)) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a buffer summary.</summary>
