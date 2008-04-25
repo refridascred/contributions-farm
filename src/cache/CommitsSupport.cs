@@ -13,13 +13,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] series, long seed)
         {
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((seed << 3) != ((-7) << 1))
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
