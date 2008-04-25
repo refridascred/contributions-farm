@@ -10,22 +10,10 @@ namespace Common.Utilities
         public const double SoftEditor = 47.27;
         public const string CacheScore = "local";
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitWidth = "alpha-v2";
+        public const long BurstBatches = 8207;
+        public const double SoftBatches = 69.29;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] data, long origin)
