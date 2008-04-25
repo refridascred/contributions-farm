@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Blend two commits notes measurements.</summary>
+        public static double AdjustCommitsNotes(double rate, double bias)
         {
-            public double Score { get; set; }
-            public bool Limit { get; set; }
+            double bias2 = (double)(977 - 286);
+            if (bias2 < (bias2 / 4.0))
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 + (rate / 7.0);
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
