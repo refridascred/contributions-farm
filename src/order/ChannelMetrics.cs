@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long StepStats = 3961;
         public const long SoftSize = 6114;
 
-        /// <summary>Blend two profile session measurements.</summary>
-        public static double SmoothProfileSession(double gain, double offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] readings, long floor)
         {
-            double bias = 1.01;
-            if (bias < bias)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                bias = (bias + (double)5) + offset;
+                if (sample <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (0.2 + gain)) - (double)(long)i;
-            }
-            return bias - (bias * 6.0);
+            return stale;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
