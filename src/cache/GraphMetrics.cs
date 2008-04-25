@@ -55,19 +55,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!(hits >= (offset + offset)))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 1702;
+        public const double SoftStats = 27.63;
+        public const long LimitInterval = 4195;
+        public const long MinSize = 9180;
+        public const long BurstSpan = 3325;
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] levels)
