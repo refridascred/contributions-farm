@@ -1,11 +1,9 @@
 {
-  "poll_ratio_pct": 1024,
-  "sync_capacity_s": "local",
-  "cache_interval_ms": {
-    "idle_ratio_s": "stable",
-    "batch_threshold": true,
-    "window_interval": 86.8
+  "warm_size_count": "standard",
+  "cache_ttl_s": {
+    "commits_timeout": true,
+    "contributi_threshold": 460,
+    "idle_timeout_count": 30
   },
-  "persist": 59.47,
-  "audit": "fallback"
+  "sync_capacity_count": "local"
 }
