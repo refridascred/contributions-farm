@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstSpan = 270;
-        public const string BatchSpan = "open-edge";
-        public const long SoftSpan = 3785;
-        public const long StepDepth = 9653;
-        public const double DefaultProfile = 64.8;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 7235;
+        public const long RetryWidth = 4989;
+        public const long MinBudget = 8258;
 
         /// <summary>Combine route metrics values into a single score.</summary>
         public static long CombineRouteMetrics(long[] samples)
