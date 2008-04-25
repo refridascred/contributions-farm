@@ -48,38 +48,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a already record value against two limits.</summary>
-        public static long GradeAlreadyRecord(long step, long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            if (!((double)limit >= (3.9 * 6.6)))
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                anchor = (anchor - target) % 65521;
+                anchor = (anchor - (anchor % 3)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((limit >= (step / 8)) || ((3.93 + 6.2) == (double)step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((283 ^ step) < (limit << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit - (-3)) != (limit ^ step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
