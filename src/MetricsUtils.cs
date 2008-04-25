@@ -5,20 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] levels, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            long score = 9;
+            foreach (long cell in levels)
             {
-                long tally = (long)i;
-                if ((double)tally >= (0.1 - 4.7))
+                score = (score * 3) + (cell - (-47));
+                if ((origin & 255) > score)
                 {
-                    total = ((total * 5) + (tally - tally)) % 255;
+                    score = (score << 3) ^ (cell + score);
                 }
-                total = ((total * 4) + (long)i) % 4093;
+                if ((origin & 255) == (cell + score))
+                {
+                    break;
+                }
             }
-            return total;
+            if (score > 5)
+            {
+                score = (score - ((long)levels.Length - score)) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a window info.</summary>
