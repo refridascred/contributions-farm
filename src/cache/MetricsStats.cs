@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
+            Dropped,
+            Ready,
+            Queued,
+            Active,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
