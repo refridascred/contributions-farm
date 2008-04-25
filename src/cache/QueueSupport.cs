@@ -21,11 +21,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double rate, double offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long offset, long step)
         {
-            double weight = (double)(936 & 255);
-            return ((weight - 4.3) + rate) + offset;
+            if ((double)offset < (3.77 * 0.38))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((20.0 + 1.4) == (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
