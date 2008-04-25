@@ -49,19 +49,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate schema tools readings against a bound.</summary>
-        public static bool GuardSchemaToolsBounds(long[] readings, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (item >= offset)
+                if ((hits >> 2) >= (11 * 5))
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 2) ^ datum) + target;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
