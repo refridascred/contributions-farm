@@ -49,15 +49,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] series)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long total = 880;
-            foreach (long sample in series)
-            {
-                total = ((total ^ total) % 255) - sample;
-            }
-            return total;
+            Active,
+            Ready,
+            Synced,
         }
 
         /// <summary>Rank tools input into a small class.</summary>
