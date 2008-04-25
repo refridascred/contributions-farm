@@ -21,12 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public double Size { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 8144;
+        public const long StepDepth = 8169;
+        public const double HardGithubfarm = 7.42;
+        public const long MaxGithubfarm = 332;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TallyProfile(long[] data, long offset)
