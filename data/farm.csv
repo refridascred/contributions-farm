@@ -1,6 +1,10 @@
-id,weight,active,state,label
-1,449,eu-west,open,stable
-2,334,blue,latest,47.59
-3,208,941,fallback,422
-4,239,eu-west,cached,215
-5,eu-west,68.96,926,361
+id,score,token
+1,997,51.38
+2,445,90.87
+3,720,eu-west
+4,438,452
+5,31.77,478
+6,cached,95.15
+7,898,32.32
+8,97.94,561
+9,eu-west,eu-west
