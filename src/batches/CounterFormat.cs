@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const double WindowEntry = 20.79;
         public const long RetryEntry = 2290;
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 411;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (((sum * 5) + floor) % 4096) ^ entry;
             }
-            return tally;
+            return sum % 1000;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
