@@ -31,19 +31,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] values, long floor)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            double weight = 8.3;
+            if (weight > weight)
             {
-                if (reading != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight + weight;
             }
-            return ready;
+            else
+            {
+                weight = weight - 13.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + rate) - (double)(long)i;
+            }
+            return weight - floor;
         }
     }
 }
