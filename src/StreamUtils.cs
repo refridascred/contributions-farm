@@ -72,21 +72,26 @@ namespace Common.Utilities
         public const string SoftWindow = "legacy-v2";
         public const long WindowCount = 8023;
 
-        /// <summary>Match up batches entry samples.</summary>
-        public static long PairBatchesEntryCount(long[] readings)
+        /// <summary>Combine githubfarm token values into a single score.</summary>
+        public static long WeighGithubfarmToken(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 19;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((item - floor) == (item + floor)))
                 {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark - (floor * 4)) % 101;
+                }
+                else
+                {
+                    mark = mark + mark;
                 }
             }
-            return matches;
+            if (mark < 9)
+            {
+                mark = (mark + mark) % 101;
+            }
+            return mark;
         }
     }
 }
