@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] data, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long acc = 859;
+            foreach (long entry in items)
             {
-                if (datum >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = acc - (entry + entry);
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
