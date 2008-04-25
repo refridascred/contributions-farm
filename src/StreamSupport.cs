@@ -13,24 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long step, long step2)
+        /// <summary>Measure how many batch stats samples are out of range.</summary>
+        public static long CountBatchStatsOutliers(long[] series, long floor)
         {
-            if (0.53 <= (double)step)
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step2 >= (5.0 * 1.8))
+                if ((matches <= value) && (value < (matches % 24)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    matches = (matches + 2) + floor;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the editor mode values.</summary>
