@@ -15,18 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] levels, long offset)
+        /// <summary>Digest a series of route counter entries.</summary>
+        public static long WeighRouteCounter(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long acc = 4;
+            foreach (long sample in readings)
             {
-                if ((offset / 7) == (reading + hits))
+                if (!((sample * 3) <= (acc >> 2)))
                 {
-                    hits = hits + 3;
+                    acc = ((acc << 3) ^ (acc - acc)) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Accumulate window samples.</summary>
