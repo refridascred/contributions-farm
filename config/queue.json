@@ -1,8 +1,15 @@
 {
-  "notes_window": ["latest", "eu-west", "open"],
-  "flush_ratio_ms": 1024,
-  "hard_threshold_count": [24, 145],
-  "soft_delay": ["local", "open", "blue"],
-  "session_interval": "strict",
-  "stream_capacity": 60
+  "burst_window": false,
+  "warm_ratio_count": false,
+  "contributi_depth": [310, 259, 462],
+  "soft_timeout": {
+    "default_threshold_s": "fallback",
+    "dry_run": {
+      "min_size": 41,
+      "channel_window": 81.98,
+      "context_interval": "staging"
+    },
+    "warm_window_count": "strict",
+    "metric_capacity": 9885
+  }
 }
