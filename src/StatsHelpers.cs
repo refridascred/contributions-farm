@@ -57,19 +57,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] items)
         {
-            long carry = 181;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry << 3) ^ (54 << 2)) % 101) ^ cell;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (carry > 6)
-            {
-                carry = (carry + (carry - carry)) % 101;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
