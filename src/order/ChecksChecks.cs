@@ -13,31 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long seed, long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] data, long offset)
         {
-            if (((seed + origin) < (origin & 255)) || ((double)origin < (double)seed))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + seed) == (origin * 2))
+                if ((seen << 3) > 41)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed >> 2) <= (seed % 7)) && ((867 * 5) >= ((-517) - origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = ((seen + 1) + value) + offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
