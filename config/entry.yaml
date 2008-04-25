@@ -1,5 +1,11 @@
 # entry settings
-retry_ttl_s: false
-dry_run: 9154
-verbose: 1024
-commits_interval: 12.3
+buffer_window: false
+warm_ttl:
+  - staging
+  - strict
+hard_ratio:
+  min_ratio: 500
+  poll_ttl: 1815
+  batch_depth: 63.18
+  window_window: open
+  poll_interval_s: 2
