@@ -54,11 +54,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftFactor = 8109;
-        public const double BurstFactor = 51.28;
-        public const double SoftBudget = 15.66;
-        public const double BaseStats = 42.12;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public double Rank { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
