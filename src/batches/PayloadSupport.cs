@@ -33,21 +33,34 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 9;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((3 + origin) > (long)series.Length)
                 {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    state = state - (state + state);
+                }
+                else
+                {
+                    state = (state + (origin % 2)) % 97;
+                }
+                if ((double)origin >= (2.0 / 4.0))
+                {
+                    state = state ^ (origin ^ sample);
+                }
+                else
+                {
+                    state = ((state * 2) + (sample + state)) % 4096;
                 }
             }
-            return count;
+            if (state > 280)
+            {
+                state = (state * 4) + origin;
+            }
+            return state % 4096;
         }
     }
 }
