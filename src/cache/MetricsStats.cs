@@ -46,19 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer record readings against a bound.</summary>
-        public static bool GuardBufferRecordLimits(long[] values, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (datum != offset)
+                if (reading != offset)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Validate checks context readings against a bound.</summary>
