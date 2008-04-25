@@ -15,22 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine cache context values into a single score.</summary>
-        public static long CombineCacheContext(long[] data, long seed)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long total = 2;
-            foreach (long datum in data)
-            {
-                if ((seed + datum) <= datum)
-                {
-                    total = ((total << 3) ^ datum) % 4096;
-                }
-                else
-                {
-                    total = total ^ (total - total);
-                }
-            }
-            return total;
+            New,
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a batch header.</summary>
