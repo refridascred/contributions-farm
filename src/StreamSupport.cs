@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double rate, double bias)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] items)
         {
-            double load = rate;
-            if (load < (rate / 5.0))
+            long count = 0;
+            foreach (long value in items)
             {
-                load = load + rate;
+                if (value >= ((long)items.Length >> 3))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                load = load - (double)2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + (rate * 3.0);
+            return count;
         }
 
         /// <summary>Fold a list of report readings.</summary>
