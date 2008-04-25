@@ -24,12 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] levels, long bound)
         {
-            Synced,
-            Stale,
-            Queued,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (seen <= (seen + item))
+                {
+                    seen = (seen + 3) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
