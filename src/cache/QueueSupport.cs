@@ -14,22 +14,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] samples, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] samples, long origin)
         {
-            long acc = 443;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (!((acc & 31) >= (402 & 31)))
+                if ((origin + value) <= tally)
                 {
-                    acc = (acc + (limit ^ 3)) ^ cell;
+                    tally = tally + 1;
                 }
             }
-            if (acc > 576)
-            {
-                acc = (acc << 2) ^ (limit - 5);
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
