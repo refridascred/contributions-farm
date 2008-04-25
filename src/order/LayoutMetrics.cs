@@ -26,17 +26,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first command graph entry that matches the target.</summary>
-        public static long SeekCommandGraphIndex(long[] data, long origin)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Queued,
+            New,
+            Draft,
         }
     }
 }
