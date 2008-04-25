@@ -30,11 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] readings, long origin)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
