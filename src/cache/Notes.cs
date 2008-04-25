@@ -54,13 +54,13 @@ namespace Common.Utilities
         public const string DefaultWidth = "cached";
         public const double LimitScore = 36.05;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public double Total { get; set; }
+            Draft,
+            New,
+            Retry,
+            Active,
         }
     }
 }
