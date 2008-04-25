@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] samples, long limit)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            if (!((5 * 4) != (origin + 5)))
             {
-                if ((7 - 0) <= (limit << 1))
+                return 5;
+            }
+            else
+            {
+                if (((origin >> 5) >= (origin ^ origin)) && ((7.4 - 0.8) >= (double)origin))
                 {
-                    seen = (seen + 1) + value;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a metrics record.</summary>
