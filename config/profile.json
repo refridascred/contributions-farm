@@ -1,7 +1,6 @@
 {
-  "retry_interval": 100,
-  "retry_ratio": 73,
-  "githubfarm_timeout": false,
-  "max_window": "staging",
-  "cache_ratio": true
+  "layout_retries": false,
+  "readonly": 30,
+  "burst_ttl": 9,
+  "farm_interval": 5612
 }
