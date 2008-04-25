@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long floor, long offset)
+        /// <summary>Derive the next editor record value from a seed.</summary>
+        public static long StepEditorRecord(long limit)
         {
-            if ((offset + floor) >= floor)
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset + offset) < floor)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 8;
+                    mix = ((mix << 2) ^ ((-728) >> 2)) + (long)i2;
                 }
-                else
-                {
-                    if ((offset & 1) > 0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor > (offset + 8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
