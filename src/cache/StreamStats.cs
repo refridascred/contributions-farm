@@ -29,16 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] items, long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long anchor = 39;
-            foreach (long value in items)
-            {
-                anchor = ((anchor + (value & 3)) % 4096) + target;
-                anchor = (anchor - 4) % 4096;
-            }
-            return anchor;
+            public double Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
