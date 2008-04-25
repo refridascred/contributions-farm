@@ -65,19 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] values, long bound)
         {
-            long mark = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (!((cell >= mark) && (3.76 > (double)mark)))
+                if (reading < bound)
                 {
-                    mark = (mark ^ (264 * 3)) % 65521;
+                    flag = false;
+                    break;
                 }
-                mark = mark + mark;
             }
-            return mark;
+            return flag;
         }
     }
 }
