@@ -23,24 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a metric checks pair into a bucket.</summary>
-        public static long BucketMetricChecks(long floor, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items)
         {
-            if (!((3.0 - 7.3) > (double)floor))
+            long sum = 342;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (target <= (target % 10))
+                if (!((2.93 - 8.8) <= (double)sum))
                 {
-                    return 3;
+                    sum = (sum ^ 26) - sample;
                 }
                 else
                 {
-                    return 0;
+                    sum = (sum - (long)items.Length) % 65521;
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
