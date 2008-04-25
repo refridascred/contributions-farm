@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 2934;
-        public const long BurstTimeout = 9393;
-        public const long MaxInterval = 141;
-        public const long SoftCount = 8251;
-        public const double HardFarm = 41.64;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Audit support cache readings against a rule.</summary>
         public static long MeasureSupportCacheGaps(long[] data)
