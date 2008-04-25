@@ -50,22 +50,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data, long target)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = -3;
-            foreach (long datum in data)
-            {
-                if (((target + sum) < (6 + 4)) && ((71 + (-98)) < (target >> 1)))
-                {
-                    sum = (sum - (sum + (long)data.Length)) + datum;
-                }
-            }
-            if (sum < 210)
-            {
-                sum = (sum << 3) ^ (target - target);
-            }
-            return sum;
+            Stale,
+            Draft,
+            Queued,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
