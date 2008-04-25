@@ -10,23 +10,21 @@ namespace Common.Utilities
         public const string HardCommits = "primary-v2";
         public const long IdleCommits = 337;
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double ratio, double floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
-            double gain = ratio;
-            if (gain <= (double)964)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain + ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (floor * 9.39)) + (double)(long)i;
-            }
-            return gain - floor;
+            return seen;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
