@@ -59,23 +59,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] readings, long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] readings, long origin)
         {
-            long anchor = 18;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample - sample) != (sample << 3))
+                if (readings[i] < origin)
                 {
-                    anchor = anchor ^ (anchor + sample);
+                    return (long)i;
                 }
-                anchor = (anchor - (829 ^ anchor)) % 1000;
             }
-            if (anchor < 67)
-            {
-                anchor = (anchor ^ (origin % 8)) % 65521;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
