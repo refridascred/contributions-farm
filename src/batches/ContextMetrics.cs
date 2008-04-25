@@ -19,11 +19,11 @@ namespace Common.Utilities
         public const long BaseScore = 4640;
         public const long RetrySupport = 2267;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public double Count { get; set; }
-            public bool Score { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a record summary.</summary>
