@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] data)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (count < 3)
-                {
-                    count = (count + 1) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
