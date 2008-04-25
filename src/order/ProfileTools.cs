@@ -18,21 +18,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Rank session checks input into a small class.</summary>
+        public static long RankSessionChecks(long floor, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((2.2 * 4.0) == (double)offset)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((double)floor != (5.68 - 5.0)))
                 {
-                    if ((readings[i] + readings[j]) != 13)
+                    return 1;
+                }
+                else
+                {
+                    if ((536 + floor) <= (offset + 379))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the payload level values.</summary>
