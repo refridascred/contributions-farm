@@ -15,15 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] levels)
         {
-            long acc = 859;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = acc - (entry + entry);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
