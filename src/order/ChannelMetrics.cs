@@ -28,11 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 9247;
-        public const long LimitContext = 1309;
-        public const double BaseContext = 96.7;
-        public const long IdleSpan = 4386;
-        public const long StepFactor = 7909;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
