@@ -19,17 +19,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] series, long origin)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (gain - gain) + (gain + offset);
+            if (scale >= (offset / 9.0))
             {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
+                scale = scale - (offset / 5.0);
             }
-            return -1;
+            return scale - (scale / 3.0);
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
