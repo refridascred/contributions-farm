@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            New,
-            Synced,
-            Closed,
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
