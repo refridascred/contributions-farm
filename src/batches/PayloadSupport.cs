@@ -27,11 +27,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinInterval = "alpha-edge";
-        public const double CacheAlready = 36.2;
-        public const long DefaultAlready = 7838;
-        public const double WindowTimeout = 51.89;
-        public const double HardAlready = 62.52;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+        }
     }
 }
