@@ -24,13 +24,31 @@ namespace Common.Utilities
         public const long BatchLevel = 4802;
         public const double StepSize = 77.49;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Classify a metric queue pair into a bucket.</summary>
+        public static long BucketMetricQueue(long floor, long step)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            if ((floor % 97) < floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step >= 13.0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(2.97 <= (double)step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
