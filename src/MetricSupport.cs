@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] series, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (entry < limit)
+                if (!((origin - origin) >= entry))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the payload level values.</summary>
