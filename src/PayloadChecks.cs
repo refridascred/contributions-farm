@@ -79,17 +79,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a buffer profile reading by value.</summary>
-        public static long LocateBufferProfileIndex(long[] items, long limit)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Idle,
+            Locked,
+            Ready,
         }
     }
 }
