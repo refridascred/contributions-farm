@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheWidth = 7647;
-        public const long MaxChecks = 7979;
-        public const string SoftChecks = "latest-1";
-        public const long DefaultChecks = 6396;
-        public const long LimitChecks = 8773;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((7 - 0) <= (limit << 1))
+                {
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool GuardClusterLimits(long[] items, long seed)
