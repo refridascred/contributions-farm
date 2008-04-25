@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long origin, long bound)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            if ((origin - origin) <= (origin & 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)(-5) <= (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
