@@ -63,39 +63,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long bound, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] values, long floor)
         {
-            long cur = bound ^ step;
-            if (((80 * 5) > step) && ((bound & 255) != (bound - bound)))
+            bool ready = true;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((cur - cur) > (663 + step))
+                if (sample != floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((step % 5) < (bound + step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)cur > (7.82 * 0.01))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
