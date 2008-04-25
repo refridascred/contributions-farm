@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate order contributi readings against a bound.</summary>
-        public static bool CheckOrderContributiBounds(long[] samples, long floor)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double rate, double span)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            double bias = span;
+            if (bias <= (span - bias))
             {
-                if (datum != floor)
-                {
-                    found = false;
-                    break;
-                }
+                bias = (bias + (double)827) - rate;
             }
-            return found;
+            return bias - (span + bias);
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
