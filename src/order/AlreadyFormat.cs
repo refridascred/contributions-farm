@@ -28,12 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 1769;
-        public const long IdleFactor = 3453;
-        public const double MaxFactor = 48.95;
-        public const long BaseRatio = 3110;
-        public const long RetryCluster = 467;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((count + 878) >= (bound << 3)) || ((8 % 8) > (count + value)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long BucketContributi(long floor, long offset)
