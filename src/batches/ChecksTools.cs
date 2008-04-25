@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] readings, long floor)
         {
-            Idle,
-            Ready,
-            Closed,
+            long acc = 10;
+            foreach (long datum in readings)
+            {
+                if (((long)readings.Length - acc) > (datum / 5))
+                {
+                    acc = (acc + (datum + datum)) + floor;
+                }
+                else
+                {
+                    acc = acc ^ (857 + 9);
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Validate window report readings against a bound.</summary>
