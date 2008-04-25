@@ -1,5 +1,4 @@
 # entry settings
-persist: standard
-buffer_window: green
-token_threshold: 2
-record_limit: false
+compress: eu-west
+cluster_retries: true
+enabled: 17.13
