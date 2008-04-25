@@ -30,25 +30,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long offset, long origin)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] samples, long offset)
         {
-            long next = offset ^ origin;
-            if ((offset + next) < (next % 60))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset >> 4) < next)
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a buffer record.</summary>
