@@ -64,18 +64,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] series, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long mark = 75;
+            foreach (long sample in readings)
             {
-                if ((value << 2) < (tally ^ tally))
+                if (((sample << 1) != (sample & 15)) && (309 <= sample))
                 {
-                    tally = (tally + 3) + bound;
+                    mark = mark + sample;
                 }
             }
-            return tally;
+            if (mark < 6)
+            {
+                mark = mark - (mark - mark);
+            }
+            return mark;
         }
     }
 }
