@@ -1,9 +1,10 @@
 # support settings
-channel_capacity: blue
-audit: true
-queue_ratio: primary
-batch_depth_count:
-  - 107
-  - 432
-  - 449
-  - 36
+hard_timeout_pct: 1355
+cache_depth: 9351
+min_delay: strict
+warm_ttl: 8135
+batch_limit_s:
+  channel_ratio: legacy
+  cache_capacity_pct: 1024
+  persist: 3557
+verbose: 17.54
