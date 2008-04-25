@@ -40,24 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((13 + bound) <= bound)
-                {
-                    mix = mix - mix;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix + mix)) % 101;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 6508;
+        public const long IdleProfile = 4980;
+        public const long WindowBudget = 4140;
+        public const long BurstLevel = 6282;
+        public const string BurstProfile = "latest-v2";
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] readings)
