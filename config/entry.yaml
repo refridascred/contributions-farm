@@ -1,7 +1,6 @@
 # entry settings
-checks_size: 68.18
-record_timeout: open
-batch_limit_pct: 6.83
-enabled: staging
-flush_window_ms: 3809
-flush_size: strict
+support_depth: strict
+persist:
+  - legacy
+  - legacy
+cache_ratio_s: 100
