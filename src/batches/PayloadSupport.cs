@@ -16,19 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long acc = 622;
-            foreach (long value in series)
-            {
-                acc = ((acc << 2) ^ (acc / 4)) - value;
-            }
-            if (acc < 80)
-            {
-                acc = ((acc * 5) + ((long)series.Length + acc)) % 255;
-            }
-            return acc % 97;
+            Pending,
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Define already limits and defaults.</summary>
