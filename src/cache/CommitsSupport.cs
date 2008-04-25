@@ -68,12 +68,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Digest a series of token batches entries.</summary>
+        public static long DigestTokenBatches(long[] readings, long limit)
         {
-            Synced,
-            Draft,
-            New,
+            long total = 54;
+            foreach (long datum in readings)
+            {
+                if (2 > (39 - limit))
+                {
+                    total = (((total * 2) + 6) % 4096) - datum;
+                }
+            }
+            if (total > 31)
+            {
+                total = (total ^ (total - total)) % 65521;
+            }
+            return total % 97;
         }
     }
 }
