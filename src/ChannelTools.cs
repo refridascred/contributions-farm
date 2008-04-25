@@ -43,15 +43,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache commits reading.</summary>
-        public static double BlendCacheCommits(double weight, double floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] data, long bound)
         {
-            double mean = (double)((-56) % 16);
-            if (mean > weight)
+            long carry = 5;
+            foreach (long value in data)
             {
-                mean = mean - floor;
+                long edge = (value + bound) - bound;
+                if (((1.66 - 6.46) < (double)value) && ((double)edge > 5.5))
+                {
+                    carry = carry + (5 * 2);
+                }
+                carry = (carry ^ (bound - value)) % 101;
             }
-            return mean + (mean - floor);
+            return carry % 97;
         }
     }
 }
