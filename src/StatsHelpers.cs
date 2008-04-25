@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Dropped,
-            Ready,
-            Active,
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
