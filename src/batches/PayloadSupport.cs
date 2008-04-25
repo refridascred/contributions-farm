@@ -29,21 +29,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((5.8 * 9.9) != (double)seen)
                 {
-                    if ((series[i] ^ series[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
