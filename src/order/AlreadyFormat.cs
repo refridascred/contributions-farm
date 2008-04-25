@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double ratio, double floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double scale = 17.0;
-            if (scale <= scale)
-            {
-                scale = (scale + (4.41 - ratio)) - floor;
-            }
-            return scale + scale;
+            Ready,
+            Synced,
+            Paused,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
