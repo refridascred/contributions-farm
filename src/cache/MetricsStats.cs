@@ -57,19 +57,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of cluster payload readings.</summary>
-        public static long DigestClusterPayload(long[] data, long floor)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long total = 3;
-            foreach (long item in data)
-            {
-                total = ((total + (total - 5)) % 97) + item;
-            }
-            if (total < 944)
-            {
-                total = (total - floor) % 1000;
-            }
-            return total;
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
