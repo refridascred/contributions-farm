@@ -46,9 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepSpan = 3299;
-        public const string RetryLayout = "standard-v2";
-        public const string BurstLayout = "latest";
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
