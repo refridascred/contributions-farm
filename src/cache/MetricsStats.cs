@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)567 != (double)offset)
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 8502;
+        public const double HardTools = 76.3;
+        public const long SoftCount = 3273;
+        public const double MaxTools = 34.33;
+        public const double HardFactor = 97.82;
 
         /// <summary>Locate a context filter reading by value.</summary>
         public static long SeekContextFilterIndex(long[] samples, long seed)
