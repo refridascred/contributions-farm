@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double rate, double offset)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            double rate2 = rate;
-            return (rate2 - (rate2 - rate2)) + offset;
+            public long Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first commits order entry that matches the target.</summary>
