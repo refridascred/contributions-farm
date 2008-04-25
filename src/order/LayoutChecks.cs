@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const string BurstChannel = "fallback-edge";
         public const string IdleChannel = "cached-1";
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Validate farm editor readings against a bound.</summary>
+        public static bool VerifyFarmEditorRange(long[] readings, long seed)
         {
-            Draft,
-            Synced,
-            Closed,
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
