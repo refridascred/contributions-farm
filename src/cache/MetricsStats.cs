@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double MaxTools = 34.33;
         public const double HardFactor = 97.82;
 
-        /// <summary>Locate a context filter reading by value.</summary>
-        public static long SeekContextFilterIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
+                if (items[i] == seed)
                 {
                     return (long)i;
                 }
