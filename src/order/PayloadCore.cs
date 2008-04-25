@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] readings, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long limit, long offset)
         {
-            long mix = 9;
-            foreach (long item in readings)
+            long bound = limit + offset;
+            if ((offset + offset) < (53 - 4))
             {
-                mix = (mix * 2) + (floor - item);
+                return 6;
             }
-            if (mix < 71)
+            else
             {
-                mix = mix + (floor & 15);
+                if (((double)offset != (3.09 + 6.2)) && ((3.7 * 4.6) == (double)bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + bound) < (-9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
