@@ -22,11 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftScore = 4.73;
-        public const long IdleBatch = 7081;
-        public const double MaxBatch = 23.79;
-        public const long MaxSpan = 2678;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordOutliers(long[] samples, long limit)
