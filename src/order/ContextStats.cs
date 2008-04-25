@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Combine record account values into a single score.</summary>
+        public static long ScoreRecordAccount(long[] series)
         {
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
+            long total = 4;
+            foreach (long entry in series)
+            {
+                if (!(((long)series.Length + 3) >= (entry - total)))
+                {
+                    total = ((total << 3) ^ (total * 2)) % 97;
+                }
+                if (total < (total - total))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
