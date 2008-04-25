@@ -28,14 +28,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 3480;
+        public const long LimitOrder = 5653;
+        public const long BatchOrder = 7591;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TallyEditor(long[] values, long target)
