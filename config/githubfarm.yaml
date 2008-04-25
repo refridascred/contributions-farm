@@ -1,8 +1,4 @@
 # githubfarm settings
-cache_size: true
-sync_limit: green
-persist:
-  - strict
-  - blue
-  - eu-west
-  - local
+idle_depth: 43.91
+warm_ttl_pct: blue
+min_window_count: false
