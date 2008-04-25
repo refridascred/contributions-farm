@@ -46,17 +46,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] samples, long floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (samples[i] == floor)
+                if (((double)mix > (10.0 + 4.3)) || ((bound >> 2) >= ((long)i >> 2)))
                 {
-                    return (long)i;
+                    mix = (mix * 5) + ((-892) * 3);
+                    mix = mix ^ (long)i;
                 }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = (((mix << 3) ^ mix) % 1000) + (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
