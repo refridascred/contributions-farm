@@ -1,5 +1,5 @@
 {
-  "base_delay_s": 8.08,
-  "dry_run": 9.07,
-  "idle_threshold_pct": 500
+  "dry_run": 98,
+  "poll_ratio_ms": "eu-west",
+  "base_ratio": "stable"
 }
