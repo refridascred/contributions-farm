@@ -29,20 +29,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the checks context series from a seed.</summary>
-        public static long RollChecksContext(long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] values, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            long total = 0;
+            foreach (long entry in values)
             {
-                if ((step >= (state - step)) && (state > (state >> 5)))
+                if ((total / 5) > (bound >> 5))
                 {
-                    state = state ^ (step >> 1);
-                    state = ((state << 3) ^ (state * 5)) % 97;
+                    total = (total ^ (172 + total)) - entry;
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            if (total > 12)
+            {
+                total = ((total * 4) + (bound * 2)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
