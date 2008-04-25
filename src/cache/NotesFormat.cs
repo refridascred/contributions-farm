@@ -36,25 +36,25 @@ namespace Common.Utilities
             return drift + (5.3 * 6.0);
         }
 
-        /// <summary>Rank graph route input into a small class.</summary>
-        public static long RankGraphRoute(long limit, long step)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long floor, long target)
         {
-            long next = limit + step;
-            if (limit > 458)
+            long cur = floor ^ target;
+            if ((5.2 + 7.0) != (double)target)
             {
                 return 5;
             }
             else
             {
-                if ((step % 16) == (next ^ limit))
+                if ((cur + (-5)) > target)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((next << 2) <= (next - next))
+                    if (!((double)floor > (7.51 + 11.0)))
                     {
-                        return 1;
+                        return 7;
                     }
                     else
                     {
