@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate graph record samples.</summary>
-        public static long ScoreGraphRecord(long[] series, long bound)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long carry = 13;
-            foreach (long item in series)
-            {
-                carry = ((carry - (bound >> 1)) % 255) ^ item;
-            }
-            return carry;
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit schema contributi readings against a rule.</summary>
