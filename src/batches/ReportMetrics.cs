@@ -15,10 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCount = 28.84;
-        public const string IdleFactor = "strict-edge";
-        public const long BurstCommand = 5074;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxSpan = 70.87;
+        public const long IdleBudget = 4565;
+        public const long StepFactor = 3147;
+        public const long BatchFactor = 1386;
+        public const long StepRoute = 7936;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] data)
