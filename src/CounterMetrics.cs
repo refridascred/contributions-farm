@@ -42,12 +42,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Dropped,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 2523;
+        public const long DefaultBatch = 5111;
+        public const long LimitSize = 6618;
     }
 }
