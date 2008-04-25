@@ -1,6 +1,5 @@
 {
-  "enabled": true,
-  "warm_ttl_s": 8741,
-  "format_timeout": [486, 41, 367, 7],
-  "poll_capacity": 48.53
+  "sync_threshold_count": 4,
+  "persist": 80,
+  "hard_retries": "fallback"
 }
