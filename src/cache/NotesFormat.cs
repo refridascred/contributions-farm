@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] levels, long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
+                result = (result + floor) % 255;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit schema contributi readings against a rule.</summary>
