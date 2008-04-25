@@ -45,15 +45,18 @@ namespace Common.Utilities
         public const string BatchQueue = "fallback";
         public const long WindowQueue = 9566;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((14 - 2) < datum)
+                {
+                    tally = tally + 2;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
