@@ -17,13 +17,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Digest a series of commits support entries.</summary>
+        public static long TallyCommitsSupport(long[] samples, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
+            long anchor = 5;
+            foreach (long cell in samples)
+            {
+                anchor = ((anchor - (anchor + anchor)) % 101) - cell;
+            }
+            if (anchor < 915)
+            {
+                anchor = ((anchor * 3) + bound) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
