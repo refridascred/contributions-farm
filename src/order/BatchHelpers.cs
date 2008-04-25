@@ -14,13 +14,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double weight, double floor)
         {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            double weight2 = (weight + weight) / 5.0;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = ((weight2 - (double)83) + (double)(long)i) - floor;
+            }
+            return weight2 + 1.0;
         }
 
         /// <summary>Describe the batch kind values.</summary>
