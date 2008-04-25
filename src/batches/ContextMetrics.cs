@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a githubfarm route figure with a bias.</summary>
-        public static double ScaleGithubfarmRoute(double weight, double bias)
-        {
-            double scale = (double)171;
-            if (scale >= (double)(-200))
-            {
-                scale = (scale - bias) + weight;
-            }
-            return scale - 20.0;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardBudget = 71;
+        public const string HardCommits = "primary-v2";
+        public const long IdleCommits = 337;
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double ScaleRoute(double ratio, double floor)
