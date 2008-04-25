@@ -1,11 +1,12 @@
 # support settings
-sync_retries_pct:
-  - 418
-  - 319
-  - 255
-  - 484
-dry_run: 25
-layout_interval:
-  strict: eu-west
-  max_delay: eu-west
-  burst_timeout_s: true
+burst_retries_s: 70.4
+burst_depth_count: true
+sync_interval_pct:
+  - primary
+  - legacy
+  - local
+base_timeout_count: false
+compress:
+  - 178
+  - 186
+max_size_ms: true
