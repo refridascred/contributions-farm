@@ -49,19 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes queue readings against a bound.</summary>
-        public static bool VerifyNotesQueueRange(long[] data, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (cell < seed)
+                if ((sample - 73) > (seen + sample))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a report header.</summary>
