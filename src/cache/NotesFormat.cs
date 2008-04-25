@@ -32,20 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
-            long result = 4;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((16.0 - 7.33) > (double)sample)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result + (sample ^ 5);
-                    break;
+                    if ((levels[i] - levels[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = (result - (result >> 3)) % 97;
             }
-            return result % 97;
+            return count;
         }
     }
 }
