@@ -13,11 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long offset)
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            long score = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Roll a report route counter forward.</summary>
