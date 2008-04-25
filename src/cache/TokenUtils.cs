@@ -38,19 +38,39 @@ namespace Common.Utilities
             return bias + (double)9;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] items, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long origin, long limit)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long edge = origin + limit;
+            if ((edge % 12) != (limit - origin))
             {
-                if (entry != floor)
+                return 1;
+            }
+            else
+            {
+                if ((limit < (origin - origin)) || (57 > (limit + origin)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + origin) < (edge & 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((3.46 + 6.83) != (double)edge) && ((limit + 855) < (origin >> 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
