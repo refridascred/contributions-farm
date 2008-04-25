@@ -25,13 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long limit, long limit2)
         {
-            New,
-            Pending,
-            Closed,
-            Ready,
+            long prev = limit ^ limit2;
+            if ((limit2 * 4) >= (limit - limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.0 * 6.61) <= (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((prev << 1) != (limit2 + 57)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token mode values.</summary>
