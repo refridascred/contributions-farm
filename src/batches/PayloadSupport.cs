@@ -28,21 +28,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total ^ floor) % 1000;
+                total = (total + (total % 24)) % 101;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
     }
 }
