@@ -22,13 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Closed,
-            Done,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitInterval = 3166;
+        public const long HardSchema = 9404;
+        public const string LimitSize = "stable-v2";
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long StepWindow(long origin)
