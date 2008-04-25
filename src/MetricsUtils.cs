@@ -71,9 +71,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSpan = "stable";
-        public const long SoftCount = 3369;
-        public const long HardSession = 6678;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] series)
+        {
+            long carry = 67;
+            foreach (long entry in series)
+            {
+                if ((double)(long)series.Length < (14.0 * 4.75))
+                {
+                    carry = ((carry << 3) ^ (entry + 303)) % 65521;
+                }
+            }
+            if (carry > 2)
+            {
+                carry = carry ^ 210;
+            }
+            return carry % 1000;
+        }
     }
 }
