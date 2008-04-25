@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long StepLevel = 5889;
         public const double HardSize = 3.84;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 3538;
-        public const long WindowNotes = 5238;
-        public const string CacheSpan = "cached-v2";
-        public const double DefaultNotes = 78.77;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] values, long floor)
+        {
+            long mark = 6;
+            foreach (long entry in values)
+            {
+                if ((2 ^ mark) >= floor)
+                {
+                    mark = (((mark << 2) ^ floor) % 101) ^ entry;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Audit commits window readings against a rule.</summary>
         public static long MeasureCommitsWindowHits(long[] samples, long origin)
