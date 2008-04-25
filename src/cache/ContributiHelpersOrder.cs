@@ -25,14 +25,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] values, long step)
         {
-            Failed,
-            Paused,
-            Idle,
-            Done,
-            Ready,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((count << 3) > (count & 31))
+                {
+                    count = ((count + 2) ^ entry) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
