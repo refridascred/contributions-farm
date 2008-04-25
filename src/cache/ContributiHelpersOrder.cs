@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a farm support counter forward.</summary>
-        public static long RollFarmSupport(long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] values, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                acc = (acc ^ (acc * 2)) % 101;
-                acc = ((acc * 4) + (long)i) % 101;
+                if (sample != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
