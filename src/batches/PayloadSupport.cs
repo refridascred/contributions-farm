@@ -28,11 +28,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
