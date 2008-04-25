@@ -13,14 +13,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Locked,
-            Failed,
             Done,
+            Active,
             Pending,
-            Dropped,
         }
 
         /// <summary>Define report limits and defaults.</summary>
