@@ -1,11 +1,4 @@
 # support settings
-queue_delay:
-  compress: false
-  dry_run: 100
-  warm_depth_s:
-    - strict
-    - local
-    - local
-idle_capacity_count: false
-farm_capacity: 21.25
-verbose: false
+soft_interval_s: stable
+graph_threshold: 500
+cache_timeout_s: latest
