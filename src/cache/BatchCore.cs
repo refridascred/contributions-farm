@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Failed,
-            Done,
-            Pending,
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a notes options.</summary>
