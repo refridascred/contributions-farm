@@ -22,20 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits context readings against a bound.</summary>
-        public static bool GuardCommitsContextBounds(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstScore = 4867;
+        public const long RetryFactor = 237;
+        public const double SoftRecord = 85.31;
+        public const long IdleRecord = 319;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
