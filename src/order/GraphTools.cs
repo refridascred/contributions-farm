@@ -15,17 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] items, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 149;
+            foreach (long reading in levels)
             {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
+                mix = (mix << 2) ^ (36 + reading);
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Describe the account status values.</summary>
