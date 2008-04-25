@@ -1,5 +1,19 @@
 {
-  "cache_delay": "latest",
-  "compress": ["stable", "blue", "green"],
-  "session_delay": 15.36
+  "token_window": 19,
+  "format_ttl": "eu-west",
+  "hard_limit_pct": ["standard", "local", "legacy", "fallback"],
+  "cache_capacity": ["latest", "cached"],
+  "min_interval_count": {
+    "stats_threshold": 53,
+    "warm_ttl_ms": "latest",
+    "retry_ratio_count": {
+      "hard_ratio": 93,
+      "warm_interval_ms": 51,
+      "batch_size": 53.34,
+      "max_ratio_s": 24.96,
+      "strict": 0.28
+    },
+    "base_limit": "local"
+  },
+  "hard_threshold": 12
 }
