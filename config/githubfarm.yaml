@@ -1,12 +1,8 @@
 # githubfarm settings
-default_retries:
-  - 285
-  - 379
-  - 63
-  - 27
-default_capacity:
-  - 146
-  - 11
-  - 45
-  - 359
-filter_ttl: 1
+cache_size: true
+sync_limit: green
+persist:
+  - strict
+  - blue
+  - eu-west
+  - local
