@@ -23,17 +23,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Look up the position of a report stats sample.</summary>
-        public static long SeekReportStatsIndex(long[] levels, long limit)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate support samples.</summary>
