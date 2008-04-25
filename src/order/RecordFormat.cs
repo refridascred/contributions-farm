@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] values, long floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] values, long seed)
         {
-            long mark = 6;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((2 ^ mark) >= floor)
+                if (reading != seed)
                 {
-                    mark = (((mark << 2) ^ floor) % 101) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
