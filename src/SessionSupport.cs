@@ -36,19 +36,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double scale, double floor)
-        {
-            double load = floor;
-            if (load > load)
-            {
-                load = (load + 2.0) - scale;
-            }
-            else
-            {
-                load = load + (double)40;
-            }
-            return load - (double)(-2);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleInterval = "alpha-edge";
+        public const long BatchSpan = 3196;
+        public const string StepEditor = "local";
     }
 }
