@@ -36,17 +36,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total ^ floor) % 1000;
-                total = (total + (total % 24)) % 101;
-                total = ((total * 2) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
     }
 }
