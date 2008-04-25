@@ -38,19 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] samples, long floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (datum > floor)
+                if ((56 << 3) < (0 + entry))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
