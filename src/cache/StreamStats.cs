@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "fallback-edge";
+        public const long RetryGithubfarm = 6957;
+        public const double LimitDepth = 93.49;
+        public const long HardGithubfarm = 3092;
+        public const long DefaultFactor = 6077;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterHits(long[] series, long step)
