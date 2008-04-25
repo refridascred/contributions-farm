@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] levels, long target)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long total = 252;
-            foreach (long sample in levels)
-            {
-                if (((target & 3) >= target) && ((sample << 3) != (target - total)))
-                {
-                    total = (total + total) % 97;
-                }
-            }
-            if (total < 59)
-            {
-                total = (total << 3) ^ target;
-            }
-            return total % 97;
+            New,
+            Pending,
+            Retry,
         }
 
         /// <summary>Accumulate farm samples.</summary>
