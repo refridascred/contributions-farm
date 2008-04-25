@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Audit contributi graph readings against a rule.</summary>
+        public static long CountContributiGraphOutliers(long[] series, long seed)
         {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell - cell) > (seen - seed))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
