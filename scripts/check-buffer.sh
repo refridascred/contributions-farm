@@ -6,22 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    latest)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in stable strict local blue; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
