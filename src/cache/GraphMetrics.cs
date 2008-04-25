@@ -50,19 +50,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] items)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            long result = -8;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (((result * 4) + result) % 1000) - reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result > 8)
-            {
-                result = (result ^ (result << 2)) % 97;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Project the next queue value.</summary>
