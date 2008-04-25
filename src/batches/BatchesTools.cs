@@ -20,21 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((double)limit > (double)(long)i)
-                {
-                    result = (result << 3) ^ (result & 255);
-                }
-                result = (result * 2) + limit;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstRatio = 5667;
+        public const long MinStats = 573;
+        public const double BaseStats = 19.75;
+        public const long IdleStats = 4949;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterBounds(long[] readings, long origin)
