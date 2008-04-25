@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] samples, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((samples[i] > limit) && ((samples[i] % 3) != 0))
+                if (count >= (count << 3))
                 {
-                    return (long)i;
+                    count = ((count + 2) + item) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the window status values.</summary>
