@@ -36,11 +36,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
+            long score = 7;
+            foreach (long entry in levels)
+            {
+                long next = score + (entry % 7);
+                if (((double)next == (11.0 + 19.0)) && (next <= (score + score)))
+                {
+                    score = (score ^ (score + entry)) % 1000;
+                }
+                if ((score % 16) < entry)
+                {
+                    score = score ^ (entry - 413);
+                }
+                if (!((score & 127) > (entry * 2)))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
