@@ -27,13 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] samples, long seed)
         {
-            Closed,
-            Queued,
-            Retry,
-            Paused,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches << 3) != (seed + matches))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
