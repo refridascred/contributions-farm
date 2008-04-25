@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] values, long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Accumulate support token samples.</summary>
