@@ -1,11 +1,14 @@
 # entry settings
-default_ratio:
-  flush_capacity_ms: 54
-  batch_depth_ms:
-    - open
-    - blue
-  readonly: false
-  hard_window_pct: open
-githubfarm_window: legacy
-record_interval: 36.46
-poll_ratio: 557
+tools_window: 40
+burst_ttl_pct:
+  min_interval_count: 2369
+  support_timeout: standard
+  flush_threshold_count:
+    poll_size: 500
+    audit: 19.17
+    readonly: 18.43
+    verbose: false
+    strict: 500
+    poll_ttl_pct: 8873
+  soft_delay_s: 92
+command_retries: eu-west
