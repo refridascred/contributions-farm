@@ -13,21 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count batch farm pairs that satisfy a relation.</summary>
-        public static long CompareBatchFarmCount(long[] values)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 43;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)8 <= (double)sum) || (item < (sum << 3)))
                 {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum * 3) + (sum << 2);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
