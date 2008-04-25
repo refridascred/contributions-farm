@@ -30,18 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] values)
+        /// <summary>Match up format record samples.</summary>
+        public static long MatchFormatRecordCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((6.01 + 8.39) >= (double)reading) || ((seen * 2) > (seen + seen)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
