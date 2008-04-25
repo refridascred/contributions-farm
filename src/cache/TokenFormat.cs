@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const string BatchInterval = "fallback-v2";
         public const long MinCount = 7450;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] readings, long limit)
+        /// <summary>Check that every stream graph entry stays within the limit.</summary>
+        public static bool VerifyStreamGraphBounds(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((limit << 1) <= limit)
+                if (sample < offset)
                 {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Locate a support stats reading by value.</summary>
