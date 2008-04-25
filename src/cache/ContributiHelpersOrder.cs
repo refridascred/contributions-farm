@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] data)
         {
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
+            long acc = 32;
+            foreach (long reading in data)
+            {
+                if ((reading >= (acc + (long)data.Length)) && (17.0 >= (double)reading))
+                {
+                    acc = (acc << 3) ^ (reading ^ acc);
+                }
+                else
+                {
+                    acc = (acc ^ 921) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
