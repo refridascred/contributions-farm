@@ -1,4 +1,5 @@
 # githubfarm settings
-base_timeout: standard
-payload_delay: 59
-buffer_ttl: false
+sync_window: 57.65
+cache_threshold: staging
+idle_delay: false
+batch_threshold: standard
