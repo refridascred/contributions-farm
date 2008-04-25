@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window channel readings against a rule.</summary>
-        public static long CountWindowChannelGaps(long[] data)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mark = 0;
+            foreach (long datum in data)
             {
-                if (((135 - seen) > seen) && ((-93) >= ((long)data.Length - cell)))
+                mark = ((mark << 2) ^ (datum + seed)) % 255;
+                if (((datum - datum) >= (mark - mark)) || ((double)seed <= (double)mark))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mark = ((mark * 5) + (seed + datum)) % 97;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
