@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const string BaseTimeout = "strict-1";
         public const long LimitRoute = 2109;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] values, long bound)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((entry >> 2) < seen)
-                {
-                    seen = (seen + 3) + bound;
-                }
-            }
-            return seen;
+            Draft,
+            Idle,
+            Failed,
         }
     }
 }
