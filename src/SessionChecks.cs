@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 8411;
-        public const string CacheInterval = "strict";
-        public const long SoftOrder = 8956;
-        public const long BaseOrder = 2759;
-        public const string MaxWidth = "strict-1";
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
