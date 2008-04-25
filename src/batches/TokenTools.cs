@@ -14,12 +14,20 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 98.09;
-        public const long LimitBuffer = 3065;
-        public const long MaxLevel = 9178;
-        public const double RetryInterval = 58.03;
-        public const long DefaultCount = 5821;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LocateStreamIndex(long[] samples, long offset)
