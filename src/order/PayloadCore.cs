@@ -5,29 +5,35 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long limit, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long step, long floor)
         {
-            long bound = limit + offset;
-            if ((offset + offset) < (53 - 4))
+            if ((step - floor) >= (619 ^ step))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (((double)offset != (3.09 + 6.2)) && ((3.7 * 4.6) == (double)bound))
+                if ((9.1 - 18.0) != (double)floor)
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if ((bound + bound) < (-9))
+                    if ((double)2 != (double)floor)
                     {
                         return 2;
                     }
                     else
                     {
-                        return 1;
+                        if (((step << 3) != (400 * 4)) && ((double)step < 3.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
