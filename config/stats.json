@@ -1,6 +1,24 @@
 {
-  "queue_size": 69.7,
-  "editor_retries": 250,
-  "commits_depth": 538,
-  "max_window_s": ["cached", "cached", "fallback"]
+  "record_window": {
+    "enabled": "stable",
+    "max_capacity": 30,
+    "default_limit_count": 15.51,
+    "soft_size_ms": {
+      "flush_ratio_count": 85.2,
+      "hard_interval": 26,
+      "hard_timeout": [230, 398],
+      "window_ttl": 6070,
+      "githubfarm_ratio": ["open", "blue", "local"]
+    }
+  },
+  "soft_size_count": 85.07,
+  "metrics_interval": "blue",
+  "warm_limit": 71.36,
+  "retry_window_count": 37,
+  "readonly": {
+    "idle_capacity_count": ["local", "blue"],
+    "min_window_count": "local",
+    "audit": 30,
+    "hard_window": 90.2
+  }
 }
