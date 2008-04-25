@@ -21,19 +21,15 @@ namespace Common.Utilities
         public const double BaseStats = 19.75;
         public const long IdleStats = 4949;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] readings, long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long carry = 63;
+            foreach (long entry in readings)
             {
-                if (item > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (((carry + 419) % 65521) ^ entry) - step;
             }
-            return valid;
+            return carry % 65521;
         }
     }
 }
