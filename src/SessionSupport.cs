@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long bound, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] levels, long offset)
         {
-            long diff = bound + target;
-            if ((diff - bound) != (bound % 8))
+            long sum = 50;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((834 << 3) != (bound / 9))
+                sum = ((sum << 3) ^ (sample - 4)) % 255;
+                if (((sum << 1) <= (offset & 31)) || ((8.49 / 8.0) == (double)(long)levels.Length))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    break;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
