@@ -25,18 +25,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] items, long seed)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            double load = 5.0;
+            if (load >= rate)
             {
-                if ((seed ^ 70) >= (entry & 15))
-                {
-                    matches = matches + 2;
-                }
+                load = (load - load) - offset;
             }
-            return matches;
+            return load - rate;
         }
     }
 }
