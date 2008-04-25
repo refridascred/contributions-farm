@@ -1,7 +1,8 @@
 {
-  "min_ratio": "cached",
-  "hard_timeout": false,
-  "poll_retries_pct": 5339,
-  "warm_window_ms": true,
-  "metrics_depth": 250
+  "route_window": 16,
+  "session_limit": "standard",
+  "max_window_s": [212, 242, 375, 241],
+  "hard_interval": "edge",
+  "verbose": [59, 438, 50],
+  "burst_delay_s": "staging"
 }
