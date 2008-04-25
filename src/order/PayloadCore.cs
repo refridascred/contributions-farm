@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] series)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
+            long state = 47;
+            foreach (long datum in series)
+            {
+                if ((datum % 12) > (state << 3))
+                {
+                    state = ((state << 2) ^ (451 + 6)) % 65521;
+                }
+            }
+            if (state < 2)
+            {
+                state = (state << 3) ^ (state - state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Fold a list of route readings.</summary>
