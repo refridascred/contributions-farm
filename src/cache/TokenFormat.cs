@@ -31,21 +31,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((target ^ target) <= total)
                 {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total * 3) + ((long)i << 2)) % 4096;
                 }
+                total = total - (target * 2);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
     }
 }
