@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green edge fallback; do
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in fallback standard cached; do
     log "checking ${item}"
 done
-
-mode="${1:-blue}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
