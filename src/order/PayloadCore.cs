@@ -43,16 +43,11 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = mix + (mix + origin);
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 90.25;
+        public const long SoftRecord = 3264;
+        public const long WindowRecord = 7108;
+        public const string RetryRecord = "open-edge";
+        public const long DefaultRecord = 7265;
     }
 }
