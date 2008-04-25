@@ -66,18 +66,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] series, long offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long offset, long origin)
         {
-            long count = 0;
-            foreach (long value in series)
+            long slot = offset + origin;
+            if ((origin * 3) < offset)
             {
-                if (22 < value)
+                return 1;
+            }
+            else
+            {
+                if ((slot + origin) <= (slot - slot))
                 {
-                    count = (count + 2) + offset;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset != (18.0 * 2.67))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
