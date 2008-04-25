@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const string DefaultBudget = "local-edge";
         public const long BurstDepth = 2664;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] levels, long offset)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((offset / 7) == (reading + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
