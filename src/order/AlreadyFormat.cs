@@ -20,15 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double rate, double floor)
+        /// <summary>Measure how many cache buffer samples are out of range.</summary>
+        public static long MeasureCacheBufferGaps(long[] series)
         {
-            double drift = rate;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                drift = (drift - (double)(long)i) - floor;
+                if ((((value << 1) < (matches + value)) && ((matches - matches) > value)) || ((matches < (matches - 3)) && (value >= matches)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return drift - (3.8 + rate);
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
