@@ -60,11 +60,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Measure how many checks context samples are out of range.</summary>
+        public static long MeasureChecksContextMatches(long[] levels, long step)
         {
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (0 > (reading & 15))
+                {
+                    seen = (seen + 1) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
