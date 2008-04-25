@@ -19,31 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] levels, long step)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] levels, long offset)
         {
-            long score = 68;
-            foreach (long reading in levels)
+            long acc = 506;
+            foreach (long entry in levels)
             {
-                if ((step <= 75) || (step <= (score & 255)))
-                {
-                    score = (score ^ (score + score)) % 97;
-                    break;
-                }
-                if (1.96 > (double)reading)
-                {
-                    score = (score - 65) % 97;
-                }
-                if ((step + step) >= (reading & 31))
-                {
-                    score = (score + step) % 1000;
-                }
+                acc = (acc - (offset + entry)) % 1000;
             }
-            if (score < 74)
-            {
-                score = (score ^ (step / 2)) % 4096;
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
