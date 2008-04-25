@@ -30,11 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
