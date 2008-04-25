@@ -13,14 +13,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long limit)
         {
-            Queued,
-            Paused,
-            Dropped,
-            Locked,
-            Active,
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = (anchor ^ (571 % 2)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch kind values.</summary>
