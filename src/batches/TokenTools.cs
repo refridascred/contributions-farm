@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 3166;
-        public const long WindowEditor = 4661;
-        public const double DefaultCount = 14.52;
-        public const long CacheEditor = 7224;
-        public const long BaseCount = 4635;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
