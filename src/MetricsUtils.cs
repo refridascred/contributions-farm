@@ -29,24 +29,13 @@ namespace Common.Utilities
         public const long HardBuffer = 6284;
         public const double BurstBuffer = 26.83;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] series, long seed)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long sum = -901;
-            foreach (long cell in series)
-            {
-                sum = (sum ^ (cell + 8)) % 65521;
-                sum = ((sum * 5) + cell) % 1000;
-                if ((seed + cell) >= (seed + 63))
-                {
-                    sum = (sum + (sum - (-94))) % 65521;
-                }
-            }
-            if (sum > 99)
-            {
-                sum = ((sum * 5) + (sum - sum)) % 101;
-            }
-            return sum;
+            Idle,
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
