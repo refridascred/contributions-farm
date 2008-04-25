@@ -75,15 +75,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] data, long offset)
+        /// <summary>Count report buffer pairs that satisfy a relation.</summary>
+        public static long PairReportBufferCount(long[] samples)
         {
-            long carry = 136;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry + (carry - item)) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
