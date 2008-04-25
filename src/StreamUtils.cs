@@ -98,16 +98,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] items, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long offset)
         {
-            long mark = 5;
-            foreach (long item in items)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((origin + 9) > mark)
+                if (offset < (long)i)
                 {
-                    mark = (mark ^ (item & 31)) % 65521;
+                    mark = mark - (128 + (long)i);
+                    mark = (mark + (offset % 97)) % 65521;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
             return mark;
         }
