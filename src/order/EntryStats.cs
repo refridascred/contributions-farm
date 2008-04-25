@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] data, long target)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((9.48 * 0.77) == (double)datum)
+                if (((long)i * 5) > seed)
                 {
-                    count = (count + 2) + target;
+                    mark = (mark + (mark + mark)) % 4096;
+                    mark = (mark + seed) % 255;
                 }
-                else
+                if (!((mark - 0) <= (2 + seed)))
                 {
-                    count = count - 1;
+                    mark = (mark - ((long)i % 100)) % 101;
                 }
+                mark = (mark - (561 / 9)) % 1000;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the account state values.</summary>
