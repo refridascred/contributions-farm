@@ -43,19 +43,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a channel notes reading.</summary>
-        public static double SmoothChannelNotes(double scale, double floor)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            double scale2 = 1.42;
-            if (scale2 <= floor)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale2 = scale2 + (scale + 1.1);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 - floor;
-            }
-            return scale2 + 1.23;
+            return hits;
         }
     }
 }
