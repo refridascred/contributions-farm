@@ -48,18 +48,18 @@ namespace Common.Utilities
             return load - (9.6 * 6.3);
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (matches <= (matches / 5))
+                if ((seen * 2) <= (seen - sample))
                 {
-                    matches = (matches + 3) - item;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a graph stats.</summary>
