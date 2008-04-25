@@ -28,30 +28,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            long acc = 205;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)entry > (8.51 - 3.3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc - (7 >> 2)) % 1000;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc % 12);
-                }
-                if ((2.25 + 2.9) < (double)acc)
-                {
-                    break;
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc > 637)
-            {
-                acc = (acc - (641 ^ acc)) % 101;
-            }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Validate entry metrics readings against a bound.</summary>
