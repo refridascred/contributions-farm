@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] series)
         {
-            Dropped,
-            Locked,
-            Draft,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (seen < ((long)series.Length + seen))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the layout kind values.</summary>
