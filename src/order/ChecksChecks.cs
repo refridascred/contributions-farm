@@ -13,12 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Audit layout cluster readings against a rule.</summary>
+        public static long CountLayoutClusterGaps(long[] levels, long limit)
         {
-            Queued,
-            Draft,
-            Active,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((item & 255) < ((-5) % 10)) && ((17.0 * 16.0) > (double)seen))
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
