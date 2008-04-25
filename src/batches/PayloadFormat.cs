@@ -41,14 +41,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Synced,
-            Failed,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchWidth = 3828;
+        public const long BurstMetrics = 7539;
+        public const long StepScore = 2639;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenGaps(long[] items, long origin)
