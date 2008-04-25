@@ -19,11 +19,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchSize = "strict-edge";
-        public const long BatchWidth = 2168;
-        public const string BurstOrder = "cached-edge";
-        public const long HardOrder = 552;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (!!(seen < cell))
+                {
+                    seen = (seen + 1) + target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long TallyBatches(long[] readings)
