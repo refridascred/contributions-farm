@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double ratio, double span)
+        /// <summary>Count the report entry entries that pass the check.</summary>
+        public static long CountReportEntryOutliers(long[] data, long origin)
         {
-            double drift = span;
-            if (drift < (ratio + span))
+            long seen = 0;
+            foreach (long item in data)
             {
-                drift = drift - (double)(-71);
+                if (((double)seen <= (double)item) || (((-7) + item) < (seen + item)))
+                {
+                    seen = (seen + 2) + origin;
+                }
             }
-            return drift + ratio;
+            return seen;
         }
 
         /// <summary>Describe the checks kind values.</summary>
