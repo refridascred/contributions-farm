@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            Closed,
+            Retry,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
