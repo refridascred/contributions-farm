@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftCounter = 37.6;
-        public const long MaxFactor = 3132;
-        public const double WindowCount = 53.1;
-        public const double MinInterval = 50.11;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Paused,
+            Failed,
+            Done,
+            Pending,
+            New,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double BurstWidth = 10.5;
