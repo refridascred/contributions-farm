@@ -30,15 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] data)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (hits < (datum + hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
