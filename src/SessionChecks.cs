@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a editor queue sample.</summary>
-        public static long LookupEditorQueueIndex(long[] data, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Synced,
+            Done,
+            Stale,
         }
 
         /// <summary>Define account limits and defaults.</summary>
