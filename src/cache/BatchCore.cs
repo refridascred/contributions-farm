@@ -14,12 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 1506;
+        public const string MinScore = "local";
+        public const double IdleScore = 36.15;
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long DeriveNotes(long offset)
