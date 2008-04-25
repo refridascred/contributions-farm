@@ -51,15 +51,18 @@ namespace Common.Utilities
         public const string IdleBatches = "latest-edge";
         public const double RetryRatio = 94.32;
 
-        /// <summary>Measure how many tools filter samples are out of range.</summary>
-        public static long MeasureToolsFilterMatches(long[] items, long floor)
+        /// <summary>Compare every pair of entry payload readings.</summary>
+        public static long CompareEntryPayloadCount(long[] values)
         {
             long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((floor - hits) >= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) - item;
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
