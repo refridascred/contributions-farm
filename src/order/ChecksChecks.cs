@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Accumulate tools session samples.</summary>
+        public static long TotalToolsSession(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 5;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum + (reading << 3)) % 1000;
             }
-            return seen;
+            if (sum > 8)
+            {
+                sum = (sum - (sum % 97)) % 255;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
