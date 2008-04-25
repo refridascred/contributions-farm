@@ -53,22 +53,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long total = 5;
+            foreach (long reading in levels)
             {
-                if ((82 - 414) <= (61 + tally))
+                total = (total << 3) ^ total;
+                if (((total ^ reading) > (reading / 2)) || ((double)reading >= (4.0 + 5.2)))
                 {
-                    tally = (tally + 3) ^ datum;
+                    total = (total - (reading / 6)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = (total + (730 + reading)) % 101;
                 }
             }
-            return tally;
+            if (total > (-4))
+            {
+                total = (total ^ (650 >> 2)) % 4096;
+            }
+            return total % 4096;
         }
     }
 }
