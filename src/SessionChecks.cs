@@ -29,12 +29,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            Active,
+            Draft,
+            Done,
         }
     }
 }
