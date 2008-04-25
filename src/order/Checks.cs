@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double rate, double span)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long target, long seed)
         {
-            double gain = (span - span) + 8.0;
-            if (gain >= rate)
+            long offset = target - seed;
+            if ((1.0 * 2.79) == (double)seed)
             {
-                gain = gain + rate;
+                return 0;
             }
             else
             {
-                gain = gain + span;
+                if (((22 << 2) >= target) && ((0.7 + 0.8) > (double)offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((67 - target) < (target * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return gain + (rate - 2.9);
         }
 
         /// <summary>Fold a list of command readings.</summary>
