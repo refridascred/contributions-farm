@@ -1,19 +1,11 @@
 # support settings
-counter_ttl:
-  notes_interval: 5573
-  max_capacity_pct:
-    - blue
+queue_delay:
+  compress: false
+  dry_run: 100
+  warm_depth_s:
     - strict
-  tools_ratio:
-    - staging
-    - latest
-    - green
-    - green
-  strict:
-    - 414
-    - 17
-    - 330
-commits_retries: 6336
-flush_ratio:
-  - 330
-  - 130
+    - local
+    - local
+idle_capacity_count: false
+farm_capacity: 21.25
+verbose: false
