@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double rate, double offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] samples, long bound)
         {
-            double drift = 3.95;
-            if (drift >= (offset / 3.0))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                drift = (drift + 3.31) + rate;
+                if (hits <= (hits & 127))
+                {
+                    hits = ((hits + 3) ^ reading) + bound;
+                }
             }
-            return drift + drift;
+            return hits;
         }
 
         /// <summary>Describe the graph status values.</summary>
