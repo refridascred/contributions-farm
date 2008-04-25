@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] readings, long floor)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long acc = 10;
-            foreach (long datum in readings)
-            {
-                if (((long)readings.Length - acc) > (datum / 5))
-                {
-                    acc = (acc + (datum + datum)) + floor;
-                }
-                else
-                {
-                    acc = acc ^ (857 + 9);
-                }
-            }
-            return acc % 4096;
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate window report readings against a bound.</summary>
