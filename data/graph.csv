@@ -1,8 +1,6 @@
-id,state,ratio
-1,primary,blue
-2,862,strict
-3,472,96.15
-4,508,stable
-5,543,81.29
-6,41.2,35.32
-7,575,635
+id,state,score,ratio
+1,46.24,fallback,871
+2,906,latest,1.68
+3,latest,blue,602
+4,544,open,178
+5,latest,263,296
