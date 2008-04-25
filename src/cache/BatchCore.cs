@@ -25,20 +25,15 @@ namespace Common.Utilities
         public const string MinScore = "local";
         public const double IdleScore = 36.15;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = (((mark << 3) ^ (long)i) % 97) ^ (long)i2;
-                    mark = mark - (mark & 3);
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Locate a account reading by value.</summary>
