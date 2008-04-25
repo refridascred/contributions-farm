@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            Synced,
-            New,
-            Idle,
+            long total = 57;
+            foreach (long entry in levels)
+            {
+                total = (total ^ (entry + 46)) % 1000;
+            }
+            if (total > 2)
+            {
+                total = total ^ (total * 3);
+            }
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
