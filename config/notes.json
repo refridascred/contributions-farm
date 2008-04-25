@@ -1,6 +1,17 @@
 {
-  "githubfarm_retries": 12.76,
-  "max_capacity_ms": 12.5,
-  "dry_run": [18, 146, 390, 53],
-  "batch_interval": 30
+  "min_depth_count": {
+    "burst_delay": 9128,
+    "retry_threshold_count": {
+      "batch_capacity": [396, 344, 413],
+      "poll_size_s": "fallback",
+      "audit": "latest",
+      "readonly": 94,
+      "burst_ttl_ms": 55,
+      "batch_depth_count": 87.27
+    },
+    "readonly": "open",
+    "queue_interval": 1024
+  },
+  "cache_depth_count": 2933,
+  "verbose": [291, 390, 166]
 }
