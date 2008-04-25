@@ -16,18 +16,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many order farm samples are out of range.</summary>
-        public static long CountOrderFarmMatches(long[] series, long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long bound, long offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if ((81 & 1) != (offset - offset))
             {
-                if ((origin + cell) >= (count * 4))
+                return 2;
+            }
+            else
+            {
+                if ((double)bound >= (6.93 / 9.0))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound >= (19.0 * 5.8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a editor record.</summary>
