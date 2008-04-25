@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Queued,
-            Stale,
-            Active,
-            Retry,
-            Paused,
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Scale a record cache figure with a bias.</summary>
