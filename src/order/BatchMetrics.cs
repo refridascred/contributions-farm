@@ -69,31 +69,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long offset, long origin)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            if ((double)offset < 18.0)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((974 ^ 784) > (origin + offset)) || (origin > offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset - offset) <= (offset + 420)) || ((origin + origin) <= (origin * 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Failed,
+            Draft,
+            Paused,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a window snapshot.</summary>
