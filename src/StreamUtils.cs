@@ -71,18 +71,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] samples, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (seed >= (reading - reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxLevel = "local-edge";
+        public const string CacheCount = "local-v2";
+        public const long HardLevel = 9149;
+        public const double StepSize = 24.03;
     }
 }
