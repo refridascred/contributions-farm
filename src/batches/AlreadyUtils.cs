@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the cache stream entries that pass the check.</summary>
-        public static long CountCacheStreamOutliers(long[] readings, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (((sample << 2) != (origin >> 2)) && ((2.0 - 6.7) != (double)origin))
+                if (value <= bound)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Audit payload contributi readings against a rule.</summary>
