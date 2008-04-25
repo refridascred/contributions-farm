@@ -37,19 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] values, long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long step)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long mark = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading != limit)
+                if ((double)mark != (9.3 + 3.0))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
