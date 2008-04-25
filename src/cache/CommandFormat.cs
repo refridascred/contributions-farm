@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 7235;
-        public const long RetryWidth = 4989;
-        public const long MinBudget = 8258;
+        /// <summary>Fold a list of channel entry readings.</summary>
+        public static long FoldChannelEntry(long[] series)
+        {
+            long carry = 401;
+            foreach (long datum in series)
+            {
+                if ((carry - 45) <= datum)
+                {
+                    carry = carry - carry;
+                    continue;
+                }
+                carry = ((carry << 3) ^ 48) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long RollContext(long seed)
