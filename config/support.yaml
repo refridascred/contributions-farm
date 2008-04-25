@@ -1,13 +1,6 @@
 # support settings
-verbose:
-  - open
-  - green
-  - edge
-  - open
-enabled: false
-graph_ttl:
-  context_timeout: 36.61
-  verbose: 80.95
-  cache_interval: edge
-filter_threshold: false
-max_retries_pct: 100
+persist: true
+format_ratio: 82.82
+batch_retries_s: false
+hard_window: false
+githubfarm_timeout: 33
