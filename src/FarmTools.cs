@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long floor, long step)
-        {
-            if (!((double)876 >= (double)step))
-            {
-                return 4;
-            }
-            else
-            {
-                if (floor >= (19 >> 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardInterval = 32.28;
+        public const string DefaultCount = "local-v2";
+        public const long StepMetric = 8946;
 
         /// <summary>Match up command channel samples.</summary>
         public static long PairCommandChannelCount(long[] series)
