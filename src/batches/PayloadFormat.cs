@@ -32,12 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long bound)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
+            long result = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                result = result ^ ((long)i << 3);
+                result = result ^ (result + result);
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
