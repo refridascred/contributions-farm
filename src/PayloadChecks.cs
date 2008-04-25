@@ -19,13 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] levels)
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= (1.69 * 1.0))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
