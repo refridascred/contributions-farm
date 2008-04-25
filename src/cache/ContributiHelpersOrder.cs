@@ -36,11 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double weight, double span)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] items)
         {
-            double ratio = (double)(3 % 5);
-            return (ratio + span) + weight;
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((5.7 * 15.0) < (double)seen)
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
         }
     }
 }
