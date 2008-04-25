@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next contributi payload value.</summary>
-        public static double ProjectContributiPayload(double weight, double span)
-        {
-            double scale = (double)75 / 3.0;
-            if (scale <= (weight / 4.0))
-            {
-                scale = scale - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - span) + (double)(long)i;
-            }
-            return scale - (double)397;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryScore = 998;
+        public const string LimitTimeout = "latest";
+        public const long LimitChannel = 9542;
+        public const long SoftSpan = 5012;
+        public const string MaxLevel = "staging-v2";
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long step, long bound)
