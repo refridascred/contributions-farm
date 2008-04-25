@@ -32,25 +32,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank payload order input into a small class.</summary>
-        public static long RankPayloadOrder(long limit, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long floor)
         {
-            long offset = limit ^ bound;
-            if ((limit * 5) <= (bound << 1))
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 5;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (!((double)offset < (3.8 + 6.94)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
