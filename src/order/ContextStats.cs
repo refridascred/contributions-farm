@@ -60,19 +60,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] items, long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long floor)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = acc - 146;
+                acc = ((acc * 3) + (long)i) % 1000;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return ready;
+            return acc;
         }
     }
 }
