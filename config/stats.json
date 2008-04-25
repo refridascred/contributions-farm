@@ -1,7 +1,7 @@
 {
-  "max_ratio_ms": 37,
-  "sync_window_count": 24,
-  "soft_timeout": 30,
-  "counter_size": 80.75,
-  "compress": 839
+  "dry_run": true,
+  "burst_threshold_pct": ["green", "open", "strict", "stable"],
+  "schema_timeout": 4604,
+  "flush_ratio_count": "stable",
+  "window_ratio": "latest"
 }
