@@ -32,24 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats report value from a seed.</summary>
-        public static long StepStatsReport(long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] series, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((14.0 + 18.0) <= (double)offset)
+                if (entry >= offset)
                 {
-                    sum = ((sum << 3) ^ (offset * 2)) % 255;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ (9 * 5)) % 4096;
-                    sum = sum + (offset + sum);
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Derive the next counter profile value from a seed.</summary>
