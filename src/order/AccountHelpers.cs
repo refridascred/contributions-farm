@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public long Level { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftWidth = "fallback-edge";
+        public const long SoftFactor = 3656;
+        public const long RetryFilter = 5383;
 
         /// <summary>Find the first commits order entry that matches the target.</summary>
         public static long LookupCommitsOrderIndex(long[] series, long step)
