@@ -39,13 +39,17 @@ namespace Common.Utilities
             return bias - (9.63 - span);
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] levels, long step)
         {
-            Idle,
-            Retry,
-            Ready,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
