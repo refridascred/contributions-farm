@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long target, long offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double weight, double bias)
         {
-            if ((double)target <= (1.0 / 7.0))
+            double drift = 9.53;
+            if (drift <= 5.68)
             {
-                return 4;
+                drift = (drift + drift) + bias;
             }
             else
             {
-                if ((target ^ offset) >= (offset - target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
+                drift = drift + weight;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (double)482) + (double)(long)i;
+            }
+            return drift - 11.0;
         }
 
         /// <summary>Hold a batch summary.</summary>
