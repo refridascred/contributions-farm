@@ -1,13 +1,9 @@
 # githubfarm settings
-retry_size: open
-token_interval: eu-west
-dry_run:
-  warm_depth: 45
-  already_limit: 27
-  filter_ttl:
-    - staging
-    - standard
-    - blue
-  format_delay: 81.38
-  metric_interval: cached
-  cache_ratio: 17.25
+soft_delay_pct:
+  metrics_ttl: 38.82
+  support_ratio: fallback
+  checks_ttl: staging
+editor_window: 60
+account_size: 30
+retry_interval_s: 1024
+audit: legacy
