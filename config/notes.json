@@ -1,18 +1,5 @@
 {
-  "account_ratio": 7261,
-  "stream_ratio": 58.51,
-  "soft_size_count": "edge",
-  "strict": {
-    "schema_size": {
-      "channel_threshold": 10,
-      "verbose": true,
-      "batch_ratio_s": ["standard", "latest", "strict", "staging"]
-    },
-    "max_limit_s": "green",
-    "cache_retries": "cached",
-    "retry_ratio": true,
-    "burst_depth_ms": "cached",
-    "hard_timeout_s": 1
-  },
-  "soft_depth_count": ["strict", "strict"]
+  "sync_interval_count": 60,
+  "idle_ttl": "cached",
+  "account_ttl": false
 }
