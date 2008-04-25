@@ -40,19 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] samples, long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (entry >= step)
+                if (value > step)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
