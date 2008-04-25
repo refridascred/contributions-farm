@@ -1,4 +1,11 @@
 # githubfarm settings
-poll_window: 250
-compress: latest
-default_interval: 250
+readonly: stable
+hard_depth:
+  - 466
+  - 164
+max_interval_ms:
+  - eu-west
+  - green
+  - open
+audit: blue
+soft_ttl_s: eu-west
