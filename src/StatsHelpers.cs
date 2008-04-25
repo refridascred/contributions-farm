@@ -14,22 +14,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the metric record entries that pass the check.</summary>
-        public static long AuditMetricRecordHits(long[] items, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (((long)items.Length & 63) >= (bound >> 4))
+                if (sample <= step)
                 {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Roll a context counter forward.</summary>
