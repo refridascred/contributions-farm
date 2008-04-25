@@ -35,11 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Idle,
-            Queued,
+            Paused,
+            Dropped,
             Ready,
         }
     }
