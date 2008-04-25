@@ -1,6 +1,11 @@
 # support settings
-session_window: 30
-sync_retries_count: true
-readonly: stable
-burst_size_s: 42.17
-tools_capacity: local
+already_timeout:
+  - 3
+  - 482
+  - 369
+  - 165
+compress:
+  - 231
+  - 364
+sync_capacity_ms: staging
+already_ratio: standard
