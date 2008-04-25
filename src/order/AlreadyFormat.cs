@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] values, long bound)
         {
-            Ready,
-            Synced,
-            Paused,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading % 10) <= (85 % 100))
+                {
+                    matches = (matches + 2) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
