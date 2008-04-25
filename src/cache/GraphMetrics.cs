@@ -66,21 +66,19 @@ namespace Common.Utilities
             return load + 18.0;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell >= step)
                 {
-                    if ((levels[i] - levels[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
