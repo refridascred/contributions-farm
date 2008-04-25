@@ -25,17 +25,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a support stats reading by value.</summary>
-        public static long LocateSupportStatsIndex(long[] readings, long offset)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((readings[i] == offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total - (total & 63)) % 101;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
