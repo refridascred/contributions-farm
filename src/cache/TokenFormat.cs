@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the cluster metric entries that pass the check.</summary>
-        public static long AuditClusterMetricOutliers(long[] data, long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (!((15.0 - 7.11) < (double)datum))
+                if (cell != target)
                 {
-                    matches = (matches + 3) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
