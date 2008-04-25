@@ -35,12 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a booking reading by value.</summary>
-        public static long LookupBookingIndex(long[] samples, long offset)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] samples, long step)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= offset)
+                if ((samples[i] < step) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
