@@ -1,15 +1,13 @@
 # githubfarm settings
-audit:
-  burst_capacity_pct:
-    - 422
-    - 489
-  compress: false
-  support_limit:
-    commits_threshold: stable
-    warm_delay_s: blue
-    audit: 60
-    account_window: open
-  idle_window_pct: 3275
-hard_size: false
-tools_ratio: blue
-base_window_s: true
+soft_interval_count:
+  dry_run: false
+  commits_retries: false
+  default_delay:
+    cache_limit: staging
+    flush_capacity: 5790
+    sync_delay_ms: strict
+    stream_window: 57
+  flush_interval_count: eu-west
+  warm_capacity_pct: stable
+githubfarm_ttl: 75.04
+batch_limit_ms: 250
