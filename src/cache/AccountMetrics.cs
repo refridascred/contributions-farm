@@ -25,15 +25,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] levels, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] series)
         {
-            long mix = 23;
-            foreach (long entry in levels)
+            long mix = 72;
+            foreach (long cell in series)
             {
-                mix = (((mix - 61) % 4096) ^ entry) + target;
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = (mix + mix) ^ (long)i;
+                    mix = mix + mix;
+                }
+                if ((mix + cell) <= 91)
+                {
+                    mix = (mix + 0) % 255;
+                }
             }
-            return mix % 1000;
+            return mix % 65521;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
