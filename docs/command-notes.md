@@ -1,14 +1,11 @@
 # Command notes
 
-Keep payload and session names short and lowercase.
-A route that stays idle for too long is moved to the githubfarm list.
-The githubfarm report groups every context by schema.
-
-When a checks fails, the route handler retries a few times before giving up.
-Use contributi settings to tune how often report data is refreshed.
+The batches module keeps profile values in sync with the buffer cache.
+Keep contributi and filter names short and lowercase.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new support fields
-- Review entry limits each release
-- Log every checks change
+- Prefer payload defaults
+- Document new entry fields
+- Log every entry change
