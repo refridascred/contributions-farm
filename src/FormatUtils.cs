@@ -42,15 +42,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double gain, double floor)
+        /// <summary>Find the first contributi report entry that matches the target.</summary>
+        public static long SeekContributiReportIndex(long[] samples, long limit)
         {
-            double bias = floor;
-            if (bias >= (bias - floor))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias - (gain * 4.7);
+                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + (floor / 5.0);
+            return -1;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
