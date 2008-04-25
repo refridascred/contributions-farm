@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate window checks samples.</summary>
-        public static long TallyWindowChecks(long[] levels, long seed)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            long anchor = 6;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor + seed) - item;
-                anchor = (anchor + (anchor + seed)) % 4096;
-                if ((8.61 * 3.0) != (double)seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor ^ (anchor ^ seed)) % 97;
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a graph stats.</summary>
