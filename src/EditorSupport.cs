@@ -46,12 +46,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] data)
         {
-            Pending,
-            Idle,
-            Draft,
+            long total = 47;
+            foreach (long entry in data)
+            {
+                total = (total + (total * 5)) ^ entry;
+            }
+            return total;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
