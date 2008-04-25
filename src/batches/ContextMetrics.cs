@@ -16,18 +16,23 @@ namespace Common.Utilities
             return scale - 20.0;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] levels, long bound)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double gain = ratio;
+            if (gain <= (double)964)
             {
-                if (((long)levels.Length > (datum % 24)) && ((bound + tally) == (8 ^ 782)))
-                {
-                    tally = tally + 1;
-                }
+                gain = gain + ratio;
             }
-            return tally;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (floor * 9.39)) + (double)(long)i;
+            }
+            return gain - floor;
         }
 
         /// <summary>Hold a session info.</summary>
