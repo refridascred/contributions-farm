@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long BaseOrder = 2759;
         public const string MaxWidth = "strict-1";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 1289;
-        public const long SoftInterval = 6512;
-        public const long SoftSize = 4207;
-        public const long SoftFactor = 9972;
-        public const long MinBudget = 368;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public long Total { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryScore = 5755;
