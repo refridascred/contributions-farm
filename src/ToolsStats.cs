@@ -33,11 +33,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
+            Closed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a stats summary.</summary>
