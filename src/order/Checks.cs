@@ -23,19 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] items, long seed)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
