@@ -64,19 +64,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] samples, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] levels)
         {
-            long sum = 5;
-            foreach (long value in samples)
+            long carry = 27;
+            foreach (long item in levels)
             {
-                sum = (((sum << 3) ^ 54) % 1000) - value;
+                if (((item + carry) < carry) || (carry <= (carry & 1)))
+                {
+                    carry = carry + (carry ^ item);
+                }
+                else
+                {
+                    carry = (carry - item) % 4096;
+                }
             }
-            if (sum > 8)
-            {
-                sum = (sum - (limit & 255)) % 1000;
-            }
-            return sum;
+            return carry;
         }
     }
 }
