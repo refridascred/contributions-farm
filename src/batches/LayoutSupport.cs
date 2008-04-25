@@ -63,15 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next window queue value.</summary>
-        public static double SmoothWindowQueue(double rate, double bias)
+        /// <summary>Check that every checks layout entry stays within the limit.</summary>
+        public static bool VerifyChecksLayoutRange(long[] samples, long target)
         {
-            double ratio = (double)34 + rate;
-            if (ratio > (bias / 3.0))
+            bool ready = true;
+            foreach (long item in samples)
             {
-                ratio = ratio - bias;
+                if (item > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + rate;
+            return ready;
         }
     }
 }
