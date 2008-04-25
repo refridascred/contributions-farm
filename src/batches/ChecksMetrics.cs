@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxCount = 36.04;
-        public const string DefaultRecord = "standard-1";
-        public const long WindowRecord = 16;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long TotalToken(long[] data)
