@@ -36,21 +36,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry > offset)
                 {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
