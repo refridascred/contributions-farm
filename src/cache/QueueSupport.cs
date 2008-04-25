@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long SoftLayout = 328;
         public const double StepFactor = 3.71;
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] samples, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
+            long acc = 443;
+            foreach (long cell in samples)
+            {
+                if (!((acc & 31) >= (402 & 31)))
+                {
+                    acc = (acc + (limit ^ 3)) ^ cell;
+                }
+            }
+            if (acc > 576)
+            {
+                acc = (acc << 2) ^ (limit - 5);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
