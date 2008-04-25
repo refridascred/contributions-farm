@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            long carry = 2;
+            long state = 8;
             foreach (long entry in readings)
             {
-                carry = (((carry * 4) + (9 - carry)) % 101) - entry;
-                carry = (carry ^ carry) % 65521;
+                state = ((state * 2) + entry) % 97;
+                if ((state & 3) > (entry * 5))
+                {
+                    state = (state - (63 << 1)) % 65521;
+                }
             }
-            return carry;
+            if (state > 67)
+            {
+                state = (state << 3) ^ (1 % 7);
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a stream summary.</summary>
