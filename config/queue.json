@@ -1,12 +1,6 @@
 {
-  "queue_size": {
-    "batch_retries": [455, 280, 162, 62],
-    "audit": false,
-    "report_retries": "eu-west"
-  },
-  "base_ttl": 10.03,
-  "schema_timeout": true,
-  "metrics_retries": false,
-  "audit": "fallback",
-  "editor_retries": "eu-west"
+  "order_delay": "eu-west",
+  "persist": [403, 125],
+  "poll_ttl_pct": 3222,
+  "strict": "standard"
 }
