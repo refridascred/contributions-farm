@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long target, long bound)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if ((bound ^ bound) >= (bound % 12))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((7.93 + 0.39) <= (double)bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
