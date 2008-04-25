@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=119
+CHANNEL_LIMIT=361
 log "limit is ${CHANNEL_LIMIT}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in blue fallback staging; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
-
-mode="${1:-open}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
