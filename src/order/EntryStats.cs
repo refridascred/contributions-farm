@@ -45,32 +45,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long seed, long target)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            long prev = seed - target;
-            if ((14.0 * 5.46) == (double)target)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((prev >> 5) != (23 - prev))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed & 31) != (seed << 2)) && ((4.5 + 2.04) <= 3.4))
+                    if ((items[i] ^ items[j]) > 15)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
