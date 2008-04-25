@@ -1,10 +1,11 @@
 {
-  "retry_timeout": "blue",
-  "cache_capacity_ms": true,
-  "min_size_ms": 3.83,
-  "metrics_capacity": {
-    "min_size_s": true,
-    "flush_size": ["fallback", "stable", "staging", "strict"],
-    "flush_ratio": 16.04
-  }
+  "poll_ratio_pct": 1024,
+  "sync_capacity_s": "local",
+  "cache_interval_ms": {
+    "idle_ratio_s": "stable",
+    "batch_threshold": true,
+    "window_interval": 86.8
+  },
+  "persist": 59.47,
+  "audit": "fallback"
 }
