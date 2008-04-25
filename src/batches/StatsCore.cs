@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Match up contributi commits samples.</summary>
+        public static long OverlapContributiCommitsCount(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
