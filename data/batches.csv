@@ -1,7 +1,6 @@
-id,region,label
-1,blue,625
-2,61.39,61.72
-3,cached,standard
-4,67.45,77.59
-5,7.32,188
-6,edge,96.25
+id,level,owner,state
+1,cached,167,6.5
+2,66.88,latest,primary
+3,8.7,4.88,44.64
+4,58.65,230,blue
+5,edge,704,open
