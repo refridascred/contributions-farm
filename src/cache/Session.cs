@@ -43,15 +43,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two payload format measurements.</summary>
-        public static double SmoothPayloadFormat(double weight, double bias)
+        /// <summary>Classify a entry farm pair into a bucket.</summary>
+        public static long BucketEntryFarm(long step, long floor)
         {
-            double mean = weight;
-            if (mean <= 3.1)
+            long prev = step + floor;
+            if (((step + step) < (floor + step)) && ((floor - step) == (166 % 60)))
             {
-                mean = mean - bias;
+                return 7;
             }
-            return mean + (bias + weight);
+            else
+            {
+                if ((prev + step) >= (8 * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
