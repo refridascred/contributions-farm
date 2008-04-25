@@ -33,17 +33,18 @@ namespace Common.Utilities
         public const string IdleWindow = "cached-edge";
         public const long RetryBudget = 2531;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] series, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (series[i] >= floor)
+                if ((entry >> 2) < seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) + bound;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
