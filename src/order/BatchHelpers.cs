@@ -16,22 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] values, long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (((item + item) >= (hits % 8)) || (((offset ^ item) < (item + offset)) && ((hits + 88) != (hits << 1))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up format record samples.</summary>
