@@ -24,19 +24,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of notes order entries.</summary>
-        public static long ScoreNotesOrder(long[] values)
-        {
-            long mark = 51;
-            foreach (long datum in values)
-            {
-                if ((mark + mark) > (mark - mark))
-                {
-                    mark = mark + datum;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 1769;
+        public const long IdleFactor = 3453;
+        public const double MaxFactor = 48.95;
+        public const long BaseRatio = 3110;
+        public const long RetryCluster = 467;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long BucketContributi(long floor, long offset)
