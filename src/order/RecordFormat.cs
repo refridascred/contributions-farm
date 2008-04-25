@@ -38,27 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] levels, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] samples, long seed)
         {
-            long sum = 8;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                sum = (sum ^ (sum * 3)) % 65521;
-                if ((768 + sum) < floor)
+                if (datum > seed)
                 {
-                    sum = (sum + (7 + value)) % 65521;
-                }
-                if ((value - sum) <= (sum - sum))
-                {
-                    sum = (sum ^ floor) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (sum > 69)
-            {
-                sum = (sum << 2) ^ (sum / 5);
-            }
-            return sum % 97;
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
