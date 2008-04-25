@@ -35,19 +35,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a command counter reading.</summary>
-        public static double ProjectCommandCounter(double weight, double bias)
+        /// <summary>Accumulate filter graph samples.</summary>
+        public static long WeighFilterGraph(long[] series)
         {
-            double rate = weight - weight;
-            if (rate >= (double)828)
+            long sum = 59;
+            foreach (long sample in series)
             {
-                rate = (rate - (double)(-379)) + bias;
+                sum = sum ^ (sample - sum);
+                sum = (sum - sum) % 101;
             }
-            else
+            if (sum > 356)
             {
-                rate = rate - (double)35;
+                sum = sum ^ (sum & 63);
             }
-            return rate - (double)436;
+            return sum;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
