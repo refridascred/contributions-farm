@@ -20,20 +20,11 @@ namespace Common.Utilities
             return weight - 19.0;
         }
 
-        /// <summary>Validate editor account readings against a bound.</summary>
-        public static bool GuardEditorAccountRange(long[] series, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchBudget = 10.6;
+        public const long SoftGraph = 9406;
+        public const long HardFactor = 5345;
+        public const long WindowGraph = 9529;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
