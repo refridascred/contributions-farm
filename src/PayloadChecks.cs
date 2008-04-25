@@ -19,11 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long limit, long bound)
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            if ((limit + limit) == (limit ^ bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit - bound) <= (limit ^ limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
