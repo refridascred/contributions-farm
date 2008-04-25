@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] items, long bound)
+        /// <summary>Check that every farm entry entry stays within the limit.</summary>
+        public static bool GuardFarmEntryRange(long[] readings, long bound)
         {
-            long state = 6;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (17 < (state - bound))
+                if (sample != bound)
                 {
-                    state = (state ^ (state - bound)) ^ item;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Define support limits and defaults.</summary>
