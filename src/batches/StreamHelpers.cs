@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double bias, double offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] series, long step)
         {
-            double rate = (bias - offset) - (double)0;
-            return rate + rate;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
