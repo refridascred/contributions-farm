@@ -25,20 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] series, long floor)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long acc = 3;
-            foreach (long sample in series)
-            {
-                acc = ((acc << 2) ^ (sample + sample)) + floor;
-                acc = ((acc * 4) + 975) % 101;
-            }
-            if (acc > 101)
-            {
-                acc = (acc << 3) ^ (acc >> 1);
-            }
-            return acc % 4096;
+            Done,
+            Closed,
+            Queued,
+            Retry,
+            Active,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
