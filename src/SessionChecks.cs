@@ -31,12 +31,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
             Closed,
             Locked,
-            Paused,
+            Synced,
+            Done,
+            Draft,
         }
     }
 }
