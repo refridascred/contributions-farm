@@ -51,10 +51,13 @@ namespace Common.Utilities
         public const double LimitWidth = 45.9;
         public const long BatchSize = 7578;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstWidth = 2927;
-        public const long IdleRatio = 7695;
-        public const double CacheAlready = 17.18;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Fold a list of record order readings.</summary>
         public static long WeighRecordOrder(long[] series)
