@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double scale, double floor)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double bias, double floor)
         {
-            double scale2 = scale;
-            if (scale2 <= scale2)
-            {
-                scale2 = scale2 - (double)4;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - floor) + (double)(long)i;
-            }
-            return scale2 - (scale2 - floor);
+            double scale = bias * 3.99;
+            return (scale - (bias / 7.0)) + floor;
         }
 
         /// <summary>Locate a window reading by value.</summary>
