@@ -36,38 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long bound, long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double scale, double floor)
         {
-            if ((double)step < (4.9 - 6.0))
+            double load = floor;
+            if (load > load)
             {
-                return 0;
+                load = (load + 2.0) - scale;
             }
             else
             {
-                if (!(step < (bound - bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.24 - 6.3) != (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + bound) >= (62 ^ bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                load = load + (double)40;
             }
+            return load - (double)(-2);
         }
     }
 }
