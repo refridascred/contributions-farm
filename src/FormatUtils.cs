@@ -21,13 +21,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long target, long bound)
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
+            long offset = target - bound;
+            if (!((offset + offset) >= (offset - bound)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset << 3) < (6 >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target - target) <= (offset << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
