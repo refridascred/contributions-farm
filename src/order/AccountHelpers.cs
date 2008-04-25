@@ -24,12 +24,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
-            Retry,
-            Stale,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
