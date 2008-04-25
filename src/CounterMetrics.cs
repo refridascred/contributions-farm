@@ -42,9 +42,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 2523;
-        public const long DefaultBatch = 5111;
-        public const long LimitSize = 6618;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheBatches = 13.4;
+        public const double LimitLevel = 29.67;
+        public const long BurstSize = 8466;
     }
 }
