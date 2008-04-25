@@ -66,27 +66,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Count buffer notes pairs that satisfy a relation.</summary>
+        public static long MatchBufferNotesCount(long[] samples)
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)i - state) < ((long)i - (-98)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    continue;
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    state = state - (long)i;
-                }
-                if (17.0 < (double)(long)i)
-                {
-                    state = (state + (state + state)) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
     }
 }
