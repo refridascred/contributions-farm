@@ -14,10 +14,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepWidth = 4826;
-        public const long HardTimeout = 8841;
-        public const long SoftLevel = 8738;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)tally == (2.18 / 2.0))
+                {
+                    tally = ((tally + 1) + item) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] levels)
