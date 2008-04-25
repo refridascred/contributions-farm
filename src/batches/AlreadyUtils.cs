@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] values, long bound)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
