@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many route schema samples are out of range.</summary>
-        public static long AuditRouteSchemaOutliers(long[] samples, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((tally + tally) != (89 * 2)) || ((limit % 10) == (tally / 9)))
+                if ((data[i] <= seed) && ((data[i] % 3) == 0))
                 {
-                    tally = (tally + 1) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
