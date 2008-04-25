@@ -78,19 +78,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] samples, long origin)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] data)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
