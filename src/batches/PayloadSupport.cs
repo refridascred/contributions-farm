@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] readings, long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the token state values.</summary>
