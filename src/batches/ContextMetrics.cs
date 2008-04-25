@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double rate, double offset)
+        /// <summary>Scale a githubfarm route figure with a bias.</summary>
+        public static double ScaleGithubfarmRoute(double weight, double bias)
         {
-            double weight = (double)8 * 1.0;
-            return ((weight - (weight * 8.3)) + rate) + offset;
+            double scale = (double)171;
+            if (scale >= (double)(-200))
+            {
+                scale = (scale - bias) + weight;
+            }
+            return scale - 20.0;
         }
 
         /// <summary>Define support limits and defaults.</summary>
