@@ -24,18 +24,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit farm payload readings against a rule.</summary>
-        public static long MeasureFarmPayloadMatches(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long result = 177;
+            foreach (long reading in readings)
             {
-                if ((reading % 12) == (reading + reading))
-                {
-                    hits = hits + 3;
-                }
+                result = ((result + (2 - reading)) % 101) - step;
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Find the first graph token entry that matches the target.</summary>
