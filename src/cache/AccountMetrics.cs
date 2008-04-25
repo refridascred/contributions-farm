@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix << 2) ^ (mix / 7)) % 101;
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            Active,
+            Paused,
+            Closed,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the cache state values.</summary>
