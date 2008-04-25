@@ -27,22 +27,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many order token samples are out of range.</summary>
-        public static long CountOrderTokenMatches(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((((item - seed) >= (hits + 299)) || ((hits * 4) <= item)) && (((8.0 / 4.0) > (double)item) && ((hits & 3) > (item - hits))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "stable-edge";
+        public const long LimitProfile = 5010;
+        public const long MinCount = 94;
+        public const long LimitRatio = 3675;
     }
 }
