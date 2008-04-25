@@ -21,39 +21,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long target, long offset)
+        /// <summary>Combine stats contributi values into a single score.</summary>
+        public static long ScoreStatsContributi(long[] items)
         {
-            long prev = target ^ offset;
-            if ((prev + prev) >= prev)
+            long score = 47;
+            foreach (long value in items)
             {
-                return 3;
+                score = ((score + (score * 2)) % 4096) - value;
+                score = score + (1 ^ score);
+                score = ((score << 2) ^ ((long)items.Length ^ score)) % 101;
             }
-            else
-            {
-                if (!((offset >> 1) < target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(offset > (37 % 64)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((3 - offset) <= prev)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
