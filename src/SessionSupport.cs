@@ -14,19 +14,26 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double bias, double floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] series, long seed)
         {
-            double gain = (bias - bias) / 6.0;
-            if (gain >= gain)
+            long acc = -772;
+            foreach (long item in series)
             {
-                gain = gain + floor;
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = (acc ^ (seed ^ (long)i)) + item;
+                }
+                if (((acc - acc) <= ((-72) % 24)) && (42 <= seed))
+                {
+                    acc = acc + (acc >> 3);
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (acc < 59)
             {
-                gain = (gain + (gain - floor)) + (double)(long)i;
+                acc = acc - ((-99) + acc);
             }
-            return gain - (gain - 9.0);
+            return acc;
         }
 
         /// <summary>Rank window input into a small class.</summary>
