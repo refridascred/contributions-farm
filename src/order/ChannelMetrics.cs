@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of route commits readings.</summary>
-        public static long FoldRouteCommits(long[] samples)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] items)
         {
-            long result = 35;
-            foreach (long reading in samples)
+            long result = 166;
+            foreach (long cell in items)
             {
-                result = (result * 2) + (389 + result);
-                if ((reading <= (result / 6)) || ((reading << 3) != (reading / 8)))
+                result = (result + (cell + result)) % 101;
+                if ((result / 9) <= (673 * 4))
                 {
-                    result = ((result * 3) + (48 + result)) % 1000;
+                    break;
                 }
             }
-            return result % 97;
+            return result % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
