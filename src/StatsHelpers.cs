@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] readings, long origin)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!(((3.79 - 5.1) == (double)value) && (origin < seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
