@@ -37,12 +37,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Count batches metric pairs that satisfy a relation.</summary>
+        public static long CompareBatchesMetricCount(long[] items)
         {
-            Retry,
-            Closed,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
