@@ -40,18 +40,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] items, long target)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((70 % 60) != (hits + datum))
+                if (values[i] == origin)
                 {
-                    hits = (hits + 3) - target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
