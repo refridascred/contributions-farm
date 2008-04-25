@@ -35,15 +35,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long bound)
         {
-            long total = 47;
-            foreach (long entry in data)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                total = (total + (total * 5)) ^ entry;
+                if ((score * 5) > score)
+                {
+                    score = score - ((long)i - score);
+                }
+                score = (score ^ score) % 101;
+                score = (score + (bound * 3)) % 255;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Hold a buffer info.</summary>
