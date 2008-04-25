@@ -42,19 +42,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] data, long seed)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
