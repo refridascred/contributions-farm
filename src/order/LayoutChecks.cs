@@ -57,11 +57,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double rate, double bias)
-        {
-            double bias2 = (double)(294 % 7);
-            return ((bias2 - (double)6) + rate) + bias;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardRatio = 9.74;
+        public const string BatchEntry = "latest";
+        public const long LimitEntry = 2485;
     }
 }
