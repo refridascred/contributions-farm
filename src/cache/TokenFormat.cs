@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultCount = 9440;
-        public const long MaxProfile = 5240;
-        public const string BurstProfile = "legacy";
-        public const long LimitCount = 1448;
-        public const long IdleTimeout = 9792;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BurstWidth = 8204;
