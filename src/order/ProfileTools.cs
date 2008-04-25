@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 8534;
+        public const long DefaultSpan = 7293;
+        public const long BatchTimeout = 1617;
+        public const long BurstSupport = 1493;
 
         /// <summary>Match up window samples.</summary>
         public static long MatchWindowCount(long[] readings)
