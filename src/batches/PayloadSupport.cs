@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Pending,
-            Retry,
             New,
-            Queued,
+            Closed,
+            Pending,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a counter info.</summary>
