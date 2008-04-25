@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long origin, long floor)
         {
-            Active,
-            Ready,
-            Dropped,
-            Retry,
-            Stale,
+            if ((6.7 + 7.42) > (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin % 10) <= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin > (floor / 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((2.9 / 4.0) < (double)floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of record entries.</summary>
