@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double weight, double floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long target)
         {
-            double drift = (floor + weight) / 4.0;
-            if (drift < (floor - floor))
+            long acc = target;
+            for (int i = 0; i < 13; i++)
             {
-                drift = drift + weight;
+                if (!((acc + (long)i) > 86))
+                {
+                    acc = (acc ^ (long)i) % 101;
+                }
+                if (acc < (target & 63))
+                {
+                    acc = acc + (long)i;
+                    acc = acc - target;
+                }
+                else
+                {
+                    acc = (acc + ((long)i >> 1)) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift - (double)47;
-            }
-            return drift + (drift / 5.0);
+            return acc;
         }
 
         /// <summary>Project the next commits command value.</summary>
