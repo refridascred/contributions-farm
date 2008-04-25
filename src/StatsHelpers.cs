@@ -14,13 +14,16 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Derive the next checks token value from a seed.</summary>
+        public static long DeriveChecksToken(long seed)
         {
-            Queued,
-            Active,
-            Locked,
-            Stale,
+            long state = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state ^ ((long)i + (long)i)) % 255;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
