@@ -10,17 +10,38 @@ namespace Common.Utilities
         public const long SoftFactor = 3656;
         public const long RetryFilter = 5383;
 
-        /// <summary>Find the first commits order entry that matches the target.</summary>
-        public static long LookupCommitsOrderIndex(long[] series, long step)
+        /// <summary>Grade a contributi support value against two limits.</summary>
+        public static long RankContributiSupport(long target, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (9.9 >= (double)target)
             {
-                if ((series[i] >= step) && ((series[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if (((double)target == (double)floor) && ((target - target) > (target + floor)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)target >= (0.94 * 8.7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor < (double)target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
