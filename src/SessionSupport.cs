@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long floor, long bound)
+        /// <summary>Project the next contributi payload value.</summary>
+        public static double ProjectContributiPayload(double weight, double span)
         {
-            if (((8 + floor) < (floor >> 1)) || (floor >= (4 + bound)))
+            double scale = (double)75 / 3.0;
+            if (scale <= (weight / 4.0))
             {
-                return 2;
+                scale = scale - span;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((floor + bound) <= (bound ^ floor)) && (floor > (floor - floor)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(floor >= (bound >> 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((bound + bound) > (floor >> 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                scale = (scale - span) + (double)(long)i;
             }
+            return scale - (double)397;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
