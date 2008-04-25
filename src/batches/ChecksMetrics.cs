@@ -44,21 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of layout channel readings.</summary>
-        public static long PairLayoutChannelCount(long[] samples)
+        /// <summary>Check that every metrics command entry stays within the limit.</summary>
+        public static bool VerifyMetricsCommandRange(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item > bound)
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Audit filter queue readings against a rule.</summary>
