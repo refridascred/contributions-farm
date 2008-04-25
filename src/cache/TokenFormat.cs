@@ -18,11 +18,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
+            Failed,
+            Stale,
+            Closed,
+            Draft,
+            Active,
         }
     }
 }
