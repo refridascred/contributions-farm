@@ -29,12 +29,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] samples, long offset)
         {
-            New,
-            Idle,
-            Closed,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count % 16) > offset)
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
     }
 }
