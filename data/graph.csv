@@ -1,9 +1,8 @@
-id,state,weight
-1,edge,8.05
-2,53.93,20
-3,eu-west,legacy
-4,232,46.18
-5,35.58,standard
-6,cached,425
-7,green,858
-8,527,840
+id,score,region,label
+1,latest,legacy,standard
+2,84.39,101,staging
+3,stable,eu-west,98.0
+4,stable,39.95,346
+5,619,standard,291
+6,522,local,872
+7,standard,671,732
