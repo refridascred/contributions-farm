@@ -36,10 +36,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftSpan = 58.7;
-        public const double MinSpan = 29.4;
-        public const long CacheSpan = 905;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] levels, long offset)
+        {
+            long state = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + reading) <= state)
+                {
+                    state = (state - (offset + 19)) % 1000;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long RankFormat(long limit, long limit2)
