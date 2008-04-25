@@ -56,18 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route metrics entries that pass the check.</summary>
-        public static long AuditRouteMetricsMatches(long[] readings)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (((value >= (18 - value)) || ((value - 38) > count)) && !((value & 1) != (count & 3)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Accumulate support samples.</summary>
