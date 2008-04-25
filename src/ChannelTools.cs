@@ -42,20 +42,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] data, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] series)
         {
-            long carry = 5;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                long edge = (value + bound) - bound;
-                if (((1.66 - 6.46) < (double)value) && ((double)edge > 5.5))
+                if ((double)sample >= (4.8 / 5.0))
                 {
-                    carry = carry + (5 * 2);
+                    count = count + 2;
                 }
-                carry = (carry ^ (bound - value)) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry % 97;
+            return count;
         }
     }
 }
