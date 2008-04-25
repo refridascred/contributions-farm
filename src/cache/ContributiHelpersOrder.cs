@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of githubfarm token readings.</summary>
-        public static long OverlapGithubfarmTokenCount(long[] readings)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -47;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading / 7) >= (reading + reading))
                 {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor ^ anchor;
                 }
             }
-            return matches;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a report stats.</summary>
