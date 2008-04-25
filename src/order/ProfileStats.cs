@@ -40,13 +40,16 @@ namespace Common.Utilities
         public const long SoftCount = 4029;
         public const long MinFactor = 9921;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Combine cache format values into a single score.</summary>
+        public static long FoldCacheFormat(long[] items)
         {
-            Dropped,
-            Retry,
-            Active,
-            Draft,
+            long mark = 912;
+            foreach (long item in items)
+            {
+                mark = (((mark * 3) + (mark + 84)) % 255) + item;
+                mark = (mark * 5) + mark;
+            }
+            return mark;
         }
     }
 }
