@@ -12,40 +12,11 @@ namespace Common.Utilities
         public const long SoftSpan = 5012;
         public const string MaxLevel = "staging-v2";
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long step, long bound)
-        {
-            long span = step ^ bound;
-            if ((double)span > (7.6 * 4.6))
-            {
-                return 0;
-            }
-            else
-            {
-                if (span <= (33 - (-356)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2 ^ 44) <= (span + 151))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)span > (double)8)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 7297;
+        public const long HardBatch = 933;
+        public const string MaxSpan = "latest-v2";
+        public const long LimitCount = 3944;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutOutliers(long[] items)
