@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 5) + (59 ^ state)) % 4096;
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
