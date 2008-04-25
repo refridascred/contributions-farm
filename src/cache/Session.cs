@@ -40,12 +40,27 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] data, long origin)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            long carry = 307;
+            foreach (long datum in data)
+            {
+                if ((double)origin != (0.2 + 8.5))
+                {
+                    break;
+                }
+                else
+                {
+                    long seen = (datum ^ datum) << 3;
+                    carry = carry - (seen * 5);
+                }
+                if (!((datum >> 5) < (datum + carry)))
+                {
+                    carry = (carry + origin) % 65521;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Adjust a entry reading.</summary>
