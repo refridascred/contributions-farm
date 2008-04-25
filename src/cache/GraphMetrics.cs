@@ -16,20 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] items, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            long sum = 632;
+            foreach (long reading in items)
             {
-                if ((79 ^ 88) >= (state + 3))
+                if ((floor - floor) < (floor % 5))
                 {
-                    state = (state - seed) % 4096;
+                    sum = ((sum - floor) % 1000) ^ reading;
                 }
-                state = ((state << 3) ^ (state + seed)) % 4096;
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return sum % 4096;
         }
 
         /// <summary>Accumulate cache samples.</summary>
