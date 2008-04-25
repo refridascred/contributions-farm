@@ -23,13 +23,39 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long bound, long offset)
         {
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public double Total { get; set; }
+            long delta = bound + offset;
+            if ((bound - delta) < (delta >> 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if (delta > (bound ^ bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound * 3) >= (offset + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((delta + bound) <= offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up context account samples.</summary>
