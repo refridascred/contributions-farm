@@ -38,13 +38,18 @@ namespace Common.Utilities
         public const long HardSpan = 478;
         public const string WindowTimeout = "stable-1";
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] values, long bound)
         {
-            Closed,
-            Failed,
-            Dropped,
-            Pending,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((bound ^ hits) <= value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
