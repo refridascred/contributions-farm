@@ -54,14 +54,10 @@ namespace Common.Utilities
         public const long HardBuffer = 6284;
         public const double BurstBuffer = 26.83;
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Idle,
-            New,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 1574;
+        public const double WindowDepth = 79.11;
+        public const long IdleToken = 557;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string LimitPayload = "cached-1";
