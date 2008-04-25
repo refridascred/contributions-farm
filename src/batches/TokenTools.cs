@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] levels, long target)
         {
-            Queued,
-            Failed,
-            Draft,
-            Locked,
-            New,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of route counter entries.</summary>
