@@ -60,18 +60,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] readings)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (((double)count > (3.93 * 13.0)) && ((sample <= (15 + sample)) && ((sample / 7) == (count << 2))))
+                if (value < offset)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
