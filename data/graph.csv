@@ -1,6 +1,10 @@
-id,score,active,weight,level
-1,61.81,blue,standard,10.94
-2,973,995,197,blue
-3,cached,standard,strict,0.74
-4,6.75,green,local,661
-5,548,560,48.93,25.5
+id,ratio,count
+1,82.26,784
+2,legacy,18.5
+3,legacy,0.61
+4,869,49.37
+5,523,456
+6,317,734
+7,93.57,139
+8,86.77,81.19
+9,49.51,110
