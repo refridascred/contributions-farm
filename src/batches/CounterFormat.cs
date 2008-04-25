@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many record entry samples are out of range.</summary>
-        public static long MeasureRecordEntryMatches(long[] samples)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)hits < 9.3)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) - entry;
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
