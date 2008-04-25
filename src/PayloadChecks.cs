@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] series)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((double)tally < (9.2 / 7.0))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            Paused,
+            Retry,
+            Stale,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
