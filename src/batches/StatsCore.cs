@@ -64,10 +64,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleProfile = 81.88;
-        public const long DefaultProfile = 501;
-        public const string BurstDepth = "alpha";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 4887;
+        public const long DefaultCommits = 4850;
+        public const long DefaultFactor = 3119;
+        public const long BatchTimeout = 7578;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
