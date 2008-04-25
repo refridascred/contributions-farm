@@ -1,6 +1,21 @@
 {
-  "min_threshold": false,
-  "strict": 41.72,
-  "hard_ttl": "strict",
-  "entry_delay": [85, 408, 63, 187]
+  "default_delay_pct": 64.51,
+  "default_timeout_s": 10.91,
+  "compress": {
+    "format_ratio": {
+      "strict": 34.19,
+      "flush_retries_pct": "cached",
+      "base_retries_pct": 62
+    },
+    "readonly": 30,
+    "notes_capacity": {
+      "flush_window": 89.99,
+      "audit": "local",
+      "warm_delay": false,
+      "max_limit_s": ["legacy", "open", "edge", "green"],
+      "idle_limit_count": false
+    }
+  },
+  "max_capacity_pct": true,
+  "schema_window": 60
 }
