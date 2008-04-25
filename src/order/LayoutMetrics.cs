@@ -24,18 +24,17 @@ namespace Common.Utilities
             return rate2 - 9.0;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] readings)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally - tally) > (entry - tally))
+                if ((data[i] > floor) && ((data[i] % 5) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the record filter entries that pass the check.</summary>
