@@ -51,15 +51,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double bias, double floor)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double weight, double floor)
         {
-            double drift = bias - (floor + 4.4);
-            for (int i = 0; i < 4; i++)
+            double mean = 19.0;
+            if (mean >= (floor * 4.49))
             {
-                drift = (drift + (drift / 5.0)) + (double)(long)i;
+                mean = (mean + floor) + weight;
             }
-            return drift + bias;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (double)96) - (double)(long)i;
+            }
+            return mean - (mean / 9.0);
         }
     }
 }
