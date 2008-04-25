@@ -57,11 +57,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double weight, double span)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            double scale = (double)956 - (span * 4.47);
-            return (scale + (double)7) + weight;
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
