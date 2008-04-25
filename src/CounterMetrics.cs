@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstTimeout = "strict-1";
-        public const long IdleCommits = 1864;
-        public const long BurstCommits = 6962;
-        public const long MaxCommits = 1077;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryOutliers(long[] samples)
