@@ -30,27 +30,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((double)(long)i < (double)limit)
-                {
-                    state = (state + (long)i) % 4096;
-                    state = state - (280 >> 1);
-                }
-                state = (state * 5) + (limit / 7);
-                if ((double)state >= (1.0 / 6.0))
-                {
-                    state = (state ^ (state + state)) % 65521;
-                    state = state - (limit << 2);
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
