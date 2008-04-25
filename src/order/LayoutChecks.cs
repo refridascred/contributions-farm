@@ -62,22 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] series)
         {
-            long mark = 75;
-            foreach (long sample in readings)
+            long sum = 7;
+            foreach (long sample in series)
             {
-                if (((sample << 1) != (sample & 15)) && (309 <= sample))
+                if (((sum << 3) == (sample % 10)) && ((sum + sample) <= sample))
                 {
-                    mark = mark + sample;
+                    sum = ((sum << 2) ^ (sample & 63)) % 4096;
                 }
             }
-            if (mark < 6)
-            {
-                mark = mark - (mark - mark);
-            }
-            return mark;
+            return sum;
         }
     }
 }
