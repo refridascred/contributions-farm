@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series, long origin)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] series)
         {
-            long sum = 249;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum * 3) == (origin - datum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum * 5) + (sum ^ origin);
+                    if ((series[i] + series[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Project the next session batches value.</summary>
