@@ -32,15 +32,12 @@ namespace Common.Utilities
         public const string MaxSpan = "latest-v2";
         public const long LimitCount = 3944;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long mark = -50;
-            foreach (long value in samples)
-            {
-                mark = ((mark ^ mark) % 255) - value;
-            }
-            return mark;
+            Idle,
+            Queued,
+            Ready,
         }
     }
 }
