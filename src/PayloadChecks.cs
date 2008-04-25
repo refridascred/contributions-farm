@@ -45,16 +45,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] items, long floor)
-        {
-            long carry = 8;
-            foreach (long cell in items)
-            {
-                carry = (((carry * 5) + (cell * 4)) % 1000) - floor;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 11.08;
+        public const long WindowEditor = 8087;
+        public const string BatchEditor = "primary-v2";
+        public const string CacheEditor = "stable-edge";
+        public const long BaseEditor = 8118;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long MatchQueueCount(long[] samples)
