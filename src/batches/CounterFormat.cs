@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] values, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long carry = 99;
+            foreach (long cell in values)
             {
-                if (value <= limit)
+                carry = (carry ^ ((-3) & 127)) % 97;
+                if (carry <= (seed & 1))
                 {
-                    stale = false;
+                    carry = carry ^ (carry - seed);
+                }
+                else
+                {
+                    carry = carry ^ ((long)values.Length << 2);
+                }
+                if (((cell * 2) > seed) || (carry > (long)values.Length))
+                {
                     break;
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Describe the account mode values.</summary>
