@@ -1,13 +1,16 @@
 # entry settings
-report_timeout: 67.75
-route_ratio:
-  - eu-west
-  - local
+soft_timeout:
+  - blue
+  - edge
+  - primary
   - standard
-  - legacy
-poll_ratio_count:
-  - 458
-  - 207
-enabled: green
-base_limit: 55.34
-soft_threshold_count: 99
+warm_timeout_pct: 250
+default_timeout: 500
+min_capacity_ms:
+  - green
+  - eu-west
+  - fallback
+  - eu-west
+graph_capacity:
+  - 181
+  - 55
