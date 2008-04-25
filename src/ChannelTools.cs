@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 73;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (((sum * 2) + ((long)values.Length + sample)) % 1000) - target;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
