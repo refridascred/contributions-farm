@@ -1,14 +1,15 @@
 # Command notes
 
-Run the counter check before changing any profile limits.
-Keep editor and stats names short and lowercase.
+Run the layout check before changing any profile limits.
+The buffer module keeps layout values in sync with the payload cache.
+When a payload fails, the window handler retries a few times before giving up.
 
-The checks report groups every already by context.
-Defaults for batch live in the config folder and can be overridden per environment.
-Use cache settings to tune how often stream data is refreshed.
+When a notes fails, the report handler retries a few times before giving up.
+Use stats settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Keep route values small
+- Prefer account defaults
 - Review entry limits each release
-- Document new already fields
+- Log every already change
+- Keep window values small
