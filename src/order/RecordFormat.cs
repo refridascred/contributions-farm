@@ -18,12 +18,22 @@ namespace Common.Utilities
         public const string CacheSpan = "cached-v2";
         public const double DefaultNotes = 78.77;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit commits window readings against a rule.</summary>
+        public static long MeasureCommitsWindowHits(long[] samples, long origin)
         {
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading + origin) <= (origin * 5)) && ((reading + matches) == (reading * 5)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the order level values.</summary>
