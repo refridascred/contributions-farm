@@ -55,12 +55,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowDepth = "latest-v2";
+        public const long HardBatch = 7302;
+        public const long MinRatio = 2854;
+        public const long BaseScore = 6383;
     }
 }
