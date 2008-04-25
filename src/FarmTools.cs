@@ -53,11 +53,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryWidth = 2360;
-        public const long CacheMetrics = 1545;
-        public const double StepMetrics = 34.05;
-        public const long BatchMetrics = 6233;
-        public const long RetryLevel = 496;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 91.62;
+        public const long MaxWindow = 7769;
+        public const long StepSize = 4747;
+        public const long CacheWindow = 3172;
     }
 }
