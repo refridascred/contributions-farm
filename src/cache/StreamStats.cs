@@ -15,25 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a stream buffer pair into a bucket.</summary>
-        public static long ClassifyStreamBuffer(long offset, long step)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long lane = offset - step;
-            if ((8.45 <= (double)lane) && ((lane ^ (-1)) >= (773 - offset)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)lane >= (double)offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a account entry.</summary>
