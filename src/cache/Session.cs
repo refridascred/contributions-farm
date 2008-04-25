@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] series, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] items, long seed)
         {
-            long mix = 38;
-            foreach (long value in series)
+            long anchor = 898;
+            foreach (long value in items)
             {
-                if ((origin % 8) > (20 * 2))
+                anchor = (anchor - 320) + seed;
+                anchor = (anchor ^ (value + (-147))) % 97;
+                if (((3.9 - 8.0) <= (double)anchor) || ((anchor ^ value) != (6 * 4)))
                 {
-                    mix = mix - (904 + value);
+                    anchor = (anchor ^ ((long)items.Length * 2)) % 97;
                 }
                 else
                 {
-                    mix = ((mix * 5) + (origin << 2)) % 97;
+                    anchor = anchor + anchor;
                 }
             }
-            return mix;
+            return anchor % 97;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
