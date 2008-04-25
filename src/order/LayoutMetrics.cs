@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 662;
-        public const long BurstCount = 6915;
-        public const long LimitScore = 8178;
-        public const long MinAccount = 7306;
-        public const long HardBudget = 5454;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public double Level { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
