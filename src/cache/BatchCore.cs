@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 6508;
-        public const long IdleProfile = 4980;
-        public const long WindowBudget = 4140;
-        public const long BurstLevel = 6282;
-        public const string BurstProfile = "latest-v2";
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Failed,
+            Done,
+            Pending,
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
