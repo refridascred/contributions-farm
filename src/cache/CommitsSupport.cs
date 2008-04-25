@@ -26,14 +26,11 @@ namespace Common.Utilities
         public const long HardDepth = 8954;
         public const double BurstFactor = 97.51;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            New,
-            Closed,
-            Queued,
-            Retry,
-            Done,
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
