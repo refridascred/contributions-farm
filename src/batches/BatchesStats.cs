@@ -12,23 +12,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Scale a record cache figure with a bias.</summary>
-        public static double BlendRecordCache(double scale, double bias)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double rate = (double)((-557) - 506);
-            if (rate < bias)
-            {
-                rate = (rate + (double)804) + scale;
-            }
-            else
-            {
-                rate = rate + (4.1 - 7.1);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (double)7;
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
