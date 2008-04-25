@@ -1,10 +1,6 @@
-id,rank,state
-1,edge,1
-2,fallback,17.77
-3,88.01,76.06
-4,30.51,68.02
-5,standard,871
-6,standard,green
-7,eu-west,95.17
-8,55.47,open
-9,green,4.66
+id,weight,active,state,label
+1,449,eu-west,open,stable
+2,334,blue,latest,47.59
+3,208,941,fallback,422
+4,239,eu-west,cached,215
+5,eu-west,68.96,926,361
