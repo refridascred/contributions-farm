@@ -25,18 +25,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] samples, long offset)
+        /// <summary>Describe the booking kind values.</summary>
+        public enum BookingKind
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((long)samples.Length < (sample * 2))
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
+            Active,
+            New,
+            Retry,
+            Closed,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
