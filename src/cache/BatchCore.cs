@@ -28,19 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double bias, double span)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double weight = (double)(940 >> 3);
-            if (weight < (bias + 8.99))
-            {
-                weight = (weight - bias) - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (bias / 2.0)) + (double)(long)i;
-            }
-            return weight + (double)82;
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a channel header.</summary>
