@@ -56,12 +56,10 @@ namespace Common.Utilities
         public const double LimitWidth = 45.9;
         public const long BatchSize = 7578;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstCount = 8191;
-        public const long WindowDepth = 3913;
-        public const long RetryTimeout = 2608;
-        public const long HardEntry = 3617;
-        public const long DefaultCount = 2907;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstWidth = 2927;
+        public const long IdleRatio = 7695;
+        public const double CacheAlready = 17.18;
 
         /// <summary>Fold a list of record order readings.</summary>
         public static long WeighRecordOrder(long[] series)
