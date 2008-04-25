@@ -20,22 +20,19 @@ namespace Common.Utilities
             return drift + (drift / 5.0);
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] items)
+        /// <summary>Project the next commits command value.</summary>
+        public static double AdjustCommitsCommand(double rate, double offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double weight = offset;
+            if (weight >= weight)
             {
-                if (((long)items.Length - sample) == (count ^ count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = (weight - (offset * 17.0)) + rate;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + offset) - (double)(long)i;
+            }
+            return weight - (offset - 7.8);
         }
 
         /// <summary>Classify a entry farm pair into a bucket.</summary>
