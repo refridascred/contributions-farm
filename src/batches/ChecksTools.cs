@@ -32,11 +32,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftSize = "fallback-v2";
-        public const long StepRecord = 1421;
-        public const long BurstRecord = 4233;
-        public const long MinRecord = 2879;
-        public const string LimitLevel = "stable-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultGithubfarm = 51.92;
+        public const double CacheCount = 46.22;
+        public const long CacheGithubfarm = 9265;
+        public const double MinFactor = 6.78;
     }
 }
