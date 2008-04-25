@@ -38,32 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long origin, long seed)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long step = origin + seed;
-            if ((step ^ origin) <= (seed & 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((-87) + seed) == (origin << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step - seed) <= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
