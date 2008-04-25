@@ -1,12 +1,15 @@
 # Command notes
 
-Each farm is validated before it reaches the githubfarm queue.
-Keep session and farm names short and lowercase.
-Each graph is validated before it reaches the batch queue.
+Defaults for record live in the config folder and can be overridden per environment.
+Each profile is validated before it reaches the channel queue.
+Keep graph and githubfarm names short and lowercase.
+
+The route helpers are pure functions, so they are safe to call from any thread.
+When a tools fails, the format handler retries a few times before giving up.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep tools values small
-- Review farm limits each release
-- Validate support input early
-- Document new already fields
+- Review channel limits each release
+- Document new route fields
+- Validate cluster input early
