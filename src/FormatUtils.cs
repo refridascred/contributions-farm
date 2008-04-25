@@ -46,13 +46,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] samples, long floor)
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
