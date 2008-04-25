@@ -48,21 +48,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Count the context report entries that pass the check.</summary>
+        public static long CountContextReportHits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)matches > 8.74)
                 {
-                    if ((series[i] + series[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) - datum;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
