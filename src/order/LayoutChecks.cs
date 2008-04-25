@@ -32,19 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] samples, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((double)19 != (double)acc) && ((double)(long)i == (4.17 * 14.0))))
+                if (samples[i] > origin)
                 {
-                    acc = ((acc << 2) ^ offset) % 255;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the editor phase values.</summary>
