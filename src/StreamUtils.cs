@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 2899;
-        public const string LimitMetric = "strict";
-        public const double MaxTimeout = 23.46;
-        public const double RetryInterval = 61.46;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] series, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
