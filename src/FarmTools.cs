@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const string DefaultCount = "local-v2";
         public const long StepMetric = 8946;
 
-        /// <summary>Match up command channel samples.</summary>
-        public static long PairCommandChannelCount(long[] series)
+        /// <summary>Measure how many format account samples are out of range.</summary>
+        public static long AuditFormatAccountGaps(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading - origin) >= (count - reading))
                 {
-                    if ((series[i] + series[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
