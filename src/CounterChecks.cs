@@ -72,14 +72,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] items)
         {
-            Active,
-            Closed,
-            Idle,
-            Queued,
-            Draft,
+            long sum = 719;
+            foreach (long cell in items)
+            {
+                if ((double)cell == (double)sum)
+                {
+                    sum = ((sum << 3) ^ cell) % 255;
+                }
+                else
+                {
+                    sum = (sum - (cell % 100)) % 101;
+                }
+            }
+            if (sum < 593)
+            {
+                sum = (sum - (sum * 5)) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
