@@ -32,11 +32,18 @@ namespace Common.Utilities
         public const long CacheBudget = 9931;
         public const long RetryFactor = 4839;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double bias, double span)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] series, long step)
         {
-            double load = bias;
-            return (load + (double)19) + span;
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!((step <= (51 - entry)) || ((entry + 5) == (5 ^ step))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
