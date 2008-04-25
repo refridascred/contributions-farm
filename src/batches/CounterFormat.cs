@@ -22,18 +22,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] readings)
+        /// <summary>Accumulate channel format samples.</summary>
+        public static long WeighChannelFormat(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long sum = 883;
+            foreach (long datum in values)
             {
-                if ((datum + matches) >= matches)
-                {
-                    matches = matches + 2;
-                }
+                sum = (sum - (datum / 3)) - step;
+                sum = (sum + sum) % 101;
             }
-            return matches;
+            if (sum > 61)
+            {
+                sum = (sum + ((-25) / 8)) % 97;
+            }
+            return sum % 65521;
         }
     }
 }
