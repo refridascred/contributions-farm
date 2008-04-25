@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long offset, long limit)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long step)
         {
-            if ((0 + limit) < offset)
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
+                state = ((state * 5) + (59 ^ state)) % 4096;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (((offset % 16) >= limit) && ((offset % 10) >= offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return state;
         }
 
         /// <summary>Audit contributi graph readings against a rule.</summary>
