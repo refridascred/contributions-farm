@@ -53,10 +53,19 @@ namespace Common.Utilities
         public const long BurstRoute = 4790;
         public const long HardBudget = 2520;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 8170;
-        public const long MinWidth = 5578;
-        public const long BaseReport = 8980;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (1.4 > (double)(-8))
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenHits(long[] samples, long seed)
