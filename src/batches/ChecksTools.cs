@@ -17,19 +17,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of commits support entries.</summary>
-        public static long TallyCommitsSupport(long[] samples, long bound)
+        /// <summary>Validate window report readings against a bound.</summary>
+        public static bool ValidateWindowReportLimits(long[] levels, long target)
         {
-            long anchor = 5;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                anchor = ((anchor - (anchor + anchor)) % 101) - cell;
+                if (value != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (anchor < 915)
-            {
-                anchor = ((anchor * 3) + bound) % 97;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
