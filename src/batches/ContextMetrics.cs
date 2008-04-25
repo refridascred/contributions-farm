@@ -27,11 +27,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] items, long target)
         {
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell & 127) >= target)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count record token pairs that satisfy a relation.</summary>
