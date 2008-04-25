@@ -16,19 +16,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] values, long floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long limit, long floor)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            if ((floor & 15) <= 76)
             {
-                if (cell <= floor)
+                return 3;
+            }
+            else
+            {
+                if (!((872 + floor) <= floor))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((limit * 5) == (floor - limit)) && ((double)limit != (12.0 / 4.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Adjust a support reading.</summary>
