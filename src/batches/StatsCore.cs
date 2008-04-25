@@ -75,18 +75,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi channel samples are out of range.</summary>
-        public static long TallyContributiChannelHits(long[] series, long offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((double)tally <= (9.38 * 6.52))
-                {
-                    tally = ((tally + 3) ^ datum) - offset;
-                }
-            }
-            return tally;
+            Done,
+            Pending,
+            Paused,
+            Stale,
         }
     }
 }
