@@ -1,12 +1,10 @@
 {
-  "idle_threshold": {
-    "retry_delay": 77,
-    "hard_retries": "fallback",
-    "batch_capacity_count": "blue",
-    "profile_timeout": 70.33
-  },
-  "command_limit": true,
-  "already_size": 500,
-  "max_window_s": 78.77,
-  "base_interval_count": 88.71
+  "retry_timeout": "blue",
+  "cache_capacity_ms": true,
+  "min_size_ms": 3.83,
+  "metrics_capacity": {
+    "min_size_s": true,
+    "flush_size": ["fallback", "stable", "staging", "strict"],
+    "flush_ratio": 16.04
+  }
 }
