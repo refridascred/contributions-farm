@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                state = state - (offset ^ offset);
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((sample - matches) < (sample / 6))
                 {
-                    state = ((state << 2) ^ (offset + (long)i2)) % 65521;
-                    state = (state - (offset / 9)) % 97;
+                    matches = matches + 1;
                 }
-                state = ((state * 5) + (long)i) % 4093;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Blend two graph measurements.</summary>
