@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] data)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] items, long floor)
         {
             long tally = 0;
-            foreach (long reading in data)
+            foreach (long value in items)
             {
-                if (tally < (tally / 8))
+                if (!(tally >= (65 - floor)))
                 {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) + value;
                 }
             }
             return tally;
