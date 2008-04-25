@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] values, long step)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] == step) && ((values[i] % 5) == 0))
+                if (samples[i] == origin)
                 {
                     return (long)i;
                 }
