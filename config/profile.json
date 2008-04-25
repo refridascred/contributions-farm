@@ -1,5 +1,5 @@
 {
-  "burst_retries_count": "open",
-  "strict": "green",
-  "burst_timeout_s": 43
+  "cache_depth_count": 30,
+  "flush_size_s": "eu-west",
+  "verbose": 100
 }
