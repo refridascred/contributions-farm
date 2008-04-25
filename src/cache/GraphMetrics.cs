@@ -58,21 +58,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(hits >= (offset + offset)))
                 {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + item;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Project the next queue value.</summary>
