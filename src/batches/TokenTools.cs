@@ -20,19 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!(matches >= (entry / 3)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCounter = 63.48;
+        public const long BaseCounter = 4435;
+        public const long MinRatio = 3521;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LocateStreamIndex(long[] samples, long offset)
