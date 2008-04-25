@@ -23,16 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = (carry * 2) + ((long)i & 3);
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Closed,
+            Done,
+            Dropped,
+            Locked,
         }
     }
 }
