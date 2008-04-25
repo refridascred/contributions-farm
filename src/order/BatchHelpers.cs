@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of batches route readings.</summary>
-        public static long TallyBatchesRoute(long[] readings, long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] values)
         {
-            long carry = 329;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                carry = ((carry * 5) + (carry + datum)) + seed;
+                if (2.15 < (double)value)
+                {
+                    seen = seen + 2;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a stream record.</summary>
