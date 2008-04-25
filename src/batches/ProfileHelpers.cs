@@ -46,19 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long target)
         {
-            long mix = 99;
-            foreach (long value in readings)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                mix = mix ^ (mix - value);
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (mix > 25)
-            {
-                mix = ((mix << 2) ^ (84 % 100)) % 255;
-            }
-            return mix % 65521;
+            return mix;
         }
 
         /// <summary>Describe the token kind values.</summary>
