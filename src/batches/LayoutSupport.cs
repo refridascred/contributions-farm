@@ -75,15 +75,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count report buffer pairs that satisfy a relation.</summary>
-        public static long PairReportBufferCount(long[] samples)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 20)
+                    if ((items[i] + items[j]) == 1)
                     {
                         seen = seen + 1;
                     }
