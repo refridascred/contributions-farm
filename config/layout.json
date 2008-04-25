@@ -1,11 +1,6 @@
 {
-  "default_ttl_count": false,
-  "retry_ttl_ms": {
-    "min_ttl_pct": 250,
-    "persist": 32.41,
-    "audit": 22.61,
-    "tools_limit": 15
-  },
-  "min_ttl_ms": 50.22,
-  "readonly": "local"
+  "retry_delay_s": "green",
+  "payload_size": "strict",
+  "flush_depth_ms": "standard",
+  "checks_ratio": ["primary", "primary", "strict"]
 }
