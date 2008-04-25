@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west stable latest edge; do
+for item in latest open; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
+COMMAND_LIMIT=377
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-blue}"
 case "${mode}" in
-    blue)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
