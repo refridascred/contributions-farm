@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double weight, double floor)
-        {
-            double drift = (double)((-535) ^ 36);
-            if (drift > floor)
-            {
-                drift = drift - (double)10;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (weight * 11.0)) + (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowRatio = 1814;
+        public const double CacheTools = 64.91;
+        public const double BaseBudget = 11.98;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowLayout = 2004;
