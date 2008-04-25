@@ -59,18 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] items)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((double)hits <= (2.49 + 1.7))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
