@@ -33,13 +33,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryBudget = "local-v2";
+        public const long BurstRatio = 4008;
+        public const long SoftScore = 8607;
+        public const long CacheInterval = 2247;
     }
 }
