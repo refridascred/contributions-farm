@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftWidth = "fallback-edge";
-        public const long SoftFactor = 3656;
-        public const long RetryFilter = 5383;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data)
+        {
+            long total = 668;
+            foreach (long reading in data)
+            {
+                total = total - total;
+                if ((reading - reading) >= (831 << 3))
+                {
+                    total = total + reading;
+                }
+            }
+            if (total < 60)
+            {
+                total = ((total * 3) + (total & 1)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
