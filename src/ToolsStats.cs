@@ -36,12 +36,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Classify a metric checks pair into a bucket.</summary>
+        public static long BucketMetricChecks(long floor, long target)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            if (!((3.0 - 7.3) > (double)floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target <= (target % 10))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
