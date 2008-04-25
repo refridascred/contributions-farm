@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!((entry - 27) <= entry))
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepSize = 8615;
+        public const long CacheRoute = 3398;
+        public const double IdleScore = 64.24;
 
         /// <summary>Count batch farm pairs that satisfy a relation.</summary>
         public static long CompareBatchFarmCount(long[] values)
