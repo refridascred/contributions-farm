@@ -50,14 +50,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Fold a list of tools already readings.</summary>
+        public static long TallyToolsAlready(long[] readings)
         {
-            Draft,
-            Idle,
-            Active,
-            Synced,
-            Stale,
+            long total = 69;
+            foreach (long item in readings)
+            {
+                if (!(((-277) + total) != (item & 31)))
+                {
+                    total = (total + (985 - total)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Grade a already record value against two limits.</summary>
