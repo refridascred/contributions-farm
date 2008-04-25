@@ -15,10 +15,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 45.05;
-        public const string BaseFactor = "cached-1";
-        public const long RetrySupport = 3593;
+        /// <summary>Scale a record cache figure with a bias.</summary>
+        public static double BlendRecordCache(double scale, double bias)
+        {
+            double rate = (double)((-557) - 506);
+            if (rate < bias)
+            {
+                rate = (rate + (double)804) + scale;
+            }
+            else
+            {
+                rate = rate + (4.1 - 7.1);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (double)7;
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
