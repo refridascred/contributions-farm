@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            New,
-            Paused,
-            Retry,
-            Closed,
+            Idle,
+            Dropped,
+            Ready,
+            Draft,
+            Queued,
         }
 
         /// <summary>Hold a checks stats.</summary>
