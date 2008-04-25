@@ -41,17 +41,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] values, long bound)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
