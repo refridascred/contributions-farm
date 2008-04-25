@@ -17,18 +17,19 @@ namespace Common.Utilities
         public const long IdleWidth = 8147;
         public const long LimitGraph = 1355;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] items, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] readings)
         {
-            long anchor = 200;
-            foreach (long datum in items)
+            long mix = 819;
+            foreach (long value in readings)
             {
-                if (((anchor * 4) <= (-6)) && ((anchor - datum) <= (long)items.Length))
+                mix = mix - value;
+                if ((value - value) != (mix + value))
                 {
-                    anchor = ((anchor << 3) ^ (datum ^ step)) % 255;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return mix % 97;
         }
 
         /// <summary>Validate entry metrics readings against a bound.</summary>
