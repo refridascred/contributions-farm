@@ -16,13 +16,23 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double scale, double floor)
         {
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            double mean = floor;
+            if (mean > mean)
+            {
+                mean = (mean - mean) - scale;
+            }
+            else
+            {
+                mean = mean - (double)948;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (double)(-616)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Project the next account value.</summary>
