@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleCount = 3977;
+        public const double HardFilter = 79.67;
+        public const long BaseFilter = 5858;
+        public const double CacheFilter = 88.0;
+        public const long DefaultRatio = 7123;
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long ClassifyBatches(long origin, long seed)
