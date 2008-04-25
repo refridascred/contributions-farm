@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] levels, long limit)
+        /// <summary>Locate a editor commits reading by value.</summary>
+        public static long LocateEditorCommitsIndex(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
+                if ((items[i] > target) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
