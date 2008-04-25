@@ -34,14 +34,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Match up session layout samples.</summary>
+        public static long CompareSessionLayoutCount(long[] samples)
         {
-            Pending,
-            Closed,
-            Idle,
-            Paused,
-            Active,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of report schema readings.</summary>
