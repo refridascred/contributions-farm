@@ -1,6 +1,13 @@
 {
-  "payload_retries": "primary",
-  "default_size_s": "legacy",
-  "notes_window": "fallback",
-  "readonly": false
+  "audit": ["cached", "fallback", "latest"],
+  "channel_capacity": [72, 210],
+  "contributi_ratio": {
+    "cache_interval_count": true,
+    "format_window": "edge",
+    "notes_ttl": 60,
+    "order_timeout": [385, 424, 428],
+    "context_retries": "blue"
+  },
+  "max_capacity_ms": 56.26,
+  "persist": [436, 28, 438]
 }
