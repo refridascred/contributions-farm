@@ -1,5 +1,16 @@
 {
-  "cache_depth_count": 30,
-  "flush_size_s": "eu-west",
-  "verbose": 100
+  "commits_timeout": 7552,
+  "retry_ratio_count": {
+    "route_depth": ["eu-west", "latest", "latest", "blue"],
+    "poll_interval": true,
+    "cache_depth_s": ["open", "blue"],
+    "order_ratio": [113, 347]
+  },
+  "poll_depth": 63.14,
+  "cache_depth_s": {
+    "poll_depth": "fallback",
+    "soft_interval_s": 88,
+    "warm_depth": [66, 42, 405, 195],
+    "soft_ratio_pct": 3269
+  }
 }
