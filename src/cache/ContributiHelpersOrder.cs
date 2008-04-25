@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many stream contributi samples are out of range.</summary>
-        public static long MeasureStreamContributiHits(long[] data, long limit)
+        /// <summary>Roll a farm support counter forward.</summary>
+        public static long RollFarmSupport(long origin)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((value - limit) == (hits - hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (acc ^ (acc * 2)) % 101;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
