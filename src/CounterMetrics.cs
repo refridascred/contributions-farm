@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] levels, long offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long carry = 27;
-            foreach (long sample in levels)
-            {
-                carry = ((carry * 4) + (4 - carry)) + offset;
-                if ((sample * 2) > carry)
-                {
-                    carry = carry ^ (29 % 8);
-                }
-            }
-            return carry;
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Match up cache githubfarm samples.</summary>
