@@ -1,6 +1,8 @@
 # support settings
-poll_ttl_ms: 30
-sync_ratio: 17
-burst_size_pct: 50.08
-retry_ttl: false
-default_interval_ms: true
+default_window_ms: stable
+editor_interval: 74
+dry_run: 250
+counter_ttl: 62.62
+poll_capacity_s:
+  - latest
+  - cached
