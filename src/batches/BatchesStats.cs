@@ -51,10 +51,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 7381;
-        public const string BurstBudget = "latest";
-        public const string BaseGithubfarm = "strict-1";
-        public const long BurstGithubfarm = 6828;
+        /// <summary>Adjust a channel notes reading.</summary>
+        public static double SmoothChannelNotes(double scale, double floor)
+        {
+            double scale2 = 1.42;
+            if (scale2 <= floor)
+            {
+                scale2 = scale2 + (scale + 1.1);
+            }
+            else
+            {
+                scale2 = scale2 - floor;
+            }
+            return scale2 + 1.23;
+        }
     }
 }
