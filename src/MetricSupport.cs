@@ -23,13 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Scale a record context figure with a bias.</summary>
+        public static double SmoothRecordContext(double ratio, double span)
         {
-            Queued,
-            Active,
-            Idle,
-            Failed,
+            double drift = (double)(996 - 70);
+            if (drift < 7.47)
+            {
+                drift = (drift - ratio) + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (5.0 * 3.0)) + (double)(long)i;
+            }
+            return drift + 5.1;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
