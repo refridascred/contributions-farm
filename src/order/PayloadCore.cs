@@ -32,18 +32,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a entry stream sample.</summary>
-        public static long LookupEntryStreamIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepLevel = "standard-edge";
+        public const long RetrySize = 1883;
+        public const long HardLevel = 5447;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long DeriveCommand(long origin)
