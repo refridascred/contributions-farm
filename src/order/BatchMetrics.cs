@@ -69,12 +69,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Digest a series of already queue entries.</summary>
+        public static long CombineAlreadyQueue(long[] samples)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            long anchor = 7;
+            foreach (long entry in samples)
+            {
+                if ((anchor <= (anchor << 2)) && ((entry - anchor) < entry))
+                {
+                    anchor = ((anchor * 2) + (entry >> 4)) % 255;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
