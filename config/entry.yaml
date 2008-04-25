@@ -1,13 +1,11 @@
 # entry settings
-cluster_threshold: legacy
-default_window_ms:
-  base_threshold:
-    - primary
-    - edge
-  idle_ratio: fallback
-  filter_size: green
-enabled:
-  - 369
-  - 88
-  - 27
-  - 104
+max_depth: 2692
+batch_limit:
+  - eu-west
+  - open
+  - legacy
+  - edge
+retry_limit_s:
+  - 329
+  - 103
+strict: latest
