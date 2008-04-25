@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] items, long floor)
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (((item >> 5) > item) || ((203 + floor) > floor))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the support state values.</summary>
