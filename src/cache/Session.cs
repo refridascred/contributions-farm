@@ -57,19 +57,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double weight, double floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] samples, long step)
         {
-            double mean = 19.0;
-            if (mean >= (floor * 4.49))
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                mean = (mean + floor) + weight;
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (double)96) - (double)(long)i;
-            }
-            return mean - (mean / 9.0);
+            return ready;
         }
     }
 }
