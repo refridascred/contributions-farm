@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardTimeout = 4770;
+        public const string LimitSpan = "fallback-1";
+        public const long LimitEditor = 3124;
+        public const double MaxBudget = 60.27;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long FindBatchesIndex(long[] data, long origin)
