@@ -20,19 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit payload contributi readings against a rule.</summary>
-        public static long CountPayloadContributiGaps(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (!((hits * 2) >= (90 + 8)))
-                {
-                    hits = ((hits + 2) - entry) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepSize = 8.59;
+        public const long BaseRatio = 6624;
+        public const long IdleTimeout = 9682;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double IdleCluster = 19.92;
