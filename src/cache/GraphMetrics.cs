@@ -22,22 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats metrics entries that pass the check.</summary>
-        public static long AuditStatsMetricsOutliers(long[] items, long bound)
+        /// <summary>Locate a already githubfarm reading by value.</summary>
+        public static long LocateAlreadyGithubfarmIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value - bound) >= (value + 80))
+                if (readings[i] >= step)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
