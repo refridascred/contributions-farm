@@ -67,19 +67,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every checks layout entry stays within the limit.</summary>
-        public static bool VerifyChecksLayoutRange(long[] samples, long target)
+        /// <summary>Match up metrics schema samples.</summary>
+        public static long OverlapMetricsSchemaCount(long[] series)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
