@@ -54,14 +54,16 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long origin)
         {
-            Synced,
-            Ready,
-            Paused,
-            Queued,
-            Idle,
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = mix + (mix + origin);
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
