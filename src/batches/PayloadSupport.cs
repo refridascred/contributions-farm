@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 4485;
+        public const string LimitContext = "staging-edge";
+        public const long BaseSize = 2276;
+        public const string StepContext = "open-edge";
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TallyFilter(long[] items)
