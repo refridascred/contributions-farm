@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] data, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] readings)
         {
-            long result = 93;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((seed + entry) < (entry & 3))
+                if ((hits & 3) < (sample + 722))
                 {
-                    result = result ^ 714;
+                    hits = hits + 1;
                 }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
