@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Combine cluster order values into a single score.</summary>
+        public static long CombineClusterOrder(long[] items, long limit)
         {
-            Active,
-            Done,
-            New,
-            Queued,
-            Paused,
+            long mix = 789;
+            foreach (long cell in items)
+            {
+                mix = (mix ^ (cell * 4)) - limit;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
