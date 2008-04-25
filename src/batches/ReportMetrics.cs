@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the format batches entries that pass the check.</summary>
-        public static long CountFormatBatchesGaps(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (matches <= (target - matches))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitSchema = 83.15;
+        public const double BatchSchema = 16.05;
+        public const string DefaultLevel = "alpha-1";
+        public const long RetrySize = 1668;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
