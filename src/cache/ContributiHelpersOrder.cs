@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] data, long seed)
+        /// <summary>Measure how many stream contributi samples are out of range.</summary>
+        public static long MeasureStreamContributiHits(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) == 0))
+                if ((value - limit) == (hits - hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
