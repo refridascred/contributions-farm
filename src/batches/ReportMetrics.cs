@@ -12,29 +12,23 @@ namespace Common.Utilities
             return (scale - (bias / 7.0)) + floor;
         }
 
-        /// <summary>Classify a buffer context pair into a bucket.</summary>
-        public static long ClassifyBufferContext(long origin, long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long floor, long floor2)
         {
-            if ((limit <= (9 * 4)) && ((origin ^ limit) <= (limit * 3)))
+            long step = floor + floor2;
+            if (!((floor << 2) == (step & 15)))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (683 <= (origin - origin))
+                if (((double)step > (11.0 / 8.0)) || ((floor % 7) != (floor * 5)))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)limit != (9.65 + 4.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 1;
                 }
             }
         }
