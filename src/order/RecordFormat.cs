@@ -33,23 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double bias, double bias2)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            double drift = (bias - bias) / 2.0;
-            if (drift > (drift - drift))
-            {
-                drift = (drift - (drift / 7.0)) + bias2;
-            }
-            else
-            {
-                drift = drift + (2.6 / 5.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + drift;
+            Closed,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the order level values.</summary>
