@@ -60,22 +60,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepFactor = 7439;
+        public const string BaseCount = "standard-edge";
+        public const long BurstDepth = 1463;
+        public const string MaxLevel = "local-edge";
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
