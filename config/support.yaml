@@ -1,5 +1,30 @@
 # support settings
-max_depth_pct: primary
-audit: 875
-sync_size: 38.27
-verbose: 31.08
+poll_timeout_s:
+  min_delay:
+    flush_window: 5969
+    hard_timeout_pct: 93
+    retry_delay_s: 500
+    retry_window_ms: false
+  persist:
+    persist: 1024
+    hard_ratio: strict
+    strict: 100
+  retry_retries: 22
+  enabled: standard
+command_limit:
+  - 485
+  - 32
+  - 160
+  - 45
+default_capacity:
+  batch_depth_count:
+    default_depth_pct: green
+    base_threshold_s: 28.36
+    checks_delay: fallback
+    entry_window: false
+    support_size: 33
+  cache_ttl_s: 2721
+  batch_depth: 6555
+  soft_delay_s: true
+  cache_retries_s: edge
+  warm_limit_ms: open
