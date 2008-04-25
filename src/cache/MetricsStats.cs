@@ -16,18 +16,39 @@ namespace Common.Utilities
             return bias2 + (rate / 7.0);
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] data, long floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long limit, long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long delta = limit - offset;
+            if (!((limit + delta) < (9 * 3)))
             {
-                if ((double)floor > (4.54 + 15.0))
+                return 8;
+            }
+            else
+            {
+                if ((limit * 5) > limit)
                 {
-                    count = (count + 3) + reading;
+                    return 6;
+                }
+                else
+                {
+                    if (!((851 - delta) <= limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)offset != (8.39 + 8.4)) || ((double)delta <= (double)6))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate metric account samples.</summary>
