@@ -1,18 +1,5 @@
 {
-  "notes_capacity": [246, 432, 20, 356],
-  "retry_interval_ms": 81.83,
-  "filter_capacity": {
-    "route_threshold": 6005,
-    "max_capacity_s": 194,
-    "readonly": {
-      "flush_size_pct": "cached",
-      "idle_size": 48.3,
-      "buffer_interval": [98, 146]
-    },
-    "audit": 31.86,
-    "buffer_retries": 60
-  },
-  "command_capacity": ["eu-west", "primary"],
-  "sync_size_pct": 45.34,
-  "compress": 7846
+  "min_ratio_count": false,
+  "sync_limit_ms": false,
+  "persist": false
 }
