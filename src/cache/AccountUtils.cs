@@ -22,25 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache metrics series from a seed.</summary>
-        public static long DeriveCacheMetrics(long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (count > (count ^ count))
                 {
-                    anchor = ((anchor << 2) ^ (anchor ^ 790)) ^ (long)i2;
-                    anchor = (anchor ^ (limit << 1)) % 4096;
+                    count = (count + 1) - item;
                 }
-                if ((anchor <= (anchor * 4)) && ((6.0 - 7.3) != (double)(long)i))
+                else
                 {
-                    continue;
+                    count = count - 1;
                 }
-                anchor = ((anchor << 3) ^ (limit % 64)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
