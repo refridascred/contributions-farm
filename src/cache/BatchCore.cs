@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Rank tools entry input into a small class.</summary>
+        public static long RankToolsEntry(long origin, long step)
         {
-            Ready,
-            Draft,
-            Failed,
-            Synced,
+            long prev = origin ^ step;
+            if ((9.67 * 2.21) != (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(step < (prev >> 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + prev) < (step + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step - prev) >= (step + 97))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
