@@ -36,11 +36,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 8806;
-        public const long DefaultWindow = 5929;
-        public const long BaseWindow = 6422;
-        public const long BatchFactor = 1064;
-        public const long BatchBudget = 3491;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((9 >> 1) < (tally - sample))
+                {
+                    tally = (tally + 2) - bound;
+                }
+            }
+            return tally;
+        }
     }
 }
