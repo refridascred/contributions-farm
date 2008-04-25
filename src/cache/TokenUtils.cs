@@ -38,14 +38,21 @@ namespace Common.Utilities
             return bias + (double)9;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] items)
         {
-            Active,
-            Idle,
-            Retry,
-            Done,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
