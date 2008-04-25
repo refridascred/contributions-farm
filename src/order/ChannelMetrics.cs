@@ -20,14 +20,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 7870;
+        public const double DefaultLayout = 24.34;
+        public const double StepLayout = 35.61;
+        public const long MaxCount = 3695;
+        public const long MaxRatio = 2143;
 
         /// <summary>Blend two session measurements.</summary>
         public static double SmoothSession(double bias, double bias2)
