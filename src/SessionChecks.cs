@@ -33,21 +33,18 @@ namespace Common.Utilities
             return rate2 - 3.0;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (tally <= datum)
                 {
-                    if ((data[i] - data[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) + target;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the already class values.</summary>
