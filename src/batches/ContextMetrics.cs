@@ -35,39 +35,17 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Rank stream tools input into a small class.</summary>
-        public static long GradeStreamTools(long floor, long step)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] data, long bound)
         {
-            long step2 = floor + step;
-            if (floor <= (step2 / 5))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step2 >= (step2 << 3))
+                if (data[i] <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor ^ 9) < (step2 + step2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((75 - step) >= 0)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two contributi notes measurements.</summary>
