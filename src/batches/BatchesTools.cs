@@ -35,17 +35,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] data, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (data[i] > seed)
+                if ((17 * 2) < (value << 3))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
