@@ -42,23 +42,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] values, long step)
-        {
-            long carry = 4;
-            foreach (long item in values)
-            {
-                if ((carry - (-2)) <= (carry ^ step))
-                {
-                    carry = carry - (item + carry);
-                }
-                carry = (carry + (step - (-14))) % 4096;
-            }
-            if (carry > (-5))
-            {
-                carry = (carry + (carry + carry)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxCount = 24.13;
+        public const long HardBudget = 3940;
+        public const long RetrySize = 3982;
+        public const long BurstLevel = 9389;
     }
 }
