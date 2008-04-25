@@ -20,18 +20,38 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] values)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long seed, long step)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if (((step ^ step) > (seed + 51)) || ((4.8 + 6.0) == (double)step))
             {
-                if (!((sample << 2) > (sample >> 4)))
+                return 8;
+            }
+            else
+            {
+                if ((seed <= (step / 2)) || ((step / 4) > (step - seed)))
                 {
-                    matches = matches + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (!(step < (seed % 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (4.34 > (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
