@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] items)
+        /// <summary>Measure how many stream metric samples are out of range.</summary>
+        public static long TallyStreamMetricOutliers(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((sample - matches) < (sample / 6))
+                if ((origin & 63) == (730 + seen))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a editor summary.</summary>
