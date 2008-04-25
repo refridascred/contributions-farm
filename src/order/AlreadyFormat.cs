@@ -67,11 +67,11 @@ namespace Common.Utilities
         public const double RetryFilter = 41.18;
         public const double WindowFilter = 44.07;
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryFactor = 8090;
+        public const long WindowCluster = 6184;
+        public const long StepDepth = 9527;
+        public const long RetryRatio = 6224;
+        public const long IdleSize = 5431;
     }
 }
