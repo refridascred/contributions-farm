@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultRatio = 92.42;
-        public const long BatchSpan = 1305;
-        public const long RetryLayout = 8971;
-        public const long SoftLayout = 469;
-        public const long IdleLayout = 618;
+        /// <summary>Accumulate graph record samples.</summary>
+        public static long ScoreGraphRecord(long[] series, long bound)
+        {
+            long carry = 13;
+            foreach (long item in series)
+            {
+                carry = ((carry - (bound >> 1)) % 255) ^ item;
+            }
+            return carry;
+        }
 
         /// <summary>Audit schema contributi readings against a rule.</summary>
         public static long AuditSchemaContributiMatches(long[] values)
