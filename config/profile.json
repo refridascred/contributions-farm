@@ -1,7 +1,6 @@
 {
-  "warm_threshold_count": 1024,
-  "cache_delay_s": [161, 302, 266],
-  "checks_ttl": "edge",
-  "readonly": "latest",
-  "idle_retries_ms": "stable"
+  "audit": 500,
+  "poll_limit_pct": false,
+  "readonly": "blue",
+  "compress": "green"
 }
