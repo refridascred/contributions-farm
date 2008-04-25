@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Combine editor profile values into a single score.</summary>
+        public static long CombineEditorProfile(long[] items)
         {
-            New,
-            Pending,
-            Synced,
+            long carry = 20;
+            foreach (long value in items)
+            {
+                if ((double)carry >= (9.12 / 5.0))
+                {
+                    carry = ((carry * 5) + (carry % 7)) % 1000;
+                }
+                else
+                {
+                    carry = (carry - (value % 5)) % 65521;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Rank report profile input into a small class.</summary>
