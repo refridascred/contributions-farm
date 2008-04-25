@@ -33,19 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double gain, double span)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double ratio, double offset)
         {
-            double mean = (double)(4 * 5);
-            if (mean <= (double)4)
+            double gain = ratio / 8.0;
+            if (gain >= ratio)
             {
-                mean = mean + (span + gain);
+                gain = gain - (gain - offset);
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                mean = (mean - (double)3) + (double)(long)i;
+                gain = gain - offset;
             }
-            return mean - mean;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (gain - gain)) - (double)(long)i;
+            }
+            return gain - (ratio + offset);
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
