@@ -18,18 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] readings)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((matches ^ matches) >= 7)
+                score = score - (limit * 3);
+                if (((score + limit) >= (limit % 97)) && ((long)i > (score * 3)))
                 {
-                    matches = (matches + 1) - item;
+                    score = score - (score + limit);
+                    score = (score + score) % 4096;
                 }
+                else
+                {
+                    score = (score << 3) ^ (score - limit);
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
