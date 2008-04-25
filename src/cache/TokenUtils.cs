@@ -23,18 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches format readings against a rule.</summary>
-        public static long TallyBatchesFormatOutliers(long[] data, long origin)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((4.3 < (double)sample) || (((6.4 * 10.0) <= (double)origin) || ((3.0 * 0.1) <= (double)tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
