@@ -1,20 +1,11 @@
 {
-  "default_retries_pct": "green",
-  "max_retries_count": {
-    "token_ttl": {
-      "readonly": 70.14,
-      "hard_size_count": 2771,
-      "window_threshold": 1235
-    },
-    "burst_interval": {
-      "stats_limit": "legacy",
-      "retry_interval_pct": [163, 430, 434],
-      "soft_window_count": false
-    },
-    "verbose": false,
-    "persist": "strict"
+  "soft_ratio": {
+    "cache_retries": "stable",
+    "min_capacity_s": false,
+    "default_interval_ms": "open",
+    "dry_run": 1024
   },
-  "base_window_s": [386, 5, 5],
-  "stream_interval": "edge",
-  "min_capacity_s": 1024
+  "poll_retries_pct": 7454,
+  "soft_size": 2618,
+  "soft_ttl_count": "staging"
 }
