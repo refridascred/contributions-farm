@@ -45,19 +45,12 @@ namespace Common.Utilities
         public const string BatchQueue = "fallback";
         public const long WindowQueue = 9566;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((14 - 2) < datum)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinSpan = 270;
+        public const long BatchFactor = 1747;
+        public const long StepScore = 8530;
+        public const long BaseCommits = 6205;
+        public const double DefaultCommits = 29.68;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsBounds(long[] series, long seed)
