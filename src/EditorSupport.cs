@@ -47,13 +47,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Grade a schema record value against two limits.</summary>
+        public static long BucketSchemaRecord(long origin, long limit)
         {
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
+            if ((limit + 810) == (3 % 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit & 15) <= (limit - limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin > (20.0 / 2.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit - origin) <= (origin / 9))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
