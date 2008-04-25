@@ -51,14 +51,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Closed,
-            Locked,
-            Synced,
-            Done,
-            Draft,
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
