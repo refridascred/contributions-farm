@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a checks context pair into a bucket.</summary>
-        public static long SortChecksContext(long limit, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] values, long seed)
         {
-            if ((limit >= (limit - limit)) || ((16.0 - 1.0) >= (double)seed))
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed < (limit / 3))
+                if (datum > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (limit <= (limit % 10))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (seed > (seed / 6))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
