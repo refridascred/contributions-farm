@@ -19,11 +19,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheSession = "open-v2";
-        public const string MaxSession = "primary";
-        public const long IdleInterval = 1443;
-        public const long StepSession = 3333;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((step + step) <= result)
+                {
+                    result = result ^ result;
+                    result = (result << 2) ^ (96 % 8);
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Iterate the token report series from a seed.</summary>
         public static long StepTokenReport(long floor)
