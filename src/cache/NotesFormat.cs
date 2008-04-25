@@ -12,14 +12,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next buffer queue value from a seed.</summary>
-        public static long DeriveBufferQueue(long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] levels)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            long acc = 6;
+            foreach (long entry in levels)
             {
-                acc = ((acc << 3) ^ (long)i) % 4096;
-                acc = ((acc * 3) + (long)i) % 4093;
+                acc = (acc - (entry & 15)) % 255;
             }
             return acc;
         }
