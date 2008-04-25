@@ -24,12 +24,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Digest a series of notes order entries.</summary>
+        public static long ScoreNotesOrder(long[] values)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long mark = 51;
+            foreach (long datum in values)
+            {
+                if ((mark + mark) > (mark - mark))
+                {
+                    mark = mark + datum;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
