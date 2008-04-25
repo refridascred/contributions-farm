@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long BatchTools = 4489;
         public const double CacheRatio = 18.7;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] series, long step)
         {
-            Idle,
-            Active,
-            Closed,
-            Dropped,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
