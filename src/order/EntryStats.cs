@@ -62,11 +62,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheRatio = 155;
-        public const long BurstCache = 7349;
-        public const long WindowCache = 1020;
-        public const double LimitInterval = 82.21;
-        public const string BatchScore = "strict-edge";
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Stale,
+            Draft,
+            Synced,
+        }
     }
 }
