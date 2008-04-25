@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] items, long offset)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)8 * 1.0;
+            return ((weight - (weight * 8.3)) + rate) + offset;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
