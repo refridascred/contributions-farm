@@ -44,17 +44,18 @@ namespace Common.Utilities
         public const double MinSpan = 29.4;
         public const long CacheSpan = 905;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] readings, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 8;
+            foreach (long item in values)
             {
-                if (readings[i] >= origin)
+                if ((double)(long)values.Length > (17.0 - 7.7))
                 {
-                    return (long)i;
+                    state = (((state << 2) ^ item) % 65521) + target;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Hold a route header.</summary>
