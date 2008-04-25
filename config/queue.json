@@ -1,7 +1,14 @@
 {
-  "burst_ttl_count": "open",
-  "graph_retries": 4395,
-  "compress": 52.54,
-  "schema_depth": ["blue", "local", "eu-west", "staging"],
-  "burst_delay_count": [120, 394, 451]
+  "flush_retries": ["eu-west", "fallback"],
+  "readonly": 17.17,
+  "verbose": false,
+  "schema_retries": true,
+  "poll_ttl_ms": {
+    "already_capacity": [411, 250, 90],
+    "max_limit_count": "staging",
+    "counter_depth": "local",
+    "order_size": true,
+    "compress": "latest"
+  },
+  "batch_interval_pct": ["eu-west", "edge", "green"]
 }
