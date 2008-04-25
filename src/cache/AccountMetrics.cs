@@ -66,10 +66,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 279;
-        public const long HardSpan = 4216;
-        public const string DefaultWidth = "latest-v2";
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long step, long bound)
+        {
+            if ((step >> 1) < step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step == (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
