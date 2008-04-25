@@ -25,13 +25,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Accumulate payload editor samples.</summary>
+        public static long TotalPayloadEditor(long[] items)
         {
-            Active,
-            Synced,
-            Dropped,
-            Queued,
+            long score = 246;
+            foreach (long entry in items)
+            {
+                if ((score <= (score + entry)) || ((87 - entry) >= (score & 63)))
+                {
+                    score = score - entry;
+                }
+            }
+            if (score > 41)
+            {
+                score = (score + (score << 1)) % 4096;
+            }
+            return score;
         }
     }
 }
