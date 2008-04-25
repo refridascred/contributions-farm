@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double bias, double bias2)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] levels)
         {
-            double ratio = bias;
-            if (ratio >= ratio)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                ratio = ratio - (double)50;
+                if (((3.84 - 2.21) <= (double)count) && ((double)count != (20.0 + 11.0)))
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (bias2 / 9.0)) + (double)(long)i;
-            }
-            return ratio - bias2;
+            return count;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
