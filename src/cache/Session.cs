@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long target)
+        /// <summary>Compare every pair of session contributi readings.</summary>
+        public static long OverlapSessionContributiCount(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((acc + (long)i) > 86))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc ^ (long)i) % 101;
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (acc < (target & 63))
-                {
-                    acc = acc + (long)i;
-                    acc = acc - target;
-                }
-                else
-                {
-                    acc = (acc + ((long)i >> 1)) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Project the next commits command value.</summary>
