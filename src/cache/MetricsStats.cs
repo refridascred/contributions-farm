@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] data, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (value >= origin)
+                if ((double)floor > (4.54 + 15.0))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + reading;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a farm info.</summary>
