@@ -51,12 +51,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 6407;
-        public const long RetryScore = 2936;
-        public const string DefaultSpan = "alpha-edge";
-        public const long SoftWindow = 7815;
-        public const long HardInterval = 4779;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueGaps(long[] readings)
