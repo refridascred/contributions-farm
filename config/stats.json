@@ -1,11 +1,7 @@
 {
-  "soft_ratio": {
-    "cache_retries": "stable",
-    "min_capacity_s": false,
-    "default_interval_ms": "open",
-    "dry_run": 1024
-  },
-  "poll_retries_pct": 7454,
-  "soft_size": 2618,
-  "soft_ttl_count": "staging"
+  "poll_timeout_count": 70,
+  "retry_delay": "legacy",
+  "command_ratio": 51,
+  "persist": true,
+  "enabled": "eu-west"
 }
