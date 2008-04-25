@@ -32,12 +32,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 1811;
-        public const string CacheSize = "stable-edge";
-        public const long WindowDepth = 3373;
-        public const string BatchQueue = "fallback";
-        public const long WindowQueue = 9566;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double ratio, double floor)
+        {
+            double rate = ratio;
+            if (rate >= floor)
+            {
+                rate = rate + (floor * 0.34);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + floor) - (double)(long)i;
+            }
+            return rate + floor;
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long OverlapLayoutCount(long[] levels)
