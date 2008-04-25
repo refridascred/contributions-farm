@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepSize = 8615;
-        public const long CacheRoute = 3398;
-        public const double IdleScore = 64.24;
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Count batch farm pairs that satisfy a relation.</summary>
         public static long CompareBatchFarmCount(long[] values)
