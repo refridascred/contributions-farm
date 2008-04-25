@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] items, long origin)
+        /// <summary>Count the filter metric entries that pass the check.</summary>
+        public static long MeasureFilterMetricMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (origin >= (tally - origin))
+                if ((double)sample == (double)83)
                 {
-                    tally = (tally + 2) ^ cell;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit stream support readings against a rule.</summary>
