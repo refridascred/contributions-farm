@@ -1,14 +1,4 @@
 # githubfarm settings
-strict:
-  cluster_depth: true
-  graph_capacity: eu-west
-  cache_limit: 51
-  base_size_pct: false
-  default_interval_s: 500
-githubfarm_retries: primary
-audit: 2217
-enabled:
-  soft_window_ms: 6165
-  enabled: false
-  cache_size_ms: false
-contributi_ttl: 60
+base_timeout: standard
+payload_delay: 59
+buffer_ttl: false
