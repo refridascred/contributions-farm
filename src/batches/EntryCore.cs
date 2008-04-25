@@ -61,22 +61,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] levels, long floor)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((1.16 / 5.0) > (double)tally)
-                {
-                    tally = ((tally + 3) ^ item) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
