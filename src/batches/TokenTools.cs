@@ -20,13 +20,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] samples, long origin)
         {
-            public bool Weight { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count << 1) < (entry * 2))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
         }
     }
 }
