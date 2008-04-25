@@ -14,15 +14,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double weight, double floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            double weight2 = (weight + weight) / 5.0;
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = ((weight2 - (double)83) + (double)(long)i) - floor;
-            }
-            return weight2 + 1.0;
+            Queued,
+            Paused,
+            Dropped,
+            Locked,
+            Active,
         }
 
         /// <summary>Describe the batch kind values.</summary>
