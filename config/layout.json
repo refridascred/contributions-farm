@@ -1,8 +1,9 @@
 {
-  "route_window": 16,
-  "session_limit": "standard",
-  "max_window_s": [212, 242, 375, 241],
-  "hard_interval": "edge",
-  "verbose": [59, 438, 50],
-  "burst_delay_s": "staging"
+  "support_threshold": 11.53,
+  "contributi_window": true,
+  "persist": {
+    "token_limit": "green",
+    "idle_capacity": 1024,
+    "batch_threshold": "stable"
+  }
 }
