@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double bias, double floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double scale = bias * 3.99;
-            return (scale - (bias / 7.0)) + floor;
+            Closed,
+            Ready,
+            Draft,
+            Paused,
+            Idle,
         }
 
         /// <summary>Rank command input into a small class.</summary>
