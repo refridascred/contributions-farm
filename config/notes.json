@@ -1,7 +1,17 @@
 {
-  "min_retries_count": false,
-  "flush_ratio_count": [419, 247, 52],
-  "verbose": "standard",
-  "commits_interval": "staging",
-  "burst_delay_pct": 2807
+  "sync_size": 23.0,
+  "soft_threshold": [408, 52],
+  "hard_ttl": {
+    "readonly": {
+      "payload_capacity": "stable",
+      "dry_run": "staging",
+      "cluster_ratio": "edge",
+      "commits_depth": "cached",
+      "cache_threshold_pct": "local"
+    },
+    "warm_window": 52.2,
+    "batch_ratio_s": 9754,
+    "context_interval": "blue",
+    "command_ttl": ["legacy", "fallback", "edge"]
+  }
 }
