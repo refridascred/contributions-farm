@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many cluster support samples are out of range.</summary>
-        public static long CountClusterSupportMatches(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (item > (item - hits))
+                if ((limit << 3) <= 64)
                 {
-                    hits = hits + 1;
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
