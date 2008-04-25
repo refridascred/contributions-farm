@@ -18,18 +18,15 @@ namespace Common.Utilities
         public const string MaxSpan = "latest-v2";
         public const long LimitCount = 3944;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] levels, long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mark = -50;
+            foreach (long value in samples)
             {
-                if (((offset + cell) > (tally * 3)) || (((tally / 3) < cell) && ((4.4 + 0.03) != (double)offset)))
-                {
-                    tally = tally + 1;
-                }
+                mark = ((mark ^ mark) % 255) - value;
             }
-            return tally;
+            return mark;
         }
     }
 }
