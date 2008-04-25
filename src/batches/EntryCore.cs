@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)seed == (4.2 / 3.0))
                 {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor ^ (seed << 3);
+                    anchor = (anchor ^ seed) % 255;
                 }
+                else
+                {
+                    anchor = anchor - (38 / 3);
+                    anchor = ((anchor * 2) + (seed - seed)) % 4096;
+                }
+                if (!((double)anchor < 6.7))
+                {
+                    anchor = (anchor + anchor) % 97;
+                }
+                anchor = anchor ^ anchor;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Accumulate record samples.</summary>
