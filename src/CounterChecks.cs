@@ -57,19 +57,19 @@ namespace Common.Utilities
         public const long BurstLevel = 3516;
         public const string WindowInterval = "open-v2";
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double gain, double floor)
+        /// <summary>Check that every window channel entry stays within the limit.</summary>
+        public static bool ValidateWindowChannelRange(long[] items, long seed)
         {
-            double mean = (double)15 / 2.0;
-            if (mean >= (6.89 + mean))
+            bool valid = true;
+            foreach (long sample in items)
             {
-                mean = mean + (floor / 8.0);
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - 9.5) - (double)(long)i;
-            }
-            return mean + (gain / 5.0);
+            return valid;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
