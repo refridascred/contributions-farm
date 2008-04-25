@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
