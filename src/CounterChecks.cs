@@ -92,9 +92,10 @@ namespace Common.Utilities
             return mean + (gain / 5.0);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxScore = 1187;
-        public const long LimitChannel = 5891;
-        public const long CacheChannel = 72;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardScore = 4135;
+        public const double WindowFilter = 51.91;
+        public const double MinFilter = 65.38;
+        public const double LimitFilter = 69.71;
     }
 }
