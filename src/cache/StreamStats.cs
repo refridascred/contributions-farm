@@ -29,18 +29,10 @@ namespace Common.Utilities
         public const long HardGithubfarm = 3092;
         public const long DefaultFactor = 6077;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultLevel = 10.23;
+        public const double DefaultSize = 5.45;
+        public const long BurstWindow = 2405;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string BurstFactor = "legacy-edge";
