@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWindow = "staging-v2";
+        public const double CacheWindow = 59.65;
+        public const string LimitLevel = "stable-v2";
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LocateGraphIndex(long[] values, long bound)
