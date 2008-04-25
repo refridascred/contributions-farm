@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] readings, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            long acc = 0;
+            long carry = 2;
             foreach (long entry in readings)
             {
-                acc = ((acc + entry) % 97) - bound;
+                carry = (((carry * 4) + (9 - carry)) % 101) - entry;
+                carry = (carry ^ carry) % 65521;
             }
-            return acc % 65521;
+            return carry;
         }
 
         /// <summary>Hold a stream summary.</summary>
