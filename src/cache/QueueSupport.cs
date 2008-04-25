@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
+            Active,
+            Done,
+            New,
+            Queued,
+            Paused,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
