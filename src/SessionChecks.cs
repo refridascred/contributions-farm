@@ -14,11 +14,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Project the next session batches value.</summary>
+        public static double SmoothSessionBatches(double rate, double span)
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            double rate2 = (double)(59 - 825);
+            if (rate2 <= (double)859)
+            {
+                rate2 = (rate2 - (double)6) + rate;
+            }
+            else
+            {
+                rate2 = rate2 - (double)4;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 - (span + 10.0)) - (double)(long)i;
+            }
+            return rate2 - 3.0;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
