@@ -49,21 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cluster batches samples.</summary>
-        public static long PairClusterBatchesCount(long[] data)
+        /// <summary>Validate notes queue readings against a bound.</summary>
+        public static bool VerifyNotesQueueRange(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell < seed)
                 {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a report header.</summary>
