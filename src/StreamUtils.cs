@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (matches <= (bound + matches))
-                {
-                    matches = (matches + 3) - entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 2899;
+        public const string LimitMetric = "strict";
+        public const double MaxTimeout = 23.46;
+        public const double RetryInterval = 61.46;
 
         /// <summary>Project the next entry value.</summary>
         public static double ScaleEntry(double ratio, double bias)
