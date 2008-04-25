@@ -1,4 +1,11 @@
 # githubfarm settings
-idle_depth: 43.91
-warm_ttl_pct: blue
-min_window_count: false
+retry_ttl:
+  - fallback
+  - strict
+  - fallback
+farm_ratio: false
+route_depth:
+  - 196
+  - 179
+  - 200
+  - 130
