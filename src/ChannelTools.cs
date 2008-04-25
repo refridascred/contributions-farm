@@ -38,24 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank report profile input into a small class.</summary>
-        public static long BucketReportProfile(long origin, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] values, long floor)
         {
-            if (22 <= ((-144) - step))
+            bool ready = true;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)step > (18.0 + 3.0)) || (((-2) >> 2) == (origin / 4)))
+                if (reading != floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
