@@ -40,19 +40,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] data, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long mark = -319;
+            foreach (long reading in readings)
             {
-                if (value >= step)
+                if (((1 + 60) <= bound) && (7.84 >= (double)bound))
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark + mark) % 97) - reading;
                 }
             }
-            return stale;
+            if (mark < 8)
+            {
+                mark = ((mark * 3) + (bound ^ mark)) % 101;
+            }
+            return mark;
         }
     }
 }
