@@ -32,31 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long floor, long limit)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            if ((double)floor < 3.0)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit <= (15.0 / 5.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (5.0 <= (double)floor)
+                    if ((data[i] + data[j]) == 18)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
