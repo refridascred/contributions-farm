@@ -16,18 +16,17 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] values)
+        /// <summary>Locate a payload stream reading by value.</summary>
+        public static long LookupPayloadStreamIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits < (91 >> 1))
+                if (data[i] <= origin)
                 {
-                    hits = (hits + 3) ^ reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
