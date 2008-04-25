@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long SoftRatio = 6749;
         public const long BatchGraph = 3486;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] data, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((data[i] > floor) && ((data[i] % 5) == 0))
+                if (((96 << 2) != (value - value)) || ((hits >> 5) >= value))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first command graph entry that matches the target.</summary>
