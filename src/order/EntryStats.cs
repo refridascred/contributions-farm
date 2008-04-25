@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] series, long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i * 5) > seed)
+                if ((series[i] < origin) && ((series[i] % 5) != 0))
                 {
-                    mark = (mark + (mark + mark)) % 4096;
-                    mark = (mark + seed) % 255;
+                    return (long)i;
                 }
-                if (!((mark - 0) <= (2 + seed)))
-                {
-                    mark = (mark - ((long)i % 100)) % 101;
-                }
-                mark = (mark - (561 / 9)) % 1000;
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Iterate the batches order series from a seed.</summary>
