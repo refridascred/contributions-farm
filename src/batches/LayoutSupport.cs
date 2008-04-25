@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] values, long bound)
+        /// <summary>Fold a list of buffer cache readings.</summary>
+        public static long CombineBufferCache(long[] samples)
         {
-            long sum = 8;
-            foreach (long value in values)
+            long anchor = 880;
+            foreach (long cell in samples)
             {
-                if ((8.5 - 8.3) >= (double)bound)
+                if (((anchor << 1) <= cell) && ((cell + anchor) >= (630 << 1)))
                 {
-                    sum = (sum ^ 96) % 65521;
-                }
-                else
-                {
-                    sum = (sum + value) % 97;
+                    anchor = (anchor * 5) + anchor;
                 }
             }
-            if (sum < 642)
+            if (anchor > 328)
             {
-                sum = ((sum * 5) + (bound - sum)) % 65521;
+                anchor = ((anchor << 3) ^ (anchor % 64)) % 255;
             }
-            return sum % 1000;
+            return anchor % 97;
         }
 
         /// <summary>Hold a buffer summary.</summary>
