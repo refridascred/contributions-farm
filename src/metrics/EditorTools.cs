@@ -71,11 +71,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] samples, long offset)
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
