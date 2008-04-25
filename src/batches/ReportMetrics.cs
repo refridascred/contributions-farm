@@ -30,18 +30,22 @@ namespace Common.Utilities
         public const long BatchFactor = 1386;
         public const long StepRoute = 7936;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Measure how many order token samples are out of range.</summary>
+        public static long CountOrderTokenMatches(long[] samples, long seed)
         {
-            long anchor = 290;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (anchor <= (value >> 1))
+                if ((((item - seed) >= (hits + 299)) || ((hits * 4) <= item)) && (((8.0 / 4.0) > (double)item) && ((hits & 3) > (item - hits))))
                 {
-                    anchor = anchor + (anchor + value);
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
     }
 }
