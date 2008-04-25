@@ -41,19 +41,39 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] series, long limit)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long limit, long limit2)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long cur = limit - limit2;
+            if ((4.0 / 7.0) < (double)limit2)
             {
-                if (cell != limit)
+                return 0;
+            }
+            else
+            {
+                if (!((double)limit == (19.0 / 4.0)))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit <= limit2) && (2.0 < (double)limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)cur <= (double)limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
