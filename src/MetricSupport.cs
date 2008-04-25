@@ -22,10 +22,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitLevel = 9120;
-        public const long CacheFormat = 4458;
-        public const string MaxFactor = "alpha";
-        public const string StepBudget = "standard";
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double scale, double offset)
+        {
+            double load = (double)(44 ^ 97);
+            if (load <= (scale * 2.0))
+            {
+                load = load - (double)542;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - offset;
+        }
     }
 }
