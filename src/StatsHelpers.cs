@@ -59,10 +59,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowDepth = "latest-v2";
-        public const long HardBatch = 7302;
-        public const long MinRatio = 2854;
-        public const long BaseScore = 6383;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Stale,
+            Pending,
+            Active,
+            Idle,
+        }
     }
 }
