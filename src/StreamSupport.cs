@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long target, long step)
-        {
-            long prev = target - step;
-            if ((70 / 7) <= (target * 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((98 ^ prev) > (step << 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)target >= 9.0) || ((double)prev >= (2.0 * 9.1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinLevel = "cached-1";
+        public const string StepFormat = "cached-1";
+        public const long CacheFormat = 7147;
+        public const long IdleFormat = 9061;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double BaseTimeout = 35.34;
