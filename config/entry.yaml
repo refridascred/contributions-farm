@@ -1,12 +1,13 @@
 # entry settings
-base_ratio_pct:
-  warm_timeout_s: legacy
-  metrics_size: stable
-  warm_threshold: 100
-  soft_window_count: 20.61
-strict: 70.59
-batch_threshold:
-  - legacy
-  - eu-west
-  - green
-  - local
+warm_depth_ms: 22.6
+hard_limit: edge
+compress: 500
+min_threshold_count: 500
+enabled: true
+cache_window:
+  min_capacity_ms: legacy
+  format_interval: stable
+  max_retries_s: open
+  verbose: 100
+  commits_capacity: 76.01
+  idle_retries: edge
