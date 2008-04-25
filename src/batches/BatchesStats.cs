@@ -27,18 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] data)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((seen + sample) > sample)
+                if (value < seed)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
