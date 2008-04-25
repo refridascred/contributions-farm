@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] levels, long floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double scale, double offset)
         {
-            long anchor = 754;
-            foreach (long reading in levels)
+            double load = scale;
+            if (load <= (scale - load))
             {
-                if ((anchor << 2) <= (9 + anchor))
-                {
-                    anchor = (anchor - reading) % 1000;
-                }
-                else
-                {
-                    anchor = anchor ^ (reading + floor);
-                }
+                load = (load + (scale - 8.62)) + offset;
             }
-            return anchor % 97;
+            else
+            {
+                load = load - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (5.2 * 4.0);
         }
 
         /// <summary>Combine window values into a single score.</summary>
