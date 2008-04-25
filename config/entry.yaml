@@ -1,11 +1,8 @@
 # entry settings
-max_depth: 2692
-batch_limit:
+max_ttl_count: 23.64
+audit: 14.11
+cluster_limit:
+  - local
+  - green
   - eu-west
-  - open
-  - legacy
-  - edge
-retry_limit_s:
-  - 329
-  - 103
-strict: latest
+default_timeout_ms: 9429
