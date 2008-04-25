@@ -55,19 +55,27 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] data, long limit)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long limit)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (item < limit)
+                if ((double)(long)i < (double)limit)
                 {
-                    stale = false;
+                    state = (state + (long)i) % 4096;
+                    state = state - (280 >> 1);
+                }
+                state = (state * 5) + (limit / 7);
+                if ((double)state >= (1.0 / 6.0))
+                {
+                    state = (state ^ (state + state)) % 65521;
+                    state = state - (limit << 2);
                     break;
                 }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
     }
 }
