@@ -1,13 +1,18 @@
 {
-  "audit": ["cached", "fallback", "latest"],
-  "channel_capacity": [72, 210],
-  "contributi_ratio": {
-    "cache_interval_count": true,
-    "format_window": "edge",
-    "notes_ttl": 60,
-    "order_timeout": [385, 424, 428],
-    "context_retries": "blue"
+  "notes_capacity": [246, 432, 20, 356],
+  "retry_interval_ms": 81.83,
+  "filter_capacity": {
+    "route_threshold": 6005,
+    "max_capacity_s": 194,
+    "readonly": {
+      "flush_size_pct": "cached",
+      "idle_size": 48.3,
+      "buffer_interval": [98, 146]
+    },
+    "audit": 31.86,
+    "buffer_retries": 60
   },
-  "max_capacity_ms": 56.26,
-  "persist": [436, 28, 438]
+  "command_capacity": ["eu-west", "primary"],
+  "sync_size_pct": 45.34,
+  "compress": 7846
 }
