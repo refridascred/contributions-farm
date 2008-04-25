@@ -1,32 +1,22 @@
 # support settings
-hard_depth_s: cached
-dry_run: 500
-buffer_interval:
-  window_window: legacy
-  poll_window: eu-west
-  warm_threshold_count: 69
-verbose:
-  default_retries:
-    min_ratio: true
-    sync_delay: strict
-    default_ttl_ms: true
-  commits_ratio: true
-  batch_ttl_pct: false
-  batch_ttl:
-    dry_run: standard
-    base_limit_count: latest
-    sync_ratio_count:
-      - legacy
-      - fallback
-      - strict
-    already_size:
-      - green
-      - strict
-      - eu-west
-      - latest
-  idle_limit_count:
-    channel_ttl: 5199
-    counter_size: standard
-    compress: 97.91
-flush_depth_s: 76
-soft_delay_pct: 42
+sync_delay:
+  - 472
+  - 142
+  - 394
+  - 241
+warm_delay_ms: 17
+max_depth_s:
+  default_window_pct:
+    flush_depth_pct: 65
+    buffer_timeout: 20
+    report_limit: 1024
+    queue_ratio: true
+    base_window_pct: 58.0
+    sync_timeout_ms: stable
+  verbose: standard
+  enabled: 7909
+  idle_timeout_s: primary
+  counter_timeout: 2482
+  token_threshold: true
+compress: staging
+poll_size_pct: edge
