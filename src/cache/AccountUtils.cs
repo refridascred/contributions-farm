@@ -30,18 +30,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (hits < (datum + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepTimeout = 2647;
+        public const double LimitEditor = 76.35;
+        public const double MinEditor = 50.99;
     }
 }
