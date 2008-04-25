@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every farm entry entry stays within the limit.</summary>
-        public static bool GuardFarmEntryRange(long[] readings, long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long origin)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum + (sum % 24)) % 1000;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Define support limits and defaults.</summary>
