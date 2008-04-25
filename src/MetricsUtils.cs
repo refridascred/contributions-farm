@@ -73,25 +73,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long limit, long limit2)
-        {
-            long span = limit ^ limit2;
-            if ((double)limit2 == (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((2.0 / 8.0) != (double)limit) || ((span ^ span) < span))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "cached-1";
+        public const long BasePayload = 3102;
+        public const double MinPayload = 94.54;
+        public const double StepPayload = 40.43;
     }
 }
