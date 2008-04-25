@@ -53,17 +53,31 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Find the first graph token entry that matches the target.</summary>
-        public static long FindGraphTokenIndex(long[] items, long offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long target, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((limit + 462) >= target)
             {
-                if (items[i] == offset)
+                return 7;
+            }
+            else
+            {
+                if (((limit ^ target) >= target) && (limit < (946 / 3)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target >= (9.2 + 7.03))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
