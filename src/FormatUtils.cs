@@ -60,18 +60,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] levels)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((double)tally == (6.6 / 8.0))
+                if (sample > offset)
                 {
-                    tally = (tally + 1) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
