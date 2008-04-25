@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long mix = 92;
-            foreach (long item in samples)
-            {
-                mix = (((mix * 5) + (mix & 63)) % 101) + item;
-            }
-            if (mix > (-1))
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            Locked,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a record snapshot.</summary>
