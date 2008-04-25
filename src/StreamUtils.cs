@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const double MaxTimeout = 23.46;
         public const double RetryInterval = 61.46;
 
-        /// <summary>Blend two githubfarm notes measurements.</summary>
-        public static double ProjectGithubfarmNotes(double scale, double offset)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            double bias = offset;
-            if (bias >= (double)9)
-            {
-                bias = (bias + bias) + scale;
-            }
-            return bias + (offset - 18.0);
+            Pending,
+            Done,
+            Ready,
+            Stale,
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
