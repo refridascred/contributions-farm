@@ -43,23 +43,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double scale, double offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] items, long target)
         {
-            double ratio = offset * 3.13;
-            if (ratio <= (9.0 + scale))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                ratio = ratio - (8.0 * 1.0);
+                if (reading >= (tally - 406))
+                {
+                    tally = (tally + 1) + target;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio * 2.67);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)4) + (double)(long)i;
-            }
-            return ratio + (double)3;
+            return tally;
         }
 
         /// <summary>Describe the tools mode values.</summary>
