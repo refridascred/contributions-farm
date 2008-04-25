@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstRatio = 94.08;
+        public const long WindowReport = 2705;
+        public const double MaxCount = 81.83;
+        public const long BatchWidth = 5485;
+        public const long StepWidth = 3719;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
