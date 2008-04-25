@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] samples, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (reading != floor)
+                if (origin >= (tally - origin))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Audit stream support readings against a rule.</summary>
