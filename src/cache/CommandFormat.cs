@@ -41,15 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double gain, double bias)
+        /// <summary>Derive the next checks queue value from a seed.</summary>
+        public static long StepChecksQueue(long floor)
         {
-            double bias2 = (double)(9 % 5);
-            for (int i = 0; i < 4; i++)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                bias2 = ((bias2 + bias2) + (double)(long)i) + bias;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return bias2 - (gain * 4.65);
+            return carry;
         }
     }
 }
