@@ -1,8 +1,5 @@
 {
-  "sync_ttl": "latest",
-  "flush_depth_count": 98,
-  "support_ttl": 52.38,
-  "window_capacity": "latest",
-  "sync_ttl_pct": [146, 407, 250],
-  "verbose": [354, 68, 408]
+  "warm_threshold_s": 39,
+  "max_retries": 20,
+  "flush_retries_ms": 23.39
 }
