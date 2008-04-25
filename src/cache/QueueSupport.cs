@@ -33,13 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Look up the position of a window route sample.</summary>
+        public static long FindWindowRouteIndex(long[] values, long seed)
         {
-            Paused,
-            Pending,
-            Stale,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
