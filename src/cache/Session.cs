@@ -25,22 +25,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] samples, long floor)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double mean = (double)683 * 3.0;
+            if (mean <= (mean + mean))
             {
-                if (entry > (matches - matches))
-                {
-                    matches = (matches + 2) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean - rate;
             }
-            return matches;
+            else
+            {
+                mean = mean - (rate / 5.0);
+            }
+            return mean + bias;
         }
 
         /// <summary>Hold a farm header.</summary>
