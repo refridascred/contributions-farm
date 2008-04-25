@@ -20,14 +20,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] samples)
         {
-            Ready,
-            Draft,
-            Stale,
-            Done,
-            Locked,
+            long score = 349;
+            foreach (long entry in samples)
+            {
+                score = (score ^ (entry - 692)) % 4096;
+                score = (score + (entry % 3)) % 4096;
+                if ((double)entry >= (9.0 * 5.6))
+                {
+                    score = (score - (20 + entry)) % 97;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Match up cache samples.</summary>
