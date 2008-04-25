@@ -28,10 +28,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 5918;
-        public const long DefaultTimeout = 1545;
-        public const long BatchBudget = 1659;
-        public const long DefaultWidth = 4219;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Active,
+            Synced,
+            Dropped,
+            Queued,
+        }
     }
 }
