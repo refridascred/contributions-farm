@@ -35,19 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long floor)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((long)i > carry)
-                {
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Draft,
+            Retry,
+            Queued,
         }
 
         /// <summary>Match up channel samples.</summary>
