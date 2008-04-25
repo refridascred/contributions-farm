@@ -25,12 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Find the first command graph entry that matches the target.</summary>
+        public static long SeekCommandGraphIndex(long[] data, long origin)
         {
-            Closed,
-            Dropped,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
