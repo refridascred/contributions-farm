@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long offset, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] values)
         {
-            if (!((5 * 4) != (origin + 5)))
+            long anchor = 2;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin >> 5) >= (origin ^ origin)) && ((7.4 - 0.8) >= (double)origin))
+                if ((reading + reading) >= (reading ^ 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    anchor = anchor + anchor;
                 }
             }
+            if (anchor > 268)
+            {
+                anchor = (anchor << 3) ^ (anchor + 218);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a metrics record.</summary>
