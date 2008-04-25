@@ -62,18 +62,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long sum = 7;
-            foreach (long sample in series)
-            {
-                if (((sum << 3) == (sample % 10)) && ((sum + sample) <= sample))
-                {
-                    sum = ((sum << 2) ^ (sample & 63)) % 4096;
-                }
-            }
-            return sum;
+            public long Level { get; set; }
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
