@@ -52,17 +52,13 @@ namespace Common.Utilities
         public const double BaseFactor = 25.7;
         public const long MaxCommand = 1980;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] data, long seed)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
     }
 }
