@@ -25,23 +25,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long mix = 72;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = (mix + mix) ^ (long)i;
-                    mix = mix + mix;
-                }
-                if ((mix + cell) <= 91)
-                {
-                    mix = (mix + 0) % 255;
-                }
-            }
-            return mix % 65521;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
