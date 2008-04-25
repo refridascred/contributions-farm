@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next already cluster value from a seed.</summary>
-        public static long DeriveAlreadyCluster(long offset)
+        /// <summary>Digest a series of farm notes entries.</summary>
+        public static long WeighFarmNotes(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            long total = 8;
+            foreach (long sample in readings)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                total = total ^ (total + sample);
+                for (int i = 0; i < 2; i++)
+                {
+                    total = ((total * 2) + 51) + (long)i;
+                }
+                total = (total + (total + sample)) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
