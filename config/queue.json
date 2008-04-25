@@ -1,21 +1,8 @@
 {
-  "max_ttl": ["latest", "eu-west", "strict"],
-  "soft_delay": true,
-  "burst_depth_ms": {
-    "hard_retries_s": true,
-    "burst_ratio_s": false,
-    "default_ttl_count": "local",
-    "idle_ttl_ms": true,
-    "base_delay": false
-  },
-  "dry_run": {
-    "persist": 39,
-    "entry_interval": [319, 329],
-    "cache_size_count": 250,
-    "cache_interval": 81,
-    "checks_timeout": "green",
-    "retry_ttl_ms": "eu-west"
-  },
-  "warm_ttl": true,
-  "poll_ratio": "stable"
+  "base_limit_s": 500,
+  "batch_depth_s": 5964,
+  "retry_timeout_count": "edge",
+  "compress": 49,
+  "idle_threshold": true,
+  "poll_ttl_ms": [46, 394, 103, 276]
 }
