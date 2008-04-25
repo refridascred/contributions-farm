@@ -26,13 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Closed,
-            Queued,
-            New,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstStats = "staging-v2";
+        public const double StepStats = 51.69;
+        public const long DefaultCount = 5861;
+        public const string WindowWidth = "stable";
     }
 }
