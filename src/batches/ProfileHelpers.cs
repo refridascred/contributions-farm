@@ -53,19 +53,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] levels, long origin)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the commits mode values.</summary>
