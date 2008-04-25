@@ -41,10 +41,40 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseTimeout = 56.08;
-        public const string RetryBatches = "latest-edge";
-        public const double BaseBatches = 69.06;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long floor, long offset)
+        {
+            long bound = floor ^ offset;
+            if ((bound < (floor % 100)) && ((floor ^ 997) >= (offset * 5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor & 15) >= (bound >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound + floor) >= (floor + 473)) && ((double)bound >= 3.22))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound % 16) < offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
