@@ -19,18 +19,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] samples)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (15 > hits)
+                if (sample <= origin)
                 {
-                    hits = (hits + 3) + cell;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
