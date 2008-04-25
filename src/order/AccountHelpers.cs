@@ -38,38 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a contributi session pair into a bucket.</summary>
-        public static long BucketContributiSession(long offset, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] samples, long floor)
         {
-            if ((offset * 4) >= 2)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset << 2) < (offset & 255))
+                if (((18.0 - 3.0) >= (double)item) || (floor < (695 << 3)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step >> 4) <= (offset & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((offset - step) > offset) || ((double)offset > 0.8))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
