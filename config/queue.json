@@ -1,21 +1,5 @@
 {
-  "entry_depth": "fallback",
-  "poll_threshold_count": {
-    "cache_retries_count": false,
-    "batches_interval": 500,
-    "strict": 56.71,
-    "min_retries": 30,
-    "compress": "open",
-    "buffer_timeout": "staging"
-  },
-  "filter_capacity": {
-    "batch_depth_count": 4875,
-    "base_capacity": ["strict", "green"],
-    "session_limit": 3136,
-    "audit": ["local", "cached"],
-    "strict": 40.67,
-    "flush_limit_pct": true
-  },
-  "account_retries": 71.65,
-  "idle_retries_ms": "blue"
+  "default_limit": 6944,
+  "poll_ratio": ["green", "green"],
+  "readonly": 57.96
 }
