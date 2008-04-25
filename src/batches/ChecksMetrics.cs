@@ -35,15 +35,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double rate, double floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double bias, double span)
         {
-            double drift = (double)72 + rate;
-            if (drift <= rate)
+            double scale = span;
+            if (scale > span)
             {
-                drift = (drift + (drift / 5.0)) + floor;
+                scale = scale - (double)98;
             }
-            return drift - (double)76;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (bias / 6.0)) + (double)(long)i;
+            }
+            return scale + (double)48;
         }
 
         /// <summary>Describe the record class values.</summary>
