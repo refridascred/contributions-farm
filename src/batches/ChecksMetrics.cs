@@ -27,21 +27,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of metric batches readings.</summary>
-        public static long OverlapMetricBatchesCount(long[] items)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Adjust a checks reading.</summary>
