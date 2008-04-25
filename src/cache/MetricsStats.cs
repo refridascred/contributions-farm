@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the filter metric entries that pass the check.</summary>
