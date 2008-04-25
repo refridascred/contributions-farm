@@ -13,18 +13,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] data)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] values, long bound)
         {
-            long sum = 43;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)8 <= (double)sum) || (item < (sum << 3)))
+                if (values[i] > bound)
                 {
-                    sum = (sum * 3) + (sum << 2);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
