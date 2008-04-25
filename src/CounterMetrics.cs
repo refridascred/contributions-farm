@@ -40,31 +40,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long seed, long limit)
-        {
-            if (((limit / 9) > (seed - seed)) || (limit > (limit << 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((438 % 60) == (seed >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)limit >= (3.4 * 0.7)) || (limit <= 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleDepth = 2329;
+        public const long IdleReport = 3203;
+        public const long CacheSize = 2269;
+        public const double HardReport = 1.68;
     }
 }
