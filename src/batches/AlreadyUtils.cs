@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every graph buffer entry stays within the limit.</summary>
-        public static bool ValidateGraphBufferBounds(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowSize = 3145;
+        public const double RetryContext = 77.22;
+        public const string HardContext = "staging-v2";
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long FindBatchesIndex(long[] data, long origin)
