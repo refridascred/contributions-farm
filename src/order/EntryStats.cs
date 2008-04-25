@@ -34,18 +34,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] data, long floor)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((floor & 15) == (0 >> 1)) || ((double)sample != (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Closed,
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Compare every pair of report schema readings.</summary>
