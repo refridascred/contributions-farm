@@ -40,10 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleLevel = 40.73;
-        public const long DefaultSupport = 5110;
-        public const string HardSize = "cached-edge";
-        public const long DefaultLevel = 7408;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] readings, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample >> 4) < (matches + matches)) && (((double)sample >= 5.75) || ((origin * 3) > (sample * 4))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
