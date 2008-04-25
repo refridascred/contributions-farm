@@ -47,12 +47,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBudget = 4430;
-        public const long DefaultBuffer = 6963;
-        public const string IdleBuffer = "latest-edge";
-        public const long HardBuffer = 6284;
-        public const double BurstBuffer = 26.83;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 5718;
+        public const double HardAlready = 75.01;
+        public const double MaxSpan = 85.8;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinToken = 1574;
