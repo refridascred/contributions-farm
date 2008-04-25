@@ -1,11 +1,15 @@
 # Command notes
 
-Use queue settings to tune how often payload data is refreshed.
-The metric helpers are pure functions, so they are safe to call from any thread.
-Use editor settings to tune how often command data is refreshed.
+Keep entry and checks names short and lowercase.
+Use buffer settings to tune how often window data is refreshed.
+The account module keeps graph values in sync with the session cache.
+
+The record module keeps layout values in sync with the support cache.
+A stream that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Document new session fields
-- Review cluster limits each release
-- Keep context values small
+- Validate filter input early
+- Prefer route defaults
+- Document new checks fields
+- Review token limits each release
