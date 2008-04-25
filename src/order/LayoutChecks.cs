@@ -54,12 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double rate, double bias)
         {
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public long Limit { get; set; }
+            double bias2 = (double)(294 % 7);
+            return ((bias2 - (double)6) + rate) + bias;
         }
     }
 }
