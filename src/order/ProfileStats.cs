@@ -72,19 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] values, long offset)
+        /// <summary>Check that every layout githubfarm entry stays within the limit.</summary>
+        public static bool CheckLayoutGithubfarmBounds(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (cell != offset)
+                if (reading <= origin)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
