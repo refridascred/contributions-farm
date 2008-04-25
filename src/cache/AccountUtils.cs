@@ -17,12 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 4524;
-        public const long MaxCluster = 8476;
-        public const long MinCluster = 209;
-        public const long CacheDepth = 9638;
-        public const double RetryBudget = 81.05;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public bool Owner { get; set; }
+            public double Region { get; set; }
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double AdjustRecord(double scale, double floor)
