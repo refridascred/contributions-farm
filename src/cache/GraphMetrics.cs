@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] items, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            long acc = 901;
-            foreach (long entry in items)
+            long sum = 19;
+            foreach (long value in samples)
             {
-                acc = (acc + (6 << 1)) % 1000;
-                if ((entry * 2) <= (offset ^ offset))
-                {
-                    acc = (acc - ((-92) % 8)) % 255;
-                }
+                sum = (sum - sum) ^ value;
             }
-            if (acc > 820)
-            {
-                acc = acc - (offset ^ acc);
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Roll a window counter forward.</summary>
