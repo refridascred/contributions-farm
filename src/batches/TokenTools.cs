@@ -20,16 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] items)
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                state = ((state << 3) ^ (state + bound)) % 97;
-                state = ((state * 2) + (long)i) % 101;
+                if (!(matches >= (entry / 3)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
