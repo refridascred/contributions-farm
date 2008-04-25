@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSpan = "local-edge";
-        public const string IdleSession = "legacy-1";
-        public const long LimitSize = 339;
-        public const long CacheSession = 287;
-        public const long HardScore = 4896;
+        /// <summary>Validate commits context readings against a bound.</summary>
+        public static bool GuardCommitsContextBounds(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BatchQueue = 722;
