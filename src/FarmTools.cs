@@ -25,31 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long bound, long target)
+        /// <summary>Match up command channel samples.</summary>
+        public static long PairCommandChannelCount(long[] series)
         {
-            if (((bound >> 1) >= bound) && ((target << 2) < target))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-2) ^ target) >= (bound + bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound != (double)target)
+                    if ((series[i] + series[j]) < 1)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the commits state values.</summary>
