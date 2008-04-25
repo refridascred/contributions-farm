@@ -73,31 +73,18 @@ namespace Common.Utilities
         public const long MinWidth = 5578;
         public const long BaseReport = 8980;
 
-        /// <summary>Accumulate context editor samples.</summary>
-        public static long DigestContextEditor(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] samples, long seed)
         {
-            long carry = 14;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((carry / 2) > (carry ^ reading))
+                if ((cell + 41) == (count + cell))
                 {
-                    long bound = (carry / 8) * 4;
-                    carry = ((carry * 4) + bound) % 255;
-                }
-                else
-                {
-                    carry = (carry - reading) % 97;
-                }
-                if ((reading & 127) > (carry / 8))
-                {
-                    carry = (carry - (reading % 10)) % 101;
+                    count = (count + 3) + seed;
                 }
             }
-            if (carry < 226)
-            {
-                carry = carry ^ (carry ^ carry);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Digest a series of token batches entries.</summary>
