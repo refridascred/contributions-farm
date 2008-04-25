@@ -1,12 +1,7 @@
 {
-  "strict": 49,
-  "audit": 2276,
-  "base_threshold_pct": 48,
-  "session_delay": {
-    "idle_size": "open",
-    "default_size_pct": 76.68,
-    "batch_delay": 250,
-    "audit": 4123,
-    "soft_depth_ms": "blue"
-  }
+  "verbose": [433, 370, 176],
+  "checks_capacity": 89.94,
+  "warm_retries_count": "open",
+  "default_depth": true,
+  "hard_delay_ms": 15.3
 }
