@@ -19,14 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Ready,
-            Done,
-            Synced,
-            Dropped,
-            New,
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Iterate the token report series from a seed.</summary>
