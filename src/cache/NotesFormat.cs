@@ -12,22 +12,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit schema contributi readings against a rule.</summary>
-        public static long AuditSchemaContributiMatches(long[] values)
+        /// <summary>Derive the next buffer queue value from a seed.</summary>
+        public static long DeriveBufferQueue(long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (((0.4 * 6.3) < (double)datum) && ((0.31 * 3.83) > (double)datum))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc << 3) ^ (long)i) % 4096;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Match up graph samples.</summary>
