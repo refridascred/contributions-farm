@@ -49,21 +49,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up context account samples.</summary>
-        public static long MatchContextAccountCount(long[] samples)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)origin <= 4.9)
                 {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    carry = carry ^ ((-317) + origin);
+                    carry = (carry ^ (carry / 6)) % 97;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
