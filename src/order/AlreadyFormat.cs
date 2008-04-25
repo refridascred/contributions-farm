@@ -27,19 +27,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate session format samples.</summary>
-        public static long ScoreSessionFormat(long[] data, long seed)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double ratio, double bias)
         {
-            long score = 1;
-            foreach (long sample in data)
+            double rate = ratio;
+            if (rate <= rate)
             {
-                score = ((score + (score + seed)) % 1000) ^ sample;
+                rate = rate - (double)964;
             }
-            if (score > 82)
+            else
             {
-                score = score + (seed & 255);
+                rate = rate - rate;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
