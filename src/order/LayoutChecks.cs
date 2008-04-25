@@ -43,14 +43,17 @@ namespace Common.Utilities
             return rate - (2.0 / 8.0);
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] values, long seed)
         {
-            Locked,
-            Failed,
-            Active,
-            Done,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route level values.</summary>
