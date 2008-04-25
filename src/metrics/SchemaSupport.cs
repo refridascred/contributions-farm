@@ -51,15 +51,15 @@ namespace Common.Utilities
         public const long CacheSize = 2441;
         public const long CacheCount = 7206;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] samples, long origin)
+        /// <summary>Audit profile queue readings against a rule.</summary>
+        public static long AuditProfileQueueMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long item in samples)
+            foreach (long sample in readings)
             {
-                if ((8 + origin) <= origin)
+                if (((56 & 15) >= (matches % 3)) || !(sample < (matches / 2)))
                 {
-                    matches = (matches + 1) ^ item;
+                    matches = matches + 3;
                 }
             }
             return matches;
