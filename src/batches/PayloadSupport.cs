@@ -33,12 +33,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            public double Owner { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
