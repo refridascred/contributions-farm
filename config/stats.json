@@ -1,7 +1,10 @@
 {
-  "compress": 43,
-  "hard_limit": 60,
-  "min_delay": 4949,
-  "default_limit_count": "green",
-  "warm_interval_count": false
+  "githubfarm_capacity": 68,
+  "dry_run": ["cached", "local", "edge"],
+  "stats_window": {
+    "verbose": 84,
+    "sync_ratio_s": "cached",
+    "strict": "open"
+  },
+  "audit": "standard"
 }
