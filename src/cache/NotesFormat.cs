@@ -25,15 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double gain, double bias)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double drift = (double)94 + (bias * 8.1);
-            if (drift <= gain)
-            {
-                drift = drift + (bias + drift);
-            }
-            return drift + (5.3 * 6.0);
+            public long Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
