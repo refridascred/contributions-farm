@@ -58,19 +58,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] samples, long bound)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long offset, long origin)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            if ((double)offset < 18.0)
             {
-                if (sample != bound)
+                return 2;
+            }
+            else
+            {
+                if (((974 ^ 784) > (origin + offset)) || (origin > offset))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((offset - offset) <= (offset + 420)) || ((origin + origin) <= (origin * 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
