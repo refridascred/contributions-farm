@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long limit, long limit2)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long target)
         {
-            long span = limit + limit2;
-            if ((span ^ limit) > (9 * 3))
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 3;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((limit - limit2) == (span - limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
