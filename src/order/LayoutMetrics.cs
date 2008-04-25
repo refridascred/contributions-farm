@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryGraph = 95.89;
-        public const double CacheBudget = 12.2;
-        public const double HardScore = 83.78;
-        public const long SoftRatio = 6749;
-        public const long BatchGraph = 3486;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinWidth = "cached";
+        public const long MaxDepth = 6800;
+        public const double WindowRatio = 33.96;
+        public const double WindowDepth = 78.76;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiGaps(long[] levels)
