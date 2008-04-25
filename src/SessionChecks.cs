@@ -21,12 +21,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryScore = 5755;
-        public const double BatchSize = 43.8;
-        public const double BaseTools = 92.73;
-        public const long RetryTools = 5188;
-        public const string BurstCount = "primary-1";
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Done,
+            Stale,
+            New,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
