@@ -17,19 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit contributi graph readings against a rule.</summary>
-        public static long CountContributiGraphOutliers(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - cell) > (seen - seed))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 37.6;
+        public const long MaxFactor = 3132;
+        public const double WindowCount = 53.1;
+        public const double MinInterval = 50.11;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool VerifyQueueBounds(long[] levels, long target)
