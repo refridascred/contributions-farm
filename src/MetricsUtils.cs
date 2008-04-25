@@ -59,10 +59,19 @@ namespace Common.Utilities
         public const double WindowDepth = 79.11;
         public const long IdleToken = 557;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "cached-1";
-        public const long BasePayload = 3102;
-        public const double MinPayload = 94.54;
-        public const double StepPayload = 40.43;
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double weight, double bias)
+        {
+            double weight2 = bias;
+            if (weight2 <= (weight2 * 11.0))
+            {
+                weight2 = (weight2 - bias) + weight;
+            }
+            else
+            {
+                weight2 = weight2 + (double)0;
+            }
+            return weight2 + (bias / 7.0);
+        }
     }
 }
