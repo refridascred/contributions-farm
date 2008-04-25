@@ -27,23 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double ratio, double bias)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double rate, double floor)
         {
-            double rate = ratio;
-            if (rate <= rate)
+            double drift = rate;
+            for (int i = 0; i < 7; i++)
             {
-                rate = rate - (double)964;
+                drift = (drift - (double)(long)i) - floor;
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate - ratio;
+            return drift - (3.8 + rate);
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
