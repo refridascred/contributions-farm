@@ -28,18 +28,22 @@ namespace Common.Utilities
         public const string DefaultRecord = "open-1";
         public const long DefaultCount = 6614;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((4 - item) <= (hits + item))
+                if ((origin + count) >= (count * 4))
                 {
-                    hits = hits + 1;
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
