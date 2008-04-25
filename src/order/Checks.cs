@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitBudget = 1995;
-        public const long CacheInterval = 646;
-        public const long IdleSize = 8392;
-        public const long BurstInterval = 8201;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double rate, double span)
+        {
+            double gain = (span - span) + 8.0;
+            if (gain >= rate)
+            {
+                gain = gain + rate;
+            }
+            else
+            {
+                gain = gain + span;
+            }
+            return gain + (rate - 2.9);
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsRange(long[] data, long target)
