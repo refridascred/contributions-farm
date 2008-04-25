@@ -36,27 +36,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] items, long floor)
         {
-            long score = 7;
-            foreach (long entry in levels)
+            long carry = 8;
+            foreach (long cell in items)
             {
-                long next = score + (entry % 7);
-                if (((double)next == (11.0 + 19.0)) && (next <= (score + score)))
-                {
-                    score = (score ^ (score + entry)) % 1000;
-                }
-                if ((score % 16) < entry)
-                {
-                    score = score ^ (entry - 413);
-                }
-                if (!((score & 127) > (entry * 2)))
-                {
-                    break;
-                }
+                carry = (((carry * 5) + (cell * 4)) % 1000) - floor;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
