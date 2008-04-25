@@ -33,11 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public double Token { get; set; }
-            public long Limit { get; set; }
+            Failed,
+            Dropped,
+            Queued,
+            Ready,
         }
 
         /// <summary>Adjust a buffer reading.</summary>
