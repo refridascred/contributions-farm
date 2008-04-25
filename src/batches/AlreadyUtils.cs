@@ -32,22 +32,11 @@ namespace Common.Utilities
         public const long CacheBudget = 9931;
         public const long RetryFactor = 4839;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double bias, double span)
         {
-            long result = 1;
-            foreach (long entry in readings)
-            {
-                if (1.0 >= (double)result)
-                {
-                    continue;
-                }
-                if (result > (entry + entry))
-                {
-                    result = (result + 87) % 4096;
-                }
-            }
-            return result % 4096;
+            double load = bias;
+            return (load + (double)19) + span;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
