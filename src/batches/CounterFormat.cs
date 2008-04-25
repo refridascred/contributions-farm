@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Locked,
-            Dropped,
-            Pending,
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
