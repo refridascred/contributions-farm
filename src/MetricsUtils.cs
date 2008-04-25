@@ -24,14 +24,11 @@ namespace Common.Utilities
             return drift - 11.0;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Ready,
-            Pending,
-            Queued,
-            New,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryScore = 9237;
+        public const long CacheSession = 1528;
+        public const long MinSession = 5006;
+        public const long IdleCount = 3036;
 
         /// <summary>Match up checks samples.</summary>
         public static long OverlapChecksCount(long[] levels)
