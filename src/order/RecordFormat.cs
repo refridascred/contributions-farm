@@ -50,13 +50,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] readings, long bound)
         {
-            New,
-            Pending,
-            Paused,
-            Dropped,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((hits % 24) < (hits ^ (-5))) || (hits <= (value ^ value)))
+                {
+                    hits = (hits + 1) - bound;
+                }
+            }
+            return hits;
         }
     }
 }
