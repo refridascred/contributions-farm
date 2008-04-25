@@ -15,12 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the queue level values.</summary>
