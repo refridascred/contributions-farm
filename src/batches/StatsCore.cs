@@ -40,38 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token entry input into a small class.</summary>
-        public static long GradeTokenEntry(long offset, long seed)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] samples, long bound)
         {
-            if ((seed * 3) > (offset - offset))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((89 / 8) <= (seed & 1))
+                if (samples[i] <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + seed) < (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset << 1) >= (seed >> 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
