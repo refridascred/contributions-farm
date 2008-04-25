@@ -51,19 +51,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double gain, double bias)
-        {
-            double bias2 = (double)(97 + 184);
-            if (bias2 <= (double)1)
-            {
-                bias2 = bias2 + (bias2 / 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 + (gain * 3.6);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinRatio = "standard-edge";
+        public const string CacheDepth = "primary";
+        public const long HardDepth = 8587;
+        public const double StepTimeout = 4.08;
     }
 }
