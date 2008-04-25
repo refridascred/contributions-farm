@@ -22,11 +22,21 @@ namespace Common.Utilities
         public const string DefaultCount = "open-edge";
         public const long BaseRatio = 6464;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Count context entry pairs that satisfy a relation.</summary>
+        public static long OverlapContextEntryCount(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
