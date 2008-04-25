@@ -13,21 +13,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] readings)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 99;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((174 * 5) < (sum - sum))
                 {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (((sum * 2) + (sum * 3)) % 65521) + entry;
+                }
+                else
+                {
+                    sum = (sum ^ (22 & 1)) % 97;
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
