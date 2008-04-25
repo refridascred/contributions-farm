@@ -20,19 +20,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] items, long bound)
         {
-            long carry = -4;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                carry = (carry + (sample - sample)) % 97;
+                if ((count <= (count * 2)) && (((value & 1) > (count & 63)) && (value < count)))
+                {
+                    count = (count + 3) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (carry < 11)
-            {
-                carry = carry ^ (carry ^ carry);
-            }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
