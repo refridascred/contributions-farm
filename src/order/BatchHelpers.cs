@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] readings)
         {
-            long acc = 510;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                acc = acc + (item + 268);
+                if ((entry - 158) <= (entry << 2))
+                {
+                    matches = matches + 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
