@@ -14,10 +14,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepSize = 8.59;
-        public const long BaseRatio = 6624;
-        public const long IdleTimeout = 9682;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Failed,
+            Done,
+            Queued,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double IdleCluster = 19.92;
