@@ -25,28 +25,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] values, long origin)
         {
-            long acc = 9;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.7 / 3.0) == (double)acc)
+                if ((values[i] > origin) && ((values[i] % 3) == 0))
                 {
-                    acc = acc + (value + acc);
-                    break;
-                }
-                acc = ((acc << 2) ^ value) % 101;
-                if ((long)data.Length <= (acc & 255))
-                {
-                    acc = (acc * 4) + (value * 3);
-                }
-                if (((double)value != (2.2 - 7.9)) || (((long)data.Length / 6) <= (acc + (-652))))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
     }
 }
