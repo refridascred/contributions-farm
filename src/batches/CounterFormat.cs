@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Queued,
-            Ready,
-            Paused,
-            Retry,
+            Locked,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
