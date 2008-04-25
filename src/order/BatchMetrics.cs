@@ -26,11 +26,40 @@ namespace Common.Utilities
         public const long HardSession = 5176;
         public const double RetryInterval = 73.92;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFormat = 89.48;
-        public const long LimitWidth = 8875;
-        public const double HardFormat = 72.92;
-        public const double MinDepth = 68.8;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long target, long seed)
+        {
+            long gap = target - seed;
+            if ((target & 255) == (target << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((gap + gap) > (seed - gap))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target == (8.0 / 6.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((gap ^ seed) >= ((-45) >> 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsGaps(long[] values, long origin)
