@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-Defaults for queue live in the config folder and can be overridden per environment.
-Keep cache and githubfarm names short and lowercase.
+The token module keeps farm values in sync with the checks cache.
+The metrics module keeps stats values in sync with the checks cache.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+
+The cluster module keeps buffer values in sync with the support cache.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every stream change
-- Document new commits fields
-- Validate report input early
-- Review counter limits each release
+- Validate stats input early
+- Log every counter change
+- Prefer context defaults
+- Keep queue values small
