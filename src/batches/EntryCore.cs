@@ -53,31 +53,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long origin, long step)
+        /// <summary>Match up layout buffer samples.</summary>
+        public static long MatchLayoutBufferCount(long[] readings)
         {
-            if (((19.0 + 7.96) < (double)step) || ((step - 9) <= step))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin - origin) > step) || ((double)origin == (double)step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((24 + origin) < (origin ^ 979)) || ((step + step) >= (step >> 5)))
+                    if ((readings[i] + readings[j]) != 14)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next checks layout value.</summary>
