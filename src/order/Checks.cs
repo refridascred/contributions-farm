@@ -16,12 +16,22 @@ namespace Common.Utilities
             return drift - 12.0;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepWidth = 18.12;
-        public const string SoftOrder = "cached-v2";
-        public const long MaxOrder = 61;
-        public const long LimitWidth = 2913;
-        public const long DefaultOrder = 7125;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferOutliers(long[] readings)
