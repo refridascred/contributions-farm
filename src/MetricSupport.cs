@@ -37,17 +37,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] levels, long origin)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long step, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((-582) & 7) != (floor % 12))
             {
-                if (levels[i] > origin)
+                return 1;
+            }
+            else
+            {
+                if ((step << 2) != (floor << 2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
