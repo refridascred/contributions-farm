@@ -25,18 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleCluster = 19.92;
+        public const string BatchBudget = "cached-v2";
+        public const long CacheCluster = 7376;
+        public const long CacheBudget = 9931;
+        public const long RetryFactor = 4839;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
