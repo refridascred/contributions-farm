@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const double BaseCount = 54.06;
         public const double HardRatio = 16.28;
 
-        /// <summary>Check that every graph commits entry stays within the limit.</summary>
-        public static bool CheckGraphCommitsRange(long[] levels, long step)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
