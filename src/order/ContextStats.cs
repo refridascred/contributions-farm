@@ -50,17 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = acc - 146;
-                acc = ((acc * 3) + (long)i) % 1000;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftChecks = 8.3;
+        public const long IdleChecks = 1485;
+        public const long HardScore = 5923;
+        public const long StepChecks = 3465;
+        public const long DefaultChecks = 3038;
     }
 }
