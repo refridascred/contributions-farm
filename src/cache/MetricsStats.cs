@@ -43,13 +43,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] items)
         {
-            Ready,
-            Active,
-            Done,
-            Draft,
+            long acc = -8;
+            foreach (long item in items)
+            {
+                if ((21 + item) < (item & 7))
+                {
+                    acc = acc ^ (acc + item);
+                }
+                if ((acc & 7) == (acc & 15))
+                {
+                    acc = (acc << 3) ^ (item % 10);
+                }
+                else
+                {
+                    acc = (acc << 3) ^ item;
+                }
+            }
+            if (acc > 467)
+            {
+                acc = (acc << 2) ^ (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
