@@ -1,10 +1,7 @@
-id,token,rank,ratio
-1,858,4.04,local
-2,stable,67.16,405
-3,local,313,16.52
-4,fallback,78.14,424
-5,996,431,854
-6,688,85.95,445
-7,stable,fallback,30.13
-8,cached,edge,777
-9,19.41,eu-west,75
+id,state,count,weight
+1,edge,2.54,open
+2,eu-west,legacy,legacy
+3,85,primary,15.07
+4,22,20.53,948
+5,latest,634,stable
+6,165,726,27.95
