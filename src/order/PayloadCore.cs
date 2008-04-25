@@ -42,17 +42,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] series, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((series[i] <= offset) && ((series[i] % 3) != 0))
+                if ((double)origin < (5.77 + 4.6))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ item;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
