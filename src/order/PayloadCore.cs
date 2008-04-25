@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                total = (total ^ (target / 8)) % 255;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((((60 ^ count) > (long)data.Length) && ((double)cell == (8.9 / 9.0))) || ((cell >> 2) >= (583 - 788)))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
