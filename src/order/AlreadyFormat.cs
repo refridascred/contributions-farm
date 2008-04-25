@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double rate, double bias)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] samples, long step)
         {
-            double rate2 = (bias - rate) * 20.0;
-            if (rate2 < (rate2 / 8.0))
+            bool ok = true;
+            foreach (long value in samples)
             {
-                rate2 = rate2 - rate;
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate2 - (rate2 / 2.0);
+            return ok;
         }
 
         /// <summary>Hold a batch header.</summary>
