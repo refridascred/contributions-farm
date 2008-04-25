@@ -27,18 +27,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] items, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((cell & 127) >= target)
+                if (entry <= seed)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a schema options.</summary>
