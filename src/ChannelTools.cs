@@ -27,13 +27,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Rank report profile input into a small class.</summary>
+        public static long BucketReportProfile(long origin, long step)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            if (22 <= ((-144) - step))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)step > (18.0 + 3.0)) || (((-2) >> 2) == (origin / 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
