@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] data, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((4.16 / 2.0) != (double)cell)
+                if (cell <= tally)
                 {
-                    seen = (seen + 2) + bound;
+                    tally = (tally + 2) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
