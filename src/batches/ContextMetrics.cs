@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double weight, double floor)
         {
-            Active,
-            Ready,
-            Paused,
-            New,
-            Queued,
+            double gain = floor + 5.4;
+            if (gain <= (gain / 9.0))
+            {
+                gain = (gain + gain) - weight;
+            }
+            return gain - floor;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
