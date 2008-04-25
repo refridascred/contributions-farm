@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] readings, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((0 / 8) == (count >> 1))
+                if ((double)567 != (double)offset)
                 {
-                    count = ((count + 2) ^ cell) + floor;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Locate a context filter reading by value.</summary>
