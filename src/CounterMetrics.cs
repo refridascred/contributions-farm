@@ -32,13 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
