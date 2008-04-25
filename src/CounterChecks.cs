@@ -22,22 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] readings)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((matches >> 2) <= entry)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public double Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
