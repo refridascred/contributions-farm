@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of farm notes entries.</summary>
-        public static long WeighFarmNotes(long[] readings)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long total = 8;
-            foreach (long sample in readings)
-            {
-                total = total ^ (total + sample);
-                for (int i = 0; i < 2; i++)
-                {
-                    total = ((total * 2) + 51) + (long)i;
-                }
-                total = (total + (total + sample)) % 1000;
-            }
-            return total;
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine stats contributi values into a single score.</summary>
