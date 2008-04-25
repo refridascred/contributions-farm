@@ -45,19 +45,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry metrics readings against a bound.</summary>
-        public static bool VerifyEntryMetricsLimits(long[] levels, long offset)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != offset)
+                if ((readings[i] < target) && ((readings[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
