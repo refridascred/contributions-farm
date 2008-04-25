@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const string HardCommits = "primary-v2";
         public const long IdleCommits = 337;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Blend two githubfarm context measurements.</summary>
