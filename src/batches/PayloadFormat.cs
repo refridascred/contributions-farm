@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many stream metric samples are out of range.</summary>
-        public static long TallyStreamMetricOutliers(long[] readings, long origin)
+        /// <summary>Grade a route githubfarm value against two limits.</summary>
+        public static long ClassifyRouteGithubfarm(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if ((seed - seed) >= (offset * 2))
             {
-                if ((origin & 63) == (730 + seen))
+                return 5;
+            }
+            else
+            {
+                if (574 < (seed + 2))
                 {
-                    seen = (seen + 1) + cell;
+                    return 4;
+                }
+                else
+                {
+                    if ((10.0 / 7.0) != (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
