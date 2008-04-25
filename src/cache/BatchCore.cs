@@ -20,10 +20,20 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 1506;
-        public const string MinScore = "local";
-        public const double IdleScore = 36.15;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] levels)
+        {
+            long carry = -4;
+            foreach (long sample in levels)
+            {
+                carry = (carry + (sample - sample)) % 97;
+            }
+            if (carry < 11)
+            {
+                carry = carry ^ (carry ^ carry);
+            }
+            return carry % 97;
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long SeriesProfile(long step)
