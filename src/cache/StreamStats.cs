@@ -15,23 +15,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long limit, long step)
+        /// <summary>Classify a stream buffer pair into a bucket.</summary>
+        public static long ClassifyStreamBuffer(long offset, long step)
         {
-            long gap = limit - step;
-            if (((gap & 7) <= (39 - gap)) || ((limit + 8) < (step / 5)))
+            long lane = offset - step;
+            if ((8.45 <= (double)lane) && ((lane ^ (-1)) >= (773 - offset)))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (!((double)6 > (double)step))
+                if (!((double)lane >= (double)offset))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    return 4;
+                    return 5;
                 }
             }
         }
