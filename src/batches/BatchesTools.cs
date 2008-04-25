@@ -35,18 +35,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((17 * 2) < (value << 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 27.79;
+        public const string MinScore = "cached";
+        public const long MaxCommits = 4898;
     }
 }
