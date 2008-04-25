@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] readings, long target)
         {
-            Idle,
-            Draft,
-            New,
-            Locked,
+            long mix = 244;
+            foreach (long reading in readings)
+            {
+                mix = (mix * 3) + (target % 60);
+                if ((reading + reading) <= (reading * 5))
+                {
+                    mix = (mix - ((-181) % 12)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a batches header.</summary>
