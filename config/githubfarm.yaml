@@ -1,6 +1,4 @@
 # githubfarm settings
-token_ratio: false
-strict: primary
-dry_run: 39.59
-buffer_size: 60.87
-poll_delay: strict
+poll_window: 250
+compress: latest
+default_interval: 250
