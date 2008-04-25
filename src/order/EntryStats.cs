@@ -26,13 +26,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Failed,
-            Active,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitDepth = "legacy-edge";
+        public const long DefaultFilter = 8471;
+        public const long IdleBudget = 3772;
 
         /// <summary>Match up session layout samples.</summary>
         public static long CompareSessionLayoutCount(long[] samples)
