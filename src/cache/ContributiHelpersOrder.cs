@@ -33,9 +33,11 @@ namespace Common.Utilities
             return bias2 - (double)36;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 2546;
-        public const long SoftDepth = 8767;
-        public const string CacheEntry = "standard-v2";
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double weight, double span)
+        {
+            double ratio = (double)(3 % 5);
+            return (ratio + span) + weight;
+        }
     }
 }
