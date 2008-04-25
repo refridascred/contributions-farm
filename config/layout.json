@@ -1,7 +1,5 @@
 {
-  "batches_capacity": "green",
-  "queue_ratio": 60,
-  "base_threshold_s": 36.24,
-  "batch_ratio_ms": 89.95,
-  "base_interval": [415, 56]
+  "flush_interval_count": 249,
+  "queue_threshold": [150, 7, 247, 461],
+  "batch_delay": "eu-west"
 }
