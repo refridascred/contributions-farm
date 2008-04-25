@@ -51,11 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
