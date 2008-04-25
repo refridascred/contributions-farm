@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Active,
-            Synced,
-            Ready,
-            Idle,
+            Draft,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a buffer info.</summary>
