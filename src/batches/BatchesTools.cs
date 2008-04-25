@@ -38,26 +38,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine support batches values into a single score.</summary>
-        public static long WeighSupportBatches(long[] levels)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long acc = 0;
-            foreach (long cell in levels)
-            {
-                if (acc >= (acc * 4))
-                {
-                    acc = ((acc * 5) + (5 << 1)) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ (8 - cell);
-                }
-            }
-            if (acc > 83)
-            {
-                acc = (acc ^ acc) % 65521;
-            }
-            return acc;
+            Retry,
+            Dropped,
+            Pending,
+            Ready,
+            Done,
         }
     }
 }
