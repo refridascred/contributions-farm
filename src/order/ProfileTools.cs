@@ -18,31 +18,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank session checks input into a small class.</summary>
-        public static long RankSessionChecks(long floor, long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            if ((2.2 * 4.0) == (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)floor != (5.68 - 5.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((536 + floor) <= (offset + 379))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Describe the payload level values.</summary>
