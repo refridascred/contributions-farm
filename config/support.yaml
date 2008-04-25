@@ -1,6 +1,4 @@
 # support settings
-farm_ratio: 500
-burst_limit:
-  - 362
-  - 185
-strict: 20
+verbose: latest
+profile_delay: green
+buffer_interval: 48
