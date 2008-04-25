@@ -59,12 +59,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            Failed,
+            Synced,
+            Draft,
+            Retry,
+            Locked,
         }
     }
 }
