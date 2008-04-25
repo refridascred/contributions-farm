@@ -1,9 +1,6 @@
 # support settings
-base_ttl_count: stable
-batch_interval_ms: 50
-flush_retries_s: false
-metric_size: false
-batches_window:
-  base_size: cached
-  warm_size_count: legacy
-  soft_timeout_pct: false
+session_window: 30
+sync_retries_count: true
+readonly: stable
+burst_size_s: 42.17
+tools_capacity: local
