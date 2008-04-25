@@ -13,22 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] items)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((((double)seen > 4.4) && (seen < (seen + entry))) || (((637 - entry) <= (seen / 7)) && ((entry + entry) < (seen << 3))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
