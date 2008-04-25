@@ -19,22 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] samples)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double rate, double span)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double weight = rate;
+            if (weight <= rate)
             {
-                if ((9.24 * 7.3) > (double)sample)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = weight + weight;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + span) - (double)(long)i;
+            }
+            return weight + (rate / 5.0);
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
