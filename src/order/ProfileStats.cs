@@ -23,18 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] data)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (datum > (matches + datum))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
