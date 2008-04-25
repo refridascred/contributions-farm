@@ -32,22 +32,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] samples, long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long acc = 614;
+            foreach (long entry in levels)
             {
-                if ((matches << 3) != (seed + matches))
+                if (((long)levels.Length + entry) <= (acc - acc))
                 {
-                    matches = (matches + 3) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = acc - (acc & 1);
                 }
             }
-            return matches;
+            if (acc < 7)
+            {
+                acc = acc ^ (acc % 60);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
