@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count queue token pairs that satisfy a relation.</summary>
-        public static long MatchQueueTokenCount(long[] values)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = state - (offset ^ offset);
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state << 2) ^ (offset + (long)i2)) % 65521;
+                    state = (state - (offset / 9)) % 97;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Iterate the queue buffer series from a seed.</summary>
