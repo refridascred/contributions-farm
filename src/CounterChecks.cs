@@ -39,14 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Paused,
-            Dropped,
-            Closed,
-            Synced,
-            Draft,
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
