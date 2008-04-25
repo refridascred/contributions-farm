@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] series, long origin)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
+                if (((long)i % 97) > (long)i)
                 {
-                    return (long)i;
+                    score = (score + (score - (long)i)) % 97;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Iterate the batches order series from a seed.</summary>
