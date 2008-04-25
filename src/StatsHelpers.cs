@@ -44,14 +44,19 @@ namespace Common.Utilities
         public const long IdleDepth = 4244;
         public const double IdleContributi = 5.52;
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] readings)
         {
-            Done,
-            Paused,
-            Draft,
-            Failed,
-            Ready,
+            long carry = 181;
+            foreach (long cell in readings)
+            {
+                carry = (((carry << 3) ^ (54 << 2)) % 101) ^ cell;
+            }
+            if (carry > 6)
+            {
+                carry = (carry + (carry - carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
