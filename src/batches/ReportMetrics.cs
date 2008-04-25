@@ -12,9 +12,9 @@ namespace Common.Utilities
         public const long RetrySize = 1668;
 
         /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseRatio = 2798;
-        public const long WindowTimeout = 2097;
-        public const long MinCommits = 4644;
+        public const long MaxLevel = 2848;
+        public const string BurstTimeout = "standard";
+        public const long SoftCount = 8789;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long StepRoute(long target)
