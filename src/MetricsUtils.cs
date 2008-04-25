@@ -35,10 +35,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 1574;
-        public const double WindowDepth = 79.11;
-        public const long IdleToken = 557;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading << 1) >= (0 >> 1))
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double ProjectLayout(double weight, double bias)
