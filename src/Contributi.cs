@@ -23,24 +23,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long target, long floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] data, long step)
         {
-            if (((floor * 5) != (56 + floor)) && ((7.55 + 1.22) <= (double)target))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor << 3) > floor)
+                if ((data[i] >= step) && ((data[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
