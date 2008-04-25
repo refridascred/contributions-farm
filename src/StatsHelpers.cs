@@ -38,21 +38,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Digest a series of tools cluster entries.</summary>
+        public static long CombineToolsCluster(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 7;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((seed % 2) == (entry - entry)))
                 {
-                    if ((items[i] + items[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state - (10 + entry)) % 1000;
+                }
+                else
+                {
+                    state = (state << 2) ^ (323 << 1);
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
