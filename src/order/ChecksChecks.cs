@@ -34,15 +34,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the token report series from a seed.</summary>
-        public static long StepTokenReport(long floor)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long target, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            if ((16.0 / 6.0) < (double)target)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (bound > (target + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
