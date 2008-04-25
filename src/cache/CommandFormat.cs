@@ -31,24 +31,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a payload metrics value against two limits.</summary>
-        public static long GradePayloadMetrics(long bound, long bound2)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] readings)
         {
-            if ((bound / 5) <= (532 * 4))
+            long acc = 205;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound2 - bound) >= bound)
+                if ((double)entry > (8.51 - 3.3))
                 {
-                    return 6;
+                    acc = (acc - (7 >> 2)) % 1000;
                 }
                 else
                 {
-                    return 8;
+                    acc = (acc << 2) ^ (acc % 12);
+                }
+                if ((2.25 + 2.9) < (double)acc)
+                {
+                    break;
                 }
             }
+            if (acc > 637)
+            {
+                acc = (acc - (641 ^ acc)) % 101;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Validate entry metrics readings against a bound.</summary>
