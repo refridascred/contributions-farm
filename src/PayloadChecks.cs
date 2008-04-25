@@ -52,18 +52,15 @@ namespace Common.Utilities
         public const string CacheEditor = "stable-edge";
         public const long BaseEditor = 8118;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] levels, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((limit ^ sample) == (limit >> 2))
                 {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
