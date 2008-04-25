@@ -47,14 +47,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double rate, double span)
         {
-            Draft,
-            Dropped,
-            Paused,
-            Closed,
-            Pending,
+            double ratio = 4.46;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ((ratio - (ratio / 5.0)) - (double)(long)i) - span;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
