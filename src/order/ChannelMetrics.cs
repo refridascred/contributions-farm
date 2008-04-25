@@ -29,22 +29,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] series, long target)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double weight = (double)150 / 8.0;
+            if (weight < bias)
             {
-                if ((((8.14 - 7.3) >= (double)target) || (target >= (target * 2))) || ((11.0 * 14.0) == (double)hits))
-                {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight - (2.37 * 5.0);
             }
-            return hits;
+            else
+            {
+                weight = weight - (bias2 + bias);
+            }
+            return weight - bias2;
         }
     }
 }
