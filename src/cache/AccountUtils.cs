@@ -30,18 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] series)
+        /// <summary>Blend two stream token measurements.</summary>
+        public static double ProjectStreamToken(double bias, double span)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double bias2 = bias + (double)598;
+            if (bias2 <= (7.0 / 9.0))
             {
-                if ((cell <= (-5)) && ((cell + cell) >= cell))
-                {
-                    tally = tally + 3;
-                }
+                bias2 = (bias2 - (bias2 + bias2)) - span;
             }
-            return tally;
+            return bias2 + (double)(-2);
         }
     }
 }
