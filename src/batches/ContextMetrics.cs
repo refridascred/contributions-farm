@@ -27,18 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] samples)
+        /// <summary>Blend two githubfarm context measurements.</summary>
+        public static double BlendGithubfarmContext(double scale, double span)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double weight = span / 7.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((1.4 / 4.0) == (double)item)
-                {
-                    seen = seen + 1;
-                }
+                weight = ((weight + (weight * 7.0)) + (double)(long)i) + scale;
             }
-            return seen;
+            return weight - span;
         }
 
         /// <summary>Blend two contributi notes measurements.</summary>
