@@ -22,25 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long seed, long bound)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] series)
         {
-            long next = seed + bound;
-            if ((double)bound != (double)466)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((next * 3) > 813))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
