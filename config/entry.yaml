@@ -1,7 +1,13 @@
 # entry settings
-compress: 9757
-soft_limit_pct: 32.42
-batch_ttl_count:
-  - 316
-  - 259
-  - 283
+cluster_threshold: legacy
+default_window_ms:
+  base_threshold:
+    - primary
+    - edge
+  idle_ratio: fallback
+  filter_size: green
+enabled:
+  - 369
+  - 88
+  - 27
+  - 104
