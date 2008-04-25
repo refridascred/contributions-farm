@@ -31,21 +31,17 @@ namespace Common.Utilities
         public const long DefaultFilter = 8471;
         public const long IdleBudget = 3772;
 
-        /// <summary>Match up session layout samples.</summary>
-        public static long CompareSessionLayoutCount(long[] samples)
+        /// <summary>Find the first token report entry that matches the target.</summary>
+        public static long LookupTokenReportIndex(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (items[i] > step)
                 {
-                    if ((samples[i] ^ samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
