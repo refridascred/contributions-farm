@@ -35,24 +35,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long step, long floor)
-        {
-            if (((-582) & 7) != (floor % 12))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step << 2) != (floor << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 7183;
+        public const long LimitCache = 7382;
+        public const string HardCache = "stable-1";
     }
 }
