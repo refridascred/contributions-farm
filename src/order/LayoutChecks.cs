@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const string BurstOrder = "cached-edge";
         public const long HardOrder = 552;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] levels, long floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long acc = 30;
+            foreach (long entry in readings)
             {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc + acc) % 65521) - entry;
             }
-            return flag;
+            if (acc > 60)
+            {
+                acc = (acc ^ (acc % 3)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
