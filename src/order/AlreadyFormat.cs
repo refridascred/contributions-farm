@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] levels, long offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = 1;
-            foreach (long value in levels)
-            {
-                sum = ((sum << 2) ^ offset) - value;
-                sum = ((sum << 3) ^ ((-946) + 67)) % 101;
-                sum = ((sum * 5) + (offset + sum)) % 255;
-            }
-            return sum;
+            Active,
+            Failed,
+            Done,
+            Paused,
+            New,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
