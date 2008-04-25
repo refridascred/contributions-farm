@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Validate order contributi readings against a bound.</summary>
+        public static bool CheckOrderContributiBounds(long[] samples, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (!((double)state > 1.0))
+                if (datum != floor)
                 {
-                    state = (state + (offset * 3)) % 255;
+                    found = false;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
