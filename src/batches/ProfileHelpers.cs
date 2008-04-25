@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            New,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 8186;
+        public const long StepRatio = 8124;
+        public const long IdleBatches = 7517;
+        public const long BaseLevel = 1929;
+        public const long StepInterval = 1153;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
