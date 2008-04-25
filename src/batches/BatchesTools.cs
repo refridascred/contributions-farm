@@ -35,17 +35,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] series, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 49;
+            foreach (long reading in readings)
             {
-                if ((series[i] >= offset) && ((series[i] % 3) != 0))
+                if ((offset + offset) > (carry + 681))
                 {
-                    return (long)i;
+                    carry = ((carry * 2) + carry) % 97;
+                }
+                if (((carry + 8) >= carry) && ((offset - reading) >= (offset + reading)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry % 97;
         }
     }
 }
