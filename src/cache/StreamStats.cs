@@ -39,15 +39,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long origin, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long step = origin + seed;
+            if ((step ^ origin) <= (seed & 1))
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (((-87) + seed) == (origin << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step - seed) <= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
