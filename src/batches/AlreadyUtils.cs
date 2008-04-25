@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long LimitEditor = 3124;
         public const double MaxBudget = 60.27;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] series)
         {
-            New,
-            Retry,
-            Stale,
-            Draft,
+            long result = -620;
+            foreach (long reading in series)
+            {
+                if ((result - result) <= result)
+                {
+                    result = (result - (result - reading)) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
