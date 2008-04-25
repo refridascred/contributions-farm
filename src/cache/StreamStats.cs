@@ -42,12 +42,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstFactor = "legacy-edge";
+        public const string CacheTimeout = "strict-edge";
+        public const long DefaultCluster = 5383;
+        public const double BaseCluster = 80.74;
     }
 }
