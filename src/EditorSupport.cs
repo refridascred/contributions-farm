@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a channel order reading.</summary>
-        public static double BlendChannelOrder(double bias, double floor)
+        /// <summary>Derive the next already cluster value from a seed.</summary>
+        public static long DeriveAlreadyCluster(long offset)
         {
-            double scale = (floor * 9.5) + (bias * 16.0);
-            if (scale > (bias - 12.0))
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                scale = scale - (bias * 5.69);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                scale = scale + (double)85;
-            }
-            return scale + 2.9;
+            return acc;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
