@@ -28,14 +28,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Retry,
-            Dropped,
-            Pending,
-            Ready,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseTools = "cached-1";
+        public const long MinWidth = 3228;
+        public const long BurstRatio = 8278;
     }
 }
