@@ -1,5 +1,21 @@
 {
-  "idle_ttl_pct": "edge",
-  "idle_threshold": [42, 270, 481, 294],
-  "hard_limit_pct": 30
+  "soft_delay_count": 754,
+  "warm_retries_ms": [381, 227],
+  "cache_depth_ms": "cached",
+  "soft_depth_pct": "open",
+  "readonly": {
+    "hard_interval_count": "fallback",
+    "min_retries": "green",
+    "farm_capacity": 60,
+    "flush_ttl": {
+      "retry_depth": "strict",
+      "retry_size_ms": "blue",
+      "counter_ratio": 100,
+      "idle_ratio": "cached",
+      "command_ratio": 1059,
+      "sync_ratio": false
+    },
+    "persist": 63.74,
+    "notes_ratio": "fallback"
+  }
 }
