@@ -30,14 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Paused,
+            Stale,
             Closed,
-            New,
-            Pending,
-            Locked,
+            Failed,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
