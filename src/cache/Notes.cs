@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long LimitDepth = 2313;
         public const long BatchFactor = 1373;
 
-        /// <summary>Match up buffer window samples.</summary>
-        public static long CompareBufferWindowCount(long[] readings)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (samples[i] > limit)
                 {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
