@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double rate, double bias)
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            double load = rate;
+            if (load < (rate / 5.0))
+            {
+                load = load + rate;
+            }
+            else
+            {
+                load = load - (double)2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + (rate * 3.0);
         }
 
         /// <summary>Hold a graph stats.</summary>
