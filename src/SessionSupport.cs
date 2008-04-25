@@ -14,21 +14,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (bias - bias) / 6.0;
+            if (gain >= gain)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain + floor;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (gain - floor)) + (double)(long)i;
+            }
+            return gain - (gain - 9.0);
         }
 
         /// <summary>Rank window input into a small class.</summary>
