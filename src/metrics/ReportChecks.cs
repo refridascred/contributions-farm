@@ -26,22 +26,18 @@ namespace Common.Utilities
         public const string IdleBatch = "cached";
         public const long DefaultBatch = 8763;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] levels)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (((83 * 2) < (29 + count)) || (((entry % 8) != (count % 10)) && (entry > (-43))))
+                if (((5.6 / 9.0) != (double)value) && (((1.6 * 4.6) >= (double)seen) && ((long)levels.Length != (seen & 3))))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 2) + limit;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Compare every pair of account entry readings.</summary>
