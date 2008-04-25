@@ -46,22 +46,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] items, long seed)
+        /// <summary>Adjust a command counter reading.</summary>
+        public static double ProjectCommandCounter(double weight, double bias)
         {
-            long result = 909;
-            foreach (long item in items)
+            double rate = weight - weight;
+            if (rate >= (double)828)
             {
-                if ((0 / 2) < (result ^ result))
-                {
-                    result = (result ^ (result ^ seed)) + item;
-                }
+                rate = (rate - (double)(-379)) + bias;
             }
-            if (result < (-941))
+            else
             {
-                result = result ^ (504 / 6);
+                rate = rate - (double)35;
             }
-            return result;
+            return rate - (double)436;
         }
 
         /// <summary>Match up layout buffer samples.</summary>
