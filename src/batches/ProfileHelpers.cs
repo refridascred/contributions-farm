@@ -42,16 +42,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next commits profile value from a seed.</summary>
-        public static long IterateCommitsProfile(long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] levels, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                result = (result ^ ((long)i ^ (-1))) % 1000;
-                result = ((result * 3) + (long)i) % 4093;
+                if (entry > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Hold a checks header.</summary>
