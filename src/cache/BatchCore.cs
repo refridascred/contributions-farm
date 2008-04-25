@@ -46,12 +46,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepSpan = 3299;
+        public const string RetryLayout = "standard-v2";
+        public const string BurstLayout = "latest";
     }
 }
