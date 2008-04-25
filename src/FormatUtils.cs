@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitScore = 7484;
-        public const double RetryLayout = 76.33;
-        public const double MaxWidth = 60.63;
-        public const long WindowLayout = 2970;
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesRange(long[] data, long target)
