@@ -1,7 +1,8 @@
-id,label,active,region
-1,968,25.56,fallback
-2,675,65.02,local
-3,76.76,893,940
-4,77.55,stable,standard
-5,blue,latest,9.91
-6,56,70.01,30.12
+id,owner,state,label,ratio
+1,46,62.99,905,82.94
+2,stable,staging,590,287
+3,97.0,primary,17.16,34.12
+4,latest,572,standard,758
+5,459,69,210,235
+6,848,open,596,strict
+7,559,574,144,590
