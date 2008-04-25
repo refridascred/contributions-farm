@@ -47,18 +47,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] readings, long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double mean = scale;
+            if (mean > (3.99 / 3.0))
             {
-                if (((hits % 24) < (hits ^ (-5))) || (hits <= (value ^ value)))
-                {
-                    hits = (hits + 1) - bound;
-                }
+                mean = mean + mean;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - floor;
         }
     }
 }
