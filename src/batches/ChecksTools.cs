@@ -21,20 +21,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate window report readings against a bound.</summary>
-        public static bool ValidateWindowReportLimits(long[] levels, long target)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 6288;
+        public const long HardFactor = 2244;
+        public const long BatchFactor = 6402;
+        public const double StepBudget = 85.5;
+        public const string HardChannel = "stable-1";
 
         /// <summary>Digest a series of order account entries.</summary>
         public static long CombineOrderAccount(long[] samples, long step)
