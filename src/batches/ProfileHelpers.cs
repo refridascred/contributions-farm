@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] levels, long target)
         {
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
+            long total = 252;
+            foreach (long sample in levels)
+            {
+                if (((target & 3) >= target) && ((sample << 3) != (target - total)))
+                {
+                    total = (total + total) % 97;
+                }
+            }
+            if (total < 59)
+            {
+                total = (total << 3) ^ target;
+            }
+            return total % 97;
         }
 
         /// <summary>Accumulate farm samples.</summary>
