@@ -76,16 +76,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long origin)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = (mix ^ (mix & 1)) % 97;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Idle,
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a contributi summary.</summary>
