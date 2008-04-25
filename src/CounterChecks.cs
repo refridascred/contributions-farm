@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long floor, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] samples)
         {
-            if ((double)floor == (8.4 + 5.0))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((89 / 5) >= floor)
+                if (((hits + hits) < (hits >> 5)) || ((336 * 3) >= hits))
                 {
-                    return 5;
+                    hits = (hits + 2) ^ item;
                 }
                 else
                 {
-                    if ((372 % 5) == (limit + 385))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((0.3 < (double)limit) || ((limit + floor) < (328 - limit)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a account info.</summary>
