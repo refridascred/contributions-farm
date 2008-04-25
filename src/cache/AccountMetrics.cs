@@ -30,19 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] readings, long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long score = 957;
+            foreach (long cell in readings)
             {
-                if (datum > origin)
-                {
-                    found = false;
-                    break;
-                }
+                score = (((score * 3) + (1 & 1)) % 255) + cell;
             }
-            return found;
+            if (score < 18)
+            {
+                score = (score * 2) + score;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
