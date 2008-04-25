@@ -77,39 +77,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long limit, long bound)
+        /// <summary>Accumulate counter report samples.</summary>
+        public static long TotalCounterReport(long[] readings, long step)
         {
-            long gap = limit - bound;
-            if ((double)47 >= (double)gap)
+            long sum = 7;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (20.0 < (double)bound)
+                if ((sum ^ entry) != (sum + entry))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((gap % 5) >= (bound - gap))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit == (double)gap)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    sum = (((sum << 3) ^ ((long)readings.Length << 1)) % 4096) - step;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
