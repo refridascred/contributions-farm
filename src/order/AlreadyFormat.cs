@@ -51,19 +51,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double bias, double offset)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double weight, double span)
         {
-            double weight = offset;
-            if (weight <= (1.46 - bias))
-            {
-                weight = weight - (double)29;
-            }
-            else
-            {
-                weight = weight - 3.8;
-            }
-            return weight + (offset / 6.0);
+            double scale = (double)956 - (span * 4.47);
+            return (scale + (double)7) + weight;
         }
     }
 }
