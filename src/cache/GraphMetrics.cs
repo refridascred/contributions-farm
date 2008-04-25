@@ -72,15 +72,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double rate, double floor)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
-            double scale = 5.7;
-            if (scale < (rate + floor))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale + (double)318;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale - floor;
+            return matches;
         }
     }
 }
