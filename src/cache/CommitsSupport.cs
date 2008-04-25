@@ -26,12 +26,10 @@ namespace Common.Utilities
         public const long HardDepth = 8954;
         public const double BurstFactor = 97.51;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseWidth = 3155;
+        public const double DefaultReport = 88.03;
+        public const string BurstReport = "standard-edge";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MaxReport = 8170;
