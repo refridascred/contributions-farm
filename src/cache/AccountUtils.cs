@@ -26,22 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue batches samples are out of range.</summary>
-        public static long AuditQueueBatchesHits(long[] readings, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!((limit % 7) <= limit))
+                if ((double)limit > (3.0 * 5.8))
                 {
-                    tally = (tally + 3) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
