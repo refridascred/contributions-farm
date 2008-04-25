@@ -38,17 +38,18 @@ namespace Common.Utilities
         public const long BurstCache = 228;
         public const double SoftCache = 9.4;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] items, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (items[i] > bound)
+                if ((6.0 * 7.3) > (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
