@@ -14,19 +14,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] samples, long step)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
