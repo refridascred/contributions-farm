@@ -37,18 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record filter entries that pass the check.</summary>
-        public static long CountRecordFilterMatches(long[] samples, long offset)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value > (double)49)
-                {
-                    matches = (matches + 2) - offset;
-                }
-            }
-            return matches;
+            Closed,
+            Dropped,
+            Paused,
         }
     }
 }
