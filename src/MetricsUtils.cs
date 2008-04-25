@@ -46,15 +46,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a command layout figure with a bias.</summary>
-        public static double SmoothCommandLayout(double bias, double bias2)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] items, long offset)
         {
-            double mean = bias2;
-            if (mean > mean)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - (mean * 1.4)) + bias;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (double)4;
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
