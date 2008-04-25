@@ -13,12 +13,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Done,
-            Active,
-            Pending,
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
