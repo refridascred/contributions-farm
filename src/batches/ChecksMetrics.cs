@@ -62,18 +62,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter queue readings against a rule.</summary>
-        public static long MeasureFilterQueueMatches(long[] series, long seed)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((7.58 / 9.0) < (double)hits) || ((hits << 2) > (hits * 4)))
+                if (samples[i] == target)
                 {
-                    hits = ((hits + 2) + value) + seed;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
