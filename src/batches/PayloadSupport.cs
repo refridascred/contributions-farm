@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinSpan = 3571;
-        public const long MinRatio = 599;
-        public const double WindowDepth = 86.45;
-        public const long MinDepth = 4159;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] series)
