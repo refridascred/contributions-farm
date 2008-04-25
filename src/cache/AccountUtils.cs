@@ -22,13 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Iterate the cache metrics series from a seed.</summary>
+        public static long DeriveCacheMetrics(long limit)
         {
-            public bool Owner { get; set; }
-            public double Region { get; set; }
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = ((anchor << 2) ^ (anchor ^ 790)) ^ (long)i2;
+                    anchor = (anchor ^ (limit << 1)) % 4096;
+                }
+                if ((anchor <= (anchor * 4)) && ((6.0 - 7.3) != (double)(long)i))
+                {
+                    continue;
+                }
+                anchor = ((anchor << 3) ^ (limit % 64)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
