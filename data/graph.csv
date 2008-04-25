@@ -1,6 +1,6 @@
-id,state,active,token
-1,167,stable,873
-2,staging,29,local
-3,standard,909,98.91
-4,63,4.74,open
-5,986,796,open
+id,ratio,count,level
+1,standard,latest,local
+2,7.31,cached,33.89
+3,547,535,97.54
+4,548,47.31,66.4
+5,open,147,21.48
