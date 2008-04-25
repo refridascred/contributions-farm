@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] levels, long limit)
+        /// <summary>Rank schema cache input into a small class.</summary>
+        public static long SortSchemaCache(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long cur = floor + origin;
+            if ((origin - 3) > floor)
             {
-                if ((tally >> 2) < limit)
+                return 2;
+            }
+            else
+            {
+                if ((cur + cur) != (floor - cur))
                 {
-                    tally = (tally + 1) ^ item;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
