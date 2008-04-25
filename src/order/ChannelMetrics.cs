@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long StepStats = 3961;
         public const long SoftSize = 6114;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] readings, long floor)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
