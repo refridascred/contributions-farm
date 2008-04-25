@@ -51,15 +51,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats editor counter forward.</summary>
-        public static long DeriveStatsEditor(long limit)
+        /// <summary>Adjust a stats queue reading.</summary>
+        public static double ScaleStatsQueue(double weight, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            double mean = offset;
+            if (mean > 1.7)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                mean = (mean - 17.0) + weight;
             }
-            return acc;
+            else
+            {
+                mean = mean - (offset / 2.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (mean / 2.0);
         }
 
         /// <summary>Describe the context class values.</summary>
