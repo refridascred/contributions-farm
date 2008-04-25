@@ -1,19 +1,5 @@
 {
-  "base_delay": "latest",
-  "max_ttl_ms": 7723,
-  "strict": 77.92,
-  "cache_size": {
-    "filter_ttl": 61,
-    "buffer_capacity": {
-      "burst_interval_count": 27.46,
-      "sync_capacity_pct": 1024,
-      "hard_ratio_s": true,
-      "filter_threshold": 94,
-      "hard_limit_ms": "fallback",
-      "soft_capacity_ms": "edge"
-    },
-    "record_timeout": "local",
-    "base_ttl_s": ["green", "staging", "latest"]
-  },
-  "min_threshold_pct": 99
+  "metrics_ratio": true,
+  "checks_depth": "fallback",
+  "context_depth": 53
 }
