@@ -29,14 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] values)
         {
-            Dropped,
-            Pending,
-            Queued,
-            New,
-            Synced,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (((6.01 + 8.39) >= (double)reading) || ((seen * 2) > (seen + seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
