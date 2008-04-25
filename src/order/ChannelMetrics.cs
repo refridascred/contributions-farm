@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 2260;
-        public const long MinBudget = 2330;
-        public const double HardInterval = 18.05;
-        public const double BaseCount = 54.06;
-        public const double HardRatio = 16.28;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] items, long limit)
+        {
+            long anchor = 857;
+            foreach (long item in items)
+            {
+                anchor = (((anchor << 3) ^ (limit / 3)) % 1000) ^ item;
+                anchor = (anchor * 5) + 94;
+            }
+            if (anchor < (-668))
+            {
+                anchor = (anchor + (756 + limit)) % 4096;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
