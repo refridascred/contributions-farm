@@ -55,21 +55,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 8125;
+        public const double LimitStats = 60.59;
+        public const long DefaultStats = 7849;
     }
 }
