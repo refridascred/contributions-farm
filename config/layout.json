@@ -1,7 +1,15 @@
 {
-  "max_retries_pct": "edge",
-  "batch_interval_pct": 21,
-  "cache_depth": true,
-  "sync_limit_s": 4307,
-  "already_retries": 45.01
+  "compress": 59.62,
+  "base_threshold_pct": {
+    "report_ratio": 43.65,
+    "layout_window": 100,
+    "entry_window": 9276,
+    "max_interval_pct": 6005,
+    "context_retries": ["edge", "stable"],
+    "burst_size_s": 500
+  },
+  "burst_limit_count": "open",
+  "tools_limit": "edge",
+  "tools_delay": "legacy",
+  "enabled": 9399
 }
