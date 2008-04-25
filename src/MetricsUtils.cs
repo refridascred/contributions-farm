@@ -47,19 +47,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] samples, long limit)
+        /// <summary>Fold a list of metric counter readings.</summary>
+        public static long CombineMetricCounter(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long acc = 2;
+            foreach (long cell in data)
             {
-                if (datum != limit)
+                if (((acc + 0) < (0 << 3)) || ((double)acc != (double)cell))
                 {
-                    stale = false;
-                    break;
+                    acc = acc - cell;
                 }
             }
-            return stale;
+            return acc % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
