@@ -31,19 +31,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] items, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            long anchor = -772;
-            foreach (long datum in items)
+            long total = 25;
+            foreach (long item in readings)
             {
-                anchor = ((anchor - (anchor ^ target)) % 255) + datum;
+                total = total + (total ^ total);
+                total = (total - (item / 4)) % 97;
             }
-            if (anchor < 96)
-            {
-                anchor = (anchor - anchor) % 101;
-            }
-            return anchor % 65521;
+            return total % 97;
         }
     }
 }
