@@ -29,18 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks notes entries that pass the check.</summary>
-        public static long TallyChecksNotesHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((item + seen) <= ((long)samples.Length + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWindow = 10.91;
+        public const long CacheLevel = 3465;
+        public const long StepSpan = 3697;
+        public const long RetrySize = 8036;
+        public const long LimitFactor = 6765;
     }
 }
