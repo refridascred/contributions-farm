@@ -56,19 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] readings, long bound)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long mix = 775;
-            foreach (long reading in readings)
-            {
-                mix = (mix ^ (0 + bound)) ^ reading;
-                if (698 >= (44 + mix))
-                {
-                    mix = (mix ^ (bound + 3)) % 65521;
-                }
-            }
-            return mix;
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Fold a list of filter readings.</summary>
