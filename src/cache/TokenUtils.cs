@@ -22,21 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long origin, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((seed + seed) != (origin / 4))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((seed - seed) < 48)
                 {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
