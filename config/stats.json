@@ -1,11 +1,5 @@
 {
-  "persist": {
-    "poll_ratio_s": [362, 433],
-    "verbose": "blue",
-    "compress": ["blue", "local", "primary", "open"],
-    "max_interval_s": 9938,
-    "hard_timeout": "cached"
-  },
-  "filter_timeout": ["standard", "standard", "blue"],
-  "stats_ratio": true
+  "cache_delay": "latest",
+  "compress": ["stable", "blue", "green"],
+  "session_delay": 15.36
 }
