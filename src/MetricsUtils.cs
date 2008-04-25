@@ -46,18 +46,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] levels, long seed)
+        /// <summary>Scale a command layout figure with a bias.</summary>
+        public static double SmoothCommandLayout(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double mean = bias2;
+            if (mean > mean)
             {
-                if ((reading << 1) >= (0 >> 1))
-                {
-                    matches = (matches + 2) + seed;
-                }
+                mean = (mean - (mean * 1.4)) + bias;
             }
-            return matches;
+            return mean + (double)4;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
