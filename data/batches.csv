@@ -1,8 +1,8 @@
-id,label,region
-1,strict,stable
-2,771,37.37
-3,334,blue
-4,631,fallback
-5,421,legacy
-6,349,19.23
-7,749,536
+id,token,region
+1,215,73.19
+2,standard,73.45
+3,57,565
+4,514,150
+5,legacy,68
+6,463,6.58
+7,449,79.85
