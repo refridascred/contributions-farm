@@ -19,14 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] items)
         {
-            Pending,
-            Active,
-            Done,
-            New,
-            Paused,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)seen == (7.1 / 8.0))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a tools options.</summary>
