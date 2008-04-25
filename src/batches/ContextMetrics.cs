@@ -44,12 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            public double Offset { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a order entry.</summary>
