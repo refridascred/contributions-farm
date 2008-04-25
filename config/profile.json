@@ -1,5 +1,20 @@
 {
-  "sync_threshold_s": false,
-  "context_retries": true,
-  "warm_threshold": 30
+  "order_ttl": 81.79,
+  "cache_limit": 7.73,
+  "default_timeout_count": 36,
+  "soft_window_s": [256, 62, 307],
+  "cache_capacity": {
+    "default_window_count": false,
+    "cache_size": 250,
+    "order_capacity": 76,
+    "already_size": 18,
+    "poll_ratio_ms": {
+      "default_depth_pct": [454, 478],
+      "cache_ratio_ms": false,
+      "queue_ratio": "blue",
+      "enabled": 14,
+      "poll_delay": "local"
+    },
+    "stats_delay": ["primary", "strict"]
+  }
 }
