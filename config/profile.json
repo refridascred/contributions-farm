@@ -1,6 +1,5 @@
 {
-  "idle_size": true,
-  "warm_retries": ["local", "fallback"],
-  "report_timeout": ["strict", "fallback"],
-  "enabled": 500
+  "sync_threshold_s": false,
+  "context_retries": true,
+  "warm_threshold": 30
 }
