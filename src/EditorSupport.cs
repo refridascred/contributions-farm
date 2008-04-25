@@ -105,9 +105,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftBudget = 4648;
-        public const double HardScore = 20.21;
-        public const long CacheSupport = 43;
+        /// <summary>Grade a window batch value against two limits.</summary>
+        public static long SortWindowBatch(long target, long step)
+        {
+            if ((double)step == (1.6 * 9.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)target <= (5.7 - 15.0)) || ((target & 1) == (target / 9)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
