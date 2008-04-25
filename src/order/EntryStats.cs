@@ -23,15 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Match up session layout samples.</summary>
