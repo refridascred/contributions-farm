@@ -57,12 +57,10 @@ namespace Common.Utilities
         public const string IdleBatches = "latest-edge";
         public const double RetryRatio = 94.32;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public double Total { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 63.23;
+        public const string BurstRecord = "open-edge";
+        public const string MinScore = "open-1";
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long FindProfileIndex(long[] levels, long origin)
