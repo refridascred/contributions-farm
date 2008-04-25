@@ -78,19 +78,12 @@ namespace Common.Utilities
         public const long BurstDepth = 1463;
         public const string MaxLevel = "local-edge";
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] series, long step)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Region { get; set; }
+            public double Rank { get; set; }
+            public double Token { get; set; }
         }
     }
 }
