@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long limit, long offset)
-        {
-            if ((offset * 2) >= offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit + limit) <= 877)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBatches = 60.91;
+        public const string RetryBudget = "local";
+        public const long BatchSize = 109;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferMatches(long[] levels, long bound)
