@@ -34,10 +34,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowBatch = "cached-1";
-        public const long LimitBatch = 3454;
-        public const long BurstBudget = 8853;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                result = (result ^ ((long)i - result)) % 101;
+                if ((2.52 + 5.69) >= (double)origin)
+                {
+                    result = (result ^ 481) % 101;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricMatches(long[] values, long bound)
