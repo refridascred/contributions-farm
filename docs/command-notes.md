@@ -1,12 +1,12 @@
 # Command notes
 
-Use token settings to tune how often githubfarm data is refreshed.
-Each order is validated before it reaches the channel queue.
-The cache helpers are pure functions, so they are safe to call from any thread.
+The stats report groups every profile by counter.
+Keep notes and entry names short and lowercase.
+The metric module keeps payload values in sync with the buffer cache.
 
 ## Guidelines
 
-- Review notes limits each release
-- Prefer queue defaults
-- Validate batch input early
-- Log every channel change
+- Log every checks change
+- Keep stream values small
+- Prefer profile defaults
+- Validate token input early
