@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardInterval = 32.28;
-        public const string DefaultCount = "local-v2";
-        public const long StepMetric = 8946;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long floor, long offset)
+        {
+            if ((offset + floor) >= floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset + offset) < floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset & 1) > 0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor > (offset + 8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many format account samples are out of range.</summary>
         public static long AuditFormatAccountGaps(long[] values, long origin)
