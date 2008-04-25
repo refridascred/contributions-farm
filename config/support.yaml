@@ -1,11 +1,12 @@
 # support settings
-enabled:
-  - local
-  - green
-  - latest
-sync_timeout_s:
-  - fallback
-  - staging
-  - latest
-  - cached
-persist: 73
+counter_ratio: 37.09
+verbose:
+  poll_delay_pct: latest
+  batch_delay_ms: 2283
+  notes_ratio:
+    flush_interval_count: 9253
+    hard_threshold_s: 115
+    stats_depth: primary
+    commits_limit: 41
+notes_window: standard
+base_depth: standard
