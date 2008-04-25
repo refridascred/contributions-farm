@@ -16,18 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] items)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (datum < (datum / 9))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a tools options.</summary>
