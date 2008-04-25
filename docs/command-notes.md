@@ -1,16 +1,14 @@
 # Command notes
 
-Each layout is validated before it reaches the session queue.
-When a record fails, the layout handler retries a few times before giving up.
-Run the buffer check before changing any command limits.
+The record report groups every channel by metric.
+The buffer module keeps route values in sync with the token cache.
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-Keep batches and metrics names short and lowercase.
-Use cache settings to tune how often batch data is refreshed.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Run the window check before changing any tools limits.
 
 ## Guidelines
 
-- Document new farm fields
-- Log every route change
-- Validate context input early
-- Prefer token defaults
+- Validate metric input early
+- Log every report change
+- Keep batches values small
+- Review route limits each release
