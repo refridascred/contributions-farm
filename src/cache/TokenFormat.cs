@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate editor layout samples.</summary>
-        public static long ScoreEditorLayout(long[] readings)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long sum = 22;
-            foreach (long value in readings)
-            {
-                sum = sum + (value >> 3);
-                if (((double)sum < (9.34 - 9.86)) || (sum >= (sum & 7)))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            Done,
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
