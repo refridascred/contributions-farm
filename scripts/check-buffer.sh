@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in primary legacy latest; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in eu-west open standard latest; do
-    log "checking ${item}"
-done
