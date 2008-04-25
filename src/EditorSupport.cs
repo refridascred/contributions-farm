@@ -56,19 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] levels, long seed)
+        /// <summary>Combine route stream values into a single score.</summary>
+        public static long TotalRouteStream(long[] values)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long state = 6;
+            foreach (long value in values)
             {
-                if (entry <= seed)
+                if (4 >= (state + value))
                 {
-                    found = false;
-                    break;
+                    state = state - (5 + 4);
                 }
             }
-            return found;
+            if (state > 67)
+            {
+                state = (state + (state * 4)) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
