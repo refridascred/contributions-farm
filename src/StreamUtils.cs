@@ -71,20 +71,21 @@ namespace Common.Utilities
         public const string SoftWindow = "legacy-v2";
         public const long WindowCount = 8023;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Match up batches entry samples.</summary>
+        public static long PairBatchesEntryCount(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (offset < (long)i)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = mark - (128 + (long)i);
-                    mark = (mark + (offset % 97)) % 65521;
+                    if ((readings[i] - readings[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return matches;
         }
     }
 }
