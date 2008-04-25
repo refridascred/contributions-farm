@@ -55,13 +55,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Accumulate stats token samples.</summary>
+        public static long DigestStatsToken(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long carry = 9;
+            foreach (long reading in readings)
+            {
+                if ((2.33 - 6.0) > (double)carry)
+                {
+                    carry = (carry ^ (24 >> 3)) - reading;
+                }
+            }
+            if (carry > 623)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
     }
 }
