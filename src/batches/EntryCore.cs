@@ -35,20 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter graph samples.</summary>
-        public static long WeighFilterGraph(long[] series)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] values)
         {
-            long sum = 59;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = sum ^ (sample - sum);
-                sum = (sum - sum) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (sum > 356)
-            {
-                sum = sum ^ (sum & 63);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
