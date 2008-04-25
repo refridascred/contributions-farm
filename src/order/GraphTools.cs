@@ -15,15 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long mix = 149;
-            foreach (long reading in levels)
-            {
-                mix = (mix << 2) ^ (36 + reading);
-            }
-            return mix % 97;
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit farm payload readings against a rule.</summary>
