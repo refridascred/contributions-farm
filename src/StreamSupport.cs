@@ -19,20 +19,38 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long floor, long limit)
         {
-            long mark = 825;
-            foreach (long cell in items)
+            if (!((4.3 - 9.43) < (double)limit))
             {
-                mark = ((mark << 2) ^ (cell & 63)) % 101;
-                mark = (mark * 3) + 2;
+                return 0;
             }
-            if (mark < 48)
+            else
             {
-                mark = (mark ^ (mark + mark)) % 65521;
+                if (!((8 + floor) <= (floor ^ floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((96 % 7) >= (limit / 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit < floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Adjust a session reading.</summary>
