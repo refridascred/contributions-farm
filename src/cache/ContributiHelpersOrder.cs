@@ -22,15 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a contributi metrics figure with a bias.</summary>
-        public static double AdjustContributiMetrics(double ratio, double bias)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long origin, long origin2)
         {
-            double bias2 = (double)(148 >> 5);
-            if (bias2 >= (double)(-930))
+            if ((1.7 - 5.5) > (double)origin2)
             {
-                bias2 = (bias2 + ratio) + bias;
+                return 4;
             }
-            return bias2 - (double)36;
+            else
+            {
+                if ((origin & 63) <= (origin << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((((-41) + origin) != (origin ^ origin)) && ((origin2 + 292) <= (origin2 + origin)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin2 - origin) != (origin2 & 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next entry value.</summary>
