@@ -20,19 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] samples, long target)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long limit)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading <= target)
+                if ((double)limit > (double)(long)i)
                 {
-                    ok = false;
-                    break;
+                    result = (result << 3) ^ (result & 255);
                 }
+                result = (result * 2) + limit;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
