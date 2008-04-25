@@ -1,18 +1,9 @@
 # entry settings
-graph_ttl: 83
-idle_capacity_s: 1968
-base_retries_count:
-  cache_timeout_pct:
-    - 347
-    - 442
-  cluster_ratio:
-    flush_delay: cached
-    checks_size: false
-    sync_depth_s: 79.83
-    persist: fallback
-    record_timeout: stable
-  buffer_interval: false
-  route_timeout: 88
-  githubfarm_threshold:
-    - 296
-    - 257
+retry_retries_s:
+  - strict
+  - green
+strict: 86.02
+compress: 250
+persist: primary
+entry_threshold: 1024
+base_window_count: cached
