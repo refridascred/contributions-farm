@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] items, long floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] series, long step)
         {
-            long state = 12;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(state <= (state ^ value)))
+                if ((series[i] < step) && ((series[i] % 3) != 0))
                 {
-                    state = (state * 2) + (floor << 1);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the format phase values.</summary>
