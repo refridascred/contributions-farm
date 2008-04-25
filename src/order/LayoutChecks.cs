@@ -57,9 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchGithubfarm = 80.45;
-        public const string BatchWidth = "alpha-1";
-        public const string SoftTimeout = "primary-v2";
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] series, long bound)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((value << 2) < (tally ^ tally))
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
+        }
     }
 }
