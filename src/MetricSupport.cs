@@ -32,10 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheCount = 2822;
-        public const long SoftTools = 678;
-        public const long StepTimeout = 1345;
-        public const long MinTools = 2685;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowDepth = "legacy-v2";
+        public const double SoftSpan = 26.76;
+        public const long BaseMetrics = 7553;
+        public const long BurstMetrics = 330;
     }
 }
