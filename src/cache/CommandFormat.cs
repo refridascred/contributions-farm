@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long RetryWidth = 4989;
         public const long MinBudget = 8258;
 
-        /// <summary>Combine route metrics values into a single score.</summary>
-        public static long CombineRouteMetrics(long[] samples)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long seed)
         {
-            long score = 538;
-            foreach (long item in samples)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((item - 3) > score)
-                {
-                    score = (score << 2) ^ (score * 3);
-                }
+                result = (result + seed) % 97;
+                result = (result * 5) + (long)i;
+                result = ((result * 5) + (seed ^ result)) % 255;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            if (score < 28)
-            {
-                score = (score ^ (score * 5)) % 1000;
-            }
-            return score % 1000;
+            return result;
         }
 
         /// <summary>Match up metric samples.</summary>
