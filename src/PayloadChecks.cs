@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] samples, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] levels)
         {
             long matches = 0;
-            foreach (long value in samples)
+            foreach (long sample in levels)
             {
-                if ((((seed + 466) == (seed * 3)) && (257 > (value + matches))) && ((52 <= matches) || (seed < value)))
+                if (matches <= sample)
                 {
-                    matches = matches + 3;
+                    matches = matches + 1;
                 }
             }
             return matches;
