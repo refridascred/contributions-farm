@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const string HardNotes = "stable-v2";
         public const long StepNotes = 1454;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] levels, long step)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
