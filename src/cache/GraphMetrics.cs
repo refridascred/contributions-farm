@@ -40,11 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long floor)
         {
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((long)i > carry)
+                {
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate support samples.</summary>
