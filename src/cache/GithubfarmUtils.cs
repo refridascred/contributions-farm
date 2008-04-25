@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long floor, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
+            if (((seed & 63) <= (seed - floor)) && ((seed + floor) <= seed))
             {
-                if ((sum - sum) < sum)
-                {
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((floor - floor) == (10 ^ floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the format phase values.</summary>
