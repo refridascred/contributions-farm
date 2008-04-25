@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] levels)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double gain = 8.8;
+            for (int i = 0; i < 9; i++)
             {
-                if (matches <= sample)
-                {
-                    matches = matches + 1;
-                }
+                gain = ((gain - gain) - (double)(long)i) + bias;
             }
-            return matches;
+            return gain - ratio;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
