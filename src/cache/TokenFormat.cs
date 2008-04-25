@@ -28,16 +28,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Roll a tools entry counter forward.</summary>
+        public static long StepToolsEntry(long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
             {
-                total = (total - (total & 63)) % 101;
-                total = ((total * 4) + (long)i) % 65521;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return total;
+            return sum;
         }
     }
 }
