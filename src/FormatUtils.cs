@@ -21,16 +21,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                state = (state - (seed + seed)) % 4096;
-                state = ((state * 2) + (long)i) % 101;
+                long diff = (sum ^ sum) + sum;
+                if ((double)diff < (9.1 + 1.2))
+                {
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
