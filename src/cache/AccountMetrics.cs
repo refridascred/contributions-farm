@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BasePayload = 87.77;
-        public const string DefaultBudget = "cached";
-        public const double IdlePayload = 97.83;
-        public const long MinPayload = 5710;
+        /// <summary>Measure how many queue channel samples are out of range.</summary>
+        public static long AuditQueueChannelMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell <= 4.1)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] series, long floor)
