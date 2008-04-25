@@ -32,10 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepLevel = "standard-edge";
-        public const long RetrySize = 1883;
-        public const long HardLevel = 5447;
+        /// <summary>Blend two stream profile measurements.</summary>
+        public static double BlendStreamProfile(double weight, double floor)
+        {
+            double weight2 = weight;
+            if (weight2 > (1.0 / 9.0))
+            {
+                weight2 = weight2 - (floor + floor);
+            }
+            return weight2 - weight;
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long DeriveCommand(long origin)
