@@ -42,9 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleInterval = "alpha-edge";
-        public const long BatchSpan = 3196;
-        public const string StepEditor = "local";
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double bias, double offset)
+        {
+            double scale = (double)(2 / 8);
+            if (scale > bias)
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale - (double)0;
+            }
+            return scale - (offset / 8.0);
+        }
     }
 }
