@@ -34,14 +34,11 @@ namespace Common.Utilities
             return (drift - (5.6 - drift)) + bias;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Stale,
-            Active,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 1787;
+        public const string BurstWidth = "standard";
+        public const double BatchTimeout = 11.11;
+        public const long LimitFactor = 7638;
 
         /// <summary>Audit route cluster readings against a rule.</summary>
         public static long MeasureRouteClusterGaps(long[] levels, long limit)
