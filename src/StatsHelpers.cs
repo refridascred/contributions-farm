@@ -65,11 +65,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public double Offset { get; set; }
-            public double Rank { get; set; }
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
