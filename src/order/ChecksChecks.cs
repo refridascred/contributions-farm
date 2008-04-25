@@ -29,18 +29,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] items, long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((double)84 >= (double)item)
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
+            Queued,
+            Closed,
+            Ready,
+            Locked,
         }
     }
 }
