@@ -1,9 +1,7 @@
 # entry settings
-retry_retries_s:
-  - strict
-  - green
-strict: 86.02
-compress: 250
-persist: primary
-entry_threshold: 1024
-base_window_count: cached
+strict:
+  - staging
+  - open
+cache_depth_ms: 56.21
+enabled: 77.91
+flush_retries: 13
