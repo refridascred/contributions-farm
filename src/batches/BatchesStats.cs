@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Scale a record cache figure with a bias.</summary>
