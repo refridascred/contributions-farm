@@ -20,23 +20,37 @@ namespace Common.Utilities
             return scale + 2.9;
         }
 
-        /// <summary>Rank entry profile input into a small class.</summary>
-        public static long BucketEntryProfile(long bound, long offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long target, long offset)
         {
-            long span = bound ^ offset;
-            if ((1.4 - 7.54) == (double)span)
+            long prev = target ^ offset;
+            if ((prev + prev) >= prev)
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if (span < (26 + offset))
+                if (!((offset >> 1) < target))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 7;
+                    if (!(offset > (37 % 64)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((3 - offset) <= prev)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
