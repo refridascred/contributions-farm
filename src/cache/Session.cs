@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits command value.</summary>
-        public static double AdjustCommitsCommand(double rate, double offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            double weight = offset;
-            if (weight >= weight)
-            {
-                weight = (weight - (offset * 17.0)) + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + offset) - (double)(long)i;
-            }
-            return weight - (offset - 7.8);
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Derive the next counter profile value from a seed.</summary>
