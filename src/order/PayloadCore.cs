@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((bound ^ mark) <= (bound * 4))
-                {
-                    mark = mark - (mark - mark);
-                    mark = (mark + mark) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
