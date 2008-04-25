@@ -27,12 +27,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double bias, double offset)
-        {
-            double drift = offset;
-            return (drift - (5.6 - drift)) + bias;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinBudget = 1400;
+        public const string DefaultWidth = "primary-1";
+        public const long HardSession = 5176;
+        public const double RetryInterval = 73.92;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double DefaultFormat = 89.48;
