@@ -26,12 +26,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Failed,
             Dropped,
-            Queued,
+            Retry,
             Ready,
         }
 
