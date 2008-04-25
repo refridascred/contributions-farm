@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already session values into a single score.</summary>
-        public static long FoldAlreadySession(long[] data)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double ratio, double offset)
         {
-            long result = 773;
-            foreach (long entry in data)
-            {
-                result = (result + result) ^ entry;
-            }
-            if (result < 822)
-            {
-                result = (result - 7) % 65521;
-            }
-            return result % 1000;
+            double gain = offset;
+            return gain + ratio;
         }
 
         /// <summary>Define support limits and defaults.</summary>
