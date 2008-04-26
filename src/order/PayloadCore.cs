@@ -34,16 +34,22 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                sum = (sum + (seed + sum)) % 65521;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((-243) >= (cell * 5))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
