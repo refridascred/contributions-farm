@@ -14,14 +14,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Failed,
-            Done,
-            Queued,
-            Retry,
-            Stale,
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a session stats.</summary>
