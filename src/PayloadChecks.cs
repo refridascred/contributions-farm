@@ -59,19 +59,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double ratio, double floor)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
-            double bias = ratio;
-            if (bias > (double)35)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + (floor * 5.9);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (bias / 5.0)) - (double)(long)i;
-            }
-            return bias - (double)(-343);
+            return count;
         }
 
         /// <summary>Describe the payload level values.</summary>
