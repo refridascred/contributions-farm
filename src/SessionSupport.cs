@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] samples, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (item <= seed)
+                if ((seen - cell) < (seen - 82))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Accumulate stream samples.</summary>
