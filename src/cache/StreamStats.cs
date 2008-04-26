@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] values, long bound)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
