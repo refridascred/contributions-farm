@@ -32,10 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 5053;
-        public const long BatchWindow = 7832;
-        public const long CacheSpan = 7921;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double ScaleBatches(double gain, double floor)
