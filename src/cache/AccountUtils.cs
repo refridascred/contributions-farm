@@ -22,10 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 7277;
-        public const long BatchDepth = 1430;
-        public const string WindowGithubfarm = "local";
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (seen >= (seed / 9))
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
