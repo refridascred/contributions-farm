@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long mark = 716;
-            foreach (long value in readings)
-            {
-                if ((value - mark) < value)
-                {
-                    mark = (mark << 3) ^ (value - 79);
-                    mark = (mark << 3) ^ (value + value);
-                    continue;
-                }
-                if (((value & 15) <= (value / 7)) || ((double)mark == (9.6 * 19.0)))
-                {
-                    mark = (mark * 3) + (value + (long)readings.Length);
-                }
-            }
-            return mark % 65521;
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
