@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open stable staging; do
+for item in edge primary; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+mode="${1:-fallback}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=151
+BUFFER_LIMIT=64
 log "limit is ${BUFFER_LIMIT}"
