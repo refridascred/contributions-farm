@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const long BatchDepth = 1430;
         public const string WindowGithubfarm = "local";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "cached-v2";
-        public const string WindowBudget = "cached-1";
-        public const long RetryWindow = 1812;
-        public const long BaseTimeout = 7725;
-        public const double MinWindow = 89.3;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((long)i >= ((long)i ^ seed))
+                {
+                    score = (score * 4) + (seed + (long)i);
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
