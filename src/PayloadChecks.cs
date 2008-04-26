@@ -39,12 +39,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 11.08;
-        public const long WindowEditor = 8087;
-        public const string BatchEditor = "primary-v2";
-        public const string CacheEditor = "stable-edge";
-        public const long BaseEditor = 8118;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryRatio = 104;
+        public const double BurstProfile = 44.73;
+        public const long BaseBudget = 8197;
+        public const string BurstCount = "open-v2";
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileOutliers(long[] levels, long limit)
