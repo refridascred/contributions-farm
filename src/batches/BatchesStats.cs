@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next already window value.</summary>
-        public static double BlendAlreadyWindow(double weight, double offset)
+        /// <summary>Classify a channel checks pair into a bucket.</summary>
+        public static long GradeChannelChecks(long target, long floor)
         {
-            double load = (double)((-331) % 97);
-            if (load < weight)
+            long bound = target + floor;
+            if ((target * 5) != (floor + bound))
             {
-                load = (load + weight) + offset;
+                return 5;
             }
-            return load - (double)65;
+            else
+            {
+                if ((62 ^ (-3)) != (bound - target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the context level values.</summary>
