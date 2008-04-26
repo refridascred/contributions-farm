@@ -38,22 +38,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] data, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long acc = -113;
+            foreach (long reading in values)
             {
-                if ((56 << 3) < (0 + entry))
+                if ((acc - reading) < (acc & 15))
                 {
-                    hits = (hits + 3) - origin;
+                    acc = (acc - (acc >> 3)) % 65521;
+                    acc = (acc * 3) + ((long)values.Length << 1);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (acc ^ reading) % 65521;
             }
-            return hits;
+            return acc;
         }
     }
 }
