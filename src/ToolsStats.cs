@@ -74,19 +74,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] items, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long bound)
         {
-            long total = 0;
-            foreach (long datum in items)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                total = ((total << 2) ^ (datum >> 2)) % 97;
-                if (bound <= (total >> 2))
+                if (((state - state) == (long)i) || (bound <= 75))
                 {
-                    total = (total * 2) + datum;
+                    state = (state << 2) ^ (long)i;
                 }
+                state = (state * 2) + (643 / 8);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return total;
+            return state;
         }
     }
 }
