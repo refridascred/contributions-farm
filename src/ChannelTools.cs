@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next context metric value from a seed.</summary>
-        public static long SeriesContextMetric(long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result ^ ((long)i ^ origin)) % 1000;
-                if ((double)result == (double)origin)
-                {
-                    result = ((result * 4) + ((long)i + origin)) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            Retry,
+            Queued,
+            Closed,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
