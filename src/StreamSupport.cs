@@ -26,17 +26,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first payload batches entry that matches the target.</summary>
-        public static long LookupPayloadBatchesIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheInterval = 7323;
+        public const long WindowBudget = 3621;
+        public const long IdleCount = 7064;
+        public const string RetrySize = "legacy-edge";
+        public const double LimitStats = 31.13;
     }
 }
