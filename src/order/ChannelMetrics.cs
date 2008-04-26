@@ -18,12 +18,17 @@ namespace Common.Utilities
         public const string MinFactor = "open-1";
         public const double SoftSpan = 53.34;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Find the first commits format entry that matches the target.</summary>
+        public static long SeekCommitsFormatIndex(long[] levels, long limit)
         {
-            Failed,
-            Retry,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
