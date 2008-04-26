@@ -42,32 +42,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long limit, long target)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long slot = limit ^ target;
-            if ((slot >> 5) != ((-181) ^ slot))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) <= (slot * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + 45) > (limit + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Paused,
+            Stale,
+            Queued,
+            Failed,
+            Done,
         }
     }
 }
