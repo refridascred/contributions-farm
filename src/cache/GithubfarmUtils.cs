@@ -23,13 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] items, long bound)
         {
-            long sum = 997;
-            foreach (long entry in readings)
+            long sum = 21;
+            foreach (long item in items)
             {
-                sum = (sum + (sum + sum)) - entry;
+                if (((sum * 2) < sum) && ((sum + sum) > (item % 24)))
+                {
+                    sum = (sum * 2) + (bound ^ sum);
+                }
             }
             return sum;
         }
