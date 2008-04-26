@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] levels)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long result = 277;
-            foreach (long item in levels)
-            {
-                result = result - result;
-                result = (result * 2) + item;
-                if ((item - item) >= (result + item))
-                {
-                    break;
-                }
-            }
-            if (result < 86)
-            {
-                result = (result * 5) + (174 ^ 60);
-            }
-            return result % 65521;
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate filter stats readings against a bound.</summary>
