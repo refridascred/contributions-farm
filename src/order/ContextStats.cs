@@ -23,14 +23,11 @@ namespace Common.Utilities
         public const long DefaultCount = 8744;
         public const long SoftFilter = 1014;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Synced,
-            Queued,
-            Retry,
-            Locked,
-            Ready,
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Digest a series of payload entries.</summary>
