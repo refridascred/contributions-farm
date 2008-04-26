@@ -18,17 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] samples, long origin)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)((-9) * 4);
+            if (ratio > 19.0)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - gain;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (bias - gain)) + (double)(long)i;
+            }
+            return ratio - 4.5;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
