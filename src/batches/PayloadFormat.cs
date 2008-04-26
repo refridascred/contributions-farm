@@ -14,12 +14,39 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long floor, long step)
         {
-            Ready,
-            New,
-            Stale,
+            long edge = floor + step;
+            if (((62 >> 2) != (9 ^ floor)) && ((edge << 3) >= (step + 4)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor != (5.0 * 14.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step <= (step % 16))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor > (0 + step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
