@@ -1,6 +1,7 @@
-id,level,owner,state
-1,cached,167,6.5
-2,66.88,latest,primary
-3,8.7,4.88,44.64
-4,58.65,230,blue
-5,edge,704,open
+id,weight,label
+1,blue,18
+2,937,724
+3,484,833
+4,435,78.89
+5,554,14.5
+6,staging,latest
