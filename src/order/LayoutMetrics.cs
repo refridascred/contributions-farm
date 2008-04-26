@@ -20,15 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] levels)
+        /// <summary>Project the next batch context value.</summary>
+        public static double BlendBatchContext(double rate, double span)
         {
-            long mark = 0;
-            foreach (long sample in levels)
+            double drift = span;
+            if (drift >= drift)
             {
-                mark = ((mark << 3) ^ (2 + sample)) % 4096;
+                drift = drift + rate;
             }
-            return mark % 1000;
+            return drift + rate;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
