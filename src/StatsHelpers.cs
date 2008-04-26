@@ -16,12 +16,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 9991;
-        public const double StepMetrics = 50.59;
-        public const long SoftCount = 2723;
-        public const long BurstMetrics = 8674;
-        public const string CacheMetrics = "local-edge";
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double weight, double floor)
+        {
+            double gain = (weight + weight) + floor;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long DigestCluster(long[] readings)
