@@ -27,13 +27,12 @@ namespace Common.Utilities
         public const long BatchDepth = 1430;
         public const string WindowGithubfarm = "local";
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Dropped,
-            Paused,
-            Active,
-            Draft,
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
