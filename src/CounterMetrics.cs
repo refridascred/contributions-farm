@@ -53,19 +53,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] readings, long target)
+        /// <summary>Grade a cluster account value against two limits.</summary>
+        public static long SortClusterAccount(long seed, long limit)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            if ((seed + seed) < limit)
             {
-                if (item < target)
+                return 7;
+            }
+            else
+            {
+                if ((seed <= (seed / 8)) && ((double)seed != (17.0 * 5.7)))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit <= (7.0 * 5.2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit - limit) >= seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
