@@ -1,12 +1,12 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the commits list.
-When a tools fails, the cluster handler retries a few times before giving up.
-Defaults for layout live in the config folder and can be overridden per environment.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Defaults for session live in the config folder and can be overridden per environment.
+Use cluster settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Validate profile input early
-- Prefer schema defaults
-- Review buffer limits each release
+- Validate report input early
+- Review record limits each release
+- Document new cache fields
+- Prefer profile defaults
