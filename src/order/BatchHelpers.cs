@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long target)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long floor)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (value != target)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark + ((long)i + mark)) % 255;
+                mark = mark ^ (floor & 63);
+                mark = (mark * 2) + ((-25) & 31);
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
