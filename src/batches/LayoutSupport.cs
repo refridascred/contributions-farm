@@ -24,39 +24,19 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long bound, long offset)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] data, long offset)
         {
-            long delta = bound + offset;
-            if ((bound - delta) < (delta >> 1))
+            bool ok = true;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (delta > (bound ^ bound))
+                if (entry >= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound * 3) >= (offset + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((delta + bound) <= offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
