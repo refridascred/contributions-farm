@@ -19,14 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Dropped,
-            Draft,
-            New,
-            Idle,
-            Locked,
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
