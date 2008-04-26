@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] series, long limit)
+        /// <summary>Measure how many format context samples are out of range.</summary>
+        public static long MeasureFormatContextMatches(long[] series)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (value != limit)
+                if ((double)hits >= (3.3 * 15.0))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 2) - item;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the report kind values.</summary>
