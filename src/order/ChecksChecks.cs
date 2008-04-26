@@ -36,24 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long target, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] data, long origin)
         {
-            if ((16.0 / 6.0) < (double)target)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound > (target + target))
+                if (reading >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
