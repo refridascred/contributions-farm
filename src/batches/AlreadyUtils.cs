@@ -36,20 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long carry = 107;
-            foreach (long reading in values)
-            {
-                carry = (carry - (1 + reading)) % 255;
-                carry = ((carry << 3) ^ (reading - reading)) % 65521;
-            }
-            if (carry > (-213))
-            {
-                carry = ((carry << 3) ^ (4 * 2)) % 65521;
-            }
-            return carry;
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
