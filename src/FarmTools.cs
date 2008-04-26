@@ -49,22 +49,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] samples, long origin)
+        /// <summary>Validate batch account readings against a bound.</summary>
+        public static bool CheckBatchAccountLimits(long[] values, long origin)
         {
-            long mark = 128;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((2.8 / 6.0) > (double)mark)
+                if (datum != origin)
                 {
-                    mark = (mark ^ (0 + mark)) ^ reading;
+                    found = false;
+                    break;
                 }
             }
-            if (mark < 49)
-            {
-                mark = (mark ^ (origin + mark)) % 97;
-            }
-            return mark;
+            return found;
         }
     }
 }
