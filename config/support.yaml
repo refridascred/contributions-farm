@@ -1,8 +1,19 @@
 # support settings
-schema_delay: strict
-verbose: strict
-strict:
-  - 395
-  - 170
-  - 149
-  - 88
+burst_capacity_s:
+  - latest
+  - primary
+  - latest
+  - local
+sync_timeout_ms: edge
+soft_window:
+  window_threshold: 60
+  audit: true
+  persist: 93.53
+  contributi_size: 60
+  soft_ttl: 3561
+  idle_depth_pct: true
+enabled:
+  - 480
+  - 230
+  - 196
+cache_ttl: 17
