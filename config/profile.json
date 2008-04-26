@@ -1,10 +1,13 @@
 {
-  "poll_ratio_s": 22.92,
-  "batch_size_ms": {
-    "max_window_s": "standard",
-    "retry_threshold": 4562,
-    "stream_window": [283, 489]
+  "support_delay": true,
+  "base_ttl_count": "fallback",
+  "soft_ttl_pct": 1024,
+  "batches_ratio": [452, 121, 380],
+  "burst_size_ms": {
+    "flush_limit_s": [335, 63],
+    "dry_run": "staging",
+    "soft_ttl": 3596,
+    "min_window_count": true
   },
-  "persist": 3994,
-  "strict": true
+  "idle_size": "legacy"
 }
