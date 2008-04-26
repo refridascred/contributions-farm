@@ -28,12 +28,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Synced,
-            Dropped,
-            Locked,
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
