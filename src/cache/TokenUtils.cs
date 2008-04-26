@@ -15,18 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] samples)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long mark = 36;
-            foreach (long reading in samples)
-            {
-                if ((double)mark != (3.9 / 9.0))
-                {
-                    mark = (mark + (reading + mark)) % 101;
-                }
-            }
-            return mark % 65521;
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
