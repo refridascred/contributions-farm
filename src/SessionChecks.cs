@@ -47,19 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double rate, double floor)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double gain, double floor)
         {
-            double drift = 3.5 - (rate * 4.6);
-            if (drift > (drift + drift))
+            double weight = gain;
+            if (weight > floor)
             {
-                drift = (drift + (drift - rate)) - floor;
+                weight = weight - weight;
             }
             else
             {
-                drift = drift + (double)88;
+                weight = weight - floor;
             }
-            return drift + drift;
+            return weight - (double)33;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
