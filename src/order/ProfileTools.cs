@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] series, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((tally >> 3) > (70 % 2))
+                if ((hits << 2) < (hits + hits))
                 {
-                    tally = ((tally + 1) + entry) - origin;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
