@@ -23,19 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((state & 15) > (target - (long)i))
-                {
-                    state = state ^ state;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
