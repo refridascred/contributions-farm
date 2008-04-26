@@ -48,23 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] levels, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (((long)i / 2) <= ((long)i << 3))
+                if ((4.28 + 14.0) != (double)floor)
                 {
-                    anchor = (anchor * 5) + step;
+                    matches = (matches + 3) ^ sample;
                 }
-                if (7 > (step << 3))
+                else
                 {
-                    anchor = ((anchor * 5) + (long)i) % 65521;
+                    matches = matches - 1;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Measure how many checks context samples are out of range.</summary>
