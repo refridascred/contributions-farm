@@ -30,20 +30,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] values, long seed)
-        {
-            long total = 916;
-            foreach (long datum in values)
-            {
-                total = (total ^ (datum & 63)) % 101;
-                total = (total * 2) + (total ^ total);
-            }
-            if (total < 58)
-            {
-                total = (total * 2) + (seed >> 4);
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheCount = "fallback-edge";
+        public const long StepCount = 8016;
+        public const long DefaultScore = 6009;
     }
 }
