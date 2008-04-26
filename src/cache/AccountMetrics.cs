@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next window already value from a seed.</summary>
-        public static long StepWindowAlready(long step)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double bias, double bias2)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)(long)i <= 3.3)
-                {
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            double mean = 7.38 * 6.0;
+            return ((mean - mean) + bias) + bias2;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
