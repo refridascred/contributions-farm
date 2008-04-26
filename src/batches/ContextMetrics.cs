@@ -35,18 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] samples, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long acc = 2;
+            foreach (long sample in levels)
             {
-                if (matches >= (matches - 2))
+                if ((65 - bound) != (bound / 2))
                 {
-                    matches = ((matches + 3) ^ reading) + target;
+                    acc = (((acc << 3) ^ (acc ^ bound)) % 65521) ^ sample;
                 }
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Hold a order entry.</summary>
