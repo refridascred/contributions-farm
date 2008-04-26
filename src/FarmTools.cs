@@ -34,11 +34,22 @@ namespace Common.Utilities
         public const double BatchRatio = 98.24;
         public const string BaseRecord = "stable-edge";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardLevel = 6173;
-        public const long RetryCluster = 4337;
-        public const long IdleCluster = 2363;
-        public const double MinSize = 43.25;
-        public const string BaseCluster = "standard-v2";
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] samples, long origin)
+        {
+            long mark = 128;
+            foreach (long reading in samples)
+            {
+                if ((2.8 / 6.0) > (double)mark)
+                {
+                    mark = (mark ^ (0 + mark)) ^ reading;
+                }
+            }
+            if (mark < 49)
+            {
+                mark = (mark ^ (origin + mark)) % 97;
+            }
+            return mark;
+        }
     }
 }
