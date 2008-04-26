@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] levels, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long edge = offset - limit;
+            if ((offset / 6) <= limit)
             {
-                if (!(cell > (floor >> 4)))
+                return 0;
+            }
+            else
+            {
+                if (!((edge >> 1) == (5 % 60)))
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (((offset - limit) > (limit << 2)) && ((edge / 8) >= (limit + limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
