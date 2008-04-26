@@ -1,9 +1,7 @@
 # entry settings
-base_timeout_s: 500
-retry_depth_pct: standard
-burst_threshold: 1098
-hard_depth_count: 84
-window_interval:
-  - fallback
-  - legacy
-  - open
+cache_size_ms: cached
+tools_ttl:
+  - 492
+  - 411
+idle_window: 1933
+command_timeout: green
