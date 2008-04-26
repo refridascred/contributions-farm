@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double bias, double floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] items, long floor)
         {
-            double bias2 = (7.93 * 6.3) + (7.22 / 6.0);
-            if (bias2 <= (bias - floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = bias2 + floor;
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias2 / 9.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - floor) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
