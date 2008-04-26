@@ -1,13 +1,6 @@
 # support settings
-channel_capacity:
-  - 341
-  - 107
-soft_interval:
-  - 377
-  - 268
-  - 368
-  - 40
-command_limit: 49.08
-metric_size: 49.88
-batch_timeout_ms: 43.7
-enabled: open
+hard_limit_pct:
+  - 487
+  - 22
+min_timeout_s: false
+dry_run: 53.0
