@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Active,
-            Synced,
-            Pending,
-            Locked,
-            Done,
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
