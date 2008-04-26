@@ -39,13 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double offset)
         {
-            Idle,
-            Done,
-            Stale,
-            Active,
+            double ratio = (scale * 17.0) * 6.14;
+            if (ratio < scale)
+            {
+                ratio = ratio + (offset * 8.5);
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + (double)3;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
