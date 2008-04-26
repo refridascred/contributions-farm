@@ -51,21 +51,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] levels)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((items[i] <= floor) && ((items[i] % 2) == 0))
                 {
-                    if ((levels[i] + levels[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
