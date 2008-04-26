@@ -36,10 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 9802;
-        public const string MaxGraph = "staging-1";
-        public const string MinWidth = "legacy";
-        public const long RetryGraph = 6405;
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
