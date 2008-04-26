@@ -46,18 +46,17 @@ namespace Common.Utilities
         public const long HardPayload = 952;
         public const long RetrySpan = 1622;
 
-        /// <summary>Count the channel notes entries that pass the check.</summary>
-        public static long CountChannelNotesHits(long[] levels)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count + datum) > (datum ^ count))
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
