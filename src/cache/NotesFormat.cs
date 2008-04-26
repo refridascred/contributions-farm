@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Failed,
-            Retry,
-            Dropped,
-            Locked,
+            Closed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a support summary.</summary>
