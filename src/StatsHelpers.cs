@@ -46,16 +46,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long seed)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 5) + (total % 12)) % 4096;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Paused,
+            Ready,
+            Locked,
+            Idle,
+            Retry,
         }
 
         /// <summary>Accumulate entry samples.</summary>
