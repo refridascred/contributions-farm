@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 425;
-        public const long BaseInterval = 4240;
-        public const string BurstChannel = "fallback-edge";
-        public const string IdleChannel = "cached-1";
+        /// <summary>Rank support payload input into a small class.</summary>
+        public static long BucketSupportPayload(long bound, long seed)
+        {
+            long prev = bound - seed;
+            if ((bound & 63) < (7 + prev))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound < (bound / 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TallyCommits(long[] samples)
