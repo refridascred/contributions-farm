@@ -1,11 +1,10 @@
 # Command notes
 
-When a record fails, the checks handler retries a few times before giving up.
-When a buffer fails, the filter handler retries a few times before giving up.
+Run the support check before changing any counter limits.
+Defaults for filter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review context limits each release
-- Validate layout input early
-- Log every metric change
-- Prefer already defaults
+- Keep commits values small
+- Validate counter input early
+- Log every tools change
