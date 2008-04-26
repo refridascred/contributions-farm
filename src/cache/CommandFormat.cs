@@ -47,15 +47,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Failed,
+            Retry,
+            Locked,
         }
     }
 }
