@@ -20,12 +20,19 @@ namespace Common.Utilities
         public const string IdleFormat = "local-v2";
         public const string LimitFormat = "staging-1";
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] readings, long bound)
         {
-            Locked,
-            Done,
-            Dropped,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
