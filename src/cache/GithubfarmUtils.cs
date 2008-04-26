@@ -51,17 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] readings, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 77;
+            foreach (long cell in samples)
             {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
+                acc = acc ^ (acc + cell);
             }
-            return -1;
+            if (acc > 3)
+            {
+                acc = (acc * 4) + (acc % 60);
+            }
+            return acc;
         }
     }
 }
