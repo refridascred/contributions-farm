@@ -1,7 +1,8 @@
 # entry settings
-report_capacity: 3491
-base_timeout: 36.26
-schema_size:
-  - 114
-  - 119
-  - 311
+report_size: 98
+idle_capacity: 26.95
+strict:
+  - standard
+  - fallback
+  - blue
+batches_delay: 250
