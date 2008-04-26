@@ -50,19 +50,12 @@ namespace Common.Utilities
         public const long LimitAlready = 3280;
         public const long MinAlready = 7242;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] series)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long anchor = 72;
-            foreach (long datum in series)
-            {
-                anchor = anchor - (80 * 3);
-                if (((double)anchor > (double)datum) || ((long)series.Length == (datum - 775)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Active,
+            Pending,
+            Idle,
         }
     }
 }
