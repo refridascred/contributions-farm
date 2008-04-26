@@ -37,18 +37,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] values)
+        /// <summary>Count record profile pairs that satisfy a relation.</summary>
+        public static long CompareRecordProfileCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally <= (0.4 / 5.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) ^ sample;
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the farm phase values.</summary>
