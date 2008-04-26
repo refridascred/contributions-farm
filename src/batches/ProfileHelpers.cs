@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double rate, double bias)
+        /// <summary>Digest a series of record route entries.</summary>
+        public static long TotalRecordRoute(long[] data, long bound)
         {
-            double bias2 = rate;
-            if (bias2 >= 7.03)
+            long result = 36;
+            foreach (long value in data)
             {
-                bias2 = bias2 - (double)864;
+                result = result + (bound + bound);
+                if (((bound & 3) <= (bound - value)) && ((bound ^ result) != (result % 16)))
+                {
+                    result = (result << 3) ^ (bound & 255);
+                }
             }
-            return bias2 - (bias2 + bias);
+            if (result > (-4))
+            {
+                result = (result * 3) + (97 + 7);
+            }
+            return result % 65521;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
