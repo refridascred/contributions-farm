@@ -44,19 +44,12 @@ namespace Common.Utilities
         public const long BatchTools = 4489;
         public const double CacheRatio = 18.7;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] series, long step)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Done,
+            Dropped,
         }
     }
 }
