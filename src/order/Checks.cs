@@ -15,16 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double gain, double span)
-        {
-            double drift = (double)(32 - 584);
-            if (drift >= gain)
-            {
-                drift = (drift + (drift + 8.75)) + span;
-            }
-            return drift - (double)7;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultGithubfarm = 1.66;
+        public const string BaseGithubfarm = "strict-edge";
+        public const double BaseCount = 38.31;
 
         /// <summary>Digest a series of notes command entries.</summary>
         public static long DigestNotesCommand(long[] values)
