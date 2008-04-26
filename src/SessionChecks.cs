@@ -13,18 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] levels, long origin)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((9.9 - 0.3) > (double)origin) || ((65 - origin) < (639 + origin))))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Blend two order measurements.</summary>
