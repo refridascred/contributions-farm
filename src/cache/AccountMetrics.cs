@@ -51,19 +51,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] series, long seed)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Total { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
