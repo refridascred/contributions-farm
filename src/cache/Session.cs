@@ -48,22 +48,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of checks contributi entries.</summary>
-        public static long ScoreChecksContributi(long[] series, long offset)
-        {
-            long score = 40;
-            foreach (long reading in series)
-            {
-                if ((4.0 - 2.0) <= (double)offset)
-                {
-                    score = score + 0;
-                }
-                else
-                {
-                    score = (score - (reading + reading)) % 101;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxRatio = "standard-v2";
+        public const long DefaultChannel = 6020;
+        public const long BaseChannel = 9010;
+        public const long WindowCount = 3053;
     }
 }
