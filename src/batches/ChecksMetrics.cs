@@ -49,16 +49,31 @@ namespace Common.Utilities
             return scale + (double)48;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Classify a filter commits pair into a bucket.</summary>
+        public static long RankFilterCommits(long target, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            if ((target << 3) < (floor ^ target))
             {
-                result = (result << 3) ^ (target * 4);
-                result = ((result * 4) + (long)i) % 101;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (target >= (48 + floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (82 < floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the schema state values.</summary>
