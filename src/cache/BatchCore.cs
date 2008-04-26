@@ -13,21 +13,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count stream payload pairs that satisfy a relation.</summary>
-        public static long MatchStreamPayloadCount(long[] values)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] - values[j]) < 9)
+                    if ((data[i] + data[j]) != 20)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
