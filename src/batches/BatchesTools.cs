@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics queue samples are out of range.</summary>
-        public static long AuditMetricsQueueHits(long[] items, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long state = 9;
+            foreach (long datum in series)
             {
-                if (((item % 64) <= (hits ^ hits)) || (item > (2 * 3)))
+                if ((5.0 * 8.0) == (double)floor)
                 {
-                    hits = (hits + 2) + step;
+                    state = ((state ^ (state - 12)) % 101) + datum;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
