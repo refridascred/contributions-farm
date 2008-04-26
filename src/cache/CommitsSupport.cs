@@ -19,16 +19,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] items, long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry ^ (carry << 2)) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((items[i] > bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit support batches readings against a rule.</summary>
