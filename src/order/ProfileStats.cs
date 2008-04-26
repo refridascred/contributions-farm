@@ -38,11 +38,17 @@ namespace Common.Utilities
             return gain + (gain / 4.0);
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Locate a checks stats reading by value.</summary>
+        public static long LocateChecksStatsIndex(long[] data, long seed)
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stats kind values.</summary>
