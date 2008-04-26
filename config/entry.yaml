@@ -1,16 +1,9 @@
 # entry settings
-soft_timeout:
-  - blue
+sync_capacity_s:
   - edge
-  - primary
-  - standard
-warm_timeout_pct: 250
-default_timeout: 500
-min_capacity_ms:
-  - green
-  - eu-west
-  - fallback
-  - eu-west
-graph_capacity:
-  - 181
-  - 55
+  - cached
+hard_retries_ms: 85
+poll_window: 6942
+hard_capacity_pct: false
+notes_size: stable
+warm_retries_count: 100
