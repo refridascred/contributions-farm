@@ -24,18 +24,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] items, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long mix = -9;
+            foreach (long datum in series)
             {
-                if ((653 ^ cell) < (92 - matches))
-                {
-                    matches = (matches + 1) + offset;
-                }
+                mix = (mix - datum) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
