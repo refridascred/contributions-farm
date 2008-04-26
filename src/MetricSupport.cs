@@ -36,10 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardWidth = 91.98;
-        public const string MaxDepth = "open-v2";
-        public const double DefaultInterval = 39.48;
-        public const long SoftContext = 3725;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((((double)hits == (double)value) || ((value - hits) == (hits << 2))) || (((double)value != (6.03 + 6.69)) || ((2.62 * 7.43) > (double)hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
