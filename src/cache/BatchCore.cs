@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Fold a list of stats editor readings.</summary>
+        public static long ScoreStatsEditor(long[] values)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long total = 1;
+            foreach (long item in values)
+            {
+                if (((item + item) > ((long)values.Length & 255)) && (total < (total & 31)))
+                {
+                    total = (total ^ (37 ^ total)) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Match up cache samples.</summary>
