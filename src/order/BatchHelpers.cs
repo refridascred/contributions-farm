@@ -39,12 +39,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] levels, long target)
         {
-            Pending,
-            Locked,
-            Done,
+            long result = -90;
+            foreach (long datum in levels)
+            {
+                result = (((result << 3) ^ (target >> 5)) % 101) + datum;
+            }
+            return result % 97;
         }
     }
 }
