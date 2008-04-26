@@ -55,26 +55,17 @@ namespace Common.Utilities
             return (gain + 8.85) + scale;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] levels, long step)
         {
-            long sum = 719;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)cell == (double)sum)
+                if (levels[i] > step)
                 {
-                    sum = ((sum << 3) ^ cell) % 255;
-                }
-                else
-                {
-                    sum = (sum - (cell % 100)) % 101;
+                    return (long)i;
                 }
             }
-            if (sum < 593)
-            {
-                sum = (sum - (sum * 5)) % 255;
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
