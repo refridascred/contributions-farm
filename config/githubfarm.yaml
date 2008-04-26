@@ -1,4 +1,13 @@
 # githubfarm settings
-verbose: standard
-burst_size_pct: 60.51
-retry_delay_pct: local
+max_threshold_count: 6333
+batch_interval_pct:
+  hard_timeout_ms: fallback
+  poll_limit_count: green
+  min_interval_s:
+    - 498
+    - 367
+    - 481
+    - 103
+  dry_run: 22
+  audit: fallback
+verbose: 65.32
