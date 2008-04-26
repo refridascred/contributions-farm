@@ -1,8 +1,5 @@
 {
-  "poll_timeout_pct": false,
-  "burst_size": 6,
-  "retry_interval": [267, 261, 146],
-  "sync_retries_count": 6977,
-  "entry_timeout": "eu-west",
-  "cache_size_count": "blue"
+  "enabled": true,
+  "soft_depth_s": 1684,
+  "burst_timeout_pct": ["eu-west", "edge"]
 }
