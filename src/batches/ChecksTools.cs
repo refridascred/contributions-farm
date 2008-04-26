@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const long MinQueue = 6839;
         public const double MaxQueue = 69.81;
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            public double Region { get; set; }
-            public double Flag { get; set; }
-            public double Owner { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up tools samples.</summary>
