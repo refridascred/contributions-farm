@@ -28,15 +28,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double bias, double floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double mean = (double)(-85) / 4.0;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (floor + bias)) + (double)(long)i;
-            }
-            return mean + mean;
+            Paused,
+            New,
+            Draft,
+            Locked,
         }
     }
 }
