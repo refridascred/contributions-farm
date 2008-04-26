@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a account stats value against two limits.</summary>
-        public static long SortAccountStats(long origin, long offset)
+        /// <summary>Classify a format already pair into a bucket.</summary>
+        public static long RankFormatAlready(long offset, long floor)
         {
-            if (!((6 >> 5) != (64 ^ offset)))
+            if ((offset > (offset * 3)) || (57 < (offset + offset)))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((8 / 4) <= (offset / 5))
+                if ((offset << 2) >= (5 * 3))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    return 6;
+                    if (((offset / 4) >= (offset + offset)) || ((double)offset <= (8.6 / 8.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset < (747 + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
