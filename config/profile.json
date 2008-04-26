@@ -1,7 +1,7 @@
 {
-  "poll_delay": true,
-  "idle_capacity_ms": 80.29,
-  "batch_capacity": 65,
-  "poll_timeout_ms": 528,
-  "burst_delay_ms": "standard"
+  "default_capacity_pct": ["edge", "open", "local", "staging"],
+  "hard_size": "standard",
+  "sync_size_s": "primary",
+  "entry_ratio": "latest",
+  "batch_window_pct": false
 }
