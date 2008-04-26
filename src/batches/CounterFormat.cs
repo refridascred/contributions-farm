@@ -29,12 +29,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 1035;
-        public const long CacheScore = 3647;
-        public const string LimitCount = "stable-edge";
-        public const long StepContributi = 7226;
-        public const long BatchContributi = 9415;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 5135;
+        public const long BatchRecord = 3739;
+        public const string WindowTimeout = "alpha";
+        public const string IdleBudget = "stable-edge";
+        public const double HardRecord = 46.17;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] series, long target)
