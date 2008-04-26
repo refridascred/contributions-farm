@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] levels, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] levels)
         {
-            long acc = 4;
+            long result = 277;
             foreach (long item in levels)
             {
-                if ((item - item) <= (acc ^ acc))
+                result = result - result;
+                result = (result * 2) + item;
+                if ((item - item) >= (result + item))
                 {
-                    acc = (acc ^ 835) - origin;
+                    break;
                 }
             }
-            return acc % 1000;
+            if (result < 86)
+            {
+                result = (result * 5) + (174 ^ 60);
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate filter stats readings against a bound.</summary>
