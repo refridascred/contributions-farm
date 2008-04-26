@@ -23,11 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Count payload graph pairs that satisfy a relation.</summary>
+        public static long PairPayloadGraphCount(long[] readings)
         {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate context tools samples.</summary>
