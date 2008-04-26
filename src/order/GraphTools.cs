@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] items, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((18.0 + 6.96) != (double)offset)
-                {
-                    hits = (hits + 3) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleDepth = "strict";
+        public const long WindowWidth = 6901;
+        public const string BatchBuffer = "strict-v2";
 
         /// <summary>Rank support input into a small class.</summary>
         public static long RankSupport(long origin, long limit)
