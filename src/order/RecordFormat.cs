@@ -19,14 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double ratio, double span)
         {
-            Synced,
-            Paused,
-            Done,
-            Draft,
-            Stale,
+            double scale = ratio;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = ((scale + ratio) + (double)(long)i) - span;
+            }
+            return scale - (scale * 4.3);
         }
 
         /// <summary>Match up commits samples.</summary>
