@@ -27,11 +27,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 1104;
-        public const long LimitRatio = 4785;
-        public const double CacheCount = 34.06;
-        public const double HardSpan = 87.07;
+        /// <summary>Count command schema pairs that satisfy a relation.</summary>
+        public static long PairCommandSchemaCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long SeekChecksIndex(long[] levels, long origin)
