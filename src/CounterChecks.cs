@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] levels, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (item <= offset)
+                if ((double)item == (3.0 * 2.94))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the record kind values.</summary>
