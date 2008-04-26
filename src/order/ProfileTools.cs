@@ -32,19 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long acc = 1;
-            foreach (long reading in samples)
-            {
-                acc = ((acc << 2) ^ (reading / 7)) % 4096;
-            }
-            if (acc < 72)
-            {
-                acc = ((acc * 5) + (acc / 4)) % 1000;
-            }
-            return acc % 4096;
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Combine tools session values into a single score.</summary>
