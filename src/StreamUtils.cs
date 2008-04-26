@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many route cluster samples are out of range.</summary>
-        public static long TallyRouteClusterMatches(long[] items, long origin)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long step, long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            if (step >= (step / 7))
             {
-                if ((matches - origin) > matches)
+                return 4;
+            }
+            else
+            {
+                if (((double)bound != (3.81 - 17.0)) && ((bound - step) > step))
                 {
-                    matches = (matches + 1) + entry;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
