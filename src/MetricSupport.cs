@@ -22,15 +22,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Scale a record tools figure with a bias.</summary>
-        public static double BlendRecordTools(double rate, double offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] data)
         {
-            double ratio = (double)(983 % 12);
-            for (int i = 0; i < 4; i++)
+            long result = 77;
+            foreach (long sample in data)
             {
-                ratio = (((ratio + 0.72) + (double)(long)i) + rate) - offset;
+                if (((result - result) <= (result - 94)) && ((sample - sample) != (result / 4)))
+                {
+                    result = ((result * 4) + (result + result)) % 1000;
+                }
+                else
+                {
+                    result = result ^ (sample + result);
+                }
             }
-            return ratio + (double)9;
+            return result;
         }
     }
 }
