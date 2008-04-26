@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] levels, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
+                if (((double)(long)i != (7.0 + 1.0)) || ((5.7 + 3.4) != (double)state))
                 {
-                    return (long)i;
+                    break;
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
