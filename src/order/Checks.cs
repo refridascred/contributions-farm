@@ -54,19 +54,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every cache stats entry stays within the limit.</summary>
-        public static bool CheckCacheStatsLimits(long[] series, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long carry = 848;
+            foreach (long value in levels)
             {
-                if (entry != floor)
+                if ((carry * 3) < (9 & 255))
                 {
-                    stale = false;
-                    break;
+                    carry = ((((carry * 2) + ((-659) - carry)) % 255) + value) + seed;
                 }
             }
-            return stale;
+            return carry;
         }
     }
 }
