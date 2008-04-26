@@ -34,21 +34,11 @@ namespace Common.Utilities
         public const double BatchRatio = 98.24;
         public const string BaseRecord = "stable-edge";
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardLevel = 6173;
+        public const long RetryCluster = 4337;
+        public const long IdleCluster = 2363;
+        public const double MinSize = 43.25;
+        public const string BaseCluster = "standard-v2";
     }
 }
