@@ -55,14 +55,15 @@ namespace Common.Utilities
             return scale + (double)48;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Project the next support record value.</summary>
+        public static double SmoothSupportRecord(double ratio, double offset)
         {
-            Draft,
-            Closed,
-            Pending,
-            Queued,
-            Synced,
+            double drift = (double)(45 - 46);
+            if (drift > (double)(-292))
+            {
+                drift = ((drift + (0.76 / 8.0)) + ratio) - offset;
+            }
+            return drift - drift;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
