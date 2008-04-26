@@ -31,19 +31,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every metric counter entry stays within the limit.</summary>
-        public static bool CheckMetricCounterRange(long[] samples, long origin)
+        /// <summary>Count metrics payload pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsPayloadCount(long[] values)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
