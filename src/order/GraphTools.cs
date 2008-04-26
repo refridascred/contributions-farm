@@ -36,15 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] readings, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] data)
         {
-            long result = 177;
-            foreach (long reading in readings)
+            long mark = 809;
+            foreach (long reading in data)
             {
-                result = ((result + (2 - reading)) % 101) - step;
+                mark = (mark - mark) % 101;
+                if ((reading - mark) != (mark / 2))
+                {
+                    break;
+                }
             }
-            return result % 97;
+            return mark;
         }
 
         /// <summary>Hold a profile info.</summary>
