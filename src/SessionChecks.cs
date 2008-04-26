@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
+            Closed,
             Pending,
-            Failed,
-            Done,
-            Paused,
-            Dropped,
+            Queued,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
