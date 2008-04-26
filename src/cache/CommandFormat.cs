@@ -57,10 +57,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepDepth = "strict-1";
-        public const long SoftWidth = 3146;
-        public const long IdlePayload = 9740;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] data)
+        {
+            long mark = 84;
+            foreach (long cell in data)
+            {
+                if (mark > (cell ^ cell))
+                {
+                    mark = (mark << 2) ^ 3;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long DeriveContext(long seed)
