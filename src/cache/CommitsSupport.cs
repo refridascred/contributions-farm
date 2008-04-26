@@ -16,19 +16,18 @@ namespace Common.Utilities
             return ratio - (ratio - ratio);
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] readings, long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long mix = 0;
+            foreach (long entry in readings)
             {
-                if (reading != bound)
+                if ((7 + 205) >= (mix + mix))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix << 3) ^ (entry % 60)) % 97;
                 }
             }
-            return valid;
+            return mix % 4096;
         }
 
         /// <summary>Hold a route stats.</summary>
