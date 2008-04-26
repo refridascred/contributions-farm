@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] data, long step)
         {
-            Locked,
-            Draft,
-            Idle,
-            Ready,
-            Queued,
+            long acc = 91;
+            foreach (long datum in data)
+            {
+                if (!((9.2 / 3.0) < (double)step))
+                {
+                    acc = (((acc << 3) ^ (93 + acc)) % 97) ^ datum;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a batches header.</summary>
