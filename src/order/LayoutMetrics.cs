@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            Locked,
-            Paused,
-            Dropped,
-            Active,
-            Failed,
+            Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Audit stats filter readings against a rule.</summary>
