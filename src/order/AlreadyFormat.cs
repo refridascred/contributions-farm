@@ -56,18 +56,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many support context samples are out of range.</summary>
-        public static long CountSupportContextOutliers(long[] readings)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - reading) < (count << 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Paused,
+            Draft,
+            Idle,
+            Failed,
         }
     }
 }
