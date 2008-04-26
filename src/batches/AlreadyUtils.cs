@@ -51,16 +51,22 @@ namespace Common.Utilities
         public const long IdleSpan = 2312;
         public const long MaxWindow = 9270;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            long sum = -97;
+            foreach (long cell in values)
             {
-                mark = mark - (mark + (long)i);
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((sum - sum) <= 6)
+                {
+                    sum = (sum + (57 ^ sum)) + cell;
+                }
             }
-            return mark;
+            if (sum < 20)
+            {
+                sum = (sum * 5) + (sum - sum);
+            }
+            return sum;
         }
     }
 }
