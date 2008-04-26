@@ -40,19 +40,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] levels, long target)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long target)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum != target)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = carry - (carry << 1);
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
