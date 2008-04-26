@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many token report samples are out of range.</summary>
-        public static long MeasureTokenReportGaps(long[] samples, long bound)
+        /// <summary>Measure how many window report samples are out of range.</summary>
+        public static long TallyWindowReportOutliers(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (!(reading <= (tally >> 3)) || ((tally + tally) <= reading))
+                if ((double)target <= 3.0)
                 {
-                    tally = (tally + 2) - bound;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Match up contributi githubfarm samples.</summary>
