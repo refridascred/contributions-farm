@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 8231;
-        public const double CacheSize = 90.73;
-        public const long DefaultQueue = 4830;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((910 ^ seed) == (seed + 30))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ScaleCounter(double gain, double floor)
