@@ -24,13 +24,17 @@ namespace Common.Utilities
             return ratio - (gain / 2.0);
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] levels, long origin)
         {
-            Synced,
-            Stale,
-            Pending,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
