@@ -42,21 +42,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Idle,
+            Pending,
+            Locked,
         }
 
         /// <summary>Blend two entry measurements.</summary>
