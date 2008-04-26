@@ -14,12 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Accumulate editor channel samples.</summary>
+        public static long WeighEditorChannel(long[] readings, long limit)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            long mark = 66;
+            foreach (long item in readings)
+            {
+                mark = mark - (limit - item);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of order route readings.</summary>
