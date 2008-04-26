@@ -59,17 +59,31 @@ namespace Common.Utilities
         public const long RetryChannel = 5950;
         public const long IdleSize = 7823;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] readings, long origin)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long offset, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)target >= (8.6 - 1.47)) || ((double)target <= (6.0 * 2.79)))
             {
-                if (readings[i] < origin)
+                return 3;
+            }
+            else
+            {
+                if (((target - target) > (target & 1)) && ((8.0 * 20.0) != (double)offset))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((target ^ target) != (offset / 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
