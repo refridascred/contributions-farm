@@ -27,11 +27,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double rate, double offset)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double scale = rate - (rate - offset);
-            return scale - rate;
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a window reading.</summary>
