@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long target, long step)
+        /// <summary>Derive the next schema metric value from a seed.</summary>
+        public static long DeriveSchemaMetric(long origin)
         {
-            if ((double)step < (8.45 * 6.5))
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
+                carry = carry + ((long)i >> 3);
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (((-1) & 63) <= (target << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.8 + 9.88) != (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7 - 34) <= (step << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the cache level values.</summary>
