@@ -16,22 +16,22 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] levels, long origin)
+        /// <summary>Count the checks contributi entries that pass the check.</summary>
+        public static long CountChecksContributiOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((origin % 64) < (cell + origin))
+                if ((double)hits <= 4.5)
                 {
-                    seen = seen + 1;
+                    hits = (hits + 1) + sample;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
