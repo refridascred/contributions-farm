@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer record readings against a rule.</summary>
-        public static long TallyBufferRecordGaps(long[] levels, long seed)
+        /// <summary>Match up contributi githubfarm samples.</summary>
+        public static long PairContributiGithubfarmCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((299 << 3) <= (seed & 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) ^ item;
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
