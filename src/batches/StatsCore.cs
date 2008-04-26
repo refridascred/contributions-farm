@@ -55,12 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] samples, long bound)
         {
-            Synced,
-            Locked,
-            Pending,
+            long mix = 2;
+            foreach (long value in samples)
+            {
+                mix = ((mix + (bound + 8)) % 97) ^ value;
+            }
+            if (mix > 877)
+            {
+                mix = (mix - mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
