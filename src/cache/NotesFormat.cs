@@ -41,19 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] readings, long offset)
-        {
-            long score = -77;
-            foreach (long datum in readings)
-            {
-                score = (score ^ (offset ^ (long)readings.Length)) % 97;
-                if ((double)(-1) <= (double)offset)
-                {
-                    score = ((score << 3) ^ datum) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchFactor = 6501;
+        public const double MaxGraph = 80.31;
+        public const long SoftCount = 6936;
+        public const string IdleSize = "latest";
+        public const double BurstRatio = 98.28;
     }
 }
