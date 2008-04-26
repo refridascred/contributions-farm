@@ -20,15 +20,11 @@ namespace Common.Utilities
         public const long IdleCount = 1462;
         public const long MinStats = 1229;
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double ratio, double bias)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            double drift = (double)(37 * 4);
-            if (drift <= (ratio - drift))
-            {
-                drift = drift - ratio;
-            }
-            return drift + bias;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
