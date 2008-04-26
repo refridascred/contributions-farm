@@ -33,10 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryBudget = "local-v2";
-        public const long BurstRatio = 4008;
-        public const long SoftScore = 8607;
-        public const long CacheInterval = 2247;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((item >> 2) < count) || ((floor / 9) < (item / 2)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
