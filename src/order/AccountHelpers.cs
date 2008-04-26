@@ -56,19 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] series, long limit)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
