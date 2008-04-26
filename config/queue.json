@@ -1,18 +1,5 @@
 {
-  "max_timeout_s": "open",
-  "format_interval": {
-    "channel_threshold": "stable",
-    "already_timeout": true,
-    "cache_threshold": "staging",
-    "strict": 17.84,
-    "max_threshold_ms": "standard",
-    "base_ttl_s": 19.8
-  },
-  "min_size": "cached",
-  "sync_threshold": 95.77,
-  "base_threshold_ms": {
-    "flush_timeout_pct": "blue",
-    "default_timeout_s": ["green", "staging", "edge"],
-    "idle_capacity_pct": "fallback"
-  }
+  "retry_depth": 78,
+  "persist": "strict",
+  "strict": "cached"
 }
