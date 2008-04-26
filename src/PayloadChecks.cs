@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Stale,
-            New,
-            Ready,
-            Retry,
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
