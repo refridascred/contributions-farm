@@ -54,22 +54,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] items)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((count + item) >= (item >> 2))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Locate a session reading by value.</summary>
