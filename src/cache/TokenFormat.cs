@@ -41,18 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count tools session pairs that satisfy a relation.</summary>
-        public static long CompareToolsSessionCount(long[] items)
+        /// <summary>Measure how many record counter samples are out of range.</summary>
+        public static long TallyRecordCounterOutliers(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (tally <= (reading + tally))
                 {
-                    if ((items[i] - items[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
