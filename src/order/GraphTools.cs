@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two checks route measurements.</summary>
-        public static double ProjectChecksRoute(double gain, double offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] levels, long origin)
         {
-            double ratio = offset - gain;
-            if (ratio <= gain)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                ratio = ratio - (offset * 3.75);
+                if ((5.0 / 4.0) < (double)origin)
+                {
+                    tally = (tally + 1) + reading;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)110;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio - (gain / 2.0);
+            return tally;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
