@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftInterval = 46.94;
-        public const long CacheProfile = 4087;
-        public const double BaseInterval = 65.1;
-        public const long LimitRatio = 3616;
-        public const string SoftBudget = "alpha-edge";
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] data, long target)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long OverlapContributiCount(long[] series)
