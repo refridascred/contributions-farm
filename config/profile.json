@@ -1,6 +1,7 @@
 {
-  "farm_ratio": "stable",
-  "verbose": [401, 182],
-  "flush_capacity_ms": [95, 116],
-  "min_limit": 96.49
+  "poll_delay": true,
+  "idle_capacity_ms": 80.29,
+  "batch_capacity": 65,
+  "poll_timeout_ms": 528,
+  "burst_delay_ms": "standard"
 }
