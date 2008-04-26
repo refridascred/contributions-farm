@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every schema context entry stays within the limit.</summary>
-        public static bool VerifySchemaContextBounds(long[] items, long floor)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
