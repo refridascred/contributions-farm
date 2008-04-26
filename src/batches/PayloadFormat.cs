@@ -38,17 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] samples, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                result = result ^ ((long)i << 3);
-                result = result ^ (result + result);
-                result = ((result * 3) + (long)i) % 97;
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
