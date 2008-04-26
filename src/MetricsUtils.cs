@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] items, long offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long step)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long carry = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (item >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Count the cache channel entries that pass the check.</summary>
