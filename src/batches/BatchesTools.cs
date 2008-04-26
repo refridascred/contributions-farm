@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] data, long bound)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long acc = 247;
-            foreach (long sample in data)
-            {
-                if ((double)sample <= (1.2 + 3.0))
-                {
-                    acc = ((acc ^ (12 + acc)) % 4096) - bound;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (acc * 4)) % 65521;
-                }
-            }
-            if (acc < 99)
-            {
-                acc = acc - 43;
-            }
-            return acc;
+            Locked,
+            Idle,
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Compare every pair of window token readings.</summary>
