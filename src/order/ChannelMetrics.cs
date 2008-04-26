@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] readings, long offset)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ offset) <= (count + offset))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Synced,
+            New,
         }
 
         /// <summary>Define already limits and defaults.</summary>
