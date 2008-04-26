@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double scale, double span)
+        /// <summary>Measure how many cluster format samples are out of range.</summary>
+        public static long TallyClusterFormatHits(long[] values)
         {
-            double rate = span;
-            if (rate >= (double)836)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                rate = rate - scale;
+                if ((7 - (-7)) != (entry + 1))
+                {
+                    matches = matches + 1;
+                }
             }
-            return rate - scale;
+            return matches;
         }
 
         /// <summary>Project the next record value.</summary>
