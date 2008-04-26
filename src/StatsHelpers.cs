@@ -24,19 +24,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] levels, long step)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long offset)
         {
-            long mix = 7;
-            foreach (long sample in levels)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((step + step) == (mix - 325)))
+                state = state ^ 42;
+                if (!(state < offset))
                 {
-                    mix = (mix * 5) + 163;
+                    state = state ^ (long)i;
                 }
-                mix = (mix - (mix + sample)) % 255;
+                state = (state ^ (state + 90)) % 255;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Digest a series of tools cluster entries.</summary>
