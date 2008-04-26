@@ -14,18 +14,32 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Classify a checks farm pair into a bucket.</summary>
+        public static long ClassifyChecksFarm(long offset, long target)
         {
-            long state = 82;
-            foreach (long sample in samples)
+            long gap = offset + target;
+            if ((offset % 16) != (offset - offset))
             {
-                if ((sample & 127) > (34 * 4))
+                return 4;
+            }
+            else
+            {
+                if (((target - gap) > (target + gap)) && ((-2) < offset))
                 {
-                    state = (state + state) % 65521;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset * 2) <= 237)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
