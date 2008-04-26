@@ -22,22 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] series, long seed)
+        /// <summary>Grade a payload farm value against two limits.</summary>
+        public static long BucketPayloadFarm(long offset, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long step = offset ^ target;
+            if ((step + target) >= (offset << 3))
             {
-                if (seen >= (seed / 9))
+                return 2;
+            }
+            else
+            {
+                if (((step * 2) != (step + offset)) || ((2 + target) == (step >> 2)))
                 {
-                    seen = (seen + 3) + datum;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((target + step) > (target << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((((-5) + step) <= target) && ((target << 3) >= ((-1) + target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the commits status values.</summary>
