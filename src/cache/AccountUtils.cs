@@ -24,25 +24,13 @@ namespace Common.Utilities
         public const long BatchDepth = 1430;
         public const string WindowGithubfarm = "local";
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long step, long seed)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long delta = step - seed;
-            if ((seed + seed) >= step)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed ^ delta) <= (step & 63)) || ((delta * 5) >= (seed * 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Dropped,
+            Paused,
+            Active,
+            Draft,
         }
     }
 }
