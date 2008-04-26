@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Stale,
-            Draft,
-            Synced,
-            Retry,
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Project the next buffer value.</summary>
