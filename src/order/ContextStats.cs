@@ -65,22 +65,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token report entries.</summary>
-        public static long CombineTokenReport(long[] values)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long acc = 51;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((reading >> 4) >= (0 + acc)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc ^ (acc + acc)) % 101;
-                }
-                else
-                {
-                    acc = (acc - (acc / 7)) % 101;
+                    if ((samples[i] ^ samples[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return matches;
         }
     }
 }
