@@ -31,18 +31,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] levels, long bound)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((double)tally < (8.15 - 8.01))
-                {
-                    tally = ((tally + 2) ^ value) - bound;
-                }
-            }
-            return tally;
+            Stale,
+            Paused,
+            Queued,
+            Retry,
         }
 
         /// <summary>Match up commits samples.</summary>
