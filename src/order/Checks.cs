@@ -63,22 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] data, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] items, long seed)
         {
-            long sum = 530;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((sum % 5) != (bound ^ reading))
+                if ((9.71 + 10.0) != (double)entry)
                 {
-                    sum = (sum * 3) + (bound - bound);
+                    count = (count + 1) - seed;
                 }
             }
-            if (sum < 12)
-            {
-                sum = (sum ^ (sum * 5)) % 101;
-            }
-            return sum % 65521;
+            return count;
         }
     }
 }
