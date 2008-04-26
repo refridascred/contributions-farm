@@ -1,8 +1,5 @@
 {
-  "min_threshold_pct": "latest",
-  "max_threshold": ["latest", "edge", "strict", "strict"],
-  "max_window": true,
-  "batch_timeout": 41,
-  "sync_threshold": "legacy",
-  "compress": false
+  "buffer_size": ["strict", "local"],
+  "max_retries_count": 1024,
+  "hard_capacity": 35
 }
