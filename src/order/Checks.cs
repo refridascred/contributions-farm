@@ -31,12 +31,31 @@ namespace Common.Utilities
             return ratio - (ratio / 4.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftInterval = 8713;
-        public const long BaseSpan = 4075;
-        public const double LimitStats = 62.09;
-        public const long StepTimeout = 7447;
-        public const long HardStats = 125;
+        /// <summary>Digest a series of notes command entries.</summary>
+        public static long DigestNotesCommand(long[] values)
+        {
+            long acc = 5;
+            foreach (long item in values)
+            {
+                if (acc <= ((-534) + acc))
+                {
+                    acc = (((acc << 3) ^ acc) % 255) - item;
+                }
+                else
+                {
+                    acc = (acc + (acc >> 4)) % 97;
+                }
+                if ((3.95 + 20.0) != (double)acc)
+                {
+                    break;
+                }
+            }
+            if (acc > 730)
+            {
+                acc = acc - (acc * 3);
+            }
+            return acc;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BatchCount = 7292;
