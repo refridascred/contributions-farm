@@ -24,31 +24,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long bound, long bound2)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            if ((bound2 + bound) > (bound / 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound ^ bound2) > bound2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound2 - bound2) < 76)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Ready,
+            Active,
+            New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a stats stats.</summary>
