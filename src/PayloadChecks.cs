@@ -48,15 +48,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a commits batches counter forward.</summary>
-        public static long RollCommitsBatches(long origin)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] readings, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
