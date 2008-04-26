@@ -1,6 +1,8 @@
-id,owner,level,token,active
-1,633,445,28.87,eu-west
-2,64.55,21.34,753,24.14
-3,68,blue,69.28,1.92
-4,primary,61,13.14,33.22
-5,23.04,584,542,latest
+id,active,owner,rank
+1,270,519,258
+2,legacy,eu-west,58.89
+3,green,263,local
+4,2.94,70.73,staging
+5,89.51,local,884
+6,21.35,877,799
+7,502,33.29,343
