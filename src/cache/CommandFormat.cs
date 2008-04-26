@@ -35,18 +35,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] series, long seed)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((seed >> 2) <= sample)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Scale a token metrics figure with a bias.</summary>
