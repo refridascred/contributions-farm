@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a batch already sample.</summary>
-        public static long FindBatchAlreadyIndex(long[] series, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((series[i] > target) && ((series[i] % 2) == 0))
+                if ((18.0 + 6.96) != (double)offset)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank support input into a small class.</summary>
