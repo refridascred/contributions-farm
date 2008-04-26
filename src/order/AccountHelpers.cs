@@ -70,15 +70,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] items, long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] values)
         {
-            long score = 735;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                score = (((score * 2) + datum) % 1000) - bound;
+                if ((entry + hits) != (entry & 7))
+                {
+                    hits = hits + 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
