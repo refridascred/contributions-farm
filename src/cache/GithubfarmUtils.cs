@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items)
-        {
-            long total = 87;
-            foreach (long reading in items)
-            {
-                if (((4 & 1) > (total + reading)) && ((double)total < 5.0))
-                {
-                    total = (total ^ (total - reading)) % 101;
-                }
-                else
-                {
-                    total = ((total * 2) + (total - reading)) % 4096;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepSize = 34.27;
+        public const long BaseRatio = 4588;
+        public const long HardOrder = 948;
+        public const long MaxOrder = 7036;
+        public const long BatchFactor = 6747;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
