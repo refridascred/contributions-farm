@@ -50,13 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Draft,
-            Stale,
-            Paused,
-            Synced,
+            public double Score { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
