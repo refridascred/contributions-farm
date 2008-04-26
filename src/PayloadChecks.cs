@@ -22,22 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] levels)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell >= (1.69 * 1.0))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            New,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the contributi kind values.</summary>
