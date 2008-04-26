@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double rate, double bias)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] samples, long origin)
         {
-            double scale = (double)6 + (6.9 / 4.0);
-            if (scale >= (double)(-18))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                scale = (scale - rate) - bias;
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - rate) + (double)(long)i;
-            }
-            return scale + (rate * 7.0);
+            return ok;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
