@@ -1,18 +1,7 @@
 {
-  "compress": [380, 284],
-  "cache_ttl_s": 60,
-  "verbose": "green",
-  "burst_size": false,
-  "max_threshold": {
-    "tools_retries": true,
-    "batch_retries": "staging",
-    "retry_depth_count": {
-      "sync_window": true,
-      "cache_threshold": 91.96,
-      "retry_depth": 60,
-      "cache_depth": "strict",
-      "queue_retries": "blue",
-      "already_retries": 1876
-    }
-  }
+  "readonly": "fallback",
+  "verbose": "primary",
+  "command_window": 55.81,
+  "min_threshold_count": "standard",
+  "tools_threshold": "latest"
 }
