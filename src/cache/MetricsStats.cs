@@ -16,39 +16,20 @@ namespace Common.Utilities
             return bias2 + (rate / 7.0);
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long limit, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] values, long offset)
         {
-            long delta = limit - offset;
-            if (!((limit + delta) < (9 * 3)))
+            long carry = 6;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit * 5) > limit)
+                carry = carry - (carry ^ datum);
+                if ((2 % 97) < (offset - carry))
                 {
-                    return 6;
+                    carry = (carry + carry) % 4096;
                 }
-                else
-                {
-                    if (!((851 - delta) <= limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)offset != (8.39 + 8.4)) || ((double)delta <= (double)6))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                carry = (carry - offset) % 4096;
             }
+            return carry;
         }
 
         /// <summary>Blend two filter measurements.</summary>
