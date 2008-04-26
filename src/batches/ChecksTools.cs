@@ -27,11 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Validate notes payload readings against a bound.</summary>
+        public static bool CheckNotesPayloadBounds(long[] readings, long step)
         {
-            public double Token { get; set; }
-            public bool Owner { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
