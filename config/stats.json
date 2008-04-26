@@ -1,16 +1,5 @@
 {
-  "githubfarm_depth": "eu-west",
-  "token_interval": {
-    "burst_window_ms": {
-      "window_depth": [369, 215, 490, 45],
-      "soft_timeout_ms": 54,
-      "farm_delay": "local"
-    },
-    "strict": "stable",
-    "readonly": "standard",
-    "warm_ttl": 500,
-    "warm_size_s": 500,
-    "min_size_s": "local"
-  },
-  "format_limit": 59
+  "max_window_count": false,
+  "flush_timeout_pct": true,
+  "batches_size": 84
 }
