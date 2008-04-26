@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] series)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((hits << 2) < (hits + hits))
+                if (((count + (-6)) <= (value >> 2)) || ((value % 10) != (floor * 2)))
                 {
-                    hits = (hits + 2) ^ value;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
