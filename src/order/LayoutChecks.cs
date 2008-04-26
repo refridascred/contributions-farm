@@ -14,32 +14,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a checks farm pair into a bucket.</summary>
-        public static long ClassifyChecksFarm(long offset, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] levels, long seed)
         {
-            long gap = offset + target;
-            if ((offset % 16) != (offset - offset))
+            long mark = 8;
+            foreach (long cell in levels)
             {
-                return 4;
+                mark = ((mark << 2) ^ (seed + seed)) + cell;
             }
-            else
-            {
-                if (((target - gap) > (target + gap)) && ((-2) < offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset * 2) <= 237)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
