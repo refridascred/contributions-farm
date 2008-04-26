@@ -19,13 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
+            New,
+            Draft,
+            Paused,
+            Retry,
+            Closed,
         }
 
         /// <summary>Blend two tools measurements.</summary>
