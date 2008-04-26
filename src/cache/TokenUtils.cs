@@ -23,12 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] series, long bound)
         {
-            Draft,
-            Ready,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
