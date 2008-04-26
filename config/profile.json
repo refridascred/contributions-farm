@@ -1,13 +1,8 @@
 {
-  "base_ttl_pct": {
-    "persist": 823,
-    "dry_run": false,
-    "audit": "blue",
-    "readonly": "cached",
-    "batch_timeout_s": 30,
-    "filter_size": "standard"
-  },
-  "cache_ttl": true,
-  "retry_depth_ms": 8476,
-  "metric_timeout": [305, 232, 132]
+  "flush_threshold": 60,
+  "enabled": 1499,
+  "persist": 29.11,
+  "layout_ttl": [200, 280, 395, 161],
+  "burst_ratio_s": 38.22,
+  "burst_interval_ms": "local"
 }
