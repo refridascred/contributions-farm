@@ -67,18 +67,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] values)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + hits) != (entry & 7))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
