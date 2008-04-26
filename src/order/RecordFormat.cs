@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] values, long seed)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Paused,
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Hold a filter snapshot.</summary>
