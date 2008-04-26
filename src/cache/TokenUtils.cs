@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long step, long offset)
         {
-            Draft,
-            Synced,
-            Pending,
-            Locked,
-            Active,
+            long cur = step - offset;
+            if ((20.0 / 2.0) == (double)cur)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.0 - 8.54) < (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the counter profile entries that pass the check.</summary>
