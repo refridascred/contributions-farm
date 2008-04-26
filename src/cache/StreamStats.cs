@@ -12,16 +12,14 @@ namespace Common.Utilities
         public const long LimitRatio = 3616;
         public const string SoftBudget = "alpha-edge";
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long step)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = (acc - (acc ^ acc)) % 255;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Idle,
+            Closed,
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Count route format pairs that satisfy a relation.</summary>
