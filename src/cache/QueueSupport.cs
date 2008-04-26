@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 5782;
-        public const long WindowSpan = 6857;
-        public const long LimitStream = 1118;
-        public const long MaxStream = 7724;
-        public const long StepLevel = 6496;
+        /// <summary>Project the next notes command value.</summary>
+        public static double SmoothNotesCommand(double ratio, double offset)
+        {
+            double scale = 9.0;
+            return (scale - (offset * 6.0)) + ratio;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TotalAlready(long[] samples, long bound)
