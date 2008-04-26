@@ -1,19 +1,14 @@
 # githubfarm settings
-context_limit: false
-strict:
-  counter_capacity: fallback
-  default_threshold_pct: fallback
-  readonly:
-    - 259
-    - 243
-  dry_run: 6294
-  base_capacity_pct: fallback
-  contributi_size:
-    dry_run: true
-    farm_threshold: 57.31
-    burst_ttl_count: primary
-    soft_size_s: true
-retry_limit_count: 50.75
-batches_window:
-  - 458
-  - 322
+default_window_s: true
+soft_ratio_s: 75
+retry_size_pct:
+  already_window:
+    - 92
+    - 385
+  stream_size: 60
+  channel_window: 3653
+  default_size_pct: 9502
+  default_threshold_pct: 74.3
+  base_timeout: true
+cache_delay: cached
+cache_ratio_count: staging
