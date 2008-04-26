@@ -41,18 +41,15 @@ namespace Common.Utilities
             return scale - (span - 2.5);
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Count the graph token entries that pass the check.</summary>
+        public static long CountGraphTokenOutliers(long[] levels, long step)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((1.11 - 7.0) <= (double)reading) || (hits >= (reading / 5)))
                 {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) - step;
                 }
             }
             return hits;
