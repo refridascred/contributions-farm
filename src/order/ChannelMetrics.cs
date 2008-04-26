@@ -41,17 +41,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] data)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long target, long target2)
         {
-            long result = 96;
-            foreach (long value in data)
+            if (((target2 + target) <= (target2 << 2)) && ((11 + target) == (target2 ^ target)))
             {
-                result = (result << 2) ^ (result & 127);
-                result = result + result;
-                result = (result ^ (result - value)) % 4096;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (!((target ^ target) > target2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
