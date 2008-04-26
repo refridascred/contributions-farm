@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long WindowBuffer = 8520;
         public const long BaseCount = 7203;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            Idle,
+            Paused,
             Locked,
-            Failed,
+            Retry,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
