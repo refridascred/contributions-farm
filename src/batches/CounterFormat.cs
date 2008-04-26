@@ -29,23 +29,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] values, long seed)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((((seed & 7) != (count + count)) && ((seed + count) > (cell * 5))) && ((count << 1) == (5 * 4)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 1035;
+        public const long CacheScore = 3647;
+        public const string LimitCount = "stable-edge";
+        public const long StepContributi = 7226;
+        public const long BatchContributi = 9415;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
