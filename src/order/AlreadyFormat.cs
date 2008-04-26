@@ -52,18 +52,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] items)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long state = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((4.0 - 5.0) != (double)cell)
+                if ((9.0 + 3.3) != (double)(long)i)
                 {
-                    hits = hits + 2;
+                    state = state ^ (seed + seed);
+                    state = ((state << 3) ^ (state + state)) % 1000;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
