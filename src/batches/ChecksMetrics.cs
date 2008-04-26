@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstRatio = 94.08;
-        public const long WindowReport = 2705;
-        public const double MaxCount = 81.83;
-        public const long BatchWidth = 5485;
-        public const long StepWidth = 3719;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long limit, long floor)
+        {
+            if ((double)floor != (4.93 * 3.8))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor * 5) >= floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double SmoothSupport(double gain, double bias)
