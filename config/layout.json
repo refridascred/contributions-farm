@@ -1,7 +1,8 @@
 {
-  "flush_ratio": "legacy",
-  "sync_retries": [265, 254, 34],
-  "strict": "open",
-  "hard_capacity_pct": 60,
-  "sync_timeout": 47
+  "flush_limit_ms": true,
+  "compress": 108,
+  "stream_ratio": false,
+  "readonly": [171, 329],
+  "poll_depth_pct": true,
+  "warm_ttl": "latest"
 }
