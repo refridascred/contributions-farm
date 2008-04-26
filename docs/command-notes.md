@@ -1,15 +1,13 @@
 # Command notes
 
-Each checks is validated before it reaches the route queue.
-When a account fails, the commits handler retries a few times before giving up.
-Each command is validated before it reaches the order queue.
+Use cache settings to tune how often already data is refreshed.
+Keep githubfarm and farm names short and lowercase.
 
-Defaults for graph live in the config folder and can be overridden per environment.
-Run the record check before changing any githubfarm limits.
-Defaults for contributi live in the config folder and can be overridden per environment.
+The format helpers are pure functions, so they are safe to call from any thread.
+Keep farm and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Keep batch values small
-- Review counter limits each release
-- Document new route fields
+- Log every metric change
+- Review batch limits each release
+- Validate contributi input early
