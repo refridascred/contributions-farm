@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetrySize = "local-edge";
-        public const double MinSize = 23.0;
-        public const long RetryBuffer = 6827;
-        public const double HardRatio = 97.93;
-        public const long CacheCount = 3480;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] levels, long offset)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell & 63) > (count * 5))
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit entry notes readings against a rule.</summary>
         public static long MeasureEntryNotesGaps(long[] series)
