@@ -51,12 +51,18 @@ namespace Common.Utilities
         public const long StepTimeout = 2844;
         public const string CacheRatio = "open-1";
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] series, long step)
         {
-            Locked,
-            Failed,
-            Active,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((step % 5) != ((long)series.Length % 16))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metric record.</summary>
