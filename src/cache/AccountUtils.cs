@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of counter context readings.</summary>
-        public static long CompareCounterContextCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 5209;
+        public const long MaxBatch = 727;
+        public const long RetryBatch = 8340;
 
         /// <summary>Grade a payload farm value against two limits.</summary>
         public static long BucketPayloadFarm(long offset, long target)
