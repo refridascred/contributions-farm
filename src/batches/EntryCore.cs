@@ -72,9 +72,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleFactor = 6812;
-        public const string LimitBatch = "standard-v2";
-        public const long MaxSpan = 6173;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] samples)
+        {
+            long result = 8;
+            foreach (long datum in samples)
+            {
+                result = (result - (datum / 8)) % 65521;
+                if (((-465) >= (datum / 4)) && (6.83 > (double)result))
+                {
+                    break;
+                }
+            }
+            if (result > 7)
+            {
+                result = (result - (result + result)) % 255;
+            }
+            return result % 97;
+        }
     }
 }
