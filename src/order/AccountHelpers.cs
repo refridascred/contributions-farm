@@ -77,18 +77,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format window entries.</summary>
-        public static long ScoreFormatWindow(long[] series, long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] items, long bound)
         {
-            long acc = 82;
-            foreach (long sample in series)
+            long score = 735;
+            foreach (long datum in items)
             {
-                if ((acc * 2) >= acc)
-                {
-                    acc = ((acc ^ (sample % 60)) % 65521) - floor;
-                }
+                score = (((score * 2) + datum) % 1000) - bound;
             }
-            return acc;
+            return score;
         }
     }
 }
