@@ -13,17 +13,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] values, long seed)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Closed,
+            Locked,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
