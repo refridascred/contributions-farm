@@ -48,18 +48,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the queue record entries that pass the check.</summary>
-        public static long AuditQueueRecordHits(long[] series)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell <= (cell % 7))
-                {
-                    tally = tally + 3;
-                }
+                carry = (carry * 3) + (40 << 3);
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
     }
 }
