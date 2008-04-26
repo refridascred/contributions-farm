@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 4148;
-        public const long SoftBudget = 6265;
-        public const double HardNotes = 35.58;
-        public const long CacheNotes = 9695;
-        public const long WindowNotes = 9978;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of stats tools readings.</summary>
         public static long PairStatsToolsCount(long[] series)
