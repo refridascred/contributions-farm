@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values, long step)
         {
-            Retry,
-            Locked,
-            Failed,
-            Stale,
+            long score = 52;
+            foreach (long item in values)
+            {
+                if ((double)item <= (16.0 * 9.2))
+                {
+                    score = ((score << 2) ^ (step / 8)) % 4096;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Combine window values into a single score.</summary>
