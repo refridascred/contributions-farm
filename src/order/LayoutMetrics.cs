@@ -34,22 +34,13 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] series)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long total = 594;
-            foreach (long reading in series)
-            {
-                if (((total * 4) <= 31) || ((total ^ reading) >= (total + total)))
-                {
-                    total = (total + (reading - reading)) % 97;
-                }
-            }
-            if (total > 90)
-            {
-                total = total - 860;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
     }
 }
