@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long MaxAccount = 7608;
         public const long BurstWidth = 6622;
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] series)
         {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((value + 90) <= (279 << 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a queue contributi counter forward.</summary>
