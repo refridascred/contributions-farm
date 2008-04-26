@@ -14,31 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long offset, long floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if (((838 << 1) == (offset / 8)) && ((floor - offset) <= (offset << 1)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor >= (20.0 / 7.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset + offset) < (floor * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Stale,
+            Failed,
+            New,
+            Draft,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
