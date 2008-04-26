@@ -12,22 +12,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 1713;
+        public const long HardFactor = 6338;
+        public const long StepChecks = 8813;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MinInterval = 2215;
