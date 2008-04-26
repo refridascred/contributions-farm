@@ -25,21 +25,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (4 <= (item + hits))
                 {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) - target;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
