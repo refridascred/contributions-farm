@@ -37,22 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] levels, long floor)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double gain, double span)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double mean = gain;
+            for (int i = 0; i < 9; i++)
             {
-                if ((4.28 + 14.0) != (double)floor)
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = ((mean + gain) + (double)(long)i) + span;
             }
-            return matches;
+            return mean - 5.0;
         }
 
         /// <summary>Measure how many checks context samples are out of range.</summary>
