@@ -41,22 +41,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record counter samples are out of range.</summary>
-        public static long TallyRecordCounterOutliers(long[] samples)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (tally <= (reading + tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score + ((long)i << 2)) % 101;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
     }
 }
