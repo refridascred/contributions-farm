@@ -1,10 +1,11 @@
 {
-  "githubfarm_window": 8.67,
-  "readonly": 8157,
-  "batch_timeout": {
-    "max_ttl_pct": 1024,
-    "min_interval": [234, 430, 263, 308],
-    "hard_capacity_pct": 19
-  },
-  "support_timeout": "standard"
+  "strict": 2649,
+  "max_ttl": [41, 42, 466, 49],
+  "base_threshold": "local",
+  "max_depth_count": ["stable", "staging", "strict"],
+  "base_delay_pct": {
+    "schema_timeout": 2051,
+    "soft_threshold": 8142,
+    "default_ttl_pct": ["latest", "primary"]
+  }
 }
