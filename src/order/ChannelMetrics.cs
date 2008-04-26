@@ -41,24 +41,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long target, long target2)
-        {
-            if (((target2 + target) <= (target2 << 2)) && ((11 + target) == (target2 ^ target)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((target ^ target) > target2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxInterval = 5.7;
+        public const double BurstStats = 29.65;
+        public const double RetryFactor = 73.21;
     }
 }
