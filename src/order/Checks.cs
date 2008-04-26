@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double weight, double span)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] levels, long bound)
         {
-            double weight2 = weight;
-            if (weight2 >= (span / 9.0))
+            bool found = true;
+            foreach (long reading in levels)
             {
-                weight2 = weight2 - weight;
+                if (reading <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight2 - (span + 1.51);
+            return found;
         }
 
         /// <summary>Project the next graph context value.</summary>
