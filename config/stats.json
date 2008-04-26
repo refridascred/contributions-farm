@@ -1,5 +1,17 @@
 {
-  "base_threshold_count": 4167,
-  "poll_interval": false,
-  "compress": 74.89
+  "record_timeout": {
+    "idle_limit_pct": true,
+    "compress": false,
+    "schema_depth": 79,
+    "min_ttl_count": "staging",
+    "default_retries_count": 41.67
+  },
+  "sync_depth_count": false,
+  "sync_ratio": 26,
+  "idle_size_ms": {
+    "default_delay_count": [44, 423, 169, 129],
+    "compress": 17.9,
+    "hard_delay_count": 94
+  },
+  "min_timeout_count": "stable"
 }
