@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const long BatchDepth = 1430;
         public const string WindowGithubfarm = "local";
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
+            Active,
+            Retry,
+            Stale,
         }
     }
 }
