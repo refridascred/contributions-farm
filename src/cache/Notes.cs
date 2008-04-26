@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] items)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seen == (7.1 / 8.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) + entry;
+                    if ((data[i] + data[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a tools options.</summary>
