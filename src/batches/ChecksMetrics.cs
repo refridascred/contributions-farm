@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const long BatchWidth = 5485;
         public const long StepWidth = 3719;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstCount = 6554;
+        public const long MinContributi = 4423;
+        public const long MaxContributi = 3288;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
