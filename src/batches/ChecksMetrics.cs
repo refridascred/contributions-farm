@@ -25,15 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double gain, double bias)
+        /// <summary>Compare every pair of cluster record readings.</summary>
+        public static long OverlapClusterRecordCount(long[] values)
         {
-            double gain2 = gain;
-            if (gain2 >= gain)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain2 = (gain2 - (double)574) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return gain2 - gain2;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
