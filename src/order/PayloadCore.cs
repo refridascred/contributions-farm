@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] readings, long step)
         {
-            long total = 40;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                total = (total ^ (total - reading)) % 4096;
+                if (entry != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (total < 967)
-            {
-                total = (total - (total ^ total)) % 65521;
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
