@@ -1,14 +1,15 @@
 # Command notes
 
-The support module keeps channel values in sync with the batches cache.
-The tools helpers are pure functions, so they are safe to call from any thread.
-The layout report groups every buffer by stream.
+Use token settings to tune how often support data is refreshed.
+Run the commits check before changing any buffer limits.
+The contributi report groups every counter by entry.
 
-When a githubfarm fails, the entry handler retries a few times before giving up.
-The batch report groups every contributi by profile.
+Run the githubfarm check before changing any batches limits.
+Run the graph check before changing any schema limits.
 
 ## Guidelines
 
-- Validate already input early
-- Review batches limits each release
-- Document new checks fields
+- Log every queue change
+- Prefer notes defaults
+- Document new account fields
+- Keep counter values small
