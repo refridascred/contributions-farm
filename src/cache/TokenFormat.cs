@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Look up the position of a githubfarm tools sample.</summary>
+        public static long FindGithubfarmToolsIndex(long[] readings, long seed)
         {
-            long mark = 9;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((reading + reading) < mark) || ((reading ^ reading) > reading))
+                if (readings[i] > seed)
                 {
-                    mark = (mark * 5) + mark;
-                }
-                if (((reading + reading) <= mark) || ((9 / 2) <= reading))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
