@@ -73,12 +73,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long seed)
         {
-            Draft,
-            Stale,
-            Pending,
+            long total = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 2) + total) % 255;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
