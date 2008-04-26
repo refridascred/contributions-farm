@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of layout notes readings.</summary>
-        public static long OverlapLayoutNotesCount(long[] values)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long target, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long edge = target - floor;
+            if (!((double)target >= (9.0 / 3.0)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((3 << 3) > (floor >> 1))
                 {
-                    if ((values[i] ^ values[j]) < 0)
+                    return 1;
+                }
+                else
+                {
+                    if ((target + target) <= edge)
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
