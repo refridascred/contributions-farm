@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] readings, long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double bias2 = rate;
+            if (bias2 >= 7.03)
             {
-                if (tally < seed)
-                {
-                    tally = (tally + 1) - cell;
-                }
+                bias2 = bias2 - (double)864;
             }
-            return tally;
+            return bias2 - (bias2 + bias);
         }
 
         /// <summary>Describe the session mode values.</summary>
