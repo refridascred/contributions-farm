@@ -58,12 +58,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] values, long target)
         {
-            public double Total { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
