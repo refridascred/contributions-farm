@@ -1,8 +1,18 @@
 {
-  "base_size": 49.1,
-  "readonly": "standard",
-  "compress": ["edge", "green", "blue"],
-  "burst_threshold": "standard",
-  "audit": 61,
-  "hard_depth_ms": true
+  "batch_ratio": ["blue", "fallback", "legacy"],
+  "dry_run": {
+    "farm_window": [308, 403, 10],
+    "soft_delay": 500,
+    "compress": false,
+    "flush_delay_s": 33.04,
+    "route_delay": {
+      "max_interval_ms": 24.7,
+      "warm_retries_s": "staging",
+      "compress": 3192,
+      "report_ttl": 82,
+      "max_size_ms": true
+    },
+    "cache_window": false
+  },
+  "metrics_ratio": "open"
 }
