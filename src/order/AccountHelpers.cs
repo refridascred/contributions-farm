@@ -14,22 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] readings, long bound)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((bound ^ bound) > ((long)readings.Length >> 5))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
