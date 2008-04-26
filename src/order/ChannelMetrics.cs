@@ -13,12 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchFactor = 5853;
-        public const double CacheAlready = 1.68;
-        public const string BurstTimeout = "local";
-        public const string StepAlready = "stable";
-        public const long IdleAlready = 1894;
+        /// <summary>Match up queue stream samples.</summary>
+        public static long OverlapQueueStreamCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the order channel series from a seed.</summary>
         public static long DeriveOrderChannel(long origin)
