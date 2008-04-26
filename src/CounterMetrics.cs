@@ -47,38 +47,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a cluster account value against two limits.</summary>
-        public static long SortClusterAccount(long seed, long limit)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            if ((seed + seed) < limit)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed <= (seed / 8)) && ((double)seed != (17.0 * 5.7)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit <= (7.0 * 5.2))
+                    if ((samples[i] - samples[j]) != 5)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit - limit) >= seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
