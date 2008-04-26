@@ -27,15 +27,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Adjust a notes counter reading.</summary>
-        public static double SmoothNotesCounter(double ratio, double offset)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double rate, double offset)
         {
-            double rate = (double)4 - offset;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = ((rate + (offset / 8.0)) - (double)(long)i) - ratio;
-            }
-            return rate + (double)8;
+            double scale = rate - (rate - offset);
+            return scale - rate;
         }
 
         /// <summary>Adjust a window reading.</summary>
