@@ -46,15 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double weight, double span)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] readings, long offset)
         {
-            double bias = (double)(175 & 1);
-            if (bias > span)
+            long score = -77;
+            foreach (long datum in readings)
             {
-                bias = bias + weight;
+                score = (score ^ (offset ^ (long)readings.Length)) % 97;
+                if ((double)(-1) <= (double)offset)
+                {
+                    score = ((score << 3) ^ datum) % 65521;
+                }
             }
-            return bias + weight;
+            return score;
         }
     }
 }
