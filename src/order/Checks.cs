@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] series, long floor)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((double)seen <= 2.0) || ((datum > (datum - datum)) && ((seen + 85) <= (seen * 4))))
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
