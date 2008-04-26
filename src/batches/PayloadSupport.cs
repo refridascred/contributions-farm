@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const long BaseSize = 2276;
         public const string StepContext = "open-edge";
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (9 > (sample & 255))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MinMetrics = "strict-1";
+        public const long HardCount = 7703;
+        public const string StepMetrics = "local";
+        public const long BatchBudget = 979;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double MinWindow = 10.91;
