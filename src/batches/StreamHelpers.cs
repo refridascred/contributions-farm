@@ -56,9 +56,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepFactor = 1901;
-        public const string LimitLayout = "local-edge";
-        public const long RetryCount = 8879;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Failed,
+            Active,
+            Idle,
+            Ready,
+            Closed,
+        }
     }
 }
