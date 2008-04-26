@@ -30,38 +30,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a githubfarm report pair into a bucket.</summary>
-        public static long SortGithubfarmReport(long origin, long step)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] data, long offset)
         {
-            if ((84 / 8) < (step % 60))
+            bool valid = true;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (step >= (step + 5))
+                if (item != offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step < ((-38) & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (6.5 * 9.33))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
