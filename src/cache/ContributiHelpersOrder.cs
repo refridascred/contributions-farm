@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double weight, double offset)
         {
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
+            double weight2 = (double)569 + (weight + weight);
+            if (weight2 < weight2)
+            {
+                weight2 = (weight2 + (double)90) - offset;
+            }
+            return weight2 - (weight * 5.99);
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
