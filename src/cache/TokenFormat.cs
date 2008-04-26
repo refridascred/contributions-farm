@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 258;
-        public const long WindowPayload = 8528;
-        public const string IdlePayload = "primary-edge";
-        public const string LimitPayload = "open-v2";
+        /// <summary>Roll a channel route counter forward.</summary>
+        public static long SeriesChannelRoute(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((sum << 1) > (sum / 5))
+                {
+                    sum = (sum << 3) ^ ((long)i - sum);
+                    break;
+                }
+                if ((origin / 9) >= origin)
+                {
+                    sum = (sum + (origin + 140)) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
