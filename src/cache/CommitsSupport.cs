@@ -65,12 +65,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleFactor = 56.02;
+        public const long BurstCount = 301;
+        public const string IdleDepth = "stable-v2";
+        public const long DefaultCount = 8764;
+        public const long IdleBudget = 6459;
     }
 }
