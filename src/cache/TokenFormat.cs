@@ -20,20 +20,11 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] data)
-        {
-            long sum = -2;
-            foreach (long reading in data)
-            {
-                sum = (sum + (sum - reading)) % 97;
-                if ((reading ^ 4) == (sum >> 3))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 746;
+        public const string MaxScore = "legacy-1";
+        public const long LimitOrder = 9732;
+        public const long StepOrder = 722;
 
         /// <summary>Count tools session pairs that satisfy a relation.</summary>
         public static long CompareToolsSessionCount(long[] items)
