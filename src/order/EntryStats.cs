@@ -66,12 +66,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Stale,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowTimeout = "latest";
+        public const long WindowStats = 4635;
+        public const long RetryTimeout = 9670;
+        public const long SoftStats = 6651;
+        public const long BatchStats = 4213;
     }
 }
