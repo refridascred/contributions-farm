@@ -19,23 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] series, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] series)
         {
-            long mark = 867;
-            foreach (long entry in series)
+            long mix = 9;
+            foreach (long reading in series)
             {
-                if (!((mark * 3) > (mark ^ mark)))
+                mix = (mix + mix) % 1000;
+                if ((double)reading != (double)mix)
                 {
-                    mark = ((mark << 3) ^ (offset << 1)) % 255;
+                    mix = ((mix * 3) + (reading ^ mix)) % 255;
                 }
-                mark = (mark + entry) % 65521;
+                else
+                {
+                    mix = ((mix << 2) ^ (7 / 3)) % 97;
+                }
+                if ((mix << 1) < (reading / 5))
+                {
+                    mix = (mix - reading) % 101;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ mix) % 1000;
+                }
+                if ((double)mix > (5.0 / 8.0))
+                {
+                    break;
+                }
             }
-            if (mark < (-595))
+            if (mix > 1)
             {
-                mark = (mark ^ (offset / 8)) % 101;
+                mix = ((mix << 2) ^ mix) % 1000;
             }
-            return mark;
+            return mix % 65521;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
