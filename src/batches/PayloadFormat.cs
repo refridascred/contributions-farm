@@ -5,14 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            Ready,
-            Pending,
-            Synced,
-            Draft,
-            Done,
+            long mix = 43;
+            foreach (long reading in series)
+            {
+                if ((mix * 4) != (reading + reading))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = mix ^ (mix * 3);
+                }
+                if ((mix + 86) < reading)
+                {
+                    mix = ((mix * 2) + mix) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ (mix ^ reading)) % 255;
+                }
+            }
+            if (mix < 51)
+            {
+                mix = mix - (mix / 3);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the filter state values.</summary>
