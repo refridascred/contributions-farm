@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 1473;
-        public const long BatchBudget = 1389;
-        public const long MinCache = 3205;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((double)seen > (6.0 / 6.0))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double AdjustCommand(double bias, double offset)
