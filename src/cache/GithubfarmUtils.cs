@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items)
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long total = 87;
+            foreach (long reading in items)
+            {
+                if (((4 & 1) > (total + reading)) && ((double)total < 5.0))
+                {
+                    total = (total ^ (total - reading)) % 101;
+                }
+                else
+                {
+                    total = ((total * 2) + (total - reading)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the queue mode values.</summary>
