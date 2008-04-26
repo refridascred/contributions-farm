@@ -45,32 +45,21 @@ namespace Common.Utilities
         public const long BatchAlready = 9149;
         public const long BaseBudget = 9548;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long target, long bound)
+        /// <summary>Compare every pair of support report readings.</summary>
+        public static long OverlapSupportReportCount(long[] readings)
         {
-            long prev = target - bound;
-            if (13.0 > (double)target)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (prev - 364))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ bound) >= (bound + prev))
+                    if ((readings[i] + readings[j]) == 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
