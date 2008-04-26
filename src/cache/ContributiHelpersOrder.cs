@@ -40,14 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Pending,
-            Failed,
-            New,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultSpan = 4990;
+        public const long RetryFormat = 3484;
+        public const double HardFormat = 0.61;
+        public const long BurstFactor = 980;
     }
 }
