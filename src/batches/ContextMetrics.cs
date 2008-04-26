@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinBudget = 2295;
-        public const long WindowScore = 2375;
-        public const long MaxAccount = 7608;
-        public const long BurstWidth = 6622;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 1860;
+        public const long BurstBatch = 4335;
+        public const long BatchCount = 3253;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
