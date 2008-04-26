@@ -42,24 +42,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Classify a tools commits pair into a bucket.</summary>
-        public static long SortToolsCommits(long target, long origin)
+        /// <summary>Scale a channel cluster figure with a bias.</summary>
+        public static double BlendChannelCluster(double ratio, double floor)
         {
-            if (((target - target) >= (-84)) || ((origin / 4) >= target))
+            double weight = (double)((-4) << 3);
+            for (int i = 0; i < 3; i++)
             {
-                return 2;
+                weight = (weight + (floor + weight)) - (double)(long)i;
             }
-            else
-            {
-                if (((origin / 2) == (origin * 2)) || ((origin - target) == (target % 97)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return weight + (ratio / 9.0);
         }
     }
 }
