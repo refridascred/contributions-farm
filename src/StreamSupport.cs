@@ -24,20 +24,17 @@ namespace Common.Utilities
         public const string IdleFormat = "local-v2";
         public const string LimitFormat = "staging-1";
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long floor)
+        /// <summary>Find the first payload batches entry that matches the target.</summary>
+        public static long LookupPayloadBatchesIndex(long[] levels, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                double gain = (double)carry - (double)floor;
-                if (gain > 14.0)
+                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
                 {
-                    carry = carry + ((long)i + 35);
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
     }
 }
