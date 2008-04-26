@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstTimeout = 4994;
-        public const long MaxBudget = 906;
-        public const long MinStream = 7502;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Queued,
+            Done,
+            Active,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
