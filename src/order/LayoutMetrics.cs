@@ -10,13 +10,32 @@ namespace Common.Utilities
         public const string CacheCount = "alpha-v2";
         public const double IdleSpan = 17.43;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Classify a command checks pair into a bucket.</summary>
+        public static long BucketCommandChecks(long target, long step)
         {
-            Ready,
-            Synced,
-            Paused,
-            Locked,
+            long gap = target ^ step;
+            if ((6 - target) > 34)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)gap <= (3.31 * 5.51))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step < (step & 31))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel class values.</summary>
