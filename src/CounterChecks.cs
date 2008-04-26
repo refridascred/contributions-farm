@@ -34,19 +34,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] levels, long target)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long origin, long floor)
         {
-            long sum = 770;
-            foreach (long reading in levels)
+            long delta = origin + floor;
+            if ((delta - delta) != (floor & 15))
             {
-                sum = ((sum * 5) + (target % 3)) + reading;
+                return 7;
             }
-            if (sum < 940)
+            else
             {
-                sum = sum - (target << 2);
+                if ((delta - origin) != (delta - 74))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((delta + floor) >= (delta - delta)) || ((delta >> 4) != (origin & 255)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((3.2 - 6.0) > (double)delta)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return sum % 4096;
         }
 
         /// <summary>Hold a metric options.</summary>
