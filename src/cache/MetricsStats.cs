@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two commits notes measurements.</summary>
-        public static double AdjustCommitsNotes(double rate, double bias)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            double bias2 = (double)(977 - 286);
-            if (bias2 < (bias2 / 4.0))
+            long sum = 0;
+            foreach (long sample in data)
             {
-                bias2 = bias2 - bias;
+                if ((sample ^ 24) <= (237 + sample))
+                {
+                    sum = (sum - sum) % 255;
+                }
             }
-            return bias2 + (rate / 7.0);
+            return sum % 4096;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
