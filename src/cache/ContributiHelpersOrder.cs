@@ -12,20 +12,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long bound, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            if ((bound - 8) > bound)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = ((carry ^ (offset / 5)) % 65521) - (long)i2;
-                }
-                carry = (carry ^ (873 - carry)) % 4096;
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((bound - 565) > (bound + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the order class values.</summary>
