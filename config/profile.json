@@ -1,7 +1,6 @@
 {
-  "audit": [20, 165, 299, 177],
-  "idle_ratio": 64.4,
-  "enabled": 36.28,
-  "flush_retries_s": [321, 418],
-  "record_ttl": ["open", "eu-west", "primary"]
+  "commits_ttl": 9303,
+  "graph_delay": 56.98,
+  "burst_timeout_pct": "fallback",
+  "filter_retries": 60
 }
