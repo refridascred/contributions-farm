@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate githubfarm cache readings against a bound.</summary>
-        public static bool GuardGithubfarmCacheBounds(long[] data, long target)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long step)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum <= target)
+                if (((result >> 5) != (long)i) && ((step * 5) >= (step >> 3)))
                 {
-                    stale = false;
-                    break;
+                    result = (result * 5) + (long)i;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Measure how many cache buffer samples are out of range.</summary>
