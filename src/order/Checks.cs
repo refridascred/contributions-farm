@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already entry entries that pass the check.</summary>
-        public static long CountAlreadyEntryMatches(long[] readings, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if ((tally - value) <= ((long)readings.Length % 2))
+                if (datum >= bound)
                 {
-                    tally = (tally + 3) - floor;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
