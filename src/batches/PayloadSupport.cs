@@ -22,19 +22,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many queue context samples are out of range.</summary>
-        public static long AuditQueueContextHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry + 994) != (entry % 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryCount = 73.79;
+        public const long BaseSize = 8226;
+        public const double StepChecks = 23.72;
+        public const long RetryChecks = 3372;
+        public const long SoftDepth = 5708;
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
