@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long bound, long bound2)
+        /// <summary>Count the batch githubfarm entries that pass the check.</summary>
+        public static long CountBatchGithubfarmGaps(long[] series)
         {
-            if (5.1 > (double)bound2)
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound - bound) != (bound % 3))
+                if ((seen + 1) == (63 + seen))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound2 <= (7.0 * 8.6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound <= (bound2 * 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = (seen + 1) - item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a checks stats.</summary>
