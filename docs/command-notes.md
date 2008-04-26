@@ -1,12 +1,12 @@
 # Command notes
 
-Each window is validated before it reaches the batches queue.
-Use context settings to tune how often record data is refreshed.
-Run the batch check before changing any entry limits.
+The counter report groups every profile by format.
+The editor module keeps order values in sync with the stream cache.
+The profile report groups every schema by channel.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Keep report values small
-- Review account limits each release
-- Log every notes change
+- Keep stats values small
+- Review stream limits each release
+- Prefer window defaults
+- Validate command input early
