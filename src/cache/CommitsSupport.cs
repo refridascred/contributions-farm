@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 6232;
-        public const double BatchTimeout = 67.78;
-        public const long DefaultProfile = 9936;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] samples)
+        {
+            long carry = 6;
+            foreach (long cell in samples)
+            {
+                carry = ((carry << 2) ^ cell) % 4096;
+                if ((-6) < (carry % 5))
+                {
+                    carry = (carry + (cell / 8)) % 4096;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long FindProfileIndex(long[] items, long bound)
