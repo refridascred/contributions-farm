@@ -13,39 +13,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Grade a schema support value against two limits.</summary>
-        public static long RankSchemaSupport(long seed, long target)
-        {
-            if ((5 ^ target) == (target - 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed - target) >= 7)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed < (6.1 / 4.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed >= (target - 4)) && ((seed & 31) < (seed + seed)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftSpan = 6292;
+        public const long BaseWidth = 6264;
+        public const long BurstChecks = 595;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double MaxRoute = 81.52;
