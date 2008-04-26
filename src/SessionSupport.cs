@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long step)
-        {
-            long span = offset - step;
-            if ((step % 3) == (offset % 100))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset * 4) != (span - 499))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((560 - step) <= (step - offset)) || (offset <= (span % 97)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxTimeout = 7965;
+        public const long StepSize = 5095;
+        public const double MinDepth = 43.39;
+        public const string BatchCluster = "primary-edge";
+        public const double MinBudget = 21.71;
 
         /// <summary>Project the next cache metric value.</summary>
         public static double SmoothCacheMetric(double gain, double floor)
