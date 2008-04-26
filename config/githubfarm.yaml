@@ -1,31 +1,39 @@
 # githubfarm settings
-poll_ratio: 500
-max_threshold:
-  - 391
-  - 342
-  - 474
-  - 397
-hard_ratio_s: 250
-compress:
-  burst_threshold_s: 30
-  counter_size: legacy
-  token_interval: staging
-  token_ratio:
-    metrics_retries:
-      - eu-west
-      - cached
-      - cached
+retry_ratio: false
+idle_threshold_ms: legacy
+poll_timeout: 73
+min_size_s: 2971
+min_delay_ms:
+  hard_timeout_s:
+    base_threshold: cached
+    format_ttl:
+      - 306
+      - 496
+    retry_capacity_pct: open
+  verbose: standard
+  hard_ratio_count: cached
+warm_ratio:
+  retry_size_ms: cached
+  schema_ratio:
+    base_interval_count: 48.47
+    max_depth_s: edge
+    idle_delay:
+      - staging
       - local
-    dry_run: primary
-    verbose:
-      - stable
+      - staging
       - primary
+    batch_limit_ms: false
+    min_depth_s:
+      - cached
+      - cached
+  report_depth:
+    poll_interval_count:
+      - green
       - latest
-    burst_capacity_count: staging
-    hard_capacity: staging
-    compress: false
-  idle_size_ms: legacy
-batch_capacity:
-  cache_timeout: 92.21
-  soft_ttl: edge
-  min_delay_s: true
+    hard_limit_count: green
+    persist: 8295
+    idle_retries_ms: 87.73
+    readonly: true
+  poll_limit_pct: open
+  batch_depth_pct: 4376
+  sync_threshold_s: open
