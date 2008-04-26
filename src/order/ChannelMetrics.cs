@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] data, long offset)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double ratio, double bias)
         {
-            long anchor = 272;
-            foreach (long cell in data)
+            double weight = bias;
+            if (weight < (15.0 + weight))
             {
-                anchor = ((anchor ^ (offset & 3)) % 4096) ^ cell;
+                weight = weight - (double)(-711);
             }
-            return anchor;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight - (double)1;
         }
 
         /// <summary>Count queue payload pairs that satisfy a relation.</summary>
