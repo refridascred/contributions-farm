@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] levels, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((double)reading > (1.74 + 1.7))
+                if (!(reading < (reading * 5)))
                 {
-                    matches = (matches + 2) + offset;
+                    count = (count + 3) + offset;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a support summary.</summary>
