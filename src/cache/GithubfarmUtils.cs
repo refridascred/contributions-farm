@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] items, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] levels, long offset)
         {
-            long sum = 21;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (((sum * 2) < sum) && ((sum + sum) > (item % 24)))
+                if (entry != offset)
                 {
-                    sum = (sum * 2) + (bound ^ sum);
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
