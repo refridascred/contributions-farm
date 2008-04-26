@@ -40,12 +40,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Iterate the route session series from a seed.</summary>
+        public static long DeriveRouteSession(long seed)
         {
-            Stale,
-            Synced,
-            Pending,
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((98 * 3) >= (anchor + 87))
+                {
+                    anchor = anchor ^ (anchor * 4);
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
