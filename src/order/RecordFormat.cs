@@ -67,18 +67,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] values, long limit)
+        /// <summary>Find the first profile order entry that matches the target.</summary>
+        public static long LookupProfileOrderIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((((long)values.Length + limit) >= cell) || (matches >= ((long)values.Length ^ matches))) && ((matches + (-6)) >= (cell + limit)))
+                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
