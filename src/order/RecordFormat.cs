@@ -46,24 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long step, long bound)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] values)
         {
-            if ((step < (step ^ 59)) || ((6 / 9) >= (step + bound)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(step > ((-38) * 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate checks samples.</summary>
