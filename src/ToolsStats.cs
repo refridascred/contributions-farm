@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 60.91;
-        public const string RetryBudget = "local";
-        public const long BatchSize = 109;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!((hits << 2) < (cell - hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long StepCounter(long limit)
