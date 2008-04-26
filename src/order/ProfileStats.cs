@@ -22,15 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double weight, double floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double gain, double floor)
         {
-            double ratio = floor + floor;
-            for (int i = 0; i < 9; i++)
+            double scale = gain;
+            for (int i = 0; i < 2; i++)
             {
-                ratio = ((ratio - (double)6) + (double)(long)i) + weight;
+                scale = ((scale + gain) + (double)(long)i) + floor;
             }
-            return ratio - (double)581;
+            return scale + (double)843;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
