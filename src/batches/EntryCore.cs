@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double bias, double span)
         {
-            Pending,
-            Dropped,
-            Failed,
-            Ready,
+            double gain = (bias / 4.0) - (9.2 / 8.0);
+            if (gain >= gain)
+            {
+                gain = gain - (gain * 3.16);
+            }
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain + span;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
