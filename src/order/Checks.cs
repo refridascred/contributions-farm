@@ -46,21 +46,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Combine batches tools values into a single score.</summary>
+        public static long FoldBatchesTools(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)target == (1.14 / 7.0))
                 {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry ^ (target + target)) % 65521) ^ item;
                 }
+                if ((743 / 4) < (target / 8))
+                {
+                    carry = ((carry << 2) ^ (carry % 100)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (carry << 1)) % 101;
+                }
+                carry = carry ^ (carry - target);
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
