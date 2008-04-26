@@ -77,18 +77,31 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate graph payload samples.</summary>
-        public static long TotalGraphPayload(long[] samples, long step)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long step, long limit)
         {
-            long acc = 24;
-            foreach (long entry in samples)
+            if ((step << 3) >= 384)
             {
-                if ((step ^ acc) <= entry)
+                return 7;
+            }
+            else
+            {
+                if ((double)limit >= (12.0 + 9.59))
                 {
-                    acc = ((acc * 5) + (186 + step)) % 101;
+                    return 2;
+                }
+                else
+                {
+                    if ((2 >= (step >> 3)) || ((5.75 - 8.6) >= (double)limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
