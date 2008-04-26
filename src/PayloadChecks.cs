@@ -30,12 +30,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the contributi buffer entries that pass the check.</summary>
+        public static long TallyContributiBufferOutliers(long[] readings)
         {
-            Paused,
-            Retry,
-            Stale,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (reading <= (count + count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a commits batches counter forward.</summary>
