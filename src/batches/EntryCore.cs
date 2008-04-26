@@ -54,18 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] items)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long anchor = 210;
+            foreach (long cell in levels)
             {
-                if ((double)tally >= (double)item)
+                if ((cell / 4) < 3)
                 {
-                    tally = tally + 3;
+                    anchor = (anchor + (anchor + anchor)) % 65521;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the payload state values.</summary>
