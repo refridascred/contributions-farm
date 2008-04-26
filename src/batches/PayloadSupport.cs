@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long offset, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] items)
         {
-            long edge = offset - limit;
-            if ((offset / 6) <= limit)
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((edge >> 1) == (5 % 60)))
+                if (!(10 < (value * 2)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset - limit) > (limit << 2)) && ((edge / 8) >= (limit + limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
