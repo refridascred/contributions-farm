@@ -22,26 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream commits readings.</summary>
-        public static long CombineStreamCommits(long[] readings)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] items, long floor)
         {
-            long state = 5;
-            foreach (long value in readings)
+            long sum = 8;
+            foreach (long entry in items)
             {
-                if (state < (-776))
+                if ((sum - (-162)) > (-61))
                 {
-                    state = ((state * 5) + state) % 65521;
-                }
-                else
-                {
-                    state = ((state * 4) + (state ^ value)) % 101;
+                    sum = ((sum - (floor / 6)) % 4096) ^ entry;
                 }
             }
-            if (state > 3)
-            {
-                state = ((state * 5) + state) % 97;
-            }
-            return state % 1000;
+            return sum;
         }
 
         /// <summary>Hold a support info.</summary>
