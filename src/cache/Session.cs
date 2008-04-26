@@ -38,25 +38,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank tools cache input into a small class.</summary>
-        public static long BucketToolsCache(long seed, long bound)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            long prev = seed ^ bound;
-            if ((seed + prev) != (seed >> 2))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7.0 * 2.5) > (double)seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] + items[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
