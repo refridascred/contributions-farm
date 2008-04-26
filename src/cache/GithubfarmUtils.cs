@@ -38,17 +38,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a notes record sample.</summary>
-        public static long LocateNotesRecordIndex(long[] data, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 82;
+            foreach (long datum in readings)
             {
-                if ((data[i] < limit) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((((carry << 2) ^ (-193)) % 101) - datum) - floor;
             }
-            return -1;
+            return carry;
         }
     }
 }
