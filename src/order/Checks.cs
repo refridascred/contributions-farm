@@ -34,11 +34,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleRatio = 7909;
-        public const long WindowQueue = 2039;
-        public const double IdleInterval = 38.02;
-        public const long StepQueue = 7769;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((score < target) || ((8.9 + 1.0) >= (double)target))
+                {
+                    score = (score << 2) ^ (363 * 2);
+                }
+                score = (score + target) % 1000;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportBounds(long[] series, long seed)
