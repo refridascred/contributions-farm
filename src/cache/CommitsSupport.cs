@@ -67,15 +67,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] values)
-        {
-            long total = 610;
-            foreach (long reading in values)
-            {
-                total = (total ^ (54 - reading)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseDepth = 5255;
+        public const long BatchSession = 8560;
+        public const long WindowLevel = 7821;
     }
 }
