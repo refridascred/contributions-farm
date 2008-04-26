@@ -58,15 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Paused,
+            Retry,
+            Idle,
         }
     }
 }
