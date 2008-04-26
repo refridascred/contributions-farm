@@ -52,16 +52,17 @@ namespace Common.Utilities
             return weight + 1.8;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] data, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = result ^ (result * 5);
-                result = ((result * 4) + (long)i) % 97;
+                if ((data[i] >= offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
