@@ -1,6 +1,7 @@
 {
-  "commits_ttl": 9303,
-  "graph_delay": 56.98,
-  "burst_timeout_pct": "fallback",
-  "filter_retries": 60
+  "idle_threshold_count": 500,
+  "sync_ttl": 250,
+  "idle_depth_s": true,
+  "verbose": "eu-west",
+  "channel_threshold": "staging"
 }
