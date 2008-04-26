@@ -45,21 +45,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 38;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((323 + 5) == (total - entry))
                 {
-                    if ((samples[i] - samples[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total - (entry % 12)) % 101;
+                }
+                else
+                {
+                    total = ((total * 5) + (entry >> 4)) % 255;
                 }
             }
-            return seen;
+            if (total > 92)
+            {
+                total = (total ^ (total % 3)) % 101;
+            }
+            return total % 4096;
         }
     }
 }
