@@ -59,12 +59,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] samples, long limit)
         {
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (entry > (tally - limit))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer info.</summary>
