@@ -51,19 +51,18 @@ namespace Common.Utilities
             return mean + (mean / 9.0);
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double weight, double floor)
+        /// <summary>Audit queue entry readings against a rule.</summary>
+        public static long TallyQueueEntryGaps(long[] series, long target)
         {
-            double weight2 = (weight - weight) * 7.73;
-            if (weight2 < (double)259)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                weight2 = weight2 - floor;
+                if ((target / 5) >= matches)
+                {
+                    matches = (matches + 1) ^ cell;
+                }
             }
-            else
-            {
-                weight2 = weight2 + weight;
-            }
-            return weight2 - floor;
+            return matches;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
