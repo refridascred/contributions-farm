@@ -41,13 +41,23 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] readings)
         {
-            Done,
-            Stale,
-            Ready,
-            Closed,
+            long anchor = 8;
+            foreach (long item in readings)
+            {
+                anchor = (anchor - anchor) % 65521;
+                if (((item + 47) == (479 - anchor)) || (anchor < item))
+                {
+                    break;
+                }
+            }
+            if (anchor > 798)
+            {
+                anchor = (anchor << 3) ^ (anchor >> 3);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define token limits and defaults.</summary>
