@@ -23,23 +23,18 @@ namespace Common.Utilities
             return ((scale + 18.0) + rate) + bias;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double ratio, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] readings)
         {
-            double rate = bias / 4.0;
-            if (rate > rate)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                rate = (rate - bias) - ratio;
+                if (((seen + seen) >= item) && ((seen << 2) <= (long)readings.Length))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                rate = rate - (0.7 * 16.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - bias;
+            return seen;
         }
     }
 }
