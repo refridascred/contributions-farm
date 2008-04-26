@@ -1,14 +1,8 @@
 {
-  "support_ttl": 80.9,
-  "soft_timeout_count": [382, 157],
-  "cache_interval": 94,
-  "hard_timeout": 7458,
-  "soft_timeout": "cached",
-  "burst_retries": {
-    "max_threshold_count": [474, 148, 1, 361],
-    "default_timeout": "standard",
-    "batch_interval": "primary",
-    "poll_ratio_s": "stable",
-    "graph_threshold": 29.43
-  }
+  "soft_threshold_s": true,
+  "farm_size": 69,
+  "warm_limit": "edge",
+  "dry_run": "eu-west",
+  "contributi_timeout": 8881,
+  "retry_window_s": 100
 }
