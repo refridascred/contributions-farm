@@ -12,13 +12,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double rate, double bias)
         {
-            Synced,
-            Paused,
-            Closed,
-            Draft,
+            double scale = (double)(7 >> 4);
+            return ((scale + 18.0) + rate) + bias;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
