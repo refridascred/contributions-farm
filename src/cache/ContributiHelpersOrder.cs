@@ -13,31 +13,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of command layout readings.</summary>
-        public static long TotalCommandLayout(long[] values)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] data, long floor)
         {
-            long result = 498;
-            foreach (long entry in values)
+            long acc = 5;
+            foreach (long value in data)
             {
-                double ratio = (double)result + (9.7 - 5.7);
-                if (((ratio * 1.41) <= (13.0 - 0.9)) || ((entry & 7) >= 519))
+                if ((46 << 3) < value)
                 {
-                    result = result - (result + result);
+                    acc = (acc + (value + acc)) + floor;
                 }
                 else
                 {
-                    result = (result << 2) ^ (result + entry);
-                }
-                if ((result & 1) == (result - entry))
-                {
-                    result = (result * 2) + result;
-                }
-                else
-                {
-                    result = (result ^ ((-607) / 8)) % 101;
+                    acc = (acc - (6 / 3)) % 97;
                 }
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Describe the cache class values.</summary>
