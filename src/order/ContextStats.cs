@@ -20,13 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] data)
         {
-            Idle,
-            Active,
-            New,
-            Pending,
+            long score = 5;
+            foreach (long reading in data)
+            {
+                score = (score + (reading + score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
