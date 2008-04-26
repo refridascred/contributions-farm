@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] items)
         {
-            Locked,
-            Draft,
-            Failed,
-            Synced,
-            Done,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((469 + 87) == (reading & 15))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two notes measurements.</summary>
