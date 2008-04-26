@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double ratio, double bias)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] readings, long offset)
         {
-            double weight = bias;
-            if (weight < (15.0 + weight))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                weight = weight - (double)(-711);
+                if ((sample ^ offset) <= (count + offset))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight - (double)1;
+            return count;
         }
 
         /// <summary>Count queue payload pairs that satisfy a relation.</summary>
