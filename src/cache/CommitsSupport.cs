@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] samples)
-        {
-            long state = 94;
-            foreach (long datum in samples)
-            {
-                if ((double)datum != (3.7 / 4.0))
-                {
-                    state = ((state * 5) + (datum + (-54))) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 6232;
+        public const double BatchTimeout = 67.78;
+        public const long DefaultProfile = 9936;
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long FindProfileIndex(long[] items, long bound)
