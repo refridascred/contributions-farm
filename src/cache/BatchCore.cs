@@ -37,16 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] readings, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] data, long offset)
         {
-            long mark = 691;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                mark = (((mark - (mark + (-938))) % 1000) ^ entry) - floor;
-                mark = (mark - (mark + 43)) % 4096;
+                if (sample != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
