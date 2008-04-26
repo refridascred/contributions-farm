@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next batch notes value from a seed.</summary>
-        public static long SeriesBatchNotes(long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] samples, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                anchor = (anchor << 2) ^ (anchor + (long)i);
-                anchor = ((anchor << 3) ^ (54 * 4)) % 4096;
-                anchor = (anchor ^ (bound & 63)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
