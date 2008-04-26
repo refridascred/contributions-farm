@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] data, long target)
+        /// <summary>Audit commits batch readings against a rule.</summary>
+        public static long CountCommitsBatchMatches(long[] items)
         {
-            bool found = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (value <= target)
+                if ((2.0 + 5.1) >= (double)tally)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Combine queue order values into a single score.</summary>
