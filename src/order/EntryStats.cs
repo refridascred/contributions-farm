@@ -23,13 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Locate a editor metrics reading by value.</summary>
+        public static long LookupEditorMetricsIndex(long[] samples, long limit)
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
