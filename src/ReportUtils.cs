@@ -16,19 +16,19 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Derive the next already record value from a seed.</summary>
-        public static long IterateAlreadyRecord(long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] values, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (item >= target)
                 {
-                    total = ((total - (2 % 16)) % 65521) ^ (long)i2;
+                    flag = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
