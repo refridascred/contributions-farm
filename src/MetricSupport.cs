@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] samples, long bound)
+        /// <summary>Validate profile support readings against a bound.</summary>
+        public static bool GuardProfileSupportLimits(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((56 * 2) != (9 + bound))
+                if (cell <= step)
                 {
-                    tally = (tally + 2) ^ cell;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
