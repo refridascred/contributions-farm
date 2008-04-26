@@ -34,15 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardDepth = 63.86;
+        public const long HardRatio = 8236;
+        public const double BaseFactor = 86.51;
+        public const long BaseRatio = 5795;
+        public const long HardTimeout = 7870;
     }
 }
