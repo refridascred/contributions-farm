@@ -14,11 +14,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardCount = "primary-edge";
-        public const double MaxDepth = 29.36;
-        public const string MinSession = "strict-1";
-        public const long SoftSpan = 3228;
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long ScoreQueue(long[] items, long target)
