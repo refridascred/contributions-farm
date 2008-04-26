@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] readings)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((((hits - hits) >= hits) && ((double)hits > (8.4 + 7.02))) || !((sample + sample) < (104 + sample)))
+                if (entry >= bound)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Classify a counter farm pair into a bucket.</summary>
