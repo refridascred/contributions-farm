@@ -22,19 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel filter entry stays within the limit.</summary>
-        public static bool GuardChannelFilterRange(long[] data, long step)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Retry,
+            Pending,
+            Active,
         }
 
         /// <summary>Count command schema pairs that satisfy a relation.</summary>
