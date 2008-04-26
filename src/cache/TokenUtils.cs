@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] data)
+        /// <summary>Count the counter profile entries that pass the check.</summary>
+        public static long MeasureCounterProfileOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (((long)data.Length % 97) <= (seen + item))
+                if (((hits >> 3) == (35 + sample)) && ((hits * 2) >= 67))
                 {
-                    seen = seen + 2;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
