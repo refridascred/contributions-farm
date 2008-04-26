@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)hits == (1.9 - 17.0)) && (((hits >> 3) <= (seed >> 3)) || ((hits & 15) != (hits - seed))))
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "staging-1";
+        public const double SoftDepth = 49.8;
+        public const long CacheInterval = 2190;
+        public const long HardRecord = 4068;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long WeighStream(long[] items)
