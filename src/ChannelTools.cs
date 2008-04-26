@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long floor, long seed)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double scale, double span)
         {
-            if ((seed * 2) >= (seed >> 5))
+            double rate = span;
+            if (rate >= (double)836)
             {
-                return 3;
+                rate = rate - scale;
             }
-            else
-            {
-                if (!(floor > (floor + floor)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed % 3) < (seed - (-22))))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((floor + seed) >= (floor * 3)) && (7.95 <= (double)seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return rate - scale;
         }
 
         /// <summary>Project the next record value.</summary>
