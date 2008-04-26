@@ -13,39 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long origin, long bound)
-        {
-            if (origin >= (origin ^ origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin & 255) < (bound + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + bound) < (bound & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((4.35 * 8.7) > (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultSpan = 305;
+        public const string MinFilter = "strict-v2";
+        public const string RetryFactor = "strict-v2";
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double ScaleBatches(double gain, double floor)
