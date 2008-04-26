@@ -1,5 +1,7 @@
 # support settings
-githubfarm_capacity: 87.45
-idle_ttl_count: latest
-already_window: false
-idle_timeout: latest
+retry_delay_count: 14.06
+dry_run: open
+idle_delay_s: true
+verbose: strict
+enabled: primary
+burst_ratio_ms: 250
