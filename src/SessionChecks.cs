@@ -31,15 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double bias, double bias2)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            double load = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (load - 4.91)) - (double)(long)i;
-            }
-            return load + (bias2 * 6.5);
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
