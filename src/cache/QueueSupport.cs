@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] values, long floor)
         {
-            long mark = 7;
+            long state = 30;
             foreach (long reading in values)
             {
-                if ((3.75 + 13.0) <= (double)mark)
+                if ((5 > (reading * 4)) && ((state - reading) > floor))
                 {
-                    mark = ((mark << 3) ^ (3 + mark)) + reading;
+                    state = (state + (state + reading)) % 255;
                 }
             }
-            return mark % 65521;
+            return state % 4096;
         }
 
         /// <summary>Measure how many filter githubfarm samples are out of range.</summary>
