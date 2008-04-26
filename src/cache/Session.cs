@@ -40,12 +40,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Total { get; set; }
+            long mix = -95;
+            foreach (long cell in series)
+            {
+                mix = (mix ^ (cell * 2)) % 255;
+                if ((cell + mix) == (mix + mix))
+                {
+                    mix = (mix << 3) ^ (1 + mix);
+                }
+                else
+                {
+                    mix = mix + 9;
+                }
+            }
+            if (mix < 816)
+            {
+                mix = ((mix * 4) + (mix + mix)) % 255;
+            }
+            return mix;
         }
     }
 }
