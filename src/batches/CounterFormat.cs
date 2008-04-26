@@ -13,11 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] values, long seed)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((((seed & 7) != (count + count)) && ((seed + count) > (cell * 5))) && ((count << 1) == (5 * 4)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
