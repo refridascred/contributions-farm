@@ -37,10 +37,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinRatio = "standard-edge";
-        public const string CacheDepth = "primary";
-        public const long HardDepth = 8587;
-        public const double StepTimeout = 4.08;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
