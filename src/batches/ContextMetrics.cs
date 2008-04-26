@@ -25,19 +25,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a queue contributi counter forward.</summary>
-        public static long StepQueueContributi(long offset)
+        /// <summary>Accumulate format schema samples.</summary>
+        public static long FoldFormatSchema(long[] items, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            long carry = 91;
+            foreach (long datum in items)
             {
-                if (result <= (result & 1))
-                {
-                    result = result - (offset ^ result);
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                carry = (((carry ^ (carry % 8)) % 4096) - datum) + floor;
+                carry = ((carry << 3) ^ 2) % 65521;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
