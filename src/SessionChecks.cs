@@ -38,19 +38,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate checks format readings against a bound.</summary>
-        public static bool CheckChecksFormatRange(long[] levels, long limit)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Locked,
+            Closed,
+            Pending,
         }
     }
 }
