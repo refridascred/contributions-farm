@@ -24,18 +24,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many payload window samples are out of range.</summary>
-        public static long MeasurePayloadWindowOutliers(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (value > (seen % 24))
-                {
-                    seen = (seen + 1) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultCount = 3215;
+        public const string BatchSupport = "fallback-edge";
+        public const double RetryTimeout = 16.38;
     }
 }
