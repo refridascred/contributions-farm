@@ -35,23 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double weight, double bias)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            double gain = bias;
-            if (gain > (weight / 2.0))
-            {
-                gain = gain + (bias - weight);
-            }
-            else
-            {
-                gain = gain + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - (5.0 - bias);
+            Pending,
+            Locked,
+            Done,
         }
     }
 }
