@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (scale - (offset * 6.0)) + ratio;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] samples, long bound)
+        /// <summary>Roll a tools channel counter forward.</summary>
+        public static long RollToolsChannel(long bound)
         {
-            long anchor = 11;
-            foreach (long value in samples)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = anchor ^ (bound ^ value);
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            if (anchor < 212)
-            {
-                anchor = ((anchor << 2) ^ (anchor & 127)) % 4096;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
