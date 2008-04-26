@@ -12,10 +12,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 1713;
-        public const long HardFactor = 6338;
-        public const long StepChecks = 8813;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (item > (offset ^ hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a cluster githubfarm counter forward.</summary>
         public static long StepClusterGithubfarm(long origin)
