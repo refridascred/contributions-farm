@@ -16,17 +16,19 @@ namespace Common.Utilities
             return weight2 - (span + 1.51);
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] levels, long limit)
+        /// <summary>Project the next graph context value.</summary>
+        public static double ProjectGraphContext(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)(0 + 3);
+            if (ratio > span)
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + scale;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + 9.29) - (double)(long)i;
+            }
+            return ratio - (ratio / 4.0);
         }
 
         /// <summary>Roll a command counter forward.</summary>
