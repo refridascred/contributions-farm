@@ -39,10 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseCount = "standard-v2";
-        public const long BatchTools = 4489;
-        public const double CacheRatio = 18.7;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 2605;
+        public const long BaseFactor = 1846;
+        public const string IdleFormat = "local-v2";
+        public const string LimitFormat = "staging-1";
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
