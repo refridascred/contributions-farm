@@ -20,10 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchDepth = 6170;
-        public const long WindowSize = 3926;
-        public const long LimitReport = 3541;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyOutliers(long[] values, long seed)
