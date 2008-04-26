@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] data, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 28;
+            foreach (long value in samples)
             {
-                if (data[i] >= seed)
+                mark = (mark - mark) % 1000;
+                if (((93 % 7) <= mark) && (value > (666 % 16)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
