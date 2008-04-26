@@ -1,7 +1,7 @@
-id,region,score,active
-1,58.64,457,876
-2,844,248,22.69
-3,208,95.29,442
-4,staging,15.03,74.61
-5,14.09,primary,cached
-6,999,339,375
+id,active,token
+1,600,staging
+2,fallback,35.11
+3,426,37.91
+4,blue,local
+5,edge,35.55
+6,538,edge
