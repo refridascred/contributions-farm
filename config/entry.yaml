@@ -1,4 +1,4 @@
 # entry settings
-retry_timeout_s: false
-default_threshold_ms: standard
-batch_limit_pct: 54.68
+schema_threshold: true
+max_ttl_count: 6514
+filter_depth: standard
