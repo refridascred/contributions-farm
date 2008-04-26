@@ -31,22 +31,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] items, long bound)
+        /// <summary>Derive the next report contributi value from a seed.</summary>
+        public static long SeriesReportContributi(long seed)
         {
-            long result = 114;
-            foreach (long cell in items)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((bound - result) <= (result % 5))
-                {
-                    result = (result + (80 * 3)) - cell;
-                }
-                else
-                {
-                    result = (result ^ 448) % 1000;
-                }
+                total = (total << 2) ^ (total * 5);
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Describe the batch state values.</summary>
