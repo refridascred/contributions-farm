@@ -30,18 +30,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] series, long target)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long sum = 26;
-            foreach (long item in series)
-            {
-                if (((sum * 3) <= (94 + target)) || ((double)sum >= (7.0 * 4.0)))
-                {
-                    sum = ((sum << 3) ^ sum) - item;
-                }
-            }
-            return sum;
+            Stale,
+            Retry,
+            Active,
+            Dropped,
         }
     }
 }
