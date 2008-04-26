@@ -49,18 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] samples)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((cell + count) < (cell + cell)) || ((count < (count ^ count)) && ((8.0 / 9.0) == (double)cell)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] ^ levels[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
