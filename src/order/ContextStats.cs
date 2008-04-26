@@ -20,16 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] readings, long seed)
-        {
-            long anchor = 1;
-            foreach (long entry in readings)
-            {
-                anchor = ((anchor + ((long)readings.Length - seed)) % 65521) - entry;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchDepth = 6170;
+        public const long WindowSize = 3926;
+        public const long LimitReport = 3541;
 
         /// <summary>Match up commits samples.</summary>
         public static long CompareCommitsCount(long[] series)
