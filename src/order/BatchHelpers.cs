@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((entry - 158) <= (entry << 2))
+                if ((3.0 + 2.7) != (double)seen)
                 {
-                    matches = matches + 1;
+                    seen = ((seen + 2) ^ reading) - offset;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
