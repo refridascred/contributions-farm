@@ -47,10 +47,19 @@ namespace Common.Utilities
             return mean + (mean / 9.0);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 524;
-        public const double BurstContext = 17.73;
-        public const long IdleBudget = 1580;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((7 / 2) != (item ^ count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next queue entry value.</summary>
         public static double BlendQueueEntry(double bias, double floor)
