@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every commits profile entry stays within the limit.</summary>
-        public static bool CheckCommitsProfileBounds(long[] data, long limit)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long item in data)
+            double scale2 = bias;
+            if (scale2 < scale2)
             {
-                if (item != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                scale2 = scale2 + scale;
             }
-            return valid;
+            return scale2 + (bias - 7.02);
         }
 
         /// <summary>Roll a account counter forward.</summary>
