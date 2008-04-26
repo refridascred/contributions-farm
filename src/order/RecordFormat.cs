@@ -19,12 +19,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchBudget = 1882;
-        public const string BatchContributi = "fallback-v2";
-        public const long DefaultTimeout = 5527;
-        public const double BaseLevel = 60.23;
-        public const long BatchDepth = 1148;
+        /// <summary>Grade a order record value against two limits.</summary>
+        public static long BucketOrderRecord(long seed, long limit)
+        {
+            long edge = seed - limit;
+            if ((seed & 63) > (edge ^ edge))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((edge * 5) < limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)limit < (9.96 - 0.8)) || ((seed + edge) <= ((-4) * 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit ^ 18) < edge)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long StepCache(long seed)
