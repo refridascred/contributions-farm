@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long limit)
         {
-            Synced,
-            Locked,
-            Paused,
-            Draft,
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(((double)(long)i <= (20.0 - 18.0)) || ((7.7 + 7.0) == (double)acc)))
+                {
+                    long diff = acc;
+                    acc = (acc - (diff ^ acc)) % 1000;
+                }
+                acc = (acc ^ (acc - limit)) % 101;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
