@@ -56,11 +56,23 @@ namespace Common.Utilities
             return scale + (double)48;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleSize = 4509;
-        public const long LimitLevel = 688;
-        public const string SoftTools = "local-edge";
-        public const double StepWidth = 25.94;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (entry >= (target % 64))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsOutliers(long[] readings, long step)
