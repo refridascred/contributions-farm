@@ -21,24 +21,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long bound, long floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] readings, long limit)
         {
-            if (floor >= (622 + bound))
+            long anchor = -1;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor >> 5) == (4 - bound)) || ((floor + bound) <= 81))
+                if (!((double)limit == (0.84 / 9.0)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    anchor = ((anchor - limit) % 1000) ^ datum;
                 }
             }
+            return anchor;
         }
     }
 }
