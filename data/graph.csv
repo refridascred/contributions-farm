@@ -1,8 +1,9 @@
-id,active,weight,count
-1,52.78,75,792
-2,cached,902,staging
-3,42.69,edge,297
-4,9.1,824,7
-5,stable,419,710
-6,581,617,397
-7,38.17,25.56,eu-west
+id,active,level
+1,fallback,637
+2,85.75,887
+3,40.88,standard
+4,443,85.43
+5,928,local
+6,stable,legacy
+7,blue,eu-west
+8,612,green
