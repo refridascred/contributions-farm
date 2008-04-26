@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            New,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 6031;
+        public const long LimitCluster = 1435;
+        public const long DefaultCluster = 3806;
+        public const long MaxCluster = 9849;
+        public const long HardTimeout = 4724;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long IterateChecks(long origin)
