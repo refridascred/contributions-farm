@@ -25,18 +25,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 1104;
+        public const long LimitRatio = 4785;
+        public const double CacheCount = 34.06;
+        public const double HardSpan = 87.07;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long SeekChecksIndex(long[] levels, long origin)
