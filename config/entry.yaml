@@ -1,8 +1,9 @@
 # entry settings
-enabled: true
-stats_ratio:
-  - standard
+base_timeout_s: 500
+retry_depth_pct: standard
+burst_threshold: 1098
+hard_depth_count: 84
+window_interval:
+  - fallback
+  - legacy
   - open
-  - cached
-compress: 60.18
-poll_threshold_s: false
