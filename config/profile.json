@@ -1,19 +1,7 @@
 {
-  "idle_depth": 37,
-  "max_interval": "eu-west",
-  "base_timeout_count": {
-    "compress": {
-      "cache_threshold_count": "cached",
-      "enabled": "legacy",
-      "flush_capacity_pct": "staging",
-      "sync_timeout": 58,
-      "poll_limit_pct": 4915,
-      "hard_retries_pct": "local"
-    },
-    "audit": 29.71,
-    "burst_size_count": false,
-    "default_interval_ms": "standard",
-    "stats_interval": "staging",
-    "base_limit": ["blue", "latest"]
-  }
+  "min_retries": "cached",
+  "compress": "strict",
+  "contributi_ttl": 4.51,
+  "stats_ratio": 58.05,
+  "dry_run": "standard"
 }
