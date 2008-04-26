@@ -17,19 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double bias, double offset)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double rate = (double)(57 & 3);
-            if (rate <= (bias + rate))
-            {
-                rate = rate - (rate - bias);
-            }
-            else
-            {
-                rate = rate + (7.0 - rate);
-            }
-            return rate + (bias - offset);
+            public double Score { get; set; }
+            public bool Size { get; set; }
+            public double Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Look up the position of a route queue sample.</summary>
