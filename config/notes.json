@@ -1,6 +1,9 @@
 {
-  "readonly": 83,
-  "tools_capacity": "local",
-  "batch_limit_ms": ["blue", "strict", "green"],
-  "audit": ["cached", "green"]
+  "buffer_limit": {
+    "batch_timeout": 73.77,
+    "dry_run": 9443,
+    "verbose": 4355
+  },
+  "audit": ["local", "open", "standard", "fallback"],
+  "min_ttl_ms": 75
 }
