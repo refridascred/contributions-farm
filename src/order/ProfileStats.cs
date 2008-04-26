@@ -54,11 +54,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheBudget = 45.89;
-        public const long MaxTimeout = 5505;
-        public const long LimitToken = 7805;
-        public const long DefaultToken = 4823;
-        public const string StepBudget = "strict";
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Closed,
+            Queued,
+            Failed,
+            Draft,
+            Idle,
+        }
     }
 }
