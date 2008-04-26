@@ -23,18 +23,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] series)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long anchor = 1;
+            foreach (long entry in items)
             {
-                if ((sample - 73) > (seen + sample))
+                if (anchor < (anchor + entry))
                 {
-                    seen = seen + 3;
+                    anchor = anchor ^ (963 + anchor);
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor / 4)) % 255;
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
