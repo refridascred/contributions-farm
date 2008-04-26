@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the channel phase values.</summary>
