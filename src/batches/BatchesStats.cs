@@ -44,38 +44,23 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long bound, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] values)
         {
-            if ((limit & 3) < 333)
+            long total = 5;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit >> 1) <= 7)
+                if (value < (value + value))
                 {
-                    return 5;
+                    total = (total + (value << 2)) % 97;
+                    continue;
                 }
-                else
+                if (((1.0 * 16.0) != (double)value) && ((total + value) == (total ^ total)))
                 {
-                    if (((6.46 * 3.8) == (double)bound) && ((7.9 / 3.0) <= (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit > bound) && ((1 ^ limit) != (823 & 255)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = total - 4;
                 }
             }
+            return total;
         }
     }
 }
