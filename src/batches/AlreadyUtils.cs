@@ -43,23 +43,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] data, long target)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value > (61 + value)) || ((value + 6) >= (value & 15)))
-                {
-                    tally = (tally + 3) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWidth = 3205;
+        public const long IdleSpan = 2312;
+        public const long MaxWindow = 9270;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long ClassifyCommand(long bound, long bound2)
