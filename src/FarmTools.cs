@@ -50,12 +50,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Retry,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 5384;
+        public const long BatchBudget = 3229;
+        public const long WindowSize = 5086;
+        public const long BatchRoute = 5016;
     }
 }
