@@ -20,10 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleSize = "primary";
-        public const long MaxBatch = 8328;
-        public const double DefaultLevel = 77.81;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public double Stamp { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long MatchToolsCount(long[] items)
