@@ -51,10 +51,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryRatio = 68.22;
-        public const long DefaultAlready = 800;
-        public const string LimitCount = "alpha-v2";
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Project the next cache value.</summary>
         public static double ScaleCache(double weight, double offset)
