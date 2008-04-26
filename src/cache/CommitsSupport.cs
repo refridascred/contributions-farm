@@ -65,11 +65,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleFactor = 56.02;
-        public const long BurstCount = 301;
-        public const string IdleDepth = "stable-v2";
-        public const long DefaultCount = 8764;
-        public const long IdleBudget = 6459;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] items, long bound)
+        {
+            long state = -25;
+            foreach (long value in items)
+            {
+                if ((double)673 > (double)bound)
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state << 3) ^ (value + bound);
+                }
+                if ((bound ^ bound) >= state)
+                {
+                    state = (state ^ ((-365) + value)) % 1000;
+                }
+                else
+                {
+                    state = state ^ (state >> 1);
+                }
+                if (!((bound + state) < (bound * 2)))
+                {
+                    break;
+                }
+            }
+            if (state < 12)
+            {
+                state = state - (state + state);
+            }
+            return state;
+        }
     }
 }
