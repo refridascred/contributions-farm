@@ -48,19 +48,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] values, long target)
-        {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepMetrics = "primary-edge";
+        public const double MinWidth = 84.95;
+        public const long DefaultMetrics = 518;
+        public const long DefaultRatio = 8802;
     }
 }
