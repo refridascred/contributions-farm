@@ -46,22 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format commits entries that pass the check.</summary>
-        public static long MeasureFormatCommitsHits(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((seen - reading) >= reading)
+                if ((double)tally >= (double)item)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the payload state values.</summary>
