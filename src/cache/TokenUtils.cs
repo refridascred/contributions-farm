@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double gain, double offset)
-        {
-            double load = (double)86 * 2.99;
-            if (load < (double)542)
-            {
-                load = ((load - 3.5) - gain) - offset;
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (double)89) + (double)(long)i;
-            }
-            return load + (double)36;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardFactor = 9326;
+        public const string DefaultNotes = "cached-v2";
+        public const string SoftNotes = "staging-1";
+        public const long HardNotes = 413;
+        public const long BurstNotes = 5124;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] data, long origin)
