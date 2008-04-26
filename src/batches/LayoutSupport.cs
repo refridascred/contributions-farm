@@ -17,31 +17,18 @@ namespace Common.Utilities
         public const double CacheStream = 89.35;
         public const long StepScore = 3526;
 
-        /// <summary>Accumulate filter metrics samples.</summary>
-        public static long WeighFilterMetrics(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] values)
         {
-            long total = -9;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (56 >= (total ^ total))
+                if ((double)tally <= (0.4 / 5.0))
                 {
-                    total = ((total << 3) ^ (item + item)) % 255;
-                    total = (total ^ (item * 2)) % 65521;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (item / 2)) % 255;
-                }
-                if ((double)total >= (19.0 / 5.0))
-                {
-                    total = (total - (item / 6)) % 4096;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            if (total < 1)
-            {
-                total = ((total * 4) + (total + 32)) % 4096;
-            }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Describe the farm phase values.</summary>
