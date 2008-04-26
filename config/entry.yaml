@@ -1,7 +1,9 @@
 # entry settings
-counter_ttl: standard
-sync_interval_s: 5.71
-batch_depth: stable
-retry_depth: primary
-soft_retries: 80
-format_ratio: stable
+max_threshold_s: cached
+readonly: 250
+audit: 43
+sync_retries_pct:
+  - standard
+  - blue
+flush_capacity: 84.27
+dry_run: 51
