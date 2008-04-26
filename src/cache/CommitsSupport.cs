@@ -40,11 +40,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxReport = "staging";
-        public const long SoftSize = 9041;
-        public const long CacheCount = 3743;
-        public const long CacheReport = 8907;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally + tally) != (tally >> 1))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferGaps(long[] values, long bound)
