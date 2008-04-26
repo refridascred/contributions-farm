@@ -1,8 +1,8 @@
 {
-  "cache_capacity": 9700,
-  "batches_limit": "latest",
-  "dry_run": ["primary", "staging", "edge"],
-  "commits_timeout": [220, 217],
-  "schema_threshold": 79.44,
-  "idle_depth_s": "legacy"
+  "verbose": "latest",
+  "poll_limit": true,
+  "min_timeout": true,
+  "batches_threshold": 66.59,
+  "base_ttl_ms": "staging",
+  "enabled": 69
 }
