@@ -1,6 +1,6 @@
 {
-  "account_limit": [130, 213, 95, 278],
-  "min_limit_pct": [110, 458],
-  "enabled": "blue",
-  "min_size_s": true
+  "burst_threshold": "blue",
+  "readonly": 500,
+  "poll_ratio_pct": ["edge", "legacy"],
+  "profile_threshold": "blue"
 }
