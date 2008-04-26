@@ -1,9 +1,16 @@
 # support settings
-githubfarm_timeout: 58
-compress:
-  - blue
-  - edge
-  - edge
-flush_limit_s: true
-profile_capacity: open
-enabled: primary
+stats_window: true
+hard_interval_s: 3719
+batch_interval_count:
+  - eu-west
+  - open
+checks_ttl:
+  flush_size: legacy
+  max_delay_ms: cached
+  default_timeout_count: 1189
+  record_limit:
+    - edge
+    - primary
+    - green
+  record_timeout: 40.38
+  sync_delay: cached
