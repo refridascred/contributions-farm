@@ -46,11 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] data, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (((datum % 5) < (433 - count)) || ((280 * 5) < datum))
+                {
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
