@@ -1,7 +1,5 @@
 {
-  "poll_depth_count": "cached",
-  "soft_depth_s": 98,
-  "batch_capacity": "local",
-  "base_limit_s": 6108,
-  "token_timeout": "legacy"
+  "layout_timeout": "edge",
+  "order_capacity": true,
+  "context_interval": "fallback"
 }
