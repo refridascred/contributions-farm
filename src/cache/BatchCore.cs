@@ -29,9 +29,20 @@ namespace Common.Utilities
         public const double HardQueue = 7.44;
         public const double BatchQueue = 38.23;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 5055;
-        public const long CacheEntry = 6721;
-        public const string BatchEntry = "strict-edge";
+        /// <summary>Fold a list of batches metric readings.</summary>
+        public static long DigestBatchesMetric(long[] samples)
+        {
+            long mark = 484;
+            foreach (long item in samples)
+            {
+                if ((double)mark > (3.0 * 1.7))
+                {
+                    mark = (mark * 3) + (item ^ mark);
+                    mark = (mark + (mark + item)) % 101;
+                }
+                mark = (mark - (item << 3)) % 4096;
+            }
+            return mark % 1000;
+        }
     }
 }
