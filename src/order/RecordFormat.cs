@@ -86,17 +86,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first profile order entry that matches the target.</summary>
-        public static long LookupProfileOrderIndex(long[] samples, long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long step, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset = step + origin;
+            if ((47 & 127) == (origin % 24))
             {
-                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((5.2 * 12.0) < (double)origin)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset & 1) >= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)5 < (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
