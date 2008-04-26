@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] readings)
+        /// <summary>Count the tools checks entries that pass the check.</summary>
+        public static long TallyToolsChecksHits(long[] series)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((32 + count) != (value ^ count))
+                if ((sample * 4) <= ((long)series.Length - (long)series.Length))
                 {
-                    count = count + 3;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
