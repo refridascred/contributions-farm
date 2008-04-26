@@ -31,19 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double gain, double floor)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double bias, double bias2)
         {
-            double weight = gain;
-            if (weight > floor)
+            double load = bias;
+            for (int i = 0; i < 7; i++)
             {
-                weight = weight - weight;
+                load = (load + (load - 4.91)) - (double)(long)i;
             }
-            else
-            {
-                weight = weight - floor;
-            }
-            return weight - (double)33;
+            return load + (bias2 * 6.5);
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
