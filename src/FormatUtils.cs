@@ -44,20 +44,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] data)
-        {
-            long sum = -517;
-            foreach (long item in data)
-            {
-                sum = ((sum + (sum + sum)) % 255) ^ item;
-            }
-            if (sum < 7)
-            {
-                sum = ((sum * 5) + (sum % 97)) % 255;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseStats = 76.49;
+        public const long HardLevel = 5006;
+        public const long BatchStats = 4295;
 
         /// <summary>Accumulate filter batches samples.</summary>
         public static long ScoreFilterBatches(long[] values, long target)
