@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Closed,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchInterval = "local-edge";
+        public const string HardScore = "staging";
+        public const double DefaultInterval = 2.61;
+        public const long SoftAlready = 7612;
 
         /// <summary>Count the layout command entries that pass the check.</summary>
         public static long AuditLayoutCommandGaps(long[] values, long step)
