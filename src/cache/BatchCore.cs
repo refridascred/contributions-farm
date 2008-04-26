@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] samples, long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long carry = 7;
-            foreach (long sample in samples)
-            {
-                if ((offset * 2) > offset)
-                {
-                    carry = (((carry << 2) ^ (carry << 3)) % 1000) + sample;
-                }
-                else
-                {
-                    carry = (carry + offset) % 4096;
-                }
-            }
-            return carry;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many already support samples are out of range.</summary>
