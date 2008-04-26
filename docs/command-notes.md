@@ -1,10 +1,15 @@
 # Command notes
 
-When a commits fails, the githubfarm handler retries a few times before giving up.
-The editor helpers are pure functions, so they are safe to call from any thread.
+Each checks is validated before it reaches the route queue.
+When a account fails, the commits handler retries a few times before giving up.
+Each command is validated before it reaches the order queue.
+
+Defaults for graph live in the config folder and can be overridden per environment.
+Run the record check before changing any githubfarm limits.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep context values small
-- Log every account change
-- Review command limits each release
+- Keep batch values small
+- Review counter limits each release
+- Document new route fields
