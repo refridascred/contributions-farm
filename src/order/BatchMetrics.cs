@@ -61,18 +61,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already queue entries.</summary>
-        public static long CombineAlreadyQueue(long[] samples)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long anchor = 7;
-            foreach (long entry in samples)
-            {
-                if ((anchor <= (anchor << 2)) && ((entry - anchor) < entry))
-                {
-                    anchor = ((anchor * 2) + (entry >> 4)) % 255;
-                }
-            }
-            return anchor % 65521;
+            Done,
+            Stale,
+            Active,
+            Pending,
+            Closed,
         }
     }
 }
