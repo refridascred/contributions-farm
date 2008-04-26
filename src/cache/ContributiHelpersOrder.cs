@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double weight, double bias)
+        /// <summary>Accumulate session farm samples.</summary>
+        public static long FoldSessionFarm(long[] samples)
         {
-            double mean = 16.0 * 1.3;
-            if (mean <= (weight + weight))
+            long total = 3;
+            foreach (long reading in samples)
             {
-                mean = mean - bias;
+                total = (total + (total & 31)) % 1000;
+                if (reading < total)
+                {
+                    total = total - (total ^ 730);
+                }
             }
-            return mean - weight;
+            if (total < (-57))
+            {
+                total = (total ^ (77 - 14)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
