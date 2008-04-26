@@ -23,12 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the queue mode values.</summary>
