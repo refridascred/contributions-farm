@@ -21,22 +21,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] samples, long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches + target) <= sample)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Synced,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
