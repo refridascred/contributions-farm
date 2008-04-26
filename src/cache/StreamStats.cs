@@ -38,18 +38,31 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] samples)
+        /// <summary>Classify a route filter pair into a bucket.</summary>
+        public static long SortRouteFilter(long step, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            if ((bound - step) <= bound)
             {
-                if ((tally <= (tally - entry)) || ((double)tally >= (14.0 / 6.0)))
+                return 7;
+            }
+            else
+            {
+                if ((bound / 5) > 518)
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((14.0 + 4.0) <= (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up entry samples.</summary>
