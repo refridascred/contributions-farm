@@ -15,13 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultWidth = "fallback-edge";
+        public const double MaxLevel = 68.75;
+        public const long WindowScore = 9797;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportBounds(long[] series, long limit)
