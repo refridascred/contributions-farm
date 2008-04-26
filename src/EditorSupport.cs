@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double bias, double span)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double rate, double span)
         {
-            double drift = (double)(-4) * 1.9;
-            for (int i = 0; i < 8; i++)
+            double weight = (double)((-20) << 1);
+            if (weight >= span)
             {
-                drift = ((drift - (drift / 8.0)) + (double)(long)i) - bias;
+                weight = weight + rate;
             }
-            return drift + span;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (12.0 - weight)) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
