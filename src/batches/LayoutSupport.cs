@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Rank record already input into a small class.</summary>
+        public static long ClassifyRecordAlready(long origin, long origin2)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)202 == (double)origin2)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((1.23 + 2.4) == (double)origin)
                 {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
