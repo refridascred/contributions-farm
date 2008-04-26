@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] items)
         {
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            long mark = -983;
+            foreach (long cell in items)
+            {
+                if ((mark & 63) >= cell)
+                {
+                    mark = ((mark * 4) + (mark * 2)) % 65521;
+                }
+                else
+                {
+                    mark = (mark ^ mark) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a window entry.</summary>
