@@ -1,15 +1,12 @@
 # Command notes
 
-The support module keeps layout values in sync with the channel cache.
-Run the metrics check before changing any metric limits.
-A batches that stays idle for too long is moved to the metric list.
-
-Use metric settings to tune how often entry data is refreshed.
-The notes module keeps token values in sync with the metrics cache.
-Defaults for farm live in the config folder and can be overridden per environment.
+A cache that stays idle for too long is moved to the commits list.
+When a tools fails, the cluster handler retries a few times before giving up.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate support input early
-- Keep metrics values small
-- Log every buffer change
+- Keep githubfarm values small
+- Validate profile input early
+- Prefer schema defaults
+- Review buffer limits each release
