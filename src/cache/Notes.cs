@@ -51,24 +51,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long offset, long seed)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            if (!(offset <= (seed % 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed > (2.0 + 14.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
