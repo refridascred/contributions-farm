@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank record already input into a small class.</summary>
-        public static long ClassifyRecordAlready(long origin, long origin2)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            if ((double)202 == (double)origin2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((1.23 + 2.4) == (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            Idle,
+            Paused,
+            Queued,
+            New,
         }
 
         /// <summary>Match up editor samples.</summary>
