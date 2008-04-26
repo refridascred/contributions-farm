@@ -16,13 +16,17 @@ namespace Common.Utilities
             return weight2 - (span + 1.51);
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] levels, long limit)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a command counter forward.</summary>
