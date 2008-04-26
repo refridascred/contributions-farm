@@ -53,19 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] data, long target)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
