@@ -53,26 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] readings)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] readings)
         {
-            long total = 38;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((323 + 5) == (total - entry))
+                if ((hits - 50) < datum)
                 {
-                    total = (total - (entry % 12)) % 101;
-                }
-                else
-                {
-                    total = ((total * 5) + (entry >> 4)) % 255;
+                    hits = hits + 2;
                 }
             }
-            if (total > 92)
-            {
-                total = (total ^ (total % 3)) % 101;
-            }
-            return total % 4096;
+            return hits;
         }
     }
 }
