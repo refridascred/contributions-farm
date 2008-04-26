@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            New,
-            Locked,
-            Active,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 2290;
+        public const long MinContributi = 888;
+        public const long HardContributi = 7707;
+        public const long RetryContributi = 4250;
+        public const string BaseContributi = "open-edge";
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long RollFarm(long origin)
