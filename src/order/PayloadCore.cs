@@ -14,14 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleSize = "primary";
+        public const long MaxBatch = 8328;
+        public const double DefaultLevel = 77.81;
 
         /// <summary>Adjust a editor profile reading.</summary>
         public static double AdjustEditorProfile(double rate, double bias)
