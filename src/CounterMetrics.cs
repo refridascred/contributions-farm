@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Paused,
-            Active,
-            Done,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftTimeout = 32.63;
+        public const long DefaultBudget = 6554;
+        public const long WindowLevel = 2841;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesMatches(long[] data)
