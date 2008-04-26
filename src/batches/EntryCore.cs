@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 1245;
+        public const long StepRatio = 3672;
+        public const double BaseGraph = 98.35;
 
         /// <summary>Check that every channel filter entry stays within the limit.</summary>
         public static bool GuardChannelFilterRange(long[] data, long step)
