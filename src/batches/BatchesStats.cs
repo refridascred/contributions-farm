@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] values, long floor)
+        /// <summary>Project the next already window value.</summary>
+        public static double BlendAlreadyWindow(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double load = (double)((-331) % 97);
+            if (load < weight)
             {
-                if ((hits << 3) <= datum)
-                {
-                    hits = (hits + 2) + floor;
-                }
+                load = (load + weight) + offset;
             }
-            return hits;
+            return load - (double)65;
         }
 
         /// <summary>Describe the context level values.</summary>
