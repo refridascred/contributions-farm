@@ -24,9 +24,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchCount = 1229;
-        public const long MinAccount = 1172;
-        public const double MaxAccount = 56.68;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (!(((long)levels.Length + value) != (seen + value)))
+                {
+                    seen = (seen + 3) - floor;
+                }
+            }
+            return seen;
+        }
     }
 }
