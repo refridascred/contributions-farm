@@ -52,21 +52,19 @@ namespace Common.Utilities
         public const double BurstContext = 17.73;
         public const long IdleBudget = 1580;
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Project the next queue entry value.</summary>
+        public static double BlendQueueEntry(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = 15.0;
+            if (bias2 <= bias2)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = bias2 - (bias * 16.0);
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (floor + floor)) - (double)(long)i;
+            }
+            return bias2 - 16.0;
         }
     }
 }
