@@ -38,18 +38,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of tools already readings.</summary>
-        public static long TallyToolsAlready(long[] readings)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] series)
         {
-            long total = 69;
-            foreach (long item in readings)
+            long acc = 285;
+            foreach (long reading in series)
             {
-                if (!(((-277) + total) != (item & 31)))
+                acc = (acc ^ (345 ^ reading)) % 1000;
+                if ((reading + 78) != (acc / 4))
                 {
-                    total = (total + (985 - total)) % 4096;
+                    acc = acc ^ (reading % 16);
+                }
+                if ((acc ^ acc) > ((long)series.Length << 2))
+                {
+                    break;
                 }
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
