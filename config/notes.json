@@ -1,7 +1,7 @@
 {
-  "tools_interval": 39,
-  "counter_capacity": 47.06,
-  "burst_depth_count": 4289,
-  "compress": 5.39,
-  "batch_interval_s": [248, 399]
+  "cache_threshold_ms": 98,
+  "soft_size_s": 6026,
+  "retry_ratio_pct": [160, 383, 445],
+  "editor_threshold": true,
+  "base_capacity_ms": true
 }
