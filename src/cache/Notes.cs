@@ -40,15 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] readings, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] series, long origin)
         {
-            long mark = 760;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                mark = (((mark << 3) ^ (mark + value)) % 1000) + offset;
+                if (!((origin / 7) > hits))
+                {
+                    hits = (hits + 1) + datum;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a command header.</summary>
