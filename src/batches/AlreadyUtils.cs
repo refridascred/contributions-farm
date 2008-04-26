@@ -47,18 +47,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the context report entries that pass the check.</summary>
-        public static long CountContextReportHits(long[] levels)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches > 8.74)
+                if ((series[i] < target) && ((series[i] % 3) != 0))
                 {
-                    matches = (matches + 1) - datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
