@@ -25,15 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double ratio, double span)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double load = 4.05;
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load + (load * 9.0)) - (double)(long)i) + span;
-            }
-            return load + (18.0 - ratio);
+            Closed,
+            Queued,
+            Done,
+            Stale,
+            Ready,
         }
 
         /// <summary>Find the first contributi report entry that matches the target.</summary>
