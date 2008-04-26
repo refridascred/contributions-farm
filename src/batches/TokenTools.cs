@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double ratio, double bias)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double scale, double floor)
         {
-            double ratio2 = 11.0 + bias;
-            if (ratio2 >= ratio2)
+            double weight = scale;
+            if (weight >= scale)
             {
-                ratio2 = (ratio2 - bias) + ratio;
+                weight = weight + (floor * 1.18);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 - (9.68 + bias)) - (double)(long)i;
-            }
-            return ratio2 + bias;
+            return weight - (floor - floor);
         }
 
         /// <summary>Describe the payload phase values.</summary>
