@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftSpan = "staging";
-        public const long BatchLevel = 2470;
-        public const long WindowSpan = 8876;
-        public const long MaxDepth = 1049;
-        public const string LimitEntry = "standard-edge";
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Active,
+            Synced,
+            Pending,
+            Locked,
+            Done,
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long WeighContributi(long[] data, long step)
