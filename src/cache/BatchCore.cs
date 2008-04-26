@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] data, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Measure how many already support samples are out of range.</summary>
