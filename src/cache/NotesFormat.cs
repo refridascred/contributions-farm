@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] values, long bound)
+        /// <summary>Validate notes metric readings against a bound.</summary>
+        public static bool ValidateNotesMetricLimits(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((15.0 * 2.7) <= (double)bound)
+                if (sample >= seed)
                 {
-                    seen = (seen + 1) ^ item;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Accumulate window batch samples.</summary>
