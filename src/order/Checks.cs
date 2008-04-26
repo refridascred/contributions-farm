@@ -57,10 +57,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchCount = 7292;
-        public const long LimitAlready = 3280;
-        public const long MinAlready = 7242;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
