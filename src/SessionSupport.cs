@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many already metrics samples are out of range.</summary>
-        public static long TallyAlreadyMetricsOutliers(long[] levels, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long span = offset - step;
+            if ((step % 3) == (offset % 100))
             {
-                if (limit < matches)
+                return 2;
+            }
+            else
+            {
+                if ((offset * 4) != (span - 499))
                 {
-                    matches = (matches + 3) + item;
+                    return 7;
+                }
+                else
+                {
+                    if (((560 - step) <= (step - offset)) || (offset <= (span % 97)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next cache metric value.</summary>
