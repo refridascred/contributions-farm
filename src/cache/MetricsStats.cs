@@ -27,19 +27,13 @@ namespace Common.Utilities
         public const long CacheSize = 1320;
         public const string SoftSpan = "legacy-1";
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double gain, double offset)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double mean = gain;
-            if (mean <= (double)6)
-            {
-                mean = (mean + (gain / 5.0)) + offset;
-            }
-            else
-            {
-                mean = mean - (mean - 0.83);
-            }
-            return mean - 10.0;
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the schema mode values.</summary>
