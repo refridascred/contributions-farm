@@ -12,18 +12,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] samples, long offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (item > (offset ^ hits))
-                {
-                    hits = hits + 3;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Roll a cluster githubfarm counter forward.</summary>
