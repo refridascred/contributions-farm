@@ -49,11 +49,24 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Classify a tools commits pair into a bucket.</summary>
+        public static long SortToolsCommits(long target, long origin)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            if (((target - target) >= (-84)) || ((origin / 4) >= target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin / 2) == (origin * 2)) || ((origin - target) == (target % 97)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
