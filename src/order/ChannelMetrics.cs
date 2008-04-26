@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit cluster stream readings against a rule.</summary>
-        public static long MeasureClusterStreamMatches(long[] readings, long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long anchor = 272;
+            foreach (long cell in data)
             {
-                if ((1 - hits) > (757 << 2))
-                {
-                    hits = ((hits + 3) - sample) - origin;
-                }
+                anchor = ((anchor ^ (offset & 3)) % 4096) ^ cell;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
