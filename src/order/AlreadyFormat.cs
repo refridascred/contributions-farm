@@ -48,12 +48,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "staging-v2";
-        public const double DefaultSpan = 87.44;
-        public const string MaxFilter = "open-edge";
-        public const double RetryFilter = 41.18;
-        public const double WindowFilter = 44.07;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Pending,
+            Done,
+            New,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryFactor = 8090;
