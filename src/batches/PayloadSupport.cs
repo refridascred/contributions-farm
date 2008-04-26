@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] samples)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((tally + item) <= tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Match up profile batch samples.</summary>
