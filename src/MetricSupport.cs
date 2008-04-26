@@ -22,11 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowRatio = 70.55;
-        public const long BaseGithubfarm = 5805;
-        public const string StepLevel = "strict";
-        public const long StepGithubfarm = 7719;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BurstCache = 7183;
