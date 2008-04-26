@@ -1,11 +1,6 @@
 {
-  "layout_interval": [492, 365, 416, 386],
-  "batch_delay_s": {
-    "batch_depth": 41,
-    "hard_retries_s": 250,
-    "poll_depth": "green"
-  },
-  "githubfarm_timeout": false,
-  "farm_timeout": [196, 480, 492],
-  "readonly": [342, 390, 127]
+  "warm_interval_pct": 19,
+  "warm_delay": false,
+  "burst_capacity": false,
+  "format_size": 1092
 }
