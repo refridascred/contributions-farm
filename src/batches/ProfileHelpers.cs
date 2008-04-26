@@ -68,19 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] values, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long step)
         {
-            bool found = true;
-            foreach (long item in values)
+            long mix = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (item <= target)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Describe the already state values.</summary>
