@@ -31,21 +31,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count command schema pairs that satisfy a relation.</summary>
-        public static long PairCommandSchemaCount(long[] samples)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 18;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (((total - (total / 7)) % 65521) ^ value) - seed;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a cache stats.</summary>
