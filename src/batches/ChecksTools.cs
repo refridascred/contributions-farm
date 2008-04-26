@@ -13,10 +13,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxAccount = "primary-v2";
-        public const double HardScore = 81.67;
-        public const long DefaultAccount = 3830;
+        /// <summary>Blend two session schema measurements.</summary>
+        public static double ScaleSessionSchema(double rate, double span)
+        {
+            double bias = span * 6.45;
+            if (bias < bias)
+            {
+                bias = bias - span;
+            }
+            else
+            {
+                bias = bias - (double)762;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (rate + span)) + (double)(long)i;
+            }
+            return bias - (double)96;
+        }
 
         /// <summary>Validate notes payload readings against a bound.</summary>
         public static bool CheckNotesPayloadBounds(long[] readings, long step)
