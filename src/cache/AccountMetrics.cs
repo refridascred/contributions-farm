@@ -42,19 +42,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] data)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long score = 6;
-            foreach (long value in data)
-            {
-                score = ((score * 2) + (long)data.Length) % 255;
-                if (((double)value == (12.0 - 6.0)) && ((double)value != (14.0 * 2.0)))
-                {
-                    break;
-                }
-            }
-            return score;
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
