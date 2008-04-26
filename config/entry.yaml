@@ -1,7 +1,6 @@
 # entry settings
-cache_size_ms: cached
-tools_ttl:
-  - 492
-  - 411
-idle_window: 1933
-command_timeout: green
+stream_retries:
+  - 90
+  - 473
+dry_run: open
+readonly: true
