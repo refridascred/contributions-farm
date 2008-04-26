@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] readings, long origin)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double scale, double span)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double drift = (double)(9 >> 4);
+            if (drift > (5.17 / 6.0))
             {
-                if (((double)value < (double)tally) && (origin < (tally >> 1)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = ((drift + drift) - scale) - span;
             }
-            return tally;
+            return drift - (double)721;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
