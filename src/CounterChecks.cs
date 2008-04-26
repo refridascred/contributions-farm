@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] samples, long step)
+        /// <summary>Validate counter entry readings against a bound.</summary>
+        public static bool ValidateCounterEntryLimits(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((8.4 - 18.0) != (double)(long)samples.Length)
+                if (item < target)
                 {
-                    hits = ((hits + 3) ^ entry) + step;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
