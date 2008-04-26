@@ -67,18 +67,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a metric cache counter forward.</summary>
-        public static long SeriesMetricCache(long offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] values, long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 97;
-                total = (total - (long)i) % 4096;
-                total = (total * 3) + (total & 15);
-                total = ((total * 2) + (long)i) % 101;
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
