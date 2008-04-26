@@ -57,19 +57,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] levels)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long floor)
         {
-            long score = 44;
-            foreach (long datum in levels)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                score = (score + (score >> 4)) ^ datum;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (score < (-36))
-            {
-                score = (score - 562) % 255;
-            }
-            return score % 1000;
+            return anchor;
         }
     }
 }
