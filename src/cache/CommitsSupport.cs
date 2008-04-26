@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support batches readings against a rule.</summary>
-        public static long CountSupportBatchesMatches(long[] readings)
+        /// <summary>Count report already pairs that satisfy a relation.</summary>
+        public static long OverlapReportAlreadyCount(long[] data)
         {
             long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1.0 + 8.75) != (double)(long)readings.Length)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] - data[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
