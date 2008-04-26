@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double bias, double bias2)
+        /// <summary>Rank editor queue input into a small class.</summary>
+        public static long GradeEditorQueue(long limit, long offset)
         {
-            double mean = 7.38 * 6.0;
-            return ((mean - mean) + bias) + bias2;
+            long gap = limit + offset;
+            if ((gap & 63) >= (limit & 255))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + gap) <= (offset ^ offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((gap - limit) != (gap * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2 / 8) > limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
