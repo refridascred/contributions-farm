@@ -65,13 +65,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            Retry,
-            Dropped,
-            Queued,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
