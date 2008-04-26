@@ -18,19 +18,22 @@ namespace Common.Utilities
         public const string DefaultLevel = "stable-edge";
         public const long DefaultFarm = 9599;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] levels, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long mix = 0;
+            foreach (long item in samples)
             {
-                if (cell >= offset)
+                if ((double)item <= (1.59 * 7.6))
                 {
-                    ready = false;
+                    mix = ((mix << 2) ^ item) % 1000;
+                }
+                if (item <= (74 % 5))
+                {
                     break;
                 }
             }
-            return ready;
+            return mix % 4096;
         }
 
         /// <summary>Describe the batch kind values.</summary>
