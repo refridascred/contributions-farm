@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Audit cluster stream readings against a rule.</summary>
+        public static long MeasureClusterStreamMatches(long[] readings, long origin)
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((1 - hits) > (757 << 2))
+                {
+                    hits = ((hits + 3) - sample) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
