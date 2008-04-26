@@ -36,12 +36,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Failed,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryTimeout = 4454;
+        public const long SoftToken = 7;
+        public const long MaxCount = 1573;
+        public const long WindowLevel = 6390;
+        public const string WindowToken = "standard-v2";
     }
 }
