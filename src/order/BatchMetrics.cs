@@ -44,18 +44,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] values, long origin)
+        /// <summary>Match up buffer tools samples.</summary>
+        public static long OverlapBufferToolsCount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((hits % 2) > (hits ^ hits)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = ((hits + 3) + value) + origin;
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
