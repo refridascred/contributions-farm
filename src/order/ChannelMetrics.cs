@@ -42,19 +42,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
+        public static long TallyGithubfarmGraphHits(long[] values)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (((item - item) <= (item + item)) || (((hits << 3) < (hits + hits)) && ((69 * 3) > (hits % 24))))
                 {
-                    carry = (carry ^ 89) + (long)i2;
+                    hits = hits + 2;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
     }
 }
