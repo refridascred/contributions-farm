@@ -27,10 +27,20 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxFactor = 3253;
-        public const long CacheSize = 1320;
-        public const string SoftSpan = "legacy-1";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
