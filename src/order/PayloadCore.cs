@@ -19,19 +19,21 @@ namespace Common.Utilities
         public const long MaxBatch = 8328;
         public const double DefaultLevel = 77.81;
 
-        /// <summary>Adjust a editor profile reading.</summary>
-        public static double AdjustEditorProfile(double rate, double bias)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            double rate2 = (rate + bias) - rate;
-            if (rate2 >= (double)984)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = rate2 + rate2;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 - (5.95 - bias)) + (double)(long)i;
-            }
-            return rate2 - rate;
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
