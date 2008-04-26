@@ -58,19 +58,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] readings, long offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= offset)
+                if (readings[i] >= floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
