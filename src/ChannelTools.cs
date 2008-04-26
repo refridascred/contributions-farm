@@ -19,19 +19,12 @@ namespace Common.Utilities
             return ((scale + 18.0) + rate) + bias;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] levels, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Locked,
+            Idle,
         }
     }
 }
