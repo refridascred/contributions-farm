@@ -1,7 +1,5 @@
 {
-  "min_retries": "cached",
-  "compress": "strict",
-  "contributi_ttl": 4.51,
-  "stats_ratio": 58.05,
-  "dry_run": "standard"
+  "retry_timeout_s": "eu-west",
+  "contributi_threshold": false,
+  "audit": 16.54
 }
