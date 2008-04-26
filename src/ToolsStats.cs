@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] items)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                anchor = (anchor << 3) ^ (limit >> 2);
-                anchor = anchor ^ (anchor - limit);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (item < hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a entry options.</summary>
