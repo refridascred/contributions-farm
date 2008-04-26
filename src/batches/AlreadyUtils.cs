@@ -71,38 +71,16 @@ namespace Common.Utilities
         public const long IdleSpan = 2312;
         public const long MaxWindow = 9270;
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long bound, long bound2)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long origin)
         {
-            if ((4 + bound) != (bound + 0))
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
+                mark = mark - (mark + (long)i);
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound2 << 2) >= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (bound2 <= (bound2 >> 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((43 ^ bound2) == (bound2 + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
