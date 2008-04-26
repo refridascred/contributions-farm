@@ -49,19 +49,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)item < (3.0 + 1.84))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 944;
+        public const string RetryNotes = "staging-edge";
+        public const string LimitDepth = "standard-v2";
+        public const long IdleScore = 2291;
+        public const string DefaultSize = "legacy";
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
