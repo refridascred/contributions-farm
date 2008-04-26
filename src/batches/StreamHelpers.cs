@@ -21,23 +21,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double bias, double span)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] samples, long target)
         {
-            double drift = bias;
-            if (drift > (double)161)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                drift = (drift + (double)383) + span;
+                if ((matches + target) <= sample)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                drift = drift + (drift - bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (drift + bias)) + (double)(long)i;
-            }
-            return drift + (7.0 * 9.07);
+            return matches;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
