@@ -35,10 +35,18 @@ namespace Common.Utilities
             return drift + (7.0 * 9.07);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepSpan = 52.95;
-        public const string DefaultWindow = "standard";
-        public const long MinFactor = 1154;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
