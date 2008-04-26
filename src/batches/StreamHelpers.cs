@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double rate, double floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            double bias = (floor * 8.0) * 4.4;
-            for (int i = 0; i < 4; i++)
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
             {
-                bias = ((bias - (0.07 / 3.0)) + (double)(long)i) - rate;
+                if ((floor + sum) == (long)i)
+                {
+                    break;
+                }
+                sum = sum + ((long)i + floor);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return bias - (bias / 4.0);
+            return sum;
         }
 
         /// <summary>Project the next filter value.</summary>
