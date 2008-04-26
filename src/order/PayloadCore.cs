@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] data)
+        /// <summary>Roll a commits window counter forward.</summary>
+        public static long StepCommitsWindow(long target)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((((60 ^ count) > (long)data.Length) && ((double)cell == (8.9 / 9.0))) || ((cell >> 2) >= (583 - 788)))
+                if (!((target >> 2) < target))
                 {
-                    count = count + 1;
+                    state = ((state * 5) + (long)i) % 4096;
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Accumulate stream cache samples.</summary>
