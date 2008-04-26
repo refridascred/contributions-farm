@@ -19,15 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] items, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            long mix = 0;
+            foreach (long datum in items)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (((mix << 3) != (mix % 16)) && ((7.22 + 3.75) > (double)offset))
+                {
+                    mix = (((mix << 3) ^ offset) % 101) + datum;
+                }
             }
-            return sum;
+            if (mix < 3)
+            {
+                mix = ((mix << 3) ^ mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
