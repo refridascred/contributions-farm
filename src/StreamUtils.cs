@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 589;
-        public const long CacheFactor = 6804;
-        public const long BaseRatio = 7313;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinRatio = 6082;
+        public const long LimitStats = 6128;
+        public const string StepBudget = "staging";
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
