@@ -1,6 +1,6 @@
-id,token,label,region,weight
-1,937,25.5,54.73,19.44
-2,69.71,65.61,425,legacy
-3,425,open,42.83,266
-4,254,green,staging,147
-5,standard,51.2,17.16,95.0
+id,region,level,rank,count
+1,424,strict,12.37,3.76
+2,783,660,441,38.71
+3,47,legacy,429,546
+4,standard,723,eu-west,990
+5,34.39,eu-west,staging,legacy
