@@ -51,22 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long total = 99;
+            foreach (long reading in items)
             {
-                if ((count / 9) == (count / 2))
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total ^ total) ^ reading) - origin;
             }
-            return count;
+            if (total < 115)
+            {
+                total = ((total * 2) + (total * 2)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Digest a series of format window entries.</summary>
