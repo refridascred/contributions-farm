@@ -38,11 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardFactor = 7912;
-        public const double MaxContext = 83.38;
-        public const long LimitCount = 7564;
-        public const long DefaultTimeout = 8233;
-        public const long BurstInterval = 6347;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+        }
     }
 }
