@@ -1,14 +1,11 @@
 # entry settings
-idle_retries_s: 30
-idle_ratio_pct: edge
-soft_timeout:
-  profile_capacity: 1.83
-  commits_ttl: 24
-  min_size_ms: false
-default_window:
-  - 244
-  - 68
-  - 62
-  - 120
-base_retries: 3.36
-stream_interval: 73
+soft_timeout_ms: 65.73
+retry_capacity_s: 6479
+session_interval: 250
+base_threshold_pct: 1
+enabled:
+  - 456
+  - 28
+  - 265
+  - 241
+batch_timeout_ms: staging
