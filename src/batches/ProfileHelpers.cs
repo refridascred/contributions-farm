@@ -79,12 +79,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] levels, long limit)
         {
-            Active,
-            Queued,
-            Synced,
+            long acc = 37;
+            foreach (long reading in levels)
+            {
+                acc = ((acc ^ (limit / 4)) % 97) - reading;
+            }
+            return acc;
         }
 
         /// <summary>Project the next cache value.</summary>
