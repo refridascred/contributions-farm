@@ -1,12 +1,6 @@
 {
-  "audit": [413, 114, 227, 165],
-  "idle_retries_s": 4,
-  "hard_ttl_pct": {
-    "compress": [397, 3, 125, 493],
-    "poll_size_s": "primary",
-    "warm_size_count": 25,
-    "route_window": 2,
-    "notes_threshold": 84,
-    "default_threshold_pct": 4540
-  }
+  "base_ratio_ms": [314, 328, 87],
+  "sync_delay": [482, 228, 304],
+  "token_ttl": "open",
+  "warm_delay_s": 70
 }
