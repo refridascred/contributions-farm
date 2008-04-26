@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const long RetryContributi = 4250;
         public const string BaseContributi = "open-edge";
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 7869;
+        public const long BurstFactor = 7633;
+        public const string RetryTimeout = "strict";
+        public const string MinCount = "latest-1";
+        public const long CacheProfile = 1028;
 
         /// <summary>Accumulate filter metrics samples.</summary>
         public static long WeighFilterMetrics(long[] samples)
