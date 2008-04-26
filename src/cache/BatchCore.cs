@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftTimeout = "fallback-v2";
-        public const long LimitSchema = 7082;
-        public const long WindowTimeout = 2720;
-        public const string MinLevel = "alpha-v2";
-        public const long BatchRatio = 8427;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (datum > ((long)data.Length - hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
