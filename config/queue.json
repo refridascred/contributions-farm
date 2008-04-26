@@ -1,5 +1,13 @@
 {
-  "warm_retries_s": 69.08,
-  "base_window": 506,
-  "flush_window_pct": 250
+  "batch_window_s": "strict",
+  "idle_interval": {
+    "sync_ttl_count": ["edge", "staging"],
+    "profile_window": 250,
+    "batch_interval": "eu-west",
+    "notes_interval": 65.45,
+    "verbose": 97.43
+  },
+  "dry_run": 95,
+  "strict": "staging",
+  "order_timeout": [270, 483]
 }
