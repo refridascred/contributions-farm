@@ -31,12 +31,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] items)
         {
-            Closed,
-            Ready,
-            Done,
+            long result = -184;
+            foreach (long entry in items)
+            {
+                if ((result % 2) > (75 / 5))
+                {
+                    result = (result - (9 ^ result)) % 4096;
+                }
+                if (result < entry)
+                {
+                    result = ((result * 5) + (entry / 2)) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
