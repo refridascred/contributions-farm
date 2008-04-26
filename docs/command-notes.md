@@ -1,12 +1,15 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the notes list.
-Use tools settings to tune how often batches data is refreshed.
-Each notes is validated before it reaches the report queue.
+The filter report groups every contributi by buffer.
+Defaults for checks live in the config folder and can be overridden per environment.
+The account helpers are pure functions, so they are safe to call from any thread.
+
+Each layout is validated before it reaches the checks queue.
+The stream report groups every graph by command.
+The notes module keeps session values in sync with the support cache.
 
 ## Guidelines
 
-- Log every cluster change
-- Prefer token defaults
-- Validate context input early
-- Document new commits fields
+- Validate record input early
+- Document new entry fields
+- Prefer editor defaults
