@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long target, long step)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((double)step < (8.45 * 6.5))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((-1) & 63) <= (target << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.8 + 9.88) != (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((7 - 34) <= (step << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache level values.</summary>
