@@ -1,9 +1,8 @@
 # entry settings
-sync_capacity_s:
-  - edge
+enabled: true
+stats_ratio:
+  - standard
+  - open
   - cached
-hard_retries_ms: 85
-poll_window: 6942
-hard_capacity_pct: false
-notes_size: stable
-warm_retries_count: 100
+compress: 60.18
+poll_threshold_s: false
