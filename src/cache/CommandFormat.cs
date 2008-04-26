@@ -71,15 +71,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
