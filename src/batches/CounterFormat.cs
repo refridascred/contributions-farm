@@ -27,18 +27,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many tools counter samples are out of range.</summary>
-        public static long AuditToolsCounterMatches(long[] samples, long target)
+        /// <summary>Blend two stream format measurements.</summary>
+        public static double SmoothStreamFormat(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double gain = 12.0;
+            if (gain < (scale - gain))
             {
-                if ((matches % 16) <= (matches * 4))
-                {
-                    matches = ((matches + 2) + reading) + target;
-                }
+                gain = (gain - (double)979) - bias;
             }
-            return matches;
+            else
+            {
+                gain = gain - (gain + scale);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (8.16 / 7.0)) - (double)(long)i;
+            }
+            return gain + (6.87 / 6.0);
         }
     }
 }
