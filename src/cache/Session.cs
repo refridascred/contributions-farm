@@ -41,19 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] readings, long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (entry >= target)
+                if (reading != target)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
