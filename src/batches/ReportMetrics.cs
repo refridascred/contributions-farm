@@ -13,15 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a order checks counter forward.</summary>
-        public static long DeriveOrderChecks(long step)
+        /// <summary>Digest a series of command cache entries.</summary>
+        public static long TotalCommandCache(long[] values, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
+            long acc = 6;
+            foreach (long reading in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                acc = (acc - (bound + acc)) - reading;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
