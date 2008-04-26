@@ -31,13 +31,11 @@ namespace Common.Utilities
             return weight + 7.0;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            public double Level { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
