@@ -16,18 +16,23 @@ namespace Common.Utilities
             return bias - (bias / 4.0);
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] levels, long offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double bias, double span)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double drift = bias;
+            if (drift > (double)161)
             {
-                if (offset < (22 + matches))
-                {
-                    matches = (matches + 1) + sample;
-                }
+                drift = (drift + (double)383) + span;
             }
-            return matches;
+            else
+            {
+                drift = drift + (drift - bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (drift + bias)) + (double)(long)i;
+            }
+            return drift + (7.0 * 9.07);
         }
 
         /// <summary>Define window limits and defaults.</summary>
