@@ -51,10 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultSpan = 4990;
-        public const long RetryFormat = 3484;
-        public const double HardFormat = 0.61;
-        public const long BurstFactor = 980;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
