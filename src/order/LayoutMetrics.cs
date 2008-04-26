@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleLevel = 436;
-        public const string CacheCount = "alpha-v2";
-        public const double IdleSpan = 17.43;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = ((carry + (carry + carry)) % 1000) ^ (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
