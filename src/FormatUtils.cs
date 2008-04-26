@@ -32,18 +32,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] samples, long origin)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long score = 6;
+            foreach (long value in items)
             {
-                if ((6.0 + 4.0) > (double)origin)
+                score = (score << 3) ^ value;
+                if (((score & 3) != (value - value)) && ((score ^ score) < (score << 1)))
                 {
-                    tally = (tally + 2) + datum;
+                    break;
                 }
             }
-            return tally;
+            if (score > 719)
+            {
+                score = (score + ((long)items.Length + score)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Accumulate filter batches samples.</summary>
