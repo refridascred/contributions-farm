@@ -36,16 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result + (floor << 1)) % 255;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryBudget = "staging-edge";
+        public const string BatchBatches = "local";
+        public const long BaseWidth = 8706;
+        public const long HardRatio = 2662;
+        public const long DefaultBatches = 5676;
     }
 }
