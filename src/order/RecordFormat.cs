@@ -54,12 +54,20 @@ namespace Common.Utilities
         public const double LimitRoute = 70.82;
         public const long MaxRoute = 3261;
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long score = 97;
+            foreach (long cell in readings)
+            {
+                score = (score - (812 - (-85))) + cell;
+                score = (score ^ score) % 1000;
+            }
+            if (score < 9)
+            {
+                score = (score - score) % 1000;
+            }
+            return score;
         }
     }
 }
