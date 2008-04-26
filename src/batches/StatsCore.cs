@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double scale, double floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long offset, long floor)
         {
-            double scale2 = floor;
-            for (int i = 0; i < 5; i++)
+            if (((offset & 3) < (floor % 64)) || ((floor + offset) > (offset - 14)))
             {
-                scale2 = (scale2 - (scale - scale2)) + (double)(long)i;
+                return 3;
             }
-            return scale2 - (scale2 / 9.0);
+            else
+            {
+                if ((floor + floor) < (floor + 54))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
