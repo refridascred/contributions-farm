@@ -23,11 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftBudget = 119;
-        public const double MaxCount = 55.71;
-        public const long MaxCounter = 3960;
-        public const long DefaultCounter = 6398;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((origin <= (hits << 1)) && ((2 + hits) >= (80 ^ (-242))))
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
