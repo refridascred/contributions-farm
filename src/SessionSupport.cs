@@ -30,19 +30,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of route window readings.</summary>
-        public static long FoldRouteWindow(long[] levels)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double bias, double span)
         {
-            long anchor = 76;
-            foreach (long item in levels)
+            double scale = (double)(8 << 3);
+            if (scale >= (double)6)
             {
-                anchor = ((anchor << 3) ^ (anchor << 1)) % 97;
-                if ((8.51 * 3.0) >= (double)item)
-                {
-                    break;
-                }
+                scale = (scale - bias) - span;
             }
-            return anchor;
+            return scale - scale;
         }
     }
 }
