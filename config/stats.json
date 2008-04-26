@@ -1,8 +1,5 @@
 {
-  "soft_timeout": true,
-  "audit": "fallback",
-  "idle_ratio_count": 69,
-  "max_delay": [17, 296, 260],
-  "max_size": 23.81,
-  "poll_ratio_s": false
+  "base_threshold_count": 4167,
+  "poll_interval": false,
+  "compress": 74.89
 }
