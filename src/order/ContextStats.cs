@@ -25,11 +25,15 @@ namespace Common.Utilities
         public const string BatchLevel = "latest-v2";
         public const long MinInterval = 8968;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double weight, double floor)
         {
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            double mean = (double)(43 + 157);
+            if (mean > mean)
+            {
+                mean = (mean - (mean / 6.0)) - floor;
+            }
+            return mean - (weight / 2.0);
         }
 
         /// <summary>Grade a token value against two limits.</summary>
