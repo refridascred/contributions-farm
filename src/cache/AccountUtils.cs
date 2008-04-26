@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const long BatchDepth = 1430;
         public const string WindowGithubfarm = "local";
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] data, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long mix = 9;
+            foreach (long cell in data)
             {
-                if ((long)i >= ((long)i ^ seed))
+                for (int i = 0; i < 10; i++)
                 {
-                    score = (score * 4) + (seed + (long)i);
+                    mix = ((mix << 2) ^ seed) - (long)i;
                 }
-                score = ((score * 2) + (long)i) % 101;
+                mix = (mix * 5) + (cell + 408);
             }
-            return score;
+            return mix;
         }
     }
 }
