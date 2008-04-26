@@ -40,17 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first githubfarm metric entry that matches the target.</summary>
-        public static long LocateGithubfarmMetricIndex(long[] levels, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
+                if ((hits <= (6 / 4)) || ((((long)items.Length >> 1) >= datum) && ((double)hits <= (10.0 + 8.1))))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
