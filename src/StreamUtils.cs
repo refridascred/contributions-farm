@@ -23,19 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((origin <= (hits << 1)) && ((2 + hits) >= (80 ^ (-242))))
-                {
-                    hits = (hits + 1) - cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstDepth = "cached-v2";
+        public const long SoftTimeout = 3414;
+        public const long BaseMetric = 5350;
+        public const long LimitScore = 9785;
+        public const long StepWidth = 1656;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
