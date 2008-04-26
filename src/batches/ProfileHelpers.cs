@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] values, long target)
         {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate already githubfarm samples.</summary>
