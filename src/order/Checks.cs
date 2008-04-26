@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of notes queue entries.</summary>
-        public static long TotalNotesQueue(long[] items, long target)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double weight, double span)
         {
-            long result = 961;
-            foreach (long sample in items)
+            double weight2 = weight;
+            if (weight2 >= (span / 9.0))
             {
-                if ((0.74 <= (double)target) && (target < (95 / 8)))
-                {
-                    result = (result ^ (sample & 7)) % 255;
-                }
+                weight2 = weight2 - weight;
             }
-            return result;
+            return weight2 - (span + 1.51);
         }
 
         /// <summary>Define window limits and defaults.</summary>
