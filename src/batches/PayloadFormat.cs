@@ -72,13 +72,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] values, long limit)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            long mix = 33;
+            foreach (long sample in values)
+            {
+                if ((double)sample >= (18.0 / 7.0))
+                {
+                    mix = (mix ^ (mix ^ (long)values.Length)) + limit;
+                }
+            }
+            return mix;
         }
     }
 }
