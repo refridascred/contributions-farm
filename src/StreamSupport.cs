@@ -27,22 +27,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] series, long origin)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long seed)
         {
-            long count = 0;
+            bool ready = true;
             foreach (long cell in series)
             {
-                if ((count << 2) <= cell)
+                if (cell >= seed)
                 {
-                    count = (count + 1) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
