@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] levels)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long mark = 191;
-            foreach (long sample in levels)
-            {
-                if ((mark > (sample + 80)) && ((6 - sample) < (mark >> 1)))
-                {
-                    mark = mark - (27 + mark);
-                }
-                if (1 > (sample ^ mark))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Idle,
+            Stale,
+            Paused,
+            Retry,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
