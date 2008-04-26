@@ -22,21 +22,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((count * 4) > (count & 1)))
                 {
-                    if ((values[i] ^ values[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 2) + sample) + floor;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a report reading by value.</summary>
