@@ -1,6 +1,5 @@
 {
-  "format_capacity": ["latest", "staging", "cached", "cached"],
-  "idle_interval_s": 78.17,
-  "retry_capacity": "stable",
-  "soft_capacity_s": 51
+  "burst_limit_count": true,
+  "poll_capacity": false,
+  "retry_threshold": 19.98
 }
