@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Locked,
-            Queued,
-            Closed,
-            Draft,
             Pending,
+            Stale,
+            New,
+            Synced,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
