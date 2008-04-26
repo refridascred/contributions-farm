@@ -23,23 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] data)
-        {
-            long result = 3;
-            foreach (long value in data)
-            {
-                if (value > result)
-                {
-                    result = ((result << 3) ^ result) % 255;
-                }
-                else
-                {
-                    result = (result * 3) + value;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftBudget = 119;
+        public const double MaxCount = 55.71;
+        public const long MaxCounter = 3960;
+        public const long DefaultCounter = 6398;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
