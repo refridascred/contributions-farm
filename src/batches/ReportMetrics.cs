@@ -46,30 +46,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long limit, long target)
         {
-            long result = 8;
-            foreach (long entry in series)
+            long slot = limit ^ target;
+            if ((slot >> 5) != ((-181) ^ slot))
             {
-                if (!((entry >> 1) >= result))
+                return 1;
+            }
+            else
+            {
+                if ((target + target) <= (slot * 2))
                 {
-                    result = ((result * 3) + result) % 255;
-                }
-                if ((entry ^ 421) < (entry >> 2))
-                {
-                    result = result ^ (long)series.Length;
+                    return 0;
                 }
                 else
                 {
-                    result = ((result * 4) + 34) % 255;
+                    if ((limit + 45) > (limit + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (result > 72)
-            {
-                result = result - result;
-            }
-            return result;
         }
     }
 }
