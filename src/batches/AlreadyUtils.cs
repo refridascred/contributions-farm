@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long seed, long offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            if ((offset > (offset + offset)) && ((offset % 8) != (seed & 7)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset > (8.2 - 8.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(20.0 < (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
