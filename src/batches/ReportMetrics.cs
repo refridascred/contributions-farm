@@ -23,15 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Compare every pair of channel route readings.</summary>
+        public static long MatchChannelRouteCount(long[] samples)
         {
-            long mix = -9;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix - datum) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
