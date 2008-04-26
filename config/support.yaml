@@ -1,9 +1,20 @@
 # support settings
-burst_ratio:
-  - staging
-  - local
-  - blue
-retry_ratio: green
-cluster_ratio: true
-audit: 45.24
-batch_ratio_ms: green
+idle_ttl:
+  enabled: 8421
+  queue_capacity: edge
+  farm_threshold: 932
+  min_ratio: 100
+already_depth: 4227
+hard_timeout_count:
+  - standard
+  - open
+  - standard
+persist:
+  default_capacity_pct: false
+  default_threshold_s: local
+  compress: 100
+  tools_depth: 33.97
+  support_ratio: edge
+  window_timeout: 2353
+order_ratio: eu-west
+strict: 10
