@@ -1,8 +1,7 @@
 {
-  "soft_threshold_s": true,
-  "farm_size": 69,
-  "warm_limit": "edge",
-  "dry_run": "eu-west",
-  "contributi_timeout": 8881,
-  "retry_window_s": 100
+  "cache_timeout_ms": true,
+  "default_timeout": false,
+  "idle_window_ms": [212, 495, 72],
+  "strict": false,
+  "compress": "stable"
 }
