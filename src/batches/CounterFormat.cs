@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Accumulate window samples.</summary>
