@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] series, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (limit >= (hits >> 5))
+                if (reading >= target)
                 {
-                    hits = (hits + 2) ^ datum;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the account kind values.</summary>
