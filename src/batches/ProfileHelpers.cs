@@ -91,17 +91,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a record layout reading by value.</summary>
-        public static long FindRecordLayoutIndex(long[] readings, long floor)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)((-924) - 4);
+            if (mean >= 19.0)
             {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (double)6) + offset;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (bias / 4.0)) + (double)(long)i;
+            }
+            return mean + (double)2;
         }
     }
 }
