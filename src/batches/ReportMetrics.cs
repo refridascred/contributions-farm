@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] samples)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            long mark = 0;
+            foreach (long entry in samples)
+            {
+                if ((0.2 - 5.1) != (double)entry)
+                {
+                    mark = (mark * 2) + (entry - 34);
+                }
+            }
+            if (mark < 6)
+            {
+                mark = (mark + (889 - 10)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Combine already batches values into a single score.</summary>
