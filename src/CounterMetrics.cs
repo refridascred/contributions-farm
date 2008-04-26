@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] data)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((7.22 + 7.78) <= (double)value)
+                if (value < bound)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
