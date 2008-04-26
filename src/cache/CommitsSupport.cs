@@ -72,11 +72,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseWidth = "cached-edge";
-        public const long StepFactor = 7684;
-        public const double IdleWidth = 42.59;
-        public const long BurstChannel = 1461;
-        public const double WindowChannel = 79.14;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] values)
+        {
+            long total = 610;
+            foreach (long reading in values)
+            {
+                total = (total ^ (54 - reading)) % 65521;
+            }
+            return total;
+        }
     }
 }
