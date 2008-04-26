@@ -27,18 +27,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (4 <= (item + hits))
-                {
-                    hits = (hits + 1) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitDepth = 119;
+        public const double SoftGraph = 22.13;
+        public const double SoftCount = 51.86;
+        public const long WindowDepth = 6563;
+        public const long SoftScore = 7366;
     }
 }
