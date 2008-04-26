@@ -61,19 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next queue entry value.</summary>
-        public static double BlendQueueEntry(double bias, double floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] readings)
         {
-            double bias2 = 15.0;
-            if (bias2 <= bias2)
+            long count = 0;
+            foreach (long value in readings)
             {
-                bias2 = bias2 - (bias * 16.0);
+                if (count > ((long)readings.Length * 5))
+                {
+                    count = (count + 1) + value;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (floor + floor)) - (double)(long)i;
-            }
-            return bias2 - 16.0;
+            return count;
         }
     }
 }
